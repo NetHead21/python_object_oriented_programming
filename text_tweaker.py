@@ -1,5 +1,6 @@
 from zip_processor import ZipProcessor
 
+
 class TextTweaker(ZipProcessor):
     def __init__(self, archive: Path) -> None:
         super().__init__(archive)
