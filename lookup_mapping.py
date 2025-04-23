@@ -75,5 +75,6 @@ def test_lookup_mapping():
     assert x["z"] == "Zillah"
     assert list(x) == ["a", "b", "c", "z"]
 
+
 if __name__ == "__main__":
     test_lookup_mapping()
