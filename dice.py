@@ -58,6 +58,24 @@ class SimpleDice(Dice):
             d.roll()
 
 
+class YachtDice(Dice):
+    def __init__(self) -> None:
+        super().__init__(5, D6)
+        self.save: set[int] = set()
+
+    def saving(self, positions: Iterable[int]) -> "YachtDice":
+        if not all(0 <= n < 6 for n in positions):
+            raise ValueError("Invalid position")
+        self.saved = set(positions)
+        return self
+
+    def roll(self) -> None:
+        for n, d in enumerate(self.dice):
+            if n not in self.saved:
+                d.roll()
+        salf.saved = set()
+
+
 if __name__ == "__main__":
     random.seed(42)
     dice = [D4(), D4(), D4()]
