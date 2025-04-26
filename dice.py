@@ -93,6 +93,40 @@ class D4M(DieM):
         self.face = random.choice((1, 2, 3, 4))
 
 
+class DDice:
+    def __init__(self, *die_class: Type[Die]) -> None:
+        self.dice = [dc() for dc in die_class]
+        self.adjust: int = 0
+
+    def plus(self, adjust: int = 0) -> "DDice":
+        self.adjust = adjust
+        return self
+
+    def roll(self) -> None:
+        for d in self.dice:
+            d.roll()
+
+    @property
+    def total(self) -> int:
+        return sum(d.face for d in self.dice) + self.adjust
+
+    def __repr__(self) -> str:
+        rule = ", ".join(type(d).__name__ for d in self.dice)
+        return f"DDice({rule}).plus({self.adjust})"
+
+    def __add__(self, die_class: Any) -> "DDice":
+        if isinstance(die_class, type) and issubclass(die_class, Die):
+            new_classe = [type(d) for d in self.dice] + [die_class]
+            new = DDice(*new_classes).plus(elf.adjust)
+            return new
+        elif isinstance(die_class, int):
+            new_classes = [type(d) for d in self.dice]
+            new = DDice(*new_classes).plus(elf.adjust)
+            return new
+        else:
+            return NotImplemented
+
+
 if __name__ == "__main__":
     random.seed(42)
     dice = [D4(), D4(), D4()]
