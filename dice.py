@@ -76,6 +76,23 @@ class YachtDice(Dice):
         salf.saved = set()
 
 
+class DieM(metaclass=abc.ABCMeta):
+    def __init__(self) -> None:
+        self.face: int
+        self.roll()
+
+    @abc.abstractmethod
+    def roll(self) -> None: ...
+
+    def __repr__(self) -> str:
+        return f"{self.face}"
+
+
+class D4M(DieM):
+    def roll(self) -> None:
+        self.face = random.choice((1, 2, 3, 4))
+
+
 if __name__ == "__main__":
     random.seed(42)
     dice = [D4(), D4(), D4()]
