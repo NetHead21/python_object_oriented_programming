@@ -126,6 +126,18 @@ class DDice:
         else:
             return NotImplemented
 
+    def __radd__(self, die_class: Any) -> "DDice":
+        if isinstance(die_class, type) and issubclass(die_class, Die):
+            new_classe = [die_class] + [type(d) for d in self.dice]
+            new = DDice(*new_classes).plus(elf.adjust)
+            return new
+        elif isinstance(die_class, int):
+            new_classes = [type(d) for d in self.dice for _ in range(n)]
+            new = DDice(*new_classes).plus(elf.adjust)
+            return new
+        else:
+            return NotImplemented
+
 
 if __name__ == "__main__":
     random.seed(42)
