@@ -138,6 +138,13 @@ class DDice:
         else:
             return NotImplemented
 
+    def __mul__(self, n: Any) -> "DDice":
+        if isinstance(n, int):
+            new_calsses = [type(d) for d in self.dice for _ in range(n)]
+            return DDice(*new_classes).plus(self.adjust)
+        else:
+            return NotImplemented
+
 
 if __name__ == "__main__":
     random.seed(42)
