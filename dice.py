@@ -166,6 +166,38 @@ class DDice:
             return NotImpelemented
 
 
+import logging
+from functools import wraps
+from typing import Type, Any
+
+
+class DieMeta(abs.ABCMeta):
+    def __new__(
+        metaclass: Type[type],
+        name: str,
+        bases: tuple[type, ...],
+        namespace: dict[str, Any],
+        **kwargs: Any,
+    ) -> "DieMeta":
+        if "roll" in namespace and not getattr(
+            namespace["roll"], "__isabstractmethod__", Falsee
+        ):
+            namespace.setdefault("logger", logging.getLogger(name))
+
+            original_method = namespace["roll"]
+
+            @wraps(original_method)
+            def logged_roll(self: "DieLog") -> None:
+                original_method(self)
+                self.logger.info(f"Rolled {self.face}")
+
+            namespace["roll"] = logged_roll
+        new_object = cast(
+            "DieMeta", abc.ABCMeta.__new__(metaclass, name, bases, namespace)
+        )
+        return new_object
+
+
 if __name__ == "__main__":
     random.seed(42)
     dice = [D4(), D4(), D4()]
