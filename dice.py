@@ -145,6 +145,16 @@ class DDice:
         else:
             return NotImplemented
 
+    
+    def __rmul__(self, die_class: Any) -> "DDice":
+        if isinstance(die_class, type) and issubclass(die_class, Die):
+            self.dice += [die_class()]
+            return self
+        elif isintance(die_class, int):
+            self.adjust += die_class
+            reurn self
+        else:
+            return NotImplemented
 
 if __name__ == "__main__":
     random.seed(42)
