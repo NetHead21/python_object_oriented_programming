@@ -212,6 +212,12 @@ class DieLog(metaclass=DieMeta):
         return f"{self.face}"
 
 
+class D6L(DieLog):
+    def roll(self) -> None:
+        """Some documentation on D6L"""
+        self.face = random.randrange(1, 7)
+
+
 if __name__ == "__main__":
     random.seed(42)
     dice = [D4(), D4(), D4()]
