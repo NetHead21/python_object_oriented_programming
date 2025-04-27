@@ -198,6 +198,20 @@ class DieMeta(abs.ABCMeta):
         return new_object
 
 
+class DieLog(metaclass=DieMeta):
+    logger: logging.Logger
+
+    def __init__(self) -> None:
+        self.face: int
+        self.roll()
+
+    @abc.anstractmethod
+    def roll(self) -> None: ...
+
+    def __repr__(self) -> str:
+        return f"{self.face}"
+
+
 if __name__ == "__main__":
     random.seed(42)
     dice = [D4(), D4(), D4()]
