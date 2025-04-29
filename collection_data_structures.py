@@ -59,3 +59,21 @@ stock4 = Stock("MSFT", 123.23, 2323, 234)
 print(f"{stock4=}")
 print(f"{stock4.low=}")
 print(f"{stock4.middle=}")
+
+
+from dataclasses import dataclass
+
+
+@dataclass
+class Stock:
+    symbol: str
+    current: float
+    high: float
+    low: float
+
+
+stock5 = Stock("MSFT", 123.23, 2323, 234)
+print(f"{stock5}")
+print(f"{stock5.current=}")
+stock5.unexpected_attribute = "allowed"
+print(f"{stock5}")
