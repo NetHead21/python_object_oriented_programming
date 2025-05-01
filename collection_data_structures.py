@@ -79,13 +79,13 @@ stock5.unexpected_attribute = "allowed"
 print(f"{stock5}")
 
 
-
 @dataclass(order=True)
 class StockOrdered:
     name: str
     current: float = 0.0
     high: float = 0.0
     low: float = 0.0
+
 
 stock_ordered1 = StockOrdered("GOOG", 1826.77, 1847.20, 1013.54)
 stock_ordered2 = StockOrdered("GOOG")
@@ -94,3 +94,29 @@ stock_ordered3 = StockOrdered("GOOG", 1728.28, high=1733.18, low=1666.33)
 print(f"{stock_ordered1}")
 print(f"{stock_ordered2}")
 print(f"{stock_ordered3}")
+
+print(stock_ordered1 < stock_ordered2)
+print(stock_ordered1 > stock_ordered2)
+
+
+# using python dictionary
+def letter_frequency(sentence: str) -> dict[str, int]:
+    frequencies: dict[str, int] = {}
+    for letter in sentence:
+        frequency = frequencies.setdefault(letter, 0)
+        frequencies[letter] = frequency + 1
+    return frequencies
+
+
+from collections import defaultdict
+
+
+def letter_frequency_2(sentence: str) -> defaultdict[str, int]:
+    frequencies: defaultdict[str, int] = defaultdict(int)
+    for letter in sentence:
+        frequencies[letter] += 1
+    return frequencies
+
+
+print(letter_frequency("hello world"))
+print(letter_frequency_2("hello world"))
