@@ -120,3 +120,52 @@ def letter_frequency_2(sentence: str) -> defaultdict[str, int]:
 
 print(letter_frequency("hello world"))
 print(letter_frequency_2("hello world"))
+
+
+def word_count(words: list) -> dict[str, int]:
+    word_counts: defaultdict[str, int] = defaultdict(int)
+    for word in words:
+        word_counts[word] += 1
+
+    return word_counts
+
+
+words = ["apple", "banana", "apple", "orange", "banana", "apple"]
+print(word_count(words))
+
+
+@dataclass
+class Prices:
+    current: float = 0.0
+    high: float = 0.0
+    low: float = 0.0
+
+
+portfolio = defaultdict(Prices)
+print(portfolio["GOOG"])
+portfolio["AAPL"] = Prices(current=122.25, high=137.98, low=53.15)
+
+from pprint import pprint
+from collections import Counter
+
+pprint(portfolio)
+
+
+def letter_frequency_3(sentence: str) -> Counter[str]:
+    return Counter(sentence)
+
+
+responses = [
+    "vanilla",
+    "chocolate",
+    "vanilla",
+    "vanilla",
+    "caramel",
+    "strawberry",
+    "vanilla",
+]
+
+favorites = Counter(responses).most_common(1)
+name, frequency = favorites[0]
+print(f"{name=}")
+print(f"{frequency=}")
