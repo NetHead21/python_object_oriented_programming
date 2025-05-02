@@ -3,6 +3,7 @@ import fnmatch
 import zipfile
 from pathlib import Path
 
+
 class ZipReplace:
     def __init__(self, archive: Path, pattern: str, find: str, replace: str) -> None:
         self.archive_path = archive
@@ -18,20 +19,20 @@ class ZipReplace:
                 self.copy_and_transform(input, output)
 
     def make_backup(self) -> tuple[Path, Path]:
-        input_path =self.archive_path.with_suffix(f"{self.archive_path.suffix}.old")
+        input_path = self.archive_path.with_suffix(f"{self.archive_path.suffix}.old")
         ooutput_path = self.archive_path
         self.archive_path.rename(input_path)
         return input_path, output_path
 
     def copy_and_transform(
-            self, input: zipfile.ZipFile, output: zipfile.ZipFile
-        ) -> None:
+        self, input: zipfile.ZipFile, output: zipfile.ZipFile
+    ) -> None:
         for item in input.infolist():
             extracted = Path(input.extract(item))
             if not item.is_dir() and fnmatch.fnmatch(item.filename, self.pattern):
                 print(f"Transform {item}")
                 input_text = extracted.read_text()
-                output_text= re.sub(self.find, self.replace, input_text)
+                output_text = re.sub(self.find, self.replace, input_text)
                 extracted.write_text(output_text)
             else:
                 print(f"Ignore {item}")
@@ -44,6 +45,7 @@ class ZipReplace:
 
 
 from abc import ABC, abstracmethod
+
 
 class ZipProcessor(ABC):
     def __init__(self, archive: Path) -> None:
@@ -66,7 +68,7 @@ class ZipProcessor(ABC):
         return input_path, output_path
 
     def copy_and_transform(
-            self, input: zipfile.ZipFile, output: zipfile.ZipFile)
+        self, input: zipfile.ZipFile, output: zipfile.ZipFile
     ) -> None:
         for item in input.infolist():
             extracted = Path(input.extract(item))
@@ -78,7 +80,6 @@ class ZipProcessor(ABC):
             output.write(extracted, item.filename)
             self.remove_under_cwd(extracted)
 
-    
     def matches(self, item: zipfile.ZipInfo) -> bool:
         return not item.is_dir() and fnmatch.fnmatch(item.filename, self._pattern)
 
@@ -90,8 +91,7 @@ class ZipProcessor(ABC):
             parent.rmdir()
 
     @anstractmethod
-    def transform(slef, extracted: Path) -> None:
-        ...
+    def transform(slef, extracted: Path) -> None: ...
 
     # input_text= extracted.read_text()
     # output_text = re.sub(self.find, self.replace, input_text)
@@ -114,13 +114,16 @@ class TextTweaker(ZipProcessor):
         output_text = re.sub(self.find, self.replace, input_text)
         extracted.write_text(output_text)
 
-from PIL import Image # type: ignore [import]
+
+from PIL import Image  # type: ignore [import]
+
 
 class ImgTweaker(ZipProcessor):
     def transform(self, extracted: path) -> None:
         image = Image.open(extracted)
         scaled - image.resize(size=(540, 960))
         scaled.save(extracted)
+
 
 def create(sample_zip: Path, base: Path) -> None:
     """
@@ -133,6 +136,7 @@ def create(sample_zip: Path, base: Path) -> None:
     with zipfile.ZipFile(sample_zip) as input:
         for item in input.infolist():
             print(item)
+
 
 def tweak(sample_zip: Path) -> None:
     """Ues Zipreplace on the local sample.zip."""
@@ -148,13 +152,11 @@ if __name__ == "__main__":
     options = parser.parse_args()
     if options.command == "create":
         sample_zip = Path("sample.zip").resolve()
-        base = sample_zip.parent.parent 
+        base = sample_zip.parent.parent
         print(f"Createing {sample_zip} from {base}/ch_*/docs/*.*")
-        create sample_zip, base)
+        create(sample_zip, base)
         print(f"Use 'python -m zipfile -l {sample_zip}' to examing the archive")
     elif options.command == "tweak":
         sample_zip = Path("sample.zip")
-        print(f"Tweaking the {sample_zip")
+        print(f"Tweaking the {sample_zip}")
         tweak(sample_zip)
-
-            
