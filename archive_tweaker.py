@@ -60,7 +60,7 @@ class ZipProcessor(ABC):
                 self.copy_and_transform(input, output)
 
     def make_backup(self) -> tuple[Path, Path]:
-        input_path = self.archive_path.with_suffix(f"self.archive_path.suffix}.old")
+        input_path = self.archive_path.with_suffix(f"{self.archive_path.suffix}.old")
         output_path = self.archive_path
         self.archive_path.rename(input_path)
         return input_path, output_path
