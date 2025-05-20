@@ -3,6 +3,7 @@ import time
 
 from .task import Callback, Task
 
+
 class Scheduler:
     def __init__(self) -> None:
         self.tasks: list[Task] = []
