@@ -1,7 +1,7 @@
 import heapq
 import time
 
-from .task import Callback, Task
+from task import Callback, Task
 
 
 class Scheduler:
@@ -16,7 +16,7 @@ class Scheduler:
         limit: int = 1,
     ) -> None:
         new_task = Task(after, task, delay, limit)
-        heapq.heappush(self.task, new_task)
+        heapq.heappush(self.tasks, new_task)
 
     def run(self) -> None:
         current_time = 0

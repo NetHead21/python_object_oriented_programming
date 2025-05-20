@@ -1,7 +1,7 @@
-from typing import Callable, Optional
+from typing import Callable, Optional, cast
 from dataclasses import dataclass, field
 
-Callable = Callable[[int], None]
+Callback = Callable[[int], None]
 
 
 @dataclass(frozen=True, order=True)

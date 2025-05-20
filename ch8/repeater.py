@@ -1,4 +1,4 @@
-from .format_time import format_time
+from format_time import format_time
 
 
 class Repeater:
