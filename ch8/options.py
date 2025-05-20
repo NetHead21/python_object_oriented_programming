@@ -4,10 +4,9 @@ class Options(dict[str, any]):
         "host": "localhost",
         "username": None,
         "password": None,
-        "debug": False
+        "debug": False,
     }
 
     def __init__(self, **kwargs: any) -> None:
         super().__init__(self.default_options)
         self.update(kwargs)
-
