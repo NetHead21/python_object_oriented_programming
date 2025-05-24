@@ -1,7 +1,8 @@
 from typing import Optional, Type, Literal
 from types import TracebackType
 
-class StirngJoiner(list[str]):
+
+class StringJoiner(list[str]):
     def __enter__(self) -> "StringJoiner":
         return self
 
@@ -13,3 +14,11 @@ class StirngJoiner(list[str]):
     ) -> Literal[False]:
         self.result = "".join(self)
         return False
+
+
+with StringJoiner("Hello") as sj:
+    sj.append(", ")
+    sj.append("world")
+    sj.append("!")
+
+print(sj.result)

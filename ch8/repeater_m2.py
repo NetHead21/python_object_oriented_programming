@@ -1,5 +1,6 @@
 from format_time import format_time
 
+
 class Repeater_2:
     def __init__(self) -> None:
         self.count = 0
