@@ -10,7 +10,7 @@ class Repeater_2:
 
 
 rpt = Repeater_2()
-print(rpt(1))
-print(rpt(2))
-print(rpt(3))
-print(rpt(4))
+rpt(1)
+rpt(2)
+rpt(3)
+rpt(4)
