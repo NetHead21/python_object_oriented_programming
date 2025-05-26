@@ -1,7 +1,7 @@
 s = "hello world"
 print(s.count("l"))
 print(s.find("l"))
-#print(s.rindex("m"))
+# print(s.rindex("m"))
 
 s2 = "hello world, how are you?"
 s3 = s2.split()
