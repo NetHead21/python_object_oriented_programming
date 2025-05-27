@@ -22,3 +22,7 @@ print(f"{[2*a+1 for a in range(5)]}")
 
 for n in range(1, 20):
     print(f"{'fizz' if n % 3 == 0 else n}")
+
+a = 5
+b = 7
+print(f"{a=}, {b=}, {31*a//42*b + b=}")
