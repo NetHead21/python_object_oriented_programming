@@ -19,3 +19,6 @@ Subject: {message["subject"]}
 print(formatted)
 
 print(f"{[2*a+1 for a in range(5)]}")
+
+for n in range(1, 20):
+    print(f"{'fizz' if n % 3 == 0 else n}")
