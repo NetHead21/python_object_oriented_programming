@@ -17,3 +17,5 @@ Subject: {message["subject"]}
 {message["message"]}
 """
 print(formatted)
+
+print(f"{[2*a+1 for a in range(5)]}")
