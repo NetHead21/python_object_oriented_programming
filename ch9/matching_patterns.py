@@ -1,5 +1,5 @@
 import re
-from typing import Pattern, Match
+from typing import Pattern, Match, Optional
 
 search_string = "hello world"
 pattern = r"hello world"
@@ -18,3 +18,11 @@ def matchy(pattern: Pattern[str], text: str) -> None:
 
 matchy(pattern=r"hello wo", text="hello world")
 matchy(pattern=r"ello world", text="hello world")
+
+
+def email_domain(text: str) -> Optional[str]:
+    email_pattern = f"[a-z0-9._%+-]+@([a-z0-9.-]+\.[a-z]{2,})"
+    if match := re.match(email_pattern, text, re.IGNORECASE):
+        return match.group(1)
+    else:
+        return None
