@@ -26,3 +26,11 @@ def email_domain(text: str) -> Optional[str]:
         return match.group(1)
     else:
         return None
+
+
+def email_domain_2(text: str) -> Optional[str]:
+    email_pattern = r"(?P<name>[a-z0-9._%+-]+)@(?P<domain>[a-z0-9.-]+\.[a-z]{2,})"
+    if match := re.match(email_pattern, text, re.IGNORECASE):
+        return match.groupdict()["domain"]
+    else:
+        return None
