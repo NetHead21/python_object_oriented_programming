@@ -1,5 +1,5 @@
 import re
-from typing import Patern, Match
+from typing import Pattern, Match
 
 search_string = "hello world"
 pattern = r"hello world"
@@ -14,3 +14,7 @@ def matchy(pattern: Pattern[str], text: str) -> None:
         print(f"{pattern=!r} matches at {match=!r}")
     else:
         print(f"{pattern=!r} not found in {text=!r}")
+
+
+matchy(pattern=r"hello wo", text="hello world")
+matchy(pattern=r"ello world", text="hello world")
