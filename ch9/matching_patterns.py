@@ -21,7 +21,7 @@ matchy(pattern=r"ello world", text="hello world")
 
 
 def email_domain(text: str) -> Optional[str]:
-    email_pattern = f"[a-z0-9._%+-]+@([a-z0-9.-]+\.[a-z]{2,})"
+    email_pattern = f"[a-z0-9._%+-]+@([a-z0-9.-]+\.[a-z]{(2,)})"
     if match := re.match(email_pattern, text, re.IGNORECASE):
         return match.group(1)
     else:
@@ -34,3 +34,8 @@ def email_domain_2(text: str) -> Optional[str]:
         return match.groupdict()["domain"]
     else:
         return None
+
+
+duration_pattern = re.compile(r"\d+[hms]")
+print(duration_pattern.findall("3h 2m    45s"))
+print(duration_pattern.findall("3h:2m:35s"))
