@@ -12,7 +12,7 @@ def scan_python_1(path: Path) -> int:
     return sloc
 
 
-def count_sloc(path: path, scanner: Callable[[Path], int]) -> int:
+def count_sloc(path: Path, scanner: Callable[[Path], int]) -> int:
     if path.name.startswith("."):
         return 0
     elif path.is_file():
@@ -25,3 +25,10 @@ def count_sloc(path: path, scanner: Callable[[Path], int]) -> int:
         return count
     else:
         return 0
+
+
+base = Path.cwd().parent
+chapter = base / "ch9"
+
+count = count_sloc(chapter, scan_python_1)
+print(f"{chapter.relative_to(base)}: {count} lines of code")
