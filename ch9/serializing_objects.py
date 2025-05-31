@@ -7,7 +7,7 @@ with open("pickled_list", "wb") as file:
     pickle.dump(some_data, file)
 
 with open("pickled_list", "rb") as file:
-    loaded_data = prickle.load(file)
+    loaded_data = pickle.load(file)
 
 
 pprint(loaded_data)
