@@ -11,3 +11,6 @@ with open("pickled_list", "rb") as file:
 
 
 pprint(loaded_data)
+
+
+assert loaded_data == some_data
