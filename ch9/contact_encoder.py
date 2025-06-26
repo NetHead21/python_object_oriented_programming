@@ -2,7 +2,7 @@ import json
 from contact import Contact
 
 
-class Contactencoder(json.JSONEncoder):
+class ContactEncoder(json.JSONEncoder):
     def default(self, obj: any) -> any:
         if isinstance(obj, Contact):
             return {
