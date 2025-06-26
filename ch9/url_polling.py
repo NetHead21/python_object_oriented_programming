@@ -21,3 +21,8 @@ class URLPolling:
         self.timer.setDaemon(True)
         self.timer.start()
 
+    def __getstate__(self) -> dict[str, any]:
+        pickleable_state = self.__dict__.copy()
+        if "timer" in pickleable_state:
+            del pickleable_state["timer"]
+        return pickleable_state
