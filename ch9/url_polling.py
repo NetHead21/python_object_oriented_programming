@@ -26,3 +26,7 @@ class URLPolling:
         if "timer" in pickleable_state:
             del pickleable_state["timer"]
         return pickleable_state
+
+    def __state__(self, pickleable_state: dict[str, any]) -> None:
+        self.__dict__ = pickleable_state
+        self.schedule()
