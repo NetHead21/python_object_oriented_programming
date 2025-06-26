@@ -18,7 +18,7 @@ import sys
 if sys.version_info >= (3, 9):
     BaseMapping = abc.Mapping[Comparable, Any]
 else:
-    BaseMapping = Mapping[comparable, Any]
+    BaseMapping = Mapping[Comparable, Any]
 
 
 class Lookup(BaseMapping):
