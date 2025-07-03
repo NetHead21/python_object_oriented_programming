@@ -91,3 +91,7 @@ def extract_all_log_levels(full_log_path: Path, output_dir: Path) -> dict[str, i
     Returns:
         Dictionary with log levels as keys and counts as values
     """
+    if not full_log_path.exists():
+        raise FileNotFoundError(f"Log file not found: {full_log_path}")
+
+    output_dir.mkdir(parents=True, exist_ok=True)
