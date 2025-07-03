@@ -95,3 +95,8 @@ def extract_all_log_levels(full_log_path: Path, output_dir: Path) -> dict[str, i
         raise FileNotFoundError(f"Log file not found: {full_log_path}")
 
     output_dir.mkdir(parents=True, exist_ok=True)
+
+    pattern = re.compile(r"(\w{3} \d{1,2}, \d{4} \d{2}:\d{2}:\d{2}) (\w+) (.*)")
+    log_counts = {}
+    writers = {}
+    files = {}
