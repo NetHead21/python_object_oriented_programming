@@ -33,3 +33,5 @@ def extract_and_parse_warnings(
         FileNotFoundError: If the input log file doesn't exist
         PermissionError: If unable to write to output file
     """
+    if not full_log_path.exists():
+        raise FileNotFoundError(f"Log file not found: {full_log_path}")
