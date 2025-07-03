@@ -68,3 +68,13 @@ def make_log_message(
         logger.warning(f"[{i + 1}/{iterations}] Warnings should be heeded")
         time.sleep(base_delay * 0.05)
         logger.warning(f"[{i + 1}/{iterations}] Watching for warnings.")
+
+        # Add conditional messages to create variety in log patterns
+        if i % 2 == 0:  # Even iterations get additional info message
+            logger.info(
+                f"[{i + 1}/{iterations}] Even iteration - additional info message"
+            )
+        if i % 5 == 0:  # Every 5th iteration gets error checkpoint
+            logger.error(
+                f"[{i + 1}/{iterations}] Every 5th iteration - error checkpoint"
+            )
