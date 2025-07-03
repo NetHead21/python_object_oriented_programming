@@ -133,3 +133,8 @@ def extract_all_log_levels(full_log_path: Path, output_dir: Path) -> dict[str, i
         # Close all open files
         for file in files.values():
             file.close()
+
+    for level, count in log_counts.items():
+        logger.info(f"Extracted {count} {level} messages")
+
+    return log_counts
