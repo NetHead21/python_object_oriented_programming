@@ -100,3 +100,36 @@ def extract_all_log_levels(full_log_path: Path, output_dir: Path) -> dict[str, i
     log_counts = {}
     writers = {}
     files = {}
+
+    try:
+        with full_log_path.open("r", encoding="utf-8") as source:
+            for line_num, line in enumerate(source, 1):
+                line = line.strip()
+                if not line:
+                    continue
+
+                match = pattern.match(line)
+                if match:
+                    timestamp, level, message = match.groups()
+
+                    # Initialize writer for this log level if not exists
+                    if level not in writers:
+                        output_file = output_dir / f"{level.lower()}_logs.csv"
+                        files[level] = output_file.open(
+                            "w", newline="", encoding="utf-8"
+                        )
+                        writers[level] = csv.writer(files[level], delimiter="\t")
+                        writers[level].writerow(["timestamp", "level", "message"])
+                        log_counts[level] = 0
+
+                    writers[level].writerow([timestamp, level, message])
+                    log_counts[level] += 1
+                else:
+                    logger.warning(
+                        f"Line {line_num} doesn't match expected format: {line[:50]}..."
+                    )
+
+    finally:
+        # Close all open files
+        for file in files.values():
+            file.close()
