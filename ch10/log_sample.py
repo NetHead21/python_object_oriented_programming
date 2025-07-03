@@ -44,3 +44,13 @@ def make_log_message(
         logger.error(f"[{i + 1}/{iterations}] Another warning sent.")
         time.sleep(base_delay * 0.1)
         logger.critical(f"[{i + 1}/{iterations}] This is a critical message.")
+
+        # Add multi-line message every 3rd iteration to test log parsing
+        if multiline and i % 3 == 0:  # Add multiline message every 3rd iteration
+            time.sleep(base_delay * 0.05)
+            logger.info(
+                dedent(f"""
+                [{i + 1}/{iterations}] This is a multi-line information
+                message, with misleading content including WARNING
+                       and it spans lines of the log file WARNING used in a confusing way""").strip()
+            )
