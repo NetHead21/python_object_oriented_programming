@@ -20,3 +20,12 @@ def analyze_directory_sizes(directory_path: Path):
         "python_files_size": sum(f.stat().st_size for f in files if f.suffix == ".py"),
         "log_files_count": sum(1 for f in files if f.suffix == ".log"),
     }
+
+
+def main():
+    SCRIPT_DIR = Path(__file__).parent
+    pprint(analyze_directory_sizes(SCRIPT_DIR))
+
+
+if __name__ == "__main__":
+    main()
