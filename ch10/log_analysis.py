@@ -166,3 +166,8 @@ def parse_arguments() -> argparse.Namespace:
         choices=["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"],
         help="Log level to filter for (default: WARNING)",
     )
+    parser.add_argument(
+        "--all-levels",
+        action="store_true",
+        help="Extract all log levels to separate files",
+    )
