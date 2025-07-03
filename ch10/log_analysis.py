@@ -145,3 +145,10 @@ def parse_arguments() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description="Extract and analyze log messages from log files"
     )
+    parser.add_argument(
+        "-i",
+        "--input",
+        type=Path,
+        default=DEFAULT_LOG_PATH,
+        help=f"Input log file path (default: {DEFAULT_LOG_PATH})",
+    )
