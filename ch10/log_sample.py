@@ -101,4 +101,15 @@ def get_optional(argv: list[str] = sys.argv[1:]) -> argparse.Namespace:
             - delay (float): Base delay between log messages in seconds
             - iterations (int): Number of logging cycles to perform
     """
-    pass
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-m", "--multiline", action="store_true", default=False)
+    parser.add_argument("-d", "--delay", action="store", type=float, default=6)
+    parser.add_argument(
+        "-i",
+        "--iterations",
+        action="store",
+        type=int,
+        default=10,
+        help="Number of iterations (each generates ~11 log messages)",
+    )
+    return parser.parse_args(argv)
