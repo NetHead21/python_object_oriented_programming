@@ -138,3 +138,7 @@ def extract_all_log_levels(full_log_path: Path, output_dir: Path) -> dict[str, i
         logger.info(f"Extracted {count} {level} messages")
 
     return log_counts
+
+
+def parse_arguments() -> argparse.Namespace:
+    """Parse command line arguments."""
