@@ -42,3 +42,39 @@ def extract_and_parse_warnings(
     # Pattern to match log format: "MMM DD, YYYY HH:MM:SS LEVEL message"
     pattern = re.compile(r"(\w{3} \d{1,2}, \d{4} \d{2}:\d{2}:\d{2}) (\w+) (.*)")
     warning_count = 0
+
+    try:
+        with warning_log_path.open("w", newline="", encoding="utf-8") as target:
+            writer = csv.writer(target, delimiter="\t")
+            # Write header
+            writer.writerow(["timestamp", "level", "message"])
+
+            with full_log_path.open("r", encoding="utf-8") as source:
+                for line_num, line in enumerate(source, 1):
+                    line = line.strip()
+                    if not line:
+                        continue
+
+                    # Check if line contains the specified log level
+                    if log_level_filter in line:
+                        match = pattern.match(line)
+                        if match:
+                            timestamp, level, message = match.groups()
+                            writer.writerow([timestamp, level, message])
+                            warning_count += 1
+                        else:
+                            logger.warning(
+                                f"Line {line_num} doesn't match expected format: {line[:50]}..."
+                            )
+
+    except PermissionError as e:
+        logger.error(f"Permission denied writing to {warning_log_path}: {e}")
+        raise
+    except Exception as e:
+        logger.error(f"Error processing log files: {e}")
+        raise
+
+    logger.info(
+        f"Extracted {warning_count} {log_level_filter} messages to {warning_log_path}"
+    )
+    return warning_count
