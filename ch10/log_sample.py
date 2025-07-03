@@ -81,3 +81,24 @@ def make_log_message(
 
         # Small pause between complete iterations
         time.sleep(base_delay * 0.02)  # Small pause between iterations
+
+
+def get_optional(argv: list[str] = sys.argv[1:]) -> argparse.Namespace:
+    """
+    Parse command-line arguments for the log sample generator.
+
+    Configures argument parser to handle optional parameters for customizing
+    log generation behavior including multiline messages, delay timing, and
+    iteration count.
+
+    Args:
+        argv (list[str]): Command-line arguments list. Defaults to sys.argv[1:]
+                         which excludes the script name.
+
+    Returns:
+        argparse.Namespace: Parsed arguments object containing:
+            - multiline (bool): Whether to include multi-line log messages
+            - delay (float): Base delay between log messages in seconds
+            - iterations (int): Number of logging cycles to perform
+    """
+    pass
