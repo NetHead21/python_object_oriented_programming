@@ -54,3 +54,17 @@ def make_log_message(
                 message, with misleading content including WARNING
                        and it spans lines of the log file WARNING used in a confusing way""").strip()
             )
+
+        # Continue with more standard log messages
+        time.sleep(base_delay * 0.1)
+        logger.debug(
+            f"[{i + 1}/{iterations}] Debug message are only useful if you want to figure something out."
+        )
+        time.sleep(base_delay * 0.1)
+        logger.info(
+            f"[{i + 1}/{iterations}] Information is usually harmless, but helpful."
+        )
+        time.sleep(base_delay * 0.05)
+        logger.warning(f"[{i + 1}/{iterations}] Warnings should be heeded")
+        time.sleep(base_delay * 0.05)
+        logger.warning(f"[{i + 1}/{iterations}] Watching for warnings.")
