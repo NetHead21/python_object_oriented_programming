@@ -171,3 +171,9 @@ def parse_arguments() -> argparse.Namespace:
         action="store_true",
         help="Extract all log levels to separate files",
     )
+    parser.add_argument(
+        "--output-dir",
+        type=Path,
+        default=SCRIPT_DIR / "data",
+        help="Output directory for all-levels mode",
+    )
