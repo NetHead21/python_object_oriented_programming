@@ -23,10 +23,17 @@ class CapitalIterator(Iterator[str]):
         return word
 
 
-iterable = CapitalIterable("the quick brown fox jumps over the lazy dog near the bank of the river.")
+iterable = CapitalIterable(
+    "the quick brown fox jumps over the lazy dog near the bank of the river."
+)
 iterator = iter(iterable)
 while True:
     try:
         print(next(iterator))
     except StopIteration:
         break
+
+print()
+
+for i in iterable:
+    print(i)
