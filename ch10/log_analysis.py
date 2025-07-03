@@ -142,3 +142,6 @@ def extract_all_log_levels(full_log_path: Path, output_dir: Path) -> dict[str, i
 
 def parse_arguments() -> argparse.Namespace:
     """Parse command line arguments."""
+    parser = argparse.ArgumentParser(
+        description="Extract and analyze log messages from log files"
+    )
