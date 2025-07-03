@@ -152,3 +152,10 @@ def parse_arguments() -> argparse.Namespace:
         default=DEFAULT_LOG_PATH,
         help=f"Input log file path (default: {DEFAULT_LOG_PATH})",
     )
+    parser.add_argument(
+        "-o",
+        "--output",
+        type=Path,
+        default=DEFAULT_WARNING_PATH,
+        help=f"Output CSV file path (default: {DEFAULT_WARNING_PATH})",
+    )
