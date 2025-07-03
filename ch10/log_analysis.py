@@ -204,3 +204,7 @@ def main() -> int:
     except Exception as e:
         logger.error(f"Unexpected error: {e}")
         return 1
+
+
+if __name__ == "__main__":
+    sys.exit(main())
