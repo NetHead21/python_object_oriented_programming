@@ -1,7 +1,7 @@
 import json
 from contact import Contact
 from contact_encoder import ContactEncoder
-from decode_contact import decode_contact 
+from decode_contact import decode_contact
 from pprint import pprint
 
 
