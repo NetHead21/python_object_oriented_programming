@@ -28,4 +28,19 @@ def make_log_message(
     Returns:
         None: This function writes log messages to the configured log file.
     """
-    pass
+
+    logger = logging.getLogger("sample")
+
+    for i in range(iterations):
+        # Standard log sequence: DEBUG -> INFO -> WARNING -> ERROR -> CRITICAL
+        logger.debug(f"[{i + 1}/{iterations}] This is a debugging message.")
+        time.sleep(base_delay * 0.1)  # Reduced delay for faster execution
+        logger.info(f"[{i + 1}/{iterations}] This is an information method.")
+        time.sleep(base_delay * 0.1)
+        logger.warning(
+            f"[{i + 1}/{iterations}] This is a warning message. It could be serious."
+        )
+        time.sleep(base_delay * 0.1)
+        logger.error(f"[{i + 1}/{iterations}] Another warning sent.")
+        time.sleep(base_delay * 0.1)
+        logger.critical(f"[{i + 1}/{iterations}] This is a critical message.")
