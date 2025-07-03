@@ -78,3 +78,6 @@ def make_log_message(
             logger.error(
                 f"[{i + 1}/{iterations}] Every 5th iteration - error checkpoint"
             )
+
+        # Small pause between complete iterations
+        time.sleep(base_delay * 0.02)  # Small pause between iterations
