@@ -159,3 +159,10 @@ def parse_arguments() -> argparse.Namespace:
         default=DEFAULT_WARNING_PATH,
         help=f"Output CSV file path (default: {DEFAULT_WARNING_PATH})",
     )
+    parser.add_argument(
+        "-l",
+        "--level",
+        default="WARNING",
+        choices=["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"],
+        help="Log level to filter for (default: WARNING)",
+    )
