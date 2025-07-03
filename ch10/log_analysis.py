@@ -195,3 +195,12 @@ def main() -> int:
             logger.info(f"Processing complete. {count} messages extracted.")
 
         return 0
+    except FileNotFoundError as e:
+        logger.error(f"File not found: {e}")
+        return 1
+    except PermissionError as e:
+        logger.error(f"Permission error: {e}")
+        return 1
+    except Exception as e:
+        logger.error(f"Unexpected error: {e}")
+        return 1
