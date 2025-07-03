@@ -113,3 +113,46 @@ def get_optional(argv: list[str] = sys.argv[1:]) -> argparse.Namespace:
         help="Number of iterations (each generates ~11 log messages)",
     )
     return parser.parse_args(argv)
+
+
+if __name__ == "__main__":
+    """
+    Main execution block for the log sample generator.
+    
+    Configures logging settings and runs the log message generation based on
+    command-line arguments. The logging configuration includes:
+    - Debug level logging (captures all message types)
+    - Custom timestamp format
+    - Output to 'sample.log' file in write mode (overwrites existing)
+    
+    Log Format:
+        "MMM DD, YYYY HH:MM:SS LEVEL message"
+        Example: "Jul 03, 2025 14:30:45 WARNING This is a warning message."
+    
+    Generated File:
+        sample.log - Contains all generated log messages in the current directory
+    """
+    # Configure date format for log timestamps
+    datefmt = "%b %d, %Y %X"  # Example: "Jul 03, 2025 14:30:45"
+
+    # Configure log message format
+    format = "%(asctime)s %(levelname)s %(message)s"
+
+    # Set up logging configuration
+    logging.basicConfig(
+        level=logging.DEBUG,  # Show all log levels
+        format=format,  # Message format
+        datefmt=datefmt,  # Date/time format
+        filename="sample.log",  # Output file
+        filemode="w",  # Overwrite existing file
+    )
+
+    # Parse command-line arguments
+    options = get_optional()
+
+    # Generate log messages with specified parameters
+    make_log_message(
+        base_delay=options.delay,
+        multiline=options.multiline,
+        iterations=options.iterations,
+    )
