@@ -177,3 +177,9 @@ def parse_arguments() -> argparse.Namespace:
         default=SCRIPT_DIR / "data",
         help="Output directory for all-levels mode",
     )
+
+    return parser.parse_args()
+
+
+def main() -> int:
+    """Main function."""
