@@ -38,3 +38,7 @@ def extract_and_parse_warnings(
 
     # Ensure output directory exists
     warning_log_path.parent.mkdir(parents=True, exist_ok=True)
+
+    # Pattern to match log format: "MMM DD, YYYY HH:MM:SS LEVEL message"
+    pattern = re.compile(r"(\w{3} \d{1,2}, \d{4} \d{2}:\d{2}:\d{2}) (\w+) (.*)")
+    warning_count = 0
