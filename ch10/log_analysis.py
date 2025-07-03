@@ -78,3 +78,16 @@ def extract_and_parse_warnings(
         f"Extracted {warning_count} {log_level_filter} messages to {warning_log_path}"
     )
     return warning_count
+
+
+def extract_all_log_levels(full_log_path: Path, output_dir: Path) -> dict[str, int]:
+    """
+    Extract all log levels from a log file into separate CSV files.
+
+    Args:
+        full_log_path: Path to the input log file
+        output_dir: Directory to save the CSV files
+
+    Returns:
+        Dictionary with log levels as keys and counts as values
+    """
