@@ -183,3 +183,15 @@ def parse_arguments() -> argparse.Namespace:
 
 def main() -> int:
     """Main function."""
+    try:
+        args = parse_arguments()
+
+        if args.all_levels:
+            log_counts = extract_all_log_levels(args.input, args.output_dir)
+            total = sum(log_counts.values())
+            logger.info(f"Total log messages processed: {total}")
+        else:
+            count = extract_and_parse_warnings(args.input, args.output, args.level)
+            logger.info(f"Processing complete. {count} messages extracted.")
+
+        return 0
