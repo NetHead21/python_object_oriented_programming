@@ -103,3 +103,21 @@ def main() -> None:
     # Define file paths
     full_log_path = Path.cwd() / "data" / "sample.log"
     warning_log_path = Path.cwd() / "data" / "warning.log"
+
+    try:
+        print("Processing log file...")
+        extract_and_parse_3(full_log_path, warning_log_path)
+        print(f"Warning messages extracted to: {warning_log_path}")
+
+        # Display sample results
+        if warning_log_path.exists():
+            with warning_log_path.open(encoding="utf-8") as f:
+                lines = f.readlines()
+                print(f"Found {len(lines) - 1} warning messages:")  # -1 for header
+
+                # Show first 5 lines (including header)
+                for i, line in enumerate(lines[:5]):
+                    print(f"  {line.strip()}")
+
+                if len(lines) > 5:
+                    print(f"  ... and {len(lines) - 5} more")
