@@ -100,3 +100,6 @@ def main() -> None:
         FileNotFoundError: If 'data/sample.log' doesn't exist
         PermissionError: If unable to write to output directory
     """
+    # Define file paths
+    full_log_path = Path.cwd() / "data" / "sample.log"
+    warning_log_path = Path.cwd() / "data" / "warning.log"
