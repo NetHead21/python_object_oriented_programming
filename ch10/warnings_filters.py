@@ -56,3 +56,21 @@ def warnings_filter(source: Iterable[str]) -> Iterator[tuple[str, str, str]]:
             # Fixed: Properly return the groups as a tuple
             yield match.groups()
         # Skip lines that don't match the pattern
+
+
+def extract_and_parse_3(full_log_path: Path, warning_log_path: Path) -> None:
+    """
+    Extract warning messages from log file and save to CSV format.
+
+    Uses the warnings_filter generator to process log files efficiently
+    and saves the filtered results to a tab-separated CSV file.
+
+    Args:
+        full_log_path (Path): Path to input log file
+        warning_log_path (Path): Path to output CSV file
+
+    Raises:
+        FileNotFoundError: If input log file doesn't exist
+        PermissionError: If unable to write to output file
+        UnicodeDecodeError: If log file contains invalid encoding
+    """
