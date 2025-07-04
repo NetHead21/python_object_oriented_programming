@@ -94,3 +94,6 @@ def extract_and_parse_d(directory: Path, warning_log_path: Path) -> int:
 
     if not directory.exists():
         raise FileNotFoundError(f"Directory not found: {directory}")
+
+    if not directory.is_dir():
+        raise ValueError(f"Path is not a directory: {directory}")
