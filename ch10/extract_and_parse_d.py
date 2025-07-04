@@ -63,3 +63,31 @@ def file_extract(path_iter: Iterable[Path]) -> Iterator[tuple[str, ...]]:
         except (PermissionError, UnicodeDecodeError) as e:
             print(f"⚠️  Warning: Could not read {path}: {e}")
             continue
+
+
+def extract_and_parse_d(directory: Path, warning_log_path: Path) -> int:
+    """
+    Extract warning messages from multiple log files in a directory and save to CSV.
+
+    Searches for log files matching the pattern "sample*.log" in the specified
+    directory and processes them to extract warning messages into a CSV file.
+
+    Args:
+        directory (Path): Directory containing log files to process
+        warning_log_path (Path): Path to the output CSV file
+
+    Returns:
+        int: Number of warning messages extracted from all files
+
+    Raises:
+        FileNotFoundError: If the directory doesn't exist
+        PermissionError: If unable to write to output file
+
+    Example:
+        >>> count = extract_and_parse_d(Path('logs'), Path('warnings.csv'))
+        >>> print(f"Extracted {count} warnings from directory")
+
+    Note:
+        The function looks for files matching the pattern "sample*.log".
+        If no matching files are found, it will create an empty CSV with headers.
+    """
