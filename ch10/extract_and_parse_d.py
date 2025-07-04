@@ -51,3 +51,15 @@ def file_extract(path_iter: Iterable[Path]) -> Iterator[tuple[str, ...]]:
         This function processes files sequentially and yields warnings as they
         are found, making it memory efficient for large log files.
     """
+    for path in path_iter:
+        if not path.exists():
+            print(f"⚠️  Warning: Log file not found: {path}")
+            continue
+
+        try:
+            with path.open(encoding="utf-8") as infile:
+                # Use 'yield from' to delegate to the warnings_filter generator
+                yield from warnings_filter(infile)
+        except (PermissionError, UnicodeDecodeError) as e:
+            print(f"⚠️  Warning: Could not read {path}: {e}")
+            continue
