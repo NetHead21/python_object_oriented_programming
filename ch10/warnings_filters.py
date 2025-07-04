@@ -43,3 +43,16 @@ def warnings_filter(source: Iterable[str]) -> Iterator[tuple[str, str, str]]:
         Lines that don't match the expected log format are skipped silently.
         The function assumes log format: "MMM DD, YYYY HH:MM:SS LEVEL message"
     """
+    # Fixed pattern to handle single-digit days
+    pattern = re.compile(r"(\w{3} \d{1,2}, \d{4} \d{2}:\d{2}:\d{2}) (\w+) (.*)")
+
+    for line in source:
+        line = line.strip()
+        if not line or "WARNING" not in line:
+            continue
+
+        match = pattern.match(line)
+        if match:
+            # Fixed: Properly return the groups as a tuple
+            yield match.groups()
+        # Skip lines that don't match the pattern
