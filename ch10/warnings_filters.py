@@ -87,3 +87,16 @@ def extract_and_parse_3(full_log_path: Path, warning_log_path: Path) -> None:
             warning_filter = warnings_filter(infile)
             for line_groups in warning_filter:
                 writer.writerow(line_groups)
+
+
+def main() -> None:
+    """
+    Main entry point for the warning log filter.
+
+    Processes 'data/sample.log' and extracts warning messages to 'data/warning.log'
+    in CSV format, then displays a sample of the results.
+
+    Raises:
+        FileNotFoundError: If 'data/sample.log' doesn't exist
+        PermissionError: If unable to write to output directory
+    """
