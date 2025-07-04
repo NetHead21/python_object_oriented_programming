@@ -91,3 +91,6 @@ def extract_and_parse_d(directory: Path, warning_log_path: Path) -> int:
         The function looks for files matching the pattern "sample*.log".
         If no matching files are found, it will create an empty CSV with headers.
     """
+
+    if not directory.exists():
+        raise FileNotFoundError(f"Directory not found: {directory}")
