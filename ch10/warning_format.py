@@ -34,3 +34,19 @@ def extract_and_parse_2(full_log_path: Path, warning_log_path: Path) -> None:
             filter_reformat = WarningReformat(source)
             for line_groups in filter_reformat:
                 writer.writerow(line_groups)
+
+
+def main() -> None:
+    full_log_path = Path.cwd() / "data" / "sample.log"
+    warning_log_path = Path.cwd() / "data" / "warning.log"
+
+    if not full_log_path.exists():
+        raise FileNotFoundError(f"Log file not found: {full_log_path}")
+
+    extract_and_parse_2(full_log_path, warning_log_path)
+
+    print(filter(None, warning_log_path.read_text().splitlines()))
+
+
+if __name__ == "__main__":
+    main()
