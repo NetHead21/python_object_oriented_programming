@@ -97,3 +97,8 @@ def extract_and_parse_d(directory: Path, warning_log_path: Path) -> int:
 
     if not directory.is_dir():
         raise ValueError(f"Path is not a directory: {directory}")
+
+    # Ensure output directory exists
+    warning_log_path.parent.mkdir(parents=True, exist_ok=True)
+
+    warning_count = 0
