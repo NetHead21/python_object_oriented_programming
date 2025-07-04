@@ -175,3 +175,17 @@ def main() -> None:
             print(f"📊 Output file size: {output_size:,} bytes")
         else:
             print("   No warning messages found in any log files.")
+    except FileNotFoundError as e:
+        print(f"❌ Error: {e}")
+        print("   Make sure the 'data' directory exists and contains log files")
+    except ValueError as e:
+        print(f"❌ Error: {e}")
+    except PermissionError as e:
+        print(f"❌ Permission error: {e}")
+        print("   Check write permissions for the output directory")
+    except ImportError as e:
+        print(f"❌ Import error: {e}")
+        print("   Make sure 'warnings_filters.py' exists and is accessible")
+    except Exception as e:
+        print(f"❌ Unexpected error: {e}")
+        print("   Please check the log file format and try again")
