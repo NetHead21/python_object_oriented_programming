@@ -102,3 +102,27 @@ def extract_and_parse_d(directory: Path, warning_log_path: Path) -> int:
     warning_log_path.parent.mkdir(parents=True, exist_ok=True)
 
     warning_count = 0
+    with warning_log_path.open("w", newline="", encoding="utf-8") as target:
+        writer = csv.writer(target, delimiter="\t")
+        # Write header row
+        writer.writerow(["timestamp", "level", "message"])
+
+        # Find all log files matching the pattern
+        log_files = list(directory.glob("sample*.log"))
+
+        if not log_files:
+            print(
+                f"⚠️  No log files found matching pattern 'sample*.log' in {directory}"
+            )
+            return 0
+
+        print(f"📁 Found {len(log_files)} log file(s) to process:")
+        for log_file in log_files:
+            print(f"   - {log_file.name}")
+
+        # Process all log files and extract warnings
+        for line_groups in file_extract(log_files):
+            writer.writerow(line_groups)
+            warning_count += 1
+
+    return warning_count
