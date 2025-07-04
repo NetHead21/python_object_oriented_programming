@@ -74,3 +74,16 @@ def extract_and_parse_3(full_log_path: Path, warning_log_path: Path) -> None:
         PermissionError: If unable to write to output file
         UnicodeDecodeError: If log file contains invalid encoding
     """
+    if not full_log_path.exists():
+        raise FileNotFoundError(f"Log file not found: {full_log_path}")
+
+    with warning_log_path.open("w", encoding="utf-8", newline="") as target:
+        writer = csv.writer(target, delimiter="\t")
+        # Write header row
+        writer.writerow(["timestamp", "level", "message"])
+
+        # Open source file with explicit encoding
+        with full_log_path.open(encoding="utf-8") as infile:
+            warning_filter = warnings_filter(infile)
+            for line_groups in warning_filter:
+                writer.writerow(line_groups)
