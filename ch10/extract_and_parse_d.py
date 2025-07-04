@@ -16,3 +16,38 @@ Dependencies:
 Author: Python OOP Tutorial
 Date: July 2025
 """
+
+import csv
+from pathlib import Path
+from typing import Iterator, Iterable
+from warnings_filters import warnings_filter
+
+
+def file_extract(path_iter: Iterable[Path]) -> Iterator[tuple[str, ...]]:
+    """
+    Extract and reformat warning messages from multiple log files.
+
+    Uses generators to efficiently process multiple log files without loading
+    all content into memory at once. Demonstrates the 'yield from' syntax for
+    delegating to sub-generators.
+
+    Args:
+        path_iter (Iterable[Path]): Iterable of Path objects pointing to log files
+
+    Yields:
+        tuple[str, ...]: Parsed warning message components (timestamp, level, message)
+
+    Raises:
+        FileNotFoundError: If any log file doesn't exist
+        PermissionError: If unable to read any log file
+        UnicodeDecodeError: If log file contains invalid encoding
+
+    Example:
+        >>> log_files = [Path('app1.log'), Path('app2.log')]
+        >>> for warning in file_extract(log_files):
+        ...     print(f"Warning: {warning[2]}")
+
+    Note:
+        This function processes files sequentially and yields warnings as they
+        are found, making it memory efficient for large log files.
+    """
