@@ -137,3 +137,6 @@ def main() -> None:
 
     Displays processing statistics and sample results.
     """
+    # Define directory and output file paths
+    log_directory_path = Path.cwd() / "data"
+    warning_log_path = log_directory_path / "warning.log"
