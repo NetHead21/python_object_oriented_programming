@@ -25,3 +25,12 @@ class WarningReformat(Iterator[tuple[str, ...]]):
             raise StopIteration
         else:
             return tuple(Match[str], self.pattern.match(line).groups())
+
+
+def extract_and_parse_2(full_log_path: Path, warning_log_path: Path) -> None:
+    with warning_log_path.open("w", encoding="utf-8", newline="") as target:
+        writer = csv.writer(target, delimiter="\t")
+        with full_log_path.open() as source:
+            filter_reformat = WarningReformat(source)
+            for line_groups in filter_reformat:
+                writer.writerow(line_groups)
