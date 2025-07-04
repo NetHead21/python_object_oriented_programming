@@ -121,3 +121,10 @@ def main() -> None:
 
                 if len(lines) > 5:
                     print(f"  ... and {len(lines) - 5} more")
+    except FileNotFoundError as e:
+        print(f"Error: {e}")
+        print("Make sure 'data/sample.log' exists in the current directory")
+    except PermissionError as e:
+        print(f"Permission error: {e}")
+    except Exception as e:
+        print(f"Unexpected error: {e}")
