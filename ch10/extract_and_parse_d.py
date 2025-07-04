@@ -140,3 +140,38 @@ def main() -> None:
     # Define directory and output file paths
     log_directory_path = Path.cwd() / "data"
     warning_log_path = log_directory_path / "warning.log"
+
+    try:
+        print("🔍 Processing directory of log files...")
+        print(f"📂 Looking in directory: {log_directory_path}")
+
+        # Extract warnings from all log files in directory
+        warning_count = extract_and_parse_d(log_directory_path, warning_log_path)
+
+        print("\n✅ Processing complete!")
+        print(f"📄 Output file: {warning_log_path}")
+        print(f"🔍 Total warning messages found: {warning_count}")
+
+        # Display sample results if any warnings were found
+        if warning_count > 0:
+            print("\n📋 Sample warning messages:")
+            with warning_log_path.open(encoding="utf-8") as f:
+                lines = f.readlines()
+
+                # Show first few lines (skip header)
+                sample_count = min(5, len(lines) - 1)
+                for i, line in enumerate(lines[1 : sample_count + 1], 1):
+                    if line.strip():
+                        parts = line.strip().split("\t")
+                        if len(parts) >= 3:
+                            timestamp, level, message = parts[0], parts[1], parts[2]
+                            print(f"   {i}. [{timestamp}] {level}: {message[:60]}...")
+
+                if len(lines) > 6:
+                    print(f"   ... and {len(lines) - 6} more warning messages")
+
+            # File size information
+            output_size = warning_log_path.stat().st_size
+            print(f"📊 Output file size: {output_size:,} bytes")
+        else:
+            print("   No warning messages found in any log files.")
