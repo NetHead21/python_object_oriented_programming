@@ -126,3 +126,14 @@ def extract_and_parse_d(directory: Path, warning_log_path: Path) -> int:
             warning_count += 1
 
     return warning_count
+
+
+def main() -> None:
+    """
+    Main entry point for the directory-based log parser.
+
+    Processes all log files matching 'sample*.log' in the 'data' directory
+    and extracts warning messages to 'data/warning.log' in CSV format.
+
+    Displays processing statistics and sample results.
+    """
