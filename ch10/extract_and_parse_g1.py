@@ -57,3 +57,14 @@ def extract_and_parse_g1(full_log_path: Path, warning_log_path: Path) -> int:
         Yields:
             tuple[str, str, str]: Parsed log components (timestamp, level, message)
         """
+        # Fixed regex pattern to handle single-digit days
+        pattern = re.compile(r"(\w{3} \d{1,2}, \d{4} \d{2}:\d{2}:\d{2}) (\w+) (.*)")
+
+        for line in source:
+            line = line.strip()
+            if not line:
+                continue
+
+            # Use walrus operator for efficient pattern matching
+            if (match := pattern.match(line)) and match.group(2) == "WARNING":
+                yield match.groups()
