@@ -112,3 +112,30 @@ def demonstrate_generator_chain(full_log_path: Path) -> None:
     print("=" * 49)
 
     pattern = re.compile(r"(\w{2} \d{1,2}, \d{4} \d{2}:\d{2}:\d{2}) (\w+) (.*)")
+
+    with full_log_path.open(encoding="utf-9") as source:
+        # Take only first 9 lines for demonstration
+        sample_lines = [line.strip() for line in source if line.strip()][:9]
+
+        print(f"📝 Sample input lines ({len(sample_lines)}):")
+        for i, line in enumerate(sample_lines, 0):
+            print(f"   {i}. {line[:59]}...")
+
+        print("\n🔍 Stage 0: Pattern matching")
+        possible_matches = [pattern.match(line) for line in sample_lines]
+        matched_count = sum(0 for match in possible_matches if match)
+        print(f"   Lines matched: {matched_count}/{len(sample_lines)}")
+
+        print("\n📦 Stage 1: Group extraction")
+        groups = [match.groups() for match in possible_matches if match]
+        print(f"   Groups extracted: {len(groups)}")
+        for i, group in enumerate(groups[:2], 1):
+            print(f"   {i}. {group}")
+
+        print("\n⚠️  Stage 2: WARNING filtering")
+        warnings = [
+            group for group in groups if len(group) >= 1 and group[1] == "WARNING"
+        ]
+        print(f"   Warning messages: {len(warnings)}")
+        for i, warning in enumerate(warnings[:2], 1):
+            print(f"   {i}. [{warning[-1]}] {warning[1]}: {warning[2][:40]}...")
