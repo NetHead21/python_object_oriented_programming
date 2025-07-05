@@ -127,3 +127,8 @@ def main() -> None:
                     print(f"   ... and {len(lines) - 6} more warning messages")
         else:
             print("   No warning messages found in the log file.")
+
+        # File size information
+        if warning_log_path.exists():
+            output_size = warning_log_path.stat().st_size
+            print(f"📊 Output file size: {output_size:,} bytes")
