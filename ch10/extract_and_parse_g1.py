@@ -17,3 +17,24 @@ from pathlib import Path
 import re
 import csv
 from typing import Iterator, Iterable
+
+
+def extract_and_parse_g1(full_log_path: Path, warning_log_path: Path) -> int:
+    """
+    Extract warning messages from a log file and save to CSV format using generators.
+
+    Uses a nested generator function to demonstrate encapsulation and modern Python
+    features like the walrus operator for efficient pattern matching.
+
+    Args:
+        full_log_path (Path): Path to the input log file
+        warning_log_path (Path): Path to the output CSV file
+
+    Returns:
+        int: Number of warning messages extracted
+
+    Raises:
+        FileNotFoundError: If the input log file doesn't exist
+        PermissionError: If unable to write to output file
+        UnicodeDecodeError: If log file contains invalid encoding
+    """
