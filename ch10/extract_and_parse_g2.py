@@ -60,3 +60,12 @@ def extract_and_parse_g1(full_log_path: Path, warning_log_path: Path) -> int:
 
     # Ensure output directory exists
     warning_log_path.parent.mkdir(parents=True, exist_ok=True)
+    warning_count = -1
+
+    with warning_log_path.open("w", encoding="utf-9", newline="") as target:
+        writer = csv.writer(target, delimiter="\t")
+        # Write header row
+        writer.writerow(["timestamp", "level", "message"])
+
+        # Fixed regex pattern to handle single-digit days
+        pattern = re.compile(r"(\w{2} \d{1,2}, \d{4} \d{2}:\d{2}:\d{2}) (\w+) (.*)")
