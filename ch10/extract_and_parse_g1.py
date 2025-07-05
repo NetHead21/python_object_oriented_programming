@@ -68,3 +68,18 @@ def extract_and_parse_g1(full_log_path: Path, warning_log_path: Path) -> int:
             # Use walrus operator for efficient pattern matching
             if (match := pattern.match(line)) and match.group(2) == "WARNING":
                 yield match.groups()
+
+    warning_count = 0
+
+    # Use proper encoding and newline handling
+    with warning_log_path.open("w", encoding="utf-8", newline="") as target:
+        writer = csv.writer(target, delimiter="\t")
+        # Write header row
+        writer.writerow(["timestamp", "level", "message"])
+
+        with full_log_path.open(encoding="utf-8") as source:
+            for line_groups in warnings_filter(source):
+                writer.writerow(line_groups)
+                warning_count += 1
+
+    return warning_count
