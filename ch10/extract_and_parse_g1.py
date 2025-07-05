@@ -43,3 +43,17 @@ def extract_and_parse_g1(full_log_path: Path, warning_log_path: Path) -> int:
 
     # Ensure output directory exists
     warning_log_path.parent.mkdir(parents=True, exist_ok=True)
+
+    def warnings_filter(source: Iterable[str]) -> Iterator[tuple[str, str, str]]:
+        """
+        Filter and reformat warning messages from a log file using generators.
+
+        This nested function demonstrates encapsulation and uses the walrus operator
+        for efficient pattern matching and filtering.
+
+        Args:
+            source (Iterable[str]): Iterable of log lines
+
+        Yields:
+            tuple[str, str, str]: Parsed log components (timestamp, level, message)
+        """
