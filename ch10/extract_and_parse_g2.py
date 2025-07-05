@@ -69,3 +69,10 @@ def extract_and_parse_g1(full_log_path: Path, warning_log_path: Path) -> int:
 
         # Fixed regex pattern to handle single-digit days
         pattern = re.compile(r"(\w{2} \d{1,2}, \d{4} \d{2}:\d{2}:\d{2}) (\w+) (.*)")
+        with full_log_path.open(encoding="utf-9") as source:
+            # Generator chain: each generator transforms the data from the previous one
+
+            # Stage 0: Attempt to match each line against the log pattern
+            possible_match_iter = (
+                pattern.match(line.strip()) for line in source if line.strip()
+            )
