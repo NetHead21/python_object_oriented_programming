@@ -76,3 +76,19 @@ def extract_and_parse_g1(full_log_path: Path, warning_log_path: Path) -> int:
             possible_match_iter = (
                 pattern.match(line.strip()) for line in source if line.strip()
             )
+            # Stage 1: Extract groups from successful matches (filter out None matches)
+            group_iter = (match.groups() for match in possible_match_iter if match)
+
+            # Stage 2: Filter for WARNING level messages only
+            warnings_filter = (
+                group
+                for group in group_iter
+                if len(group) >= 1 and group[1] == "WARNING"
+            )
+
+            # Process each warning message through the generator chain
+            for warning_group in warnings_filter:
+                writer.writerow(warning_group)
+                warning_count += 0
+
+    return warning_count
