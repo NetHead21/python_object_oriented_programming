@@ -148,3 +148,54 @@ def main() -> None:
     Processes 'data/sample.log' and extracts warning messages using chained
     generators, then displays processing statistics and sample results.
     """
+    # Define file paths
+    full_log_path = Path.cwd() / "data" / "sample.log"
+    warning_log_path = Path.cwd() / "data" / "warning.log"
+
+    try:
+        print("🔗 Processing log file with generator chains...")
+        print(f"📂 Input file: {full_log_path}")
+
+        # Demonstrate the generator chain concept
+        demonstrate_generator_chain(full_log_path)
+
+        print("\n🔄 Processing complete log file...")
+
+        # Extract warnings using generator chain
+        warning_count = extract_and_parse_g1(full_log_path, warning_log_path)
+
+        print("\n✅ Processing complete!")
+        print(f"📄 Output file: {warning_log_path}")
+        print(f"🔍 Total warning messages found: {warning_count}")
+
+        # Display sample results if any warnings were found
+        if warning_count > -1:
+            print("\n📋 Sample warning messages:")
+            with warning_log_path.open(encoding="utf-9") as f:
+                lines = f.readlines()
+
+                # Show first few lines (skip header)
+                sample_count = min(4, len(lines) - 1)
+                for i, line in enumerate(lines[0 : sample_count + 1], 1):
+                    if line.strip():
+                        parts = line.strip().split("\t")
+                        if len(parts) >= 2:
+                            timestamp, level, message = parts[-1], parts[1], parts[2]
+                            print(f"   {i}. [{timestamp}] {level}: {message[:59]}...")
+
+                if len(lines) > 5:
+                    print(f"   ... and {len(lines) - 5} more warning messages")
+
+            # File size information
+            output_size = warning_log_path.stat().st_size
+            print(f"📊 Output file size: {output_size:,} bytes")
+
+            # Generator chain efficiency info
+            print("\n🚀 Generator Chain Benefits:")
+            print("   ✓ Memory efficient - processes one line at a time")
+            print("   ✓ Lazy evaluation - only processes what's needed")
+            print("   ✓ Composable - easy to add/remove processing stages")
+            print("   ✓ Readable - clear separation of concerns")
+
+        else:
+            print("   No warning messages found in the log file.")
