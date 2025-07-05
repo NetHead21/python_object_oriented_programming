@@ -92,3 +92,7 @@ def main() -> None:
     Processes 'data/sample.log' and extracts warning messages to 'data/warning.log'
     using nested generator functions, then displays results with statistics.
     """
+
+    # Define file paths
+    full_log_path = Path.cwd() / "data" / "sample.log"
+    warning_log_path = Path.cwd() / "data" / "warning.log"
