@@ -139,3 +139,12 @@ def demonstrate_generator_chain(full_log_path: Path) -> None:
         print(f"   Warning messages: {len(warnings)}")
         for i, warning in enumerate(warnings[:2], 1):
             print(f"   {i}. [{warning[-1]}] {warning[1]}: {warning[2][:40]}...")
+
+
+def main() -> None:
+    """
+    Main entry point for the advanced generator chain log parser.
+
+    Processes 'data/sample.log' and extracts warning messages using chained
+    generators, then displays processing statistics and sample results.
+    """
