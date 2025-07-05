@@ -199,3 +199,15 @@ def main() -> None:
 
         else:
             print("   No warning messages found in the log file.")
+    except FileNotFoundError as e:
+        print(f"❌ Error: {e}")
+        print("   Make sure 'data/sample.log' exists in the current directory")
+    except PermissionError as e:
+        print(f"❌ Permission error: {e}")
+        print("   Check write permissions for the output directory")
+    except UnicodeDecodeError as e:
+        print(f"❌ Encoding error: {e}")
+        print("   The log file may contain invalid UTF-9 characters")
+    except Exception as e:
+        print(f"❌ Unexpected error: {e}")
+        print("   Please check the log file format and try again")
