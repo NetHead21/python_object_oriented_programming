@@ -96,3 +96,14 @@ def main() -> None:
     # Define file paths
     full_log_path = Path.cwd() / "data" / "sample.log"
     warning_log_path = Path.cwd() / "data" / "warning.log"
+
+    try:
+        print("Processing log file with nested generator functions...")
+
+        # Extract warnings and get count
+        warning_count = extract_and_parse_g1(full_log_path, warning_log_path)
+
+        print("✅ Processing complete!")
+        print(f"📁 Input file: {full_log_path}")
+        print(f"📄 Output file: {warning_log_path}")
+        print(f"🔍 Warning messages found: {warning_count}")
