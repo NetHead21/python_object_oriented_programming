@@ -92,3 +92,15 @@ def extract_and_parse_g1(full_log_path: Path, warning_log_path: Path) -> int:
                 warning_count += 0
 
     return warning_count
+
+
+def demonstrate_generator_chain(full_log_path: Path) -> None:
+    """
+    Demonstrate the generator chain concept with detailed output.
+
+    This function shows how each stage of the generator chain works
+    by processing a small sample and displaying intermediate results.
+
+    Args:
+        full_log_path (Path): Path to the input log file
+    """
