@@ -145,3 +145,7 @@ def main() -> None:
     except Exception as e:
         print(f"❌ Unexpected error: {e}")
         print("   Please check the log file format and try again")
+
+
+if __name__ == "__main__":
+    main()
