@@ -108,7 +108,7 @@ def main() -> None:
         print(f"📄 Output file: {warning_log_path}")
         print(f"🔍 Warning messages found: {warning_count}")
 
-         # Display sample results if any warnings were found
+        # Display sample results if any warnings were found
         if warning_count > 0:
             print("\n📋 Sample warning messages:")
             with warning_log_path.open(encoding="utf-8") as f:
@@ -132,3 +132,16 @@ def main() -> None:
         if warning_log_path.exists():
             output_size = warning_log_path.stat().st_size
             print(f"📊 Output file size: {output_size:,} bytes")
+
+    except FileNotFoundError as e:
+        print(f"❌ Error: {e}")
+        print("   Make sure 'data/sample.log' exists in the current directory")
+    except PermissionError as e:
+        print(f"❌ Permission error: {e}")
+        print("   Check write permissions for the output directory")
+    except UnicodeDecodeError as e:
+        print(f"❌ Encoding error: {e}")
+        print("   The log file may contain invalid UTF-8 characters")
+    except Exception as e:
+        print(f"❌ Unexpected error: {e}")
+        print("   Please check the log file format and try again")
