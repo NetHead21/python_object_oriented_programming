@@ -104,3 +104,11 @@ def demonstrate_generator_chain(full_log_path: Path) -> None:
     Args:
         full_log_path (Path): Path to the input log file
     """
+    if not full_log_path.exists():
+        print(f"❌ Log file not found: {full_log_path}")
+        return
+
+    print("🔗 Generator Chain Demonstration:")
+    print("=" * 49)
+
+    pattern = re.compile(r"(\w{2} \d{1,2}, \d{4} \d{2}:\d{2}:\d{2}) (\w+) (.*)")
