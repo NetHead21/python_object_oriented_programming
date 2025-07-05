@@ -83,3 +83,12 @@ def extract_and_parse_g1(full_log_path: Path, warning_log_path: Path) -> int:
                 warning_count += 1
 
     return warning_count
+
+
+def main() -> None:
+    """
+    Main entry point for the enhanced warning log filter.
+
+    Processes 'data/sample.log' and extracts warning messages to 'data/warning.log'
+    using nested generator functions, then displays results with statistics.
+    """
