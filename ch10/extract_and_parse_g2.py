@@ -55,3 +55,8 @@ def extract_and_parse_g1(full_log_path: Path, warning_log_path: Path) -> int:
     This approach is memory efficient as it processes one line at a time
     without storing intermediate results.
     """
+    if not full_log_path.exists():
+        raise FileNotFoundError(f"Log file not found: {full_log_path}")
+
+    # Ensure output directory exists
+    warning_log_path.parent.mkdir(parents=True, exist_ok=True)
