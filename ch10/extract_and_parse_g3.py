@@ -157,3 +157,11 @@ def demonstrate_datetime_parsing(full_log_path: Path) -> None:
             print(
                 f"   Original: {example['dt']} {example['level']} {example['msg'][:40]}..."
             )
+            # Parse datetime
+            try:
+                dt_obj = datetime.datetime.strptime(example["dt"], "%b %d, %Y %H:%M:%S")
+                iso_string = dt_obj.isoformat()
+
+                print(f"   Parsed datetime: {dt_obj}")
+                print(f"   ISO format: {iso_string}")
+                print("   Benefits: Sortable, standardized, timezone-ready")
