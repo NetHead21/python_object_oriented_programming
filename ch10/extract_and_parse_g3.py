@@ -87,3 +87,5 @@ def extract_and_parse_g3(full_log_path: Path, warning_log_path: Path) -> int:
             possible_match_iter = (
                 pattern.match(line.strip()) for line in source if line.strip()
             )
+            # Stage 2: Extract named groups as dictionaries
+            group_iter = (match.groupdict() for match in possible_match_iter if match)
