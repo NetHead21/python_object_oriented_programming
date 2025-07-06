@@ -81,3 +81,5 @@ def extract_and_parse_g3(full_log_path: Path, warning_log_path: Path) -> int:
             r"\s+(?P<level>\w+)"
             r"\s+(?P<msg>.*)"
         )
+        with full_log_path.open(encoding="utf-8") as source:
+            # Generator chain with comprehensive processing
