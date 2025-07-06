@@ -165,3 +165,5 @@ def demonstrate_datetime_parsing(full_log_path: Path) -> None:
                 print(f"   Parsed datetime: {dt_obj}")
                 print(f"   ISO format: {iso_string}")
                 print("   Benefits: Sortable, standardized, timezone-ready")
+            except ValueError as e:
+                print(f"   ❌ Parsing error: {e}")
