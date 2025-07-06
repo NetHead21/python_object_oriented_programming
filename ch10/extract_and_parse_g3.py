@@ -122,3 +122,6 @@ def demonstrate_datetime_parsing(full_log_path: Path) -> None:
     Args:
         full_log_path (Path): Path to the input log file
     """
+    if not full_log_path.exists():
+        print(f"❌ Log file not found: {full_log_path}")
+        return
