@@ -93,3 +93,12 @@ def extract_and_parse_g3(full_log_path: Path, warning_log_path: Path) -> int:
             warnings_iter = (
                 group for group in group_iter if group.get("level") == "WARNING"
             )
+            # Stage 4: Parse datetime and convert to structured tuple
+            dt_iter = (
+                (
+                    datetime.datetime.strptime(g["dt"], "%b %d, %Y %H:%M:%S"),
+                    g["level"],
+                    g["msg"],
+                )
+                for g in warnings_iter
+            )
