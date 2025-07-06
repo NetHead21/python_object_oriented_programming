@@ -196,7 +196,7 @@ def main() -> None:
     # Define file paths
     full_log_path = Path.cwd() / "data" / "sample.log"
     warning_log_path = Path.cwd() / "data" / "warning.log"
-    
+
     try:
         print("🕐 Processing log file with datetime conversion...")
         print(f"📂 Input file: {full_log_path}")
@@ -212,7 +212,7 @@ def main() -> None:
         print("\n✅ Processing complete!")
         print(f"📄 Output file: {warning_log_path}")
         print(f"🔍 Total warning messages processed: {warning_count}")
-       # Display sample results if any warnings were found
+        # Display sample results if any warnings were found
         if warning_count > 0:
             print("\n📋 Sample processed warnings:")
             with warning_log_path.open(encoding="utf-8") as f:
@@ -246,3 +246,18 @@ def main() -> None:
 
         else:
             print("   No warning messages found in the log file.")
+    except FileNotFoundError as e:
+        print(f"❌ Error: {e}")
+        print("   Make sure 'data/sample.log' exists in the current directory")
+    except PermissionError as e:
+        print(f"❌ Permission error: {e}")
+        print("   Check write permissions for the output directory")
+    except UnicodeDecodeError as e:
+        print(f"❌ Encoding error: {e}")
+        print("   The log file may contain invalid UTF-8 characters")
+    except ValueError as e:
+        print(f"❌ DateTime parsing error: {e}")
+        print("   Check that log timestamps match the expected format")
+    except Exception as e:
+        print(f"❌ Unexpected error: {e}")
+        print("   Please check the log file format and try again")
