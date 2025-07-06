@@ -146,3 +146,14 @@ def demonstrate_datetime_parsing(full_log_path: Path) -> None:
                 warning_examples.append(match.groupdict())
                 if len(warning_examples) >= 3:
                     break
+
+        if not warning_examples:
+            print("   No warning messages found for demonstration")
+            return
+
+        print(f"📝 Found {len(warning_examples)} warning examples:")
+        for i, example in enumerate(warning_examples, 1):
+            print(f"\n   Example {i}:")
+            print(
+                f"   Original: {example['dt']} {example['level']} {example['msg'][:40]}..."
+            )
