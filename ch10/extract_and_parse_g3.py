@@ -196,3 +196,19 @@ def main() -> None:
     # Define file paths
     full_log_path = Path.cwd() / "data" / "sample.log"
     warning_log_path = Path.cwd() / "data" / "warning.log"
+    
+    try:
+        print("🕐 Processing log file with datetime conversion...")
+        print(f"📂 Input file: {full_log_path}")
+
+        # Demonstrate datetime parsing concept
+        demonstrate_datetime_parsing(full_log_path)
+
+        print("\n🔄 Processing complete log file...")
+
+        # Extract warnings with datetime processing
+        warning_count = extract_and_parse_g3(full_log_path, warning_log_path)
+
+        print("\n✅ Processing complete!")
+        print(f"📄 Output file: {warning_log_path}")
+        print(f"🔍 Total warning messages processed: {warning_count}")
