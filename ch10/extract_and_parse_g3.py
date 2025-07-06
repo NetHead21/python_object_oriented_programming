@@ -62,3 +62,9 @@ def extract_and_parse_g3(full_log_path: Path, warning_log_path: Path) -> int:
         ISO timestamp (YYYY-MM-DDTHH:MM:SS), level, message
         Example: 2025-07-05T14:30:45, WARNING, Database connection timeout
     """
+
+    if not full_log_path.exists():
+        raise FileNotFoundError(f"Log file not found: {full_log_path}")
+
+    # Ensure output directory exists
+    warning_log_path.parent.mkdir(parents=True, exist_ok=True)
