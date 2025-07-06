@@ -133,3 +133,16 @@ def demonstrate_datetime_parsing(full_log_path: Path) -> None:
         r"\s+(?P<level>\w+)"
         r"\s+(?P<msg>.*)"
     )
+    with full_log_path.open(encoding="utf-8") as source:
+        # Find first few warning messages for demonstration
+        warning_examples = []
+        for line in source:
+            line = line.strip()
+            if not line:
+                continue
+
+            match = pattern.match(line)
+            if match and match.groupdict().get("level") == "WARNING":
+                warning_examples.append(match.groupdict())
+                if len(warning_examples) >= 3:
+                    break
