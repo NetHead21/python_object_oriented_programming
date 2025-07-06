@@ -193,3 +193,6 @@ def main() -> None:
     Processes 'data/sample.log' and extracts warning messages with datetime
     conversion, then displays processing statistics and sample results.
     """
+    # Define file paths
+    full_log_path = Path.cwd() / "data" / "sample.log"
+    warning_log_path = Path.cwd() / "data" / "warning.log"
