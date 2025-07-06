@@ -184,3 +184,12 @@ def validate_datetime_format(timestamp_str: str) -> bool:
         return True
     except ValueError:
         return False
+
+
+def main() -> None:
+    """
+    Main entry point for the advanced datetime log parser.
+
+    Processes 'data/sample.log' and extracts warning messages with datetime
+    conversion, then displays processing statistics and sample results.
+    """
