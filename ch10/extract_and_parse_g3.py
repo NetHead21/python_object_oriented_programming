@@ -89,3 +89,7 @@ def extract_and_parse_g3(full_log_path: Path, warning_log_path: Path) -> int:
             )
             # Stage 2: Extract named groups as dictionaries
             group_iter = (match.groupdict() for match in possible_match_iter if match)
+            # Stage 3: Filter for WARNING level messages
+            warnings_iter = (
+                group for group in group_iter if group.get("level") == "WARNING"
+            )
