@@ -110,3 +110,15 @@ def extract_and_parse_g3(full_log_path: Path, warning_log_path: Path) -> int:
                 warning_count += 1
 
     return warning_count
+
+
+def demonstrate_datetime_parsing(full_log_path: Path) -> None:
+    """
+    Demonstrate the datetime parsing process with detailed output.
+
+    Shows how timestamps are parsed from log format to datetime objects
+    and then converted to ISO format for standardized output.
+
+    Args:
+        full_log_path (Path): Path to the input log file
+    """
