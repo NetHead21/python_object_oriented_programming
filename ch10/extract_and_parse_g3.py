@@ -179,3 +179,8 @@ def validate_datetime_format(timestamp_str: str) -> bool:
     Returns:
         bool: True if parseable, False otherwise
     """
+    try:
+        datetime.datetime.strptime(timestamp_str, "%b %d, %Y %H:%M:%S")
+        return True
+    except ValueError:
+        return False
