@@ -167,3 +167,15 @@ def demonstrate_datetime_parsing(full_log_path: Path) -> None:
                 print("   Benefits: Sortable, standardized, timezone-ready")
             except ValueError as e:
                 print(f"   ❌ Parsing error: {e}")
+
+
+def validate_datetime_format(timestamp_str: str) -> bool:
+    """
+    Validate if a timestamp string can be parsed correctly.
+
+    Args:
+        timestamp_str (str): Timestamp string to validate
+
+    Returns:
+        bool: True if parseable, False otherwise
+    """
