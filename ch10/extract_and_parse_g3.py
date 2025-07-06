@@ -102,3 +102,5 @@ def extract_and_parse_g3(full_log_path: Path, warning_log_path: Path) -> int:
                 )
                 for g in warnings_iter
             )
+            # Stage 5: Format datetime as ISO string for standardized output
+            warnings_filter = ((g[0].isoformat(), g[1], g[2]) for g in dt_iter)
