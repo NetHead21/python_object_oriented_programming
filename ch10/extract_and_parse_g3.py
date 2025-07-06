@@ -83,3 +83,7 @@ def extract_and_parse_g3(full_log_path: Path, warning_log_path: Path) -> int:
         )
         with full_log_path.open(encoding="utf-8") as source:
             # Generator chain with comprehensive processing
+            # Stage 1: Pattern matching with named groups
+            possible_match_iter = (
+                pattern.match(line.strip()) for line in source if line.strip()
+            )
