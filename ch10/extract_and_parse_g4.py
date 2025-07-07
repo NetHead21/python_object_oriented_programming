@@ -194,3 +194,12 @@ def compare_approaches() -> None:
     print("\n🎯 When to use each:")
     print("   Functional: When emphasizing clarity and testability")
     print("   Generators: When prioritizing memory efficiency and performance")
+
+
+def main() -> None:
+    """
+    Main entry point for the functional programming log parser.
+
+    Processes 'data/sample.log' using functional programming approaches
+    and displays processing statistics and comparison with other methods.
+    """
