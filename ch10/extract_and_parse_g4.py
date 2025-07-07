@@ -98,3 +98,5 @@ def extract_and_parse_g4(full_log_path: Path, warning_log_path: Path) -> int:
                 ),
                 warnings_iter,
             )
+            # Step 7: Format datetime as ISO string
+            warnings_filter = map(lambda g: (g[0].isoformat(), g[1], g[2]), dt_iter)
