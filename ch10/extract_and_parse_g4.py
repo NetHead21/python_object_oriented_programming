@@ -24,3 +24,39 @@ import csv
 import re
 from pathlib import Path
 import datetime
+
+
+def extract_and_parse_g4(full_log_path: Path, warning_log_path: Path) -> int:
+    """
+    Extract warning messages using functional programming approach.
+
+    Demonstrates how to use map(), filter(), and lambda functions to create
+    a processing pipeline for log data. This approach emphasizes functional
+    programming concepts and immutable data transformations.
+
+    Args:
+        full_log_path (Path): Path to the input log file
+        warning_log_path (Path): Path to the output CSV file
+
+    Returns:
+        int: Number of warning messages extracted
+
+    Raises:
+        FileNotFoundError: If the input log file doesn't exist
+        PermissionError: If unable to write to output file
+        UnicodeDecodeError: If log file contains invalid encoding
+        ValueError: If datetime parsing fails
+
+    Functional Pipeline:
+        1. map() - Apply transformations to all elements
+        2. filter() - Select elements matching criteria
+        3. lambda - Define inline transformation functions
+
+    Example:
+        >>> count = extract_and_parse_g4(Path('app.log'), Path('warnings.csv'))
+        >>> print(f"Processed {count} warnings using functional programming")
+
+    Note:
+        This approach emphasizes immutable transformations and functional
+        composition, making the code more declarative and easier to reason about.
+    """
