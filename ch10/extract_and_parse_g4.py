@@ -207,3 +207,19 @@ def main() -> None:
     # Define file paths
     full_log_path = Path.cwd() / "data" / "sample.log"
     warning_log_path = Path.cwd() / "data" / "warning.log"
+    
+    try:
+        print("🔧 Processing log file with functional programming...")
+        print(f"📂 Input file: {full_log_path}")
+
+        # Demonstrate functional pipeline
+        demonstrate_functional_pipeline(full_log_path)
+
+        print("\n🔄 Processing complete log file...")
+
+        # Extract warnings using functional approach
+        warning_count = extract_and_parse_g4(full_log_path, warning_log_path)
+
+        print("\n✅ Processing complete!")
+        print(f"📄 Output file: {warning_log_path}")
+        print(f"🔍 Total warning messages processed: {warning_count}")
