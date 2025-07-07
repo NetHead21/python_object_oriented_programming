@@ -87,3 +87,5 @@ def extract_and_parse_g4(full_log_path: Path, warning_log_path: Path) -> int:
             good_match_iter = filter(None, possible_match_iter)
             # Step 4: Extract named groups as dictionaries
             group_iter = map(lambda m: m.groupdict(), good_match_iter)
+            # Step 5: Filter for WARNING level messages (exact match)
+            warnings_iter = filter(lambda g: g.get("level") == "WARNING", group_iter)
