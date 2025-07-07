@@ -106,3 +106,15 @@ def extract_and_parse_g4(full_log_path: Path, warning_log_path: Path) -> int:
                 warning_count += 1
 
     return warning_count
+
+
+def demonstrate_functional_pipeline(full_log_path: Path) -> None:
+    """
+    Demonstrate the functional programming pipeline with detailed output.
+
+    Shows how each step in the functional pipeline transforms the data,
+    emphasizing the declarative nature of functional programming.
+
+    Args:
+        full_log_path (Path): Path to the input log file
+    """
