@@ -89,3 +89,12 @@ def extract_and_parse_g4(full_log_path: Path, warning_log_path: Path) -> int:
             group_iter = map(lambda m: m.groupdict(), good_match_iter)
             # Step 5: Filter for WARNING level messages (exact match)
             warnings_iter = filter(lambda g: g.get("level") == "WARNING", group_iter)
+            # Step 6: Parse datetime and convert to structured tuple
+            dt_iter = map(
+                lambda g: (
+                    datetime.datetime.strptime(g["dt"], "%b %d, %Y %H:%M:%S"),
+                    g["level"],
+                    g["msg"],
+                ),
+                warnings_iter,
+            )
