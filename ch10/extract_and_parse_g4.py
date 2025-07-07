@@ -121,3 +121,11 @@ def demonstrate_functional_pipeline(full_log_path: Path) -> None:
     if not full_log_path.exists():
         print(f"❌ Log file not found: {full_log_path}")
         return
+    print("🔧 Functional Programming Pipeline Demonstration:")
+    print("=" * 55)
+
+    pattern = re.compile(
+        r"(?P<dt>\w{3} \d{1,2}, \d{4} \d{2}:\d{2}:\d{2})"
+        r"\s+(?P<level>\w+)"
+        r"\s+(?P<msg>.*)"
+    )
