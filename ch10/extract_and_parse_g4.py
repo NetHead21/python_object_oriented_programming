@@ -133,3 +133,6 @@ def demonstrate_functional_pipeline(full_log_path: Path) -> None:
     with full_log_path.open(encoding="utf-8") as source:
         # Take first 10 lines for demonstration
         sample_lines = [line for line in source if line.strip()][:10]
+        print(f"📝 Step 1: Input lines ({len(sample_lines)}):")
+        for i, line in enumerate(sample_lines[:3], 1):
+            print(f"   {i}. {line.strip()[:60]}...")
