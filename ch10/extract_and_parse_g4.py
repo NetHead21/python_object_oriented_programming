@@ -223,3 +223,29 @@ def main() -> None:
         print("\n✅ Processing complete!")
         print(f"📄 Output file: {warning_log_path}")
         print(f"🔍 Total warning messages processed: {warning_count}")
+        # Display sample results if any warnings were found
+        if warning_count > 0:
+            print("\n📋 Sample functional processing results:")
+            with warning_log_path.open(encoding="utf-8") as f:
+                lines = f.readlines()
+
+                # Show first few lines (skip header)
+                sample_count = min(5, len(lines) - 1)
+                for i, line in enumerate(lines[1 : sample_count + 1], 1):
+                    if line.strip():
+                        parts = line.strip().split("\t")
+                        if len(parts) >= 3:
+                            iso_timestamp, level, message = parts[0], parts[1], parts[2]
+                            print(
+                                f"   {i}. [{iso_timestamp}] {level}: {message[:50]}..."
+                            )
+
+                if len(lines) > 6:
+                    print(f"   ... and {len(lines) - 6} more processed warnings")
+
+            # File size information
+            output_size = warning_log_path.stat().st_size
+            print(f"📊 Output file size: {output_size:,} bytes")
+
+            # Compare approaches
+            compare_approaches()
