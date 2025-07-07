@@ -152,3 +152,20 @@ def demonstrate_functional_pipeline(full_log_path: Path) -> None:
         print("\n⚠️  Step 4: Filter warnings (filter + lambda)")
         warnings = list(filter(lambda g: g.get("level") == "WARNING", groups))
         print(f"   Warning messages: {len(warnings)}")
+
+        print("\n🕐 Step 5: DateTime conversion (map + lambda)")
+        if warnings:
+            dt_converted = list(
+                map(
+                    lambda g: (
+                        datetime.datetime.strptime(g["dt"], "%b %d, %Y %H:%M:%S"),
+                        g["level"],
+                        g["msg"],
+                    ),
+                    warnings[:2],  # Just first 2 for demo
+                )
+            )
+
+            print(f"   Converted {len(dt_converted)} timestamps:")
+            for i, (dt, level, msg) in enumerate(dt_converted, 1):
+                print(f"   {i}. {dt} -> {dt.isoformat()}")
