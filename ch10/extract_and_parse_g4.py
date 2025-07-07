@@ -175,3 +175,5 @@ def compare_approaches() -> None:
     """
     Compare functional programming vs generator approaches.
     """
+    print("\n🔄 Functional vs Generator Comparison:")
+    print("=" * 40)
