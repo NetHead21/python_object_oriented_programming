@@ -79,3 +79,7 @@ def extract_and_parse_g4(full_log_path: Path, warning_log_path: Path) -> int:
         )
         with full_log_path.open(encoding="utf-8") as source:
             # Functional programming pipeline using map(), filter(), and lambda
+            # Step 1: Strip whitespace and filter empty lines
+            clean_lines = filter(lambda line: line.strip(), source)
+            # Step 2: Apply regex pattern to all lines
+            possible_match_iter = map(pattern.match, map(str.strip, clean_lines))
