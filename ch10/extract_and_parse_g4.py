@@ -203,3 +203,7 @@ def main() -> None:
     Processes 'data/sample.log' using functional programming approaches
     and displays processing statistics and comparison with other methods.
     """
+
+    # Define file paths
+    full_log_path = Path.cwd() / "data" / "sample.log"
+    warning_log_path = Path.cwd() / "data" / "warning.log"
