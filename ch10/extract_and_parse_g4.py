@@ -77,3 +77,5 @@ def extract_and_parse_g4(full_log_path: Path, warning_log_path: Path) -> int:
             r"\s+(?P<level>\w+)"
             r"\s+(?P<msg>.*)"
         )
+        with full_log_path.open(encoding="utf-8") as source:
+            # Functional programming pipeline using map(), filter(), and lambda
