@@ -148,3 +148,7 @@ def demonstrate_functional_pipeline(full_log_path: Path) -> None:
         print(f"   Extracted groups: {len(groups)}")
         for i, group in enumerate(groups[:2], 1):
             print(f"   {i}. {group}")
+
+        print("\n⚠️  Step 4: Filter warnings (filter + lambda)")
+        warnings = list(filter(lambda g: g.get("level") == "WARNING", groups))
+        print(f"   Warning messages: {len(warnings)}")
