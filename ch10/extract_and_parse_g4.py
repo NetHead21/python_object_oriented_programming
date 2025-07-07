@@ -133,10 +133,18 @@ def demonstrate_functional_pipeline(full_log_path: Path) -> None:
     with full_log_path.open(encoding="utf-8") as source:
         # Take first 10 lines for demonstration
         sample_lines = [line for line in source if line.strip()][:10]
+
         print(f"📝 Step 1: Input lines ({len(sample_lines)}):")
         for i, line in enumerate(sample_lines[:3], 1):
             print(f"   {i}. {line.strip()[:60]}...")
+
         print("\n🔍 Step 2: Apply regex pattern (map)")
         matches = list(map(pattern.match, map(str.strip, sample_lines)))
         successful_matches = [m for m in matches if m]
         print(f"   Successful matches: {len(successful_matches)}/{len(sample_lines)}")
+
+        print("\n📦 Step 3: Extract groups (map + lambda)")
+        groups = list(map(lambda m: m.groupdict(), successful_matches))
+        print(f"   Extracted groups: {len(groups)}")
+        for i, group in enumerate(groups[:2], 1):
+            print(f"   {i}. {group}")
