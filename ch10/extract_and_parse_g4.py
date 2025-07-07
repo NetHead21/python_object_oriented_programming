@@ -177,3 +177,20 @@ def compare_approaches() -> None:
     """
     print("\n🔄 Functional vs Generator Comparison:")
     print("=" * 40)
+
+    print("📊 Functional Programming (map/filter/lambda):")
+    print("   ✓ Declarative - describes what, not how")
+    print("   ✓ Composable - easy to chain operations")
+    print("   ✓ Immutable - no side effects")
+    print("   ✓ Readable - clear transformation steps")
+    print("   ✓ Testable - each step can be tested independently")
+
+    print("\n📊 Generator Expressions:")
+    print("   ✓ Memory efficient - lazy evaluation")
+    print("   ✓ Pythonic - more idiomatic Python style")
+    print("   ✓ Concise - fewer function calls")
+    print("   ✓ Performance - generally faster for large datasets")
+
+    print("\n🎯 When to use each:")
+    print("   Functional: When emphasizing clarity and testability")
+    print("   Generators: When prioritizing memory efficiency and performance")
