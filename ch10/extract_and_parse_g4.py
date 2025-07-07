@@ -136,3 +136,7 @@ def demonstrate_functional_pipeline(full_log_path: Path) -> None:
         print(f"📝 Step 1: Input lines ({len(sample_lines)}):")
         for i, line in enumerate(sample_lines[:3], 1):
             print(f"   {i}. {line.strip()[:60]}...")
+        print("\n🔍 Step 2: Apply regex pattern (map)")
+        matches = list(map(pattern.match, map(str.strip, sample_lines)))
+        successful_matches = [m for m in matches if m]
+        print(f"   Successful matches: {len(successful_matches)}/{len(sample_lines)}")
