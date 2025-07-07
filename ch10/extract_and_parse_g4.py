@@ -60,3 +60,8 @@ def extract_and_parse_g4(full_log_path: Path, warning_log_path: Path) -> int:
         This approach emphasizes immutable transformations and functional
         composition, making the code more declarative and easier to reason about.
     """
+    if not full_log_path.exists():
+        raise FileNotFoundError(f"Log file not found: {full_log_path}")
+
+    # Ensure output directory exists
+    warning_log_path.parent.mkdir(parents=True, exist_ok=True)
