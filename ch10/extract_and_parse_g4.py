@@ -249,3 +249,6 @@ def main() -> None:
 
             # Compare approaches
             compare_approaches()
+        else:
+            print("   No warning messages found in the log file.")
+            
