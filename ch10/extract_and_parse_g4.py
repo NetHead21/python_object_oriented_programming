@@ -169,3 +169,9 @@ def demonstrate_functional_pipeline(full_log_path: Path) -> None:
             print(f"   Converted {len(dt_converted)} timestamps:")
             for i, (dt, level, msg) in enumerate(dt_converted, 1):
                 print(f"   {i}. {dt} -> {dt.isoformat()}")
+
+
+def compare_approaches() -> None:
+    """
+    Compare functional programming vs generator approaches.
+    """
