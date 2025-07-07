@@ -85,3 +85,5 @@ def extract_and_parse_g4(full_log_path: Path, warning_log_path: Path) -> int:
             possible_match_iter = map(pattern.match, map(str.strip, clean_lines))
             # Step 3: Filter out None matches (lines that didn't match pattern)
             good_match_iter = filter(None, possible_match_iter)
+            # Step 4: Extract named groups as dictionaries
+            group_iter = map(lambda m: m.groupdict(), good_match_iter)
