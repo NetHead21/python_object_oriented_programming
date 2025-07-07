@@ -19,3 +19,8 @@ Functions:
     demonstrate_functional_pipeline: Show functional approach step by step
     main: Entry point for standalone execution
 """
+
+import csv
+import re
+from pathlib import Path
+import datetime
