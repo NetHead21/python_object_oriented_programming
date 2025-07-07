@@ -129,3 +129,7 @@ def demonstrate_functional_pipeline(full_log_path: Path) -> None:
         r"\s+(?P<level>\w+)"
         r"\s+(?P<msg>.*)"
     )
+
+    with full_log_path.open(encoding="utf-8") as source:
+        # Take first 10 lines for demonstration
+        sample_lines = [line for line in source if line.strip()][:10]
