@@ -71,3 +71,9 @@ def extract_and_parse_g4(full_log_path: Path, warning_log_path: Path) -> int:
         writer = csv.writer(target, delimiter="\t")
         # Write header row
         writer.writerow(["iso_timestamp", "level", "message"])
+        # Enhanced regex pattern with flexible day matching
+        pattern = re.compile(
+            r"(?P<dt>\w{3} \d{1,2}, \d{4} \d{2}:\d{2}:\d{2})"
+            r"\s+(?P<level>\w+)"
+            r"\s+(?P<msg>.*)"
+        )
