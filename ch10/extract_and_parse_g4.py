@@ -65,3 +65,9 @@ def extract_and_parse_g4(full_log_path: Path, warning_log_path: Path) -> int:
 
     # Ensure output directory exists
     warning_log_path.parent.mkdir(parents=True, exist_ok=True)
+    warning_count = 0
+
+    with warning_log_path.open("w", encoding="utf-8", newline="") as target:
+        writer = csv.writer(target, delimiter="\t")
+        # Write header row
+        writer.writerow(["iso_timestamp", "level", "message"])
