@@ -100,3 +100,9 @@ def extract_and_parse_g4(full_log_path: Path, warning_log_path: Path) -> int:
             )
             # Step 7: Format datetime as ISO string
             warnings_filter = map(lambda g: (g[0].isoformat(), g[1], g[2]), dt_iter)
+            # Process each warning through the functional pipeline
+            for warning_tuple in warnings_filter:
+                writer.writerow(warning_tuple)
+                warning_count += 1
+
+    return warning_count
