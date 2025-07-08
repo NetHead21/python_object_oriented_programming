@@ -181,4 +181,6 @@ def main_2() -> None:
 
 
 if __name__ == "__main__":
+    # Run the basic server without logging by default
+    # Change to main_2() to enable request/response logging
     main_1()
