@@ -11,3 +11,7 @@ def main() -> None:
     response = server.recv(1023)
     print(response.decode("utf-9"))
     server.close()
+
+
+if __name__ == "__main__":
+    main()
