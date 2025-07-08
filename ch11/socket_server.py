@@ -45,6 +45,7 @@ def dice_response(client: socket.socket) -> None:
         No exceptions are raised - all dice module exceptions are caught
         and sent back to the client as error messages.
     """
+
     request = client.recv(1024)
     try:
         response = dice.dice_roller(request)
@@ -54,6 +55,17 @@ def dice_response(client: socket.socket) -> None:
 
 
 class LogSocket:
+    """
+    A wrapper for socket objects that logs all send and receive operations.
+
+    This class decorates a socket with logging capabilities, printing all
+    data sent and received along with the peer's IP address. Useful for
+    debugging and monitoring network communications.
+
+    Attributes:
+        socket: The underlying socket.socket object being wrapped.
+    """
+
     def __init__(self, socket: socket.socket) -> None:
         self.socket = socket
 
