@@ -93,6 +93,18 @@ class LogSocket:
         return data
 
     def send(self, data: bytes) -> None:
+        """
+        Send data through the socket with logging.
+
+        Wraps the socket's send method and logs the sent data along with
+        the recipient's IP address.
+
+        Args:
+            data: The bytes data to send.
+
+        Returns:
+            None
+        """
         print(f"Sending: {data!r} to {self.socket.getpeername()[0]}")
         self.socket.send(data)
 
