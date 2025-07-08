@@ -109,6 +109,15 @@ class LogSocket:
         self.socket.send(data)
 
     def close(self) -> None:
+        """
+        Close the underlying socket.
+
+        Provides a pass-through to the socket's close method for proper
+        resource cleanup.
+
+        Returns:
+            None
+        """
         self.socket.close()
 
 
