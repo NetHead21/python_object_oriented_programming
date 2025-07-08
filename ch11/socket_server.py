@@ -122,6 +122,22 @@ class LogSocket:
 
 
 def main_1() -> None:
+    """
+    Run a basic dice rolling server without logging.
+
+    Creates a TCP server listening on localhost:2401 that handles dice rolling
+    requests. Each client connection is processed synchronously - the server
+    handles one request per connection and then closes the connection.
+
+    The server runs indefinitely until interrupted (Ctrl+C).
+
+    Returns:
+        None
+
+    Raises:
+        KeyboardInterrupt: When the server is stopped with Ctrl+C.
+        OSError: If the socket cannot bind to the specified address.
+    """
     server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     server.bind(("localhost", 2401))
     server.listen(1)
