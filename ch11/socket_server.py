@@ -40,5 +40,17 @@ def main_1() -> None:
             client.close()
 
 
+def main_2() -> None:
+    server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    server.bind(("localhost", 2401))
+    server.listen(1)
+    with contextlib.closing(server):
+        while True:
+            client, addr = server.accept()
+            logging_socket = LogSocket(client)
+            dice_response(logging_socket)
+            client.close()
+
+
 if __name__ == "__main__":
     main_1()
