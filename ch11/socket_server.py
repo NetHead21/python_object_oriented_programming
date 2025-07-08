@@ -149,6 +149,26 @@ def main_1() -> None:
 
 
 def main_2() -> None:
+    """
+    Run a dice rolling server with request/response logging.
+
+    Creates a TCP server listening on localhost:2401 that handles dice rolling
+    requests with full logging of all send/receive operations. Each client
+    socket is wrapped in a LogSocket to provide detailed communication logs.
+
+    Each client connection is processed synchronously - the server handles
+    one request per connection and then closes the connection. All network
+    traffic is logged to stdout for debugging purposes.
+
+    The server runs indefinitely until interrupted (Ctrl+C).
+
+    Returns:
+        None
+
+    Raises:
+        KeyboardInterrupt: When the server is stopped with Ctrl+C.
+        OSError: If the socket cannot bind to the specified address.
+    """
     server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     server.bind(("localhost", 2401))
     server.listen(1)
