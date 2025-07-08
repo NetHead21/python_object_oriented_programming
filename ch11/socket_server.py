@@ -76,6 +76,18 @@ class LogSocket:
         self.socket = socket
 
     def recv(self, count: int = 0) -> bytes:
+        """
+        Receive data from the socket with logging.
+
+        Wraps the socket's recv method and logs the received data along with
+        the sender's IP address.
+
+        Args:
+            count: Maximum number of bytes to receive. If 0, uses socket default.
+
+        Returns:
+            The received data as bytes.
+        """
         data = self.socket.recv(count)
         print(f"Received: {data!r} from {self.socket.getpeername()[0]}")
         return data
