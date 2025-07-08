@@ -1,3 +1,26 @@
+"""
+Socket server implementation for dice rolling service.
+
+This module provides a simple TCP socket server that handles dice rolling requests.
+It includes both basic and logging-enabled server implementations.
+"""
+
+"""
+Socket server implementation with optional request/response logging.
+
+This module provides a simple TCP socket server that handles dice rolling requests.
+It includes two implementations: a basic server and an enhanced version with 
+request/response logging capabilities.
+
+The server listens on localhost:2401 and processes dice rolling commands sent by clients.
+Invalid requests are handled gracefully with appropriate error responses.
+
+Example usage:
+    Run the server:
+    $ python socket_server.py
+    
+    Connect with a client and send dice commands like "3d6" or "1d20".
+"""
 import contextlib
 import socket
 import dice
