@@ -67,6 +67,12 @@ class LogSocket:
     """
 
     def __init__(self, socket: socket.socket) -> None:
+        """
+        Initialize the LogSocket wrapper.
+
+        Args:
+            socket: The socket.socket object to wrap with logging.
+        """
         self.socket = socket
 
     def recv(self, count: int = 0) -> bytes:
