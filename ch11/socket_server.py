@@ -27,6 +27,24 @@ import dice
 
 
 def dice_response(client: socket.socket) -> None:
+    """
+    Handle a single dice rolling request from a client.
+
+    Receives a request from the client, processes it using the dice module,
+    and sends back the result. Handles errors gracefully by sending back
+    the error representation.
+
+    Args:
+        client: The socket connection to the client. Can be a regular socket
+               or a LogSocket wrapper for logging capabilities.
+
+    Returns:
+        None
+
+    Raises:
+        No exceptions are raised - all dice module exceptions are caught
+        and sent back to the client as error messages.
+    """
     request = client.recv(1024)
     try:
         response = dice.dice_roller(request)
