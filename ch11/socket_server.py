@@ -21,3 +21,7 @@ def main_1() -> None:
             client, addr = server.accept()
             dice_response(client)
             client.close()
+
+
+if __name__ == "__main__":
+    main_1()
