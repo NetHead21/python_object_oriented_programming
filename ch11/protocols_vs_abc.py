@@ -299,9 +299,21 @@ class Iterable(Protocol):
 
 ## **When to Use ABC**
 
+
 ### **✅ Use ABC when:**
 # - You control the **class hierarchy**
 # - Need **runtime enforcement**
 # - Want to provide **shared implementation**
 # - Building a **framework** or **library**
 # - Need **stronger contracts**
+
+
+### **Example scenarios:**
+# Plugin system
+class Plugin(ABC):
+    @abstractmethod
+    def execute(self) -> None:
+        pass
+
+    def get_version(self) -> str:
+        return "1.0"  # Shared implementation
