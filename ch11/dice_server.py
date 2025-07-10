@@ -129,6 +129,36 @@ class ZipRoller:
         self.dice_roller = dice
 
     def __call__(self, request: bytes) -> bytes:
+        """
+        Process a dice rolling request and return a gzip-compressed response.
+
+        This method makes the ZipRoller instance callable, allowing it to be used
+        as a drop-in replacement for the original dice rolling function. It processes
+        the request through the wrapped dice function and then compresses the
+        response using gzip compression.
+
+        Args:
+            request: The dice rolling command as bytes (e.g., b"3d6" for three
+                    six-sided dice).
+
+        Returns:
+            The gzip-compressed dice rolling result as bytes. The compressed data
+            contains the original response from the dice rolling function and must
+            be decompressed by the client to read the actual results.
+
+        Note:
+            The returned bytes are gzip-compressed and not human-readable until
+            decompressed. Use gzip.decompress() to extract the original response.
+
+        Example:
+            # Server side
+            zipper = ZipRoller(dice.dice_roller)
+            compressed = zipper(b"3d6")
+
+            # Client side
+            original = gzip.decompress(compressed)
+            print(original.decode())  # Shows actual dice results
+        """
         dice_roller = self.dice_roller
         response = dice_roller(request)
         buffer = io.BytesIO()
