@@ -67,3 +67,32 @@ rectangle = Rectangle(10, 20)
 
 render_shape(circle)  # ✅ Works
 render_shape(rectangle)  # ✅ Works
+
+
+## **abc.ABC (Abstract Base Classes)**
+
+### **What it is:**
+# - Defines an interface through **inheritance**
+# - Runtime enforcement - methods must be implemented
+# - Raises `TypeError` at instantiation if abstract methods not implemented
+### **Example:**
+from abc import ABC, abstractmethod
+
+
+class Drawable(ABC):
+    """Abstract base class for drawable objects."""
+
+    @abstractmethod
+    def draw(self) -> None:
+        """Draw the object."""
+        pass
+
+    @abstractmethod
+    def get_area(self) -> float:
+        """Get the area of the object."""
+        pass
+
+    # Can have concrete methods too
+    def describe(self) -> str:
+        """Describe the object."""
+        return f"This shape has area {self.get_area()}"
