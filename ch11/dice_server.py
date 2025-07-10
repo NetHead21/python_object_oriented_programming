@@ -29,6 +29,8 @@ Example usage:
 from typing import Callable
 import io
 import gzip
+import socket
+import dice
 
 Address = tuple[str, int]
 
@@ -165,3 +167,15 @@ class ZipRoller:
         with gzip.GzipFile(fileobj=buffer, mode="w") as zipfile:
             zipfile.write(response)
         return buffer.getvalue()
+
+
+def dice_response(client: socket.socket) -> None:
+    request = client.recv(1024)
+    try:
+        remote_addr = client.getpeername()
+        roller_1 = ZipRoller(dice.dice_roller)  # Fixed: rice_roller -> dice_roller
+        roller_2 = LogRoller(roller_1, remote_addr=remote_addr)
+        response = roller_2(request)
+    except (ValueError, KeyError) as ex:
+        response = repr(ex).encode("utf-8")  # Fixed: uft-8 -> utf-8
+    client.send(response)
