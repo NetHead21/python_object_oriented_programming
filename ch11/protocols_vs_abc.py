@@ -127,3 +127,9 @@ class Rectangle(Drawable):
 #     pass
 #
 # broken = BrokenShape()  # TypeError: Can't instantiate abstract class
+
+
+def render_shape(shape: Drawable) -> None:
+    """Render any drawable shape."""
+    shape.draw()
+    print(shape.describe())
