@@ -182,3 +182,11 @@ class LogSocket:
 
     def close(self) -> None:
         self.socket.close()
+
+
+# Works with any socket-like object
+def dice_response(client: SocketLike) -> None:
+    """Handle dice request - works with any socket-like object."""
+    request = client.recv(1024)
+    # ... process request
+    client.send(b"response")
