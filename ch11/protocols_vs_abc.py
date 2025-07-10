@@ -59,3 +59,11 @@ def render_shape(shape: Drawable) -> None:
     """Render any drawable shape."""
     shape.draw()
     print(f"Area: {shape.get_area()}")
+
+
+# Works without explicit inheritance
+circle = Circle(5)
+rectangle = Rectangle(10, 20)
+
+render_shape(circle)  # ✅ Works
+render_shape(rectangle)  # ✅ Works
