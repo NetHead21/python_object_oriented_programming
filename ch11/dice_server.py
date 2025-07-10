@@ -55,6 +55,26 @@ class LogRoller:
         self.remote_addr = remote_addr
 
     def __call__(self, request: bytes) -> bytes:
+        """
+        Process a dice rolling request with logging.
+
+        This method makes the LogRoller instance callable, allowing it to be used
+        as a drop-in replacement for the original dice rolling function. It logs
+        the incoming request, processes it through the wrapped dice function,
+        and logs the outgoing response.
+
+        Args:
+            request: The dice rolling command as bytes (e.g., b"3d6" for three
+                    six-sided dice).
+
+        Returns:
+            The dice rolling result as bytes, typically containing either the
+            roll results or an error message if the request was invalid.
+
+        Note:
+            All logging output goes to stdout via print statements, showing both
+            the request received and response sent along with the client address.
+        """
         print(f"Receiving {request!r} from {self.remote_addr}")
         dice_roller = self.dice_roller
         response = dice_roller(request)
