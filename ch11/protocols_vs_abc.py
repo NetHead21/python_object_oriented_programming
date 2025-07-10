@@ -376,3 +376,24 @@ class SimpleLogger:  # No inheritance
 
 simple_logger = SimpleLogger()
 use_logger(simple_logger)  # ✅ Duck typing
+
+
+## **Quick Decision Guide**
+
+# ```
+# Do you control all the classes?
+# ├─ YES → Consider ABC for runtime enforcement
+# └─ NO → Use Protocol for flexibility
+
+# Do you need runtime checking?
+# ├─ YES → Use ABC
+# └─ NO → Protocol is sufficient
+
+# Is this a library/framework?
+# ├─ YES → ABC for stronger contracts
+# └─ NO → Protocol for flexibility
+
+# Do you need shared implementation?
+# ├─ YES → ABC (can have concrete methods)
+# └─ NO → Protocol (interface only)
+# ```
