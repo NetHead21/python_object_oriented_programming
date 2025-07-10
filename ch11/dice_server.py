@@ -115,6 +115,17 @@ class ZipRoller:
     """
 
     def __init__(self, dice: Callable[[bytes], bytes]) -> None:
+        """
+        Initialize the ZipRoller with a dice rolling function.
+
+        Args:
+            dice: A callable that takes bytes (dice command) and returns bytes (result).
+                  Typically this would be a dice rolling function like dice.dice_roller.
+                  The function's response will be compressed using gzip.
+
+        Returns:
+            None
+        """
         self.dice_roller = dice
 
     def __call__(self, request: bytes) -> bytes:
