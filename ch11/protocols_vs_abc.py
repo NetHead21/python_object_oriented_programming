@@ -332,3 +332,47 @@ class DatabaseBackend(ABC):
     def close(self) -> None:
         # Default implementation
         pass
+
+
+## **Combining Both**
+
+# You can use both together:
+
+from typing import Protocol
+from abc import ABC, abstractmethod
+
+
+# Protocol for external compatibility
+class LoggerProtocol(Protocol):
+    def log(self, message: str) -> None: ...
+
+
+# ABC for your own class hierarchy
+class BaseLogger(ABC):
+    @abstractmethod
+    def log(self, message: str) -> None:
+        pass
+
+
+class FileLogger(BaseLogger):
+    def log(self, message: str) -> None:
+        print(f"LOG: {message}")
+
+
+# Function accepts both
+def use_logger(logger: LoggerProtocol) -> None:
+    logger.log("Hello world")
+
+
+# Works with both inheritance and duck typing
+file_logger = FileLogger()
+use_logger(file_logger)  # ✅ ABC implementation
+
+
+class SimpleLogger:  # No inheritance
+    def log(self, message: str) -> None:
+        print(message)
+
+
+simple_logger = SimpleLogger()
+use_logger(simple_logger)  # ✅ Duck typing
