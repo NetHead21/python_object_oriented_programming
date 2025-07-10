@@ -1,20 +1,29 @@
 """
-Dice server logging decorator module.
+Dice server decorator module with logging and compression capabilities.
 
-This module provides a logging wrapper for dice rolling functions, allowing
-transparent logging of requests and responses with client address information.
-The LogRoller class acts as a callable decorator that wraps dice rolling
-functions with logging capabilities.
+This module provides decorators for dice rolling functions, including:
+- LogRoller: Adds request/response logging with client address information
+- ZipRoller: Compresses dice rolling responses using gzip compression
+
+Both classes act as callable decorators that wrap dice rolling functions
+with additional functionality while maintaining a transparent interface.
 
 Example usage:
     import dice
-    from dice_server import LogRoller
+    from dice_server import LogRoller, ZipRoller
 
     # Create a logging wrapper
     logger = LogRoller(dice.dice_roller, ("127.0.0.1", 12345))
 
-    # Use it like the original function
-    response = logger(b"3d6")
+    # Create a compression wrapper
+    compressor = ZipRoller(dice.dice_roller)
+
+    # Use them like the original function
+    logged_response = logger(b"3d6")
+    compressed_response = compressor(b"3d6")
+
+    # Can also chain decorators
+    compressed_logger = ZipRoller(logger)
 """
 
 from typing import Callable
