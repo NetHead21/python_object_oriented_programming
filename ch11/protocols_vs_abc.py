@@ -120,3 +120,10 @@ class Rectangle(Drawable):
 
     def get_area(self) -> float:
         return self.width * self.height
+
+
+# This would raise TypeError at runtime
+# class BrokenShape(Drawable):
+#     pass
+#
+# broken = BrokenShape()  # TypeError: Can't instantiate abstract class
