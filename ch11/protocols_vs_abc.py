@@ -28,3 +28,15 @@ class Drawable(Protocol):
     def get_area(self) -> float:
         """Get the area of the object."""
         ...
+
+
+# No inheritance needed - just implement the methods
+class Circle:
+    def __init__(self, radius: float):
+        self.radius = radius
+
+    def draw(self) -> None:
+        print(f"Drawing circle with radius {self.radius}")
+
+    def get_area(self) -> float:
+        return 3.14159 * self.radius**2
