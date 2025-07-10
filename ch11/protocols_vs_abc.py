@@ -223,3 +223,21 @@ class SocketInterface(ABC):
     def close(self) -> None:
         """Close the socket."""
         pass
+
+
+# Must inherit from SocketInterface
+class LogSocket(SocketInterface):
+    def __init__(self, socket):
+        self.socket = socket
+
+    def recv(self, count: int) -> bytes:
+        data = self.socket.recv(count)
+        print(f"Received: {data!r}")
+        return data
+
+    def send(self, data: bytes) -> None:
+        print(f"Sending: {data!r}")
+        self.socket.send(data)
+
+    def close(self) -> None:
+        self.socket.close()
