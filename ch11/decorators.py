@@ -62,6 +62,16 @@ def log_args(function: Callable[..., any]) -> Callable[..., any]:
 
     @wraps(function)
     def wrapped_function(*args: any, **kwargs: any) -> Callable[..., any]:
+        """
+        The wrapper function that adds logging to the original function.
+
+        Args:
+            *args: Variable length argument list passed to the original function.
+            **kwargs: Arbitrary keyword arguments passed to the original function.
+
+        Returns:
+            The return value from the original function, unchanged.
+        """
         print(f"Calling {function.__name__}(*{args}, **{kwargs})")
         result = function(*args, **kwargs)
         return result
