@@ -14,3 +14,17 @@
 # - Defines an interface based on **structure** (what methods/attributes exist)
 # - No inheritance required - if it "looks like a duck and quacks like a duck"
 # - Only enforced by static type checkers (mypy, PyCharm, VS Code)
+### **Example:**
+from typing import Protocol
+
+
+class Drawable(Protocol):
+    """Protocol for objects that can be drawn."""
+
+    def draw(self) -> None:
+        """Draw the object."""
+        ...
+
+    def get_area(self) -> float:
+        """Get the area of the object."""
+        ...
