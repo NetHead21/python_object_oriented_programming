@@ -96,3 +96,15 @@ class Drawable(ABC):
     def describe(self) -> str:
         """Describe the object."""
         return f"This shape has area {self.get_area()}"
+
+
+# Must inherit from Drawable
+class Circle(Drawable):
+    def __init__(self, radius: float):
+        self.radius = radius
+
+    def draw(self) -> None:
+        print(f"Drawing circle with radius {self.radius}")
+
+    def get_area(self) -> float:
+        return 3.14159 * self.radius**2
