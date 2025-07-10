@@ -241,3 +241,18 @@ class LogSocket(SocketInterface):
 
     def close(self) -> None:
         self.socket.close()
+
+
+# Need wrapper for regular socket
+class SocketWrapper(SocketInterface):
+    def __init__(self, socket):
+        self.socket = socket
+
+    def recv(self, count: int) -> bytes:
+        return self.socket.recv(count)
+
+    def send(self, data: bytes) -> None:
+        self.socket.send(data)
+
+    def close(self) -> None:
+        self.socket.close()
