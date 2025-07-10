@@ -190,3 +190,13 @@ def dice_response(client: SocketLike) -> None:
     request = client.recv(1024)
     # ... process request
     client.send(b"response")
+
+
+# Both work automatically
+import socket
+
+real_socket = socket.socket()
+log_socket = LogSocket(real_socket)
+
+dice_response(real_socket)  # ✅ Works
+dice_response(log_socket)  # ✅ Works
