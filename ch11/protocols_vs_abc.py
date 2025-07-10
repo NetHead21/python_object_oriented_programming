@@ -52,3 +52,10 @@ class Rectangle:
 
     def get_area(self) -> float:
         return self.width * self.height
+
+
+# Both Circle and Rectangle automatically satisfy the Drawable protocol
+def render_shape(shape: Drawable) -> None:
+    """Render any drawable shape."""
+    shape.draw()
+    print(f"Area: {shape.get_area()}")
