@@ -39,6 +39,18 @@ class LogRoller:
     """
 
     def __init__(self, dice: Callable[[bytes], bytes], remote_addr: Address) -> None:
+        """
+        Initialize the LogRoller with a dice function and remote address.
+
+        Args:
+            dice: A callable that takes bytes (dice command) and returns bytes (result).
+                  Typically this would be a dice rolling function like dice.dice_roller.
+            remote_addr: A tuple containing the client's IP address and port number
+                        for identification in log messages.
+
+        Returns:
+            None
+        """
         self.dice_roller = dice
         self.remote_addr = remote_addr
 
