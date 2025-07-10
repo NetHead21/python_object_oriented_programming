@@ -170,6 +170,32 @@ class ZipRoller:
 
 
 def dice_response(client: socket.socket) -> None:
+    """
+    Handle a single dice rolling request from a client with logging and compression.
+
+    This function processes a client request by creating a chain of decorators:
+    1. ZipRoller for response compression
+    2. LogRoller for request/response logging
+
+    The function receives a dice command, processes it through the decorator chain,
+    and sends back a compressed and logged response. Errors are caught and sent
+    back as encoded error messages.
+
+    Args:
+        client: The client socket connection to handle. Must be an active socket
+               with an established connection.
+
+    Returns:
+        None
+
+    Raises:
+        No exceptions are raised - all dice rolling errors are caught and
+        sent back to the client as encoded error messages.
+
+    Note:
+        The response is gzip-compressed, so clients must decompress it to
+        read the actual dice results.
+    """
     request = client.recv(1024)
     try:
         remote_addr = client.getpeername()
