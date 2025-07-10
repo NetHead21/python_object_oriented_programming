@@ -295,3 +295,13 @@ class Iterable(Protocol):
 
 
 # Works with lists, sets, custom iterables, etc.
+
+
+## **When to Use ABC**
+
+### **✅ Use ABC when:**
+# - You control the **class hierarchy**
+# - Need **runtime enforcement**
+# - Want to provide **shared implementation**
+# - Building a **framework** or **library**
+# - Need **stronger contracts**
