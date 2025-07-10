@@ -31,6 +31,7 @@ import io
 import gzip
 import socket
 import dice
+import contextlib
 
 Address = tuple[str, int]
 
@@ -205,3 +206,14 @@ def dice_response(client: socket.socket) -> None:
     except (ValueError, KeyError) as ex:
         response = repr(ex).encode("utf-8")  # Fixed: uft-8 -> utf-8
     client.send(response)
+
+
+def main_3() -> None:
+    server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    server.bind(("localhost", 2401))
+    server.listen(1)
+    with contextlib.closing(server):
+        while True:
+            client, addr = server.accept()
+            dice_response(client)
+            client.close()
