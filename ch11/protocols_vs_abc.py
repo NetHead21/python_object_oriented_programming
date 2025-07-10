@@ -267,9 +267,31 @@ def dice_response(client: SocketInterface) -> None:
 
 ## **When to Use Protocol**
 
+
 ### **✅ Use Protocol when:**
 # - Working with **existing classes** you can't modify
 # - Want **flexibility** without forcing inheritance
 # - **Duck typing** is sufficient
 # - Working with **third-party libraries**
 # - Type checking is your main concern
+
+
+### **Example scenarios:**
+# File-like objects
+class FileLike(Protocol):
+    def read(self) -> str: ...
+    def write(self, data: str) -> None: ...
+
+
+# Works with built-in files, StringIO, custom classes, etc.
+def process_file(file: FileLike) -> None:
+    content = file.read()
+    file.write("processed")
+
+
+# Iterable protocol
+class Iterable(Protocol):
+    def __iter__(self): ...
+
+
+# Works with lists, sets, custom iterables, etc.
