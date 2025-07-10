@@ -317,3 +317,18 @@ class Plugin(ABC):
 
     def get_version(self) -> str:
         return "1.0"  # Shared implementation
+
+
+# Database backends
+class DatabaseBackend(ABC):
+    @abstractmethod
+    def connect(self) -> None:
+        pass
+
+    @abstractmethod
+    def query(self, sql: str) -> list:
+        pass
+
+    def close(self) -> None:
+        # Default implementation
+        pass
