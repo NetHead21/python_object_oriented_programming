@@ -200,3 +200,26 @@ log_socket = LogSocket(real_socket)
 
 dice_response(real_socket)  # ✅ Works
 dice_response(log_socket)  # ✅ Works
+
+
+### **Using ABC:**
+from abc import ABC, abstractmethod
+
+
+class SocketInterface(ABC):
+    """Abstract interface for socket-like objects."""
+
+    @abstractmethod
+    def recv(self, count: int) -> bytes:
+        """Receive data from the socket."""
+        pass
+
+    @abstractmethod
+    def send(self, data: bytes) -> None:
+        """Send data through the socket."""
+        pass
+
+    @abstractmethod
+    def close(self) -> None:
+        """Close the socket."""
+        pass
