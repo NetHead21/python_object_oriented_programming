@@ -94,6 +94,26 @@ class LogRoller:
 
 
 class ZipRoller:
+    """
+    A callable decorator that wraps dice rolling functions with gzip compression.
+
+    This class implements a decorator pattern that adds gzip compression to dice
+    rolling function responses. It processes requests normally but compresses the
+    response data using gzip before returning it, which can significantly reduce
+    bandwidth usage for large dice rolling results.
+
+    The class is callable, meaning instances can be used as if they were functions,
+    making it a transparent wrapper around the original dice rolling function.
+    This is particularly useful for network applications where bandwidth is a concern.
+
+    Attributes:
+        dice_roller: The original dice rolling function to wrap.
+
+    Note:
+        The client receiving the compressed response must decompress it using
+        gzip.decompress() or similar functionality to read the actual dice results.
+    """
+
     def __init__(self, dice: Callable[[bytes], bytes]) -> None:
         self.dice_roller = dice
 
