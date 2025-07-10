@@ -263,3 +263,13 @@ def dice_response(client: SocketInterface) -> None:
     request = client.recv(1024)
     # ... process request
     client.send(b"response")
+
+
+## **When to Use Protocol**
+
+### **✅ Use Protocol when:**
+# - Working with **existing classes** you can't modify
+# - Want **flexibility** without forcing inheritance
+# - **Duck typing** is sufficient
+# - Working with **third-party libraries**
+# - Type checking is your main concern
