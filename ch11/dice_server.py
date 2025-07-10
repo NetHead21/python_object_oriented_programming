@@ -209,6 +209,33 @@ def dice_response(client: socket.socket) -> None:
 
 
 def main_3() -> None:
+    """
+    Run a dice rolling server with both compression and logging.
+
+    Creates a TCP server listening on localhost:2401 that handles dice rolling
+    requests with both gzip compression and request/response logging. Each client
+    connection is processed with a decorator chain that provides:
+
+    1. Gzip compression for bandwidth efficiency
+    2. Request/response logging for debugging and monitoring
+
+    Each client connection is processed synchronously - the server handles
+    one request per connection and then closes the connection. All responses
+    are compressed and all network traffic is logged to stdout.
+
+    The server runs indefinitely until interrupted (Ctrl+C).
+
+    Returns:
+        None
+
+    Raises:
+        KeyboardInterrupt: When the server is stopped with Ctrl+C.
+        OSError: If the socket cannot bind to the specified address.
+
+    Note:
+        Clients must decompress the gzip-compressed responses to read
+        the actual dice rolling results.
+    """
     server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     server.bind(("localhost", 2401))
     server.listen(1)
