@@ -256,3 +256,10 @@ class SocketWrapper(SocketInterface):
 
     def close(self) -> None:
         self.socket.close()
+
+
+def dice_response(client: SocketInterface) -> None:
+    """Handle dice request - requires SocketInterface inheritance."""
+    request = client.recv(1024)
+    # ... process request
+    client.send(b"response")
