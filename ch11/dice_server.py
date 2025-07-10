@@ -18,6 +18,8 @@ Example usage:
 """
 
 from typing import Callable
+import io
+import gzip
 
 Address = tuple[str, int]
 
@@ -80,3 +82,16 @@ class LogRoller:
         response = dice_roller(request)
         print(f"Sending {response!r} to {self.remote_addr}")
         return response
+
+
+class ZipRoller:
+    def __init__(self, dice: Callable[[bytes], bytes]) -> None:
+        self.dice_roller = dice
+
+    def __call__(self, request: bytes) -> bytes:
+        dice_roller = self.dice_roller
+        response = dice_roller(request)
+        buffer = io.BytesIO()
+        with gzip.GzipFile(fileobj=buffer, mode="w") as zipfile:
+            zipfile.write(response)
+        return buffer.getvalue()
