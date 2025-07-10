@@ -244,3 +244,9 @@ def main_3() -> None:
             client, addr = server.accept()
             dice_response(client)
             client.close()
+
+
+if __name__ == "__main__":
+    # Run the server with both compression and logging
+    # Responses will be gzip-compressed and all traffic logged
+    main_3()
