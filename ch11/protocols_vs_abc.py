@@ -140,3 +140,27 @@ rectangle = Rectangle(10, 20)
 
 render_shape(circle)  # ✅ Works
 render_shape(rectangle)  # ✅ Works
+
+
+## **Real-World Example: Socket Server Interface**
+
+# Let's apply this to your socket server:
+
+### **Using Protocol:**
+from typing import Protocol
+
+
+class SocketLike(Protocol):
+    """Protocol for socket-like objects."""
+
+    def recv(self, count: int) -> bytes:
+        """Receive data from the socket."""
+        ...
+
+    def send(self, data: bytes) -> None:
+        """Send data through the socket."""
+        ...
+
+    def close(self) -> None:
+        """Close the socket."""
+        ...
