@@ -40,3 +40,15 @@ class Circle:
 
     def get_area(self) -> float:
         return 3.14159 * self.radius**2
+
+
+class Rectangle:
+    def __init__(self, width: float, height: float):
+        self.width = width
+        self.height = height
+
+    def draw(self) -> None:
+        print(f"Drawing rectangle {self.width}x{self.height}")
+
+    def get_area(self) -> float:
+        return self.width * self.height
