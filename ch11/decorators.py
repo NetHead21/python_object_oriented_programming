@@ -23,6 +23,8 @@ Example usage:
 
 from functools import wraps
 from typing import Callable
+import logging
+import time
 
 
 def log_args(function: Callable[..., any]) -> Callable[..., any]:
@@ -124,3 +126,24 @@ def test1(a: int, b: int, c: int) -> float:
 test1(1, 9, 3)
 test1(10, 20, 5)
 test1(100, 200, 10)
+
+
+class NamedLogger:
+    def __init__(self, logger_name: str) -> None:
+        self.logger = logging.getLogger(logger_name)
+
+    def __call__(self, function: Callable[..., any]) -> Callable[..., any]:
+        @wraps(function)
+        def wrapped_function(*args: any, **kwargs: any) -> any:
+            start = time.perf_counter()
+            try:
+                result = function(*args, **kwargs)
+                us = (time.perf_counter() - start) * 1_000_000
+                self.logger.info(f"{function.__name__}, {us:1f} us")
+                return result
+            except Exception as ex:
+                us = (time.perf_counter() - start) * 1_000_000
+                self.logger.error(f"{ex}, {function.__name__}, {us:1f} us")
+                raise
+
+        return wrapped_function
