@@ -129,6 +129,48 @@ test1(100, 200, 10)
 
 
 class NamedLogger:
+    """
+    A callable decorator class that logs function execution time and exceptions.
+
+    This class implements a decorator pattern that measures and logs the execution
+    time of decorated functions using Python's logging module. It can log both
+    successful executions (with timing information) and exceptions (with timing
+    and error details). Each instance uses a named logger, allowing for organized
+    log output and filtering.
+
+    The decorator measures execution time in microseconds for high precision
+    timing analysis, which is useful for performance monitoring and optimization.
+
+    Attributes:
+        logger: A logging.Logger instance with the specified name for output.
+
+    Example:
+        import logging
+        logging.basicConfig(level=logging.INFO)
+
+        # Create a named logger decorator
+        perf_logger = NamedLogger("performance")
+
+        @perf_logger
+        def slow_function():
+            import time
+            time.sleep(0.1)
+            return "done"
+
+        result = slow_function()
+        # Logs: "slow_function, 100123.4 us" (approximately)
+
+        @perf_logger
+        def failing_function():
+            raise ValueError("Something went wrong")
+
+        try:
+            failing_function()
+        except ValueError:
+            pass
+        # Logs: "Something went wrong, failing_function, 45.6 us"
+    """
+
     def __init__(self, logger_name: str) -> None:
         self.logger = logging.getLogger(logger_name)
 
