@@ -21,7 +21,8 @@ Example usage:
     # Output: Calling calculate(*(5, 3), **{'operation': 'multiply'})
 """
 
-from functools import wraps
+from functools import wraps, reduce
+from operator import mul
 from typing import Callable
 import logging
 import time
@@ -122,6 +123,10 @@ def test2(a: float, b: int) -> float:
         return x * x
     else:
         return a * test2(a, b - 1)
+
+
+def test3(a: float, b: int) -> float:
+    return reduce(mul, (a for _ in range(1, b + 1)), 1)
 
 
 test1 = log_args(test1)
