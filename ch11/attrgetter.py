@@ -333,3 +333,35 @@ employees_by_company = sorted(employees, key=get_company_name)
 for company, group in groupby(employees_by_company, key=get_company_name):
     highest_paid = max(group, key=attrgetter("salary"))
     print(f"Highest paid at {company}: {highest_paid.name} (${highest_paid.salary})")
+
+
+# Example 7: Error Handling and Edge Cases
+
+
+class DataPoint:
+    def __init__(self, value, metadata=None):
+        self.value = value
+        self.metadata = metadata
+
+
+class Metadata:
+    def __init__(self, source, timestamp):
+        self.source = source
+        self.timestamp = timestamp
+
+
+data_points = [
+    DataPoint(42, Metadata("sensor1", "2024-01-01")),
+    DataPoint(37, Metadata("sensor2", "2024-01-02")),
+    DataPoint(55, None),  # No metadata
+]
+
+# Safe attribute access with error handling
+get_source = attrgetter("metadata.source")
+
+for i, point in enumerate(data_points):
+    try:
+        source = get_source(point)
+        print(f"Data point {i}: value={point.value}, source={source}")
+    except AttributeError:
+        print(f"Data point {i}: value={point.value}, source=Unknown (no metadata)")
