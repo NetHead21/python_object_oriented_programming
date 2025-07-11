@@ -274,3 +274,62 @@ for subject, group in grouped:
 get_grade = attrgetter("grade")
 a_students = [s for s in students if get_grade(s) == "A"]
 print(f"\nA-grade students: {[s.name for s in a_students]}")
+
+
+# 🔧 Advanced Examples
+# Example 6: With Complex Data Structures
+
+
+class Department:
+    def __init__(self, name):
+        self.name = name
+
+
+class Company:
+    def __init__(self, name, location):
+        self.name = name
+        self.location = location
+
+
+class Employee:
+    def __init__(self, name, salary, department, company):
+        self.name = name
+        self.salary = salary
+        self.department = department
+        self.company = company
+
+    def __repr__(self):
+        return f"Employee('{self.name}', ${self.salary})"
+
+
+# Create complex nested structure
+tech_dept = Department("Technology")
+sales_dept = Department("Sales")
+google = Company("Google", "Mountain View")
+microsoft = Company("Microsoft", "Redmond")
+
+employees = [
+    Employee("Alice", 120000, tech_dept, google),
+    Employee("Bob", 95000, sales_dept, google),
+    Employee("Charlie", 110000, tech_dept, microsoft),
+    Employee("Diana", 87000, sales_dept, microsoft),
+]
+
+# Complex attribute access
+get_company_name = attrgetter("company.name")
+get_dept_name = attrgetter("department.name")
+get_location = attrgetter("company.location")
+
+# Group by company and department
+print("Employee breakdown:")
+for emp in employees:
+    print(
+        f"{emp.name}: {get_company_name(emp)} {get_dept_name(emp)} "
+        f"in {get_location(emp)} - ${emp.salary}"
+    )
+
+# Find highest paid employee per company
+employees_by_company = sorted(employees, key=get_company_name)
+for company, group in groupby(employees_by_company, key=get_company_name):
+    highest_paid = max(group, key=attrgetter("salary"))
+    print(f"Highest paid at {company}: {highest_paid.name} (${highest_paid.salary})")
