@@ -172,6 +172,21 @@ class NamedLogger:
     """
 
     def __init__(self, logger_name: str) -> None:
+        """
+        Initialize the NamedLogger with a specific logger name.
+
+        Args:
+            logger_name: The name for the logger instance. This allows for
+                        organized logging output and enables filtering by
+                        logger name in logging configurations.
+
+        Returns:
+            None
+
+        Example:
+            database_logger = NamedLogger("database")
+            api_logger = NamedLogger("api_calls")
+        """
         self.logger = logging.getLogger(logger_name)
 
     def __call__(self, function: Callable[..., any]) -> Callable[..., any]:
