@@ -80,4 +80,33 @@ def log_args(function: Callable[..., any]) -> Callable[..., any]:
 
 
 def test1(a: int, b: int, c: int) -> float:
+    """
+    Calculate the average of a range of consecutive integers.
+
+    This function calculates the sum of all integers in the range [a, b] (inclusive)
+    and then divides by c to get an average or scaled result. It's useful for
+    testing the log_args decorator functionality and demonstrating how decorators
+    work with functions that have multiple parameters and return values.
+
+    Args:
+        a: The starting integer of the range (inclusive).
+        b: The ending integer of the range (inclusive).
+        c: The divisor used to calculate the average or scale the sum.
+
+    Returns:
+        The sum of integers from a to b (inclusive) divided by c.
+
+    Raises:
+        ZeroDivisionError: If c is zero.
+        ValueError: If a > b (empty range).
+
+    Example:
+        >>> test1(1, 5, 3)
+        5.0
+        # Calculates: (1 + 2 + 3 + 4 + 5) / 3 = 15 / 3 = 5.0
+
+        >>> test1(10, 12, 2)
+        16.5
+        # Calculates: (10 + 11 + 12) / 2 = 33 / 2 = 16.5
+    """
     return sum(range(a, b + 1)) / c
