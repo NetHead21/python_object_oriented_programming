@@ -190,6 +190,28 @@ class NamedLogger:
         self.logger = logging.getLogger(logger_name)
 
     def __call__(self, function: Callable[..., any]) -> Callable[..., any]:
+        """
+        Make the NamedLogger instance callable as a decorator.
+
+        This method allows the NamedLogger instance to be used as a decorator
+        by implementing the callable interface. It wraps the provided function
+        with timing and logging functionality while preserving the original
+        function's metadata using functools.wraps.
+
+        Args:
+            function: The function to be wrapped with logging and timing
+                     functionality. Can be any callable.
+
+        Returns:
+            A wrapped version of the original function that logs execution
+            time on success and logs exceptions with timing on failure.
+
+        Note:
+            The wrapper function measures time using time.perf_counter() for
+            high precision timing and converts to microseconds for detailed
+            performance analysis.
+        """
+
         @wraps(function)
         def wrapped_function(*args: any, **kwargs: any) -> any:
             start = time.perf_counter()
