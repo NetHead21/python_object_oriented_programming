@@ -144,3 +144,16 @@ for person in people:
 # Extract all names at once
 names = [get_name(person) for person in people]
 print(names)  # ['Alice', 'Bob', 'Charlie']
+
+
+# Example 2: Multiple Attributes
+
+# Get multiple attributes at once
+get_name_age = attrgetter("name", "age")
+
+for person in people:
+    print(get_name_age(person))
+# Output:
+# ('Alice', 30)
+# ('Bob', 25)
+# ('Charlie', 35)
