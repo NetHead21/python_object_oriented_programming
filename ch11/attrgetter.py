@@ -365,3 +365,48 @@ for i, point in enumerate(data_points):
         print(f"Data point {i}: value={point.value}, source={source}")
     except AttributeError:
         print(f"Data point {i}: value={point.value}, source=Unknown (no metadata)")
+
+
+# ⚡ Performance and Use Cases
+# Example 8: Performance Comparison
+
+
+class Item:
+    def __init__(self, value):
+        self.value = value
+
+
+# Create lots of items
+items = [Item(i) for i in range(100000)]
+
+# Method 1: Using attrgetter
+get_value = attrgetter("value")
+start = time.time()
+values1 = [get_value(item) for item in items]
+time1 = time.time() - start
+
+# Method 2: Direct attribute access
+start = time.time()
+values2 = [item.value for item in items]
+time2 = time.time() - start
+
+# Method 3: Lambda function
+start = time.time()
+values3 = [lambda x: x.value for x in items]
+time3 = time.time() - start
+
+print(f"attrgetter: {time1:.4f}s")
+print(f"Direct access: {time2:.4f}s")
+print(f"Lambda: {time3:.4f}s")
+
+# attrgetter is particularly useful when you need to pass
+# the getter function to other functions like sorted(), max(), etc.
+
+# 🎯 Key Benefits and When to Use
+# When attrgetter is most useful:
+# Sorting operations: sorted(items, key=attrgetter('price'))
+# Data extraction: Converting objects to tuples/lists
+# Functional programming: Passing to map(), filter(), etc.
+# Grouping operations: With itertools.groupby()
+# Performance: Faster than lambda for simple attribute access
+# Nested attributes: Clean syntax for deep attribute access
