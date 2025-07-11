@@ -236,3 +236,41 @@ sorted_by_rating = sorted(products, key=attrgetter("rating"), reverse=True)
 print("\nSorted by rating (best first):")
 for product in sorted_by_rating:
     print(f"  {product}")
+
+
+# Example 5: Grouping and Filtering
+
+
+class Student:
+    def __init__(self, name, grade, subject):
+        self.name = name
+        self.grade = grade
+        self.subject = subject
+
+    def __repr__(self):
+        return f"Student('{self.name}', {self.grade}, '{self.subject}')"
+
+
+students = [
+    Student("Alice", "A", "Math"),
+    Student("Bob", "B", "Math"),
+    Student("Charlie", "A", "Science"),
+    Student("Diana", "C", "Math"),
+    Student("Eve", "A", "Science"),
+    Student("Frank", "B", "Science"),
+]
+
+# Group by subject
+students_by_subject = sorted(students, key=attrgetter("subject"))
+grouped = groupby(students_by_subject, key=attrgetter("subject"))
+
+print("Students grouped by subject:")
+for subject, group in grouped:
+    print(f"\n{subject}:")
+    for student in group:
+        print(f"  {student.name} (Grade: {student.grade})")
+
+# Filter A-grade students
+get_grade = attrgetter("grade")
+a_students = [s for s in students if get_grade(s) == "A"]
+print(f"\nA-grade students: {[s.name for s in a_students]}")
