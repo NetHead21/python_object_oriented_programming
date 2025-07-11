@@ -114,6 +114,16 @@ def test1(a: int, b: int, c: int) -> float:
     return sum(range(a, b + 1)) / c
 
 
+def test2(a: float, b: int) -> float:
+    if b == 0:
+        return 1.0
+    elif b % 2 == 0:
+        x = test2(a, b // 2)
+        return x * x
+    else:
+        return a * test2(a, b - 1)
+
+
 test1 = log_args(test1)
 test1(1, 9, 3)
 
