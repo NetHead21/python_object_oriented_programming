@@ -214,6 +214,28 @@ class NamedLogger:
 
         @wraps(function)
         def wrapped_function(*args: any, **kwargs: any) -> any:
+            """
+            The wrapper function that adds timing and logging to the original function.
+
+            This function measures execution time and logs results using the
+            logger instance. It handles both successful executions and exceptions,
+            providing timing information in both cases.
+
+            Args:
+                *args: Variable length argument list passed to the original function.
+                **kwargs: Arbitrary keyword arguments passed to the original function.
+
+            Returns:
+                The return value from the original function, unchanged.
+
+            Raises:
+                Re-raises any exception thrown by the original function after
+                logging the error with timing information.
+
+            Logging:
+                - INFO level: Function name and execution time on success
+                - ERROR level: Exception details, function name, and execution time on failure
+            """
             start = time.perf_counter()
             try:
                 result = function(*args, **kwargs)
