@@ -77,3 +77,7 @@ def log_args(function: Callable[..., any]) -> Callable[..., any]:
         return result
 
     return wrapped_function
+
+
+def test1(a: int, b: int, c: int) -> float:
+    return sum(range(a, b + 1)) / c
