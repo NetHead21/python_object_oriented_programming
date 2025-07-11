@@ -410,3 +410,43 @@ print(f"Lambda: {time3:.4f}s")
 # Grouping operations: With itertools.groupby()
 # Performance: Faster than lambda for simple attribute access
 # Nested attributes: Clean syntax for deep attribute access
+
+
+# Example 9: Real-world Data Processing
+
+
+class LogEntry:
+    def __init__(self, timestamp, level, message, module):
+        self.timestamp = timestamp
+        self.level = level
+        self.message = message
+        self.module = module
+
+
+logs = [
+    LogEntry("2024-01-01 10:00", "ERROR", "Database connection failed", "db"),
+    LogEntry("2024-01-01 10:01", "INFO", "User login successful", "auth"),
+    LogEntry("2024-01-01 10:02", "ERROR", "API timeout", "api"),
+    LogEntry("2024-01-01 10:03", "DEBUG", "Cache hit", "cache"),
+]
+
+# Analyze logs by level
+get_level = attrgetter("level")
+get_module = attrgetter("module")
+
+# Count by level
+level_counts = defaultdict(int)
+for log in logs:
+    level_counts[get_level(log)] += 1
+
+print("Log levels:", dict(level_counts))
+
+# Get all error messages
+error_messages = [log.message for log in logs if get_level(log) == "ERROR"]
+print("Error messages:", error_messages)
+
+# Group by module
+logs_by_module = sorted(logs, key=get_module)
+for module, group in groupby(logs_by_module, key=get_module):
+    count = len(list(group))
+    print(f"Module {module}: {count} logs")
