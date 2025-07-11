@@ -110,3 +110,17 @@ def test1(a: int, b: int, c: int) -> float:
         # Calculates: (10 + 11 + 12) / 2 = 33 / 2 = 16.5
     """
     return sum(range(a, b + 1)) / c
+
+
+test1 = log_args(test1)
+test1(1, 9, 3)
+
+
+@log_args
+def test1(a: int, b: int, c: int) -> float:
+    return sum(range(a, b + 1)) / c
+
+
+test1(1, 9, 3)
+test1(10, 20, 5)
+test1(100, 200, 10)
