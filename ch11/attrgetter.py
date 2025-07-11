@@ -157,3 +157,48 @@ for person in people:
 # ('Alice', 30)
 # ('Bob', 25)
 # ('Charlie', 35)
+
+
+# 🏗️ Nested Attribute Access
+# Example 3: Dot Notation for Nested Attributes
+
+
+class Address:
+    def __init__(self, street, city, country):
+        self.street = street
+        self.city = city
+        self.country = country
+
+
+class Employee:
+    def __init__(self, name, address):
+        self.name = name
+        self.address = address
+
+    def __repr__(self):
+        return f"Employee('{self.name}')"
+
+
+# Create employees with addresses
+employees = [
+    Employee("Alice", Address("123 Main St", "New York", "USA")),
+    Employee("Bob", Address("456 Oak Ave", "London", "UK")),
+    Employee("Charlie", Address("789 Pine Rd", "Tokyo", "Japan")),
+]
+
+# Access nested attributes using dot notation
+get_city = attrgetter("address.city")
+get_country = attrgetter("address.country")
+
+for emp in employees:
+    print(f"{emp.name} lives in {get_city(emp)}, {get_country(emp)}")
+# Output:
+# Alice lives in New York, USA
+# Bob lives in London, UK
+# Charlie lives in Tokyo, Japan
+
+# Multiple nested attributes
+get_address_info = attrgetter("name", "address.city", "address.country")
+for emp in employees:
+    name, city, country = get_address_info(emp)
+    print(f"{name}: {city}, {country}")
