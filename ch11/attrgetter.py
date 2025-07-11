@@ -202,3 +202,37 @@ get_address_info = attrgetter("name", "address.city", "address.country")
 for emp in employees:
     name, city, country = get_address_info(emp)
     print(f"{name}: {city}, {country}")
+
+
+# 📊 Practical Use Cases
+# Example 4: Sorting with attrgetter
+
+
+class Product:
+    def __init__(self, name, price, rating):
+        self.name = name
+        self.price = price
+        self.rating = rating
+
+    def __repr__(self):
+        return f"Product('{self.name}', ${self.price}, ⭐{self.rating})"
+
+
+products = [
+    Product("Laptop", 999.99, 4.5),
+    Product("Mouse", 29.99, 4.2),
+    Product("Keyboard", 79.99, 4.7),
+    Product("Monitor", 299.99, 4.3),
+]
+
+# Sort by price
+sorted_by_price = sorted(products, key=attrgetter("price"))
+print("Sorted by price:")
+for product in sorted_by_price:
+    print(f"  {product}")
+
+# Sort by rating (descending)
+sorted_by_rating = sorted(products, key=attrgetter("rating"), reverse=True)
+print("\nSorted by rating (best first):")
+for product in sorted_by_rating:
+    print(f"  {product}")
