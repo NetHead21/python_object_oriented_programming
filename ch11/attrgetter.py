@@ -116,3 +116,31 @@ Author: Python OOP Tutorial
 Date: July 2025
 Python Version: 3.13+
 """
+
+
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def __repr__(self):
+        return f"Person('{self.name}', {self.age})"
+
+
+# Create some people
+people = [Person("Alice", 30), Person("Bob", 25), Person("Charlie", 35)]
+
+# Create an attrgetter for the 'name' attribute
+get_name = attrgetter("name")
+
+# Use it to extract names
+for person in people:
+    print(get_name(person))
+# Output:
+# Alice
+# Bob
+# Charlie
+
+# Extract all names at once
+names = [get_name(person) for person in people]
+print(names)  # ['Alice', 'Bob', 'Charlie']
