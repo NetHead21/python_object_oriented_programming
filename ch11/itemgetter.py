@@ -85,3 +85,49 @@ print(f"Item at index 2: {get_index_2(coordinates)}")  # (5, 6)
 # Works with strings too
 text = "Hello World"
 print(f"Character at index 2 in '{text}': {get_index_2(text)}")  # l
+
+
+# =============================================================================
+# Example 2: Multiple Item Access
+# =============================================================================
+"""
+Multiple Item Access with itemgetter
+
+This section shows how itemgetter can extract multiple items simultaneously,
+returning them as a tuple. This is particularly useful for data transformation
+and extraction operations where you need several fields at once.
+
+Key Learning Points:
+• itemgetter(a, b, c) returns (obj[a], obj[b], obj[c])
+• Always returns a tuple for multiple items
+• Maintains order of specified indices
+• More efficient than multiple single accesses
+
+Use Cases:
+• Extracting multiple columns from database-like structures
+• Tuple unpacking for specific fields
+• Data transformation pipelines
+• Creating derived data structures
+"""
+
+print("\n" + "=" * 60)
+print("Example 2: Multiple Item Access")
+print("=" * 60)
+
+# Extract multiple items at once
+get_multiple = itemgetter(0, 2, 4)
+
+print(f"Original fruits: {fruits}")
+print(
+    f"Items at indices 0, 2, 4: {get_multiple(fruits)}"
+)  # ('apple', 'cherry', 'elderberry')
+
+print(f"Original numbers: {numbers}")
+print(f"Items at indices 0, 2, 4: {get_multiple(numbers)}")  # (10, 30, 50)
+
+# Extract from nested tuples
+get_first_coord = itemgetter(0)
+get_second_coord = itemgetter(1)
+
+print(f"First coordinates: {[get_first_coord(coord) for coord in coordinates]}")
+print(f"Second coordinates: {[get_second_coord(coord) for coord in coordinates]}")
