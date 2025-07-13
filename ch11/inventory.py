@@ -56,6 +56,29 @@ class Observer(Protocol):
 
 
 class Observable:
+    """Base class implementing the Observable part of the Observer pattern.
+
+    This class maintains a list of observers and provides methods to attach,
+    detach, and notify observers when state changes occur. Classes that extend
+    Observable can trigger notifications to all registered observers.
+
+    The Observable pattern is useful when:
+    - Multiple objects need to react to state changes in another object
+    - You want to maintain loose coupling between objects
+    - The number of dependent objects may change at runtime
+
+    Attributes:
+        _observers (list[Observer]): List of registered observer objects
+
+    Example:
+        >>> observable = Observable()
+        >>> observer1 = MyObserver()
+        >>> observer2 = AnotherObserver()
+        >>> observable.attach(observer1)
+        >>> observable.attach(observer2)
+        >>> observable._notify_observers()  # Both observers called
+    """
+
     def __init__(self):
         """Initialize Observable with empty observer list."""
         self._observers: list[Observer] = []
