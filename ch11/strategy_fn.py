@@ -52,6 +52,60 @@ from typing import Callable
 
 
 def bubble_sort(data: list[int]) -> list[int]:
+    """
+    Implement the Bubble Sort algorithm as a strategy function.
+
+    Bubble Sort is a simple comparison-based sorting algorithm that repeatedly
+    steps through the list, compares adjacent elements and swaps them if they
+    are in the wrong order. The pass through the list is repeated until the
+    list is sorted.
+
+    Algorithm Characteristics:
+    -------------------------
+    Time Complexity:
+        - Best Case: O(n) when the list is already sorted
+        - Average Case: O(n²)
+        - Worst Case: O(n²) when the list is reverse sorted
+
+    Space Complexity: O(1) - sorts in-place (after copying input)
+
+    Properties:
+        - Stable: Equal elements maintain their relative order
+        - In-place: Requires only O(1) additional memory after copy
+        - Adaptive: Performance improves on partially sorted data
+        - Simple: Easy to understand and implement
+
+    Best Used For:
+        - Educational purposes and algorithm learning
+        - Small datasets (< 50 elements)
+        - Nearly sorted data where simplicity matters
+        - Situations where code clarity is more important than efficiency
+
+    Args:
+        data (list[int]): List of integers to sort. The original list
+                         is not modified due to copying.
+
+    Returns:
+        list[int]: A new sorted list in ascending order.
+
+    Example:
+        >>> bubble_sort([64, 34, 25, 12, 22, 11, 90])
+        [11, 12, 22, 25, 34, 64, 90]
+
+        >>> bubble_sort([5, 1, 4, 2, 8])
+        [1, 2, 4, 5, 8]
+
+        >>> bubble_sort([1])  # Single element
+        [1]
+
+        >>> bubble_sort([])   # Empty list
+        []
+
+    Note:
+        This implementation creates a copy of the input list to avoid
+        modifying the original data, following functional programming
+        principles of immutability.
+    """
     data = data.copy()
     n = len(data)
 
