@@ -38,6 +38,17 @@ import random
 
 
 class SortStrategy(ABC):
+    """
+    Abstract base class for sorting strategies.
+
+    This class defines the Strategy interface that all concrete sorting
+    strategies must implement. It ensures that all sorting algorithms
+    have a consistent interface for the Context to use.
+
+    The Strategy pattern allows the Context to work with different
+    algorithms without knowing their specific implementations.
+    """
+
     @abstractmethod
     def sort(self, data: list[int]) -> list[int]:
         pass
