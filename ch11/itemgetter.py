@@ -185,3 +185,71 @@ print("\nName and city combinations:")
 for person in people:
     name, city = get_name_and_city(person)
     print(f"  {name} lives in {city}")
+
+
+# =============================================================================
+# Example 4: Sorting with itemgetter
+# =============================================================================
+"""
+Sorting Operations with itemgetter
+
+This section shows one of the most powerful use cases for itemgetter:
+sorting collections by specific attributes or indices. itemgetter provides
+a clean, readable alternative to lambda functions for sorting operations.
+
+Key Learning Points:
+• itemgetter integrates seamlessly with sorted(), list.sort(), etc.
+• Can sort by single or multiple criteria
+• More readable than lambda equivalents
+• Better performance than lambda for simple operations
+• Supports reverse sorting and complex sorting strategies
+
+Use Cases:
+• Sorting data tables by column
+• Multi-level sorting (primary, secondary keys)
+• Performance-critical sorting operations
+• Database-style ordering of results
+"""
+
+print("\n" + "=" * 60)
+print("Example 4: Sorting with itemgetter")
+print("=" * 60)
+
+# Sample data for sorting
+students = [
+    ("Alice", 85, "Math"),
+    ("Bob", 92, "Science"),
+    ("Charlie", 78, "Math"),
+    ("Diana", 95, "Science"),
+    ("Eve", 88, "Art"),
+]
+
+print("Original student data (name, grade, subject):")
+for student in students:
+    print(f"  {student}")
+
+# Sort by grade (index 1)
+sorted_by_grade = sorted(students, key=itemgetter(1))
+print("\nSorted by grade:")
+for student in sorted_by_grade:
+    print(f"  {student}")
+
+# Sort by subject (index 2), then by grade (index 1)
+sorted_by_subject_grade = sorted(students, key=itemgetter(2, 1))
+print("\nSorted by subject, then by grade:")
+for student in sorted_by_subject_grade:
+    print(f"  {student}")
+
+# Dictionary sorting
+people_dict = [
+    {"name": "Alice", "age": 30, "salary": 75000},
+    {"name": "Bob", "age": 25, "salary": 65000},
+    {"name": "Charlie", "age": 35, "salary": 80000},
+    {"name": "Diana", "age": 28, "salary": 70000},
+]
+
+# Sort by salary (descending)
+sorted_by_salary = sorted(people_dict, key=itemgetter("salary"), reverse=True)
+print("\nSorted by salary (highest first):")
+for person in sorted_by_salary:
+    print(f"  {person['name']}: ${person['salary']}")
