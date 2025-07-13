@@ -311,3 +311,7 @@ def main() -> None:
     print(
         "But both results are properly sorted according to their respective algorithms"
     )
+
+
+if __name__ == "__main__":
+    main()
