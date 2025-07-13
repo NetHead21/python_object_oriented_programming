@@ -51,4 +51,32 @@ class SortStrategy(ABC):
 
     @abstractmethod
     def sort(self, data: list[int]) -> list[int]:
+        """
+        Concrete strategy implementing the Bubble Sort algorithm.
+
+        Bubble Sort is a simple comparison-based sorting algorithm that repeatedly
+        steps through the list, compares adjacent elements and swaps them if they
+        are in the wrong order. The pass through the list is repeated until the
+        list is sorted.
+
+        Time Complexity:
+            - Best Case: O(n) when the list is already sorted
+            - Average Case: O(n²)
+            - Worst Case: O(n²) when the list is reverse sorted
+
+        Space Complexity: O(1) - sorts in-place
+
+        Characteristics:
+            - Stable: Equal elements maintain their relative order
+            - In-place: Requires only O(1) additional memory
+            - Simple: Easy to understand and implement
+            - Inefficient: Poor performance on large datasets
+
+        Best Used For:
+            - Educational purposes
+            - Small datasets (< 50 elements)
+            - Nearly sorted data
+            - When simplicity is more important than efficiency
+        """
+
         pass
