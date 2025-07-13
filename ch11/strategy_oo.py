@@ -269,3 +269,32 @@ class Context:
 
         # Step 3: Sort using the current strategy
         return self._strategy.sort(data)
+
+
+def main() -> None:
+    print("Strategy Pattern Demonstration")
+    print("=" * 40)
+
+    # Test data
+    test_data = [5, 3, 8, 6, 2]
+    print(f"Original data: {test_data}")
+    print()
+
+    # Create context with BubbleSort strategy
+    print("Using Bubble Sort Strategy:")
+    context = Context(BubbleSort())
+    result1 = context.execute(test_data.copy())  # Use copy to preserve original
+    print(f"Result: {result1}")
+    print()
+
+    # Switch to QuickSort strategy at runtime
+    print("Switching to Quick Sort Strategy:")
+    context.set_strategy(QuickSort())
+    result2 = context.execute(test_data.copy())  # Use copy to preserve original
+    print(f"Result: {result2}")
+    print()
+
+    print("Note: Results vary due to random number addition in processing pipeline")
+    print(
+        "But both results are properly sorted according to their respective algorithms"
+    )
