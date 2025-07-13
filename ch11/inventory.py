@@ -53,3 +53,9 @@ class Observer(Protocol):
             the notification chain to other observers.
         """
         pass
+
+
+class Observable:
+    def __init__(self):
+        """Initialize Observable with empty observer list."""
+        self._observers: list[Observer] = []
