@@ -253,3 +253,65 @@ sorted_by_salary = sorted(people_dict, key=itemgetter("salary"), reverse=True)
 print("\nSorted by salary (highest first):")
 for person in sorted_by_salary:
     print(f"  {person['name']}: ${person['salary']}")
+
+
+# =============================================================================
+# Example 5: Data Analysis and Grouping
+# =============================================================================
+"""
+Data Analysis and Grouping with itemgetter
+
+This section demonstrates how itemgetter works excellently with itertools.groupby
+for data analysis tasks. The combination provides powerful data processing
+capabilities for analytical workflows.
+
+Key Learning Points:
+• itemgetter + groupby creates powerful analysis pipelines
+• Efficient grouping by specific fields or indices
+• Works well with aggregation functions (sum, max, min, etc.)
+• Maintains data relationships during transformations
+
+Use Cases:
+• Sales data analysis by period/category
+• Log file analysis and aggregation
+• Survey response grouping and analysis
+• Financial data processing by time periods
+"""
+
+print("\n" + "=" * 60)
+print("Example 5: Data Analysis and Grouping")
+print("=" * 60)
+
+# Sales data
+sales_data = [
+    ("Q1", "Electronics", 50000),
+    ("Q1", "Clothing", 30000),
+    ("Q1", "Books", 15000),
+    ("Q2", "Electronics", 55000),
+    ("Q2", "Clothing", 32000),
+    ("Q2", "Books", 18000),
+    ("Q3", "Electronics", 60000),
+    ("Q3", "Clothing", 35000),
+    ("Q3", "Books", 20000),
+]
+
+# Group by quarter
+get_quarter = itemgetter(0)
+get_category = itemgetter(1)
+get_sales = itemgetter(2)
+
+# Sort by quarter first
+sales_by_quarter = sorted(sales_data, key=get_quarter)
+
+print("Sales by quarter:")
+for quarter, group in groupby(sales_by_quarter, key=get_quarter):
+    total_sales = sum(get_sales(item) for item in group)
+    print(f"  {quarter}: ${total_sales:,}")
+
+# Find best performing category
+sales_by_category = sorted(sales_data, key=get_category)
+print("\nSales by category:")
+for category, group in groupby(sales_by_category, key=get_category):
+    group_list = list(group)
+    total_sales = sum(get_sales(item) for item in group_list)
+    print(f"  {category}: ${total_sales:,}")
