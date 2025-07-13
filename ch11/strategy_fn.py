@@ -305,3 +305,13 @@ def context(strategy: SortFn, data: list[int]) -> list[int]:
 
     # Step 3: Sort using the current strategy
     return strategy(data)
+
+
+def main() -> None:
+    # Demonstrate the Strategy pattern with functional approach
+    print(context(bubble_sort, [5, 2, 9, 1, 5, 6]))
+    print(context(quick_sort, [5, 2, 9, 1, 5, 6]))
+
+
+if __name__ == "__main__":
+    main()
