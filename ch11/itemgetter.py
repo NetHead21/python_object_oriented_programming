@@ -388,3 +388,58 @@ for company in company_data:
         print(
             f"    {get_emp_name(emp)} ({get_emp_dept(emp)}): ${get_emp_salary(emp):,}"
         )
+
+
+# =============================================================================
+# Example 7: Performance Comparison
+# =============================================================================
+"""
+Performance Analysis of itemgetter
+
+This section provides empirical performance comparison between itemgetter
+and alternative approaches like direct indexing and lambda functions.
+Understanding performance characteristics helps in choosing the right tool.
+
+Key Learning Points:
+• itemgetter performance vs. alternatives
+• When performance differences matter
+• Memory efficiency considerations
+• Scale-dependent performance characteristics
+
+Use Cases:
+• Performance-critical data processing
+• Large dataset operations
+• Benchmarking and optimization decisions
+• Understanding trade-offs in functional programming
+"""
+
+print("\n" + "=" * 60)
+print("Example 7: Performance Comparison")
+print("=" * 60)
+
+# Create large dataset
+large_dataset = [(i, i * 2, i * 3) for i in range(100000)]
+
+# Method 1: Using itemgetter
+get_second_item = itemgetter(1)
+start = time.time()
+result1 = [get_second_item(item) for item in large_dataset]
+time1 = time.time() - start
+
+# Method 2: Direct indexing
+start = time.time()
+result2 = [item[1] for item in large_dataset]
+time2 = time.time() - start
+
+# Method 3: Lambda function
+start = time.time()
+result3 = list(map(lambda x: x[1], large_dataset))
+time3 = time.time() - start
+
+print("Performance comparison (100,000 items):")
+print(f"  itemgetter: {time1:.4f}s")
+print(f"  Direct indexing: {time2:.4f}s")
+print(f"  Lambda function: {time3:.4f}s")
+
+# Verify results are the same
+print(f"Results identical: {result1 == result2 == result3}")
