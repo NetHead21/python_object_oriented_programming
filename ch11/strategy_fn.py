@@ -198,3 +198,38 @@ def quick_sort(data: list[int]) -> list[int]:
 
     # Recursively sort the left and right partitions and combine
     return quick_sort(left) + middle + quick_sort(right)
+
+
+# Type alias for sorting strategy functions
+SortFn = Callable[[list[int]], list[int]]
+
+
+"""
+Type alias for sorting strategy functions.
+
+This type alias defines the signature that all sorting strategy functions
+must follow in this functional implementation of the Strategy pattern.
+
+Function Signature:
+    - Input: list[int] - A list of integers to sort
+    - Output: list[int] - A new sorted list in ascending order
+
+Benefits of Type Alias:
+    • Improves code readability and self-documentation
+    • Enables better type checking and IDE support
+    • Makes function signatures more maintainable
+    • Clearly communicates the strategy contract
+
+Usage:
+    Any function that matches this signature can be used as a sorting
+    strategy in the context function. This allows for easy extension
+    of the system with new sorting algorithms.
+
+Example:
+    def my_custom_sort(data: list[int]) -> list[int]:
+        # Custom sorting implementation
+        return sorted(data)
+    
+    # my_custom_sort automatically conforms to SortFn type
+    result = context(my_custom_sort, [3, 1, 4, 1, 5])
+"""
