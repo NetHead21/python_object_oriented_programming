@@ -121,6 +121,70 @@ def bubble_sort(data: list[int]) -> list[int]:
 
 
 def quick_sort(data: list[int]) -> list[int]:
+    """
+    Implement the Quick Sort algorithm as a strategy function.
+
+    Quick Sort is a highly efficient divide-and-conquer sorting algorithm
+    that works by selecting a 'pivot' element and partitioning the array
+    around the pivot, then recursively sorting the sub-arrays.
+
+    Algorithm Characteristics:
+    -------------------------
+    Time Complexity:
+        - Best Case: O(n log n) with good pivot selection
+        - Average Case: O(n log n)
+        - Worst Case: O(n²) when pivot is always the smallest/largest
+
+    Space Complexity: O(log n) due to recursion stack in average case,
+                     O(n) in worst case
+
+    Properties:
+        - Unstable: Equal elements may not maintain relative order
+        - In-place: Can be implemented in-place (this version creates new lists)
+        - Divide-and-conquer: Breaks problem into smaller subproblems
+        - Cache-efficient: Good locality of reference
+
+    Pivot Selection Strategy:
+        This implementation uses the middle element as pivot, which
+        provides good performance for many real-world datasets and
+        avoids worst-case behavior on already-sorted data.
+
+    Best Used For:
+        - Large datasets (> 100 elements)
+        - General-purpose sorting where performance matters
+        - Datasets with random or partially sorted elements
+        - When average O(n log n) performance is acceptable
+
+    Args:
+        data (list[int]): List of integers to sort. Original list is preserved.
+
+    Returns:
+        list[int]: A new sorted list in ascending order.
+
+    Example:
+        >>> quick_sort([64, 34, 25, 12, 22, 11, 90])
+        [11, 12, 22, 25, 34, 64, 90]
+
+        >>> quick_sort([3, 6, 8, 10, 1, 2, 1])
+        [1, 1, 2, 3, 6, 8, 10]
+
+        >>> quick_sort([5])  # Single element
+        [5]
+
+        >>> quick_sort([])   # Empty list
+        []
+
+    Algorithm Steps:
+        1. Choose middle element as pivot
+        2. Partition: elements < pivot, = pivot, > pivot
+        3. Recursively sort left and right partitions
+        4. Combine: left + middle + right
+
+    Note:
+        This functional implementation creates new lists rather than
+        sorting in-place, following functional programming principles
+        but using more memory than an in-place version.
+    """
     if len(data) <= 1:
         return data
 
