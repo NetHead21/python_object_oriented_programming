@@ -687,3 +687,84 @@ def get_itemgetter_usage_summary():
             "documentation": "Document the expected data structure",
         },
     }
+
+
+# =============================================================================
+# Advanced Usage Patterns Reference
+# =============================================================================
+
+
+class ItemGetterPatterns:
+    """
+    Collection of advanced patterns and recipes using itemgetter.
+
+    This class serves as a reference for sophisticated itemgetter usage
+    patterns that can be applied in complex data processing scenarios.
+    """
+
+    @staticmethod
+    def multi_level_sort(data, *fields):
+        """
+        Sort data by multiple fields in order of priority.
+
+        Args:
+            data: Sequence of mappings or sequences to sort
+            *fields: Field names or indices in order of sort priority
+
+        Returns:
+            list: Sorted data
+
+        Example:
+            >>> data = [{'name': 'Alice', 'dept': 'IT', 'salary': 70000},
+            ...         {'name': 'Bob', 'dept': 'IT', 'salary': 75000}]
+            >>> multi_level_sort(data, 'dept', 'salary')
+        """
+        return sorted(data, key=itemgetter(*fields))
+
+    @staticmethod
+    def extract_columns(data, *columns):
+        """
+        Extract specific columns from tabular data.
+
+        Args:
+            data: Sequence of sequences or mappings
+            *columns: Column indices or keys to extract
+
+        Returns:
+            list: List of tuples containing extracted columns
+
+        Example:
+            >>> data = [('Alice', 25, 'Engineer'), ('Bob', 30, 'Manager')]
+            >>> extract_columns(data, 0, 2)  # Name and title
+            [('Alice', 'Engineer'), ('Bob', 'Manager')]
+        """
+        extractor = itemgetter(*columns)
+        return [extractor(row) for row in data]
+
+    @staticmethod
+    def group_by_field(data, field):
+        """
+        Group data by a specific field, returning a dictionary.
+
+        Args:
+            data: Sequence of mappings or sequences
+            field: Field name or index to group by
+
+        Returns:
+            dict: Grouped data with field values as keys
+
+        Example:
+            >>> data = [{'dept': 'IT', 'name': 'Alice'}, {'dept': 'HR', 'name': 'Bob'}]
+            >>> group_by_field(data, 'dept')
+            {'IT': [{'dept': 'IT', 'name': 'Alice'}], 'HR': [...]}
+        """
+        from collections import defaultdict
+        from itertools import groupby
+
+        sorted_data = sorted(data, key=itemgetter(field))
+        grouped = defaultdict(list)
+
+        for key, group in groupby(sorted_data, key=itemgetter(field)):
+            grouped[key].extend(group)
+
+        return dict(grouped)
