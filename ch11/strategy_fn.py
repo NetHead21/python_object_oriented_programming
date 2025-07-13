@@ -118,3 +118,19 @@ def bubble_sort(data: list[int]) -> list[int]:
             if data[j] > data[j + 1]:
                 data[j], data[j + 1] = data[j + 1], data[j]
     return data
+
+
+def quick_sort(data: list[int]) -> list[int]:
+    if len(data) <= 1:
+        return data
+
+    # Choose the middle element as the pivot
+    pivot = data[len(data) // 2]
+
+    # Partition the array into three parts
+    left = [x for x in data if x < pivot]  # Elements less than pivot
+    middle = [x for x in data if x == pivot]  # Elements equal to pivot
+    right = [x for x in data if x > pivot]  # Elements greater than pivot
+
+    # Recursively sort the left and right partitions and combine
+    return quick_sort(left) + middle + quick_sort(right)
