@@ -184,3 +184,21 @@ class QuickSort(SortStrategy):
 
         # Recursively sort the left and right partitions and combine
         return self.sort(left) + middle + self.sort(right)
+
+
+class Context:
+    def __init__(self, strategy: SortStrategy):
+        self._strategy = strategy
+
+    def set_strategy(self, strategy: SortStrategy):
+        self._strategy = strategy
+
+    def execute(self, data: list[int]) -> list[int]:
+        # Step 1: Multiply each element by 2
+        data = [x * 2 for x in data]
+
+        # Step 2: Add a random number (0-10) to each element
+        data = [x + random.randint(0, 10) for x in data]
+
+        # Step 3: Sort using the current strategy
+        return self._strategy.sort(data)
