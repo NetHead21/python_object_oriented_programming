@@ -443,3 +443,54 @@ print(f"  Lambda function: {time3:.4f}s")
 
 # Verify results are the same
 print(f"Results identical: {result1 == result2 == result3}")
+
+
+# =============================================================================
+# Example 8: Error Handling and Edge Cases
+# =============================================================================
+"""
+Error Handling and Edge Cases with itemgetter
+
+This section explores how itemgetter behaves with edge cases, error conditions,
+and mixed data types. Understanding error patterns is crucial for robust
+production code.
+
+Key Learning Points:
+• Common error types: IndexError, KeyError, TypeError
+• Graceful error handling strategies
+• Type safety considerations
+• Defensive programming with itemgetter
+
+Use Cases:
+• Robust data processing pipelines
+• Handling inconsistent data formats
+• Defensive programming practices
+• Input validation and sanitization
+"""
+
+print("\n" + "=" * 60)
+print("Example 8: Error Handling and Edge Cases")
+print("=" * 60)
+
+# Sample data with potential issues
+mixed_data = [
+    [1, 2, 3, 4, 5],
+    [10, 20],  # Shorter list
+    {"a": 1, "b": 2, "c": 3},
+    "hello",
+]
+
+get_index_2 = itemgetter(2)
+get_key_b = itemgetter("b")
+
+print("Testing error handling:")
+for i, item in enumerate(mixed_data):
+    try:
+        if isinstance(item, dict):
+            result = get_key_b(item)
+            print(f"  Item {i} (dict): key 'b' = {result}")
+        else:
+            result = get_index_2(item)
+            print(f"  Item {i}: index 2 = {result}")
+    except (IndexError, KeyError, TypeError) as e:
+        print(f"  Item {i}: Error - {type(e).__name__}: {e}")
