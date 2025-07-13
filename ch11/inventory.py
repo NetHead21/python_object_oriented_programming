@@ -31,5 +31,15 @@ from typing import Protocol
 
 
 class Observer(Protocol):
+    """Protocol defining the interface for Observer pattern participants.
+
+    This protocol ensures that all observers implement the required callback
+    method that will be invoked when the observable object's state changes.
+
+    The Observer pattern allows for one-to-many dependency relationships
+    between objects, where when one object changes state, all dependents
+    are notified automatically.
+    """
+
     def __call__(self) -> None:
         pass
