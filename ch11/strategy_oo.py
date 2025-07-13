@@ -170,6 +170,7 @@ class QuickSort(SortStrategy):
             This implementation creates new lists for partitions, making it
             easier to understand but using more memory than an in-place version.
         """
+
         # Base case: arrays with 0 or 1 element are already sorted
         if len(data) <= 1:
             return data
@@ -213,6 +214,7 @@ class Context:
             >>> context = Context(BubbleSort())
             >>> context = Context(QuickSort())
         """
+
         self._strategy = strategy
 
     def set_strategy(self, strategy: SortStrategy):
@@ -229,9 +231,36 @@ class Context:
             >>> context = Context(BubbleSort())
             >>> context.set_strategy(QuickSort())  # Switch to QuickSort
         """
+
         self._strategy = strategy
 
     def execute(self, data: list[int]) -> list[int]:
+        """
+        Execute the complete data processing pipeline.
+
+        This method performs the following operations:
+        1. Multiply each element by 2
+        2. Add a random number (0-10) to each element
+        3. Sort the processed data using the current strategy
+
+        Args:
+            data (list[int]): Original list of integers to process
+
+        Returns:
+            list[int]: Processed and sorted list of integers
+
+        Example:
+            >>> context = Context(BubbleSort())
+            >>> result = context.execute([3, 1, 4])
+            >>> # Result will be sorted list where each original element
+            >>> # was multiplied by 2 and had 0-10 added to it
+
+        Note:
+            Due to the random number addition, the exact output will vary
+            between runs, but the data will always be sorted according
+            to the current strategy.
+        """
+
         # Step 1: Multiply each element by 2
         data = [x * 2 for x in data]
 
