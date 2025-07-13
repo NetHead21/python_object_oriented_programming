@@ -131,3 +131,57 @@ get_second_coord = itemgetter(1)
 
 print(f"First coordinates: {[get_first_coord(coord) for coord in coordinates]}")
 print(f"Second coordinates: {[get_second_coord(coord) for coord in coordinates]}")
+
+
+# =============================================================================
+# Example 3: Dictionary Operations
+# =============================================================================
+"""
+Dictionary Operations with itemgetter
+
+This section demonstrates how itemgetter works seamlessly with dictionaries
+and other mapping types. itemgetter treats dictionary keys the same way
+it treats sequence indices.
+
+Key Learning Points:
+• itemgetter('key') returns obj['key'] for dictionaries
+• Can extract multiple keys simultaneously
+• Works with any mapping type that supports [] operator
+• Perfect for processing structured data records
+
+Use Cases:
+• Extracting fields from JSON-like data structures
+• Processing database query results
+• Configuration data access
+• API response data extraction
+"""
+
+print("\n" + "=" * 60)
+print("Example 3: Dictionary Operations")
+print("=" * 60)
+
+# Sample dictionaries
+person1 = {"name": "Alice", "age": 30, "city": "New York", "salary": 75000}
+person2 = {"name": "Bob", "age": 25, "city": "London", "salary": 65000}
+person3 = {"name": "Charlie", "age": 35, "city": "Tokyo", "salary": 80000}
+
+people = [person1, person2, person3]
+
+# Extract single values
+get_name = itemgetter("name")
+get_age = itemgetter("age")
+get_salary = itemgetter("salary")
+
+print("People data:")
+for person in people:
+    print(
+        f"  {get_name(person)}: {get_age(person)} years old, salary: ${get_salary(person)}"
+    )
+
+# Extract multiple values
+get_name_and_city = itemgetter("name", "city")
+
+print("\nName and city combinations:")
+for person in people:
+    name, city = get_name_and_city(person)
+    print(f"  {name} lives in {city}")
