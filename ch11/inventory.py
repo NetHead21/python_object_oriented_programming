@@ -23,3 +23,13 @@ Example:
 
 Date: July 14, 2025
 """
+
+import json
+import time
+from dice import Dice
+from typing import Protocol
+
+
+class Observer(Protocol):
+    def __call__(self) -> None:
+        pass
