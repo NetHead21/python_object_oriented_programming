@@ -561,3 +561,33 @@ entries_by_source = sorted(log_entries, key=get_source)
 for source, group in groupby(entries_by_source, key=get_source):
     group_list = list(group)
     print(f"  {source}: {len(group_list)} entries")
+
+
+# =============================================================================
+# Summary: Key Benefits and Best Practices
+# =============================================================================
+"""
+Complete Guide to itemgetter Best Practices
+
+This final section summarizes the key insights, patterns, and best practices
+learned throughout the examples. It serves as a quick reference for when
+and how to use itemgetter effectively.
+
+Design Principles:
+• Favor itemgetter over lambda for simple item access
+• Use itemgetter for performance-critical operations
+• Combine with other functional programming tools
+• Consider readability and maintainability
+
+Performance Guidelines:
+• itemgetter is faster than lambda for simple operations
+• More memory efficient for repeated operations
+• Excellent for large dataset processing
+• C implementation provides optimization benefits
+
+Common Patterns and Anti-patterns:
+• DO: Use for sorting, grouping, and data extraction
+• DO: Combine with map(), filter(), groupby()
+• DON'T: Use for complex logic (prefer lambda/functions)
+• DON'T: Use when direct access is clearer
+"""
