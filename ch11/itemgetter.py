@@ -623,3 +623,67 @@ print("""
 print("=" * 60)
 print("Examples completed successfully!")
 print("=" * 60)
+
+
+# =============================================================================
+# Module Summary and Usage Guidelines
+# =============================================================================
+
+
+def get_itemgetter_usage_summary():
+    """
+    Comprehensive usage summary for operator.itemgetter.
+
+    This function provides a complete reference guide for when and how to use
+    itemgetter effectively in your Python projects.
+
+    Returns:
+        dict: Complete reference guide with usage patterns, performance tips,
+              and best practices for itemgetter implementation.
+    """
+    return {
+        "core_functionality": {
+            "single_item": "itemgetter(2) → obj[2]",
+            "multiple_items": "itemgetter(0, 2, 4) → (obj[0], obj[2], obj[4])",
+            "dict_access": "itemgetter('key') → obj['key']",
+            "mixed_access": "itemgetter('name', 2, 'age') → (obj['name'], obj[2], obj['age'])",
+        },
+        "performance_characteristics": {
+            "vs_lambda": "~15-25% faster for simple item access",
+            "vs_direct": "Slightly slower but negligible for most use cases",
+            "memory_usage": "Very efficient, uses __slots__",
+            "optimization": "C implementation in CPython",
+        },
+        "best_use_cases": [
+            "Sorting: sorted(data, key=itemgetter('score'))",
+            "Grouping: groupby(data, key=itemgetter('category'))",
+            "Data extraction: map(itemgetter(1), data)",
+            "Filtering: filter(lambda x: itemgetter('active')(x), data)",
+            "Multi-field access: itemgetter('name', 'age', 'salary')",
+        ],
+        "when_to_avoid": [
+            "Complex logic (use lambda or functions instead)",
+            "Single-use, inline operations where direct access is clearer",
+            "When the overhead of creating the getter isn't worth it",
+            "Operations requiring conditional logic or transformations",
+        ],
+        "integration_patterns": {
+            "with_sorted": "sorted(items, key=itemgetter('priority', 'timestamp'))",
+            "with_groupby": "groupby(sorted(data, key=itemgetter('dept')), key=itemgetter('dept'))",
+            "with_map": "list(map(itemgetter('total'), transactions))",
+            "with_filter": "list(filter(itemgetter('active'), users))",
+            "with_max_min": "max(products, key=itemgetter('price'))",
+        },
+        "error_handling": {
+            "IndexError": "Index out of range for sequences",
+            "KeyError": "Key not found in mappings",
+            "TypeError": "Object not subscriptable",
+            "AttributeError": "Rare, usually with custom __getitem__ implementations",
+        },
+        "style_guidelines": {
+            "naming": "Use descriptive names: get_price vs itemgetter(2)",
+            "reuse": "Create once, use many times for efficiency",
+            "readability": "Prefer itemgetter over lambda for simple access",
+            "documentation": "Document the expected data structure",
+        },
+    }
