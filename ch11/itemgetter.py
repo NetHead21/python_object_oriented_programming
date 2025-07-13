@@ -315,3 +315,76 @@ for category, group in groupby(sales_by_category, key=get_category):
     group_list = list(group)
     total_sales = sum(get_sales(item) for item in group_list)
     print(f"  {category}: ${total_sales:,}")
+
+
+# =============================================================================
+# Example 6: Complex Data Structures
+# =============================================================================
+"""
+Complex Data Structures with itemgetter
+
+This section shows how itemgetter handles complex nested data structures
+like lists of dictionaries, hierarchical data, and mixed-type collections.
+itemgetter excels at extracting data from real-world complex structures.
+
+Key Learning Points:
+• itemgetter works with any subscriptable object
+• Can handle deeply nested structures
+• Maintains type safety and error handling
+• Excellent for processing API responses and JSON data
+
+Use Cases:
+• Processing nested JSON/API responses
+• Extracting data from database query results
+• Configuration file processing
+• Complex data transformation pipelines
+"""
+
+print("\n" + "=" * 60)
+print("Example 6: Complex Data Structures")
+print("=" * 60)
+
+# Nested data structure
+company_data = [
+    {
+        "company": "TechCorp",
+        "employees": [
+            {"name": "Alice", "department": "Engineering", "salary": 95000},
+            {"name": "Bob", "department": "Marketing", "salary": 70000},
+        ],
+        "revenue": 1000000,
+    },
+    {
+        "company": "DataInc",
+        "employees": [
+            {"name": "Charlie", "department": "Engineering", "salary": 90000},
+            {"name": "Diana", "department": "Sales", "salary": 75000},
+        ],
+        "revenue": 800000,
+    },
+]
+
+# Extract company information
+get_company_name = itemgetter("company")
+get_employees = itemgetter("employees")
+get_revenue = itemgetter("revenue")
+
+print("Company analysis:")
+for company in company_data:
+    name = get_company_name(company)
+    employees = get_employees(company)
+    revenue = get_revenue(company)
+
+    print(f"\n{name}:")
+    print(f"  Revenue: ${revenue:,}")
+    print("  Employees:")
+
+    # Extract employee data
+    get_emp_name = itemgetter("name")
+    get_emp_dept = itemgetter("department")
+    get_emp_salary = itemgetter("salary")
+
+    for emp in employees:
+        print(
+            f"    {get_emp_name(emp)} ({get_emp_dept(emp)}): ${get_emp_salary(emp):,}"
+        )
