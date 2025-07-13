@@ -233,3 +233,14 @@ Example:
     # my_custom_sort automatically conforms to SortFn type
     result = context(my_custom_sort, [3, 1, 4, 1, 5])
 """
+
+
+def context(strategy: SortFn, data: list[int]) -> list[int]:
+    # Step 1: Multiply each element by 2
+    data = [x * 2 for x in data]
+
+    # Step 2: Add a random number (0-10) to each element
+    data = [x + random.randint(0, 10) for x in data]
+
+    # Step 3: Sort using the current strategy
+    return strategy(data)
