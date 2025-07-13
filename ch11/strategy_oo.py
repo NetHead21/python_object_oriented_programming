@@ -203,6 +203,16 @@ class Context:
     """
 
     def __init__(self, strategy: SortStrategy):
+        """
+        Initialize the Context with a sorting strategy.
+
+        Args:
+            strategy (SortStrategy): The initial sorting strategy to use
+
+        Example:
+            >>> context = Context(BubbleSort())
+            >>> context = Context(QuickSort())
+        """
         self._strategy = strategy
 
     def set_strategy(self, strategy: SortStrategy):
