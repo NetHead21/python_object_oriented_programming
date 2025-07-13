@@ -119,6 +119,33 @@ class BubbleSort(SortStrategy):
 
 
 class QuickSort(SortStrategy):
+    """
+    Concrete strategy implementing the QuickSort algorithm.
+
+    QuickSort is a highly efficient divide-and-conquer sorting algorithm that
+    works by selecting a 'pivot' element and partitioning the array around it,
+    then recursively sorting the sub-arrays.
+
+    Time Complexity:
+        - Best Case: O(n log n) when pivot divides array evenly
+        - Average Case: O(n log n)
+        - Worst Case: O(n²) when pivot is always the smallest/largest element
+
+    Space Complexity: O(log n) due to recursion stack
+
+    Characteristics:
+        - Not stable: Equal elements may not maintain relative order
+        - In-place: Can be implemented to use O(log n) extra space
+        - Efficient: Generally faster than other O(n log n) algorithms
+        - Divide-and-conquer: Breaks problem into smaller subproblems
+
+    Best Used For:
+        - Large datasets
+        - General-purpose sorting
+        - When average-case performance is important
+        - Systems where cache performance matters
+    """
+
     def sort(self, data: list[int]) -> list[int]:
         # Base case: arrays with 0 or 1 element are already sorted
         if len(data) <= 1:
