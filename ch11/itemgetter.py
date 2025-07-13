@@ -494,3 +494,70 @@ for i, item in enumerate(mixed_data):
             print(f"  Item {i}: index 2 = {result}")
     except (IndexError, KeyError, TypeError) as e:
         print(f"  Item {i}: Error - {type(e).__name__}: {e}")
+
+
+# =============================================================================
+# Example 9: Real-world Use Case - Log Analysis
+# =============================================================================
+"""
+Real-world Application: Log File Analysis
+
+This section demonstrates a practical, real-world application of itemgetter
+for log file analysis. This example shows how itemgetter can be used in
+production scenarios for data processing and analysis.
+
+Key Learning Points:
+• Practical application in data analysis workflows
+• Integration with other Python tools (defaultdict, groupby)
+• Processing structured log data efficiently
+• Building analytical insights from raw data
+
+Use Cases:
+• System log analysis and monitoring
+• Application performance analysis
+• Security log processing
+• Operational data analysis
+• Debugging and troubleshooting workflows
+"""
+
+print("\n" + "=" * 60)
+print("Example 9: Real-world Use Case - Log Analysis")
+print("=" * 60)
+
+# Simulated log entries (timestamp, level, message, source)
+log_entries = [
+    ("2024-01-01 10:00:00", "INFO", "Application started", "main.py"),
+    ("2024-01-01 10:01:15", "ERROR", "Database connection failed", "db.py"),
+    ("2024-01-01 10:01:30", "WARN", "Retrying connection", "db.py"),
+    ("2024-01-01 10:02:00", "INFO", "Connection restored", "db.py"),
+    ("2024-01-01 10:05:00", "ERROR", "Invalid user input", "api.py"),
+    ("2024-01-01 10:10:00", "INFO", "User login successful", "auth.py"),
+]
+
+# Create extractors
+get_timestamp = itemgetter(0)
+get_level = itemgetter(1)
+get_message = itemgetter(2)
+get_source = itemgetter(3)
+
+# Analyze log levels
+print("Log level analysis:")
+level_counts = defaultdict(int)
+for entry in log_entries:
+    level_counts[get_level(entry)] += 1
+
+for level, count in sorted(level_counts.items()):
+    print(f"  {level}: {count} entries")
+
+# Find all error messages
+print("\nError messages:")
+error_entries = [entry for entry in log_entries if get_level(entry) == "ERROR"]
+for entry in error_entries:
+    print(f"  {get_timestamp(entry)}: {get_message(entry)} (from {get_source(entry)})")
+
+# Group by source file
+print("\nEntries by source file:")
+entries_by_source = sorted(log_entries, key=get_source)
+for source, group in groupby(entries_by_source, key=get_source):
+    group_list = list(group)
+    print(f"  {source}: {len(group_list)} entries")
