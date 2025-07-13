@@ -60,3 +60,28 @@ Use Cases:
 • Getting consistent field positions from records
 • Performance-critical index access in loops
 """
+
+print("=" * 60)
+print("Example 1: Basic Single Item Access")
+print("=" * 60)
+
+# Create some sample data
+fruits = ["apple", "banana", "cherry", "date", "elderberry"]
+numbers = [10, 25, 30, 45, 50]
+coordinates = [(1, 2), (3, 4), (5, 6), (7, 8)]
+
+# Get item at index 2
+get_index_2 = itemgetter(2)
+
+print(f"Original fruits: {fruits}")
+print(f"Item at index 2: {get_index_2(fruits)}")  # cherry
+
+print(f"Original numbers: {numbers}")
+print(f"Item at index 2: {get_index_2(numbers)}")  # 30
+
+print(f"Original coordinates: {coordinates}")
+print(f"Item at index 2: {get_index_2(coordinates)}")  # (5, 6)
+
+# Works with strings too
+text = "Hello World"
+print(f"Character at index 2 in '{text}': {get_index_2(text)}")  # l
