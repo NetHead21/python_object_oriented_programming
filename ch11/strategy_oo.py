@@ -32,3 +32,12 @@ Date: July 2025
 Python Version: 3.13+
 Design Pattern: Strategy Pattern
 """
+
+from abc import ABC, abstractmethod
+import random
+
+
+class SortStrategy(ABC):
+    @abstractmethod
+    def sort(self, data: list[int]) -> list[int]:
+        pass
