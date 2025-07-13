@@ -768,3 +768,44 @@ class ItemGetterPatterns:
             grouped[key].extend(group)
 
         return dict(grouped)
+
+
+# Example usage of the patterns
+if __name__ == "__main__":
+    # This allows the module to be imported without running examples
+    # but examples run when executed directly
+
+    # Advanced pattern examples
+    sample_employees = [
+        {"name": "Alice", "dept": "Engineering", "salary": 95000, "years": 3},
+        {"name": "Bob", "dept": "Engineering", "salary": 87000, "years": 2},
+        {"name": "Charlie", "dept": "Marketing", "salary": 72000, "years": 5},
+        {"name": "Diana", "dept": "Marketing", "salary": 68000, "years": 1},
+    ]
+
+    print("\n" + "=" * 60)
+    print("Advanced Patterns Demo")
+    print("=" * 60)
+
+    # Multi-level sorting
+    sorted_employees = ItemGetterPatterns.multi_level_sort(
+        sample_employees, "dept", "salary"
+    )
+    print("Employees sorted by department, then salary:")
+    for emp in sorted_employees:
+        print(f"  {emp['name']}: {emp['dept']} - ${emp['salary']:,}")
+
+    # Column extraction
+    name_salary_data = [(emp["name"], emp["salary"]) for emp in sample_employees]
+    extracted = ItemGetterPatterns.extract_columns(name_salary_data, 0, 1)
+    print(f"\nExtracted name-salary pairs: {extracted}")
+
+    # Grouping
+    grouped = ItemGetterPatterns.group_by_field(sample_employees, "dept")
+    print("\nEmployees grouped by department:")
+    for dept, employees in grouped.items():
+        print(f"  {dept}: {[emp['name'] for emp in employees]}")
+
+    print("\n" + "=" * 60)
+    print("Module documentation and examples completed!")
+    print("=" * 60)
