@@ -591,3 +591,35 @@ Common Patterns and Anti-patterns:
 • DON'T: Use for complex logic (prefer lambda/functions)
 • DON'T: Use when direct access is clearer
 """
+
+
+print("\n" + "=" * 60)
+print("Key Benefits and Best Practices")
+print("=" * 60)
+
+print("""
+✨ When to use itemgetter:
+  • Extracting specific indices from sequences
+  • Accessing dictionary keys
+  • Sorting operations: sorted(items, key=itemgetter(0))
+  • Data transformation: Converting nested structures
+  • Functional programming: Use with map(), filter(), etc.
+  • Performance-critical item access
+
+🚀 Performance advantages:
+  • Faster than lambda for simple item access
+  • Memory efficient for large datasets
+  • C implementation optimization
+  • Reduced function call overhead
+
+📋 Common patterns:
+  • Single item: itemgetter(2) → obj[2]
+  • Multiple items: itemgetter(0, 2, 4) → (obj[0], obj[2], obj[4])
+  • Dictionary access: itemgetter('key') → obj['key']
+  • Sorting: sorted(data, key=itemgetter('score'))
+  • Grouping: groupby(data, key=itemgetter('category'))
+""")
+
+print("=" * 60)
+print("Examples completed successfully!")
+print("=" * 60)
