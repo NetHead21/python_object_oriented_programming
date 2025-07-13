@@ -147,6 +147,29 @@ class QuickSort(SortStrategy):
     """
 
     def sort(self, data: list[int]) -> list[int]:
+        """
+        Sort data using the QuickSort algorithm.
+
+        This implementation uses the middle element as the pivot and
+        creates three partitions: elements less than pivot, equal to pivot,
+        and greater than pivot. The less than and greater than partitions
+        are recursively sorted.
+
+        Args:
+            data (list[int]): List of integers to sort
+
+        Returns:
+            list[int]: A new sorted list in ascending order
+
+        Example:
+            >>> quick_sort = QuickSort()
+            >>> quick_sort.sort([64, 34, 25, 12, 22, 11, 90])
+            [11, 12, 22, 25, 34, 64, 90]
+
+        Note:
+            This implementation creates new lists for partitions, making it
+            easier to understand but using more memory than an in-place version.
+        """
         # Base case: arrays with 0 or 1 element are already sorted
         if len(data) <= 1:
             return data
