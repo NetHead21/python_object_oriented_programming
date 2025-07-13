@@ -308,10 +308,62 @@ def context(strategy: SortFn, data: list[int]) -> list[int]:
 
 
 def main() -> None:
+    """
+    Demonstration function showing the functional Strategy pattern in action.
+
+    This function serves as the entry point for demonstrating how different
+    sorting strategies can be used interchangeably with the same context
+    function. It showcases the core benefit of the Strategy pattern:
+    runtime algorithm selection.
+
+    Demonstration Features:
+    ----------------------
+    • Same input data processed with different strategies
+    • Results may vary due to random processing in context function
+    • Shows how easy it is to swap strategies in functional approach
+    • Demonstrates that different algorithms can be used transparently
+
+    Expected Behavior:
+        Each strategy will process the same input data [5, 2, 9, 1, 5, 6]
+        through the context function, which:
+        1. Doubles each number: [10, 4, 18, 2, 10, 12]
+        2. Adds random 0-10 to each: varies per run
+        3. Sorts using the specified strategy
+
+    Output:
+        Two lines showing sorted results from bubble_sort and quick_sort
+        strategies. Results will be sorted but may differ between runs
+        due to the random component in the context function.
+
+    Example Output:
+        [6, 8, 14, 22, 15, 20]  # Bubble sort result (varies)
+        [4, 12, 18, 20, 25, 28]  # Quick sort result (varies)
+
+    Note:
+        The actual values will vary between runs due to random number
+        generation, but both results should be properly sorted arrays.
+    """
     # Demonstrate the Strategy pattern with functional approach
     print(context(bubble_sort, [5, 2, 9, 1, 5, 6]))
     print(context(quick_sort, [5, 2, 9, 1, 5, 6]))
 
 
 if __name__ == "__main__":
+    """
+    Module execution guard for running the demonstration.
+    
+    This guard ensures that the main() function only runs when the script
+    is executed directly, not when imported as a module. This is a Python
+    best practice that allows the module to be both:
+    
+    1. Executable: Run directly to see the Strategy pattern demonstration
+    2. Importable: Import functions for use in other modules
+    
+    Usage:
+        Direct execution: python strategy_fn.py
+        Import usage: from strategy_fn import bubble_sort, quick_sort, context
+    
+    When executed directly, this will run the main() function which
+    demonstrates the functional Strategy pattern with sorting algorithms.
+    """
     main()
