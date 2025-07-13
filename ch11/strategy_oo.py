@@ -84,6 +84,25 @@ class SortStrategy(ABC):
 
 class BubbleSort(SortStrategy):
     def sort(self, data: list[int]) -> list[int]:
+        """
+        Sort data using the Bubble Sort algorithm.
+
+        The algorithm works by repeatedly comparing adjacent elements
+        and swapping them if they are in the wrong order. This process
+        continues until no more swaps are needed.
+
+        Args:
+            data (list[int]): List of integers to sort
+
+        Returns:
+            list[int]: A new sorted list in ascending order
+
+        Example:
+            >>> bubble_sort = BubbleSort()
+            >>> bubble_sort.sort([64, 34, 25, 12, 22, 11, 90])
+            [11, 12, 22, 25, 34, 64, 90]
+        """
+
         # Create a copy to avoid modifying the original list
         data = data.copy()
         n = len(data)
