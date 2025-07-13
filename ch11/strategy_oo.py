@@ -187,6 +187,21 @@ class QuickSort(SortStrategy):
 
 
 class Context:
+    """
+    Context class that uses a sorting strategy to perform data processing.
+
+    The Context maintains a reference to a Strategy object and delegates
+    the sorting work to it. This class demonstrates how the Strategy pattern
+    allows for runtime selection and switching of algorithms.
+
+    The Context also performs additional data processing (multiplication and
+    random number addition) before sorting, showing how the Strategy pattern
+    can be part of a larger processing pipeline.
+
+    Attributes:
+        _strategy (SortStrategy): The current sorting strategy being used
+    """
+
     def __init__(self, strategy: SortStrategy):
         self._strategy = strategy
 
