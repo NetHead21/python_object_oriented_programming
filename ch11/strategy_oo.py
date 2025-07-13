@@ -272,6 +272,19 @@ class Context:
 
 
 def main() -> None:
+    """
+    Demonstrate the Strategy pattern with different sorting algorithms.
+
+    This function shows how the Strategy pattern allows for:
+    1. Runtime algorithm selection
+    2. Easy switching between different strategies
+    3. Consistent interface regardless of the underlying algorithm
+
+    The example processes the same input data using different sorting
+    strategies, demonstrating the flexibility and interchangeability
+    that the Strategy pattern provides.
+    """
+
     print("Strategy Pattern Demonstration")
     print("=" * 40)
 
