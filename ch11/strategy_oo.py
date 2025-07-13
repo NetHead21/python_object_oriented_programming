@@ -216,6 +216,19 @@ class Context:
         self._strategy = strategy
 
     def set_strategy(self, strategy: SortStrategy):
+        """
+        Change the sorting strategy at runtime.
+
+        This method demonstrates the flexibility of the Strategy pattern -
+        the algorithm can be changed without modifying the Context's code.
+
+        Args:
+            strategy (SortStrategy): The new sorting strategy to use
+
+        Example:
+            >>> context = Context(BubbleSort())
+            >>> context.set_strategy(QuickSort())  # Switch to QuickSort
+        """
         self._strategy = strategy
 
     def execute(self, data: list[int]) -> list[int]:
