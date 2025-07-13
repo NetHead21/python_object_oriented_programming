@@ -236,6 +236,67 @@ Example:
 
 
 def context(strategy: SortFn, data: list[int]) -> list[int]:
+    """
+    Context function that demonstrates the Strategy pattern in functional programming.
+
+    This function serves as the "Context" in the Strategy pattern, accepting
+    different sorting strategies (functions) and applying them to processed data.
+    It demonstrates how strategies can be easily swapped at runtime in a
+    functional programming approach.
+
+    Data Processing Pipeline:
+    ------------------------
+    1. Data Amplification: Multiply each element by 2
+    2. Noise Addition: Add random number (0-10) to each element
+    3. Strategy Application: Sort using the provided strategy function
+
+    This pipeline simulates a real-world scenario where data needs preprocessing
+    before applying the core algorithm (sorting in this case).
+
+    Strategy Pattern Benefits Demonstrated:
+    --------------------------------------
+    • Runtime strategy selection: Different sorting algorithms can be chosen
+    • Algorithm independence: Context doesn't know implementation details
+    • Easy extensibility: New sorting strategies can be added without changes
+    • Separation of concerns: Data processing vs. sorting algorithm
+
+    Args:
+        strategy (SortFn): A sorting function that conforms to the SortFn
+                          type alias. Must accept list[int] and return list[int].
+        data (list[int]): Original data to process and sort.
+
+    Returns:
+        list[int]: Processed and sorted data using the specified strategy.
+
+    Example:
+        >>> # Using different strategies with the same context
+        >>> original_data = [5, 2, 9, 1, 5, 6]
+        >>>
+        >>> # Strategy 1: Bubble Sort
+        >>> result1 = context(bubble_sort, original_data)
+        >>> print(f"Bubble sort result: {result1}")
+        >>>
+        >>> # Strategy 2: Quick Sort
+        >>> result2 = context(quick_sort, original_data)
+        >>> print(f"Quick sort result: {result2}")
+        >>>
+        >>> # Custom strategy
+        >>> def reverse_sort(data: list[int]) -> list[int]:
+        ...     return sorted(data, reverse=True)
+        >>>
+        >>> result3 = context(reverse_sort, original_data)
+        >>> print(f"Reverse sort result: {result3}")
+
+    Processing Details:
+        The function applies transformations that make the sorting more
+        meaningful by adding variability to the data. The random component
+        ensures that runs with the same input may produce different outputs,
+        but the relative ordering after sorting should be consistent.
+
+    Note:
+        Due to the random number addition in step 2, results will vary
+        between runs even with the same input data and strategy.
+    """
     # Step 1: Multiply each element by 2
     data = [x * 2 for x in data]
 
