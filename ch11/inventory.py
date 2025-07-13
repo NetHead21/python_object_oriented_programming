@@ -42,4 +42,14 @@ class Observer(Protocol):
     """
 
     def __call__(self) -> None:
+        """Observer callback method invoked when observable state changes.
+
+        This method is called by the Observable object whenever its state
+        changes and observers need to be notified. Observers should implement
+        this method to define their response to state changes.
+
+        Note:
+            This method should not raise exceptions as it could disrupt
+            the notification chain to other observers.
+        """
         pass
