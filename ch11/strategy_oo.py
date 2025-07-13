@@ -116,3 +116,21 @@ class BubbleSort(SortStrategy):
                 if data[j] > data[j + 1]:
                     data[j], data[j + 1] = data[j + 1], data[j]
         return data
+
+
+class QuickSort(SortStrategy):
+    def sort(self, data: list[int]) -> list[int]:
+        # Base case: arrays with 0 or 1 element are already sorted
+        if len(data) <= 1:
+            return data
+
+        # Choose the middle element as the pivot
+        pivot = data[len(data) // 2]
+
+        # Partition the array into three parts
+        left = [x for x in data if x < pivot]  # Elements less than pivot
+        middle = [x for x in data if x == pivot]  # Elements equal to pivot
+        right = [x for x in data if x > pivot]  # Elements greater than pivot
+
+        # Recursively sort the left and right partitions and combine
+        return self.sort(left) + middle + self.sort(right)
