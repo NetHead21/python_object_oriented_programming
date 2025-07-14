@@ -220,6 +220,22 @@ class Keep(Adjustment):
         >>> result = dice.roll()  # Sum of highest 2 dice
     """
 
+    def apply(self, dice: "Dice") -> None:
+        """Keep only the highest dice from the results.
+
+        Args:
+            dice (Dice): The dice object with results to modify
+
+        Raises:
+            InvalidAdjustment: If trying to keep more dice than available
+        """
+        if self.amount > len(dice.dice):
+            raise InvalidAdjustment(
+                f"Cannot keep {self.amount} dice from {len(dice.dice)} dice"
+            )
+        if self.amount > 0:
+            dice.dice = dice.dice[-self.amount :]  # Keep highest (last in sorted list)
+
 
 def dice_roller(request: bytes) -> bytes:
     request_text = request.decode("utf-8")
