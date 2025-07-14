@@ -137,6 +137,25 @@ class Roll(Adjustment):
         >>> roll_adj.apply(dice)  # dice.dice now contains 3 values 1-6
     """
 
+    def __init__(self, n: int, d: int) -> None:
+        """Initialize the roll adjustment.
+
+        Args:
+            n (int): Number of dice to roll (must be positive)
+            d (int): Number of sides on each die (must be positive)
+
+        Raises:
+            ValueError: If n or d are not positive integers
+        """
+        if n <= 0:
+            raise ValueError(f"Number of dice must be positive: {n}")
+        if d <= 0:
+            raise ValueError(f"Number of sides must be positive: {d}")
+
+        super().__init__(n)  # amount = n for compatibility
+        self.n = n
+        self.d = d
+
 
 def dice_roller(request: bytes) -> bytes:
     request_text = request.decode("utf-8")
