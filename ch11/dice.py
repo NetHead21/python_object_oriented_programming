@@ -173,6 +173,22 @@ class Roll(Adjustment):
         return f"Roll({self.n}d{self.d})"
 
 
+class Drop(Adjustment):
+    """Adjustment that drops the lowest dice from the roll.
+
+    Commonly used in character generation (e.g., 4d6 drop lowest)
+    to increase average results and reduce extreme low rolls.
+
+    The dice list should be sorted before applying this adjustment
+    for predictable behavior.
+
+    Example:
+        >>> # Roll 4d6, drop the lowest die
+        >>> dice = Dice(4, 6, Drop(1))
+        >>> result = dice.roll()  # Sum of highest 3 dice
+    """
+
+
 def dice_roller(request: bytes) -> bytes:
     request_text = request.decode("utf-8")
     numbers = [random.randint(1, 6) for _ in range(6)]
