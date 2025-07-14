@@ -100,6 +100,22 @@ class Adjustment(abc.ABC):
             raise ValueError(f"Adjustment amount cannot be negative: {amount}")
         self.amount = amount
 
+    @abc.abstractmethod
+    def apply(self, dice: "Dice") -> None:
+        """Apply this adjustment to a dice object.
+
+        This method modifies the dice object's state according to the
+        specific adjustment strategy. It may modify the dice results,
+        add modifiers, or change other aspects of the dice state.
+
+        Args:
+            dice (Dice): The dice object to modify
+
+        Raises:
+            InvalidAdjustment: If the adjustment cannot be applied
+        """
+        ...
+
 
 def dice_roller(request: bytes) -> bytes:
     request_text = request.decode("utf-8")
