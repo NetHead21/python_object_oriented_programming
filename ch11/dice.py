@@ -87,6 +87,19 @@ class Adjustment(abc.ABC):
                 dice.dice = [roll * 2 for roll in dice.dice]
     """
 
+    def __init__(self, amount: int) -> None:
+        """Initialize the adjustment with a numeric parameter.
+
+        Args:
+            amount (int): The amount/count for this adjustment
+
+        Raises:
+            ValueError: If amount is negative where not appropriate
+        """
+        if amount < 0:
+            raise ValueError(f"Adjustment amount cannot be negative: {amount}")
+        self.amount = amount
+
 
 def dice_roller(request: bytes) -> bytes:
     request_text = request.decode("utf-8")
