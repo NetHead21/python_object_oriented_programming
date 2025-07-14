@@ -110,3 +110,20 @@ class Observable:
             attached multiple times.
         """
         self._observers.remove(observer)
+
+    def _notify_observers(self) -> None:
+        """Notify all registered observers of a state change.
+
+        Calls each observer's __call__ method in the order they were attached.
+        If an observer raises an exception, it's caught and logged, but
+        notification continues to other observers.
+
+        Note:
+            This is typically called by subclasses when their state changes.
+        """
+        for observer in self._observers:
+            try:
+                observer()
+            except Exception as e:
+                # In a production system, you'd want proper logging here
+                print(f"Warning: Observer {observer} raised exception: {e}")
