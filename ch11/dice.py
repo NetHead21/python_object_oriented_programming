@@ -68,6 +68,26 @@ class InvalidAdjustment(DiceError):
     pass
 
 
+class Adjustment(abc.ABC):
+    """Abstract base class for dice roll adjustments.
+
+    This class defines the interface for all dice adjustments using the
+    Strategy pattern. Adjustments can modify dice rolls, apply modifiers,
+    or filter results in various ways.
+
+    The Strategy pattern allows for flexible composition of different
+    dice behaviors without modifying the core Dice class.
+
+    Attributes:
+        amount (int): The numeric parameter for this adjustment
+
+    Example:
+        class DoubleRoll(Adjustment):
+            def apply(self, dice: "Dice") -> None:
+                dice.dice = [roll * 2 for roll in dice.dice]
+    """
+
+
 def dice_roller(request: bytes) -> bytes:
     request_text = request.decode("utf-8")
     numbers = [random.randint(1, 6) for _ in range(6)]
