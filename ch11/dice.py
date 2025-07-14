@@ -188,6 +188,22 @@ class Drop(Adjustment):
         >>> result = dice.roll()  # Sum of highest 3 dice
     """
 
+    def apply(self, dice: "Dice") -> None:
+        """Remove the lowest dice from the results.
+
+        Args:
+            dice (Dice): The dice object with results to modify
+
+        Raises:
+            InvalidAdjustment: If trying to drop more dice than available
+        """
+        if self.amount >= len(dice.dice):
+            raise InvalidAdjustment(
+                f"Cannot drop {self.amount} dice from {len(dice.dice)} dice"
+            )
+        if self.amount > 0:
+            dice.dice = dice.dice[self.amount :]
+
 
 def dice_roller(request: bytes) -> bytes:
     request_text = request.decode("utf-8")
