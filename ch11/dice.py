@@ -205,6 +205,22 @@ class Drop(Adjustment):
             dice.dice = dice.dice[self.amount :]
 
 
+class Keep(Adjustment):
+    """Adjustment that keeps only the highest dice from the roll.
+
+    Often used in advantage/disadvantage systems or when you want
+    to select the best results from a larger pool of dice.
+
+    The dice list should be sorted before applying this adjustment
+    for predictable behavior.
+
+    Example:
+        >>> # Roll 4d20, keep the highest 2
+        >>> dice = Dice(4, 20, Keep(2))
+        >>> result = dice.roll()  # Sum of highest 2 dice
+    """
+
+
 def dice_roller(request: bytes) -> bytes:
     request_text = request.decode("utf-8")
     numbers = [random.randint(1, 6) for _ in range(6)]
