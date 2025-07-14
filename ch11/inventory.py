@@ -95,3 +95,18 @@ class Observable:
             result in multiple notifications for each state change.
         """
         self._observers.append(observer)
+
+    def detach(self, observer: Observer) -> None:
+        """Remove an observer from the notification list.
+
+        Args:
+            observer (Observer): The observer object to remove.
+
+        Raises:
+            ValueError: If the observer is not in the list.
+
+        Note:
+            Only removes the first occurrence if the observer was
+            attached multiple times.
+        """
+        self._observers.remove(observer)
