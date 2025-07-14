@@ -121,6 +121,23 @@ class Adjustment(abc.ABC):
         return f"{self.__class__.__name__}({self.amount})"
 
 
+class Roll(Adjustment):
+    """Adjustment that performs the initial dice roll.
+
+    This is a special adjustment that generates the initial dice values.
+    It's automatically added as the first adjustment in every Dice object.
+
+    Attributes:
+        n (int): Number of dice to roll
+        d (int): Number of sides on each die
+
+    Example:
+        >>> roll_adj = Roll(3, 6)  # Roll 3d6
+        >>> dice = Dice(1, 1)  # Dummy dice
+        >>> roll_adj.apply(dice)  # dice.dice now contains 3 values 1-6
+    """
+
+
 def dice_roller(request: bytes) -> bytes:
     request_text = request.decode("utf-8")
     numbers = [random.randint(1, 6) for _ in range(6)]
