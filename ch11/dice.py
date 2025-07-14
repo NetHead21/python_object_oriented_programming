@@ -116,6 +116,10 @@ class Adjustment(abc.ABC):
         """
         ...
 
+    def __repr__(self) -> str:
+        """Return a string representation of the adjustment."""
+        return f"{self.__class__.__name__}({self.amount})"
+
 
 def dice_roller(request: bytes) -> bytes:
     request_text = request.decode("utf-8")
