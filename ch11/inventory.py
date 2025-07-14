@@ -168,3 +168,21 @@ class ZonkHandHistory(Observable):
         self.player = player
         self.dice_set = dice_set
         self.rolls: list[Hand] = []  # Initialize empty roll history
+
+    def start(self) -> Hand:
+        """Begin tracking and make the first dice roll.
+
+        This method initializes the roll history and makes the first roll,
+        then notifies all observers of the state change.
+
+        Returns:
+            Hand: The result of the first dice roll as a list of integers
+
+        Note:
+            This should be called once at the beginning of a player's turn.
+            Subsequent rolls should use the roll() method.
+        """
+        self.dice_set.roll()
+        self.rolls = [self.dice_set.dice.copy()]  # Start fresh history
+        self._notify_observers()  # Notify observers of new game start
+        return self.dice_set.dice
