@@ -50,6 +50,24 @@ class DiceType(IntEnum):
     D100 = 100
 
 
+class DiceError(Exception):
+    """Base exception for dice-related errors."""
+
+    pass
+
+
+class InvalidDiceNotation(DiceError):
+    """Raised when dice notation string cannot be parsed."""
+
+    pass
+
+
+class InvalidAdjustment(DiceError):
+    """Raised when an adjustment is invalid for the given dice configuration."""
+
+    pass
+
+
 def dice_roller(request: bytes) -> bytes:
     request_text = request.decode("utf-8")
     numbers = [random.randint(1, 6) for _ in range(6)]
