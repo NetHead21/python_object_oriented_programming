@@ -249,6 +249,14 @@ class Plus(Adjustment):
         >>> result = dice.roll()  # 1-20 + 5 = 6-25
     """
 
+    def apply(self, dice: "Dice") -> None:
+        """Add the adjustment amount to the dice modifier.
+
+        Args:
+            dice (Dice): The dice object to modify
+        """
+        dice.modifier += self.amount
+
 
 def dice_roller(request: bytes) -> bytes:
     request_text = request.decode("utf-8")
