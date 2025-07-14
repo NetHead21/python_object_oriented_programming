@@ -156,6 +156,18 @@ class Roll(Adjustment):
         self.n = n
         self.d = d
 
+    def apply(self, dice: "Dice") -> None:
+        """Generate initial dice roll results.
+
+        Rolls n dice with d sides each, sorts the results, and resets
+        the modifier to 0. The sorted order helps with drop/keep operations.
+
+        Args:
+            dice (Dice): The dice object to populate with roll results
+        """
+        dice.dice = sorted(random.randint(1, self.d) for _ in range(self.n))
+        dice.modifier = 0
+
 
 def dice_roller(request: bytes) -> bytes:
     request_text = request.decode("utf-8")
