@@ -156,3 +156,15 @@ class ZonkHandHistory(Observable):
         >>> first_roll = hand.start()  # Start tracking and make first roll
         >>> second_roll = hand.roll()  # Make additional rolls
     """
+
+    def __init__(self, player: str, dice_set: Dice) -> None:
+        """Initialize hand history for a player.
+
+        Args:
+            player (str): Name or identifier of the player
+            dice_set (Dice): Configured dice object for rolling
+        """
+        super().__init__()
+        self.player = player
+        self.dice_set = dice_set
+        self.rolls: list[Hand] = []  # Initialize empty roll history
