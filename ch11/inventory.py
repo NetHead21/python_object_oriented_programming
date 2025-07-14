@@ -82,3 +82,16 @@ class Observable:
     def __init__(self):
         """Initialize Observable with empty observer list."""
         self._observers: list[Observer] = []
+
+    def attach(self, observer: Observer) -> None:
+        """Register an observer to receive state change notifications.
+
+        Args:
+            observer (Observer): The observer object to register. Must implement
+                the Observer protocol (callable with no arguments).
+
+        Note:
+            The same observer can be attached multiple times, which will
+            result in multiple notifications for each state change.
+        """
+        self._observers.append(observer)
