@@ -127,3 +127,32 @@ class Observable:
             except Exception as e:
                 # In a production system, you'd want proper logging here
                 print(f"Warning: Observer {observer} raised exception: {e}")
+
+
+Hand = list[int]  # Type alias for clarity - represents a dice roll result
+
+
+class ZonkHandHistory(Observable):
+    """Tracks the history of dice rolls for a Zonk game player.
+
+    This class extends Observable to notify observers whenever new dice
+    rolls occur. It maintains a complete history of all rolls made by
+    a player during their turn, allowing observers to analyze patterns
+    and react to game events.
+
+    Zonk is a dice game where players roll dice and try to score points
+    based on various combinations. This class specifically tracks the
+    sequence of rolls to enable pattern detection and game state management.
+
+    Attributes:
+        player (str): Name of the player whose rolls are being tracked
+        dice_set (Dice): The dice object used for rolling
+        rolls (list[Hand]): Complete history of all dice rolls made
+
+    Example:
+        >>> from dice import Dice
+        >>> dice = Dice(6, 6)  # 6 dice, 6 sides each
+        >>> hand = ZonkHandHistory("Alice", dice)
+        >>> first_roll = hand.start()  # Start tracking and make first roll
+        >>> second_roll = hand.roll()  # Make additional rolls
+    """
