@@ -237,6 +237,19 @@ class Keep(Adjustment):
             dice.dice = dice.dice[-self.amount :]  # Keep highest (last in sorted list)
 
 
+class Plus(Adjustment):
+    """Adjustment that adds a positive modifier to the dice total.
+
+    This represents bonuses from abilities, equipment, or other
+    game mechanics that increase the final result.
+
+    Example:
+        >>> # 1d20 + 5 (attack roll with +5 bonus)
+        >>> dice = Dice(1, 20, Plus(5))
+        >>> result = dice.roll()  # 1-20 + 5 = 6-25
+    """
+
+
 def dice_roller(request: bytes) -> bytes:
     request_text = request.decode("utf-8")
     numbers = [random.randint(1, 6) for _ in range(6)]
