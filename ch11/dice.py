@@ -168,6 +168,10 @@ class Roll(Adjustment):
         dice.dice = sorted(random.randint(1, self.d) for _ in range(self.n))
         dice.modifier = 0
 
+    def __repr__(self) -> str:
+        """Return string representation like '3d6'."""
+        return f"Roll({self.n}d{self.d})"
+
 
 def dice_roller(request: bytes) -> bytes:
     request_text = request.decode("utf-8")
