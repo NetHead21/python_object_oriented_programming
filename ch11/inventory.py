@@ -238,3 +238,24 @@ class SaveZonkHand(Observer):
         """
         self.hand = hand
         self.count = 0
+
+    def __call__(self) -> None:
+        """Handle notification of hand state change by logging data.
+
+        Creates a structured log entry containing:
+        - Player identifier
+        - Sequence number (incremental)
+        - Complete roll history as JSON
+        - Timestamp of the notification
+
+        The log entry is printed to stdout but could easily be modified
+        to write to files, databases, or external logging systems.
+        """
+        self.count += 1
+        message = {
+            "player": self.hand.player,
+            "sequence": self.count,
+            "hand": json.dumps(self.hand.rolls),
+            "time": time.time(),
+        }
+        print(f"SaveZonkHand: {message}")
