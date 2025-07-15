@@ -273,6 +273,14 @@ class Minus(Adjustment):
         >>> result = dice.roll()  # 1-20 - 2 = -1 to 18
     """
 
+    def apply(self, dice: "Dice") -> None:
+        """Subtract the adjustment amount from the dice modifier.
+
+        Args:
+            dice (Dice): The dice object to modify
+        """
+        dice.modifier -= self.amount
+
 
 def dice_roller(request: bytes) -> bytes:
     request_text = request.decode("utf-8")
