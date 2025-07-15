@@ -186,3 +186,46 @@ class ZonkHandHistory(Observable):
         self.rolls = [self.dice_set.dice.copy()]  # Start fresh history
         self._notify_observers()  # Notify observers of new game start
         return self.dice_set.dice
+
+    def roll(self) -> Hand:
+        """Make an additional dice roll and update history.
+
+        Adds a new roll to the history and notifies observers of the
+        state change. This allows observers to analyze the latest roll
+        in context of the complete roll history.
+
+        Returns:
+            Hand: The result of the dice roll as a list of integers
+
+        Raises:
+            AttributeError: If start() hasn't been called first
+        """
+        self.dice_set.roll()
+        self.rolls.append(self.dice_set.dice.copy())  # Add to history
+        self._notify_observers()  # Notify observers of new roll
+        return self.dice_set.dice
+
+
+class SaveZonkHand(Observer):
+    """Observer that logs and saves Zonk hand history data.
+
+    This observer implements game data persistence by creating structured
+    logs of each dice roll. It maintains a sequence counter and creates
+    JSON-serializable records that include player information, timing,
+    and complete roll history.
+
+    This pattern allows for game replay, statistical analysis, and
+    audit trails without tightly coupling the logging logic to the
+    core game mechanics.
+
+    Attributes:
+        hand (ZonkHandHistory): The hand history object being observed
+        count (int): Sequence counter for number of notifications received
+
+    Example:
+        >>> hand = ZonkHandHistory("Bob", dice_set)
+        >>> save_observer = SaveZonkHand(hand)
+        >>> hand.attach(save_observer)
+        >>> hand.start()  # Triggers save_observer with sequence #1
+        SaveZonkHand: {'player': 'Bob', 'sequence': 1, ...}
+    """
