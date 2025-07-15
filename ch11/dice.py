@@ -426,6 +426,11 @@ class Dice:
                 f"Expected format like '3d6', '1d20+5', '4d6k3', etc."
             )
 
+        # Extract components
+        n_str = dice_match.group("n")
+        n = int(n_str) if n_str else 1  # Default to 1 if not specified
+        d = int(dice_match.group("d"))
+
 
 def dice_roller(request: bytes) -> bytes:
     request_text = request.decode("utf-8")
