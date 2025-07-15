@@ -318,3 +318,17 @@ class ThreePairZonkHand(Observer):
             Assumes at least one roll has been made (rolls list not empty).
             In production code, you'd want to add bounds checking.
         """
+        if not self.hand.rolls:
+            self.zonked = False
+            return
+
+        last_roll = self.hand.rolls[-1]
+        distinct_values = set(last_roll)
+
+        # Check for exactly 3 distinct values, each appearing exactly twice
+        self.zonked = len(distinct_values) == 3 and all(
+            last_roll.count(v) == 2 for v in distinct_values
+        )
+
+        if self.zonked:
+            print(f"3 Pair Zonk! Roll: {sorted(last_roll)}")
