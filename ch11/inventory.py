@@ -229,3 +229,12 @@ class SaveZonkHand(Observer):
         >>> hand.start()  # Triggers save_observer with sequence #1
         SaveZonkHand: {'player': 'Bob', 'sequence': 1, ...}
     """
+
+    def __init__(self, hand: ZonkHandHistory) -> None:
+        """Initialize the save observer for a specific hand.
+
+        Args:
+            hand (ZonkHandHistory): The hand history object to observe
+        """
+        self.hand = hand
+        self.count = 0
