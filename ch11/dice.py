@@ -333,6 +333,25 @@ class Dice:
         self._n = n  # Store for string representation
         self._d = d
 
+    def roll(self) -> int:
+        """Perform a complete dice roll with all adjustments.
+
+        Applies all adjustments in order and returns the final total.
+        This includes the sum of remaining dice plus any modifiers.
+
+        Returns:
+            int: The final total after all adjustments
+
+        Raises:
+            InvalidAdjustment: If any adjustment cannot be applied
+        """
+        try:
+            for adjustment in self.adjustments:
+                adjustment.apply(self)
+            return sum(self.dice) + self.modifier
+        except Exception as e:
+            raise InvalidAdjustment(f"Error applying adjustments: {e}") from e
+
 
 def dice_roller(request: bytes) -> bytes:
     request_text = request.decode("utf-8")
