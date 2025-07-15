@@ -311,6 +311,28 @@ class Dice:
         >>> damage = Dice.from_text("2d6+3")
     """
 
+    def __init__(self, n: int, d: int, *adj: Adjustment) -> None:
+        """Initialize dice with base roll and optional adjustments.
+
+        Args:
+            n (int): Number of dice to roll
+            d (int): Number of sides on each die
+            *adj (Adjustment): Variable number of adjustments to apply
+
+        Raises:
+            ValueError: If n or d are not positive integers
+        """
+        if n <= 0:
+            raise ValueError(f"Number of dice must be positive: {n}")
+        if d <= 0:
+            raise ValueError(f"Number of sides must be positive: {d}")
+
+        self.adjustments = [cast(Adjustment, Roll(n, d))] + list(adj)
+        self.dice: list[int] = []
+        self.modifier: int = 0
+        self._n = n  # Store for string representation
+        self._d = d
+
 
 def dice_roller(request: bytes) -> bytes:
     request_text = request.decode("utf-8")
