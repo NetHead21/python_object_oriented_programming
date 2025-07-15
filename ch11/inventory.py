@@ -301,3 +301,20 @@ class ThreePairZonkHand(Observer):
         """
         self.hand = hand
         self.zonked = False
+
+    def __call__(self) -> None:
+        """Analyze the latest roll for three-pair pattern.
+
+        Examines the most recent dice roll to determine if it contains
+        exactly three pairs. Updates the zonked status and prints a
+        notification message if the pattern is detected.
+
+        The detection algorithm:
+        1. Get unique values from the last roll
+        2. Verify there are exactly 3 distinct values
+        3. Verify each value appears exactly 2 times
+
+        Note:
+            Assumes at least one roll has been made (rolls list not empty).
+            In production code, you'd want to add bounds checking.
+        """
