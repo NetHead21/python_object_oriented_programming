@@ -400,6 +400,7 @@ class Dice:
             >>> dice = Dice.from_text("4d20k3")
             >>> dice = Dice.from_text("1d100")
         """
+
         # Enhanced regex to capture dice notation
         dice_pattern = re.compile(
             r"^(?P<n>\d*)d(?P<d>\d+)(?P<a>(?:[dk+-]\d+)*)$", re.IGNORECASE
@@ -413,8 +414,17 @@ class Dice:
             "+": Plus,
             "-": Minus,
         }
+
         # Clean the input
         dice_text = dice_text.strip().lower()
+
+        # Try to match the pattern
+        dice_match = dice_pattern.match(dice_text)
+        if dice_match is None:
+            raise InvalidDiceNotation(
+                f"Invalid dice notation: '{dice_text}'. "
+                f"Expected format like '3d6', '1d20+5', '4d6k3', etc."
+            )
 
 
 def dice_roller(request: bytes) -> bytes:
