@@ -352,6 +352,27 @@ class Dice:
         except Exception as e:
             raise InvalidAdjustment(f"Error applying adjustments: {e}") from e
 
+    def get_details(self) -> dict[str, any]:
+        """Get detailed information about the last roll.
+
+        Returns:
+            dict: Contains 'individual_dice', 'modifier', 'total'
+
+        Example:
+            >>> dice = Dice(3, 6, Plus(2))
+            >>> total = dice.roll()
+            >>> details = dice.get_details()
+            >>> print(f"Rolled {details['individual_dice']}, "
+            ...       f"modifier {details['modifier']}, "
+            ...       f"total {details['total']}")
+        """
+        return {
+            "individual_dice": self.dice.copy(),
+            "modifier": self.modifier,
+            "total": sum(self.dice) + self.modifier,
+            "adjustments": [repr(adj) for adj in self.adjustments[1:]],  # Skip Roll
+        }
+
 
 def dice_roller(request: bytes) -> bytes:
     request_text = request.decode("utf-8")
