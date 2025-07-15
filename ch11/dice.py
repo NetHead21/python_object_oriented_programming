@@ -373,6 +373,34 @@ class Dice:
             "adjustments": [repr(adj) for adj in self.adjustments[1:]],  # Skip Roll
         }
 
+    @classmethod
+    def from_text(cls, dice_text: str) -> "Dice":
+        """Parse dice notation string into a Dice object.
+
+        Supports standard RPG dice notation:
+        - "1d20" or "d20" (single die)
+        - "3d6" (multiple dice)
+        - "4d6d1" (drop lowest)
+        - "4d6k3" (keep highest 3)
+        - "1d20+5" (bonus)
+        - "2d6-1" (penalty)
+        - "4d6d1+2" (complex combinations)
+
+        Args:
+            dice_text (str): Dice notation string to parse
+
+        Returns:
+            Dice: A new Dice object with parsed adjustments
+
+        Raises:
+            InvalidDiceNotation: If the notation cannot be parsed
+
+        Example:
+            >>> dice = Dice.from_text("3d6+2")
+            >>> dice = Dice.from_text("4d20k3")
+            >>> dice = Dice.from_text("1d100")
+        """
+
 
 def dice_roller(request: bytes) -> bytes:
     request_text = request.decode("utf-8")
