@@ -292,3 +292,12 @@ class ThreePairZonkHand(Observer):
         >>> pattern_observer.zonked
         True
     """
+
+    def __init__(self, hand: ZonkHandHistory) -> None:
+        """Initialize the three-pair pattern detector.
+
+        Args:
+            hand (ZonkHandHistory): The hand history object to observe
+        """
+        self.hand = hand
+        self.zonked = False
