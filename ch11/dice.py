@@ -400,6 +400,11 @@ class Dice:
             >>> dice = Dice.from_text("4d20k3")
             >>> dice = Dice.from_text("1d100")
         """
+        # Enhanced regex to capture dice notation
+        dice_pattern = re.compile(
+            r"^(?P<n>\d*)d(?P<d>\d+)(?P<a>(?:[dk+-]\d+)*)$", re.IGNORECASE
+        )
+        adjustment_pattern = re.compile(r"([dk+-])(\d+)", re.IGNORECASE)
 
 
 def dice_roller(request: bytes) -> bytes:
