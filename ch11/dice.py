@@ -437,6 +437,10 @@ class Dice:
         if d <= 0:
             raise InvalidDiceNotation(f"Number of sides must be positive: {d}")
 
+        # Parse adjustments
+        adjustment_text = dice_match.group("a") or ""
+        adjustment_matches = adjustment_pattern.finditer(adjustment_text)
+
 
 def dice_roller(request: bytes) -> bytes:
     request_text = request.decode("utf-8")
