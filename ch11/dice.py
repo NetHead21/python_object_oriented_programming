@@ -406,6 +406,14 @@ class Dice:
         )
         adjustment_pattern = re.compile(r"([dk+-])(\d+)", re.IGNORECASE)
 
+        # Mapping of notation characters to adjustment classes
+        adj_class: dict[str, type[Adjustment]] = {
+            "d": Drop,
+            "k": Keep,
+            "+": Plus,
+            "-": Minus,
+        }
+
 
 def dice_roller(request: bytes) -> bytes:
     request_text = request.decode("utf-8")
