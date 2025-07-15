@@ -413,6 +413,8 @@ class Dice:
             "+": Plus,
             "-": Minus,
         }
+        # Clean the input
+        dice_text = dice_text.strip().lower()
 
 
 def dice_roller(request: bytes) -> bytes:
