@@ -431,6 +431,12 @@ class Dice:
         n = int(n_str) if n_str else 1  # Default to 1 if not specified
         d = int(dice_match.group("d"))
 
+        # Validate basic values
+        if n <= 0:
+            raise InvalidDiceNotation(f"Number of dice must be positive: {n}")
+        if d <= 0:
+            raise InvalidDiceNotation(f"Number of sides must be positive: {d}")
+
 
 def dice_roller(request: bytes) -> bytes:
     request_text = request.decode("utf-8")
