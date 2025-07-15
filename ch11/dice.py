@@ -440,6 +440,17 @@ class Dice:
         # Parse adjustments
         adjustment_text = dice_match.group("a") or ""
         adjustment_matches = adjustment_pattern.finditer(adjustment_text)
+        adjustments = []
+        for match in adjustment_matches:
+            adj_type = match.group(1).lower()
+            adj_amount = int(match.group(2))
+
+            if adj_type in adj_class:
+                adjustments.append(adj_class[adj_type](adj_amount))
+            else:
+                raise InvalidDiceNotation(f"Unknown adjustment type: {adj_type}")
+
+        return cls(n, d, *adjustments)
 
 
 def dice_roller(request: bytes) -> bytes:
