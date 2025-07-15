@@ -259,3 +259,36 @@ class SaveZonkHand(Observer):
             "time": time.time(),
         }
         print(f"SaveZonkHand: {message}")
+
+
+class ThreePairZonkHand(Observer):
+    """Observer that detects three-pair patterns in Zonk dice rolls.
+
+    This specialized observer analyzes the most recent dice roll to detect
+    a "three pairs" pattern - where exactly 6 dice show 3 different values,
+    with each value appearing exactly twice.
+
+    In Zonk, certain patterns like three pairs have special significance
+    (often called a "Zonk" which ends the player's turn with zero points).
+    This observer demonstrates how the Observer pattern can be used for
+    real-time pattern detection and game rule enforcement.
+
+    Pattern Detection Logic:
+    - Exactly 3 distinct values in the roll
+    - Each distinct value appears exactly 2 times
+    - Example: [1, 1, 3, 3, 6, 6] = Three pairs (1s, 3s, 6s)
+
+    Attributes:
+        hand (ZonkHandHistory): The hand history object being observed
+        zonked (bool): True if the last roll contained three pairs
+
+    Example:
+        >>> hand = ZonkHandHistory("Charlie", dice_set)
+        >>> pattern_observer = ThreePairZonkHand(hand)
+        >>> hand.attach(pattern_observer)
+        >>> # If roll produces [2,2,4,4,5,5]:
+        >>> hand.roll()
+        3 Pair Zonk!
+        >>> pattern_observer.zonked
+        True
+    """
