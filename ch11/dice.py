@@ -258,6 +258,22 @@ class Plus(Adjustment):
         dice.modifier += self.amount
 
 
+class Minus(Adjustment):
+    """Adjustment that subtracts a penalty from the dice total.
+
+    This represents penalties from conditions, circumstances, or
+    other game mechanics that decrease the final result.
+
+    Note: For consistency with the Plus class, this uses a positive
+    amount value that gets subtracted from the total.
+
+    Example:
+        >>> # 1d20 - 2 (attack roll with -2 penalty)
+        >>> dice = Dice(1, 20, Minus(2))
+        >>> result = dice.roll()  # 1-20 - 2 = -1 to 18
+    """
+
+
 def dice_roller(request: bytes) -> bytes:
     request_text = request.decode("utf-8")
     numbers = [random.randint(1, 6) for _ in range(6)]
