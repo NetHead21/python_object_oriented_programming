@@ -282,6 +282,36 @@ class Minus(Adjustment):
         dice.modifier -= self.amount
 
 
+class Dice:
+    """A flexible dice rolling system with adjustments.
+
+    This class coordinates dice rolling with a series of adjustments
+    that can modify the results, apply bonuses/penalties, or filter
+    the dice in various ways.
+
+    The adjustments are applied in order, allowing for complex
+    combinations like "roll 4d6, drop lowest, add 2".
+
+    Attributes:
+        adjustments (list[Adjustment]): List of adjustments to apply
+        dice (list[int]): Current dice roll results (after rolling)
+        modifier (int): Current modifier value (after adjustments)
+
+    Example:
+        >>> # Simple dice
+        >>> d20 = Dice(1, 20)
+        >>> result = d20.roll()
+
+        >>> # Complex dice with adjustments
+        >>> stats = Dice(4, 6, Drop(1))  # 4d6 drop lowest
+        >>> stat_value = stats.roll()
+
+        >>> # From text notation
+        >>> attack = Dice.from_text("1d20+5")
+        >>> damage = Dice.from_text("2d6+3")
+    """
+
+
 def dice_roller(request: bytes) -> bytes:
     request_text = request.decode("utf-8")
     numbers = [random.randint(1, 6) for _ in range(6)]
