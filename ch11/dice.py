@@ -589,6 +589,12 @@ def dice_roller(request: bytes) -> bytes:
             numbers = roll_basic(6, 6)
             total = sum(numbers)
             response = f"{request_text} = {numbers} = {total}"
+    except UnicodeDecodeError:
+        response = "Error: Invalid UTF-8 encoding in request"
+    except Exception as e:
+        response = f"Error: {e}"
+
+    return response.encode("utf-8")
 
 
 def dice_roller(request: bytes) -> bytes:
