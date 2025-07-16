@@ -631,3 +631,9 @@ def d20(n: int = 1) -> "Dice":
 def d100(n: int = 1) -> "Dice":
     """Roll n hundred-sided dice (percentile)."""
     return Dice(n, 100)
+
+
+if __name__ == "__main__":
+    # Demonstration of the improved dice system
+    print("Advanced Dice Rolling System Demonstration")
+    print("=" * 50)
