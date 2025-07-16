@@ -538,6 +538,7 @@ def disadvantage(n: int = 1, d: int = 20) -> "Dice":
         >>> disadv_roll = disadvantage()  # 2d20d1 (drop highest)
         >>> result = disadv_roll.roll()
     """
+    return Dice(n * 2, d, Drop(n))
 
 
 def dice_roller(request: bytes) -> bytes:
