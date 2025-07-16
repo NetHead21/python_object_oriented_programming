@@ -550,6 +550,7 @@ def ability_score() -> "Dice":
     Example:
         >>> strength = ability_score().roll()  # 3-18, avg ~12.24
     """
+    return Dice(4, 6, Drop(1))
 
 
 def dice_roller(request: bytes) -> bytes:
