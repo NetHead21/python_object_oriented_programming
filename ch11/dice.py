@@ -541,6 +541,17 @@ def disadvantage(n: int = 1, d: int = 20) -> "Dice":
     return Dice(n * 2, d, Drop(n))
 
 
+def ability_score() -> "Dice":
+    """Create dice for standard D&D ability score generation.
+
+    Returns:
+        Dice: 4d6 drop lowest die
+
+    Example:
+        >>> strength = ability_score().roll()  # 3-18, avg ~12.24
+    """
+
+
 def dice_roller(request: bytes) -> bytes:
     request_text = request.decode("utf-8")
     numbers = [random.randint(1, 6) for _ in range(6)]
