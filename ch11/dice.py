@@ -584,6 +584,12 @@ def dice_roller(request: bytes) -> bytes:
                 sign = "+" if details["modifier"] >= 0 else ""
                 response += f" {sign}{details['modifier']}"
             response += f" = {total}"
+        except InvalidDiceNotation:
+            # Fallback to simple 6d6 roll for backwards compatibility
+            numbers = roll_basic(6, 6)
+            total = sum(numbers)
+            response = f"{request_text} = {numbers} = {total}"
+
 
 def dice_roller(request: bytes) -> bytes:
     request_text = request.decode("utf-8")
