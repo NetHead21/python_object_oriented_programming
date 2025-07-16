@@ -484,6 +484,22 @@ D20 = DiceType.D20
 D100 = DiceType.D100
 
 
+def roll_basic(n: int, d: int) -> list[int]:
+    """Simple function to roll dice without adjustments.
+
+    Args:
+        n (int): Number of dice to roll
+        d (int): Number of sides on each die
+
+    Returns:
+        list[int]: List of individual die results
+
+    Example:
+        >>> results = roll_basic(3, 6)  # Roll 3d6
+        >>> total = sum(results)
+    """
+
+
 def dice_roller(request: bytes) -> bytes:
     request_text = request.decode("utf-8")
     numbers = [random.randint(1, 6) for _ in range(6)]
