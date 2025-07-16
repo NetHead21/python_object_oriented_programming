@@ -658,3 +658,10 @@ if __name__ == "__main__":
         dice = Dice.from_text(notation)
         result = dice.roll()
         print(f"{notation}: {result} {dice.get_details()}")
+
+    # Advantage/Disadvantage
+    print("\n4. Advantage and Disadvantage:")
+    adv = advantage()
+    disadv = disadvantage()
+    print(f"Advantage (2d20k1): {adv.roll()}")
+    print(f"Disadvantage (2d20d1): {disadv.roll()}")
