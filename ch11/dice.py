@@ -474,6 +474,16 @@ class Dice:
         return f"Dice({self._n}, {self._d}, {', '.join(repr(a) for a in self.adjustments[1:])})"
 
 
+# Standard dice type constants for convenience
+D4 = DiceType.D4
+D6 = DiceType.D6
+D8 = DiceType.D8
+D10 = DiceType.D10
+D12 = DiceType.D12
+D20 = DiceType.D20
+D100 = DiceType.D100
+
+
 def dice_roller(request: bytes) -> bytes:
     request_text = request.decode("utf-8")
     numbers = [random.randint(1, 6) for _ in range(6)]
