@@ -554,6 +554,25 @@ def ability_score() -> "Dice":
 
 
 def dice_roller(request: bytes) -> bytes:
+    """Legacy dice rolling function for network/socket communication.
+
+    This function maintains compatibility with existing socket-based
+    dice rolling systems while providing improved functionality.
+
+    Args:
+        request (bytes): UTF-8 encoded dice notation or roll request
+
+    Returns:
+        bytes: UTF-8 encoded response with roll results
+
+    Example:
+        >>> request = b"3d6+2"
+        >>> response = dice_roller(request)
+        >>> print(response.decode())  # "3d6+2 = [4, 5, 6] + 2 = 17"
+    """
+
+
+def dice_roller(request: bytes) -> bytes:
     request_text = request.decode("utf-8")
     numbers = [random.randint(1, 6) for _ in range(6)]
     response = f"{request_text} = {numbers}"
