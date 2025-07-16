@@ -498,6 +498,9 @@ def roll_basic(n: int, d: int) -> list[int]:
         >>> results = roll_basic(3, 6)  # Roll 3d6
         >>> total = sum(results)
     """
+    if n <= 0 or d <= 0:
+        raise ValueError("Number of dice and sides must be positive")
+    return [random.randint(1, d) for _ in range(n)]
 
 
 def dice_roller(request: bytes) -> bytes:
