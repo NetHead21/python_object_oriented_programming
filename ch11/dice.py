@@ -650,3 +650,11 @@ if __name__ == "__main__":
     result = stat_roll.roll()
     print(f"4d6 drop lowest: {result}")
     print(f"Details: {stat_roll.get_details()}")
+
+    # Parsing from text
+    print("\n3. Parsing from Text Notation:")
+    examples = ["3d6+2", "1d20+5", "4d6k3", "2d8-1"]
+    for notation in examples:
+        dice = Dice.from_text(notation)
+        result = dice.roll()
+        print(f"{notation}: {result} {dice.get_details()}")
