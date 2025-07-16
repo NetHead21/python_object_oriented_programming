@@ -606,3 +606,8 @@ def d4(n: int = 1) -> "Dice":
 def d6(n: int = 1) -> "Dice":
     """Roll n six-sided dice."""
     return Dice(n, 6)
+
+
+def d8(n: int = 1) -> "Dice":
+    """Roll n eight-sided dice."""
+    return Dice(n, 8)
