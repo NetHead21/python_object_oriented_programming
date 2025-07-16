@@ -601,3 +601,8 @@ def dice_roller(request: bytes) -> bytes:
 def d4(n: int = 1) -> "Dice":
     """Roll n four-sided dice."""
     return Dice(n, 4)
+
+
+def d6(n: int = 1) -> "Dice":
+    """Roll n six-sided dice."""
+    return Dice(n, 6)
