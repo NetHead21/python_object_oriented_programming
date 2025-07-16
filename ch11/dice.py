@@ -503,6 +503,24 @@ def roll_basic(n: int, d: int) -> list[int]:
     return [random.randint(1, d) for _ in range(n)]
 
 
+def advantage(n: int = 1, d: int = 20) -> "Dice":
+    """Create dice with advantage (roll twice, keep higher).
+
+    Common in D&D 5th edition and other modern RPG systems.
+
+    Args:
+        n (int): Number of dice per roll (default 1)
+        d (int): Number of sides per die (default 20)
+
+    Returns:
+        Dice: Configured dice object for advantage rolls
+
+    Example:
+        >>> adv_roll = advantage()  # 2d20k1
+        >>> result = adv_roll.roll()
+    """
+
+
 def dice_roller(request: bytes) -> bytes:
     request_text = request.decode("utf-8")
     numbers = [random.randint(1, 6) for _ in range(6)]
