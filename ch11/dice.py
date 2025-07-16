@@ -519,8 +519,25 @@ def advantage(n: int = 1, d: int = 20) -> "Dice":
         >>> adv_roll = advantage()  # 2d20k1
         >>> result = adv_roll.roll()
     """
-
     return Dice(n * 2, d, Keep(n))
+
+
+def disadvantage(n: int = 1, d: int = 20) -> "Dice":
+    """Create dice with disadvantage (roll twice, keep lower).
+
+    Common in D&D 5th edition and other modern RPG systems.
+
+    Args:
+        n (int): Number of dice per roll (default 1)
+        d (int): Number of sides per die (default 20)
+
+    Returns:
+        Dice: Configured dice object for disadvantage rolls
+
+    Example:
+        >>> disadv_roll = disadvantage()  # 2d20d1 (drop highest)
+        >>> result = disadv_roll.roll()
+    """
 
 
 def dice_roller(request: bytes) -> bytes:
