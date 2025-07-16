@@ -626,3 +626,8 @@ def d12(n: int = 1) -> "Dice":
 def d20(n: int = 1) -> "Dice":
     """Roll n twenty-sided dice."""
     return Dice(n, 20)
+
+
+def d100(n: int = 1) -> "Dice":
+    """Roll n hundred-sided dice (percentile)."""
+    return Dice(n, 100)
