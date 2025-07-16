@@ -452,6 +452,23 @@ class Dice:
 
         return cls(n, d, *adjustments)
 
+    def __str__(self) -> str:
+        """Return a human-readable string representation."""
+        base = f"{self._n}d{self._d}"
+        adj_strs = []
+
+        for adj in self.adjustments[1:]:  # Skip the Roll adjustment
+            if isinstance(adj, Drop):
+                adj_strs.append(f"d{adj.amount}")
+            elif isinstance(adj, Keep):
+                adj_strs.append(f"k{adj.amount}")
+            elif isinstance(adj, Plus):
+                adj_strs.append(f"+{adj.amount}")
+            elif isinstance(adj, Minus):
+                adj_strs.append(f"-{adj.amount}")
+
+        return base + "".join(adj_strs)
+
 
 def dice_roller(request: bytes) -> bytes:
     request_text = request.decode("utf-8")
