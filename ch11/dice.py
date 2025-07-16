@@ -637,3 +637,9 @@ if __name__ == "__main__":
     # Demonstration of the improved dice system
     print("Advanced Dice Rolling System Demonstration")
     print("=" * 50)
+
+    # Basic rolling
+    print("\n1. Basic Dice Rolling:")
+    basic_d20 = Dice(1, 20)
+    print(f"1d20: {basic_d20.roll()}")
+    print(f"Details: {basic_d20.get_details()}")
