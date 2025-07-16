@@ -570,7 +570,20 @@ def dice_roller(request: bytes) -> bytes:
         >>> response = dice_roller(request)
         >>> print(response.decode())  # "3d6+2 = [4, 5, 6] + 2 = 17"
     """
+    try:
+        request_text = request.decode("utf-8").strip()
 
+        # Try to parse as dice notation first
+        try:
+            dice = Dice.from_text(request_text)
+            total = dice.roll()
+            details = dice.get_details()
+
+            response = f"{request_text} = {details['individual_dice']}"
+            if details["modifier"] != 0:
+                sign = "+" if details["modifier"] >= 0 else ""
+                response += f" {sign}{details['modifier']}"
+            response += f" = {total}"
 
 def dice_roller(request: bytes) -> bytes:
     request_text = request.decode("utf-8")
