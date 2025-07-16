@@ -520,6 +520,8 @@ def advantage(n: int = 1, d: int = 20) -> "Dice":
         >>> result = adv_roll.roll()
     """
 
+    return Dice(n * 2, d, Keep(n))
+
 
 def dice_roller(request: bytes) -> bytes:
     request_text = request.decode("utf-8")
