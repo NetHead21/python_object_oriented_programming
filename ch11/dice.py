@@ -469,6 +469,10 @@ class Dice:
 
         return base + "".join(adj_strs)
 
+    def __repr__(self) -> str:
+        """Return a detailed string representation."""
+        return f"Dice({self._n}, {self._d}, {', '.join(repr(a) for a in self.adjustments[1:])})"
+
 
 def dice_roller(request: bytes) -> bytes:
     request_text = request.decode("utf-8")
