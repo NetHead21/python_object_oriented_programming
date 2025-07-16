@@ -665,3 +665,12 @@ if __name__ == "__main__":
     disadv = disadvantage()
     print(f"Advantage (2d20k1): {adv.roll()}")
     print(f"Disadvantage (2d20d1): {disadv.roll()}")
+
+    # Ability scores
+    print("\n5. D&D Ability Score Generation:")
+    abilities = ["STR", "DEX", "CON", "INT", "WIS", "CHA"]
+    for ability in abilities:
+        score = ability_score().roll()
+        print(f"{ability}: {score}")
+
+    print("\nDemonstration complete!")
