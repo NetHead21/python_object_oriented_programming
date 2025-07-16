@@ -643,3 +643,10 @@ if __name__ == "__main__":
     basic_d20 = Dice(1, 20)
     print(f"1d20: {basic_d20.roll()}")
     print(f"Details: {basic_d20.get_details()}")
+
+    # Complex dice with adjustments
+    print("\n2. Complex Dice with Adjustments:")
+    stat_roll = Dice(4, 6, Drop(1))
+    result = stat_roll.roll()
+    print(f"4d6 drop lowest: {result}")
+    print(f"Details: {stat_roll.get_details()}")
