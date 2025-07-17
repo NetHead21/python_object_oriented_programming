@@ -337,3 +337,16 @@ Use Cases:
 • Batch formatting operations
 • Content management systems
 """
+
+print("\n" + "=" * 60)
+print("Example 5: Batch String Processing")
+print("=" * 60)
+
+# Sample text data (like what you might get from a CSV or database)
+user_data = [
+    "  Alice@example.com  ",
+    "BOB@COMPANY.CO.UK",
+    "charlie.brown@university.edu   ",
+    "  DIANA_PRINCE@AGENCY.GOV  ",
+    "eve.wilson@startup.io",
+]
