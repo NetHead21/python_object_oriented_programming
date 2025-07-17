@@ -254,3 +254,20 @@ Use Cases:
 • Filtering operations based on method results
 • Sorting by method return values
 """
+
+print("\n" + "=" * 60)
+print("Example 4: Functional Programming Applications")
+print("=" * 60)
+
+# Data transformation with map()
+words = ["hello", "WORLD", "PyThOn", "programming", "DATA"]
+
+# Transform words using various string methods
+print("Data transformation with map():")
+print(f"Original words: {words}")
+print(f"All uppercase: {list(map(methodcaller('upper'), words))}")
+print(f"All lowercase: {list(map(methodcaller('lower'), words))}")
+print(f"Title case: {list(map(methodcaller('title'), words))}")
+print(f"Capitalized: {list(map(methodcaller('capitalize'), words))}")
+print(f"Swapped case: {list(map(methodcaller('swapcase'), words))}")
+print()
