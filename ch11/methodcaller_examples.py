@@ -48,3 +48,25 @@ from operator import methodcaller
 from collections import defaultdict
 import time
 import sys
+
+# =============================================================================
+# Example 1: Basic Method Calling
+# =============================================================================
+"""
+Basic Method Calling with methodcaller
+
+This section demonstrates how to use methodcaller to call methods without
+arguments on various objects. This is the simplest form of methodcaller usage.
+
+Key Learning Points:
+• methodcaller('method') creates a callable that returns obj.method()
+• Works with any object that has the specified method
+• Method name validation happens at creation time
+• Reusable across different object instances
+
+Use Cases:
+• Calling standard methods on collections of objects
+• String processing operations
+• Container method calls (clear, copy, etc.)
+• Boolean method calls (is_digit, is_alpha, etc.)
+"""
