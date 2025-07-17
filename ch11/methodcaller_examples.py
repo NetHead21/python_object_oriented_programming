@@ -421,3 +421,28 @@ Use Cases:
 • Data structure pipeline operations
 • Collection management tasks
 """
+
+print("\n" + "=" * 60)
+print("Example 6: Container Operations")
+print("=" * 60)
+
+# List operations
+list_samples = [[1, 2, 3], [4, 5], [6, 7, 8, 9], [10]]
+
+# List method callers
+get_length = methodcaller("__len__")
+copy_list = methodcaller("copy")
+reverse_list = methodcaller("reverse")  # Note: this modifies the list
+
+print("List operations:")
+for lst in list_samples:
+    original = lst.copy()
+    print(f"  Original: {original}")
+    print(f"    Length: {get_length(lst)}")
+    print(f"    Copy: {copy_list(lst)}")
+
+    # Demonstrate reverse (on a copy to preserve original)
+    lst_copy = copy_list(lst)
+    reverse_list(lst_copy)
+    print(f"    Reversed: {lst_copy}")
+    print()
