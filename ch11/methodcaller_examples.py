@@ -169,3 +169,26 @@ for num in numbers:
     print(f"    rounded to 2 places: {round_2(num)}")
     print(f"    rounded to 4 places: {round_4(num)}")
     print()
+
+
+# =============================================================================
+# Example 3: Methods with Keyword Arguments
+# =============================================================================
+"""
+Method Calling with Keyword Arguments
+
+This section demonstrates how methodcaller handles keyword arguments,
+providing even more flexibility for method calling patterns.
+
+Key Learning Points:
+• methodcaller('method', key=value) calls obj.method(key=value)
+• Can mix positional and keyword arguments
+• Keyword arguments are fixed at creation time
+• Useful for methods with many optional parameters
+
+Use Cases:
+• String formatting with fixed options
+• File operations with specific modes
+• Configuration method calls
+• API calls with standard parameters
+"""
