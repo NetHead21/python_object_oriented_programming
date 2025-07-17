@@ -281,3 +281,37 @@ print(f"Only digits: {list(filter(methodcaller('isdigit'), mixed_strings))}")
 print(f"Only alphabetic: {list(filter(methodcaller('isalpha'), mixed_strings))}")
 print(f"Only alphanumeric: {list(filter(methodcaller('isalnum'), mixed_strings))}")
 print()
+
+
+# Sorting by method results
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def get_age(self):
+        return self.age
+
+    def get_name_length(self):
+        return len(self.name)
+
+    def get_initials(self):
+        return "".join(word[0].upper() for word in self.name.split())
+
+    def __repr__(self):
+        return f"Person('{self.name}', {self.age})"
+
+
+people = [
+    Person("Alice Johnson", 30),
+    Person("Bob Smith", 25),
+    Person("Charlie Brown", 35),
+    Person("Diana Prince", 28),
+]
+
+print("Sorting people by method results:")
+print(f"Original: {people}")
+print(f"By age: {sorted(people, key=methodcaller('get_age'))}")
+print(f"By name length: {sorted(people, key=methodcaller('get_name_length'))}")
+print(f"By initials: {sorted(people, key=methodcaller('get_initials'))}")
+print()
