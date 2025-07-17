@@ -315,3 +315,25 @@ print(f"By age: {sorted(people, key=methodcaller('get_age'))}")
 print(f"By name length: {sorted(people, key=methodcaller('get_name_length'))}")
 print(f"By initials: {sorted(people, key=methodcaller('get_initials'))}")
 print()
+
+# =============================================================================
+# Example 5: Batch String Processing
+# =============================================================================
+"""
+Batch String Processing Applications
+
+This section demonstrates methodcaller's power for batch string processing
+operations, showing real-world text processing scenarios.
+
+Key Learning Points:
+• Efficient batch processing of text data
+• Consistent string transformations across datasets
+• Pipeline-friendly string operations
+• Performance benefits for large text datasets
+
+Use Cases:
+• Data cleaning and normalization
+• Text preprocessing for analysis
+• Batch formatting operations
+• Content management systems
+"""
