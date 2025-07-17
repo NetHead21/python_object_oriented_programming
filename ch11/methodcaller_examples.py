@@ -192,3 +192,43 @@ Use Cases:
 • Configuration method calls
 • API calls with standard parameters
 """
+
+print("\n" + "=" * 60)
+print("Example 3: Methods with Keyword Arguments")
+print("=" * 60)
+
+# String formatting examples
+text_samples = ["hello world", "PYTHON programming", "Data Science"]
+
+# String methods with keyword arguments
+center_20 = methodcaller("center", 25, "*")
+ljust_20 = methodcaller("ljust", 25, "-")
+rjust_20 = methodcaller("rjust", 25, "=")
+
+print("String alignment with custom fill characters:")
+for text in text_samples:
+    print(f"  Original: '{text}'")
+    print(f"    center(25, '*'): '{center_20(text)}'")
+    print(f"    ljust(25, '-'): '{ljust_20(text)}'")
+    print(f"    rjust(25, '='): '{rjust_20(text)}'")
+    print()
+
+# Dictionary operations
+sample_dicts = [
+    {"name": "Alice", "age": 30},
+    {"name": "Bob", "age": 25, "city": "NYC"},
+    {"name": "Charlie", "age": 35, "city": "LA", "job": "Engineer"},
+]
+
+get_with_default = methodcaller("get", "city", "Unknown")
+pop_with_default = methodcaller("pop", "job", "Unemployed")
+
+print("Dictionary operations with defaults:")
+for i, d in enumerate(sample_dicts):
+    d_copy = d.copy()  # Work with copy to preserve original
+    print(f"  Dict {i + 1}: {d}")
+    print(f"    get('city', 'Unknown'): '{get_with_default(d_copy)}'")
+    # Note: pop modifies the dictionary, so we use a copy
+    job = methodcaller("pop", "job", "Unemployed")(d_copy.copy())
+    print(f"    pop('job', 'Unemployed'): '{job}'")
+    print()
