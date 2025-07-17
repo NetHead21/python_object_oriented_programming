@@ -375,3 +375,27 @@ print("\nAfter replace('_', '.'):")
 normalized = list(map(normalize_dots, lowered))
 for email in normalized:
     print(f"  '{email}'")
+
+# Text analysis
+sample_texts = [
+    "Hello, World! How are you today?",
+    "Python is amazing for data science.",
+    "The quick brown fox jumps over the lazy dog.",
+    "Machine learning and AI are transforming industries.",
+]
+
+# Analysis methods
+count_words = methodcaller("split")
+count_chars = methodcaller("__len__")
+find_python = methodcaller("find", "Python")
+starts_with_the = methodcaller("startswith", "The")
+
+print("\nText analysis:")
+for text in sample_texts:
+    words = count_words(text)
+    print(f"Text: '{text}'")
+    print(f"  Word count: {len(words)}")
+    print(f"  Character count: {count_chars(text)}")
+    print(f"  Contains 'Python' at position: {find_python(text)}")
+    print(f"  Starts with 'The': {starts_with_the(text)}")
+    print()
