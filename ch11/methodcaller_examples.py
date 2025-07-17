@@ -350,3 +350,28 @@ user_data = [
     "  DIANA_PRINCE@AGENCY.GOV  ",
     "eve.wilson@startup.io",
 ]
+
+# Text cleaning pipeline
+clean_strip = methodcaller("strip")
+clean_lower = methodcaller("lower")
+normalize_dots = methodcaller("replace", "_", ".")
+
+print("Email cleaning pipeline:")
+print("Original emails:")
+for email in user_data:
+    print(f"  '{email}'")
+
+print("\nAfter strip():")
+stripped = list(map(clean_strip, user_data))
+for email in stripped:
+    print(f"  '{email}'")
+
+print("\nAfter lower():")
+lowered = list(map(clean_lower, stripped))
+for email in lowered:
+    print(f"  '{email}'")
+
+print("\nAfter replace('_', '.'):")
+normalized = list(map(normalize_dots, lowered))
+for email in normalized:
+    print(f"  '{email}'")
