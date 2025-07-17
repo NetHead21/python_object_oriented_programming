@@ -70,3 +70,41 @@ Use Cases:
 • Container method calls (clear, copy, etc.)
 • Boolean method calls (is_digit, is_alpha, etc.)
 """
+
+print("=" * 60)
+print("Example 1: Basic Method Calling")
+print("=" * 60)
+
+# String method examples
+text_samples = ["Hello", "WORLD", "123", "Python3.13", "  spaced  "]
+
+# Create method callers for common string methods
+call_upper = methodcaller("upper")
+call_lower = methodcaller("lower")
+call_strip = methodcaller("strip")
+call_isdigit = methodcaller("isdigit")
+call_isalpha = methodcaller("isalpha")
+
+print("String transformations:")
+for text in text_samples:
+    print(f"  Original: '{text}'")
+    print(f"    upper(): '{call_upper(text)}'")
+    print(f"    lower(): '{call_lower(text)}'")
+    print(f"    strip(): '{call_strip(text)}'")
+    print(f"    isdigit(): {call_isdigit(text)}")
+    print(f"    isalpha(): {call_isalpha(text)}")
+    print()
+
+# List method examples
+numbers = [[1, 2], [3, 4, 5], [6]]
+call_copy = methodcaller("copy")
+call_clear = methodcaller("clear")
+
+print("List operations:")
+for lst in numbers:
+    original = lst.copy()
+    copied = call_copy(lst)
+    print(f"  Original: {original}")
+    print(f"  Copied: {copied}")
+    print(f"  Same object: {lst is copied}")  # Should be False
+    print()
