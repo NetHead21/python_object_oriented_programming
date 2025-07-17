@@ -131,3 +131,41 @@ Use Cases:
 • File operations with consistent options
 • Data formatting with fixed formats
 """
+
+
+print("\n" + "=" * 60)
+print("Example 2: Methods with Arguments")
+print("=" * 60)
+
+# String methods with arguments
+text_data = ["apple,banana,cherry", "red;green;blue", "1-2-3-4-5"]
+
+# Create method callers with arguments
+split_comma = methodcaller("split", ",")
+split_semicolon = methodcaller("split", ";")
+split_dash = methodcaller("split", "-")
+replace_vowels = methodcaller("replace", "a", "@")
+
+print("String splitting and replacement:")
+for text in text_data:
+    print(f"  Text: '{text}'")
+    if "," in text:
+        print(f"    split(','): {split_comma(text)}")
+    if ";" in text:
+        print(f"    split(';'): {split_semicolon(text)}")
+    if "-" in text:
+        print(f"    split('-'): {split_dash(text)}")
+    print(f"    replace('a', '@'): '{replace_vowels(text)}'")
+    print()
+
+# Numeric operations
+numbers = [3.14159, 2.71828, 1.41421]
+round_2 = methodcaller("__round__", 2)  # Round to 2 decimal places
+round_4 = methodcaller("__round__", 4)  # Round to 4 decimal places
+
+print("Number rounding:")
+for num in numbers:
+    print(f"  {num}")
+    print(f"    rounded to 2 places: {round_2(num)}")
+    print(f"    rounded to 4 places: {round_4(num)}")
+    print()
