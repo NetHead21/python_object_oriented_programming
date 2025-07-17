@@ -271,3 +271,13 @@ print(f"Title case: {list(map(methodcaller('title'), words))}")
 print(f"Capitalized: {list(map(methodcaller('capitalize'), words))}")
 print(f"Swapped case: {list(map(methodcaller('swapcase'), words))}")
 print()
+
+# Filtering with method results
+mixed_strings = ["123", "abc", "12a", "456", "xyz", "789abc", "000"]
+
+print("Filtering based on method results:")
+print(f"All strings: {mixed_strings}")
+print(f"Only digits: {list(filter(methodcaller('isdigit'), mixed_strings))}")
+print(f"Only alphabetic: {list(filter(methodcaller('isalpha'), mixed_strings))}")
+print(f"Only alphanumeric: {list(filter(methodcaller('isalnum'), mixed_strings))}")
+print()
