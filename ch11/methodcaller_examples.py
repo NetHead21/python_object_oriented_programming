@@ -399,3 +399,25 @@ for text in sample_texts:
     print(f"  Contains 'Python' at position: {find_python(text)}")
     print(f"  Starts with 'The': {starts_with_the(text)}")
     print()
+
+# =============================================================================
+# Example 6: Container Operations
+# =============================================================================
+"""
+Container and Collection Operations
+
+This section shows how methodcaller works with various container types
+and their methods, demonstrating batch operations on data structures.
+
+Key Learning Points:
+• methodcaller works with any object method
+• Useful for batch container operations
+• Can manipulate collections uniformly
+• Excellent for data structure transformations
+
+Use Cases:
+• Batch list/set/dict operations
+• Container method standardization
+• Data structure pipeline operations
+• Collection management tasks
+"""
