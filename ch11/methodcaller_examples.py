@@ -446,3 +446,29 @@ for lst in list_samples:
     reverse_list(lst_copy)
     print(f"    Reversed: {lst_copy}")
     print()
+
+
+# Set operations
+set_samples = [{1, 2, 3}, {2, 3, 4, 5}, {4, 5, 6}, {1, 6, 7, 8}]
+
+copy_set = methodcaller("copy")
+pop_element = methodcaller("pop")  # Removes and returns arbitrary element
+
+print("Set operations:")
+base_set = {1, 2, 3, 4, 5}
+print(f"Base set for intersection: {base_set}")
+
+for s in set_samples:
+    s_copy = copy_set(s)
+    intersection_result = methodcaller("intersection", base_set)(s)
+    union_result = methodcaller("union", base_set)(s)
+
+    print(f"  Set: {s}")
+    print(f"    Intersection with base: {intersection_result}")
+    print(f"    Union with base: {union_result}")
+
+    # Demonstrate pop on copy
+    if s_copy:
+        popped = pop_element(s_copy)
+        print(f"    After pop(): removed {popped}, remaining: {s_copy}")
+    print()
