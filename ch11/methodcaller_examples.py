@@ -472,3 +472,19 @@ for s in set_samples:
         popped = pop_element(s_copy)
         print(f"    After pop(): removed {popped}, remaining: {s_copy}")
     print()
+
+
+# Dictionary operations
+dict_samples = [{"a": 1, "b": 2}, {"b": 3, "c": 4, "d": 5}, {"c": 6, "d": 7, "e": 8}]
+
+get_keys = methodcaller("keys")
+get_values = methodcaller("values")
+get_items = methodcaller("items")
+
+print("Dictionary operations:")
+for d in dict_samples:
+    print(f"  Dict: {d}")
+    print(f"    Keys: {list(get_keys(d))}")
+    print(f"    Values: {list(get_values(d))}")
+    print(f"    Items: {list(get_items(d))}")
+    print()
