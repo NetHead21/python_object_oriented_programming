@@ -108,3 +108,26 @@ for lst in numbers:
     print(f"  Copied: {copied}")
     print(f"  Same object: {lst is copied}")  # Should be False
     print()
+
+# =============================================================================
+# Example 2: Methods with Arguments
+# =============================================================================
+"""
+Method Calling with Arguments
+
+This section shows how methodcaller can call methods with fixed positional
+arguments. This is useful when you want to apply the same operation with
+the same parameters to multiple objects.
+
+Key Learning Points:
+• methodcaller('method', arg1, arg2) calls obj.method(arg1, arg2)
+• Arguments are fixed at creation time
+• Can pass multiple positional arguments
+• Excellent for batch processing with consistent parameters
+
+Use Cases:
+• String manipulation with fixed parameters
+• Mathematical operations with constants
+• File operations with consistent options
+• Data formatting with fixed formats
+"""
