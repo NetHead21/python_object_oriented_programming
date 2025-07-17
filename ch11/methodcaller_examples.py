@@ -232,3 +232,25 @@ for i, d in enumerate(sample_dicts):
     job = methodcaller("pop", "job", "Unemployed")(d_copy.copy())
     print(f"    pop('job', 'Unemployed'): '{job}'")
     print()
+
+# =============================================================================
+# Example 4: Functional Programming Applications
+# =============================================================================
+"""
+Functional Programming with methodcaller
+
+This section shows how methodcaller excels in functional programming
+contexts, particularly with map(), filter(), and other higher-order functions.
+
+Key Learning Points:
+• methodcaller integrates seamlessly with map(), filter(), sorted()
+• Creates clean, readable functional code
+• Avoids lambda boilerplate for simple method calls
+• Better performance than equivalent lambda expressions
+
+Use Cases:
+• Data transformation pipelines
+• Collection processing
+• Filtering operations based on method results
+• Sorting by method return values
+"""
