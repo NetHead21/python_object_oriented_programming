@@ -587,3 +587,10 @@ Use Cases:
 • Defensive programming practices
 • Input validation and sanitization
 """
+
+print("\n" + "=" * 60)
+print("Example 8: Error Handling and Edge Cases")
+print("=" * 60)
+
+# Test with various object types
+mixed_objects = ["hello", [1, 2, 3], {"key": "value"}, 42, None]
