@@ -784,3 +784,16 @@ for i, result in enumerate(processed_data, 1):
             print("Commercial")
         else:
             print("Other")
+
+# Analytics on processed data
+print("\n" + "=" * 40)
+print("Batch Analytics")
+print("=" * 40)
+
+# Use methodcaller for analytics
+get_domain_info = methodcaller("get", "domain_info")
+
+
+def get_tld(result_dict):
+    """Extract TLD from result dictionary."""
+    return result_dict["domain_info"]["tld"] if result_dict["domain_info"] else None
