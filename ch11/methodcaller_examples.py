@@ -534,3 +534,8 @@ time2 = time.time() - start
 start = time.time()
 result3 = list(map(lambda s: s.upper(), large_strings))
 time3 = time.time() - start
+
+# Method 4: methodcaller with map
+start = time.time()
+result4 = list(map(methodcaller("upper"), large_strings))
+time4 = time.time() - start
