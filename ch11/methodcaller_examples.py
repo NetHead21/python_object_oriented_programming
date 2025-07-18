@@ -689,3 +689,16 @@ Use Cases:
 • Configuration data processing
 • Batch data transformations
 """
+
+print("\n" + "=" * 60)
+print("Example 9: Real-world Use Case - Data Processing Pipeline")
+print("=" * 60)
+
+# Simulate raw data from a CSV or API
+raw_user_data = [
+    "  John.Doe@Company.COM  ",
+    "jane_smith@university.EDU",
+    "BOB.WILSON@AGENCY.GOV   ",
+    "alice-jones@startup.io",
+    "  CHARLIE.BROWN@CORP.NET",
+]
