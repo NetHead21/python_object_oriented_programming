@@ -664,3 +664,28 @@ print("\nSafe method calling:")
 for obj in safe_objects:
     result = safe_method_call(safe_upper, obj, "N/A")
     print(f"  safe_upper({obj}): {result}")
+
+
+# =============================================================================
+# Example 9: Real-world Use Case - Data Processing Pipeline
+# =============================================================================
+"""
+Real-world Application: Data Processing Pipeline
+
+This section demonstrates a practical, real-world application of methodcaller
+for building data processing pipelines. This example shows how methodcaller
+can be used in production scenarios.
+
+Key Learning Points:
+• Building reusable processing pipelines
+• Integration with other Python tools
+• Processing structured data efficiently
+• Creating maintainable data transformation code
+
+Use Cases:
+• ETL (Extract, Transform, Load) operations
+• Data cleaning and normalization
+• API response processing
+• Configuration data processing
+• Batch data transformations
+"""
