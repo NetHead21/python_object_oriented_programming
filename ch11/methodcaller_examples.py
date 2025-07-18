@@ -545,3 +545,22 @@ print(f"  methodcaller (list comp): {time1:.4f}s")
 print(f"  Direct method calls: {time2:.4f}s")
 print(f"  Lambda with map: {time3:.4f}s")
 print(f"  methodcaller with map: {time4:.4f}s")
+
+
+# Verify results are identical
+print(f"Results identical: {result1 == result2 == result3 == result4}")
+
+# Memory efficiency test
+caller_obj = methodcaller("upper")
+
+
+def create_upper_function():
+    """Create equivalent function for comparison."""
+    return lambda s: s.upper()
+
+
+lambda_obj = create_upper_function()
+
+print("\nMemory usage:")
+print(f"  methodcaller object size: {sys.getsizeof(caller_obj)} bytes")
+print(f"  lambda object size: {sys.getsizeof(lambda_obj)} bytes")
