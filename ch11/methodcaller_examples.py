@@ -524,3 +524,8 @@ upper_caller = methodcaller("upper")
 start = time.time()
 result1 = [upper_caller(s) for s in large_strings]
 time1 = time.time() - start
+
+# Method 2: Direct method calls
+start = time.time()
+result2 = [s.upper() for s in large_strings]
+time2 = time.time() - start
