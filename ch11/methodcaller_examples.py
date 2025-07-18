@@ -539,3 +539,9 @@ time3 = time.time() - start
 start = time.time()
 result4 = list(map(methodcaller("upper"), large_strings))
 time4 = time.time() - start
+
+print("Performance comparison (100,000 string operations):")
+print(f"  methodcaller (list comp): {time1:.4f}s")
+print(f"  Direct method calls: {time2:.4f}s")
+print(f"  Lambda with map: {time3:.4f}s")
+print(f"  methodcaller with map: {time4:.4f}s")
