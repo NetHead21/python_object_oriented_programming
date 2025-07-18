@@ -702,3 +702,8 @@ raw_user_data = [
     "alice-jones@startup.io",
     "  CHARLIE.BROWN@CORP.NET",
 ]
+
+
+# Data processing pipeline using methodcaller
+class DataProcessor:
+    """A data processing pipeline using methodcaller for transformations."""
