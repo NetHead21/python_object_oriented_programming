@@ -654,3 +654,13 @@ def safe_method_call(caller, obj, default=None):
         return caller(obj)
     except (AttributeError, TypeError):
         return default
+
+
+# Demonstrate safe calling
+safe_upper = methodcaller("upper")
+safe_objects = ["hello", 123, None, [1, 2, 3]]
+
+print("\nSafe method calling:")
+for obj in safe_objects:
+    result = safe_method_call(safe_upper, obj, "N/A")
+    print(f"  safe_upper({obj}): {result}")
