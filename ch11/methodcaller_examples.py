@@ -628,3 +628,29 @@ for i, obj in enumerate(mixed_objects):
         print(f"    keys(): Error - {type(e).__name__}")
 
     print()
+
+
+# Method name validation
+print("Method name validation:")
+try:
+    # This should work
+    valid_caller = methodcaller("upper")
+    print("  methodcaller('upper'): Created successfully")
+except Exception as e:
+    print(f"  methodcaller('upper'): Error - {e}")
+
+try:
+    # This should fail - method name must be string
+    invalid_caller = methodcaller(123)
+    print("  methodcaller(123): Created successfully")
+except TypeError as e:
+    print(f"  methodcaller(123): Error - {e}")
+
+
+# Safe method calling helper
+def safe_method_call(caller, obj, default=None):
+    """Safely call a method, returning default if it fails."""
+    try:
+        return caller(obj)
+    except (AttributeError, TypeError):
+        return default
