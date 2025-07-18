@@ -488,3 +488,26 @@ for d in dict_samples:
     print(f"    Values: {list(get_values(d))}")
     print(f"    Items: {list(get_items(d))}")
     print()
+
+
+# =============================================================================
+# Example 7: Performance Comparison
+# =============================================================================
+"""
+Performance Analysis of methodcaller
+
+This section provides empirical performance comparison between methodcaller
+and alternative approaches like lambda functions and direct method calls.
+
+Key Learning Points:
+• methodcaller performance vs. alternatives
+• When performance differences matter
+• Memory efficiency considerations
+• Scale-dependent performance characteristics
+
+Use Cases:
+• Performance-critical method calling
+• Large dataset operations
+• Benchmarking and optimization decisions
+• Understanding trade-offs in functional programming
+"""
