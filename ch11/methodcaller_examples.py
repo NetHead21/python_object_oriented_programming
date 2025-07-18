@@ -594,3 +594,37 @@ print("=" * 60)
 
 # Test with various object types
 mixed_objects = ["hello", [1, 2, 3], {"key": "value"}, 42, None]
+
+
+# Method callers that might fail on some objects
+call_upper = methodcaller("upper")  # Only works on strings
+call_append = methodcaller("append", "new_item")  # Only works on lists
+call_keys = methodcaller("keys")  # Only works on dicts
+
+print("Testing method calls on different object types:")
+for i, obj in enumerate(mixed_objects):
+    print(f"  Object {i}: {obj} (type: {type(obj).__name__})")
+
+    # Test upper() method
+    try:
+        result = call_upper(obj)
+        print(f"    upper(): '{result}'")
+    except AttributeError as e:
+        print(f"    upper(): Error - {e}")
+
+    # Test append() method
+    try:
+        obj_copy = obj.copy() if hasattr(obj, "copy") else obj
+        call_append(obj_copy)
+        print("    append('new_item'): Success")
+    except (AttributeError, TypeError) as e:
+        print(f"    append('new_item'): Error - {type(e).__name__}")
+
+    # Test keys() method
+    try:
+        result = call_keys(obj)
+        print(f"    keys(): {list(result)}")
+    except AttributeError as e:
+        print(f"    keys(): Error - {type(e).__name__}")
+
+    print()
