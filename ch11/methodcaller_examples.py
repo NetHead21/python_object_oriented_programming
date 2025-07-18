@@ -809,3 +809,22 @@ for result in processed_data:
 print("TLD distribution:")
 for tld, count in sorted(tld_counts.items()):
     print(f"  .{tld}: {count}")
+
+
+# Count by type
+type_counts = {"edu": 0, "gov": 0, "commercial": 0, "other": 0}
+for result in processed_data:
+    if result["domain_info"]:
+        info = result["domain_info"]
+        if info["is_edu"]:
+            type_counts["edu"] += 1
+        elif info["is_gov"]:
+            type_counts["gov"] += 1
+        elif info["is_commercial"]:
+            type_counts["commercial"] += 1
+        else:
+            type_counts["other"] += 1
+
+print("\nDomain type distribution:")
+for domain_type, count in type_counts.items():
+    print(f"  {domain_type.title()}: {count}")
