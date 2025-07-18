@@ -716,3 +716,12 @@ class DataProcessor:
         self.normalize_dashes = methodcaller("replace", "-", ".")
         self.split_at_sign = methodcaller("split", "@")
         self.split_dot = methodcaller("split", ".")
+
+    def clean_email(self, email):
+        """Clean and normalize an email address."""
+        # Pipeline: strip -> lowercase -> normalize separators
+        cleaned = self.strip_whitespace(email)
+        cleaned = self.to_lowercase(cleaned)
+        cleaned = self.normalize_dots(cleaned)
+        cleaned = self.normalize_dashes(cleaned)
+        return cleaned
