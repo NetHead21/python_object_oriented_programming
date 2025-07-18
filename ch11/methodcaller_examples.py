@@ -757,3 +757,30 @@ class DataProcessor:
             )
 
         return results
+
+
+# Process the data
+processor = DataProcessor()
+processed_data = processor.process_batch(raw_user_data)
+
+print("Email processing pipeline results:")
+for i, result in enumerate(processed_data, 1):
+    print(f"\nEmail {i}:")
+    print(f"  Original: '{result['original']}'")
+    print(f"  Cleaned: '{result['cleaned']}'")
+
+    if result["domain_info"]:
+        info = result["domain_info"]
+        print(f"  Username: {info['username']}")
+        print(f"  Domain: {info['domain']}")
+        print(f"  TLD: {info['tld']}")
+        print("  Type: ", end="")
+
+        if info["is_edu"]:
+            print("Educational")
+        elif info["is_gov"]:
+            print("Government")
+        elif info["is_commercial"]:
+            print("Commercial")
+        else:
+            print("Other")
