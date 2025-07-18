@@ -707,3 +707,12 @@ raw_user_data = [
 # Data processing pipeline using methodcaller
 class DataProcessor:
     """A data processing pipeline using methodcaller for transformations."""
+
+    def __init__(self):
+        # Create reusable method callers
+        self.strip_whitespace = methodcaller("strip")
+        self.to_lowercase = methodcaller("lower")
+        self.normalize_dots = methodcaller("replace", "_", ".")
+        self.normalize_dashes = methodcaller("replace", "-", ".")
+        self.split_at_sign = methodcaller("split", "@")
+        self.split_dot = methodcaller("split", ".")
