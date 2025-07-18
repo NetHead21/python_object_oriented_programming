@@ -511,3 +511,16 @@ Use Cases:
 • Benchmarking and optimization decisions
 • Understanding trade-offs in functional programming
 """
+
+print("\n" + "=" * 60)
+print("Example 7: Performance Comparison")
+print("=" * 60)
+
+# Create large dataset for performance testing
+large_strings = [f"test_string_{i}" for i in range(100000)]
+
+# Method 1: Using methodcaller
+upper_caller = methodcaller("upper")
+start = time.time()
+result1 = [upper_caller(s) for s in large_strings]
+time1 = time.time() - start
