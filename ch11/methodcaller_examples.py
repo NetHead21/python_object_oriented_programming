@@ -744,3 +744,16 @@ class DataProcessor:
             "is_gov": domain.endswith(".gov"),
             "is_commercial": domain.endswith((".com", ".co.uk", ".io", ".net")),
         }
+
+    def process_batch(self, email_list):
+        """Process a batch of emails."""
+        results = []
+        for email in email_list:
+            cleaned = self.clean_email(email)
+            domain_info = self.extract_domain_info(cleaned)
+
+            results.append(
+                {"original": email, "cleaned": cleaned, "domain_info": domain_info}
+            )
+
+        return results
