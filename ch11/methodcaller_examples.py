@@ -564,3 +564,26 @@ lambda_obj = create_upper_function()
 print("\nMemory usage:")
 print(f"  methodcaller object size: {sys.getsizeof(caller_obj)} bytes")
 print(f"  lambda object size: {sys.getsizeof(lambda_obj)} bytes")
+
+
+# =============================================================================
+# Example 8: Error Handling and Edge Cases
+# =============================================================================
+"""
+Error Handling and Edge Cases with methodcaller
+
+This section explores how methodcaller behaves with edge cases, error
+conditions, and various object types.
+
+Key Learning Points:
+• Common error types: AttributeError, TypeError
+• Method name validation at creation time
+• Graceful error handling strategies
+• Type safety considerations
+
+Use Cases:
+• Robust data processing pipelines
+• Handling inconsistent object types
+• Defensive programming practices
+• Input validation and sanitization
+"""
