@@ -529,3 +529,8 @@ time1 = time.time() - start
 start = time.time()
 result2 = [s.upper() for s in large_strings]
 time2 = time.time() - start
+
+# Method 3: Lambda function with map
+start = time.time()
+result3 = list(map(lambda s: s.upper(), large_strings))
+time3 = time.time() - start
