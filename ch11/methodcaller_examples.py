@@ -725,3 +725,22 @@ class DataProcessor:
         cleaned = self.normalize_dots(cleaned)
         cleaned = self.normalize_dashes(cleaned)
         return cleaned
+
+    def extract_domain_info(self, email):
+        """Extract domain information from email."""
+        parts = self.split_at_sign(email)
+        if len(parts) != 2:
+            return None
+
+        username, domain = parts
+        domain_parts = self.split_dot(domain)
+
+        return {
+            "username": username,
+            "domain": domain,
+            "domain_parts": domain_parts,
+            "tld": domain_parts[-1] if domain_parts else None,
+            "is_edu": domain.endswith(".edu"),
+            "is_gov": domain.endswith(".gov"),
+            "is_commercial": domain.endswith((".com", ".co.uk", ".io", ".net")),
+        }
