@@ -797,3 +797,15 @@ get_domain_info = methodcaller("get", "domain_info")
 def get_tld(result_dict):
     """Extract TLD from result dictionary."""
     return result_dict["domain_info"]["tld"] if result_dict["domain_info"] else None
+
+
+# Count TLDs
+tld_counts = defaultdict(int)
+for result in processed_data:
+    tld = get_tld(result)
+    if tld:
+        tld_counts[tld] += 1
+
+print("TLD distribution:")
+for tld, count in sorted(tld_counts.items()):
+    print(f"  .{tld}: {count}")
