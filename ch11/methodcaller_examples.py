@@ -1001,3 +1001,35 @@ class MethodCallerPatterns:
             return result
 
         return pipeline
+
+
+if __name__ == "__main__":
+    # Example usage of advanced patterns
+    print("\n" + "=" * 60)
+    print("Advanced Patterns Demo")
+    print("=" * 60)
+
+    # Batch string processing
+    sample_strings = ["  HELLO  ", "  world  ", "  PYTHON  "]
+    processed = MethodCallerPatterns.batch_string_process(
+        sample_strings, "strip", "lower", "title"
+    )
+    print(f"Batch processed: {sample_strings} → {processed}")
+
+    # Safe method mapping
+    mixed_data = ["123", "abc", 456, None]
+    digits_only = MethodCallerPatterns.safe_method_map("isdigit", mixed_data, False)
+    print(f"Safe isdigit mapping: {mixed_data} → {digits_only}")
+
+    # Method pipeline
+    email_pipeline = MethodCallerPatterns.method_pipeline(
+        "strip", "lower", ("replace", "_", "."), ("replace", "-", ".")
+    )
+
+    test_email = "  John_Doe-Admin@Company.COM  "
+    cleaned_email = email_pipeline(test_email)
+    print(f"Pipeline result: '{test_email}' → '{cleaned_email}'")
+
+    print("\n" + "=" * 60)
+    print("Module documentation and examples completed!")
+    print("=" * 60)
