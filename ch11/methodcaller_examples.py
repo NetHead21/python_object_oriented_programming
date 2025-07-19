@@ -959,3 +959,15 @@ class MethodCallerPatterns:
     """
     Collection of advanced patterns and recipes using methodcaller.
     """
+
+    @staticmethod
+    def batch_string_process(strings, *methods):
+        """Apply multiple string methods in sequence to a batch of strings."""
+        result = strings
+        for method in methods:
+            if isinstance(method, str):
+                caller = methodcaller(method)
+            else:
+                caller = method
+            result = [caller(s) for s in result]
+        return result
