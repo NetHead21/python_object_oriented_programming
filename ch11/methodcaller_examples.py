@@ -971,3 +971,15 @@ class MethodCallerPatterns:
                 caller = method
             result = [caller(s) for s in result]
         return result
+
+    @staticmethod
+    def safe_method_map(method_name, objects, default=None):
+        """Safely apply method to objects, using default for failures."""
+        caller = methodcaller(method_name)
+        results = []
+        for obj in objects:
+            try:
+                results.append(caller(obj))
+            except (AttributeError, TypeError):
+                results.append(default)
+        return results
