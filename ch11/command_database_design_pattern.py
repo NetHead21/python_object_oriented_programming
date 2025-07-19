@@ -175,3 +175,11 @@ class Database:
         self.records[record_id].data = new_data.copy()
         self.transaction_log.append(f"UPDATE {record_id}")
         return old_data
+
+    def delete(self, record_id: str) -> Optional[DatabaseRecord]:
+        """Delete a record, returning the deleted record."""
+        if record_id not in self.records:
+            return None
+        deleted_record = self.records.pop(record_id)
+        self.transaction_log.append(f"DELETE {record_id}")
+        return deleted_record
