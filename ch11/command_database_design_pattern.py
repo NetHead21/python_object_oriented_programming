@@ -59,3 +59,34 @@ Example Usage:
     >>> manager.redo()  # Re-apply the operation
 
 """
+
+from abc import ABC, abstractmethod
+from typing import List, Optional
+
+
+# =============================================================================
+# Command Pattern Interface
+# =============================================================================
+
+
+class Command(ABC):
+    """
+    Abstract base class defining the Command interface.
+
+    This interface ensures all concrete commands implement the required
+    methods for execution, undo, and description. The Command pattern
+    encapsulates requests as objects, allowing for parameterization,
+    queuing, logging, and undo operations.
+
+    All concrete command implementations must provide:
+    - execute(): Perform the primary operation
+    - undo(): Reverse the operation's effects
+    - get_description(): Human-readable operation description
+
+    Design Pattern Benefits:
+        - Encapsulation: Operations are objects with their own data
+        - Reversibility: Built-in undo capability
+        - Composition: Commands can be grouped into transactions
+        - Logging: Operations can be logged and audited
+        - Queuing: Commands can be scheduled for later execution
+    """
