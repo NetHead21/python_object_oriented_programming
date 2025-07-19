@@ -117,3 +117,20 @@ class Command(ABC):
             Should only undo if the command was previously executed.
         """
         pass
+
+    @abstractmethod
+    def get_description(self) -> str:
+        """
+        Return a human-readable description of the command.
+
+        This description is used for logging, debugging, and user
+        interface display purposes.
+
+        Returns:
+            str: Brief description of what this command does
+
+        Example:
+            >>> cmd = InsertRecordCommand(db, record)
+            >>> print(cmd.get_description())  # "Insert record user123"
+        """
+        pass
