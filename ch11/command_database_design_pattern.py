@@ -183,3 +183,7 @@ class Database:
         deleted_record = self.records.pop(record_id)
         self.transaction_log.append(f"DELETE {record_id}")
         return deleted_record
+
+    def get(self, record_id: str) -> Optional[DatabaseRecord]:
+        """Get a record by ID."""
+        return self.records.get(record_id)
