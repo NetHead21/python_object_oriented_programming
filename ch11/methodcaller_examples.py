@@ -952,3 +952,10 @@ def get_methodcaller_usage_summary():
             "documentation": "Document expected object interface",
         },
     }
+
+
+# Advanced usage patterns class
+class MethodCallerPatterns:
+    """
+    Collection of advanced patterns and recipes using methodcaller.
+    """
