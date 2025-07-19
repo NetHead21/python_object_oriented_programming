@@ -90,3 +90,16 @@ class Command(ABC):
         - Logging: Operations can be logged and audited
         - Queuing: Commands can be scheduled for later execution
     """
+
+    @abstractmethod
+    def execute(self) -> None:
+        """
+        Execute the command's primary operation.
+
+        This method should perform the main action of the command,
+        such as inserting, updating, or deleting database records.
+
+        Raises:
+            Exception: If the operation cannot be completed
+        """
+        pass
