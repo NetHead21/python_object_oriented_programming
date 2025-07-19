@@ -134,3 +134,19 @@ class Command(ABC):
             >>> print(cmd.get_description())  # "Insert record user123"
         """
         pass
+
+
+# =============================================================================
+# Core Database Infrastructure
+# =============================================================================
+
+
+class DatabaseRecord:
+    """Represents a database record."""
+
+    def __init__(self, record_id: str, data: dict):
+        self.id = record_id
+        self.data = data.copy()
+
+    def __repr__(self):
+        return f"Record({self.id}: {self.data})"
