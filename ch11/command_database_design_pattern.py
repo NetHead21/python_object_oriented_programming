@@ -166,3 +166,12 @@ class Database:
         self.records[record.id] = record
         self.transaction_log.append(f"INSERT {record.id}")
         return True
+
+    def update(self, record_id: str, new_data: dict) -> Optional[dict]:
+        """Update a record, returning old data."""
+        if record_id not in self.records:
+            return None
+        old_data = self.records[record_id].data.copy()
+        self.records[record_id].data = new_data.copy()
+        self.transaction_log.append(f"UPDATE {record_id}")
+        return old_data
