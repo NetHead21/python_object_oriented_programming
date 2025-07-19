@@ -911,3 +911,44 @@ def get_methodcaller_usage_summary():
         dict: Complete reference guide with usage patterns, performance tips,
               and best practices for methodcaller implementation.
     """
+
+    return {
+        "core_functionality": {
+            "simple_method": "methodcaller('method') → obj.method()",
+            "with_args": "methodcaller('method', arg1, arg2) → obj.method(arg1, arg2)",
+            "with_kwargs": "methodcaller('method', key=val) → obj.method(key=val)",
+            "mixed_args": "methodcaller('method', arg1, key=val) → obj.method(arg1, key=val)",
+        },
+        "performance_characteristics": {
+            "vs_lambda": "~10-20% faster for simple method calls",
+            "vs_direct": "Minimal overhead, excellent for batch operations",
+            "memory_usage": "Very efficient, uses __slots__",
+            "optimization": "C implementation in CPython",
+            "validation": "Method name validated at creation time",
+        },
+        "best_use_cases": [
+            "Batch method calling: map(methodcaller('upper'), strings)",
+            "Sorting: sorted(objects, key=methodcaller('get_score'))",
+            "Filtering: filter(methodcaller('isdigit'), strings)",
+            "Data pipelines: consistent method application",
+            "Functional programming: avoiding lambda boilerplate",
+        ],
+        "integration_patterns": {
+            "with_map": "list(map(methodcaller('strip'), strings))",
+            "with_filter": "list(filter(methodcaller('isdigit'), data))",
+            "with_sorted": "sorted(objects, key=methodcaller('get_priority'))",
+            "with_groupby": "groupby(data, key=methodcaller('get_category'))",
+            "with_max_min": "max(objects, key=methodcaller('get_value'))",
+        },
+        "error_handling": {
+            "AttributeError": "Method doesn't exist on object",
+            "TypeError": "Method name is not a string",
+            "TypeError_args": "Wrong number/type of arguments for method",
+        },
+        "style_guidelines": {
+            "naming": "Use descriptive names: call_upper vs methodcaller('upper')",
+            "reuse": "Create once, use many times for efficiency",
+            "validation": "Handle AttributeError for missing methods",
+            "documentation": "Document expected object interface",
+        },
+    }
