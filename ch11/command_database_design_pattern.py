@@ -158,3 +158,11 @@ class Database:
     def __init__(self):
         self.records: dict[str, DatabaseRecord] = {}
         self.transaction_log: List[str] = []
+
+    def insert(self, record: DatabaseRecord) -> bool:
+        """Insert a record."""
+        if record.id in self.records:
+            return False
+        self.records[record.id] = record
+        self.transaction_log.append(f"INSERT {record.id}")
+        return True
