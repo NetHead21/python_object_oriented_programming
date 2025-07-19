@@ -983,3 +983,21 @@ class MethodCallerPatterns:
             except (AttributeError, TypeError):
                 results.append(default)
         return results
+
+    @staticmethod
+    def method_pipeline(*method_specs):
+        """Create a pipeline of method calls."""
+
+        def pipeline(obj):
+            result = obj
+            for spec in method_specs:
+                if isinstance(spec, str):
+                    caller = methodcaller(spec)
+                elif isinstance(spec, tuple):
+                    caller = methodcaller(*spec)
+                else:
+                    caller = spec
+                result = caller(result)
+            return result
+
+        return pipeline
