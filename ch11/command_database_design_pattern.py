@@ -150,3 +150,11 @@ class DatabaseRecord:
 
     def __repr__(self):
         return f"Record({self.id}: {self.data})"
+
+
+class Database:
+    """Simple in-memory database for demonstration."""
+
+    def __init__(self):
+        self.records: dict[str, DatabaseRecord] = {}
+        self.transaction_log: List[str] = []
