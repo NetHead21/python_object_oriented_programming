@@ -103,3 +103,17 @@ class Command(ABC):
             Exception: If the operation cannot be completed
         """
         pass
+
+    @abstractmethod
+    def undo(self) -> None:
+        """
+        Reverse the effects of the execute() method.
+
+        This method should restore the system to the state it was in
+        before execute() was called. The undo operation should be
+        idempotent (safe to call multiple times).
+
+        Note:
+            Should only undo if the command was previously executed.
+        """
+        pass
