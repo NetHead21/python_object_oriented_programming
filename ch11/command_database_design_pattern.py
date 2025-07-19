@@ -187,3 +187,7 @@ class Database:
     def get(self, record_id: str) -> Optional[DatabaseRecord]:
         """Get a record by ID."""
         return self.records.get(record_id)
+
+    def get_all(self) -> List[DatabaseRecord]:
+        """Get all records."""
+        return list(self.records.values())
