@@ -287,3 +287,18 @@ def add_command(self, command: Command) -> None:
     if self.committed:
         raise RuntimeError("Cannot add commands to committed transaction")
     self.commands.append(command)
+
+    def execute(self) -> None:
+        """Execute all commands in the transaction."""
+        if self.committed:
+            raise RuntimeError("Transaction already committed")
+
+        self.executed_commands.clear()
+        try:
+            for command in self.commands:
+                command.execute()
+                self.executed_commands.append(command)
+        except Exception as e:
+            # Rollback all executed commands
+            self.rollback()
+            raise e
