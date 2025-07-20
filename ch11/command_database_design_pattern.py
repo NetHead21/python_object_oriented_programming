@@ -191,3 +191,13 @@ class Database:
     def get_all(self) -> List[DatabaseRecord]:
         """Get all records."""
         return list(self.records.values())
+
+
+# Database Commands
+class InsertRecordCommand(Command):
+    """Command to insert a database record."""
+
+    def __init__(self, database: Database, record: DatabaseRecord):
+        self.database = database
+        self.record = record
+        self.executed = False
