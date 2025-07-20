@@ -228,3 +228,10 @@ class UpdateRecordCommand(Command):
         self.new_data = new_data
         self.old_data: Optional[dict] = None
         self.executed = False
+
+    def execute(self) -> None:
+        """Execute the update command."""
+        self.old_data = self.database.update(self.record_id, self.new_data)
+        if self.old_data is None:
+            raise ValueError(f"Record {self.record_id} not found")
+        self.executed = True
