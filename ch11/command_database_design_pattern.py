@@ -352,3 +352,25 @@ def demonstrate_database_transactions():
 
     print("\nAfter transaction commit:")
     print(f"Records: {db.get_all()}")
+
+    # Demonstrate failed transaction with rollback
+    print("\nTesting failed transaction with rollback:")
+    failed_transaction = Transaction(db)
+    failed_transaction.add_command(
+        InsertRecordCommand(db, DatabaseRecord("user3", {"name": "Charlie", "age": 28}))
+    )
+    failed_transaction.add_command(
+        InsertRecordCommand(
+            db,
+            DatabaseRecord("user1", {"name": "Duplicate", "age": 40}),  # This will fail
+        )
+    )
+
+    try:
+        failed_transaction.execute()
+        failed_transaction.commit()
+    except Exception as e:
+        print(f"Transaction failed: {e}")
+
+    print("\nAfter failed transaction (should be unchanged):")
+    print(f"Records: {db.get_all()}")
