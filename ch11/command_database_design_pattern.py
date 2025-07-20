@@ -235,3 +235,9 @@ class UpdateRecordCommand(Command):
         if self.old_data is None:
             raise ValueError(f"Record {self.record_id} not found")
         self.executed = True
+
+    def undo(self) -> None:
+        """Undo the update command."""
+        if self.executed and self.old_data is not None:
+            self.database.update(self.record_id, self.old_data)
+            self.executed = False
