@@ -214,3 +214,6 @@ class InsertRecordCommand(Command):
         if self.executed:
             self.database.delete(self.record.id)
             self.executed = False
+
+    def get_description(self) -> str:
+        return f"Insert record {self.record.id}"
