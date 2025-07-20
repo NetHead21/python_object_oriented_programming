@@ -346,3 +346,9 @@ def demonstrate_database_transactions():
 
     print("Before transaction:")
     print(f"Records: {db.get_all()}")
+
+    # Execute and commit transaction
+    transaction.commit()
+
+    print("\nAfter transaction commit:")
+    print(f"Records: {db.get_all()}")
