@@ -201,3 +201,10 @@ class InsertRecordCommand(Command):
         self.database = database
         self.record = record
         self.executed = False
+
+    def execute(self) -> None:
+        """Execute the insert command."""
+        if self.database.insert(self.record):
+            self.executed = True
+        else:
+            raise ValueError(f"Record {self.record.id} already exists")
