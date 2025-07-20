@@ -326,3 +326,6 @@ def demonstrate_database_transactions():
     print("\n" + "=" * 60)
     print("Database Transaction System Demo")
     print("=" * 60)
+
+    # Create database
+    db = Database()
