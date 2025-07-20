@@ -261,3 +261,9 @@ class DeleteRecordCommand(Command):
         if self.deleted_record is None:
             raise ValueError(f"Record {self.record_id} not found")
         self.executed = True
+
+    def undo(self) -> None:
+        """Undo the delete command."""
+        if self.executed and self.deleted_record is not None:
+            self.database.insert(self.deleted_record)
+            self.executed = False
