@@ -217,3 +217,14 @@ class InsertRecordCommand(Command):
 
     def get_description(self) -> str:
         return f"Insert record {self.record.id}"
+
+
+class UpdateRecordCommand(Command):
+    """Command to update a database record."""
+
+    def __init__(self, database: Database, record_id: str, new_data: dict):
+        self.database = database
+        self.record_id = record_id
+        self.new_data = new_data
+        self.old_data: Optional[dict] = None
+        self.executed = False
