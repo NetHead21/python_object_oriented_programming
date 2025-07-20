@@ -241,3 +241,6 @@ class UpdateRecordCommand(Command):
         if self.executed and self.old_data is not None:
             self.database.update(self.record_id, self.old_data)
             self.executed = False
+
+    def get_description(self) -> str:
+        return f"Update record {self.record_id}"
