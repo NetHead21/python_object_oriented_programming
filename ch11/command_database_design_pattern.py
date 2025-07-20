@@ -319,3 +319,10 @@ def add_command(self, command: Command) -> None:
                 pass  # Continue rolling back other commands
         self.executed_commands.clear()
         print("Transaction rolled back")
+
+
+def demonstrate_database_transactions():
+    """Demonstrate database transactions with Command pattern."""
+    print("\n" + "=" * 60)
+    print("Database Transaction System Demo")
+    print("=" * 60)
