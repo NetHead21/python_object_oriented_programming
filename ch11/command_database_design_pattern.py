@@ -244,3 +244,13 @@ class UpdateRecordCommand(Command):
 
     def get_description(self) -> str:
         return f"Update record {self.record_id}"
+
+
+class DeleteRecordCommand(Command):
+    """Command to delete a database record."""
+
+    def __init__(self, database: Database, record_id: str):
+        self.database = database
+        self.record_id = record_id
+        self.deleted_record: Optional[DatabaseRecord] = None
+        self.executed = False
