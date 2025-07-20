@@ -267,3 +267,6 @@ class DeleteRecordCommand(Command):
         if self.executed and self.deleted_record is not None:
             self.database.insert(self.deleted_record)
             self.executed = False
+
+    def get_description(self) -> str:
+        return f"Delete record {self.record_id}"
