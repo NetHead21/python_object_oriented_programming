@@ -208,3 +208,9 @@ class InsertRecordCommand(Command):
             self.executed = True
         else:
             raise ValueError(f"Record {self.record.id} already exists")
+
+    def undo(self) -> None:
+        """Undo the insert command."""
+        if self.executed:
+            self.database.delete(self.record.id)
+            self.executed = False
