@@ -254,3 +254,10 @@ class DeleteRecordCommand(Command):
         self.record_id = record_id
         self.deleted_record: Optional[DatabaseRecord] = None
         self.executed = False
+
+    def execute(self) -> None:
+        """Execute the delete command."""
+        self.deleted_record = self.database.delete(self.record_id)
+        if self.deleted_record is None:
+            raise ValueError(f"Record {self.record_id} not found")
+        self.executed = True
