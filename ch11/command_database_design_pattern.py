@@ -302,3 +302,10 @@ def add_command(self, command: Command) -> None:
             # Rollback all executed commands
             self.rollback()
             raise e
+
+    def commit(self) -> None:
+        """Commit the transaction."""
+        if not self.executed_commands:
+            self.execute()
+        self.committed = True
+        print(f"Transaction committed with {len(self.executed_commands)} operations")
