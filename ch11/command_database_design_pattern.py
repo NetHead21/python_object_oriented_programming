@@ -270,3 +270,13 @@ class DeleteRecordCommand(Command):
 
     def get_description(self) -> str:
         return f"Delete record {self.record_id}"
+
+
+class Transaction:
+    """Database transaction using Command pattern."""
+
+    def __init__(self, database: Database):
+        self.database = database
+        self.commands: List[Command] = []
+        self.executed_commands: List[Command] = []
+        self.committed = False
