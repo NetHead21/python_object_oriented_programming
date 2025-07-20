@@ -332,3 +332,17 @@ def demonstrate_database_transactions():
 
     # Create transaction
     transaction = Transaction(db)
+
+    # Add commands to transaction
+    transaction.add_command(
+        InsertRecordCommand(db, DatabaseRecord("user1", {"name": "Alice", "age": 30}))
+    )
+    transaction.add_command(
+        InsertRecordCommand(db, DatabaseRecord("user2", {"name": "Bob", "age": 25}))
+    )
+    transaction.add_command(
+        UpdateRecordCommand(db, "user1", {"name": "Alice Smith", "age": 31})
+    )
+
+    print("Before transaction:")
+    print(f"Records: {db.get_all()}")
