@@ -329,3 +329,6 @@ def demonstrate_database_transactions():
 
     # Create database
     db = Database()
+
+    # Create transaction
+    transaction = Transaction(db)
