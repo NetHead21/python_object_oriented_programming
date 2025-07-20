@@ -309,3 +309,13 @@ def add_command(self, command: Command) -> None:
             self.execute()
         self.committed = True
         print(f"Transaction committed with {len(self.executed_commands)} operations")
+
+    def rollback(self) -> None:
+        """Rollback the transaction."""
+        for command in reversed(self.executed_commands):
+            try:
+                command.undo()
+            except Exception:
+                pass  # Continue rolling back other commands
+        self.executed_commands.clear()
+        print("Transaction rolled back")
