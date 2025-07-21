@@ -277,16 +277,15 @@ class Transaction:
 
     def __init__(self, database: Database):
         self.database = database
-        self.commands: List[Command] = []
-        self.executed_commands: List[Command] = []
+        self.commands = []
+        self.executed_commands = []
         self.committed = False
 
-
-def add_command(self, command: Command) -> None:
-    """Add a command to the transaction."""
-    if self.committed:
-        raise RuntimeError("Cannot add commands to committed transaction")
-    self.commands.append(command)
+    def add_command(self, command: Command) -> None:
+        """Add a command to the transaction."""
+        if self.committed:
+            raise RuntimeError("Cannot add commands to committed transaction")
+        self.commands.append(command)
 
     def execute(self) -> None:
         """Execute all commands in the transaction."""
