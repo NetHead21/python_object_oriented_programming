@@ -389,3 +389,10 @@ def demonstrate_individual_commands():
 
     print("Initial database state:")
     print(f"Records: {db.get_all()}")
+
+    # Execute individual commands
+    cmd1 = InsertRecordCommand(
+        db, DatabaseRecord("emp1", {"name": "John", "dept": "IT"})
+    )
+    manager.execute_command(cmd1)
+    print(f"\nAfter insert: {db.get_all()}")
