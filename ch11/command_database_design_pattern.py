@@ -413,3 +413,10 @@ def demonstrate_individual_commands():
         desc = manager.get_redo_description()
         print(f"Undone: {desc}")
         print(f"Current state: {db.get_all()}")
+
+    # Demonstrate redo functionality
+    print("\nRedo operations:")
+    while manager.redo():
+        desc = manager.get_undo_description()
+        print(f"Redone: {desc}")
+        print(f"Current state: {db.get_all()}")
