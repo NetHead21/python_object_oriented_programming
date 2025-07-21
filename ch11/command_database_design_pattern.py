@@ -445,3 +445,9 @@ if __name__ == "__main__":
             self.command_history: List[Command] = []
             self.current_position = -1
             self.max_history = max_history
+
+        def execute_command(self, command: Command) -> None:
+            self.command_history = self.command_history[: self.current_position + 1]
+            command.execute()
+            self.command_history.append(command)
+            self.current_position += 1
