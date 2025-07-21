@@ -439,3 +439,9 @@ if __name__ == "__main__":
         @abstractmethod
         def get_description(self) -> str:
             pass
+
+    class CommandManager:
+        def __init__(self, max_history: int = 100):
+            self.command_history: List[Command] = []
+            self.current_position = -1
+            self.max_history = max_history
