@@ -420,3 +420,9 @@ def demonstrate_individual_commands():
         desc = manager.get_undo_description()
         print(f"Redone: {desc}")
         print(f"Current state: {db.get_all()}")
+
+
+if __name__ == "__main__":
+    # You need the Command base class and CommandManager from earlier
+    from abc import ABC, abstractmethod
+    from typing import List, Optional
