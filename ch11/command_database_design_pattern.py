@@ -382,3 +382,10 @@ def demonstrate_individual_commands():
     print("\n" + "=" * 60)
     print("Individual Database Commands Demo")
     print("=" * 60)
+
+    # Create database and command manager
+    db = Database()
+    manager = CommandManager()
+
+    print("Initial database state:")
+    print(f"Records: {db.get_all()}")
