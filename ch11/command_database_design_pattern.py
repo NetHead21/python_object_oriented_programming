@@ -406,3 +406,10 @@ def demonstrate_individual_commands():
     )
     manager.execute_command(cmd3)
     print(f"After second insert: {db.get_all()}")
+
+    # Demonstrate undo functionality
+    print("\nUndo operations:")
+    while manager.undo():
+        desc = manager.get_redo_description()
+        print(f"Undone: {desc}")
+        print(f"Current state: {db.get_all()}")
