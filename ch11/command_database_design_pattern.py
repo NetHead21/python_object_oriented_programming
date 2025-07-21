@@ -471,3 +471,8 @@ if __name__ == "__main__":
                 command.execute()
                 return True
             return False
+
+        def get_redo_description(self) -> Optional[str]:
+            if self.current_position < len(self.command_history) - 1:
+                return self.command_history[self.current_position + 1].get_description()
+            return None
