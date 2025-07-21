@@ -400,3 +400,9 @@ def demonstrate_individual_commands():
     cmd2 = UpdateRecordCommand(db, "emp1", {"name": "John Doe", "dept": "Engineering"})
     manager.execute_command(cmd2)
     print(f"After update: {db.get_all()}")
+
+    cmd3 = InsertRecordCommand(
+        db, DatabaseRecord("emp2", {"name": "Jane", "dept": "HR"})
+    )
+    manager.execute_command(cmd3)
+    print(f"After second insert: {db.get_all()}")
