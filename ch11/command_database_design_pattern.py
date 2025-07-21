@@ -463,3 +463,11 @@ if __name__ == "__main__":
                 self.current_position -= 1
                 return True
             return False
+
+        def redo(self) -> bool:
+            if self.current_position < len(self.command_history) - 1:
+                self.current_position += 1
+                command = self.command_history[self.current_position]
+                command.execute()
+                return True
+            return False
