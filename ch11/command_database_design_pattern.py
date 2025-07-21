@@ -455,3 +455,11 @@ if __name__ == "__main__":
             if len(self.command_history) > self.max_history:
                 self.command_history.pop(0)
                 self.current_position -= 1
+
+        def undo(self) -> bool:
+            if self.current_position >= 0:
+                command = self.command_history[self.current_position]
+                command.undo()
+                self.current_position -= 1
+                return True
+            return False
