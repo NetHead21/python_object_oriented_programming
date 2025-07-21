@@ -431,3 +431,7 @@ if __name__ == "__main__":
         @abstractmethod
         def execute(self) -> None:
             pass
+
+        @abstractmethod
+        def undo(self) -> None:
+            pass
