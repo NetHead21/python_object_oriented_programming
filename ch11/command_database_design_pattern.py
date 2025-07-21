@@ -426,3 +426,8 @@ if __name__ == "__main__":
     # You need the Command base class and CommandManager from earlier
     from abc import ABC, abstractmethod
     from typing import List, Optional
+
+    class Command(ABC):
+        @abstractmethod
+        def execute(self) -> None:
+            pass
