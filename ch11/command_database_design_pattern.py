@@ -481,3 +481,7 @@ if __name__ == "__main__":
             if self.current_position >= 0:
                 return self.command_history[self.current_position].get_description()
             return None
+
+    # Run the demonstrations
+    demonstrate_database_transactions()
+    demonstrate_individual_commands()
