@@ -476,3 +476,8 @@ if __name__ == "__main__":
             if self.current_position < len(self.command_history) - 1:
                 return self.command_history[self.current_position + 1].get_description()
             return None
+
+        def get_undo_description(self) -> Optional[str]:
+            if self.current_position >= 0:
+                return self.command_history[self.current_position].get_description()
+            return None
