@@ -10,3 +10,7 @@ The State pattern allows an object to alter its behavior when its internal
 state changes, eliminating complex conditional logic and making the code
 more maintainable and extensible.
 """
+
+from abc import ABC, abstractmethod
+from typing import Optional, List
+from enum import Enum
