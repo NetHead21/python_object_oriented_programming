@@ -374,3 +374,11 @@ def demonstrate_database_transactions():
 
     print("\nAfter failed transaction (should be unchanged):")
     print(f"Records: {db.get_all()}")
+
+
+# Example usage with individual commands
+def demonstrate_individual_commands():
+    """Demonstrate individual database commands with undo functionality."""
+    print("\n" + "=" * 60)
+    print("Individual Database Commands Demo")
+    print("=" * 60)
