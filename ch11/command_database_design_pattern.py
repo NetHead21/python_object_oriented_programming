@@ -451,3 +451,7 @@ if __name__ == "__main__":
             command.execute()
             self.command_history.append(command)
             self.current_position += 1
+
+            if len(self.command_history) > self.max_history:
+                self.command_history.pop(0)
+                self.current_position -= 1
