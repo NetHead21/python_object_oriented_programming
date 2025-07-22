@@ -103,3 +103,7 @@ class CardInsertedState(ATMState):
         atm.set_state(atm.idle_state)
         atm.reset_session()
         return "Card ejected."
+
+
+class PinEnteredState(ATMState):
+    """PIN verified, ready for transaction selection."""
