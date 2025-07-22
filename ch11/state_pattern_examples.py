@@ -62,3 +62,6 @@ class IdleState(ATMState):
     def insert_card(self, atm: "ATMMachine") -> str:
         atm.set_state(atm.card_inserted_state)
         return "Card inserted. Please enter your PIN."
+
+    def enter_pin(self, atm: "ATMMachine", pin: str) -> str:
+        return "Please insert your card first."
