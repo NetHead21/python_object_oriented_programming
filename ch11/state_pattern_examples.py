@@ -39,3 +39,8 @@ class ATMState(ABC):
     def enter_pin(self, atm: "ATMMachine", pin: str) -> str:
         """Handle PIN entry."""
         pass
+
+    @abstractmethod
+    def select_transaction(self, atm: "ATMMachine", transaction_type: str) -> str:
+        """Handle transaction selection."""
+        pass
