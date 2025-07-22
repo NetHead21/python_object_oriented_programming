@@ -74,3 +74,7 @@ class IdleState(ATMState):
 
     def eject_card(self, atm: "ATMMachine") -> str:
         return "No card to eject."
+
+
+class CardInsertedState(ATMState):
+    """Card is inserted, waiting for PIN."""
