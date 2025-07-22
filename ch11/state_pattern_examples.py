@@ -95,3 +95,6 @@ class CardInsertedState(ATMState):
 
     def select_transaction(self, atm: "ATMMachine", transaction_type: str) -> str:
         return "Please enter your PIN first."
+
+    def dispense_cash(self, atm: "ATMMachine", amount: int) -> str:
+        return "Please enter your PIN first."
