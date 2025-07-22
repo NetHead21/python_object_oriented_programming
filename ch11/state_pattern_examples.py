@@ -81,3 +81,14 @@ class CardInsertedState(ATMState):
 
     def insert_card(self, atm: "ATMMachine") -> str:
         return "Card already inserted."
+
+    def enter_pin(self, atm: "ATMMachine", pin: str) -> str:
+        if atm.validate_pin(pin):
+            atm.set_state(atm.pin_entered_state)
+            return "PIN accepted. Please select a transaction."
+        else:
+            atm.pin_attempts += 1
+            if atm.pin_attempts >= 3:
+                atm.set_state(atm.idle_state)
+                return "Too many incorrect attempts. Card ejected."
+            return f"Incorrect PIN. {3 - atm.pin_attempts} attempts remaining."
