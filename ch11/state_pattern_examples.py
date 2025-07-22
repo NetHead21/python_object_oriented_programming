@@ -68,3 +68,6 @@ class IdleState(ATMState):
 
     def select_transaction(self, atm: "ATMMachine", transaction_type: str) -> str:
         return "Please insert your card first."
+
+    def dispense_cash(self, atm: "ATMMachine", amount: int) -> str:
+        return "Please insert your card first."
