@@ -92,3 +92,6 @@ class CardInsertedState(ATMState):
                 atm.set_state(atm.idle_state)
                 return "Too many incorrect attempts. Card ejected."
             return f"Incorrect PIN. {3 - atm.pin_attempts} attempts remaining."
+
+    def select_transaction(self, atm: "ATMMachine", transaction_type: str) -> str:
+        return "Please enter your PIN first."
