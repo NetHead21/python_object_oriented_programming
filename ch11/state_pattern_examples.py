@@ -14,3 +14,18 @@ more maintainable and extensible.
 from abc import ABC, abstractmethod
 from typing import Optional, List
 from enum import Enum
+
+
+# =============================================================================
+# Example 1: ATM Machine State Pattern
+# =============================================================================
+
+
+class ATMState(ABC):
+    """
+    Abstract base class for ATM states.
+
+    Defines the interface that all concrete ATM states must implement.
+    Each state handles user interactions differently based on the current
+    context of the ATM operation.
+    """
