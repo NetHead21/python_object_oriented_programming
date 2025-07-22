@@ -49,3 +49,8 @@ class ATMState(ABC):
     def dispense_cash(self, atm: "ATMMachine", amount: int) -> str:
         """Handle cash dispensing."""
         pass
+
+    @abstractmethod
+    def eject_card(self, atm: "ATMMachine") -> str:
+        """Handle card ejection."""
+        pass
