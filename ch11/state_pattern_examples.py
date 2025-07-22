@@ -122,3 +122,6 @@ class PinEnteredState(ATMState):
             return f"Your balance is ${atm.account_balance}. Select another transaction or eject card."
         else:
             return "Invalid transaction type. Please select 'withdrawal' or 'balance'."
+
+    def dispense_cash(self, atm: "ATMMachine", amount: int) -> str:
+        return "Please select a transaction first."
