@@ -29,3 +29,8 @@ class ATMState(ABC):
     Each state handles user interactions differently based on the current
     context of the ATM operation.
     """
+
+    @abstractmethod
+    def insert_card(self, atm: "ATMMachine") -> str:
+        """Handle card insertion."""
+        pass
