@@ -78,3 +78,6 @@ class IdleState(ATMState):
 
 class CardInsertedState(ATMState):
     """Card is inserted, waiting for PIN."""
+
+    def insert_card(self, atm: "ATMMachine") -> str:
+        return "Card already inserted."
