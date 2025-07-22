@@ -54,3 +54,7 @@ class ATMState(ABC):
     def eject_card(self, atm: "ATMMachine") -> str:
         """Handle card ejection."""
         pass
+
+
+class IdleState(ATMState):
+    """ATM is waiting for a card to be inserted."""
