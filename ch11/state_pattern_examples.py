@@ -113,3 +113,12 @@ class PinEnteredState(ATMState):
 
     def enter_pin(self, atm: "ATMMachine", pin: str) -> str:
         return "PIN already verified."
+
+    def select_transaction(self, atm: "ATMMachine", transaction_type: str) -> str:
+        if transaction_type.lower() == "withdrawal":
+            atm.set_state(atm.transaction_state)
+            return "Enter withdrawal amount."
+        elif transaction_type.lower() == "balance":
+            return f"Your balance is ${atm.account_balance}. Select another transaction or eject card."
+        else:
+            return "Invalid transaction type. Please select 'withdrawal' or 'balance'."
