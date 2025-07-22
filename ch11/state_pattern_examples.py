@@ -98,3 +98,8 @@ class CardInsertedState(ATMState):
 
     def dispense_cash(self, atm: "ATMMachine", amount: int) -> str:
         return "Please enter your PIN first."
+
+    def eject_card(self, atm: "ATMMachine") -> str:
+        atm.set_state(atm.idle_state)
+        atm.reset_session()
+        return "Card ejected."
