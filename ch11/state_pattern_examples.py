@@ -107,3 +107,6 @@ class CardInsertedState(ATMState):
 
 class PinEnteredState(ATMState):
     """PIN verified, ready for transaction selection."""
+
+    def insert_card(self, atm: "ATMMachine") -> str:
+        return "Transaction in progress."
