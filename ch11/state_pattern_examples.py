@@ -167,3 +167,13 @@ class TransactionState(ATMState):
         atm.set_state(atm.idle_state)
         atm.reset_session()
         return "Transaction cancelled. Card ejected."
+
+
+class ATMMachine:
+    """
+    Context class for the ATM State Pattern.
+
+    This class maintains the current state and delegates all operations
+    to the current state object. It demonstrates how the State pattern
+    eliminates complex conditional logic.
+    """
