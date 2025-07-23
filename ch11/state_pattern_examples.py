@@ -201,3 +201,7 @@ class ATMMachine:
         self.cash_available = initial_cash
         self.correct_pin = "1234"
         self.pin_attempts = 0
+
+    def set_state(self, state: ATMState) -> None:
+        """Change the current state."""
+        self.current_state = state
