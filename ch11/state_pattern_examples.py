@@ -186,3 +186,9 @@ class ATMMachine:
             initial_balance: Starting account balance
             initial_cash: Amount of cash available in the ATM
         """
+
+        # Initialize states
+        self.idle_state = IdleState()
+        self.card_inserted_state = CardInsertedState()
+        self.pin_entered_state = PinEnteredState()
+        self.transaction_state = TransactionState()
