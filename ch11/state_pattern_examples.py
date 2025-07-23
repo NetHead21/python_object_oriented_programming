@@ -220,3 +220,6 @@ class ATMMachine:
 
     def enter_pin(self, pin: str) -> str:
         return self.current_state.enter_pin(self, pin)
+
+    def select_transaction(self, transaction_type: str) -> str:
+        return self.current_state.select_transaction(self, transaction_type)
