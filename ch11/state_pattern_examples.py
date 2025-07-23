@@ -134,3 +134,6 @@ class PinEnteredState(ATMState):
 
 class TransactionState(ATMState):
     """Processing a transaction."""
+
+    def insert_card(self, atm: "ATMMachine") -> str:
+        return "Transaction in progress."
