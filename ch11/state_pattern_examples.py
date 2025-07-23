@@ -195,3 +195,9 @@ class ATMMachine:
 
         # Set initial state
         self.current_state = self.idle_state
+
+        # ATM data
+        self.account_balance = initial_balance
+        self.cash_available = initial_cash
+        self.correct_pin = "1234"
+        self.pin_attempts = 0
