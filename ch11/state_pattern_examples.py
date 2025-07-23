@@ -147,3 +147,7 @@ class TransactionState(ATMState):
     def dispense_cash(self, atm: "ATMMachine", amount: int) -> str:
         if amount <= 0:
             return "Invalid amount."
+
+        if amount > atm.account_balance:
+            atm.set_state(atm.pin_entered_state)
+            return "Insufficient funds. Select another transaction."
