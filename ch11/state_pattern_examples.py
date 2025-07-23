@@ -140,3 +140,6 @@ class TransactionState(ATMState):
 
     def enter_pin(self, atm: "ATMMachine", pin: str) -> str:
         return "Transaction in progress."
+
+    def select_transaction(self, atm: "ATMMachine", transaction_type: str) -> str:
+        return "Transaction in progress."
