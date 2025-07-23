@@ -229,3 +229,7 @@ class ATMMachine:
 
     def eject_card(self) -> str:
         return self.current_state.eject_card(self)
+
+    def get_current_state_name(self) -> str:
+        """Get the name of the current state for debugging."""
+        return self.current_state.__class__.__name__
