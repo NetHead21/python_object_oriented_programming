@@ -217,3 +217,6 @@ class ATMMachine:
     # Delegate all operations to the current state
     def insert_card(self) -> str:
         return self.current_state.insert_card(self)
+
+    def enter_pin(self, pin: str) -> str:
+        return self.current_state.enter_pin(self, pin)
