@@ -130,3 +130,7 @@ class PinEnteredState(ATMState):
         atm.set_state(atm.idle_state)
         atm.reset_session()
         return "Card ejected. Thank you!"
+
+
+class TransactionState(ATMState):
+    """Processing a transaction."""
