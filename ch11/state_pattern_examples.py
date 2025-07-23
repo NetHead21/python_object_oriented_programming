@@ -226,3 +226,6 @@ class ATMMachine:
 
     def dispense_cash(self, amount: int) -> str:
         return self.current_state.dispense_cash(self, amount)
+
+    def eject_card(self) -> str:
+        return self.current_state.eject_card(self)
