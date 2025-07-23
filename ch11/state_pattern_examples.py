@@ -192,3 +192,6 @@ class ATMMachine:
         self.card_inserted_state = CardInsertedState()
         self.pin_entered_state = PinEnteredState()
         self.transaction_state = TransactionState()
+
+        # Set initial state
+        self.current_state = self.idle_state
