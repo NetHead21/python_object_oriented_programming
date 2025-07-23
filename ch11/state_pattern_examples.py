@@ -177,3 +177,12 @@ class ATMMachine:
     to the current state object. It demonstrates how the State pattern
     eliminates complex conditional logic.
     """
+
+    def __init__(self, initial_balance: int = 1000, initial_cash: int = 10000):
+        """
+        Initialize the ATM machine.
+
+        Args:
+            initial_balance: Starting account balance
+            initial_cash: Amount of cash available in the ATM
+        """
