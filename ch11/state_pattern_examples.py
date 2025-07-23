@@ -151,3 +151,7 @@ class TransactionState(ATMState):
         if amount > atm.account_balance:
             atm.set_state(atm.pin_entered_state)
             return "Insufficient funds. Select another transaction."
+
+        if amount > atm.cash_available:
+            atm.set_state(atm.pin_entered_state)
+            return "ATM has insufficient cash. Select another transaction."
