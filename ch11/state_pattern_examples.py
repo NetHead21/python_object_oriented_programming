@@ -213,3 +213,7 @@ class ATMMachine:
     def reset_session(self) -> None:
         """Reset session data."""
         self.pin_attempts = 0
+
+    # Delegate all operations to the current state
+    def insert_card(self) -> str:
+        return self.current_state.insert_card(self)
