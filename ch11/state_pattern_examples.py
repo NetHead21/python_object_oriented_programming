@@ -162,3 +162,8 @@ class TransactionState(ATMState):
         atm.set_state(atm.pin_entered_state)
 
         return f"${amount} dispensed. Remaining balance: ${atm.account_balance}. Select another transaction or eject card."
+
+    def eject_card(self, atm: "ATMMachine") -> str:
+        atm.set_state(atm.idle_state)
+        atm.reset_session()
+        return "Transaction cancelled. Card ejected."
