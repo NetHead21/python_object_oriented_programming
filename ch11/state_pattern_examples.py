@@ -209,3 +209,7 @@ class ATMMachine:
     def validate_pin(self, pin: str) -> bool:
         """Validate the entered PIN."""
         return pin == self.correct_pin
+
+    def reset_session(self) -> None:
+        """Reset session data."""
+        self.pin_attempts = 0
