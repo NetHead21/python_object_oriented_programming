@@ -223,3 +223,6 @@ class ATMMachine:
 
     def select_transaction(self, transaction_type: str) -> str:
         return self.current_state.select_transaction(self, transaction_type)
+
+    def dispense_cash(self, amount: int) -> str:
+        return self.current_state.dispense_cash(self, amount)
