@@ -205,3 +205,7 @@ class ATMMachine:
     def set_state(self, state: ATMState) -> None:
         """Change the current state."""
         self.current_state = state
+
+    def validate_pin(self, pin: str) -> bool:
+        """Validate the entered PIN."""
+        return pin == self.correct_pin
