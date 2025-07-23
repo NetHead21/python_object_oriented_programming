@@ -143,3 +143,7 @@ class TransactionState(ATMState):
 
     def select_transaction(self, atm: "ATMMachine", transaction_type: str) -> str:
         return "Transaction in progress."
+
+    def dispense_cash(self, atm: "ATMMachine", amount: int) -> str:
+        if amount <= 0:
+            return "Invalid amount."
