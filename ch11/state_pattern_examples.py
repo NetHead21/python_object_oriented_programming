@@ -233,3 +233,18 @@ class ATMMachine:
     def get_current_state_name(self) -> str:
         """Get the name of the current state for debugging."""
         return self.current_state.__class__.__name__
+
+
+# =============================================================================
+# Example 2: Document Workflow State Pattern
+# =============================================================================
+
+
+class DocumentStatus(Enum):
+    """Enumeration of document statuses."""
+
+    DRAFT = "draft"
+    REVIEW = "review"
+    APPROVED = "approved"
+    PUBLISHED = "published"
+    ARCHIVED = "archived"
