@@ -309,3 +309,7 @@ class DraftState(DocumentState):
 
     def get_available_actions(self) -> List[str]:
         return ["edit", "submit_for_review", "archive"]
+
+
+class ReviewState(DocumentState):
+    """Document is under review - limited editing allowed."""
