@@ -301,3 +301,8 @@ class DraftState(DocumentState):
 
     def publish(self, document: "Document") -> str:
         return "Cannot publish a draft document. Must be approved first."
+
+    def archive(self, document: "Document") -> str:
+        document.set_state(document.archived_state)
+        document.status = DocumentStatus.ARCHIVED
+        return "Draft document archived."
