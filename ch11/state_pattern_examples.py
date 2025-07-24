@@ -306,3 +306,6 @@ class DraftState(DocumentState):
         document.set_state(document.archived_state)
         document.status = DocumentStatus.ARCHIVED
         return "Draft document archived."
+
+    def get_available_actions(self) -> List[str]:
+        return ["edit", "submit_for_review", "archive"]
