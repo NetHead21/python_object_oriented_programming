@@ -295,3 +295,6 @@ class DraftState(DocumentState):
         document.set_state(document.review_state)
         document.status = DocumentStatus.REVIEW
         return "Document submitted for review."
+
+    def approve(self, document: "Document") -> str:
+        return "Cannot approve a draft document. Submit for review first."
