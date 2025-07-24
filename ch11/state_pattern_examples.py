@@ -319,3 +319,8 @@ class ReviewState(DocumentState):
 
     def submit_for_review(self, document: "Document") -> str:
         return "Document is already under review."
+
+    def approve(self, document: "Document") -> str:
+        document.set_state(document.approved_state)
+        document.status = DocumentStatus.APPROVED
+        return "Document approved!"
