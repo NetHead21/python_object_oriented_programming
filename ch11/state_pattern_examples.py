@@ -298,3 +298,6 @@ class DraftState(DocumentState):
 
     def approve(self, document: "Document") -> str:
         return "Cannot approve a draft document. Submit for review first."
+
+    def publish(self, document: "Document") -> str:
+        return "Cannot publish a draft document. Must be approved first."
