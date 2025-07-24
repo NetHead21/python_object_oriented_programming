@@ -262,3 +262,8 @@ class DocumentState(ABC):
     def submit_for_review(self, document: "Document") -> str:
         """Submit document for review."""
         pass
+
+    @abstractmethod
+    def approve(self, document: "Document") -> str:
+        """Approve the document."""
+        pass
