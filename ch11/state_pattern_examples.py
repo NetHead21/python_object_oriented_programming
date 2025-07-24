@@ -282,3 +282,7 @@ class DocumentState(ABC):
     def get_available_actions(self) -> List[str]:
         """Get list of available actions in this state."""
         pass
+
+
+class DraftState(DocumentState):
+    """Document is in draft mode - can be edited freely."""
