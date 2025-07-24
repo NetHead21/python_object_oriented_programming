@@ -272,3 +272,8 @@ class DocumentState(ABC):
     def publish(self, document: "Document") -> str:
         """Publish the document."""
         pass
+
+    @abstractmethod
+    def archive(self, document: "Document") -> str:
+        """Archive the document."""
+        pass
