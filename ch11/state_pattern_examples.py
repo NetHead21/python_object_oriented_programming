@@ -248,3 +248,7 @@ class DocumentStatus(Enum):
     APPROVED = "approved"
     PUBLISHED = "published"
     ARCHIVED = "archived"
+
+
+class DocumentState(ABC):
+    """Abstract base class for document workflow states."""
