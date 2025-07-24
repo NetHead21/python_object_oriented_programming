@@ -290,3 +290,8 @@ class DraftState(DocumentState):
     def edit(self, document: "Document") -> str:
         document.last_modified = "Just now"
         return "Document edited successfully."
+
+    def submit_for_review(self, document: "Document") -> str:
+        document.set_state(document.review_state)
+        document.status = DocumentStatus.REVIEW
+        return "Document submitted for review."
