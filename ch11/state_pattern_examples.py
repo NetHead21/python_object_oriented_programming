@@ -324,3 +324,6 @@ class ReviewState(DocumentState):
         document.set_state(document.approved_state)
         document.status = DocumentStatus.APPROVED
         return "Document approved!"
+
+    def publish(self, document: "Document") -> str:
+        return "Cannot publish document under review. Must be approved first."
