@@ -277,3 +277,8 @@ class DocumentState(ABC):
     def archive(self, document: "Document") -> str:
         """Archive the document."""
         pass
+
+    @abstractmethod
+    def get_available_actions(self) -> List[str]:
+        """Get list of available actions in this state."""
+        pass
