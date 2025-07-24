@@ -267,3 +267,8 @@ class DocumentState(ABC):
     def approve(self, document: "Document") -> str:
         """Approve the document."""
         pass
+
+    @abstractmethod
+    def publish(self, document: "Document") -> str:
+        """Publish the document."""
+        pass
