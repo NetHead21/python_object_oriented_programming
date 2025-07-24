@@ -286,3 +286,7 @@ class DocumentState(ABC):
 
 class DraftState(DocumentState):
     """Document is in draft mode - can be edited freely."""
+
+    def edit(self, document: "Document") -> str:
+        document.last_modified = "Just now"
+        return "Document edited successfully."
