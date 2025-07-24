@@ -313,3 +313,6 @@ class DraftState(DocumentState):
 
 class ReviewState(DocumentState):
     """Document is under review - limited editing allowed."""
+
+    def edit(self, document: "Document") -> str:
+        return "Document is under review. Limited editing only."
