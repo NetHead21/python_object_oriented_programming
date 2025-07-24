@@ -316,3 +316,6 @@ class ReviewState(DocumentState):
 
     def edit(self, document: "Document") -> str:
         return "Document is under review. Limited editing only."
+
+    def submit_for_review(self, document: "Document") -> str:
+        return "Document is already under review."
