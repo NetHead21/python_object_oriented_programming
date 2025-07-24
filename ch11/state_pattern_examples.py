@@ -257,3 +257,8 @@ class DocumentState(ABC):
     def edit(self, document: "Document") -> str:
         """Handle document editing."""
         pass
+
+    @abstractmethod
+    def submit_for_review(self, document: "Document") -> str:
+        """Submit document for review."""
+        pass
