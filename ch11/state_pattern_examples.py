@@ -252,3 +252,8 @@ class DocumentStatus(Enum):
 
 class DocumentState(ABC):
     """Abstract base class for document workflow states."""
+
+    @abstractmethod
+    def edit(self, document: "Document") -> str:
+        """Handle document editing."""
+        pass
