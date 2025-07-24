@@ -327,3 +327,8 @@ class ReviewState(DocumentState):
 
     def publish(self, document: "Document") -> str:
         return "Cannot publish document under review. Must be approved first."
+
+    def archive(self, document: "Document") -> str:
+        document.set_state(document.archived_state)
+        document.status = DocumentStatus.ARCHIVED
+        return "Document archived from review."
