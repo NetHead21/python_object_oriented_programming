@@ -395,3 +395,6 @@ class ArchivedState(DocumentState):
 
     def submit_for_review(self, document: "Document") -> str:
         return "Cannot submit archived document for review."
+
+    def approve(self, document: "Document") -> str:
+        return "Cannot approve archived document."
