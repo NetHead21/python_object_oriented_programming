@@ -368,3 +368,6 @@ class PublishedState(DocumentState):
 
     def edit(self, document: "Document") -> str:
         return "Cannot edit published document. Create a new version."
+
+    def submit_for_review(self, document: "Document") -> str:
+        return "Document is already published."
