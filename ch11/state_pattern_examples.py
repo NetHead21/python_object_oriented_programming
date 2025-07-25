@@ -365,3 +365,6 @@ class ApprovedState(DocumentState):
 
 class PublishedState(DocumentState):
     """Document is published - read-only."""
+
+    def edit(self, document: "Document") -> str:
+        return "Cannot edit published document. Create a new version."
