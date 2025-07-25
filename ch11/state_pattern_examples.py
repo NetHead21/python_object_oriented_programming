@@ -358,3 +358,6 @@ class ApprovedState(DocumentState):
         document.set_state(document.archived_state)
         document.status = DocumentStatus.ARCHIVED
         return "Approved document archived."
+
+    def get_available_actions(self) -> List[str]:
+        return ["publish", "archive"]
