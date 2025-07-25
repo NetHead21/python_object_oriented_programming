@@ -335,3 +335,7 @@ class ReviewState(DocumentState):
 
     def get_available_actions(self) -> List[str]:
         return ["approve", "archive"]
+
+
+class ApprovedState(DocumentState):
+    """Document is approved - ready for publishing."""
