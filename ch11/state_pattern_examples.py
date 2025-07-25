@@ -389,3 +389,6 @@ class PublishedState(DocumentState):
 
 class ArchivedState(DocumentState):
     """Document is archived - no actions allowed."""
+
+    def edit(self, document: "Document") -> str:
+        return "Cannot edit archived document."
