@@ -342,3 +342,6 @@ class ApprovedState(DocumentState):
 
     def edit(self, document: "Document") -> str:
         return "Cannot edit approved document. Create a new version or revert to draft."
+
+    def submit_for_review(self, document: "Document") -> str:
+        return "Document is already approved."
