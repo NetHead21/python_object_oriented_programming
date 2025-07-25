@@ -361,3 +361,7 @@ class ApprovedState(DocumentState):
 
     def get_available_actions(self) -> List[str]:
         return ["publish", "archive"]
+
+
+class PublishedState(DocumentState):
+    """Document is published - read-only."""
