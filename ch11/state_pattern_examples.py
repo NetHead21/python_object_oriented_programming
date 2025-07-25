@@ -377,3 +377,8 @@ class PublishedState(DocumentState):
 
     def publish(self, document: "Document") -> str:
         return "Document is already published."
+
+    def archive(self, document: "Document") -> str:
+        document.set_state(document.archived_state)
+        document.status = DocumentStatus.ARCHIVED
+        return "Published document archived."
