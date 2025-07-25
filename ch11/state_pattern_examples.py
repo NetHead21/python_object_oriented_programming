@@ -374,3 +374,6 @@ class PublishedState(DocumentState):
 
     def approve(self, document: "Document") -> str:
         return "Document is already published."
+
+    def publish(self, document: "Document") -> str:
+        return "Document is already published."
