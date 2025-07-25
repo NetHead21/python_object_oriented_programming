@@ -385,3 +385,7 @@ class PublishedState(DocumentState):
 
     def get_available_actions(self) -> List[str]:
         return ["archive"]
+
+
+class ArchivedState(DocumentState):
+    """Document is archived - no actions allowed."""
