@@ -401,3 +401,6 @@ class ArchivedState(DocumentState):
 
     def publish(self, document: "Document") -> str:
         return "Cannot publish archived document."
+
+    def archive(self, document: "Document") -> str:
+        return "Document is already archived."
