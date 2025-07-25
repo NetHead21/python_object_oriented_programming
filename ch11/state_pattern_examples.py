@@ -339,3 +339,6 @@ class ReviewState(DocumentState):
 
 class ApprovedState(DocumentState):
     """Document is approved - ready for publishing."""
+
+    def edit(self, document: "Document") -> str:
+        return "Cannot edit approved document. Create a new version or revert to draft."
