@@ -398,3 +398,6 @@ class ArchivedState(DocumentState):
 
     def approve(self, document: "Document") -> str:
         return "Cannot approve archived document."
+
+    def publish(self, document: "Document") -> str:
+        return "Cannot publish archived document."
