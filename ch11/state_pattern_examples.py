@@ -353,3 +353,8 @@ class ApprovedState(DocumentState):
         document.set_state(document.published_state)
         document.status = DocumentStatus.PUBLISHED
         return "Document published successfully!"
+
+    def archive(self, document: "Document") -> str:
+        document.set_state(document.archived_state)
+        document.status = DocumentStatus.ARCHIVED
+        return "Approved document archived."
