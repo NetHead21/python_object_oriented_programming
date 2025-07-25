@@ -348,3 +348,8 @@ class ApprovedState(DocumentState):
 
     def approve(self, document: "Document") -> str:
         return "Document is already approved."
+
+    def publish(self, document: "Document") -> str:
+        document.set_state(document.published_state)
+        document.status = DocumentStatus.PUBLISHED
+        return "Document published successfully!"
