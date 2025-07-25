@@ -371,3 +371,6 @@ class PublishedState(DocumentState):
 
     def submit_for_review(self, document: "Document") -> str:
         return "Document is already published."
+
+    def approve(self, document: "Document") -> str:
+        return "Document is already published."
