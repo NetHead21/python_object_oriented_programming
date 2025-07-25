@@ -404,3 +404,6 @@ class ArchivedState(DocumentState):
 
     def archive(self, document: "Document") -> str:
         return "Document is already archived."
+
+    def get_available_actions(self) -> List[str]:
+        return []
