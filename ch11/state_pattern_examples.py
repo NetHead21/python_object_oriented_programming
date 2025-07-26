@@ -456,3 +456,7 @@ class Document:
 
     def get_available_actions(self) -> List[str]:
         return self.current_state.get_available_actions()
+
+    def get_status_info(self) -> str:
+        """Get current document status information."""
+        return f"Document: '{self.title}' | Status: {self.status.value} | Available actions: {', '.join(self.get_available_actions())}"
