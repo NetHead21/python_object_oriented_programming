@@ -416,3 +416,10 @@ class Document:
     Demonstrates how different document states allow different operations,
     creating a clean workflow without complex conditional logic.
     """
+
+    def __init__(self, title: str, author: str):
+        """Initialize a new document in draft state."""
+        self.title = title
+        self.author = author
+        self.status = DocumentStatus.DRAFT
+        self.last_modified = "Created now"
