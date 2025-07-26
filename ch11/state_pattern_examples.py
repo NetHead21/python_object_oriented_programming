@@ -441,3 +441,6 @@ class Document:
     # Delegate all operations to current state
     def edit(self) -> str:
         return self.current_state.edit(self)
+
+    def submit_for_review(self) -> str:
+        return self.current_state.submit_for_review(self)
