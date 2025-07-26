@@ -475,3 +475,7 @@ class MediaPlayerState(ABC):
     @abstractmethod
     def pause(self, player: "MediaPlayer") -> str:
         pass
+
+    @abstractmethod
+    def stop(self, player: "MediaPlayer") -> str:
+        pass
