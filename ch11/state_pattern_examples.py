@@ -467,3 +467,7 @@ class Document:
 # =============================================================================
 class MediaPlayerState(ABC):
     """Abstract base class for media player states."""
+
+    @abstractmethod
+    def play(self, player: "MediaPlayer") -> str:
+        pass
