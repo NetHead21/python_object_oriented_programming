@@ -489,3 +489,6 @@ class StoppedState(MediaPlayerState):
             player.set_state(player.playing_state)
             return f"Playing: {player.current_track}"
         return "No track loaded."
+
+    def pause(self, player: "MediaPlayer") -> str:
+        return "Cannot pause when stopped."
