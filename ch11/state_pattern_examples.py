@@ -430,3 +430,6 @@ class Document:
         self.approved_state = ApprovedState()
         self.published_state = PublishedState()
         self.archived_state = ArchivedState()
+
+        # Start in draft state
+        self.current_state = self.draft_state
