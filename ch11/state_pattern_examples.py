@@ -502,3 +502,7 @@ class PlayingState(MediaPlayerState):
 
     def play(self, player: "MediaPlayer") -> str:
         return f"Already playing: {player.current_track}"
+
+    def pause(self, player: "MediaPlayer") -> str:
+        player.set_state(player.paused_state)
+        return f"Paused: {player.current_track}"
