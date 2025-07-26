@@ -450,3 +450,6 @@ class Document:
 
     def publish(self) -> str:
         return self.current_state.publish(self)
+
+    def archive(self) -> str:
+        return self.current_state.archive(self)
