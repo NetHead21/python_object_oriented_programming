@@ -444,3 +444,6 @@ class Document:
 
     def submit_for_review(self) -> str:
         return self.current_state.submit_for_review(self)
+
+    def approve(self) -> str:
+        return self.current_state.approve(self)
