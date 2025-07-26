@@ -460,3 +460,10 @@ class Document:
     def get_status_info(self) -> str:
         """Get current document status information."""
         return f"Document: '{self.title}' | Status: {self.status.value} | Available actions: {', '.join(self.get_available_actions())}"
+
+
+# =============================================================================
+# Example 3: Media Player State Pattern
+# =============================================================================
+class MediaPlayerState(ABC):
+    """Abstract base class for media player states."""
