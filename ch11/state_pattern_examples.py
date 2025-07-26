@@ -447,3 +447,6 @@ class Document:
 
     def approve(self) -> str:
         return self.current_state.approve(self)
+
+    def publish(self) -> str:
+        return self.current_state.publish(self)
