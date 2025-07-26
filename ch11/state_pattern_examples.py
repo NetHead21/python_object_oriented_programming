@@ -433,3 +433,7 @@ class Document:
 
         # Start in draft state
         self.current_state = self.draft_state
+
+    def set_state(self, state: DocumentState) -> None:
+        """Change the current state."""
+        self.current_state = state
