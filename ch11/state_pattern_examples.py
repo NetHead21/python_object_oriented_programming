@@ -479,3 +479,7 @@ class MediaPlayerState(ABC):
     @abstractmethod
     def stop(self, player: "MediaPlayer") -> str:
         pass
+
+
+class StoppedState(MediaPlayerState):
+    """Player is stopped."""
