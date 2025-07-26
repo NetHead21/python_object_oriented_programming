@@ -495,3 +495,7 @@ class StoppedState(MediaPlayerState):
 
     def stop(self, player: "MediaPlayer") -> str:
         return "Already stopped."
+
+
+class PlayingState(MediaPlayerState):
+    """Player is currently playing."""
