@@ -407,3 +407,12 @@ class ArchivedState(DocumentState):
 
     def get_available_actions(self) -> List[str]:
         return []
+
+
+class Document:
+    """
+    Context class for document workflow.
+
+    Demonstrates how different document states allow different operations,
+    creating a clean workflow without complex conditional logic.
+    """
