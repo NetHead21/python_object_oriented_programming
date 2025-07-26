@@ -453,3 +453,6 @@ class Document:
 
     def archive(self) -> str:
         return self.current_state.archive(self)
+
+    def get_available_actions(self) -> List[str]:
+        return self.current_state.get_available_actions()
