@@ -437,3 +437,7 @@ class Document:
     def set_state(self, state: DocumentState) -> None:
         """Change the current state."""
         self.current_state = state
+
+    # Delegate all operations to current state
+    def edit(self) -> str:
+        return self.current_state.edit(self)
