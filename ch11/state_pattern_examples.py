@@ -483,3 +483,9 @@ class MediaPlayerState(ABC):
 
 class StoppedState(MediaPlayerState):
     """Player is stopped."""
+
+    def play(self, player: "MediaPlayer") -> str:
+        if player.current_track:
+            player.set_state(player.playing_state)
+            return f"Playing: {player.current_track}"
+        return "No track loaded."
