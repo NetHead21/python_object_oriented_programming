@@ -423,3 +423,10 @@ class Document:
         self.author = author
         self.status = DocumentStatus.DRAFT
         self.last_modified = "Created now"
+
+        # Initialize all states
+        self.draft_state = DraftState()
+        self.review_state = ReviewState()
+        self.approved_state = ApprovedState()
+        self.published_state = PublishedState()
+        self.archived_state = ArchivedState()
