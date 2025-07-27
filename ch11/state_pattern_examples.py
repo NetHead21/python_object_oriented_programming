@@ -537,3 +537,6 @@ class MediaPlayer:
 
         self.current_state = self.stopped_state
         self.current_track: Optional[str] = None
+
+    def set_state(self, state: MediaPlayerState) -> None:
+        self.current_state = state
