@@ -558,3 +558,12 @@ class MediaPlayer:
         state_name = self.current_state.__class__.__name__.replace("State", "")
         track_info = f" - {self.current_track}" if self.current_track else " - No track"
         return f"Status: {state_name}{track_info}"
+
+
+# =============================================================================
+# Demonstration and Testing
+# =============================================================================
+
+
+def demonstrate_atm_machine():
+    """Demonstrate the ATM machine state pattern."""
