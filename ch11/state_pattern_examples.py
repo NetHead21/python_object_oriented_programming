@@ -544,3 +544,6 @@ class MediaPlayer:
     def load_track(self, track_name: str) -> str:
         self.current_track = track_name
         return f"Loaded: {track_name}"
+
+    def play(self) -> str:
+        return self.current_state.play(self)
