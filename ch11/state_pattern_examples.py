@@ -553,3 +553,8 @@ class MediaPlayer:
 
     def stop(self) -> str:
         return self.current_state.stop(self)
+
+    def get_status(self) -> str:
+        state_name = self.current_state.__class__.__name__.replace("State", "")
+        track_info = f" - {self.current_track}" if self.current_track else " - No track"
+        return f"Status: {state_name}{track_info}"
