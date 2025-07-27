@@ -575,3 +575,15 @@ def demonstrate_atm_machine():
 
     print(f"Initial state: {atm.get_current_state_name()}")
     print()
+
+    # Sequence of operations
+    operations = [
+        ("Insert card", lambda: atm.insert_card()),
+        ("Enter correct PIN", lambda: atm.enter_pin("1234")),
+        ("Check balance", lambda: atm.select_transaction("balance")),
+        ("Select withdrawal", lambda: atm.select_transaction("withdrawal")),
+        ("Withdraw $100", lambda: atm.dispense_cash(100)),
+        ("Select withdrawal again", lambda: atm.select_transaction("withdrawal")),
+        ("Try to withdraw $1000", lambda: atm.dispense_cash(1000)),
+        ("Eject card", lambda: atm.eject_card()),
+    ]
