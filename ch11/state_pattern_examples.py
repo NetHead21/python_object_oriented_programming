@@ -594,3 +594,7 @@ def demonstrate_atm_machine():
         print(f"Result: {result}")
         print(f"State: {atm.get_current_state_name()}")
         print("-" * 40)
+
+
+def demonstrate_document_workflow():
+    """Demonstrate the document workflow state pattern."""
