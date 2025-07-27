@@ -618,3 +618,10 @@ def demonstrate_document_workflow():
         ("Try to edit published", lambda: doc.edit()),
         ("Archive document", lambda: doc.archive()),
     ]
+
+    for description, action in workflow:
+        print(f"Action: {description}")
+        result = action()
+        print(f"Result: {result}")
+        print(f"Status: {doc.get_status_info()}")
+        print("-" * 40)
