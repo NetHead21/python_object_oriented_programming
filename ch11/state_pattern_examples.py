@@ -521,3 +521,7 @@ class PausedState(MediaPlayerState):
 
     def pause(self, player: "MediaPlayer") -> str:
         return "Already paused."
+
+    def stop(self, player: "MediaPlayer") -> str:
+        player.set_state(player.stopped_state)
+        return "Stopped."
