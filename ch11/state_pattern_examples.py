@@ -570,3 +570,8 @@ def demonstrate_atm_machine():
     print("=" * 60)
     print("ATM MACHINE STATE PATTERN DEMONSTRATION")
     print("=" * 60)
+
+    atm = ATMMachine(initial_balance=500, initial_cash=2000)
+
+    print(f"Initial state: {atm.get_current_state_name()}")
+    print()
