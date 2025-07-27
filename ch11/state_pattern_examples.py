@@ -547,3 +547,6 @@ class MediaPlayer:
 
     def play(self) -> str:
         return self.current_state.play(self)
+
+    def pause(self) -> str:
+        return self.current_state.pause(self)
