@@ -598,3 +598,7 @@ def demonstrate_atm_machine():
 
 def demonstrate_document_workflow():
     """Demonstrate the document workflow state pattern."""
+
+    print("\n" + "=" * 60)
+    print("DOCUMENT WORKFLOW STATE PATTERN DEMONSTRATION")
+    print("=" * 60)
