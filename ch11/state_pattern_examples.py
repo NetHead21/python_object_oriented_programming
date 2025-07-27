@@ -567,3 +567,6 @@ class MediaPlayer:
 
 def demonstrate_atm_machine():
     """Demonstrate the ATM machine state pattern."""
+    print("=" * 60)
+    print("ATM MACHINE STATE PATTERN DEMONSTRATION")
+    print("=" * 60)
