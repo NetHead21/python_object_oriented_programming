@@ -602,3 +602,8 @@ def demonstrate_document_workflow():
     print("\n" + "=" * 60)
     print("DOCUMENT WORKFLOW STATE PATTERN DEMONSTRATION")
     print("=" * 60)
+
+    doc = Document("Python State Pattern Guide", "AI Assistant")
+
+    print(f"Initial status: {doc.get_status_info()}")
+    print()
