@@ -540,3 +540,7 @@ class MediaPlayer:
 
     def set_state(self, state: MediaPlayerState) -> None:
         self.current_state = state
+
+    def load_track(self, track_name: str) -> str:
+        self.current_track = track_name
+        return f"Loaded: {track_name}"
