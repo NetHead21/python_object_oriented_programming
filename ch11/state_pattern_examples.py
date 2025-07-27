@@ -510,3 +510,7 @@ class PlayingState(MediaPlayerState):
     def stop(self, player: "MediaPlayer") -> str:
         player.set_state(player.stopped_state)
         return "Stopped."
+
+
+class PausedState(MediaPlayerState):
+    """Player is paused."""
