@@ -607,3 +607,14 @@ def demonstrate_document_workflow():
 
     print(f"Initial status: {doc.get_status_info()}")
     print()
+
+    # Workflow sequence
+    workflow = [
+        ("Edit document", lambda: doc.edit()),
+        ("Submit for review", lambda: doc.submit_for_review()),
+        ("Try to edit in review", lambda: doc.edit()),
+        ("Approve document", lambda: doc.approve()),
+        ("Publish document", lambda: doc.publish()),
+        ("Try to edit published", lambda: doc.edit()),
+        ("Archive document", lambda: doc.archive()),
+    ]
