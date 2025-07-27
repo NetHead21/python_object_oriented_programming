@@ -534,3 +534,6 @@ class MediaPlayer:
         self.stopped_state = StoppedState()
         self.playing_state = PlayingState()
         self.paused_state = PausedState()
+
+        self.current_state = self.stopped_state
+        self.current_track: Optional[str] = None
