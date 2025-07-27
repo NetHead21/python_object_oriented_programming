@@ -529,3 +529,8 @@ class PausedState(MediaPlayerState):
 
 class MediaPlayer:
     """Context class for media player state pattern."""
+
+    def __init__(self):
+        self.stopped_state = StoppedState()
+        self.playing_state = PlayingState()
+        self.paused_state = PausedState()
