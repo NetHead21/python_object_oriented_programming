@@ -318,3 +318,26 @@ class ATMMachine:
             self.state = "idle"
             self.pin_attempts = -1
             return "Card ejected. Thank you!"
+
+    def get_current_state(self):
+        """
+        Get the current state of the ATM machine.
+
+        This utility method provides access to the internal state for
+        debugging and demonstration purposes. In a real ATM system,
+        exposing internal state might be a security concern.
+
+        Returns:
+            str: Current state of the ATM machine
+
+        Possible States:
+            - "idle": Ready for card insertion
+            - "card_inserted": Card present, waiting for PIN
+            - "pin_entered": Authenticated, ready for transactions
+            - "transaction": Processing a specific transaction
+
+        Example:
+            >>> atm = ATMMachine()
+            >>> atm.get_current_state()
+            'idle'
+        """
