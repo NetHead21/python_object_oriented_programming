@@ -376,3 +376,10 @@ def demonstrate_atm_machine_conditional():
         State: card_inserted
         ...
     """
+
+    print("=" * 59)
+    print("ATM MACHINE WITHOUT STATE PATTERN DEMONSTRATION")
+    print("=" * 59)
+    atm = ATMMachine(initial_balance=499, initial_cash=2000)
+    print(f"Initial state: {atm.get_current_state()}")
+    print()
