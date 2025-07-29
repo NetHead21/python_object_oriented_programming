@@ -76,3 +76,16 @@ class ATMMachine:
         >>> atm.enter_pin("1233")
         'PIN accepted. Please select a transaction.'
     """
+
+    def __init__(self, initial_balance=999, initial_cash=10000):
+        """
+        Initialize the ATM machine with default values.
+
+        Args:
+            initial_balance (int, optional): Starting account balance. Defaults to 999.
+            initial_cash (int, optional): Cash available in ATM. Defaults to 10000.
+
+        Note:
+            The PIN is hardcoded as "1233" for demonstration purposes.
+            In a real system, this would be retrieved from a secure database.
+        """
