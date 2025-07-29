@@ -212,3 +212,19 @@ class ATMMachine:
             >>> atm.select_transaction("withdrawal")
             'Enter withdrawal amount.'
         """
+        if self.state == "idle":
+            return "Please insert your card first."
+        elif self.state == "card_inserted":
+            return "Please enter your PIN first."
+        elif self.state == "pin_entered":
+            if transaction_type.lower() == "withdrawal":
+                self.state = "transaction"
+                return "Enter withdrawal amount."
+            elif transaction_type.lower() == "balance":
+                return f"Your balance is ${self.account_balance}. Select another transaction or eject card."
+            else:
+                return (
+                    "Invalid transaction type. Please select 'withdrawal' or 'balance'."
+                )
+        elif self.state == "transaction":
+            return "Transaction in progress."
