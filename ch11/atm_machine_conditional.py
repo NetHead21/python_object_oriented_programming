@@ -311,3 +311,10 @@ class ATMMachine:
             >>> atm.eject_card()
             'Card ejected. Thank you!'
         """
+
+        if self.state == "idle":
+            return "No card to eject."
+        else:
+            self.state = "idle"
+            self.pin_attempts = -1
+            return "Card ejected. Thank you!"
