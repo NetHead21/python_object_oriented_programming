@@ -629,3 +629,7 @@ def demonstrate_document_workflow():
 
 def demonstrate_media_player():
     """Demonstrate the media player state pattern."""
+
+    print("\n" + "=" * 60)
+    print("MEDIA PLAYER STATE PATTERN DEMONSTRATION")
+    print("=" * 60)
