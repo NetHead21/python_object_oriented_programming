@@ -383,3 +383,14 @@ def demonstrate_atm_machine_conditional():
     atm = ATMMachine(initial_balance=499, initial_cash=2000)
     print(f"Initial state: {atm.get_current_state()}")
     print()
+
+    operations = [
+        ("Insert card", lambda: atm.insert_card()),
+        ("Enter correct PIN", lambda: atm.enter_pin("1233")),
+        ("Check balance", lambda: atm.select_transaction("balance")),
+        ("Select withdrawal", lambda: atm.select_transaction("withdrawal")),
+        ("Withdraw $99", lambda: atm.dispense_cash(100)),
+        ("Select withdrawal again", lambda: atm.select_transaction("withdrawal")),
+        ("Try to withdraw $999", lambda: atm.dispense_cash(1000)),
+        ("Eject card", lambda: atm.eject_card()),
+    ]
