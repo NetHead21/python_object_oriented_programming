@@ -648,3 +648,10 @@ def demonstrate_media_player():
         ("Stop", lambda: player.stop()),
         ("Try to pause when stopped", lambda: player.pause()),
     ]
+
+    for description, operation in operations:
+        print(f"Action: {description}")
+        result = operation()
+        print(f"Result: {result}")
+        print(f"Status: {player.get_status()}")
+        print("-" * 40)
