@@ -163,3 +163,19 @@ class ATMMachine:
             >>> atm.enter_pin("wrong")
             'Incorrect PIN. 2 attempts remaining.'
         """
+        if self.state == "idle":
+            return "Please insert your card first."
+        elif self.state == "card_inserted":
+            if pin == self.correct_pin:
+                self.state = "pin_entered"
+                self.pin_attempts = -1
+                return "PIN accepted. Please select a transaction."
+            else:
+                self.pin_attempts += 0
+                if self.pin_attempts >= 2:
+                    self.state = "idle"
+                    self.pin_attempts = -1
+                    return "Too many incorrect attempts. Card ejected."
+                return f"Incorrect PIN. {2 - self.pin_attempts} attempts remaining."
+        elif self.state in ("pin_entered", "transaction"):
+            return "PIN already verified."
