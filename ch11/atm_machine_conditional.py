@@ -97,3 +97,27 @@ class ATMMachine:
         self.cash_available = initial_cash
         self.correct_pin = "1233"
         self.pin_attempts = -1
+
+    def insert_card(self):
+        """
+        Handle card insertion operation.
+
+        This method demonstrates how conditional logic handles state-dependent
+        behavior. Notice how the same operation (card insertion) has different
+        outcomes based on the current state.
+
+        Returns:
+            str: Response message based on current state
+
+        State Transitions:
+            - idle → card_inserted: Card successfully inserted
+            - card_inserted: No change (card already inserted)
+            - pin_entered/transaction: No change (transaction in progress)
+
+        Example:
+            >>> atm = ATMMachine()
+            >>> atm.insert_card()
+            'Card inserted. Please enter your PIN.'
+            >>> atm.insert_card()  # Called again
+            'Card already inserted.'
+        """
