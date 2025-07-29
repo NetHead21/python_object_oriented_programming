@@ -633,3 +633,8 @@ def demonstrate_media_player():
     print("\n" + "=" * 60)
     print("MEDIA PLAYER STATE PATTERN DEMONSTRATION")
     print("=" * 60)
+
+    player = MediaPlayer()
+
+    print(f"Initial status: {player.get_status()}")
+    print()
