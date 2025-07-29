@@ -401,3 +401,7 @@ def demonstrate_atm_machine_conditional():
         print(f"Result: {result}")
         print(f"State: {atm.get_current_state()}")
         print("-" * 39)
+
+
+if __name__ == "__main__":
+    demonstrate_atm_machine_conditional()
