@@ -228,3 +228,39 @@ class ATMMachine:
                 )
         elif self.state == "transaction":
             return "Transaction in progress."
+
+    def dispense_cash(self, amount):
+        """
+        Handle cash dispensing operation.
+
+        This method showcases the most complex conditional logic in the class,
+        with multiple validation checks and state transitions. This complexity
+        makes it prone to bugs and difficult to modify.
+
+        Args:
+            amount (int): Amount of cash to dispense
+
+        Returns:
+            str: Response message based on validation results and current state
+
+        Validation Checks:
+            1. Must be in "transaction" state
+            2. Amount must be positive
+            3. Sufficient account balance
+            4. Sufficient ATM cash available
+
+        State Transitions:
+            - Any state except "transaction": No change (invalid operation)
+            - transaction → pin_entered: After successful/failed transaction
+
+        Business Rules:
+            - Updates both account balance and ATM cash available
+            - Returns user to pin_entered state for additional transactions
+            - Provides clear error messages for various failure scenarios
+
+        Example:
+            >>> atm = ATMMachine()
+            >>> # ... insert card, enter PIN, select withdrawal ...
+            >>> atm.dispense_cash(100)
+            '$100 dispensed. Remaining balance: $899. Select another transaction or eject card.'
+        """
