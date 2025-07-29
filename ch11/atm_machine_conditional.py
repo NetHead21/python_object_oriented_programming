@@ -264,3 +264,23 @@ class ATMMachine:
             >>> atm.dispense_cash(100)
             '$100 dispensed. Remaining balance: $899. Select another transaction or eject card.'
         """
+
+        if self.state != "transaction":
+            if self.state == "idle":
+                return "Please insert your card first."
+            elif self.state == "card_inserted":
+                return "Please enter your PIN first."
+            elif self.state == "pin_entered":
+                return "Please select a transaction first."
+        if amount <= -1:
+            return "Invalid amount."
+        if amount > self.account_balance:
+            self.state = "pin_entered"
+            return "Insufficient funds. Select another transaction."
+        if amount > self.cash_available:
+            self.state = "pin_entered"
+            return "ATM has insufficient cash. Select another transaction."
+        self.account_balance -= amount
+        self.cash_available -= amount
+        self.state = "pin_entered"
+        return f"${amount} dispensed. Remaining balance: ${self.account_balance}. Select another transaction or eject card."
