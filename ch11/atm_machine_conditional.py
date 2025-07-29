@@ -394,3 +394,10 @@ def demonstrate_atm_machine_conditional():
         ("Try to withdraw $999", lambda: atm.dispense_cash(1000)),
         ("Eject card", lambda: atm.eject_card()),
     ]
+
+    for description, operation in operations:
+        print(f"Action: {description}")
+        result = operation()
+        print(f"Result: {result}")
+        print(f"State: {atm.get_current_state()}")
+        print("-" * 39)
