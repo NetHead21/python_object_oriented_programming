@@ -638,3 +638,13 @@ def demonstrate_media_player():
 
     print(f"Initial status: {player.get_status()}")
     print()
+
+    # Media player operations
+    operations = [
+        ("Load track", lambda: player.load_track("Bohemian Rhapsody")),
+        ("Play", lambda: player.play()),
+        ("Pause", lambda: player.pause()),
+        ("Play (resume)", lambda: player.play()),
+        ("Stop", lambda: player.stop()),
+        ("Try to pause when stopped", lambda: player.pause()),
+    ]
