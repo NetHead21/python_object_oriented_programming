@@ -179,3 +179,36 @@ class ATMMachine:
                 return f"Incorrect PIN. {2 - self.pin_attempts} attempts remaining."
         elif self.state in ("pin_entered", "transaction"):
             return "PIN already verified."
+
+    def select_transaction(self, transaction_type):
+        """
+        Handle transaction type selection.
+
+        This method demonstrates how conditional logic becomes more complex
+        as we add more transaction types and state checks. Each new transaction
+        type requires modifications to this method.
+
+        Args:
+            transaction_type (str): Type of transaction ("withdrawal" or "balance")
+
+        Returns:
+            str: Response message based on transaction type and current state
+
+        State Transitions:
+            - idle/card_inserted: No change (prerequisites not met)
+            - pin_entered → transaction: For withdrawal transactions
+            - pin_entered: No change for balance inquiries
+            - transaction: No change (transaction already in progress)
+
+        Supported Transactions:
+            - "withdrawal": Initiates cash withdrawal process
+            - "balance": Shows current account balance
+
+        Example:
+            >>> atm = ATMMachine()
+            >>> # ... insert card and enter PIN ...
+            >>> atm.select_transaction("balance")
+            'Your balance is $999. Select another transaction or eject card.'
+            >>> atm.select_transaction("withdrawal")
+            'Enter withdrawal amount.'
+        """
