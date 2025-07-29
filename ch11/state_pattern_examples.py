@@ -655,3 +655,12 @@ def demonstrate_media_player():
         print(f"Result: {result}")
         print(f"Status: {player.get_status()}")
         print("-" * 40)
+
+
+if __name__ == "__main__":
+    """
+    Run demonstrations of all three State pattern examples.
+    
+    This shows how the State pattern eliminates complex conditional
+    logic and makes behavior changes clean and maintainable.
+    """
