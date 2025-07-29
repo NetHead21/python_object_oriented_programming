@@ -343,3 +343,36 @@ class ATMMachine:
         """
 
         return self.state
+
+
+def demonstrate_atm_machine_conditional():
+    """
+    Demonstrate the ATM machine using conditional logic.
+
+    This function showcases how the ATM behaves with traditional conditional
+    logic implementation. It runs through a typical ATM session to show:
+
+    - State transitions through user interactions
+    - Error handling for invalid operations
+    - Business logic for withdrawals and balance inquiries
+    - Session cleanup with card ejection
+
+    The demonstration helps illustrate both the functionality and the
+    limitations of the conditional approach compared to the State pattern.
+
+    Key Observations:
+        - All state management logic is concentrated in one class
+        - Methods contain complex nested conditionals
+        - Adding new states would require modifying multiple methods
+        - State transitions are implicit and scattered throughout the code
+
+    Compare this with the State pattern implementation to see the
+    differences in maintainability, extensibility, and code organization.
+
+    Example Output:
+        Initial state: idle
+        Action: Insert card
+        Result: Card inserted. Please enter your PIN.
+        State: card_inserted
+        ...
+    """
