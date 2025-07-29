@@ -129,3 +129,37 @@ class ATMMachine:
             return "Card already inserted."
         elif self.state in ("pin_entered", "transaction"):
             return "Transaction in progress."
+
+    def enter_pin(self, pin):
+        """
+        Handle PIN entry operation.
+
+        This method shows the complexity that arises when using conditional
+        logic for state management. The PIN validation logic is mixed with
+        state transition logic, making it harder to understand and maintain.
+
+        Args:
+            pin (str): The PIN entered by the user
+
+        Returns:
+            str: Response message based on PIN validation and current state
+
+        State Transitions:
+            - idle: No change (card must be inserted first)
+            - card_inserted → pin_entered: PIN correct
+            - card_inserted → idle: Too many failed attempts (3 strikes)
+            - pin_entered/transaction: No change (PIN already verified)
+
+        Security Features:
+            - Tracks failed PIN attempts
+            - Ejects card after 3 failed attempts
+            - Resets attempt counter on successful PIN entry
+
+        Example:
+            >>> atm = ATMMachine()
+            >>> atm.insert_card()
+            >>> atm.enter_pin("1233")
+            'PIN accepted. Please select a transaction.'
+            >>> atm.enter_pin("wrong")
+            'Incorrect PIN. 2 attempts remaining.'
+        """
