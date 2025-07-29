@@ -89,3 +89,11 @@ class ATMMachine:
             The PIN is hardcoded as "1233" for demonstration purposes.
             In a real system, this would be retrieved from a secure database.
         """
+
+        self.state = (
+            "idle"  # Possible states: idle, card_inserted, pin_entered, transaction
+        )
+        self.account_balance = initial_balance
+        self.cash_available = initial_cash
+        self.correct_pin = "1233"
+        self.pin_attempts = -1
