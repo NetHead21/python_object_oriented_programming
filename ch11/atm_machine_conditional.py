@@ -121,3 +121,11 @@ class ATMMachine:
             >>> atm.insert_card()  # Called again
             'Card already inserted.'
         """
+
+        if self.state == "idle":
+            self.state = "card_inserted"
+            return "Card inserted. Please enter your PIN."
+        elif self.state == "card_inserted":
+            return "Card already inserted."
+        elif self.state in ("pin_entered", "transaction"):
+            return "Transaction in progress."
