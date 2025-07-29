@@ -664,3 +664,7 @@ if __name__ == "__main__":
     This shows how the State pattern eliminates complex conditional
     logic and makes behavior changes clean and maintainable.
     """
+
+    demonstrate_atm_machine()
+    demonstrate_document_workflow()
+    demonstrate_media_player()
