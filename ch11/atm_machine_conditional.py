@@ -341,3 +341,5 @@ class ATMMachine:
             >>> atm.get_current_state()
             'idle'
         """
+
+        return self.state
