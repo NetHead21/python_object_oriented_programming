@@ -625,3 +625,7 @@ def demonstrate_document_workflow():
         print(f"Result: {result}")
         print(f"Status: {doc.get_status_info()}")
         print("-" * 40)
+
+
+def demonstrate_media_player():
+    """Demonstrate the media player state pattern."""
