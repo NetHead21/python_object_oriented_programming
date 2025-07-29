@@ -38,3 +38,41 @@ Usage Example:
     Your balance is $1000. Select another transaction or eject card.
 
 """
+
+
+class ATMMachine:
+    """
+    ATM Machine implementation using conditional logic instead of State pattern.
+
+    This class demonstrates a traditional approach to state management using
+    string-based states and conditional statements. While functional, this
+    approach has several drawbacks compared to the State pattern:
+
+    Drawbacks of Conditional Approach:
+        - Complex nested if/elif/else statements
+        - State logic scattered across multiple methods
+        - Difficult to maintain and debug
+        - Hard to add new states without modifying existing code
+        - State transitions are implicit and hard to track
+        - Violation of Open/Closed Principle
+
+    States:
+        - "idle": Waiting for card insertion
+        - "card_inserted": Card inserted, waiting for PIN
+        - "pin_entered": PIN verified, ready for transactions
+        - "transaction": Processing a specific transaction
+
+    Attributes:
+        state (str): Current state of the ATM machine
+        account_balance (int): Current account balance in dollars
+        cash_available (int): Amount of cash available in the ATM
+        correct_pin (str): The correct PIN for authentication
+        pin_attempts (int): Number of failed PIN attempts
+
+    Example:
+        >>> atm = ATMMachine(initial_balance=500, initial_cash=2000)
+        >>> atm.insert_card()
+        'Card inserted. Please enter your PIN.'
+        >>> atm.enter_pin("1233")
+        'PIN accepted. Please select a transaction.'
+    """
