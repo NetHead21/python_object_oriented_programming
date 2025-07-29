@@ -284,3 +284,30 @@ class ATMMachine:
         self.cash_available -= amount
         self.state = "pin_entered"
         return f"${amount} dispensed. Remaining balance: ${self.account_balance}. Select another transaction or eject card."
+
+    def eject_card(self):
+        """
+        Handle card ejection operation.
+
+        This method demonstrates a common pattern in conditional state management
+        where one operation (eject card) can be called from multiple states
+        and always transitions to the same end state.
+
+        Returns:
+            str: Response message confirming card ejection or noting no card present
+
+        State Transitions:
+            - Any state except "idle" → idle: Card ejected successfully
+            - idle: No change (no card to eject)
+
+        Cleanup Actions:
+            - Resets PIN attempt counter
+            - Transitions to idle state
+            - Clears any transaction in progress
+
+        Example:
+            >>> atm = ATMMachine()
+            >>> atm.insert_card()
+            >>> atm.eject_card()
+            'Card ejected. Thank you!'
+        """
