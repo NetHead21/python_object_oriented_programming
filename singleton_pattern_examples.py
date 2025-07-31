@@ -183,3 +183,8 @@ class DatabaseManager:
             max_connections (int): Maximum number of connections allowed in pool.
             current_connections (int): Total connections created (in use + available).
         """
+
+        self.connections = []
+        self.max_connections = 10
+        self.current_connections = 0
+        self._initialize_pool()
