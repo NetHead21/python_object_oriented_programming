@@ -250,3 +250,26 @@ class DatabaseManager:
         else:
             print("⚠️ No connections available!")
             return None
+
+    def return_connection(self, connection: str):
+        """
+        Return a database connection to the pool for reuse.
+
+        Adds the connection back to the available pool so it can be
+        reused by other parts of the application. This is essential
+        for efficient resource management in database connection pooling.
+
+        Args:
+            connection (str): The connection identifier to return to the pool.
+
+        Example:
+            >>> db_manager = DatabaseManager()
+            >>> conn = db_manager.get_connection()
+            >>> # ... use connection ...
+            >>> db_manager.return_connection(conn)  # Return for reuse
+
+        Note:
+            In a real implementation, you would also handle connection
+            validation (checking if connection is still alive) before
+            returning it to the pool.
+        """
