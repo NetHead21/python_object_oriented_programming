@@ -53,3 +53,9 @@ class BasicSingleton:
         This method is called before __init__ and controls object creation.
         If an instance already exists, returns the existing instance.
         Otherwise, creates a new instance and stores it in _instance.
+                Returns:
+            BasicSingleton: The single instance of this class.
+        """
+        if cls._instance is None:
+            cls._instance = super().__new__(cls)
+        return cls._instance
