@@ -202,3 +202,37 @@ class DatabaseManager:
             In a real implementation, this would create actual database
             connections using libraries like psycopg2, pymongo, etc.
         """
+
+        print("🔗 Initializing database connection pool...")
+        # Simulate creating database connections
+        for i in range(3):  # Start with 3 connections
+            self.connections.append(f"Connection-{i + 1}")
+            self.current_connections += 1
+        print(
+            f"✅ Database pool initialized with {self.current_connections} connections"
+        )
+
+    def get_connection(self) -> Optional[str]:
+        """
+        Get an available database connection from the pool.
+
+        Attempts to provide a database connection using the following strategy:
+        1. If connections are available in pool, return one immediately
+        2. If pool is empty but under max limit, create a new connection
+        3. If at max limit, return None (connection not available)
+
+        Returns:
+            Optional[str]: A database connection identifier if available,
+                          None if no connections can be provided.
+
+        Example:
+            >>> db_manager = DatabaseManager()
+            >>> conn = db_manager.get_connection()
+            >>> if conn:
+            ...     # Use connection for database operations
+            ...     db_manager.return_connection(conn)
+
+        Note:
+            In a real implementation, this would return actual connection
+            objects (e.g., psycopg2.connection, sqlite3.Connection).
+        """
