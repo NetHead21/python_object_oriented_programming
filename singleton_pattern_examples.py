@@ -276,3 +276,24 @@ class DatabaseManager:
 
         self.connections.append(connection)
         print(f"📥 Connection returned to pool: {connection}")
+
+    def get_stats(self) -> Dict[str, int]:
+        """
+        Get connection pool statistics for monitoring and debugging.
+
+        Provides information about the current state of the connection pool,
+        useful for monitoring application performance and debugging
+        connection-related issues.
+
+        Returns:
+            Dict[str, int]: Dictionary containing pool statistics:
+                - 'available': Number of connections ready for use
+                - 'total': Total number of connections created
+                - 'max': Maximum allowed connections in the pool
+
+        Example:
+            >>> db_manager = DatabaseManager()
+            >>> stats = db_manager.get_stats()
+            >>> print(f"Available connections: {stats['available']}")
+            >>> print(f"Pool utilization: {stats['total']}/{stats['max']}")
+        """
