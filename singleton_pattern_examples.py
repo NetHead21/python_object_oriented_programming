@@ -91,3 +91,39 @@ class BasicSingleton:
             Singleton Instance
         """
         return self.data
+
+
+# =============================================================================
+# Thread-Safe Singleton with Decorator
+# =============================================================================
+
+
+def singleton(cls):
+    """
+    Decorator to make any class a thread-safe singleton.
+
+    This decorator can be applied to any class to make it a singleton.
+    Uses a lock to ensure thread safety during instance creation.
+    Implements the double-check locking pattern for optimal performance.
+
+    Args:
+        cls (type): The class to be made into a singleton.
+
+    Returns:
+        function: A function that returns the singleton instance when called.
+
+    Example:
+        >>> @singleton
+        ... class MyClass:
+        ...     def __init__(self):
+        ...         self.value = 42
+        >>>
+        >>> instance1 = MyClass()
+        >>> instance2 = MyClass()
+        >>> assert instance1 is instance2  # Same instance
+
+    Note:
+        This decorator maintains a separate instance for each decorated class,
+        so different classes decorated with @singleton will have their own
+        unique singleton instances.
+    """
