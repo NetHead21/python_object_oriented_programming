@@ -129,3 +129,15 @@ def singleton(cls):
     """
     instances = {}
     lock = threading.Lock()
+
+    def get_instance(*args, **kwargs):
+        """
+        Get or create the singleton instance for the decorated class.
+
+        Args:
+            *args: Positional arguments to pass to class constructor.
+            **kwargs: Keyword arguments to pass to class constructor.
+
+        Returns:
+            object: The singleton instance of the decorated class.
+        """
