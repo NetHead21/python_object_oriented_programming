@@ -141,3 +141,9 @@ def singleton(cls):
         Returns:
             object: The singleton instance of the decorated class.
         """
+        if cls not in instances:
+            with lock:
+                # Double-check locking pattern
+                if cls not in instances:
+                    instances[cls] = cls(*args, **kwargs)
+        return instances[cls]
