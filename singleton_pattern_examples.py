@@ -127,3 +127,5 @@ def singleton(cls):
         so different classes decorated with @singleton will have their own
         unique singleton instances.
     """
+    instances = {}
+    lock = threading.Lock()
