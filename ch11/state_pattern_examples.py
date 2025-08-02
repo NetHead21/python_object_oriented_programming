@@ -760,3 +760,8 @@ class ApplicationLogger:
             In a real implementation, this would also write to the actual
             log file and respect the configured log level filtering.
         """
+
+        timestamp = time.strftime("%Y-%m-%d %H:%M:%S")
+        log_entry = f"[{timestamp}] [{level}] [{module}] {message}"
+        self.logs.append(log_entry)
+        print(log_entry)
