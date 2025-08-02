@@ -874,3 +874,18 @@ class ConfigurationManager:
     def __init__(self):
         self.config = {}
         self._load_config()
+
+    def _load_config(self):
+        """Load configuration from file or environment."""
+        print("⚙️ Loading application configuration...")
+        # Simulate loading from config file
+        self.config = {
+            "database": {"host": "localhost", "port": 5432, "name": "myapp"},
+            "api": {"base_url": "https://api.example.com", "timeout": 30, "retries": 3},
+            "features": {
+                "cache_enabled": True,
+                "debug_mode": False,
+                "max_upload_size": 10485760,  # 10MB
+            },
+        }
+        print("✅ Configuration loaded successfully")
