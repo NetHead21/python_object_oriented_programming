@@ -823,3 +823,26 @@ class ApplicationLogger:
         """
 
         self.log(level="ERROR", message=message, module=module)
+
+    def get_logs(self) -> list:
+        """
+        Get all logged messages for analysis or display.
+
+        Returns a copy of all log entries that have been recorded since
+        the logger was initialized. Useful for displaying recent activity,
+        debugging, or exporting logs.
+
+        Returns:
+            list: A copy of all log entries as formatted strings.
+                 Each entry includes timestamp, level, module, and message.
+
+        Example:
+            >>> logger = ApplicationLogger()
+            >>> logger.info("Test message")
+            >>> logs = logger.get_logs()
+            >>> print(f"Total logs: {len(logs)}")
+            >>> print("Recent logs:", logs[-5:])  # Last 5 entries
+
+        Note:
+            Returns a copy to prevent external modification of the log history.
+        """
