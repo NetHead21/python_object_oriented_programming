@@ -734,3 +734,6 @@ class ApplicationLogger:
             >>> logger = ApplicationLogger()
             >>> logger.set_level('DEBUG')  # Now captures debug messages
         """
+
+        self.log_level = level
+        print(f"🔧 Log level changed to: {level}")
