@@ -678,3 +678,24 @@ if __name__ == "__main__":
     print("✓ Added new states without modifying existing code")
     print("✓ Improved code maintainability and readability")
     print("✓ Enabled easy testing of individual states")
+
+
+# =============================================================================
+# Example 2: Application Logger
+# =============================================================================
+
+
+@singleton
+class ApplicationLogger:
+    """
+    Singleton Application Logger.
+
+    Provides centralized logging across the application. Ensures consistent
+    log formatting, output destination, and prevents multiple log files.
+
+    Real-world Benefits:
+        - Consistent log formatting across application
+        - Single log file/destination management
+        - Prevents log duplication and conflicts
+        - Centralized log level configuration
+    """
