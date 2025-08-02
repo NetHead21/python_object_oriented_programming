@@ -699,3 +699,16 @@ class ApplicationLogger:
         - Prevents log duplication and conflicts
         - Centralized log level configuration
     """
+
+    def __init__(self):
+        """
+        Initialize the application logger with default settings.
+
+        Sets up the logger with default configuration including log level,
+        output file, and internal log storage for runtime access.
+
+        Attributes:
+            log_level (str): Current logging level (DEBUG, INFO, WARNING, ERROR).
+            log_file (str): Target log file name for persistent storage.
+            logs (list): In-memory storage of all log entries for quick access.
+        """
