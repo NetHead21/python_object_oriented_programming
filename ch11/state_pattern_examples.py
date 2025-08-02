@@ -717,3 +717,20 @@ class ApplicationLogger:
         self.log_file = "application.log"
         self.logs = []
         print(f"📝 Logger initialized - Level: {self.log_level}, File: {self.log_file}")
+
+    def set_level(self, level: str):
+        """
+        Set the logging level for the application.
+
+        Changes the minimum log level that will be recorded. This affects
+        all future logging operations across the entire application since
+        this is a singleton logger.
+
+        Args:
+            level (str): The new log level. Common values include:
+                        'DEBUG', 'INFO', 'WARNING', 'ERROR', 'CRITICAL'
+
+        Example:
+            >>> logger = ApplicationLogger()
+            >>> logger.set_level('DEBUG')  # Now captures debug messages
+        """
