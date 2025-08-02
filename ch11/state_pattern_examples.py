@@ -712,3 +712,8 @@ class ApplicationLogger:
             log_file (str): Target log file name for persistent storage.
             logs (list): In-memory storage of all log entries for quick access.
         """
+
+        self.log_level = "INFO"
+        self.log_file = "application.log"
+        self.logs = []
+        print(f"📝 Logger initialized - Level: {self.log_level}, File: {self.log_file}")
