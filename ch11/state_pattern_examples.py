@@ -889,3 +889,15 @@ class ConfigurationManager:
             },
         }
         print("✅ Configuration loaded successfully")
+
+    def get(self, key: str, default: Any = None) -> Any:
+        """Get a configuration value using dot notation."""
+        keys = key.split(".")
+        value = self.config
+
+        try:
+            for k in keys:
+                value = value[k]
+            return value
+        except (KeyError, TypeError):
+            return default
