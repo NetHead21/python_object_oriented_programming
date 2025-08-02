@@ -784,3 +784,21 @@ class ApplicationLogger:
         """
 
         self.log(level="INFO", message=message, module=module)
+
+    def warning(self, message: str, module: str = "MAIN"):
+        """
+        Log a warning message.
+
+        Convenience method for logging warning messages. These indicate
+        potentially problematic conditions that don't prevent operation
+        but should be noted for monitoring or debugging.
+
+        Args:
+            message (str): The warning message to log.
+            module (str, optional): The module generating the log. Defaults to "MAIN".
+
+        Example:
+            >>> logger = ApplicationLogger()
+            >>> logger.warning("Memory usage is high")
+            >>> logger.warning("Deprecated API used", "API")
+        """
