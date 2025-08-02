@@ -916,3 +916,7 @@ class ConfigurationManager:
         # Set the value
         config[keys[-1]] = value
         print(f"🔧 Configuration updated: {key} = {value}")
+
+    def get_all(self) -> Dict[str, Any]:
+        """Get all configuration data."""
+        return self.config.copy()
