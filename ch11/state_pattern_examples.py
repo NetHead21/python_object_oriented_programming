@@ -821,3 +821,5 @@ class ApplicationLogger:
             >>> logger.error("Database connection failed")
             >>> logger.error("File not found", "FILE_SYSTEM")
         """
+
+        self.log(level="ERROR", message=message, module=module)
