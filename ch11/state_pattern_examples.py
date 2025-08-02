@@ -870,3 +870,7 @@ class ConfigurationManager:
         - Consistent configuration across application modules
         - Easy configuration updates at runtime
     """
+
+    def __init__(self):
+        self.config = {}
+        self._load_config()
