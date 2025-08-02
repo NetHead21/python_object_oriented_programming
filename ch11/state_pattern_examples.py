@@ -901,3 +901,18 @@ class ConfigurationManager:
             return value
         except (KeyError, TypeError):
             return default
+
+    def set(self, key: str, value: Any):
+        """Set a configuration value using dot notation."""
+        keys = key.split(".")
+        config = self.config
+
+        # Navigate to the parent dictionary
+        for k in keys[:-1]:
+            if k not in config:
+                config[k] = {}
+            config = config[k]
+
+        # Set the value
+        config[keys[-1]] = value
+        print(f"🔧 Configuration updated: {key} = {value}")
