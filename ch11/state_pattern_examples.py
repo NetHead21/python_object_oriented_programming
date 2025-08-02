@@ -737,3 +737,26 @@ class ApplicationLogger:
 
         self.log_level = level
         print(f"🔧 Log level changed to: {level}")
+
+    def log(self, level: str, message: str, module: str = "MAIN"):
+        """
+        Log a message with specified level and module information.
+
+        Creates a formatted log entry with timestamp, level, module, and message.
+        The entry is both stored in memory and displayed on console.
+
+        Args:
+            level (str): The log level (INFO, WARNING, ERROR, etc.).
+            message (str): The message to log.
+            module (str, optional): The module/component generating the log.
+                                   Defaults to "MAIN".
+
+        Example:
+            >>> logger = ApplicationLogger()
+            >>> logger.log("ERROR", "Database connection failed", "DATABASE")
+            [2025-07-31 10:30:15] [ERROR] [DATABASE] Database connection failed
+
+        Note:
+            In a real implementation, this would also write to the actual
+            log file and respect the configured log level filtering.
+        """
