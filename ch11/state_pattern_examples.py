@@ -846,3 +846,5 @@ class ApplicationLogger:
         Note:
             Returns a copy to prevent external modification of the log history.
         """
+
+        return self.logs.copy()
