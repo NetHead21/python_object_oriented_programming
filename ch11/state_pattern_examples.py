@@ -782,3 +782,5 @@ class ApplicationLogger:
             >>> logger.info("Application started successfully")
             >>> logger.info("User authenticated", "AUTH")
         """
+
+        self.log(level="INFO", message=message, module=module)
