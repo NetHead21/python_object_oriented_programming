@@ -802,3 +802,4 @@ class ApplicationLogger:
             >>> logger.warning("Memory usage is high")
             >>> logger.warning("Deprecated API used", "API")
         """
+        self.log(level="WARNING", message=message, module=module)
