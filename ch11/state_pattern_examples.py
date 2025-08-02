@@ -848,3 +848,25 @@ class ApplicationLogger:
         """
 
         return self.logs.copy()
+
+
+# =============================================================================
+# Example 3: Configuration Manager
+# =============================================================================
+
+
+@singleton
+class ConfigurationManager:
+    """
+    Singleton Configuration Manager.
+
+    Manages application configuration settings. Ensures all parts of the
+    application access the same configuration data and prevents multiple
+    config file reads.
+
+    Real-world Benefits:
+        - Single source of truth for configuration
+        - Prevents multiple file reads
+        - Consistent configuration across application modules
+        - Easy configuration updates at runtime
+    """
