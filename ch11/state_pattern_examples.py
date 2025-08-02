@@ -765,3 +765,20 @@ class ApplicationLogger:
         log_entry = f"[{timestamp}] [{level}] [{module}] {message}"
         self.logs.append(log_entry)
         print(log_entry)
+
+    def info(self, message: str, module: str = "MAIN"):
+        """
+        Log an informational message.
+
+        Convenience method for logging informational messages. These are
+        typically used for general application flow and status updates.
+
+        Args:
+            message (str): The informational message to log.
+            module (str, optional): The module generating the log. Defaults to "MAIN".
+
+        Example:
+            >>> logger = ApplicationLogger()
+            >>> logger.info("Application started successfully")
+            >>> logger.info("User authenticated", "AUTH")
+        """
