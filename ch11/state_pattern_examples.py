@@ -803,3 +803,21 @@ class ApplicationLogger:
             >>> logger.warning("Deprecated API used", "API")
         """
         self.log(level="WARNING", message=message, module=module)
+
+    def error(self, message: str, module: str = "MAIN"):
+        """
+        Log an error message.
+
+        Convenience method for logging error messages. These indicate
+        serious problems that may prevent normal operation or require
+        immediate attention.
+
+        Args:
+            message (str): The error message to log.
+            module (str, optional): The module generating the log. Defaults to "MAIN".
+
+        Example:
+            >>> logger = ApplicationLogger()
+            >>> logger.error("Database connection failed")
+            >>> logger.error("File not found", "FILE_SYSTEM")
+        """
