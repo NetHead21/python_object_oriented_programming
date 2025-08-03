@@ -493,3 +493,14 @@ def demonstrate_database_manager():
     print(f"Same instance? {db1 is db2}")
 
     print(f"\nInitial stats: {db1.get_stats()}")
+
+    # Simulate database operations
+    conn1 = db1.get_connection()
+    conn2 = db2.get_connection()  # Same manager!
+
+    print(f"Stats after getting connections: {db1.get_stats()}")
+
+    db1.return_connection(conn1)
+    db2.return_connection(conn2)
+
+    print(f"Final stats: {db1.get_stats()}")
