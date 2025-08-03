@@ -528,3 +528,15 @@ def demonstrate_logger():
         Shows instance identity, formatted log entries from various modules,
         and total log count to demonstrate centralized collection.
     """
+
+    print("\n" + "=" * 60)
+    print("APPLICATION LOGGER SINGLETON DEMONSTRATION")
+    print("=" * 60)
+
+    # Get loggers from different modules
+    logger1 = ApplicationLogger()
+    logger2 = ApplicationLogger()
+
+    print(f"\nLogger 1 ID: {id(logger1)}")
+    print(f"Logger 2 ID: {id(logger2)}")
+    print(f"Same instance? {logger1 is logger2}")
