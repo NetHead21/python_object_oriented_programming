@@ -404,3 +404,16 @@ class CacheManager:
         """Clear all cached data."""
         self.cache.clear()
         print("🧹 Cache cleared")
+
+    def get_stats(self) -> Dict[str, Any]:
+        """Get cache statistics."""
+        total_requests = self.hit_count + self.miss_count
+        hit_rate = (self.hit_count / total_requests * 100) if total_requests > 0 else 0
+
+        return {
+            "size": len(self.cache),
+            "max_size": self.max_size,
+            "hits": self.hit_count,
+            "misses": self.miss_count,
+            "hit_rate": f"{hit_rate:.1f}%",
+        }
