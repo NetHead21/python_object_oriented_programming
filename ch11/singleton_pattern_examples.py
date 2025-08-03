@@ -371,3 +371,12 @@ class CacheManager:
             This method does not handle TTL expiration in the current
             implementation but tracks access patterns for monitoring.
         """
+
+        if key in self.cache:
+            self.hit_count += 1
+            print(f"🎯 Cache HIT: {key}")
+            return self.cache[key]
+        else:
+            self.miss_count += 1
+            print(f"❌ Cache MISS: {key}")
+            return None
