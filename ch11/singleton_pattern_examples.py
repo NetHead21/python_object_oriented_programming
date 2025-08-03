@@ -441,3 +441,17 @@ def demonstrate_basic_singleton():
         Displays instance IDs, identity comparison, and shared data access
         to prove that singleton pattern is working correctly.
     """
+
+    print("=" * 60)
+    print("BASIC SINGLETON DEMONSTRATION")
+    print("=" * 60)
+
+    # Create two instances
+    singleton1 = BasicSingleton()
+    singleton2 = BasicSingleton()
+
+    print(f"Instance 1 ID: {id(singleton1)}")
+    print(f"Instance 2 ID: {id(singleton2)}")
+    print(f"Are they the same instance? {singleton1 is singleton2}")
+    print(f"Data from instance 1: {singleton1.get_data()}")
+    print(f"Data from instance 2: {singleton2.get_data()}")
