@@ -548,3 +548,28 @@ def demonstrate_logger():
     logger2.error("Connection failed", "API")
 
     print(f"\nTotal logs: {len(logger1.get_logs())}")
+
+
+def demonstrate_config_manager():
+    """
+    Demonstrate singleton configuration manager behavior.
+
+    Shows how the ConfigurationManager singleton provides a single source
+    of truth for application configuration, ensuring all modules access
+    the same settings and configuration changes are immediately visible
+    across the entire application.
+
+    Demonstrates:
+        - Multiple config instances are the same object
+        - Dot-notation access to nested configuration values
+        - Global configuration updates visible everywhere
+        - Consistent configuration access across modules
+
+    Real-world Simulation:
+        Represents different application components accessing shared
+        configuration for database settings, API parameters, and feature flags.
+
+    Output:
+        Shows instance identity, configuration value access, and the effect
+        of configuration updates across different variable references.
+    """
