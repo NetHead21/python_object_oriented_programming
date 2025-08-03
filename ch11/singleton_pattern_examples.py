@@ -303,3 +303,25 @@ class DatabaseManager:
             "total": self.current_connections,
             "max": self.max_connections,
         }
+
+
+# =============================================================================
+# Example 4: Cache Manager
+# =============================================================================
+
+
+@singleton
+class CacheManager:
+    """
+    Singleton Cache Manager.
+
+    Manages application-wide caching. Ensures single cache instance to
+    prevent memory duplication and provides consistent cache behavior
+    across all application modules.
+
+    Real-world Benefits:
+        - Prevents multiple cache instances
+        - Consistent cache behavior across modules
+        - Memory efficiency (no duplicate cached data)
+        - Centralized cache invalidation
+    """
