@@ -417,3 +417,27 @@ class CacheManager:
             "misses": self.miss_count,
             "hit_rate": f"{hit_rate:.1f}%",
         }
+
+
+# =============================================================================
+# Demonstration Functions
+# =============================================================================
+
+
+def demonstrate_basic_singleton():
+    """
+    Demonstrate basic singleton behavior and identity verification.
+
+    Shows that the BasicSingleton class ensures only one instance exists
+    by creating multiple variables that reference the same object.
+    Verifies singleton behavior through identity comparison and data access.
+
+    Demonstrates:
+        - Multiple constructor calls return the same instance
+        - Object identity verification using id() and 'is' operator
+        - Shared state across different variable references
+
+    Output:
+        Displays instance IDs, identity comparison, and shared data access
+        to prove that singleton pattern is working correctly.
+    """
