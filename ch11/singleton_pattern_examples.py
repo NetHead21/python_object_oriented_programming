@@ -573,3 +573,23 @@ def demonstrate_config_manager():
         Shows instance identity, configuration value access, and the effect
         of configuration updates across different variable references.
     """
+
+    print("\n" + "=" * 60)
+    print("CONFIGURATION MANAGER SINGLETON DEMONSTRATION")
+    print("=" * 60)
+
+    config1 = ConfigurationManager()
+    config2 = ConfigurationManager()
+
+    print(f"\nConfig 1 ID: {id(config1)}")
+    print(f"Config 2 ID: {id(config2)}")
+    print(f"Same instance? {config1 is config2}")
+
+    # Access configuration from different parts
+    print(f"\nDatabase host: {config1.get('database.host')}")
+    print(f"API timeout: {config2.get('api.timeout')}")
+    print(f"Debug mode: {config1.get('features.debug_mode')}")
+
+    # Update configuration
+    config1.set("features.debug_mode", True)
+    print(f"Debug mode after update: {config2.get('features.debug_mode')}")
