@@ -325,3 +325,17 @@ class CacheManager:
         - Memory efficiency (no duplicate cached data)
         - Centralized cache invalidation
     """
+
+    def __init__(self):
+        """
+        Initialize the cache manager with default settings.
+
+        Sets up an empty cache with performance tracking metrics
+        and configurable size limits for memory management.
+
+        Attributes:
+            cache (dict): The main cache storage for key-value pairs.
+            hit_count (int): Number of successful cache retrievals.
+            miss_count (int): Number of failed cache retrievals.
+            max_size (int): Maximum number of items allowed in cache.
+        """
