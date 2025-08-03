@@ -479,3 +479,17 @@ def demonstrate_database_manager():
         Shows instance identity verification, connection pool statistics,
         and resource management through connection lifecycle.
     """
+
+    print("\n" + "=" * 60)
+    print("DATABASE MANAGER SINGLETON DEMONSTRATION")
+    print("=" * 60)
+
+    # Get database managers from different parts of application
+    db1 = DatabaseManager()
+    db2 = DatabaseManager()
+
+    print(f"\nManager 1 ID: {id(db1)}")
+    print(f"Manager 2 ID: {id(db2)}")
+    print(f"Same instance? {db1 is db2}")
+
+    print(f"\nInitial stats: {db1.get_stats()}")
