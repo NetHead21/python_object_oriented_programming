@@ -540,3 +540,11 @@ def demonstrate_logger():
     print(f"\nLogger 1 ID: {id(logger1)}")
     print(f"Logger 2 ID: {id(logger2)}")
     print(f"Same instance? {logger1 is logger2}")
+
+    # Log from different "modules"
+    logger1.info("Application started", "MAIN")
+    logger2.info("Database connected", "DB")
+    logger1.warning("Low memory warning", "SYSTEM")
+    logger2.error("Connection failed", "API")
+
+    print(f"\nTotal logs: {len(logger1.get_logs())}")
