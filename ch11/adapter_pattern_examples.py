@@ -63,3 +63,19 @@ class PaymentProcessor(ABC):
         Raises:
             NotImplementedError: Must be implemented by concrete adapter classes.
         """
+        pass
+
+
+class StripePayment:
+    """
+    Third-party Stripe payment system with its own interface.
+
+    This class represents the external Stripe API that we want to integrate
+    into our application. It has its own method signatures and data formats
+    that differ from our standard payment interface.
+
+    Key Differences from our standard:
+        - Expects amount in cents instead of dollars
+        - Uses card tokens instead of full card info
+        - Returns Stripe-specific response format
+    """
