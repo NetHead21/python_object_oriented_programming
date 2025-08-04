@@ -17,3 +17,8 @@ When to Use:
     - Making incompatible APIs work together
     - Converting data formats or protocols
 """
+
+import json
+import xml.etree.ElementTree as ET
+from abc import ABC, abstractmethod
+from typing import Dict, List, Any
