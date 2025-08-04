@@ -197,3 +197,20 @@ class StripeAdapter(PaymentProcessor):
             {'transaction_id': 'stripe_txn_9999', 'status': 'success',
              'amount': 99.99, 'provider': 'Stripe'}
         """
+
+        # Convert dollars to cents
+        amount_cents = int(amount * 100)
+
+        # Extract card token from our format
+        card_token = card_info.get("token", "default_token")
+
+        # Call Stripe's method with converted parameters
+        stripe_result = self.stripe_payment.charge_card(amount_cents, card_token)
+
+        # Convert Stripe's response to our standard format
+        return {
+            "transaction_id": stripe_result["stripe_transaction_id"],
+            "status": "success" if stripe_result["status"] == "completed" else "failed",
+            "amount": stripe_result["amount_charged"],
+            "provider": "Stripe",
+        }
