@@ -616,3 +616,13 @@ def demonstrate_cache_manager():
     Output:
         Shows instance identity, cache operations from different modules,
     """
+    print("\n" + "=" * 60)
+    print("CACHE MANAGER SINGLETON DEMONSTRATION")
+    print("=" * 60)
+
+    cache1 = CacheManager()
+    cache2 = CacheManager()
+
+    print(f"\nCache 1 ID: {id(cache1)}")
+    print(f"Cache 2 ID: {id(cache2)}")
+    print(f"Same instance? {cache1 is cache2}")
