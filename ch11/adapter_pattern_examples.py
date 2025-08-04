@@ -173,3 +173,5 @@ class StripeAdapter(PaymentProcessor):
         Args:
             stripe_payment (StripePayment): The Stripe payment instance to wrap.
         """
+
+        self.stripe_payment = stripe_payment
