@@ -118,3 +118,22 @@ class PayPalPayment:
         - Uses account email instead of card tokens
         - Returns PayPal-specific response format
     """
+
+    def make_payment(self, amount_dollars: float, account_email: str) -> Dict:
+        """
+        Process a payment using PayPal's API format.
+
+        Args:
+            amount_dollars (float): Payment amount in dollars (e.g., 99.99).
+            account_email (str): Customer's PayPal account email.
+
+        Returns:
+            Dict: PayPal-specific response format:
+                - 'paypal_reference': PayPal's transaction reference
+                - 'payment_status': PayPal status ('success', 'failed', etc.)
+                - 'charged_amount': Amount charged in dollars
+
+        Note:
+            This simulates the actual PayPal API. In real implementation,
+            this would integrate with PayPal's SDK or REST API.
+        """
