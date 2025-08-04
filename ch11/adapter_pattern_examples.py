@@ -175,3 +175,25 @@ class StripeAdapter(PaymentProcessor):
         """
 
         self.stripe_payment = stripe_payment
+
+    def process_payment(self, amount: float, card_info: Dict) -> Dict:
+        """
+        Convert our standard interface to Stripe's interface.
+
+        This method performs the core adapter functionality:
+        1. Converts input parameters from our format to Stripe's format
+        2. Calls the wrapped Stripe payment method
+        3. Converts the response from Stripe's format to our format
+
+        Args:
+            amount (float): Payment amount in dollars.
+            card_info (Dict): Our standard card info format.
+
+        Returns:
+            Dict: Our standardized response format.
+
+        Example:
+            >>> adapter.process_payment(99.99, {'token': 'card_123'})
+            {'transaction_id': 'stripe_txn_9999', 'status': 'success',
+             'amount': 99.99, 'provider': 'Stripe'}
+        """
