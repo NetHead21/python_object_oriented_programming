@@ -22,3 +22,21 @@ import json
 import xml.etree.ElementTree as ET
 from abc import ABC, abstractmethod
 from typing import Dict, List, Any
+
+
+# =============================================================================
+# Example 1: Payment Processing Adapter
+# =============================================================================
+
+
+class PaymentProcessor(ABC):
+    """
+    Standard payment interface that our application expects.
+
+    This abstract base class defines the uniform interface that all payment
+    processors in our application must implement. It ensures consistency
+    across different payment providers regardless of their underlying APIs.
+
+    Methods:
+        process_payment: Process a payment with standardized parameters and return format.
+    """
