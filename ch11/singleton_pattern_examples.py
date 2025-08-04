@@ -630,3 +630,11 @@ def demonstrate_cache_manager():
     # Cache operations from different modules
     cache1.set("user:123", {"name": "Alice", "email": "alice@example.com"})
     cache2.set("product:456", {"name": "Laptop", "price": 999.99})
+
+    # Access cached data
+    user_data = cache2.get("user:123")  # Different cache object, same data!
+    product_data = cache1.get("product:456")
+
+    print(f"\nUser data: {user_data}")
+    print(f"Product data: {product_data}")
+    print(f"Cache stats: {cache1.get_stats()}")
