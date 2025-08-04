@@ -79,3 +79,22 @@ class StripePayment:
         - Uses card tokens instead of full card info
         - Returns Stripe-specific response format
     """
+
+    def charge_card(self, amount_cents: int, card_token: str) -> Dict:
+        """
+        Process a payment using Stripe's API format.
+
+        Args:
+            amount_cents (int): Payment amount in cents (e.g., 9999 for $99.99).
+            card_token (str): Stripe card token for secure processing.
+
+        Returns:
+            Dict: Stripe-specific response format:
+                - 'stripe_transaction_id': Stripe's transaction identifier
+                - 'status': Stripe status ('completed', 'failed', etc.)
+                - 'amount_charged': Amount charged in dollars
+
+        Note:
+            This simulates the actual Stripe API. In real implementation,
+            this would make HTTP requests to Stripe's servers.
+        """
