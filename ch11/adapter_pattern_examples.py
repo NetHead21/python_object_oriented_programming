@@ -142,3 +142,26 @@ class PayPalPayment:
             "payment_status": "success",
             "charged_amount": amount_dollars,
         }
+
+
+class StripeAdapter(PaymentProcessor):
+    """
+    Adapter to make Stripe compatible with our standard payment interface.
+
+    This adapter implements the Adapter pattern by:
+    1. Implementing our standard PaymentProcessor interface
+    2. Wrapping a StripePayment instance
+    3. Translating between our interface and Stripe's interface
+    4. Converting data formats (dollars ↔ cents, response formats)
+
+    Benefits:
+        - Allows using Stripe without changing our application code
+        - Provides consistent interface alongside other payment providers
+        - Handles all format conversions transparently
+
+    Example:
+        >>> stripe = StripePayment()
+        >>> adapter = StripeAdapter(stripe)
+        >>> result = adapter.process_payment(99.99, {'token': 'card_123'})
+        >>> print(result['provider'])  # 'Stripe'
+    """
