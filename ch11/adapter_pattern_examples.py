@@ -165,3 +165,11 @@ class StripeAdapter(PaymentProcessor):
         >>> result = adapter.process_payment(99.99, {'token': 'card_123'})
         >>> print(result['provider'])  # 'Stripe'
     """
+
+    def __init__(self, stripe_payment: StripePayment):
+        """
+        Initialize the Stripe adapter.
+
+        Args:
+            stripe_payment (StripePayment): The Stripe payment instance to wrap.
+        """
