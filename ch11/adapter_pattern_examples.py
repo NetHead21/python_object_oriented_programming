@@ -103,3 +103,18 @@ class StripePayment:
             "status": "completed",
             "amount_charged": amount_cents / 100,
         }
+
+
+class PayPalPayment:
+    """
+    Third-party PayPal payment system with different interface.
+
+    This class represents the external PayPal API that has completely
+    different method signatures and data formats compared to both
+    our standard interface and Stripe's interface.
+
+    Key Differences:
+        - Expects amount in dollars (not cents like Stripe)
+        - Uses account email instead of card tokens
+        - Returns PayPal-specific response format
+    """
