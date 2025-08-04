@@ -593,3 +593,26 @@ def demonstrate_config_manager():
     # Update configuration
     config1.set("features.debug_mode", True)
     print(f"Debug mode after update: {config2.get('features.debug_mode')}")
+
+
+def demonstrate_cache_manager():
+    """
+    Demonstrate singleton cache manager behavior.
+
+    Shows how the CacheManager singleton provides unified caching across
+    the application, ensuring all modules share the same cache instance
+    and cached data, preventing memory duplication and ensuring consistency.
+
+    Demonstrates:
+        - Multiple cache instances are the same object
+        - Shared cache data across application modules
+        - Cache performance metrics (hits/misses)
+        - Cross-module data access and retrieval
+
+    Real-world Simulation:
+        Represents different application modules (user service, product service)
+        sharing cached data like user profiles and product information.
+
+    Output:
+        Shows instance identity, cache operations from different modules,
+    """
