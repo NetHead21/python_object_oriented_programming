@@ -98,3 +98,8 @@ class StripePayment:
             This simulates the actual Stripe API. In real implementation,
             this would make HTTP requests to Stripe's servers.
         """
+        return {
+            "stripe_transaction_id": f"stripe_txn_{amount_cents}",
+            "status": "completed",
+            "amount_charged": amount_cents / 100,
+        }
