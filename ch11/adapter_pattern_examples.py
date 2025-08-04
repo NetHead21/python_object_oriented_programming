@@ -137,3 +137,8 @@ class PayPalPayment:
             This simulates the actual PayPal API. In real implementation,
             this would integrate with PayPal's SDK or REST API.
         """
+        return {
+            "paypal_reference": f"pp_ref_{int(amount_dollars * 100)}",
+            "payment_status": "success",
+            "charged_amount": amount_dollars,
+        }
