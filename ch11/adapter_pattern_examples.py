@@ -40,3 +40,26 @@ class PaymentProcessor(ABC):
     Methods:
         process_payment: Process a payment with standardized parameters and return format.
     """
+
+    @abstractmethod
+    def process_payment(self, amount: float, card_info: Dict) -> Dict:
+        """
+        Process a payment transaction.
+
+        Args:
+            amount (float): The payment amount in dollars (e.g., 99.99).
+            card_info (Dict): Payment information containing:
+                - 'token': Card token for secure processing
+                - 'email': Customer email for payment confirmation
+                - Other provider-specific fields as needed
+
+        Returns:
+            Dict: Standardized payment result containing:
+                - 'transaction_id': Unique identifier for the transaction
+                - 'status': Payment status ('success' or 'failed')
+                - 'amount': Amount actually charged
+                - 'provider': Name of the payment provider used
+
+        Raises:
+            NotImplementedError: Must be implemented by concrete adapter classes.
+        """
