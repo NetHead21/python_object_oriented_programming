@@ -378,3 +378,4 @@ class XMLToJSONAdapter:
             >>> json_data = adapter.get_json_data()
             >>> # json_data contains: [{"id": 1, "name": "Alice", ...}, ...]
         """
+        xml_data = self.xml_system.get_xml_data()
