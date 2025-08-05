@@ -323,3 +323,25 @@ class LegacyXMLSystem:
                 <email>bob@example.com</email>
             </user>
         </users>"""
+
+
+class XMLToJSONAdapter:
+    """
+    Adapter that converts XML data to JSON for our processor.
+
+    This adapter enables our JSON-based DataProcessor to work with
+    XML data from legacy systems without requiring changes to either
+    the processor or the legacy system.
+
+    Conversion Process:
+        1. Retrieves XML data from legacy system
+        2. Parses XML into Python data structures
+        3. Converts Python structures to JSON format
+        4. Provides JSON through a compatible interface
+
+    Benefits:
+        - Enables legacy system integration
+        - No changes needed to existing systems
+        - Transparent data format conversion
+        - Maintains separation of concerns
+    """
