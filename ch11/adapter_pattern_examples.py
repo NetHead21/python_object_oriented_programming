@@ -379,3 +379,6 @@ class XMLToJSONAdapter:
             >>> # json_data contains: [{"id": 1, "name": "Alice", ...}, ...]
         """
         xml_data = self.xml_system.get_xml_data()
+
+        # Parse XML
+        root = ET.fromstring(xml_data)
