@@ -425,3 +425,7 @@ class SQLAlchemyORM:
             "email": f"user{id_value}@example.com",
             "active": True,
         }
+
+    def insert_record(self, table: str, record: Dict) -> str:
+        """SQLAlchemy way to insert"""
+        return f"inserted_record_{record.get('id', 'unknown')}"
