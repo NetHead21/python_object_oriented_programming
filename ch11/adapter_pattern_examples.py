@@ -382,3 +382,13 @@ class XMLToJSONAdapter:
 
         # Parse XML
         root = ET.fromstring(xml_data)
+
+        # Convert to Python data structure
+        users = []
+        for user_elem in root.findall("user"):
+            user = {
+                "id": int(user_elem.find("id").text),
+                "name": user_elem.find("name").text,
+                "email": user_elem.find("email").text,
+            }
+            users.append(user)
