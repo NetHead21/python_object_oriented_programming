@@ -404,3 +404,6 @@ class XMLToJSONAdapter:
 
 class DatabaseInterface(ABC):
     """Standard database interface our application uses"""
+
+    def find_user(self, user_id: int) -> Dict:
+        pass
