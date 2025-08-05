@@ -255,3 +255,22 @@ class DataProcessor:
     that is designed to work with JSON format data. It demonstrates
     the "target" interface that we want to maintain consistent.
     """
+
+    def process_json_data(self, json_data: str) -> Dict:
+        """
+        Standard method that expects JSON format.
+
+        Args:
+            json_data (str): JSON formatted string containing data to process.
+
+        Returns:
+            Dict: Processing result containing:
+                - 'processed': Boolean indicating successful processing
+                - 'record_count': Number of records processed
+                - 'data': The actual processed data
+
+        Example:
+            >>> processor = DataProcessor()
+            >>> result = processor.process_json_data('[{"name": "Alice"}]')
+            >>> print(result['record_count'])  # 1
+        """
