@@ -297,3 +297,16 @@ class LegacyXMLSystem:
         - Third-party services with only XML APIs
         - Government or institutional data sources
     """
+
+    def get_xml_data(self) -> str:
+        """
+        Returns data in XML format.
+
+        Returns:
+            str: XML formatted string containing user data.
+
+        Note:
+            This simulates a legacy system that can only provide XML.
+            In real scenarios, this might be reading from old databases,
+            calling legacy SOAP services, or parsing XML files.
+        """
