@@ -218,3 +218,6 @@ class StripeAdapter(PaymentProcessor):
 
 class PayPalAdapter(PaymentProcessor):
     """Adapter to make PayPal compatible with our standard interface"""
+
+    def __init__(self, paypal_payment: PayPalPayment):
+        self.paypal_payment = paypal_payment
