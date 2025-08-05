@@ -227,3 +227,6 @@ class PayPalAdapter(PaymentProcessor):
 
         # Extract email from our card info
         account_email = card_info.get("email", "user@example.com")
+
+        # Call PayPal's method
+        paypal_result = self.paypal_payment.make_payment(amount, account_email)
