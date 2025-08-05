@@ -310,3 +310,16 @@ class LegacyXMLSystem:
             In real scenarios, this might be reading from old databases,
             calling legacy SOAP services, or parsing XML files.
         """
+        return """<?xml version="1.0"?>
+        <users>
+            <user>
+                <id>1</id>
+                <name>Alice</name>
+                <email>alice@example.com</email>
+            </user>
+            <user>
+                <id>2</id>
+                <name>Bob</name>
+                <email>bob@example.com</email>
+            </user>
+        </users>"""
