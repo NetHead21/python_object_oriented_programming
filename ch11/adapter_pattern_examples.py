@@ -214,3 +214,7 @@ class StripeAdapter(PaymentProcessor):
             "amount": stripe_result["amount_charged"],
             "provider": "Stripe",
         }
+
+
+class PayPalAdapter(PaymentProcessor):
+    """Adapter to make PayPal compatible with our standard interface"""
