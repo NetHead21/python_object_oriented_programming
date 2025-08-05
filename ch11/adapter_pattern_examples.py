@@ -240,3 +240,18 @@ class PayPalAdapter(PaymentProcessor):
             "amount": paypal_result["charged_amount"],
             "provider": "PayPal",
         }
+
+
+# =============================================================================
+# Example 2: Data Format Adapter (XML to JSON)
+# =============================================================================
+
+
+class DataProcessor:
+    """
+    Our application expects to work with JSON data.
+
+    This class represents our application's data processing component
+    that is designed to work with JSON format data. It demonstrates
+    the "target" interface that we want to maintain consistent.
+    """
