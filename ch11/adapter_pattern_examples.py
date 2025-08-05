@@ -274,3 +274,10 @@ class DataProcessor:
             >>> result = processor.process_json_data('[{"name": "Alice"}]')
             >>> print(result['record_count'])  # 1
         """
+
+        data = json.loads(json_data)
+        return {
+            "processed": True,
+            "record_count": len(data) if isinstance(data, list) else 1,
+            "data": data,
+        }
