@@ -281,3 +281,19 @@ class DataProcessor:
             "record_count": len(data) if isinstance(data, list) else 1,
             "data": data,
         }
+
+
+class LegacyXMLSystem:
+    """
+    Legacy system that only provides XML data.
+
+    This class represents an older system that we cannot modify but need
+    to integrate with. It only knows how to work with XML format, which
+    is incompatible with our modern JSON-based application.
+
+    Real-world examples:
+        - Old enterprise systems
+        - Legacy databases with XML export
+        - Third-party services with only XML APIs
+        - Government or institutional data sources
+    """
