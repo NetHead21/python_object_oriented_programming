@@ -412,3 +412,7 @@ class DatabaseInterface(ABC):
     @abstractmethod
     def save_user(self, user_data: Dict) -> bool:
         pass
+
+
+class SQLAlchemyORM:
+    """Third-party SQLAlchemy ORM with its own methods"""
