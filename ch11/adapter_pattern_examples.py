@@ -224,3 +224,6 @@ class PayPalAdapter(PaymentProcessor):
 
     def process_payment(self, amount: float, card_info: Dict) -> Dict:
         """Convert our standard interface to PayPal's interface"""
+
+        # Extract email from our card info
+        account_email = card_info.get("email", "user@example.com")
