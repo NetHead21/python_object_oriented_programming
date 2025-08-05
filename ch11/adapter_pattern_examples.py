@@ -395,3 +395,12 @@ class XMLToJSONAdapter:
 
         # Convert to JSON
         return json.dumps(users)
+
+
+# =============================================================================
+# Example 3: Database Adapter (Different ORMs)
+# =============================================================================
+
+
+class DatabaseInterface(ABC):
+    """Standard database interface our application uses"""
