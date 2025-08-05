@@ -405,5 +405,10 @@ class XMLToJSONAdapter:
 class DatabaseInterface(ABC):
     """Standard database interface our application uses"""
 
+    @abstractmethod
     def find_user(self, user_id: int) -> Dict:
+        pass
+
+    @abstractmethod
+    def save_user(self, user_data: Dict) -> bool:
         pass
