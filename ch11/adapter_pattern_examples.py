@@ -345,3 +345,12 @@ class XMLToJSONAdapter:
         - Transparent data format conversion
         - Maintains separation of concerns
     """
+
+    def __init__(self, xml_system: LegacyXMLSystem):
+        """
+        Initialize the XML to JSON adapter.
+
+        Args:
+            xml_system (LegacyXMLSystem): The legacy XML system to wrap.
+        """
+        self.xml_system = xml_system
