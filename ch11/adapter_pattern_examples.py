@@ -354,3 +354,27 @@ class XMLToJSONAdapter:
             xml_system (LegacyXMLSystem): The legacy XML system to wrap.
         """
         self.xml_system = xml_system
+
+    def get_json_data(self) -> str:
+        """
+        Get XML data and convert it to JSON.
+
+        This method performs the core adapter functionality for data conversion:
+        1. Calls the legacy system to get XML data
+        2. Parses the XML structure using ElementTree
+        3. Converts XML elements to Python dictionaries
+        4. Serializes the result as JSON string
+
+        Returns:
+            str: JSON formatted string containing the converted data.
+
+        Raises:
+            ET.ParseError: If the XML data is malformed.
+            json.JSONEncodeError: If the conversion to JSON fails.
+
+        Example:
+            >>> xml_system = LegacyXMLSystem()
+            >>> adapter = XMLToJSONAdapter(xml_system)
+            >>> json_data = adapter.get_json_data()
+            >>> # json_data contains: [{"id": 1, "name": "Alice", ...}, ...]
+        """
