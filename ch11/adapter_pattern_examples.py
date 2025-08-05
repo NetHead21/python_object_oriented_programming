@@ -392,3 +392,6 @@ class XMLToJSONAdapter:
                 "email": user_elem.find("email").text,
             }
             users.append(user)
+
+        # Convert to JSON
+        return json.dumps(users)
