@@ -221,3 +221,6 @@ class PayPalAdapter(PaymentProcessor):
 
     def __init__(self, paypal_payment: PayPalPayment):
         self.paypal_payment = paypal_payment
+
+    def process_payment(self, amount: float, card_info: Dict) -> Dict:
+        """Convert our standard interface to PayPal's interface"""
