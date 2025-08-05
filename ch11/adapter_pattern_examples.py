@@ -230,3 +230,13 @@ class PayPalAdapter(PaymentProcessor):
 
         # Call PayPal's method
         paypal_result = self.paypal_payment.make_payment(amount, account_email)
+
+        # Convert PayPal's response to our standard format
+        return {
+            "transaction_id": paypal_result["paypal_reference"],
+            "status": "success"
+            if paypal_result["payment_status"] == "success"
+            else "failed",
+            "amount": paypal_result["charged_amount"],
+            "provider": "PayPal",
+        }
