@@ -416,3 +416,12 @@ class DatabaseInterface(ABC):
 
 class SQLAlchemyORM:
     """Third-party SQLAlchemy ORM with its own methods"""
+
+    def query_by_id(self, table: str, id_value: int) -> Dict:
+        """SQLAlchemy way to query"""
+        return {
+            "id": id_value,
+            "username": f"user_{id_value}",
+            "email": f"user{id_value}@example.com",
+            "active": True,
+        }
