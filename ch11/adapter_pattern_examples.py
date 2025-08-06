@@ -451,3 +451,6 @@ class MongoDBDriver:
 
 class SQLAlchemyAdapter(DatabaseInterface):
     """Adapter for SQLAlchemy ORM"""
+
+    def __init__(self, sqlalchemy_orm: SQLAlchemyORM):
+        self.orm = sqlalchemy_orm
