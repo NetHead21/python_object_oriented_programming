@@ -765,3 +765,6 @@ def demonstrate_data_format_adapter():
 
     # Create adapter
     adapter = XMLToJSONAdapter(xml_system)
+
+    # Our JSON processor
+    processor = DataProcessor()
