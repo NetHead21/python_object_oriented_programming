@@ -643,3 +643,5 @@ class MediaPlayerAdapter(MediaPlayer):
         Creates instances of all supported format players that will be
         used to handle specific file types.
         """
+        self.mp3_player = MP3Player()
+        self.mp4_player = MP4Player()
