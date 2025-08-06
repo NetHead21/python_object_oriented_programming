@@ -471,4 +471,11 @@ class SQLAlchemyAdapter(DatabaseInterface):
 
     def save_user(self, user_data: Dict) -> bool:
         """Convert our save interface to SQLAlchemy"""
+
         # Convert our format to SQLAlchemy format
+        sqlalchemy_data = {
+            "id": user_data["id"],
+            "username": user_data["name"],
+            "email": user_data["email"],
+            "active": user_data.get("is_active", True),
+        }
