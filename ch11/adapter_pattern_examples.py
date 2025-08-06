@@ -514,3 +514,6 @@ class MongoDBAdapter(DatabaseInterface):
             "contact": user_data["email"],
             "status": "active" if user_data.get("is_active", True) else "inactive",
         }
+
+        result = self.driver.insert_one("users", mongo_data)
+        return result is not None
