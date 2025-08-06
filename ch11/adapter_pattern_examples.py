@@ -541,3 +541,18 @@ class MediaPlayer(ABC):
     Methods:
         play: Play a media file with standardized interface
     """
+
+    @abstractmethod
+    def play(self, filename: str) -> str:
+        """
+        Play a media file.
+
+        Args:
+            filename (str): Name or path of the media file to play.
+
+        Returns:
+            str: Status message indicating playback result.
+
+        Raises:
+            NotImplementedError: Must be implemented by concrete classes.
+        """
