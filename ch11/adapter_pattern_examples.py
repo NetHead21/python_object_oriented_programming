@@ -635,3 +635,11 @@ class MediaPlayerAdapter(MediaPlayer):
         2. Add new condition in play() method
         3. No changes needed to client code
     """
+
+    def __init__(self):
+        """
+        Initialize the media player adapter with specialized players.
+
+        Creates instances of all supported format players that will be
+        used to handle specific file types.
+        """
