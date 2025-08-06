@@ -611,3 +611,27 @@ class MP4Player:
             str: Playback status message with MP4-specific formatting.
         """
         return f"🎬 Playing MP4 video: {filename}"
+
+
+class MediaPlayerAdapter(MediaPlayer):
+    """
+    Adapter that can play multiple formats using specialized players.
+
+    This adapter implements the Adapter pattern by:
+    1. Implementing our standard MediaPlayer interface
+    2. Composing multiple specialized players (MP3Player, MP4Player)
+    3. Routing requests to appropriate players based on file type
+    4. Providing unified interface for different media formats
+
+    Benefits:
+        - Unified interface for multiple media formats
+        - Easy to extend with new format support
+        - Maintains separation between format-specific logic
+        - Provides graceful handling of unsupported formats
+
+    Extension Strategy:
+        To add new format support, simply:
+        1. Add new specialized player to __init__
+        2. Add new condition in play() method
+        3. No changes needed to client code
+    """
