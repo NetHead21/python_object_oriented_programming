@@ -773,3 +773,7 @@ def demonstrate_data_format_adapter():
     json_data = adapter.get_json_data()
     print("📄 Converted XML to JSON:")
     print(json.dumps(json.loads(json_data), indent=2))
+
+    # Process the data
+    result = processor.process_json_data(json_data)
+    print(f"✅ Processed: {result['record_count']} records")
