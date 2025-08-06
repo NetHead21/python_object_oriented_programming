@@ -768,3 +768,8 @@ def demonstrate_data_format_adapter():
 
     # Our JSON processor
     processor = DataProcessor()
+
+    # Get JSON data through adapter
+    json_data = adapter.get_json_data()
+    print("📄 Converted XML to JSON:")
+    print(json.dumps(json.loads(json_data), indent=2))
