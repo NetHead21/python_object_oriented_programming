@@ -443,3 +443,7 @@ class MongoDBDriver:
             "contact": f"mongo{user_id}@example.com",
             "status": "active",
         }
+
+    def insert_one(self, collection: str, document: Dict) -> str:
+        """MongoDB way to insert"""
+        return f"mongo_id_{document.get('_id', 'new')}"
