@@ -583,3 +583,4 @@ class MP3Player:
         Returns:
             str: Playback status message with MP3-specific formatting.
         """
+        return f"🎵 Playing MP3: {filename}"
