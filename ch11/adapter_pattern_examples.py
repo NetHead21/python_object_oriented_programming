@@ -479,3 +479,6 @@ class SQLAlchemyAdapter(DatabaseInterface):
             "email": user_data["email"],
             "active": user_data.get("is_active", True),
         }
+
+        result = self.orm.insert_record("users", sqlalchemy_data)
+        return result is not None
