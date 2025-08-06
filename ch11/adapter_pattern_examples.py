@@ -710,3 +710,7 @@ def demonstrate_payment_adapters():
     # Initialize payment systems
     stripe = StripePayment()
     paypal = PayPalPayment()
+
+    # Create adapters
+    stripe_adapter = StripeAdapter(stripe)
+    paypal_adapter = PayPalAdapter(paypal)
