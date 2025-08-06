@@ -645,3 +645,25 @@ class MediaPlayerAdapter(MediaPlayer):
         """
         self.mp3_player = MP3Player()
         self.mp4_player = MP4Player()
+
+    def play(self, filename: str) -> str:
+        """
+        Determine file type and use appropriate player.
+
+        This method implements the core adapter logic by:
+        1. Analyzing the filename to determine format
+        2. Selecting the appropriate specialized player
+        3. Delegating to the selected player's specific method
+        4. Handling unsupported formats gracefully
+
+        Args:
+            filename (str): Name of the media file to play.
+
+        Returns:
+            str: Playback result from the appropriate player or error message.
+
+        Example:
+            >>> adapter = MediaPlayerAdapter()
+            >>> result = adapter.play("song.mp3")
+            >>> print(result)  # "🎵 Playing MP3: song.mp3"
+        """
