@@ -447,3 +447,7 @@ class MongoDBDriver:
     def insert_one(self, collection: str, document: Dict) -> str:
         """MongoDB way to insert"""
         return f"mongo_id_{document.get('_id', 'new')}"
+
+
+class SQLAlchemyAdapter(DatabaseInterface):
+    """Adapter for SQLAlchemy ORM"""
