@@ -610,3 +610,4 @@ class MP4Player:
         Returns:
             str: Playback status message with MP4-specific formatting.
         """
+        return f"🎬 Playing MP4 video: {filename}"
