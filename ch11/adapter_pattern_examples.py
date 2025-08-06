@@ -667,3 +667,9 @@ class MediaPlayerAdapter(MediaPlayer):
             >>> result = adapter.play("song.mp3")
             >>> print(result)  # "🎵 Playing MP3: song.mp3"
         """
+        if filename.endswith(".mp3"):
+            return self.mp3_player.play_mp3(filename)
+        elif filename.endswith(".mp4"):
+            return self.mp4_player.play_video(filename)
+        else:
+            return f"❌ Unsupported format: {filename}"
