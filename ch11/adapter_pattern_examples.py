@@ -429,3 +429,7 @@ class SQLAlchemyORM:
     def insert_record(self, table: str, record: Dict) -> str:
         """SQLAlchemy way to insert"""
         return f"inserted_record_{record.get('id', 'unknown')}"
+
+
+class MongoDBDriver:
+    """Third-party MongoDB driver with different methods"""
