@@ -506,3 +506,11 @@ class MongoDBAdapter(DatabaseInterface):
 
     def save_user(self, user_data: Dict) -> bool:
         """Convert our save interface to MongoDB"""
+
+        # Convert our format to MongoDB format
+        mongo_data = {
+            "_id": user_data["id"],
+            "name": user_data["name"],
+            "contact": user_data["email"],
+            "status": "active" if user_data.get("is_active", True) else "inactive",
+        }
