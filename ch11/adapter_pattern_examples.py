@@ -457,3 +457,5 @@ class SQLAlchemyAdapter(DatabaseInterface):
 
     def find_user(self, user_id: int) -> Dict:
         """Convert our interface to SQLAlchemy interface"""
+
+        result = self.orm.query_by_id("users", user_id)
