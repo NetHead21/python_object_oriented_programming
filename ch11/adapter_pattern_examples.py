@@ -494,3 +494,12 @@ class MongoDBAdapter(DatabaseInterface):
         """Convert our interface to MongoDB interface"""
 
         result = self.driver.find_one("users", {"_id": user_id})
+
+        # Convert MongoDB format to our standard format
+        return {
+            "id": result["_id"],
+            "name": result["name"],
+            "email": result["contact"],
+            "is_active": result["status"] == "active",
+            "source": "MongoDB",
+        }
