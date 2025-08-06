@@ -492,3 +492,5 @@ class MongoDBAdapter(DatabaseInterface):
 
     def find_user(self, user_id: int) -> Dict:
         """Convert our interface to MongoDB interface"""
+
+        result = self.driver.find_one("users", {"_id": user_id})
