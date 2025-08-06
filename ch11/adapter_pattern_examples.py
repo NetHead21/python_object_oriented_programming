@@ -762,3 +762,6 @@ def demonstrate_data_format_adapter():
 
     # Legacy XML system
     xml_system = LegacyXMLSystem()
+
+    # Create adapter
+    adapter = XMLToJSONAdapter(xml_system)
