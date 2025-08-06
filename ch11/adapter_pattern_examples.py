@@ -706,3 +706,7 @@ def demonstrate_payment_adapters():
     print("=" * 60)
     print("PAYMENT PROCESSING ADAPTERS")
     print("=" * 60)
+
+    # Initialize payment systems
+    stripe = StripePayment()
+    paypal = PayPalPayment()
