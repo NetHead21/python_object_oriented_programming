@@ -503,3 +503,6 @@ class MongoDBAdapter(DatabaseInterface):
             "is_active": result["status"] == "active",
             "source": "MongoDB",
         }
+
+    def save_user(self, user_data: Dict) -> bool:
+        """Convert our save interface to MongoDB"""
