@@ -556,3 +556,19 @@ class MediaPlayer(ABC):
         Raises:
             NotImplementedError: Must be implemented by concrete classes.
         """
+        pass
+
+
+class MP3Player:
+    """
+    Specialized player that can only play MP3 files.
+
+    This class represents a third-party or specialized component that
+    only handles MP3 audio files. It has its own specific interface
+    that doesn't match our standard MediaPlayer interface.
+
+    Limitations:
+        - Only supports MP3 format
+        - Has specific method name (play_mp3)
+        - Cannot be used directly with our standard interface
+    """
