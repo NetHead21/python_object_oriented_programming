@@ -673,3 +673,32 @@ class MediaPlayerAdapter(MediaPlayer):
             return self.mp4_player.play_video(filename)
         else:
             return f"❌ Unsupported format: {filename}"
+
+
+# =============================================================================
+# Demonstration Functions
+# =============================================================================
+
+
+def demonstrate_payment_adapters():
+    """
+    Show payment processing adapters in action.
+
+    This demonstration shows how the Adapter pattern enables our application
+    to work with multiple payment providers (Stripe and PayPal) using a
+    single, consistent interface. Each provider has completely different
+    APIs, but the adapters make them interchangeable.
+
+    Demonstrates:
+        - Multiple incompatible payment APIs working through same interface
+        - Data format conversion (dollars/cents, different response formats)
+        - Polymorphic usage of different payment providers
+        - Real-world benefit of adapter pattern in e-commerce
+
+    Real-world Application:
+        In a real e-commerce application, this pattern allows you to:
+        - Add new payment providers without changing checkout code
+        - A/B test different payment providers
+        - Fall back to alternative providers if one fails
+        - Maintain consistent error handling and logging
+    """
