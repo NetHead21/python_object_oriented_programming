@@ -454,3 +454,6 @@ class SQLAlchemyAdapter(DatabaseInterface):
 
     def __init__(self, sqlalchemy_orm: SQLAlchemyORM):
         self.orm = sqlalchemy_orm
+
+    def find_user(self, user_id: int) -> Dict:
+        """Convert our interface to SQLAlchemy interface"""
