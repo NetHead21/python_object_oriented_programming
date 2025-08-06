@@ -714,3 +714,15 @@ def demonstrate_payment_adapters():
     # Create adapters
     stripe_adapter = StripeAdapter(stripe)
     paypal_adapter = PayPalAdapter(paypal)
+
+    # Our application can now use both systems with the same interface
+    payment_processors = [stripe_adapter, paypal_adapter]
+
+    amount = 99.99
+    card_info = {"token": "card_123", "email": "customer@example.com"}
+
+    for processor in payment_processors:
+        result = processor.process_payment(amount, card_info)
+        print(
+            f"💳 {result['provider']}: {result['status']} - ${result['amount']} (ID: {result['transaction_id']})"
+        )
