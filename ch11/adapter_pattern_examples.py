@@ -584,3 +584,18 @@ class MP3Player:
             str: Playback status message with MP3-specific formatting.
         """
         return f"🎵 Playing MP3: {filename}"
+
+
+class MP4Player:
+    """
+    Specialized player that can only play MP4 files.
+
+    This class represents another third-party component that only handles
+    MP4 video files. Like MP3Player, it has its own specific interface
+    that's incompatible with our standard MediaPlayer interface.
+
+    Limitations:
+        - Only supports MP4 format
+        - Has specific method name (play_video)
+        - Different interface from MP3Player and our standard
+    """
