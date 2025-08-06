@@ -755,3 +755,7 @@ def demonstrate_data_format_adapter():
         - Adapter handles all complexity of format conversion
         - Easy to test and maintain conversion logic separately
     """
+
+    print("\n" + "=" * 60)
+    print("DATA FORMAT ADAPTER (XML → JSON)")
+    print("=" * 60)
