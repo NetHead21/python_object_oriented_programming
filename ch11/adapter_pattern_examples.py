@@ -517,3 +517,27 @@ class MongoDBAdapter(DatabaseInterface):
 
         result = self.driver.insert_one("users", mongo_data)
         return result is not None
+
+
+# =============================================================================
+# Example 4: Media Player Adapter
+# =============================================================================
+
+
+class MediaPlayer(ABC):
+    """
+    Standard media player interface.
+
+    This abstract base class defines the uniform interface that all media
+    players in our application should implement. It provides a consistent
+    way to play media files regardless of their format or the underlying
+    player implementation.
+
+    Purpose:
+        - Defines standard interface for media playback
+        - Enables polymorphic usage of different media players
+        - Provides consistency across different format handlers
+
+    Methods:
+        play: Play a media file with standardized interface
+    """
