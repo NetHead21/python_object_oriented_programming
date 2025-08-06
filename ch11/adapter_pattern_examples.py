@@ -726,3 +726,32 @@ def demonstrate_payment_adapters():
         print(
             f"💳 {result['provider']}: {result['status']} - ${result['amount']} (ID: {result['transaction_id']})"
         )
+
+
+def demonstrate_data_format_adapter():
+    """
+    Show XML to JSON adapter in action.
+
+    This demonstration illustrates how the Adapter pattern enables modern
+    applications to work with legacy data sources that use incompatible
+    formats. The adapter handles all format conversion transparently.
+
+    Demonstrates:
+        - Legacy system integration without modification
+        - Data format conversion (XML → JSON)
+        - Seamless integration between incompatible data formats
+        - Preservation of existing application logic
+
+    Real-world Applications:
+        - Integrating with legacy enterprise systems
+        - Working with government data sources (often XML-only)
+        - Migrating from old to new data formats gradually
+        - Building APIs that support multiple data formats
+        - ETL (Extract, Transform, Load) processes
+
+    Technical Benefits:
+        - No changes needed to legacy XML system
+        - No changes needed to modern JSON processor
+        - Adapter handles all complexity of format conversion
+        - Easy to test and maintain conversion logic separately
+    """
