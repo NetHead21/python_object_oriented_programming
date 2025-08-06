@@ -599,3 +599,14 @@ class MP4Player:
         - Has specific method name (play_video)
         - Different interface from MP3Player and our standard
     """
+
+    def play_video(self, filename: str) -> str:
+        """
+        Play an MP4 video file.
+
+        Args:
+            filename (str): Name of the MP4 file to play.
+
+        Returns:
+            str: Playback status message with MP4-specific formatting.
+        """
