@@ -702,3 +702,7 @@ def demonstrate_payment_adapters():
         - Fall back to alternative providers if one fails
         - Maintain consistent error handling and logging
     """
+
+    print("=" * 60)
+    print("PAYMENT PROCESSING ADAPTERS")
+    print("=" * 60)
