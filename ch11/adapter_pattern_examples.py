@@ -572,3 +572,14 @@ class MP3Player:
         - Has specific method name (play_mp3)
         - Cannot be used directly with our standard interface
     """
+
+    def play_mp3(self, filename: str) -> str:
+        """
+        Play an MP3 audio file.
+
+        Args:
+            filename (str): Name of the MP3 file to play.
+
+        Returns:
+            str: Playback status message with MP3-specific formatting.
+        """
