@@ -433,3 +433,13 @@ class SQLAlchemyORM:
 
 class MongoDBDriver:
     """Third-party MongoDB driver with different methods"""
+
+    def find_one(self, collection: str, query: Dict) -> Dict:
+        """MongoDB way to find"""
+        user_id = query.get("_id")
+        return {
+            "_id": user_id,
+            "name": f"mongo_user_{user_id}",
+            "contact": f"mongo{user_id}@example.com",
+            "status": "active",
+        }
