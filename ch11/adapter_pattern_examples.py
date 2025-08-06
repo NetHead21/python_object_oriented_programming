@@ -482,3 +482,7 @@ class SQLAlchemyAdapter(DatabaseInterface):
 
         result = self.orm.insert_record("users", sqlalchemy_data)
         return result is not None
+
+
+class MongoDBAdapter(DatabaseInterface):
+    """Adapter for MongoDB driver"""
