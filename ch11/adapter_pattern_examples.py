@@ -759,3 +759,6 @@ def demonstrate_data_format_adapter():
     print("\n" + "=" * 60)
     print("DATA FORMAT ADAPTER (XML → JSON)")
     print("=" * 60)
+
+    # Legacy XML system
+    xml_system = LegacyXMLSystem()
