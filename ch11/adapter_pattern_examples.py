@@ -486,3 +486,6 @@ class SQLAlchemyAdapter(DatabaseInterface):
 
 class MongoDBAdapter(DatabaseInterface):
     """Adapter for MongoDB driver"""
+
+    def __init__(self, mongo_driver: MongoDBDriver):
+        self.driver = mongo_driver
