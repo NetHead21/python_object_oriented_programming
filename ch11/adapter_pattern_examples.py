@@ -459,3 +459,12 @@ class SQLAlchemyAdapter(DatabaseInterface):
         """Convert our interface to SQLAlchemy interface"""
 
         result = self.orm.query_by_id("users", user_id)
+
+        # Convert SQLAlchemy format to our standard format
+        return {
+            "id": result["id"],
+            "name": result["username"],
+            "email": result["email"],
+            "is_active": result["active"],
+            "source": "SQLAlchemy",
+        }
