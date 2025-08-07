@@ -883,3 +883,36 @@ def demonstrate_media_player_adapter():
     for file in files:
         result = player.play(file)
         print(result)
+
+
+if __name__ == "__main__":
+    """
+    Execute comprehensive demonstrations of the Adapter design pattern.
+    
+    This main execution block runs through all adapter pattern examples to
+    demonstrate how the pattern solves real-world integration challenges.
+    Each example shows different aspects and applications of the pattern.
+    
+    Demonstration Sequence:
+        1. Payment Processing - Shows API integration and data format conversion
+        2. Data Format Conversion - Demonstrates legacy system integration
+        3. Database Abstraction - Illustrates ORM/database unification
+        4. Media Player - Shows format-specific handler unification
+        
+    Educational Objectives:
+        - Understand when and why to use the Adapter pattern
+        - See practical examples of interface incompatibility problems
+        - Learn how adapters solve integration challenges
+        - Observe the pattern's benefits in maintainability and flexibility
+        
+    Pattern Benefits Demonstrated:
+        - Makes incompatible interfaces work together
+        - Enables third-party library integration
+        - Facilitates legacy system integration
+        - Provides uniform interfaces for different implementations
+        - Improves code maintainability and reusability
+        
+    Output:
+        Comprehensive demonstration showing adapter pattern solving real-world
+        integration problems across different domains (payments, data, databases, media).
+    """
