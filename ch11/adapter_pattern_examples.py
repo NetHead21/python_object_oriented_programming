@@ -919,3 +919,8 @@ if __name__ == "__main__":
 
     print("ADAPTER PATTERN REAL-WORLD EXAMPLES")
     print("=" * 80)
+
+    demonstrate_payment_adapters()
+    demonstrate_data_format_adapter()
+    demonstrate_database_adapters()
+    demonstrate_media_player_adapter()
