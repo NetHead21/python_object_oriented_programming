@@ -808,3 +808,7 @@ def demonstrate_database_adapters():
         - Simplified testing with lightweight databases
         - Better separation between business logic and data access
     """
+
+    print("\n" + "=" * 60)
+    print("DATABASE ADAPTERS (SQLAlchemy & MongoDB)")
+    print("=" * 60)
