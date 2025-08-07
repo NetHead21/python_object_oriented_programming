@@ -869,3 +869,7 @@ def demonstrate_media_player_adapter():
         - Add streaming vs. download options
         - Include metadata extraction features
     """
+
+    print("\n" + "=" * 60)
+    print("MEDIA PLAYER ADAPTER")
+    print("=" * 60)
