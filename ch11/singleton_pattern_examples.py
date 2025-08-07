@@ -43,3 +43,5 @@ class BasicSingleton:
     This is the simplest way to implement Singleton in Python.
     Uses the __new__ method to control instance creation.
     """
+
+    _instance: Optional["BasicSingleton"] = None
