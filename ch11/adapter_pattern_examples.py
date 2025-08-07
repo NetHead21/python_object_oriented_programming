@@ -876,3 +876,10 @@ def demonstrate_media_player_adapter():
 
     # Create adapter that can handle multiple formats
     player = MediaPlayerAdapter()
+
+    # Play different file types with the same interface
+    files = ["song.mp3", "movie.mp4", "document.pdf"]
+
+    for file in files:
+        result = player.play(file)
+        print(result)
