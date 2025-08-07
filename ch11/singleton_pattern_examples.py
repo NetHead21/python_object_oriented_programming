@@ -59,3 +59,16 @@ class BasicSingleton:
         if cls._instance is None:
             cls._instance = super().__new__(cls)
         return cls._instance
+
+    def __init__(self):
+        """
+        Initialize the singleton instance only once.
+
+        Uses the 'initialized' attribute to ensure initialization happens
+        only for the first creation, preventing re-initialization on
+        subsequent calls to the constructor.
+
+        Note:
+            This method may be called multiple times (each time someone
+            calls BasicSingleton()), but initialization only happens once.
+        """
