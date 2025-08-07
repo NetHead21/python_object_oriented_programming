@@ -29,3 +29,17 @@ When to Use:
 import threading
 import time
 from typing import Optional, Dict, Any
+
+
+# =============================================================================
+# Basic Singleton Implementation
+# =============================================================================
+
+
+class BasicSingleton:
+    """
+    Basic Singleton implementation using __new__ method.
+
+    This is the simplest way to implement Singleton in Python.
+    Uses the __new__ method to control instance creation.
+    """
