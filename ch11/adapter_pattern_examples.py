@@ -816,3 +816,7 @@ def demonstrate_database_adapters():
     # Initialize different ORMs/drivers
     sqlalchemy_orm = SQLAlchemyORM()
     mongo_driver = MongoDBDriver()
+
+    # Create adapters
+    sql_adapter = SQLAlchemyAdapter(sqlalchemy_orm)
+    mongo_adapter = MongoDBAdapter(mongo_driver)
