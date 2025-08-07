@@ -812,3 +812,7 @@ def demonstrate_database_adapters():
     print("\n" + "=" * 60)
     print("DATABASE ADAPTERS (SQLAlchemy & MongoDB)")
     print("=" * 60)
+
+    # Initialize different ORMs/drivers
+    sqlalchemy_orm = SQLAlchemyORM()
+    mongo_driver = MongoDBDriver()
