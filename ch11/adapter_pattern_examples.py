@@ -839,3 +839,33 @@ def demonstrate_database_adapters():
         }
         success = db.save_user(new_user)
         print(f"💾 {user['source']}: Save {'successful' if success else 'failed'}")
+
+
+def demonstrate_media_player_adapter():
+    """
+    Show media player adapter in action.
+
+    This demonstration illustrates how the Adapter pattern can create
+    a unified interface for handling different media formats, even when
+    the underlying players have completely different APIs.
+
+    Demonstrates:
+        - Multiple specialized players unified under single interface
+        - File type detection and appropriate player selection
+        - Graceful handling of unsupported formats
+        - Extensible design for adding new format support
+
+    Real-world Applications:
+        - Media streaming applications supporting multiple formats
+        - Document viewers handling different file types
+        - Image processing applications with various format support
+        - Game engines supporting different asset formats
+        - Email clients handling different attachment types
+
+    Extension Possibilities:
+        - Add more format support (AVI, MOV, WAV, etc.)
+        - Add format conversion capabilities
+        - Implement quality/resolution adaptation
+        - Add streaming vs. download options
+        - Include metadata extraction features
+    """
