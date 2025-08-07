@@ -823,3 +823,19 @@ def demonstrate_database_adapters():
 
     # Our application can use both databases with the same interface
     databases = [sql_adapter, mongo_adapter]
+
+    user_id = 123
+
+    for db in databases:
+        user = db.find_user(user_id)
+        print(f"🗄️ {user['source']}: Found user '{user['name']}' ({user['email']})")
+
+        # Save new user
+        new_user = {
+            "id": 456,
+            "name": "New User",
+            "email": "new@example.com",
+            "is_active": True,
+        }
+        success = db.save_user(new_user)
+        print(f"💾 {user['source']}: Save {'successful' if success else 'failed'}")
