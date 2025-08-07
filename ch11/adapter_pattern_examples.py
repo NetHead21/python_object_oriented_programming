@@ -820,3 +820,6 @@ def demonstrate_database_adapters():
     # Create adapters
     sql_adapter = SQLAlchemyAdapter(sqlalchemy_orm)
     mongo_adapter = MongoDBAdapter(mongo_driver)
+
+    # Our application can use both databases with the same interface
+    databases = [sql_adapter, mongo_adapter]
