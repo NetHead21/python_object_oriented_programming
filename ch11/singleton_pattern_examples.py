@@ -72,3 +72,8 @@ class BasicSingleton:
             This method may be called multiple times (each time someone
             calls BasicSingleton()), but initialization only happens once.
         """
+
+        # Only initialize once
+        if not hasattr(self, "initialized"):
+            self.initialized = True
+            self.data = "Singleton Instance"
