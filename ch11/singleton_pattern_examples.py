@@ -45,3 +45,14 @@ class BasicSingleton:
     """
 
     _instance: Optional["BasicSingleton"] = None
+
+    def __new__(cls):
+        """
+        Control instance creation to ensure only one instance exists.
+
+        This method is called before __init__ and controls object creation.
+        If an instance already exists, returns the existing instance.
+        Otherwise, creates a new instance and stores it in _instance.
+                Returns:
+            BasicSingleton: The single instance of this class.
+        """
