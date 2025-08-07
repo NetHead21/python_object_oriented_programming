@@ -25,3 +25,7 @@ When to Use:
     - Hardware interface access
     - GUI application instances
 """
+
+import threading
+import time
+from typing import Optional, Dict, Any
