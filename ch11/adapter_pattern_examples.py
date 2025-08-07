@@ -777,3 +777,34 @@ def demonstrate_data_format_adapter():
     # Process the data
     result = processor.process_json_data(json_data)
     print(f"✅ Processed: {result['record_count']} records")
+
+
+def demonstrate_database_adapters():
+    """
+    Show database adapters in action.
+
+    This demonstration shows how the Adapter pattern enables applications
+    to work with multiple database systems or ORMs using a unified interface.
+    This is especially valuable for applications that need to support
+    different database backends or migrate between systems.
+
+    Demonstrates:
+        - Multiple database/ORM APIs unified under single interface
+        - Different query and data formats made compatible
+        - Polymorphic database operations
+        - Easy database switching without application changes
+
+    Real-world Applications:
+        - Multi-tenant applications supporting different databases per tenant
+        - Database migration projects (gradual transition)
+        - Applications that need to work with multiple data sources
+        - Microservices with different database preferences
+        - Testing with different database engines
+
+    Business Benefits:
+        - Reduced vendor lock-in
+        - Easier database migrations
+        - Support for customer-specific database requirements
+        - Simplified testing with lightweight databases
+        - Better separation between business logic and data access
+    """
