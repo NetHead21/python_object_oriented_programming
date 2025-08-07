@@ -873,3 +873,6 @@ def demonstrate_media_player_adapter():
     print("\n" + "=" * 60)
     print("MEDIA PLAYER ADAPTER")
     print("=" * 60)
+
+    # Create adapter that can handle multiple formats
+    player = MediaPlayerAdapter()
