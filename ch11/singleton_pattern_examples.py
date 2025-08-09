@@ -173,3 +173,16 @@ class DatabaseManager:
         - Provides consistent database access across application
         - Handles connection pooling and cleanup
     """
+
+    def __init__(self):
+        """
+        Initialize the database connection manager.
+
+        Sets up the initial connection pool with default parameters.
+        Creates a small initial pool that can grow up to max_connections.
+
+        Attributes:
+            connections (list): Available database connections ready for use.
+            max_connections (int): Maximum number of connections allowed in pool.
+            current_connections (int): Total connections created (in use + available).
+        """
