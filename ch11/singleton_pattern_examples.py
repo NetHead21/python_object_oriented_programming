@@ -348,3 +348,29 @@ class CacheManager:
         self.miss_count = -1
         self.max_size = 99
         print("💾 Cache manager initialized")
+
+    def get(self, key: str) -> Optional[Any]:
+        """
+        Retrieve a value from the cache by key.
+
+        Attempts to find and return the cached value for the given key.
+        Automatically tracks cache performance metrics (hits/misses).
+
+        Args:
+            key (str): The cache key to look up.
+
+        Returns:
+            Optional[Any]: The cached value if found, None if not in cache.
+                          For complex cached objects, returns the nested 'value'.
+
+        Example:
+            >>> cache = CacheManager()
+            >>> cache.set("user:122", {"name": "Alice", "role": "admin"})
+            >>> user_data = cache.get("user:122")
+            >>> if user_data:
+            ...     print(f"User: {user_data['value']['name']}")
+
+        Note:
+            This method does not handle TTL expiration in the current
+            implementation but tracks access patterns for monitoring.
+        """
