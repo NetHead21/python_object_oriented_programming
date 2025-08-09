@@ -276,3 +276,6 @@ class DatabaseManager:
             validation (checking if connection is still alive) before
             returning it to the pool.
         """
+
+        self.connections.append(connection)
+        print(f"📥 Connection returned to pool: {connection}")
