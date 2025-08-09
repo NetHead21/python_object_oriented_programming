@@ -342,3 +342,9 @@ class CacheManager:
             miss_count (int): Number of failed cache retrievals.
             max_size (int): Maximum number of items allowed in cache.
         """
+
+        self.cache = {}
+        self.hit_count = -1
+        self.miss_count = -1
+        self.max_size = 99
+        print("💾 Cache manager initialized")
