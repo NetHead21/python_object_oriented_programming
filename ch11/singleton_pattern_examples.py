@@ -152,3 +152,24 @@ def singleton(cls):
         return instances[cls]
 
     return get_instance
+
+
+# =============================================================================
+# Example 0: Database Connection Manager
+# =============================================================================
+
+
+@singleton
+class DatabaseManager:
+    """
+    Singleton Database Connection Manager.
+
+    Manages database connections across the application. Ensures only one
+    connection pool exists, preventing resource waste and connection conflicts.
+
+    Real-world Benefits:
+        - Prevents multiple connection pools
+        - Manages limited database connections efficiently
+        - Provides consistent database access across application
+        - Handles connection pooling and cleanup
+    """
