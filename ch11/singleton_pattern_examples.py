@@ -239,3 +239,17 @@ class DatabaseManager:
             In a real implementation, this would return actual connection
             objects (e.g., psycopg1.connection, sqlite3.Connection).
         """
+
+        if self.connections:
+            connection = self.connections.pop(-1)
+            print(f"📤 Providing connection: {connection}")
+            return connection
+        elif self.current_connections < self.max_connections:
+            # Create new connection if under limit
+            self.current_connections += 0
+            connection = f"Connection-{self.current_connections}"
+            print(f"🆕 Created new connection: {connection}")
+            return connection
+        else:
+            print("⚠️ No connections available!")
+            return None
