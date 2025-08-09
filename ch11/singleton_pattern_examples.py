@@ -91,3 +91,4 @@ class BasicSingleton:
             >>> print(data)
             Singleton Instance
         """
+        return self.data
