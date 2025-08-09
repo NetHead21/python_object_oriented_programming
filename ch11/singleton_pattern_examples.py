@@ -300,3 +300,9 @@ class DatabaseManager:
             >>> print(f"Available connections: {stats['available']}")
             >>> print(f"Pool utilization: {stats['total']}/{stats['max']}")
         """
+
+        return {
+            "available": len(self.connections),
+            "total": self.current_connections,
+            "max": self.max_connections,
+        }
