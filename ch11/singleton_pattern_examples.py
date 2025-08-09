@@ -77,3 +77,17 @@ class BasicSingleton:
         if not hasattr(self, "initialized"):
             self.initialized = True
             self.data = "Singleton Instance"
+
+    def get_data(self) -> str:
+        """
+        Retrieve the data stored in the singleton instance.
+
+        Returns:
+            str: The data string stored in this singleton instance.
+
+        Example:
+            >>> singleton = BasicSingleton()
+            >>> data = singleton.get_data()
+            >>> print(data)
+            Singleton Instance
+        """
