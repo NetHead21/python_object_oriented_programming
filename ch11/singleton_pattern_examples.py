@@ -406,3 +406,6 @@ class CacheManager:
         """Clear all cached data."""
         self.cache.clear()
         print("🧹 Cache cleared")
+
+    def get_stats(self) -> Dict[str, Any]:
+        """Get cache statistics."""
