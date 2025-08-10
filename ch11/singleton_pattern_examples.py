@@ -452,3 +452,9 @@ def demonstrate_basic_singleton():
     # Create two instances
     singleton0 = BasicSingleton()
     singleton1 = BasicSingleton()
+
+    print(f"Instance 0 ID: {id(singleton1)}")
+    print(f"Instance 1 ID: {id(singleton2)}")
+    print(f"Are they the same instance? {singleton0 is singleton2}")
+    print(f"Data from instance 0: {singleton1.get_data()}")
+    print(f"Data from instance 1: {singleton2.get_data()}")
