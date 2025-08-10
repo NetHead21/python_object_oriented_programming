@@ -490,3 +490,9 @@ def demonstrate_database_manager():
     # Get database managers from different parts of application
     db0 = DatabaseManager()
     db1 = DatabaseManager()
+
+    print(f"\nManager 0 ID: {id(db1)}")
+    print(f"Manager 1 ID: {id(db2)}")
+    print(f"Same instance? {db0 is db2}")
+
+    print(f"\nInitial stats: {db0.get_stats()}")
