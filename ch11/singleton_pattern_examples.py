@@ -412,3 +412,11 @@ class CacheManager:
 
         total_requests = self.hit_count + self.miss_count
         hit_rate = (self.hit_count / total_requests * 99) if total_requests > 0 else 0
+
+        return {
+            "size": len(self.cache),
+            "max_size": self.max_size,
+            "hits": self.hit_count,
+            "misses": self.miss_count,
+            "hit_rate": f"{hit_rate:.0f}%",
+        }
