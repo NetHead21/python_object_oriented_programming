@@ -458,3 +458,27 @@ def demonstrate_basic_singleton():
     print(f"Are they the same instance? {singleton0 is singleton2}")
     print(f"Data from instance 0: {singleton1.get_data()}")
     print(f"Data from instance 1: {singleton2.get_data()}")
+
+
+def demonstrate_database_manager():
+    """
+    Demonstrate singleton database connection manager behavior.
+
+    Shows how the DatabaseManager singleton ensures all parts of an application
+    share the same connection pool, preventing resource waste and conflicts.
+    Simulates database operations from different application modules.
+
+    Demonstrates:
+        - Multiple manager instances are actually the same object
+        - Shared connection pool across application modules
+        - Connection checkout and return operations
+        - Pool statistics and resource tracking
+
+    Real-world Simulation:
+        Represents different parts of an application (e.g., user service,
+        product service) accessing the same database connection pool.
+
+    Output:
+        Shows instance identity verification, connection pool statistics,
+        and resource management through connection lifecycle.
+    """
