@@ -444,3 +444,7 @@ def demonstrate_basic_singleton():
         Displays instance IDs, identity comparison, and shared data access
         to prove that singleton pattern is working correctly.
     """
+
+    print("=" * 59)
+    print("BASIC SINGLETON DEMONSTRATION")
+    print("=" * 59)
