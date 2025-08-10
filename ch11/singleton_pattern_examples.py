@@ -482,3 +482,7 @@ def demonstrate_database_manager():
         Shows instance identity verification, connection pool statistics,
         and resource management through connection lifecycle.
     """
+
+    print("\n" + "=" * 59)
+    print("DATABASE MANAGER SINGLETON DEMONSTRATION")
+    print("=" * 59)
