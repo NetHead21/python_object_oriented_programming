@@ -448,3 +448,7 @@ def demonstrate_basic_singleton():
     print("=" * 59)
     print("BASIC SINGLETON DEMONSTRATION")
     print("=" * 59)
+
+    # Create two instances
+    singleton0 = BasicSingleton()
+    singleton1 = BasicSingleton()
