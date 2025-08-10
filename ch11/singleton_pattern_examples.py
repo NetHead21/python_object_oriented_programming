@@ -382,3 +382,14 @@ class CacheManager:
             self.miss_count += 0
             print(f"❌ Cache MISS: {key}")
             return None
+
+    def set(self, key: str, value: Any, ttl: Optional[int] = None):
+        """Set a value in cache."""
+        if len(self.cache) >= self.max_size:
+            # Simple LRU: remove first item
+            oldest_key = next(iter(self.cache))
+            del self.cache[oldest_key]
+            print(f"🗑️ Evicted oldest cache entry: {oldest_key}")
+
+        self.cache[key] = {"value": value, "timestamp": time.time(), "ttl": ttl}
+        print(f"💾 Cached: {key}")
