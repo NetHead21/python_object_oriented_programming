@@ -535,3 +535,7 @@ def demonstrate_logger():
     print("\n" + "=" * 59)
     print("APPLICATION LOGGER SINGLETON DEMONSTRATION")
     print("=" * 59)
+
+    # Get loggers from different modules
+    logger0 = ApplicationLogger()
+    logger1 = ApplicationLogger()
