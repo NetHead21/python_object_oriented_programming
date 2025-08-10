@@ -507,3 +507,27 @@ def demonstrate_database_manager():
     db1.return_connection(conn2)
 
     print(f"Final stats: {db0.get_stats()}")
+
+
+def demonstrate_logger():
+    """
+    Demonstrate singleton application logger behavior.
+
+    Shows how the ApplicationLogger singleton provides consistent logging
+    across different application modules, ensuring unified log format
+    and centralized log management.
+
+    Demonstrates:
+        - Multiple logger instances are the same object
+        - Consistent logging from different application modules
+        - Centralized log collection and access
+        - Unified timestamp and formatting
+
+    Real-world Simulation:
+        Represents different application modules (MAIN, DB, SYSTEM, API)
+        all using the same logger instance for consistent output.
+
+    Output:
+        Shows instance identity, formatted log entries from various modules,
+        and total log count to demonstrate centralized collection.
+    """
