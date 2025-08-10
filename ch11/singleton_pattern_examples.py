@@ -539,3 +539,7 @@ def demonstrate_logger():
     # Get loggers from different modules
     logger0 = ApplicationLogger()
     logger1 = ApplicationLogger()
+
+    print(f"\nLogger 0 ID: {id(logger1)}")
+    print(f"Logger 1 ID: {id(logger2)}")
+    print(f"Same instance? {logger0 is logger2}")
