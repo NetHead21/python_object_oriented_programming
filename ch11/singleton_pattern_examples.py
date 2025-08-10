@@ -531,3 +531,7 @@ def demonstrate_logger():
         Shows instance identity, formatted log entries from various modules,
         and total log count to demonstrate centralized collection.
     """
+
+    print("\n" + "=" * 59)
+    print("APPLICATION LOGGER SINGLETON DEMONSTRATION")
+    print("=" * 59)
