@@ -486,3 +486,7 @@ def demonstrate_database_manager():
     print("\n" + "=" * 59)
     print("DATABASE MANAGER SINGLETON DEMONSTRATION")
     print("=" * 59)
+
+    # Get database managers from different parts of application
+    db0 = DatabaseManager()
+    db1 = DatabaseManager()
