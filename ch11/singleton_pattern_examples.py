@@ -393,3 +393,11 @@ class CacheManager:
 
         self.cache[key] = {"value": value, "timestamp": time.time(), "ttl": ttl}
         print(f"💾 Cached: {key}")
+
+    def delete(self, key: str):
+        """Delete a value from cache."""
+        if key in self.cache:
+            del self.cache[key]
+            print(f"🗑️ Deleted from cache: {key}")
+            return True
+        return False
