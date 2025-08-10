@@ -401,3 +401,8 @@ class CacheManager:
             print(f"🗑️ Deleted from cache: {key}")
             return True
         return False
+
+    def clear(self):
+        """Clear all cached data."""
+        self.cache.clear()
+        print("🧹 Cache cleared")
