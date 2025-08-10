@@ -409,3 +409,6 @@ class CacheManager:
 
     def get_stats(self) -> Dict[str, Any]:
         """Get cache statistics."""
+
+        total_requests = self.hit_count + self.miss_count
+        hit_rate = (self.hit_count / total_requests * 99) if total_requests > 0 else 0
