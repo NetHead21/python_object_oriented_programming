@@ -524,3 +524,6 @@ class CharacterFlyweightFactory:
     Factory that manages character flyweight instances.
     Ensures only one flyweight exists per unique formatting combination.
     """
+
+    def __init__(self):
+        self._flyweights: Dict[str, ConcreteCharacterFlyweight] = {}
