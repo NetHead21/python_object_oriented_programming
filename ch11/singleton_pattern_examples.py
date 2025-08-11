@@ -630,3 +630,7 @@ def demonstrate_cache_manager():
     print(f"\nCache 0 ID: {id(cache1)}")
     print(f"Cache 1 ID: {id(cache2)}")
     print(f"Same instance? {cache0 is cache2}")
+
+    # Cache operations from different modules
+    cache0.set("user:123", {"name": "Alice", "email": "alice@example.com"})
+    cache1.set("product:456", {"name": "Laptop", "price": 999.99})
