@@ -574,3 +574,6 @@ class DocumentContext:
         color: str,
     ):
         """Add character with formatting to document"""
+        flyweight = self.factory.get_character_flyweight(
+            font_family, font_size, style, color
+        )
