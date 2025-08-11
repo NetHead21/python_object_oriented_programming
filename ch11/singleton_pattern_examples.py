@@ -592,3 +592,7 @@ def demonstrate_config_manager():
     print(f"\nDatabase host: {config0.get('database.host')}")
     print(f"API timeout: {config1.get('api.timeout')}")
     print(f"Debug mode: {config0.get('features.debug_mode')}")
+
+    # Update configuration
+    config0.set("features.debug_mode", True)
+    print(f"Debug mode after update: {config1.get('features.debug_mode')}")
