@@ -502,3 +502,9 @@ class ConcreteCharacterFlyweight(CharacterFlyweight):
         self, character: str, position: Tuple[int, int], context: "DocumentContext"
     ) -> str:
         """Render character using intrinsic formatting and extrinsic position/content"""
+
+        x, y = position
+        return (
+            f"Rendering '{character}' at ({x}, {y}) with "
+            f"{self._font_family} {self._font_size}pt {self._style.value} {self._color}"
+        )
