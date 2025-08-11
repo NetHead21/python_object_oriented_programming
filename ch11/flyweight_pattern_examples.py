@@ -490,3 +490,10 @@ class ConcreteCharacterFlyweight(CharacterFlyweight):
     Concrete flyweight storing intrinsic formatting state.
     This is shared among all characters with the same formatting.
     """
+
+    def __init__(self, font_family: str, font_size: int, style: FontStyle, color: str):
+        # Intrinsic state - shared among all characters with same formatting
+        self._font_family = font_family
+        self._font_size = font_size
+        self._style = style
+        self._color = color
