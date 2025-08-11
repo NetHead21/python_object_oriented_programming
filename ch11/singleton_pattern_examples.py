@@ -576,3 +576,7 @@ def demonstrate_config_manager():
         Shows instance identity, configuration value access, and the effect
         of configuration updates across different variable references.
     """
+
+    print("\n" + "=" * 59)
+    print("CONFIGURATION MANAGER SINGLETON DEMONSTRATION")
+    print("=" * 59)
