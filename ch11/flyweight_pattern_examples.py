@@ -554,3 +554,7 @@ class CharacterFlyweightFactory:
         for key, flyweight in self._flyweights.items():
             info = flyweight.get_formatting_info()
             print(f"  • {key}: {info}")
+
+
+class DocumentContext:
+    """Context that stores extrinsic state for document characters"""
