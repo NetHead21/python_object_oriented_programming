@@ -580,3 +580,6 @@ def demonstrate_config_manager():
     print("\n" + "=" * 59)
     print("CONFIGURATION MANAGER SINGLETON DEMONSTRATION")
     print("=" * 59)
+
+    config0 = ConfigurationManager()
+    config1 = ConfigurationManager()
