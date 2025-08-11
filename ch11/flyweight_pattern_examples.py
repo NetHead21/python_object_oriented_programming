@@ -508,3 +508,6 @@ class ConcreteCharacterFlyweight(CharacterFlyweight):
             f"Rendering '{character}' at ({x}, {y}) with "
             f"{self._font_family} {self._font_size}pt {self._style.value} {self._color}"
         )
+
+    def get_formatting_info(self) -> Dict:
+        """Get intrinsic formatting information"""
