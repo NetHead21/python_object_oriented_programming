@@ -583,3 +583,7 @@ def demonstrate_config_manager():
 
     config0 = ConfigurationManager()
     config1 = ConfigurationManager()
+
+    print(f"\nConfig 0 ID: {id(config1)}")
+    print(f"Config 1 ID: {id(config2)}")
+    print(f"Same instance? {config0 is config2}")
