@@ -476,3 +476,10 @@ class FontStyle(Enum):
 
 class CharacterFlyweight(ABC):
     """Abstract flyweight for character formatting"""
+
+    @abstractmethod
+    def render(
+        self, character: str, position: Tuple[int, int], context: "DocumentContext"
+    ) -> str:
+        """Render character with extrinsic state (position, content)"""
+        pass
