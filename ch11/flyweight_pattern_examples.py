@@ -483,3 +483,10 @@ class CharacterFlyweight(ABC):
     ) -> str:
         """Render character with extrinsic state (position, content)"""
         pass
+
+
+class ConcreteCharacterFlyweight(CharacterFlyweight):
+    """
+    Concrete flyweight storing intrinsic formatting state.
+    This is shared among all characters with the same formatting.
+    """
