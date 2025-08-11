@@ -577,3 +577,8 @@ class DocumentContext:
         flyweight = self.factory.get_character_flyweight(
             font_family, font_size, style, color
         )
+
+        # Store extrinsic state (character, position)
+        self.characters.append(
+            {"character": char, "position": (x, y), "flyweight": flyweight}
+        )
