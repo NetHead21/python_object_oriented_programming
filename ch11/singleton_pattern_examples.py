@@ -638,3 +638,7 @@ def demonstrate_cache_manager():
     # Access cached data
     user_data = cache1.get("user:123")  # Different cache object, same data!
     product_data = cache0.get("product:456")
+
+    print(f"\nUser data: {user_data}")
+    print(f"Product data: {product_data}")
+    print(f"Cache stats: {cache0.get_stats()}")
