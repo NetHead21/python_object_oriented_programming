@@ -562,3 +562,15 @@ class DocumentContext:
     def __init__(self):
         self.characters: List[Dict] = []  # Stores character data with positions
         self.factory = CharacterFlyweightFactory()
+
+    def add_character(
+        self,
+        char: str,
+        x: int,
+        y: int,
+        font_family: str,
+        font_size: int,
+        style: FontStyle,
+        color: str,
+    ):
+        """Add character with formatting to document"""
