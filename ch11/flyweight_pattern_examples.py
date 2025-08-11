@@ -527,3 +527,8 @@ class CharacterFlyweightFactory:
 
     def __init__(self):
         self._flyweights: Dict[str, ConcreteCharacterFlyweight] = {}
+
+    def get_character_flyweight(
+        self, font_family: str, font_size: int, style: FontStyle, color: str
+    ) -> ConcreteCharacterFlyweight:
+        """Get or create character flyweight for given formatting"""
