@@ -587,3 +587,8 @@ def demonstrate_config_manager():
     print(f"\nConfig 0 ID: {id(config1)}")
     print(f"Config 1 ID: {id(config2)}")
     print(f"Same instance? {config0 is config2}")
+
+    # Access configuration from different parts
+    print(f"\nDatabase host: {config0.get('database.host')}")
+    print(f"API timeout: {config1.get('api.timeout')}")
+    print(f"Debug mode: {config0.get('features.debug_mode')}")
