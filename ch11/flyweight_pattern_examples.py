@@ -454,3 +454,7 @@ Case Study 2: High-Traffic Web Application
     Solution: Style flyweights with element-specific context data
     Results: 74% memory reduction, improved page rendering performance
 """
+
+from abc import ABC, abstractmethod
+from typing import Dict, List, Optional, Tuple
+from enum import Enum
