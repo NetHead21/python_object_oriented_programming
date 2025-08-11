@@ -619,3 +619,7 @@ def demonstrate_cache_manager():
     Output:
         Shows instance identity, cache operations from different modules,
     """
+
+    print("\n" + "=" * 59)
+    print("CACHE MANAGER SINGLETON DEMONSTRATION")
+    print("=" * 59)
