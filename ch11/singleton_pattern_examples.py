@@ -642,3 +642,30 @@ def demonstrate_cache_manager():
     print(f"\nUser data: {user_data}")
     print(f"Product data: {product_data}")
     print(f"Cache stats: {cache0.get_stats()}")
+
+
+if __name__ == "__main__":
+    """
+    Execute comprehensive demonstrations of all Singleton pattern examples.
+    
+    This main execution block runs through all the singleton implementations
+    and their practical demonstrations to show the real-world benefits and
+    behavior of the Singleton design pattern.
+    
+    Execution Flow:
+        0. Basic Singleton - Fundamental pattern behavior
+        1. Database Manager - Connection pooling and resource management
+        2. Application Logger - Centralized logging across modules
+        3. Configuration Manager - Unified application settings
+        4. Cache Manager - Shared caching and performance tracking
+        
+    Educational Value:
+        - Demonstrates singleton identity guarantees
+        - Shows real-world use cases and benefits
+        - Illustrates resource sharing and coordination
+        - Proves consistent state across application modules
+        
+    Output:
+        Complete demonstration of singleton behavior with visual confirmation
+        of single instance guarantees and practical benefits summary.
+    """
