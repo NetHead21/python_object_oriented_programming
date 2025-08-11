@@ -558,3 +558,7 @@ class CharacterFlyweightFactory:
 
 class DocumentContext:
     """Context that stores extrinsic state for document characters"""
+
+    def __init__(self):
+        self.characters: List[Dict] = []  # Stores character data with positions
+        self.factory = CharacterFlyweightFactory()
