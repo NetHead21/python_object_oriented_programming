@@ -543,3 +543,7 @@ class CharacterFlyweightFactory:
             print(f"📝 Created new character flyweight: {key}")
 
         return self._flyweights[key]
+
+    def get_flyweight_count(self) -> int:
+        """Get total number of flyweight instances"""
+        return len(self._flyweights)
