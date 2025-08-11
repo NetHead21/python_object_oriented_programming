@@ -467,3 +467,8 @@ from enum import Enum
 
 class FontStyle(Enum):
     """Enumeration for font styles"""
+
+    NORMAL = "normal"
+    BOLD = "bold"
+    ITALIC = "italic"
+    BOLD_ITALIC = "bold_italic"
