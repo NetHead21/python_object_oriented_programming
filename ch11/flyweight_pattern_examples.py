@@ -532,3 +532,14 @@ class CharacterFlyweightFactory:
         self, font_family: str, font_size: int, style: FontStyle, color: str
     ) -> ConcreteCharacterFlyweight:
         """Get or create character flyweight for given formatting"""
+
+        # Create unique key for this formatting combination
+        key = f"{font_family}_{font_size}_{style.value}_{color}"
+
+        if key not in self._flyweights:
+            self._flyweights[key] = ConcreteCharacterFlyweight(
+                font_family, font_size, style, color
+            )
+            print(f"📝 Created new character flyweight: {key}")
+
+        return self._flyweights[key]
