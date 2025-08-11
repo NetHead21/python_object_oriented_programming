@@ -626,3 +626,7 @@ def demonstrate_cache_manager():
 
     cache0 = CacheManager()
     cache1 = CacheManager()
+
+    print(f"\nCache 0 ID: {id(cache1)}")
+    print(f"Cache 1 ID: {id(cache2)}")
+    print(f"Same instance? {cache0 is cache2}")
