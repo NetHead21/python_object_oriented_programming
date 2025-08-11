@@ -458,3 +458,12 @@ Case Study 2: High-Traffic Web Application
 from abc import ABC, abstractmethod
 from typing import Dict, List, Optional, Tuple
 from enum import Enum
+
+
+# =============================================================================
+# Example 0: Text Editor Character Formatting Flyweight
+# =============================================================================
+
+
+class FontStyle(Enum):
+    """Enumeration for font styles"""
