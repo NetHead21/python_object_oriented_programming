@@ -511,3 +511,9 @@ class ConcreteCharacterFlyweight(CharacterFlyweight):
 
     def get_formatting_info(self) -> Dict:
         """Get intrinsic formatting information"""
+        return {
+            "font_family": self._font_family,
+            "font_size": self._font_size,
+            "style": self._style.value,
+            "color": self._color,
+        }
