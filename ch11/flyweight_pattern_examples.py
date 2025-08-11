@@ -497,3 +497,8 @@ class ConcreteCharacterFlyweight(CharacterFlyweight):
         self._font_size = font_size
         self._style = style
         self._color = color
+
+    def render(
+        self, character: str, position: Tuple[int, int], context: "DocumentContext"
+    ) -> str:
+        """Render character using intrinsic formatting and extrinsic position/content"""
