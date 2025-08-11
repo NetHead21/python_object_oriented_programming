@@ -517,3 +517,10 @@ class ConcreteCharacterFlyweight(CharacterFlyweight):
             "style": self._style.value,
             "color": self._color,
         }
+
+
+class CharacterFlyweightFactory:
+    """
+    Factory that manages character flyweight instances.
+    Ensures only one flyweight exists per unique formatting combination.
+    """
