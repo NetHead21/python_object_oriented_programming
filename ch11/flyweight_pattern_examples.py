@@ -472,3 +472,7 @@ class FontStyle(Enum):
     BOLD = "bold"
     ITALIC = "italic"
     BOLD_ITALIC = "bold_italic"
+
+
+class CharacterFlyweight(ABC):
+    """Abstract flyweight for character formatting"""
