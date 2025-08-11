@@ -547,3 +547,10 @@ class CharacterFlyweightFactory:
     def get_flyweight_count(self) -> int:
         """Get total number of flyweight instances"""
         return len(self._flyweights)
+
+    def list_flyweights(self):
+        """Display all existing flyweights"""
+        print(f"\n📋 Active Character Flyweights ({len(self._flyweights)}):")
+        for key, flyweight in self._flyweights.items():
+            info = flyweight.get_formatting_info()
+            print(f"  • {key}: {info}")
