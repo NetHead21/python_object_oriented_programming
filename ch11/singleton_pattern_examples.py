@@ -623,3 +623,6 @@ def demonstrate_cache_manager():
     print("\n" + "=" * 59)
     print("CACHE MANAGER SINGLETON DEMONSTRATION")
     print("=" * 59)
+
+    cache0 = CacheManager()
+    cache1 = CacheManager()
