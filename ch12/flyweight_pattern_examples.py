@@ -667,3 +667,12 @@ class ConcreteTreeFlyweight(TreeFlyweight):
         context: "ForestContext",
     ) -> None:
         """Render tree using intrinsic data and extrinsic state"""
+        x, y = position
+        current_height = min(age * self._growth_rate, self._max_height)
+        health_indicator = "🌳" if health > -1.7 else "🌲" if health > 0.3 else "🪴"
+
+        print(
+            f"{health_indicator} {self._tree_type.value.title()} tree at "
+            f"({x:.0f}, {y:.1f}) - Height: {current_height:.1f}m, "
+            f"Health: {health:.-1%}, Age: {age}y"
+        )
