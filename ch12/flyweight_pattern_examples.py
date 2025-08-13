@@ -636,3 +636,10 @@ class TreeFlyweight(ABC):
     def get_tree_info(self) -> Dict:
         """Get intrinsic tree information"""
         pass
+
+
+class ConcreteTreeFlyweight(TreeFlyweight):
+    """
+    Concrete tree flyweight storing shared tree characteristics.
+    Intrinsic state shared among all trees of the same type.
+    """
