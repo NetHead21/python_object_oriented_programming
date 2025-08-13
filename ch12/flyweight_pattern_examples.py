@@ -582,3 +582,11 @@ class DocumentContext:
         self.characters.append(
             {"character": char, "position": (x, y), "flyweight": flyweight}
         )
+
+    def render_document(self):
+        """Render entire document"""
+        print(f"\n📄 Rendering document with {len(self.characters)} characters:")
+        for char_data in self.characters:
+            char_data["flyweight"].render(
+                char_data["character"], char_data["position"], self
+            )
