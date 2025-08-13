@@ -715,3 +715,9 @@ class TreeFlyweightFactory:
                 "max_height": 29.0,
                 "color": "forest_green",
             },
+            TreeType.BIRCH: {
+                "sprite_data": "birch_sprite_data_white_bark_texture_small_leaves",
+                "growth_rate": 0.5,
+                "max_height": 19.0,
+                "color": "light_green",
+            },
