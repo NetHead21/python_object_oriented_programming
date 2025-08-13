@@ -620,3 +620,14 @@ class TreeType(Enum):
 
 class TreeFlyweight(ABC):
     """Abstract flyweight for tree objects"""
+
+    @abstractmethod
+    def render(
+        self,
+        position: Tuple[float, float],
+        health: float,
+        age: int,
+        context: "ForestContext",
+    ) -> None:
+        """Render tree with extrinsic state"""
+        pass
