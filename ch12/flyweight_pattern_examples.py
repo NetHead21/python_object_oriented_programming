@@ -690,3 +690,7 @@ class ConcreteTreeFlyweight(TreeFlyweight):
     def calculate_growth(self, age: int) -> float:
         """Calculate tree height based on age (using intrinsic growth rate)"""
         return min(age * self._growth_rate, self._max_height)
+
+
+class TreeFlyweightFactory:
+    """Factory managing tree flyweight instances"""
