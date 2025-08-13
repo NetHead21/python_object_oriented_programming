@@ -643,3 +643,12 @@ class ConcreteTreeFlyweight(TreeFlyweight):
     Concrete tree flyweight storing shared tree characteristics.
     Intrinsic state shared among all trees of the same type.
     """
+    def __init__(
+        self,
+        tree_type: TreeType,
+        sprite_data: str,
+        growth_rate: float,
+        max_height: float,
+        color: str,
+    ):
+        # Intrinsic state - shared among all trees of this type
