@@ -686,3 +686,7 @@ class ConcreteTreeFlyweight(TreeFlyweight):
             "max_height": self._max_height,
             "color": self._color,
         }
+
+    def calculate_growth(self, age: int) -> float:
+        """Calculate tree height based on age (using intrinsic growth rate)"""
+        return min(age * self._growth_rate, self._max_height)
