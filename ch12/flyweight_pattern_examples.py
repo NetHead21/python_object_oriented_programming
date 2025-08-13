@@ -616,3 +616,7 @@ class TreeType(Enum):
     PINE = "pine"
     BIRCH = "birch"
     MAPLE = "maple"
+
+
+class TreeFlyweight(ABC):
+    """Abstract flyweight for tree objects"""
