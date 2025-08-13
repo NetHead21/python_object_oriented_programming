@@ -590,3 +590,9 @@ class DocumentContext:
             char_data["flyweight"].render(
                 char_data["character"], char_data["position"], self
             )
+
+    def get_memory_usage_info(self):
+        """Display memory optimization information"""
+        total_chars = len(self.characters)
+        unique_formats = self.factory.get_flyweight_count()
+        memory_saved = total_chars - unique_formats
