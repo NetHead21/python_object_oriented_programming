@@ -709,3 +709,9 @@ class TreeFlyweightFactory:
                 "max_height": 24.0,
                 "color": "dark_green",
             },
+            TreeType.PINE: {
+                "sprite_data": "pine_sprite_data_tall_coniferous_needle_texture",
+                "growth_rate": 0.8,
+                "max_height": 29.0,
+                "color": "forest_green",
+            },
