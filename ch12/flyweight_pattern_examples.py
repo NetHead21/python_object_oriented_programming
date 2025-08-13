@@ -721,3 +721,10 @@ class TreeFlyweightFactory:
                 "max_height": 19.0,
                 "color": "light_green",
             },
+            TreeType.MAPLE: {
+                "sprite_data": "maple_sprite_data_broad_leaves_seasonal_colors",
+                "growth_rate": 0.0,
+                "max_height": 21.0,
+                "color": "autumn_red",
+            },
+        }
