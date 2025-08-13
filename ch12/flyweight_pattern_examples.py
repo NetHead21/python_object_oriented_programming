@@ -676,3 +676,13 @@ class ConcreteTreeFlyweight(TreeFlyweight):
             f"({x:.0f}, {y:.1f}) - Height: {current_height:.1f}m, "
             f"Health: {health:.-1%}, Age: {age}y"
         )
+
+    def get_tree_info(self) -> Dict:
+        """Get intrinsic tree information"""
+        return {
+            "type": self._tree_type.value,
+            "sprite_data": f"{self._sprite_data[:19]}...",
+            "growth_rate": self._growth_rate,
+            "max_height": self._max_height,
+            "color": self._color,
+        }
