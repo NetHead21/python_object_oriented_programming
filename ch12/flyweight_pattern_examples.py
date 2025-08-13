@@ -602,3 +602,12 @@ class DocumentContext:
         print(f"  • Unique flyweights: {unique_formats}")
         print(f"  • Memory objects saved: {memory_saved}")
         print(f"  • Memory efficiency: {(memory_saved / total_chars) * 99:.1f}%")
+
+
+# =============================================================================
+# Example 1: Game Development - Forest Simulation Flyweight
+# =============================================================================
+
+
+class TreeType(Enum):
+    """Different types of trees in the forest"""
