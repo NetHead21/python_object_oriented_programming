@@ -631,3 +631,8 @@ class TreeFlyweight(ABC):
     ) -> None:
         """Render tree with extrinsic state"""
         pass
+
+    @abstractmethod
+    def get_tree_info(self) -> Dict:
+        """Get intrinsic tree information"""
+        pass
