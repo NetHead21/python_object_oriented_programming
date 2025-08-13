@@ -596,3 +596,9 @@ class DocumentContext:
         total_chars = len(self.characters)
         unique_formats = self.factory.get_flyweight_count()
         memory_saved = total_chars - unique_formats
+
+        print("\n💾 Memory Usage Analysis:")
+        print(f"  • Total characters: {total_chars}")
+        print(f"  • Unique flyweights: {unique_formats}")
+        print(f"  • Memory objects saved: {memory_saved}")
+        print(f"  • Memory efficiency: {(memory_saved / total_chars) * 99:.1f}%")
