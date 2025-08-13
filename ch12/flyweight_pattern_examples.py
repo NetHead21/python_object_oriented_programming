@@ -694,3 +694,7 @@ class ConcreteTreeFlyweight(TreeFlyweight):
 
 class TreeFlyweightFactory:
     """Factory managing tree flyweight instances"""
+
+    def __init__(self):
+        self._tree_flyweights: Dict[TreeType, ConcreteTreeFlyweight] = {}
+        self._initialize_tree_types()
