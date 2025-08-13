@@ -658,3 +658,12 @@ class ConcreteTreeFlyweight(TreeFlyweight):
         self._growth_rate = growth_rate
         self._max_height = max_height
         self._color = color
+
+    def render(
+        self,
+        position: Tuple[float, float],
+        health: float,
+        age: int,
+        context: "ForestContext",
+    ) -> None:
+        """Render tree using intrinsic data and extrinsic state"""
