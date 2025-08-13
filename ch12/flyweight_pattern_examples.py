@@ -701,3 +701,11 @@ class TreeFlyweightFactory:
 
     def _initialize_tree_types(self):
         """Initialize different tree type flyweights"""
+
+        tree_configs = {
+            TreeType.OAK: {
+                "sprite_data": "oak_sprite_data_large_detailed_texture_map_with_branches",
+                "growth_rate": 0.2,
+                "max_height": 24.0,
+                "color": "dark_green",
+            },
