@@ -611,3 +611,8 @@ class DocumentContext:
 
 class TreeType(Enum):
     """Different types of trees in the forest"""
+
+    OAK = "oak"
+    PINE = "pine"
+    BIRCH = "birch"
+    MAPLE = "maple"
