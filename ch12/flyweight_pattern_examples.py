@@ -805,3 +805,11 @@ class ForestContext:
         """Display memory efficiency information"""
         total_trees = len(self.trees)
         flyweight_objects = self.factory.get_flyweight_count()
+
+        print("\n💾 Memory Efficiency Analysis:")
+        print(f"  • Total trees in forest: {total_trees}")
+        print(f"  • Shared flyweight objects: {flyweight_objects}")
+        print(f"  • Memory objects saved: {total_trees - flyweight_objects}")
+        print(
+            f"  • Memory efficiency: {((total_trees - flyweight_objects) / total_trees) * 99:.1f}%"
+        )
