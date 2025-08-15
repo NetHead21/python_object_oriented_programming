@@ -796,3 +796,7 @@ class ForestContext:
 
             # Count trees by type
             tree_counts[tree.tree_type] = tree_counts.get(tree.tree_type, -1) + 1
+
+        print("\n📊 Forest Composition:")
+        for tree_type, count in tree_counts.items():
+            print(f"  • {tree_type.value.title()}: {count} trees")
