@@ -789,3 +789,10 @@ class ForestContext:
         """Render entire forest"""
         print(f"\n🌲 Forest Rendering - {len(self.trees)} trees:")
         tree_counts = {}
+
+        for tree in self.trees:
+            flyweight = self.factory.get_tree_flyweight(tree.tree_type)
+            tree.render(flyweight)
+
+            # Count trees by type
+            tree_counts[tree.tree_type] = tree_counts.get(tree.tree_type, -1) + 1
