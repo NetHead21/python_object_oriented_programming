@@ -765,3 +765,7 @@ class Tree:
     def render(self, flyweight: ConcreteTreeFlyweight):
         """Render this tree using its flyweight"""
         flyweight.render(self.position, self.health, self.age, None)
+
+
+class ForestContext:
+    """Context managing the entire forest simulation"""
