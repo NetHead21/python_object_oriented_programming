@@ -840,3 +840,16 @@ class ConcreteCSSStyleFlyweight(CSSStyleFlyweight):
     Concrete CSS flyweight storing shared style properties.
     Intrinsic state shared among elements with same styling.
     """
+
+
+    def __init__(
+        self,
+        font_family: str,
+        font_size: str,
+        color: str,
+        background_color: str,
+        padding: str,
+        margin: str,
+    ):
+        # Intrinsic state - shared CSS properties
+        
