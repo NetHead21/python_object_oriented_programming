@@ -822,3 +822,14 @@ class ForestContext:
 
 class CSSStyleFlyweight(ABC):
     """Abstract flyweight for CSS styling"""
+
+    @abstractmethod
+    def apply_style(
+        self,
+        element_id: str,
+        content: str,
+        position: Tuple[int, int],
+        context: "WebPageContext",
+    ) -> str:
+        """Apply styling to element with extrinsic state"""
+        pass
