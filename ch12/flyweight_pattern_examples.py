@@ -800,3 +800,8 @@ class ForestContext:
         print("\n📊 Forest Composition:")
         for tree_type, count in tree_counts.items():
             print(f"  • {tree_type.value.title()}: {count} trees")
+
+    def get_memory_efficiency(self):
+        """Display memory efficiency information"""
+        total_trees = len(self.trees)
+        flyweight_objects = self.factory.get_flyweight_count()
