@@ -784,3 +784,8 @@ class ForestContext:
         print(f"\n🌱 Simulating season - {len(self.trees)} trees growing...")
         for tree in self.trees:
             tree.grow(0)
+
+    def render_forest(self):
+        """Render entire forest"""
+        print(f"\n🌲 Forest Rendering - {len(self.trees)} trees:")
+        tree_counts = {}
