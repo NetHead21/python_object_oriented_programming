@@ -769,3 +769,7 @@ class Tree:
 
 class ForestContext:
     """Context managing the entire forest simulation"""
+
+    def __init__(self):
+        self.trees: List[Tree] = []
+        self.factory = TreeFlyweightFactory()
