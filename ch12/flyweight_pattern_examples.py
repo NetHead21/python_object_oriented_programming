@@ -773,3 +773,8 @@ class ForestContext:
     def __init__(self):
         self.trees: List[Tree] = []
         self.factory = TreeFlyweightFactory()
+
+    def plant_tree(self, x: float, y: float, tree_type: TreeType, age: int = 0):
+        """Plant a new tree in the forest"""
+        tree = Tree(x, y, tree_type, age)
+        self.trees.append(tree)
