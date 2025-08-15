@@ -734,3 +734,7 @@ class TreeFlyweightFactory:
                 tree_type, **config
             )
             print(f"🌲 Initialized {tree_type.value} tree flyweight")
+
+    def get_tree_flyweight(self, tree_type: TreeType) -> ConcreteTreeFlyweight:
+        """Get tree flyweight for specified type"""
+        return self._tree_flyweights[tree_type]
