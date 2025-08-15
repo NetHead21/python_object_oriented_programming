@@ -742,3 +742,7 @@ class TreeFlyweightFactory:
     def get_flyweight_count(self) -> int:
         """Get number of tree type flyweights"""
         return len(self._tree_flyweights)
+
+
+class Tree:
+    """Context object storing extrinsic state for individual trees"""
