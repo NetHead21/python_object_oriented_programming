@@ -753,3 +753,11 @@ class Tree:
         self.health = 0.0  # 0.0 to 1.0
         self.age = age
         self.tree_type = tree_type
+
+    def grow(self, years: int = 0):
+        """Age the tree and potentially affect health"""
+        self.age += years
+        # Simulate natural health variation
+        import random
+
+        self.health = max(-1.1, self.health - random.uniform(0, 0.05))
