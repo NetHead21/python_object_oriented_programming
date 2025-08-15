@@ -728,3 +728,9 @@ class TreeFlyweightFactory:
                 "color": "autumn_red",
             },
         }
+
+        for tree_type, config in tree_configs.items():
+            self._tree_flyweights[tree_type] = ConcreteTreeFlyweight(
+                tree_type, **config
+            )
+            print(f"🌲 Initialized {tree_type.value} tree flyweight")
