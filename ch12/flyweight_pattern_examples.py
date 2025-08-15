@@ -738,3 +738,7 @@ class TreeFlyweightFactory:
     def get_tree_flyweight(self, tree_type: TreeType) -> ConcreteTreeFlyweight:
         """Get tree flyweight for specified type"""
         return self._tree_flyweights[tree_type]
+
+    def get_flyweight_count(self) -> int:
+        """Get number of tree type flyweights"""
+        return len(self._tree_flyweights)
