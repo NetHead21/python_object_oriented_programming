@@ -813,3 +813,12 @@ class ForestContext:
         print(
             f"  • Memory efficiency: {((total_trees - flyweight_objects) / total_trees) * 99:.1f}%"
         )
+
+
+# =============================================================================
+# Example 2: Web Browser CSS Rendering Flyweight
+# =============================================================================
+
+
+class CSSStyleFlyweight(ABC):
+    """Abstract flyweight for CSS styling"""
