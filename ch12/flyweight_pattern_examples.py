@@ -841,7 +841,6 @@ class ConcreteCSSStyleFlyweight(CSSStyleFlyweight):
     Intrinsic state shared among elements with same styling.
     """
 
-
     def __init__(
         self,
         font_family: str,
@@ -852,4 +851,9 @@ class ConcreteCSSStyleFlyweight(CSSStyleFlyweight):
         margin: str,
     ):
         # Intrinsic state - shared CSS properties
-        
+        self._font_family = font_family
+        self._font_size = font_size
+        self._color = color
+        self._background_color = background_color
+        self._padding = padding
+        self._margin = margin
