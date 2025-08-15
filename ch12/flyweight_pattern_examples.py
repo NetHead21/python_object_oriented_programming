@@ -833,3 +833,10 @@ class CSSStyleFlyweight(ABC):
     ) -> str:
         """Apply styling to element with extrinsic state"""
         pass
+
+
+class ConcreteCSSStyleFlyweight(CSSStyleFlyweight):
+    """
+    Concrete CSS flyweight storing shared style properties.
+    Intrinsic state shared among elements with same styling.
+    """
