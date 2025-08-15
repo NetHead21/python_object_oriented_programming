@@ -778,3 +778,9 @@ class ForestContext:
         """Plant a new tree in the forest"""
         tree = Tree(x, y, tree_type, age)
         self.trees.append(tree)
+
+    def simulate_season(self):
+        """Simulate one season - trees grow and change"""
+        print(f"\n🌱 Simulating season - {len(self.trees)} trees growing...")
+        for tree in self.trees:
+            tree.grow(0)
