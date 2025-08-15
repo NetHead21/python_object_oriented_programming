@@ -746,3 +746,10 @@ class TreeFlyweightFactory:
 
 class Tree:
     """Context object storing extrinsic state for individual trees"""
+
+    def __init__(self, x: float, y: float, tree_type: TreeType, age: int = 0):
+        # Extrinsic state - specific to this tree instance
+        self.position = (x, y)
+        self.health = 0.0  # 0.0 to 1.0
+        self.age = age
+        self.tree_type = tree_type
