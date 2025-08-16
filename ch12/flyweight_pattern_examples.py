@@ -932,3 +932,4 @@ class CSSStyleFactory:
         self, style_name: str
     ) -> Optional[ConcreteCSSStyleFlyweight]:
         """Get CSS style flyweight by name"""
+        return self._style_flyweights.get(style_name)
