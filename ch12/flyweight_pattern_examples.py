@@ -991,3 +991,5 @@ class WebPageContext:
         self, element_id: str, content: str, x: int, y: int, style_name: str
     ):
         """Add element to web page"""
+        element = WebElement(element_id, content, x, y, style_name)
+        self.elements.append(element)
