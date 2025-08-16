@@ -899,3 +899,6 @@ class CSSStyleFactory:
     def __init__(self):
         self._style_flyweights: Dict[str, ConcreteCSSStyleFlyweight] = {}
         self._initialize_common_styles()
+
+    def _initialize_common_styles(self):
+        """Initialize commonly used CSS styles"""
