@@ -895,3 +895,7 @@ class ConcreteCSSStyleFlyweight(CSSStyleFlyweight):
 
 class CSSStyleFactory:
     """Factory managing CSS style flyweights"""
+
+    def __init__(self):
+        self._style_flyweights: Dict[str, ConcreteCSSStyleFlyweight] = {}
+        self._initialize_common_styles()
