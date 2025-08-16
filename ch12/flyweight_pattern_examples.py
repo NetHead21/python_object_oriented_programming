@@ -993,3 +993,6 @@ class WebPageContext:
         """Add element to web page"""
         element = WebElement(element_id, content, x, y, style_name)
         self.elements.append(element)
+
+    def render_page(self):
+        """Render complete web page"""
