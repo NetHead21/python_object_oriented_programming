@@ -957,3 +957,7 @@ class CSSStyleFactory:
     def get_flyweight_count(self) -> int:
         """Get number of CSS style flyweights"""
         return len(self._style_flyweights)
+
+
+class WebElement:
+    """Context object for individual web page elements"""
