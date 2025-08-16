@@ -857,3 +857,12 @@ class ConcreteCSSStyleFlyweight(CSSStyleFlyweight):
         self._background_color = background_color
         self._padding = padding
         self._margin = margin
+
+    def apply_style(
+        self,
+        element_id: str,
+        content: str,
+        position: Tuple[int, int],
+        context: "WebPageContext",
+    ) -> str:
+        """Apply CSS styling with element-specific information"""
