@@ -996,3 +996,7 @@ class WebPageContext:
 
     def render_page(self):
         """Render complete web page"""
+        print(f"\n🌐 Rendering Web Page: '{self.title}'")
+        print("=" * 59)
+
+        html_content = [f"<html><head><title>{self.title}</title></head><body>"]
