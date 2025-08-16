@@ -953,3 +953,7 @@ class CSSStyleFactory:
             print(f"🎨 Created custom CSS style flyweight: {name}")
 
         return self._style_flyweights[name]
+
+    def get_flyweight_count(self) -> int:
+        """Get number of CSS style flyweights"""
+        return len(self._style_flyweights)
