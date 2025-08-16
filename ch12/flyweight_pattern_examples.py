@@ -891,3 +891,7 @@ class ConcreteCSSStyleFlyweight(CSSStyleFlyweight):
             "padding": self._padding,
             "margin": self._margin,
         }
+
+
+class CSSStyleFactory:
+    """Factory managing CSS style flyweights"""
