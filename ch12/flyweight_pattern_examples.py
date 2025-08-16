@@ -945,3 +945,11 @@ class CSSStyleFactory:
         margin: str,
     ) -> ConcreteCSSStyleFlyweight:
         """Create custom CSS style flyweight"""
+
+        if name not in self._style_flyweights:
+            self._style_flyweights[name] = ConcreteCSSStyleFlyweight(
+                font_family, font_size, color, background_color, padding, margin
+            )
+            print(f"🎨 Created custom CSS style flyweight: {name}")
+
+        return self._style_flyweights[name]
