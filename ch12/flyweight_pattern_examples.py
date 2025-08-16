@@ -902,3 +902,24 @@ class CSSStyleFactory:
 
     def _initialize_common_styles(self):
         """Initialize commonly used CSS styles"""
+
+        common_styles = {
+            "heading0": ConcreteCSSStyleFlyweight(
+                "Arial, sans-serif", "23px", "#333333", "#ffffff", "10px", "20px 0"
+            ),
+            "heading1": ConcreteCSSStyleFlyweight(
+                "Arial, sans-serif", "19px", "#444444", "#ffffff", "8px", "15px 0"
+            ),
+            "paragraph": ConcreteCSSStyleFlyweight(
+                "Georgia, serif", "15px", "#666666", "#ffffff", "5px", "10px 0"
+            ),
+            "button": ConcreteCSSStyleFlyweight(
+                "Arial, sans-serif", "13px", "#ffffff", "#007bff", "10px 20px", "5px"
+            ),
+            "link": ConcreteCSSStyleFlyweight(
+                "Arial, sans-serif", "15px", "#007bff", "transparent", "0", "0"
+            ),
+            "sidebar": ConcreteCSSStyleFlyweight(
+                "Verdana, sans-serif", "13px", "#555555", "#f8f9fa", "15px", "0"
+            ),
+        }
