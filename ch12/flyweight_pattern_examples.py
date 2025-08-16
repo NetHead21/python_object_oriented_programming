@@ -986,3 +986,8 @@ class WebPageContext:
         self.title = title
         self.elements: List[WebElement] = []
         self.style_factory = CSSStyleFactory()
+
+    def add_element(
+        self, element_id: str, content: str, x: int, y: int, style_name: str
+    ):
+        """Add element to web page"""
