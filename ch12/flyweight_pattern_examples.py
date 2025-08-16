@@ -923,3 +923,7 @@ class CSSStyleFactory:
                 "Verdana, sans-serif", "13px", "#555555", "#f8f9fa", "15px", "0"
             ),
         }
+
+        for name, style in common_styles.items():
+            self._style_flyweights[name] = style
+            print(f"🎨 Initialized CSS style flyweight: {name}")
