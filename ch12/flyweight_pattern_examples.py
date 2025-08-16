@@ -977,3 +977,7 @@ class WebElement:
                 self.element_id, self.content, self.position, None
             )
         return f"<div>Error: Style '{self.style_name}' not found</div>"
+
+
+class WebPageContext:
+    """Context managing entire web page rendering"""
