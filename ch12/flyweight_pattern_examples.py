@@ -1000,3 +1000,12 @@ class WebPageContext:
         print("=" * 59)
 
         html_content = [f"<html><head><title>{self.title}</title></head><body>"]
+
+        for element in self.elements:
+            rendered_element = element.render(self.style_factory)
+            html_content.append(rendered_element)
+            print(f"📄 Rendered element: {element.element_id}")
+
+        html_content.append("</body></html>")
+
+        print(f"\n📋 Complete HTML structure generated ({len(self.elements)} elements)")
