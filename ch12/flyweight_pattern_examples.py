@@ -933,3 +933,15 @@ class CSSStyleFactory:
     ) -> Optional[ConcreteCSSStyleFlyweight]:
         """Get CSS style flyweight by name"""
         return self._style_flyweights.get(style_name)
+
+    def create_custom_style(
+        self,
+        name: str,
+        font_family: str,
+        font_size: str,
+        color: str,
+        background_color: str,
+        padding: str,
+        margin: str,
+    ) -> ConcreteCSSStyleFlyweight:
+        """Create custom CSS style flyweight"""
