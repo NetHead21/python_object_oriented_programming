@@ -968,3 +968,12 @@ class WebElement:
         self.content = content
         self.position = (x, y)
         self.style_name = style_name
+
+    def render(self, style_factory: CSSStyleFactory) -> str:
+        """Render element using appropriate style flyweight"""
+        flyweight = style_factory.get_style_flyweight(self.style_name)
+        if flyweight:
+            return flyweight.apply_style(
+                self.element_id, self.content, self.position, None
+            )
+        return f"<div>Error: Style '{self.style_name}' not found</div>"
