@@ -880,3 +880,14 @@ class ConcreteCSSStyleFlyweight(CSSStyleFlyweight):
             f"{content}</div>"
         )
         return styled_content
+
+    def get_css_properties(self) -> Dict:
+        """Get CSS properties as dictionary"""
+        return {
+            "font-family": self._font_family,
+            "font-size": self._font_size,
+            "color": self._color,
+            "background-color": self._background_color,
+            "padding": self._padding,
+            "margin": self._margin,
+        }
