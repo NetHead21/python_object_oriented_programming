@@ -866,3 +866,17 @@ class ConcreteCSSStyleFlyweight(CSSStyleFlyweight):
         context: "WebPageContext",
     ) -> str:
         """Apply CSS styling with element-specific information"""
+        x, y = position
+        styled_content = (
+            f"<div id='{element_id}' style='"
+            f"font-family: {self._font_family}; "
+            f"font-size: {self._font_size}; "
+            f"color: {self._color}; "
+            f"background-color: {self._background_color}; "
+            f"padding: {self._padding}; "
+            f"margin: {self._margin}; "
+            f"position: absolute; "
+            f"left: {x}px; top: {y}px;'>"
+            f"{content}</div>"
+        )
+        return styled_content
