@@ -1009,3 +1009,6 @@ class WebPageContext:
         html_content.append("</body></html>")
 
         print(f"\n📋 Complete HTML structure generated ({len(self.elements)} elements)")
+
+    def get_style_usage_stats(self):
+        """Display style usage statistics"""
