@@ -927,3 +927,8 @@ class CSSStyleFactory:
         for name, style in common_styles.items():
             self._style_flyweights[name] = style
             print(f"🎨 Initialized CSS style flyweight: {name}")
+
+    def get_style_flyweight(
+        self, style_name: str
+    ) -> Optional[ConcreteCSSStyleFlyweight]:
+        """Get CSS style flyweight by name"""
