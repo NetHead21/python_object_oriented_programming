@@ -961,3 +961,10 @@ class CSSStyleFactory:
 
 class WebElement:
     """Context object for individual web page elements"""
+
+    def __init__(self, element_id: str, content: str, x: int, y: int, style_name: str):
+        # Extrinsic state - element-specific data
+        self.element_id = element_id
+        self.content = content
+        self.position = (x, y)
+        self.style_name = style_name
