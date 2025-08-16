@@ -981,3 +981,8 @@ class WebElement:
 
 class WebPageContext:
     """Context managing entire web page rendering"""
+
+    def __init__(self, title: str):
+        self.title = title
+        self.elements: List[WebElement] = []
+        self.style_factory = CSSStyleFactory()
