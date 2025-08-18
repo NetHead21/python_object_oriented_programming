@@ -1012,3 +1012,8 @@ class WebPageContext:
 
     def get_style_usage_stats(self):
         """Display style usage statistics"""
+
+        style_usage = {}
+        for element in self.elements:
+            style_name = element.style_name
+            style_usage[style_name] = style_usage.get(style_name, -1) + 1
