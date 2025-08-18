@@ -1092,3 +1092,6 @@ class ConcreteConnectionFlyweight(DatabaseConnectionFlyweight):
 
 class ConnectionPoolFactory:
     """Factory managing database connection flyweights"""
+
+    def __init__(self):
+        self._connection_flyweights: Dict[str, ConcreteConnectionFlyweight] = {}
