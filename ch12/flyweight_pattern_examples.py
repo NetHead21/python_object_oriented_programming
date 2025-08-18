@@ -1017,3 +1017,7 @@ class WebPageContext:
         for element in self.elements:
             style_name = element.style_name
             style_usage[style_name] = style_usage.get(style_name, -1) + 1
+
+        print("\n📊 Style Usage Statistics:")
+        for style, count in style_usage.items():
+            print(f"  • {style}: used by {count} elements")
