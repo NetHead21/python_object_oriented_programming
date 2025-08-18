@@ -1077,3 +1077,14 @@ class ConcreteConnectionFlyweight(DatabaseConnectionFlyweight):
         )
         print(result)
         return f"Result for session {session_id}: Query executed successfully"
+
+    def get_connection_info(self) -> Dict:
+        """Get intrinsic connection information"""
+
+        return {
+            "host": self._host,
+            "port": self._port,
+            "database": self._database,
+            "type": self._connection_type,
+            "connection_string": self._connection_string,
+        }
