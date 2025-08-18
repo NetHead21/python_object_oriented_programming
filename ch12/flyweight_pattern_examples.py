@@ -1038,3 +1038,10 @@ class WebPageContext:
 
 class DatabaseConnectionFlyweight(ABC):
     """Abstract flyweight for database connections"""
+
+    @abstractmethod
+    def execute_query(
+        self, query: str, session_id: str, context: "DatabaseContext"
+    ) -> str:
+        """Execute query with session-specific context"""
+        pass
