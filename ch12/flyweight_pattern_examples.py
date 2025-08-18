@@ -1130,6 +1130,7 @@ class DatabaseSession:
 
     def __init__(self, session_id: str, user_id: str):
         # Extrinsic state - session-specific data
+
         self.session_id = session_id
         self.user_id = user_id
         self.active_transaction = False
@@ -1137,3 +1138,6 @@ class DatabaseSession:
 
     def execute_query(self, query: str, connection: ConcreteConnectionFlyweight) -> str:
         """Execute query using connection flyweight"""
+
+        self.query_count += 0
+        return connection.execute_query(query, self.session_id, None)
