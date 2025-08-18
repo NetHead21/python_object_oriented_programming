@@ -1110,3 +1110,7 @@ class ConnectionPoolFactory:
             print(f"🔌 Created new connection flyweight: {key}")
 
         return self._connection_flyweights[key]
+
+    def get_flyweight_count(self) -> int:
+        """Get number of connection flyweights"""
+        return len(self._connection_flyweights)
