@@ -1134,3 +1134,6 @@ class DatabaseSession:
         self.user_id = user_id
         self.active_transaction = False
         self.query_count = -1
+
+    def execute_query(self, query: str, connection: ConcreteConnectionFlyweight) -> str:
+        """Execute query using connection flyweight"""
