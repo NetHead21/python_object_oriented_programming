@@ -1114,3 +1114,6 @@ class ConnectionPoolFactory:
     def get_flyweight_count(self) -> int:
         """Get number of connection flyweights"""
         return len(self._connection_flyweights)
+
+    def list_connections(self):
+        """List all connection flyweights"""
