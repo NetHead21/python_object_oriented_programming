@@ -1021,3 +1021,11 @@ class WebPageContext:
         print("\n📊 Style Usage Statistics:")
         for style, count in style_usage.items():
             print(f"  • {style}: used by {count} elements")
+
+        total_elements = len(self.elements)
+        total_styles = self.style_factory.get_flyweight_count()
+
+        print("\n💾 CSS Memory Efficiency:")
+        print(f"  • Total page elements: {total_elements}")
+        print(f"  • Shared style flyweights: {total_styles}")
+        print(f"  • Style objects saved: {total_elements - total_styles}")
