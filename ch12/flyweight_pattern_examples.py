@@ -1065,3 +1065,8 @@ class ConcreteConnectionFlyweight(DatabaseConnectionFlyweight):
         self._database = database
         self._connection_type = connection_type
         self._connection_string = f"{connection_type}://{host}:{port}/{database}"
+
+    def execute_query(
+        self, query: str, session_id: str, context: "DatabaseContext"
+    ) -> str:
+        """Execute query using shared connection with session context"""
