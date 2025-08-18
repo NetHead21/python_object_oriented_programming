@@ -1029,3 +1029,12 @@ class WebPageContext:
         print(f"  • Total page elements: {total_elements}")
         print(f"  • Shared style flyweights: {total_styles}")
         print(f"  • Style objects saved: {total_elements - total_styles}")
+
+
+# =============================================================================
+# Example 3: Database Connection Pool Flyweight
+# =============================================================================
+
+
+class DatabaseConnectionFlyweight(ABC):
+    """Abstract flyweight for database connections"""
