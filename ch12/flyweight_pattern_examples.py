@@ -1095,3 +1095,18 @@ class ConnectionPoolFactory:
 
     def __init__(self):
         self._connection_flyweights: Dict[str, ConcreteConnectionFlyweight] = {}
+
+    def get_connection_flyweight(
+        self, host: str, port: int, database: str, connection_type: str = "postgresql"
+    ) -> ConcreteConnectionFlyweight:
+        """Get or create connection flyweight for given configuration"""
+
+        key = f"{connection_type}_{host}_{port}_{database}"
+
+        if key not in self._connection_flyweights:
+            self._connection_flyweights[key] = ConcreteConnectionFlyweight(
+                host, port, database, connection_type
+            )
+            print(f"🔌 Created new connection flyweight: {key}")
+
+        return self._connection_flyweights[key]
