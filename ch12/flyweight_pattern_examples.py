@@ -1123,3 +1123,7 @@ class ConnectionPoolFactory:
         for key, conn in self._connection_flyweights.items():
             info = conn.get_connection_info()
             print(f"  • {key}: {info['connection_string']}")
+
+
+class DatabaseSession:
+    """Context object storing extrinsic state for database sessions"""
