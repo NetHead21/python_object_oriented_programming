@@ -1117,3 +1117,9 @@ class ConnectionPoolFactory:
 
     def list_connections(self):
         """List all connection flyweights"""
+        print(
+            f"\n📋 Active Connection Flyweights ({len(self._connection_flyweights)}):"
+        )
+        for key, conn in self._connection_flyweights.items():
+            info = conn.get_connection_info()
+            print(f"  • {key}: {info['connection_string']}")
