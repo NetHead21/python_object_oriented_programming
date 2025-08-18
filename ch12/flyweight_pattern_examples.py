@@ -1057,3 +1057,11 @@ class ConcreteConnectionFlyweight(DatabaseConnectionFlyweight):
     Concrete connection flyweight storing shared connection configuration.
     Intrinsic state shared among connections to same database/server.
     """
+
+    def __init__(self, host: str, port: int, database: str, connection_type: str):
+        # Intrinsic state - shared connection configuration
+        self._host = host
+        self._port = port
+        self._database = database
+        self._connection_type = connection_type
+        self._connection_string = f"{connection_type}://{host}:{port}/{database}"
