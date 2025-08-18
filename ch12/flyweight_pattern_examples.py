@@ -1045,3 +1045,8 @@ class DatabaseConnectionFlyweight(ABC):
     ) -> str:
         """Execute query with session-specific context"""
         pass
+
+    @abstractmethod
+    def get_connection_info(self) -> Dict:
+        """Get connection configuration information"""
+        pass
