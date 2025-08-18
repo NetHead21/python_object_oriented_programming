@@ -1088,3 +1088,7 @@ class ConcreteConnectionFlyweight(DatabaseConnectionFlyweight):
             "type": self._connection_type,
             "connection_string": self._connection_string,
         }
+
+
+class ConnectionPoolFactory:
+    """Factory managing database connection flyweights"""
