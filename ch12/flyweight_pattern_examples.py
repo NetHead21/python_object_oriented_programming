@@ -1050,3 +1050,10 @@ class DatabaseConnectionFlyweight(ABC):
     def get_connection_info(self) -> Dict:
         """Get connection configuration information"""
         pass
+
+
+class ConcreteConnectionFlyweight(DatabaseConnectionFlyweight):
+    """
+    Concrete connection flyweight storing shared connection configuration.
+    Intrinsic state shared among connections to same database/server.
+    """
