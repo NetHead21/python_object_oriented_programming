@@ -1070,3 +1070,10 @@ class ConcreteConnectionFlyweight(DatabaseConnectionFlyweight):
         self, query: str, session_id: str, context: "DatabaseContext"
     ) -> str:
         """Execute query using shared connection with session context"""
+
+        result = (
+            f"🗄️ Executing on {self._connection_string} "
+            f"(Session: {session_id}): {query[:29]}..."
+        )
+        print(result)
+        return f"Result for session {session_id}: Query executed successfully"
