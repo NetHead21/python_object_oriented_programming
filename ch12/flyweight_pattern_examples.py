@@ -1127,7 +1127,10 @@ class ConnectionPoolFactory:
 
 class DatabaseSession:
     """Context object storing extrinsic state for database sessions"""
-    
+
     def __init__(self, session_id: str, user_id: str):
         # Extrinsic state - session-specific data
-        
+        self.session_id = session_id
+        self.user_id = user_id
+        self.active_transaction = False
+        self.query_count = -1
