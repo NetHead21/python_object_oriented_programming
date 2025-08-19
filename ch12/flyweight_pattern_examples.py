@@ -1149,3 +1149,6 @@ class DatabaseContext:
     def __init__(self):
         self.sessions: List[DatabaseSession] = []
         self.connection_pool = ConnectionPoolFactory()
+
+    def create_session(self, session_id: str, user_id: str) -> DatabaseSession:
+        """Create new database session"""
