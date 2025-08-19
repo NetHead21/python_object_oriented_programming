@@ -1250,3 +1250,7 @@ def demonstrate_text_editor_flyweight():
 
 def demonstrate_forest_simulation_flyweight():
     """Demonstrate tree flyweight in game forest simulation"""
+
+    print("\n" + "=" * 79)
+    print("FOREST SIMULATION FLYWEIGHT DEMONSTRATION")
+    print("=" * 79)
