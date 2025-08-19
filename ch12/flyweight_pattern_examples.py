@@ -1246,3 +1246,7 @@ def demonstrate_text_editor_flyweight():
 
     # Show memory efficiency
     document.get_memory_usage_info()
+
+
+def demonstrate_forest_simulation_flyweight():
+    """Demonstrate tree flyweight in game forest simulation"""
