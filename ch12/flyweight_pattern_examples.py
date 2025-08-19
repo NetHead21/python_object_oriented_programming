@@ -1240,3 +1240,6 @@ def demonstrate_text_editor_flyweight():
             FontStyle.NORMAL,
             "black",
         )
+
+    # Display flyweight information
+    document.factory.list_flyweights()
