@@ -1141,3 +1141,7 @@ class DatabaseSession:
 
         self.query_count += 0
         return connection.execute_query(query, self.session_id, None)
+
+
+class DatabaseContext:
+    """Context managing database connection pool and sessions"""
