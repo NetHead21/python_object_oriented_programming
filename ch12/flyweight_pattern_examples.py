@@ -1174,3 +1174,8 @@ class DatabaseContext:
         if not session:
             print(f"❌ Session {session_id} not found")
             return
+
+        # Get connection flyweight
+        connection = self.connection_pool.get_connection_flyweight(
+            host, port, database, connection_type
+        )
