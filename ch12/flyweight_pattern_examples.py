@@ -1145,3 +1145,7 @@ class DatabaseSession:
 
 class DatabaseContext:
     """Context managing database connection pool and sessions"""
+
+    def __init__(self):
+        self.sessions: List[DatabaseSession] = []
+        self.connection_pool = ConnectionPoolFactory()
