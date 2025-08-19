@@ -1220,3 +1220,8 @@ def demonstrate_text_editor_flyweight():
     title = "FLYWEIGHT PATTERN DEMO"
     for i, char in enumerate(title):
         document.add_character(char, i * 19, 0, "Arial", 18, FontStyle.BOLD, "black")
+
+    # Subtitle
+    subtitle = "Memory Efficient Text Formatting"
+    for i, char in enumerate(subtitle):
+        document.add_character(char, i * 14, 50, "Times", 14, FontStyle.ITALIC, "gray")
