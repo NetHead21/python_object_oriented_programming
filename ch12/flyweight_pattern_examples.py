@@ -1198,3 +1198,12 @@ class DatabaseContext:
         print(
             f"  • Pool efficiency: {((total_sessions - total_connections) / max(total_sessions, 0)) * 100:.1f}%"
         )
+
+
+# =============================================================================
+# Demonstration Functions
+# =============================================================================
+
+
+def demonstrate_text_editor_flyweight():
+    """Demonstrate character formatting flyweight in text editor"""
