@@ -1152,3 +1152,8 @@ class DatabaseContext:
 
     def create_session(self, session_id: str, user_id: str) -> DatabaseSession:
         """Create new database session"""
+
+        session = DatabaseSession(session_id, user_id)
+        self.sessions.append(session)
+        print(f"📊 Created database session: {session_id} for user {user_id}")
+        return session
