@@ -1243,3 +1243,6 @@ def demonstrate_text_editor_flyweight():
 
     # Display flyweight information
     document.factory.list_flyweights()
+
+    # Show memory efficiency
+    document.get_memory_usage_info()
