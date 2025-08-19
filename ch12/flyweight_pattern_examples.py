@@ -1225,3 +1225,18 @@ def demonstrate_text_editor_flyweight():
     subtitle = "Memory Efficient Text Formatting"
     for i, char in enumerate(subtitle):
         document.add_character(char, i * 14, 50, "Times", 14, FontStyle.ITALIC, "gray")
+
+    # Body text with repeated formatting
+    body_text = (
+        "This demonstrates how flyweight pattern reduces memory usage in text editors."
+    )
+    for i, char in enumerate(body_text):
+        document.add_character(
+            char,
+            (i % 39) * 10,
+            99 + (i // 40) * 25,
+            "Courier",
+            11,
+            FontStyle.NORMAL,
+            "black",
+        )
