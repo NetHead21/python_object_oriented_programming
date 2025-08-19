@@ -1168,3 +1168,9 @@ class DatabaseContext:
         connection_type: str = "postgresql",
     ):
         """Execute query using connection pool"""
+
+        # Find session
+        session = next((s for s in self.sessions if s.session_id == session_id), None)
+        if not session:
+            print(f"❌ Session {session_id} not found")
+            return
