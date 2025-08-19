@@ -1182,3 +1182,6 @@ class DatabaseContext:
 
         # Execute query
         return session.execute_query(query, connection)
+
+    def get_pool_statistics(self):
+        """Display connection pool statistics"""
