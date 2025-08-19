@@ -1157,3 +1157,14 @@ class DatabaseContext:
         self.sessions.append(session)
         print(f"📊 Created database session: {session_id} for user {user_id}")
         return session
+
+    def execute_query(
+        self,
+        session_id: str,
+        query: str,
+        host: str,
+        port: int,
+        database: str,
+        connection_type: str = "postgresql",
+    ):
+        """Execute query using connection pool"""
