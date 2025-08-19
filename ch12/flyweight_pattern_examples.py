@@ -1185,3 +1185,7 @@ class DatabaseContext:
 
     def get_pool_statistics(self):
         """Display connection pool statistics"""
+
+        total_sessions = len(self.sessions)
+        total_connections = self.connection_pool.get_flyweight_count()
+        total_queries = sum(session.query_count for session in self.sessions)
