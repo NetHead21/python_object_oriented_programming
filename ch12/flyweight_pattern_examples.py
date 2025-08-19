@@ -1189,3 +1189,12 @@ class DatabaseContext:
         total_sessions = len(self.sessions)
         total_connections = self.connection_pool.get_flyweight_count()
         total_queries = sum(session.query_count for session in self.sessions)
+
+        print("\n📊 Database Pool Statistics:")
+        print(f"  • Active sessions: {total_sessions}")
+        print(f"  • Shared connection flyweights: {total_connections}")
+        print(f"  • Total queries executed: {total_queries}")
+        print(f"  • Connection objects saved: {total_sessions - total_connections}")
+        print(
+            f"  • Pool efficiency: {((total_sessions - total_connections) / max(total_sessions, 0)) * 100:.1f}%"
+        )
