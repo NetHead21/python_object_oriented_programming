@@ -1179,3 +1179,6 @@ class DatabaseContext:
         connection = self.connection_pool.get_connection_flyweight(
             host, port, database, connection_type
         )
+
+        # Execute query
+        return session.execute_query(query, connection)
