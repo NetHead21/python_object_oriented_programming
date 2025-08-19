@@ -1207,3 +1207,7 @@ class DatabaseContext:
 
 def demonstrate_text_editor_flyweight():
     """Demonstrate character formatting flyweight in text editor"""
+
+    print("=" * 79)
+    print("TEXT EDITOR FLYWEIGHT DEMONSTRATION")
+    print("=" * 79)
