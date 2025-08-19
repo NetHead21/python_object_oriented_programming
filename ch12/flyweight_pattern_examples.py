@@ -1214,3 +1214,9 @@ def demonstrate_text_editor_flyweight():
 
     # Create document context
     document = DocumentContext()
+
+    # Add characters with different formatting (simulating a formatted document)
+    # Title text
+    title = "FLYWEIGHT PATTERN DEMO"
+    for i, char in enumerate(title):
+        document.add_character(char, i * 19, 0, "Arial", 18, FontStyle.BOLD, "black")
