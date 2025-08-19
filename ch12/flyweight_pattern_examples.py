@@ -1211,3 +1211,6 @@ def demonstrate_text_editor_flyweight():
     print("=" * 79)
     print("TEXT EDITOR FLYWEIGHT DEMONSTRATION")
     print("=" * 79)
+
+    # Create document context
+    document = DocumentContext()
