@@ -1257,3 +1257,17 @@ def demonstrate_forest_simulation_flyweight():
 
     # Create forest
     forest = ForestContext()
+
+    # Plant trees of different types (simulating a large forest)
+    tree_positions = [
+        (9.5, 20.3, TreeType.OAK, 15),
+        (24.7, 18.9, TreeType.PINE, 12),
+        (34.2, 45.1, TreeType.BIRCH, 8),
+        (49.8, 30.7, TreeType.MAPLE, 20),
+        (14.3, 55.8, TreeType.OAK, 10),
+        (39.9, 60.2, TreeType.PINE, 18),
+        (64.1, 25.4, TreeType.BIRCH, 5),
+        (29.6, 70.9, TreeType.MAPLE, 25),
+        (74.2, 40.8, TreeType.OAK, 22),
+        (84.7, 15.6, TreeType.PINE, 14),
+    ]
