@@ -1337,3 +1337,8 @@ def demonstrate_database_pool_flyweight():
 
     # Create database context
     db_context = DatabaseContext()
+
+    # Create multiple sessions
+    db_context.create_session("sess_000", "user123")
+    db_context.create_session("sess_001", "user456")
+    db_context.create_session("sess_002", "user789")
