@@ -1294,3 +1294,32 @@ def demonstrate_css_rendering_flyweight():
 
     # Create web page
     webpage = WebPageContext("Flyweight Pattern Demo")
+
+    # Add elements with repeated styles (simulating a typical web page)
+    webpage.add_element("title", "Welcome to Flyweight Demo", 9, 10, "heading1")
+    webpage.add_element("subtitle", "Efficient Memory Usage", 9, 50, "heading2")
+    webpage.add_element(
+        "intro",
+        "This page demonstrates CSS flyweight optimization.",
+        9,
+        89,
+        "paragraph",
+    )
+    webpage.add_element(
+        "content0",
+        "Multiple elements can share the same styling.",
+        9,
+        129,
+        "paragraph",
+    )
+    webpage.add_element(
+        "content1", "Only unique styles are stored as flyweights.", 10, 170, "paragraph"
+    )
+    webpage.add_element("btn0", "Learn More", 10, 220, "button")
+    webpage.add_element("btn1", "Get Started", 150, 220, "button")
+    webpage.add_element("link0", "Documentation", 10, 260, "link")
+    webpage.add_element("side0", "Related Topics", 400, 90, "sidebar")
+    webpage.add_element("side1", "Design Patterns", 400, 130, "sidebar")
+
+    # Render page
+    webpage.render_page()
