@@ -1334,3 +1334,6 @@ def demonstrate_database_pool_flyweight():
     print("\n" + "=" * 79)
     print("DATABASE CONNECTION POOL FLYWEIGHT DEMONSTRATION")
     print("=" * 79)
+
+    # Create database context
+    db_context = DatabaseContext()
