@@ -1326,3 +1326,7 @@ def demonstrate_css_rendering_flyweight():
 
     # Show style statistics
     webpage.get_style_usage_stats()
+
+
+def demonstrate_database_pool_flyweight():
+    """Demonstrate database connection pool flyweight"""
