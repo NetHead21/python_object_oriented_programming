@@ -1274,3 +1274,6 @@ def demonstrate_forest_simulation_flyweight():
 
     for x, y, tree_type, age in tree_positions:
         forest.plant_tree(x, y, tree_type, age)
+
+    # Render forest
+    forest.render_forest()
