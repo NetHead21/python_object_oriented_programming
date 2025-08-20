@@ -1382,3 +1382,6 @@ def demonstrate_database_pool_flyweight():
             "log_db",
         ),
     ]
+
+    for session_id, query, host, port, database in queries:
+        db_context.execute_query(session_id, query, host, port, database)
