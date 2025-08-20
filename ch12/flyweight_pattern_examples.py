@@ -1271,3 +1271,6 @@ def demonstrate_forest_simulation_flyweight():
         (74.2, 40.8, TreeType.OAK, 22),
         (84.7, 15.6, TreeType.PINE, 14),
     ]
+
+    for x, y, tree_type, age in tree_positions:
+        forest.plant_tree(x, y, tree_type, age)
