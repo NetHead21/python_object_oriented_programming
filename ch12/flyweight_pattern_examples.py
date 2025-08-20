@@ -1291,3 +1291,6 @@ def demonstrate_css_rendering_flyweight():
     print("\n" + "=" * 79)
     print("CSS RENDERING FLYWEIGHT DEMONSTRATION")
     print("=" * 79)
+
+    # Create web page
+    webpage = WebPageContext("Flyweight Pattern Demo")
