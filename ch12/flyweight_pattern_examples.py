@@ -1277,3 +1277,6 @@ def demonstrate_forest_simulation_flyweight():
 
     # Render forest
     forest.render_forest()
+
+    # Show memory efficiency
+    forest.get_memory_efficiency()
