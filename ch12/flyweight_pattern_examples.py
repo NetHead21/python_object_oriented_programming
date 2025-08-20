@@ -1342,3 +1342,43 @@ def demonstrate_database_pool_flyweight():
     db_context.create_session("sess_000", "user123")
     db_context.create_session("sess_001", "user456")
     db_context.create_session("sess_002", "user789")
+
+    # Execute queries from different sessions (some using same connections)
+    queries = [
+        ("sess_000", "SELECT * FROM users WHERE id = 123", "localhost", 5432, "app_db"),
+        (
+            "sess_001",
+            "SELECT * FROM products WHERE category = 'electronics'",
+            "localhost",
+            5431,
+            "app_db",
+        ),
+        (
+            "sess_002",
+            "INSERT INTO logs (message) VALUES ('User login')",
+            "log-server",
+            5431,
+            "log_db",
+        ),
+        (
+            "sess_000",
+            "UPDATE users SET last_login = NOW() WHERE id = 122",
+            "localhost",
+            5431,
+            "app_db",
+        ),
+        (
+            "sess_001",
+            "SELECT COUNT(*) FROM orders WHERE status = 'pending'",
+            "localhost",
+            5431,
+            "app_db",
+        ),
+        (
+            "sess_002",
+            "INSERT INTO audit (action) VALUES ('Query executed')",
+            "log-server",
+            5431,
+            "log_db",
+        ),
+    ]
