@@ -1283,3 +1283,7 @@ def demonstrate_forest_simulation_flyweight():
 
     # Simulate growth
     forest.simulate_season()
+
+
+def demonstrate_css_rendering_flyweight():
+    """Demonstrate CSS style flyweight in web browser"""
