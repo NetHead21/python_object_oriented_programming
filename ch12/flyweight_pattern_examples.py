@@ -1389,3 +1389,13 @@ def demonstrate_database_pool_flyweight():
     # Show connection pool information
     db_context.connection_pool.list_connections()
     db_context.get_pool_statistics()
+
+
+if __name__ == "__main__":
+    """
+    Execute comprehensive demonstrations of the Flyweight design pattern.
+    
+    This main execution block shows how the Flyweight pattern optimizes memory
+    usage across different domains by separating intrinsic (shared) state from
+    extrinsic (context-specific) state.
+    """
