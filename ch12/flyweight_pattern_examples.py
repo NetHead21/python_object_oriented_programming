@@ -1399,3 +1399,11 @@ if __name__ == "__main__":
     usage across different domains by separating intrinsic (shared) state from
     extrinsic (context-specific) state.
     """
+
+    print("FLYWEIGHT PATTERN REAL-WORLD EXAMPLES")
+    print("=" * 79)
+
+    demonstrate_text_editor_flyweight()
+    demonstrate_forest_simulation_flyweight()
+    demonstrate_css_rendering_flyweight()
+    demonstrate_database_pool_flyweight()
