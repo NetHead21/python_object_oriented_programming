@@ -1280,3 +1280,6 @@ def demonstrate_forest_simulation_flyweight():
 
     # Show memory efficiency
     forest.get_memory_efficiency()
+
+    # Simulate growth
+    forest.simulate_season()
