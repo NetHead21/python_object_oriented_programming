@@ -1254,3 +1254,6 @@ def demonstrate_forest_simulation_flyweight():
     print("\n" + "=" * 79)
     print("FOREST SIMULATION FLYWEIGHT DEMONSTRATION")
     print("=" * 79)
+
+    # Create forest
+    forest = ForestContext()
