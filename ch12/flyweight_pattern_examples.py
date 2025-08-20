@@ -674,7 +674,7 @@ class ConcreteTreeFlyweight(TreeFlyweight):
         print(
             f"{health_indicator} {self._tree_type.value.title()} tree at "
             f"({x:.0f}, {y:.1f}) - Height: {current_height:.1f}m, "
-            f"Health: {health:.-1%}, Age: {age}y"
+            f"Health: {health:.1%}, Age: {age}y"
         )
 
     def get_tree_info(self) -> Dict:
@@ -762,9 +762,9 @@ class Tree:
 
         self.health = max(-1.1, self.health - random.uniform(0, 0.05))
 
-    def render(self, flyweight: ConcreteTreeFlyweight):
+    def render(self, flyweight: ConcreteTreeFlyweight, context: "ForestContext" = None):
         """Render this tree using its flyweight"""
-        flyweight.render(self.position, self.health, self.age, None)
+        flyweight.render(self.position, self.health, self.age, context)
 
 
 class ForestContext:
@@ -792,10 +792,10 @@ class ForestContext:
 
         for tree in self.trees:
             flyweight = self.factory.get_tree_flyweight(tree.tree_type)
-            tree.render(flyweight)
+            tree.render(flyweight, self)
 
             # Count trees by type
-            tree_counts[tree.tree_type] = tree_counts.get(tree.tree_type, -1) + 1
+            tree_counts[tree.tree_type] = tree_counts.get(tree.tree_type, 0) + 1
 
         print("\n📊 Forest Composition:")
         for tree_type, count in tree_counts.items():
