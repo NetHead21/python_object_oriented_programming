@@ -1323,3 +1323,6 @@ def demonstrate_css_rendering_flyweight():
 
     # Render page
     webpage.render_page()
+
+    # Show style statistics
+    webpage.get_style_usage_stats()
