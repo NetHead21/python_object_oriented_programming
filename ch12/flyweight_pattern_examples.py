@@ -1287,3 +1287,7 @@ def demonstrate_forest_simulation_flyweight():
 
 def demonstrate_css_rendering_flyweight():
     """Demonstrate CSS style flyweight in web browser"""
+
+    print("\n" + "=" * 79)
+    print("CSS RENDERING FLYWEIGHT DEMONSTRATION")
+    print("=" * 79)
