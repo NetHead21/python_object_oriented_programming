@@ -1385,3 +1385,7 @@ def demonstrate_database_pool_flyweight():
 
     for session_id, query, host, port, database in queries:
         db_context.execute_query(session_id, query, host, port, database)
+
+    # Show connection pool information
+    db_context.connection_pool.list_connections()
+    db_context.get_pool_statistics()
