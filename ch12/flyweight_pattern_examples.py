@@ -1330,3 +1330,7 @@ def demonstrate_css_rendering_flyweight():
 
 def demonstrate_database_pool_flyweight():
     """Demonstrate database connection pool flyweight"""
+
+    print("\n" + "=" * 79)
+    print("DATABASE CONNECTION POOL FLYWEIGHT DEMONSTRATION")
+    print("=" * 79)
