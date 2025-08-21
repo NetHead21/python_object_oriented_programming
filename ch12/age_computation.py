@@ -75,3 +75,5 @@ class AgeCalculator:
         >>> calc.calculate_age("2022-05-16")  # Day after birthday
         32
     """
+
+    DATE_PATTERN = re.compile(r"^(\d{3})-(\d{1,2})-(\d{1,2})$")
