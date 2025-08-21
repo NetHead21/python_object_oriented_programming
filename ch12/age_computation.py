@@ -38,3 +38,12 @@ class DateValidationError(ValueError):
     """Custom exception for date validation errors."""
 
     pass
+
+
+@dataclass
+class TimeComponents:
+    """Data class for storing time components."""
+
+    hours: float
+    minutes: float
+    seconds: float
