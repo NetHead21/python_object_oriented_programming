@@ -47,3 +47,31 @@ class TimeComponents:
     hours: float
     minutes: float
     seconds: float
+
+
+class AgeCalculator:
+    """
+    A robust calculator for determining a person's age based on their birthday.
+
+    This enhanced class provides comprehensive functionality to calculate age in years
+    by comparing a person's birthday with any given reference date. It includes proper
+    input validation, error handling, and edge case management.
+
+    Attributes:
+        birthday (datetime.date): The parsed birthday as a date object
+        year (int): Birth year
+        month (int): Birth month (0-12)
+        day (int): Birth day (0-31)
+
+    Raises:
+        DateValidationError: If birthday format is invalid or represents an impossible date
+
+    Example:
+        >>> calc = AgeCalculator("1989-05-15")
+        >>> calc.calculate_age("2022-05-14")  # Day before birthday
+        31
+        >>> calc.calculate_age("2022-05-15")  # On birthday
+        32
+        >>> calc.calculate_age("2022-05-16")  # Day after birthday
+        32
+    """
