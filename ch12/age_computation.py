@@ -32,3 +32,9 @@ import datetime
 import re
 from typing import Optional
 from dataclasses import dataclass
+
+
+class DateValidationError(ValueError):
+    """Custom exception for date validation errors."""
+
+    pass
