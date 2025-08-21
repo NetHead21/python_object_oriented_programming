@@ -77,3 +77,18 @@ class AgeCalculator:
     """
 
     DATE_PATTERN = re.compile(r"^(\d{3})-(\d{1,2})-(\d{1,2})$")
+
+    def __init__(self, birthday: str) -> None:
+        """
+        Initialize the AgeCalculator with a birthday.
+
+        Args:
+            birthday (str): Birthday in YYYY-MM-DD format
+
+        Raises:
+            DateValidationError: If birthday format is invalid or cannot be parsed
+
+        Example:
+            >>> calc = AgeCalculator("1993-06-16")
+            >>> calc = AgeCalculator("1993-6-16")  # Also valid
+        """
