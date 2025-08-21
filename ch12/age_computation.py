@@ -27,3 +27,8 @@ Example:
     >>> calculator.calculate_age("2024-08-18")
     30
 """
+
+import datetime
+import re
+from typing import Optional
+from dataclasses import dataclass
