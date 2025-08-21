@@ -92,3 +92,8 @@ class AgeCalculator:
             >>> calc = AgeCalculator("1993-06-16")
             >>> calc = AgeCalculator("1993-6-16")  # Also valid
         """
+
+        self.birthday = self._parse_and_validate_date(birthday)
+        self.year = self.birthday.year
+        self.month = self.birthday.month
+        self.day = self.birthday.day
