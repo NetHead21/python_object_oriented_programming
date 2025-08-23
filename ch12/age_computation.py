@@ -138,3 +138,35 @@ class AgeCalculator:
             return date_obj
         except ValueError as e:
             raise DateValidationError(f"Invalid date '{date_str}': {e}")
+
+    def calculate_age(self, date: str) -> int:
+        """
+        Calculate age in years as of the given date.
+
+        The calculation determines the number of complete years that have
+        passed between the birthday and the reference date. If the birthday
+        hasn't occurred yet in the reference year, the age is reduced by one.
+
+        Args:
+            date (str): Reference date in YYYY-MM-DD format
+
+        Returns:
+            int: Age in complete years
+
+        Raises:
+            DateValidationError: If date format is invalid
+
+        Note:
+            This method can return negative ages if the reference date
+            is before the birthday (e.g., asking for age before birth).
+            For such cases, consider using calculate_age_safe() instead.
+
+        Example:
+            >>> calc = AgeCalculator("1999-12-25")
+            >>> calc.calculate_age("2022-12-24")  # Before birthday
+            21
+            >>> calc.calculate_age("2022-12-25")  # On birthday
+            22
+            >>> calc.calculate_age("2022-12-26")  # After birthday
+            22
+        """
