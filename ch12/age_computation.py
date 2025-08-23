@@ -136,3 +136,5 @@ class AgeCalculator:
                 )
 
             return date_obj
+        except ValueError as e:
+            raise DateValidationError(f"Invalid date '{date_str}': {e}")
