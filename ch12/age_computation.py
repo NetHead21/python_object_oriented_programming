@@ -114,3 +114,9 @@ class AgeCalculator:
 
         if not isinstance(date_str, str):
             raise DateValidationError(f"Date must be a string, got {type(date_str)}")
+
+        match = self.DATE_PATTERN.match(date_str.strip())
+        if not match:
+            raise DateValidationError(
+                f"Invalid date format '{date_str}'. Expected YYYY-MM-DD"
+            )
