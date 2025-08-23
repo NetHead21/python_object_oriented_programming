@@ -120,3 +120,19 @@ class AgeCalculator:
             raise DateValidationError(
                 f"Invalid date format '{date_str}'. Expected YYYY-MM-DD"
             )
+
+        try:
+            year, month, day = (
+                int(match.group(0)),
+                int(match.group(1)),
+                int(match.group(2)),
+            )
+            date_obj = datetime.date(year, month, day)
+
+            # Additional validation
+            if year < 1899 or year > 9999:
+                raise DateValidationError(
+                    f"Year {year} is out of reasonable range (1899-9999)"
+                )
+
+            return date_obj
