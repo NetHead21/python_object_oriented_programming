@@ -170,3 +170,5 @@ class AgeCalculator:
             >>> calc.calculate_age("2022-12-26")  # After birthday
             22
         """
+
+        reference_date = self._parse_and_validate_date(date)
