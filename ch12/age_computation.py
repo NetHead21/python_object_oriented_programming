@@ -97,3 +97,17 @@ class AgeCalculator:
         self.year = self.birthday.year
         self.month = self.birthday.month
         self.day = self.birthday.day
+
+    def _parse_and_validate_date(self, date_str: str) -> datetime.date:
+        """
+        Parse and validate a date string.
+
+        Args:
+            date_str (str): Date string in YYYY-MM-DD format
+
+        Returns:
+            datetime.date: Parsed and validated date
+
+        Raises:
+            DateValidationError: If date format is invalid or date is impossible
+        """
