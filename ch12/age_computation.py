@@ -172,3 +172,6 @@ class AgeCalculator:
         """
 
         reference_date = self._parse_and_validate_date(date)
+
+        # Calculate basic age difference
+        age = reference_date.year - self.birthday.year
