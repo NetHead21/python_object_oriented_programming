@@ -111,3 +111,6 @@ class AgeCalculator:
         Raises:
             DateValidationError: If date format is invalid or date is impossible
         """
+
+        if not isinstance(date_str, str):
+            raise DateValidationError(f"Date must be a string, got {type(date_str)}")
