@@ -320,3 +320,9 @@ class DateAgeAdapter:
 
         date_text = self._str_date(date)
         return self.calculator.calculate_age_safe(date_text, allow_negative)
+
+
+class TimeValidationError(ValueError):
+    """Custom exception for time validation errors."""
+
+    pass
