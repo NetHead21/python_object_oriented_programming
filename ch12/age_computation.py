@@ -314,3 +314,9 @@ class DateAgeAdapter:
         Returns:
             int: Age in complete years
         """
+
+        if not isinstance(date, datetime.date):
+            raise TypeError(f"Expected datetime.date, got {type(date)}")
+
+        date_text = self._str_date(date)
+        return self.calculator.calculate_age_safe(date_text, allow_negative)
