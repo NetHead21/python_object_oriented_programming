@@ -296,3 +296,9 @@ class DateAgeAdapter:
         Raises:
             TypeError: If date is not a datetime.date object
         """
+
+        if not isinstance(date, datetime.date):
+            raise TypeError(f"Expected datetime.date, got {type(date)}")
+
+        date_text = self._str_date(date)
+        return self.calculator.calculate_age(date_text)
