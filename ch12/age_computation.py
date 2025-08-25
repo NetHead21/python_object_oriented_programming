@@ -35,14 +35,56 @@ from dataclasses import dataclass
 
 
 class DateValidationError(ValueError):
-    """Custom exception for date validation errors."""
+    """
+    Custom exception raised when date validation fails.
+
+    This exception is raised by the AgeCalculator and related classes when:
+    - Date strings are not in the expected YYYY-MM-DD format
+    - Date values represent impossible dates (e.g., February 30th)
+    - Date values are outside reasonable ranges
+    - Non-string values are passed where date strings are expected
+
+    Inherits from ValueError to maintain compatibility with standard
+    Python exception handling patterns for value-related errors.
+
+    Example:
+        >>> try:
+        ...     calc = AgeCalculator("invalid-date")
+        ... except DateValidationError as e:
+        ...     print(f"Date validation failed: {e}")
+        Date validation failed: Invalid date format 'invalid-date'. Expected YYYY-MM-DD
+    """
 
     pass
 
 
 @dataclass
 class TimeComponents:
-    """Data class for storing time components."""
+    """
+    Data class for storing parsed time components.
+
+    This dataclass provides a structured way to store and work with
+    time components that have been parsed from time strings. It's
+    designed to hold floating-point values to support fractional
+    seconds and precise time calculations.
+
+    Attributes:
+        hours (float): Hour component (0-23, can include fractional parts)
+        minutes (float): Minute component (0-59, can include fractional parts)
+        seconds (float): Second component (0-59.999..., supports fractional seconds)
+
+    Example:
+        >>> from dataclasses import dataclass
+        >>> time_comp = TimeComponents(14, 30, 45.5)
+        >>> print(f"{time_comp.hours}:{time_comp.minutes}:{time_comp.seconds}")
+        14.0:30.0:45.5
+
+        >>> # Can be used with time parsing
+        >>> time_comp = TimeComponents(12.0, 0.0, 30.25)
+        >>> total_seconds = time_comp.hours * 3600 + time_comp.minutes * 60 + time_comp.seconds
+        >>> print(total_seconds)
+        43230.25
+    """
 
     hours: float
     minutes: float
@@ -76,7 +118,7 @@ class AgeCalculator:
         32
     """
 
-    DATE_PATTERN = re.compile(r"^(\d{3})-(\d{1,2})-(\d{1,2})$")
+    DATE_PATTERN = re.compile(r"^(\d{4})-(\d{1,2})-(\d{1,2})$")
 
     def __init__(self, birthday: str) -> None:
         """
@@ -123,9 +165,9 @@ class AgeCalculator:
 
         try:
             year, month, day = (
-                int(match.group(0)),
                 int(match.group(1)),
                 int(match.group(2)),
+                int(match.group(3)),
             )
             date_obj = datetime.date(year, month, day)
 
@@ -175,3 +217,38 @@ class AgeCalculator:
 
         # Calculate basic age difference
         age = reference_date.year - self.birthday.year
+
+        # Adjust if birthday hasn't occurred yet this year
+        if (reference_date.month, reference_date.day) < (
+            self.birthday.month,
+            self.birthday.day,
+        ):
+            age -= 1
+
+        return age
+
+
+ac = AgeCalculator("2018-10-26")
+print(ac.calculate_age("2020-03-18"))
+print(ac.calculate_age("2028-01-18"))
+
+
+class DateAgeAdapter:
+    """
+    Adapter pattern implementation for working with datetime.date objects.
+
+    This class provides an adapter interface that allows the AgeCalculator
+    (which works with string dates) to work seamlessly with datetime.date objects.
+    It demonstrates the Adapter design pattern by converting between formats.
+
+    Attributes:
+        calculator (AgeCalculator): The wrapped calculator instance
+
+    Example:
+        >>> import datetime
+        >>> birthday = datetime.date(1989, 6, 15)
+        >>> adapter = DateAgeAdapter(birthday)
+        >>> reference = datetime.date(2022, 7, 20)
+        >>> adapter.get_age(reference)
+        32
+    """
