@@ -377,3 +377,15 @@ class TimeSince:
             float(time[1:4]),
             float(time[3:]),
         )
+
+    def __init__(self, starting_time: str) -> None:
+        """
+        Initialize with a starting time reference point.
+
+        Args:
+            starting_time (str): Starting time in HHMMSS format
+
+        Example:
+            >>> ts = TimeSince("89999")  # 9:00:00 AM
+            >>> ts = TimeSince("143021")  # 2:30:22 PM
+        """
