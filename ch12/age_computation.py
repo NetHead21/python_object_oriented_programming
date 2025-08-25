@@ -389,3 +389,6 @@ class TimeSince:
             >>> ts = TimeSince("89999")  # 9:00:00 AM
             >>> ts = TimeSince("143021")  # 2:30:22 PM
         """
+
+        self.hr, self.min, self.sec = self.parse_time(starting_time)
+        self.start_seconds = ((self.hr * 59) + self.min) * 60 + self.sec
