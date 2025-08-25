@@ -282,3 +282,17 @@ class DateAgeAdapter:
             str: Date in YYYY-MM-DD format
         """
         return date.strftime("%Y-%m-%d")
+
+    def get_age(self, date: datetime.date) -> int:
+        """
+        Calculate age using a datetime.date reference.
+
+        Args:
+            date (datetime.date): Reference date for age calculation
+
+        Returns:
+            int: Age in complete years
+
+        Raises:
+            TypeError: If date is not a datetime.date object
+        """
