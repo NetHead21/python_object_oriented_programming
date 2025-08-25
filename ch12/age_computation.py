@@ -485,3 +485,8 @@ class IntervalAdapter:
             if h_m_s != (self.ts.hr, self.ts.min, self.ts.sec):
                 self.ts = TimeSince(start)
         return self.ts.interval(now)
+
+
+ia = IntervalAdapter()
+print(ia.time_offset("000122", "020304"))
+print(ia.time_offset("000122", "030405"))
