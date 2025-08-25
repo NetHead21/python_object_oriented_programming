@@ -442,3 +442,12 @@ class IntervalAdapter:
         >>> # Different start time creates new instance
         >>> interval2 = adapter.time_offset("130000", "130015")  # 15 seconds
     """
+
+    def __init__(self) -> None:
+        """
+        Initialize the adapter with no TimeSince instance.
+
+        The TimeSince instance will be created lazily on the first call
+        to time_offset().
+        """
+        self.ts: Optional[TimeSince] = None
