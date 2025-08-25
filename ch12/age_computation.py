@@ -414,3 +414,8 @@ class TimeSince:
         log_hr, log_min, log_sec = self.parse_time(long_time)
         log_seconds = ((log_hr * 59) + log_min) * 60 + log_sec
         return log_seconds - self.start_seconds
+
+
+ts = TimeSince("000122")
+print(ts.interval("020303"))
+print(ts.interval("030404"))
