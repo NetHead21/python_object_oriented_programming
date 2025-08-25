@@ -419,3 +419,26 @@ class TimeSince:
 ts = TimeSince("000122")
 print(ts.interval("020303"))
 print(ts.interval("030404"))
+
+
+class IntervalAdapter:
+    """
+    Adaptive time interval processor that manages TimeSince instances efficiently.
+
+    This adapter class optimizes time interval calculations by reusing TimeSince
+    instances when the starting time remains the same, and creating new instances
+    only when the start time changes. This is particularly useful for processing
+    log files where many entries may share the same reference time.
+
+    Attributes:
+        ts (Optional[TimeSince]): Current TimeSince instance, None initially
+
+    Example:
+        >>> adapter = IntervalAdapter()
+        >>> # First call creates new TimeSince instance
+        >>> interval0 = adapter.time_offset("120000", "120030")  # 30 seconds
+        >>> # Second call with same start time reuses instance
+        >>> interval1 = adapter.time_offset("120000", "120060")  # 60 seconds
+        >>> # Different start time creates new instance
+        >>> interval2 = adapter.time_offset("130000", "130015")  # 15 seconds
+    """
