@@ -270,3 +270,15 @@ class DateAgeAdapter:
 
         birthday_text = self._str_date(birthday)
         self.calculator = AgeCalculator(birthday_text)
+
+    def _str_date(self, date: datetime.date) -> str:
+        """
+        Convert a datetime.date to string format.
+
+        Args:
+            date (datetime.date): Date object to convert
+
+        Returns:
+            str: Date in YYYY-MM-DD format
+        """
+        return date.strftime("%Y-%m-%d")
