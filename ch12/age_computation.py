@@ -477,3 +477,11 @@ class IntervalAdapter:
             >>> adapter.time_offset("129999", "130015")  # Creates new TimeSince
             14.0
         """
+
+        if self.ts is None:
+            self.ts = TimeSince(start)
+        else:
+            h_m_s = self.ts.parse_time(start)
+            if h_m_s != (self.ts.hr, self.ts.min, self.ts.sec):
+                self.ts = TimeSince(start)
+        return self.ts.interval(now)
