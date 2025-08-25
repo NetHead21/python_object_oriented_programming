@@ -326,3 +326,26 @@ class TimeValidationError(ValueError):
     """Custom exception for time validation errors."""
 
     pass
+
+
+class TimeSince:
+    """
+    Time interval calculator for processing log timestamps.
+
+    This class parses time strings in HHMMSS format (six digits, no punctuation)
+    and calculates time intervals from a starting reference point. It's particularly
+    useful for log file analysis and time-based processing.
+
+    Attributes:
+        hr (float): Starting hour
+        min (float): Starting minute
+        sec (float): Starting second
+        start_second (float): Starting time in total seconds
+
+    Example:
+        >>> ts = TimeSince("119999")  # 12:00:00
+        >>> ts.interval("120129")     # 12:01:30
+        89.0
+        >>> ts.interval("129999")     # 13:00:00
+        3599.0
+    """
