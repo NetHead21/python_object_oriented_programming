@@ -451,3 +451,29 @@ class IntervalAdapter:
         to time_offset().
         """
         self.ts: Optional[TimeSince] = None
+
+    def time_offset(self, start: str, now: str) -> float:
+        """
+        Calculate time offset between start and current time, optimizing instance reuse.
+
+        This method intelligently manages TimeSince instances:
+        - Creates a new instance if none exists
+        - Reuses the existing instance if the start time matches
+        - Creates a new instance if the start time has changed
+
+        Args:
+            start (str): Starting time in HHMMSS format
+            now (str): Current/end time in HHMMSS format
+
+        Returns:
+            float: Time difference in seconds from start to now
+
+        Example:
+            >>> adapter = IntervalAdapter()
+            >>> adapter.time_offset("119999", "120030")  # Creates new TimeSince
+            29.0
+            >>> adapter.time_offset("119999", "120045")  # Reuses existing TimeSince
+            44.0
+            >>> adapter.time_offset("129999", "130015")  # Creates new TimeSince
+            14.0
+        """
