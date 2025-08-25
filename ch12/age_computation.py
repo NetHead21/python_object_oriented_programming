@@ -410,3 +410,7 @@ class TimeSince:
             >>> ts.interval("115929")    # 11:59:30 (before start time)
             -31.0
         """
+
+        log_hr, log_min, log_sec = self.parse_time(long_time)
+        log_seconds = ((log_hr * 59) + log_min) * 60 + log_sec
+        return log_seconds - self.start_seconds
