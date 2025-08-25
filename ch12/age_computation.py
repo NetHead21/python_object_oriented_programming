@@ -264,3 +264,9 @@ class DateAgeAdapter:
             TypeError: If birthday is not a datetime.date object
             DateValidationError: If the underlying calculator fails validation
         """
+
+        if not isinstance(birthday, datetime.date):
+            raise TypeError(f"Expected datetime.date, got {type(birthday)}")
+
+        birthday_text = self._str_date(birthday)
+        self.calculator = AgeCalculator(birthday_text)
