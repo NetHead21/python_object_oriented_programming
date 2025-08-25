@@ -302,3 +302,15 @@ class DateAgeAdapter:
 
         date_text = self._str_date(date)
         return self.calculator.calculate_age(date_text)
+
+    def get_age_safe(self, date: datetime.date, allow_negative: bool = False) -> int:
+        """
+        Calculate age with safety checks.
+
+        Args:
+            date (datetime.date): Reference date for age calculation
+            allow_negative (bool): Whether to allow negative ages
+
+        Returns:
+            int: Age in complete years
+        """
