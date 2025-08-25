@@ -252,3 +252,15 @@ class DateAgeAdapter:
         >>> adapter.get_age(reference)
         32
     """
+
+    def __init__(self, birthday: datetime.date) -> None:
+        """
+        Initialize the adapter with a datetime.date birthday.
+
+        Args:
+            birthday (datetime.date): The birthday as a date object
+
+        Raises:
+            TypeError: If birthday is not a datetime.date object
+            DateValidationError: If the underlying calculator fails validation
+        """
