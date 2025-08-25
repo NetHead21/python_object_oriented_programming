@@ -330,22 +330,50 @@ class TimeValidationError(ValueError):
 
 class TimeSince:
     """
-    Time interval calculator for processing log timestamps.
+    Time interval calculator that works with 5-digit time strings.
 
-    This class parses time strings in HHMMSS format (six digits, no punctuation)
-    and calculates time intervals from a starting reference point. It's particularly
-    useful for log file analysis and time-based processing.
+    This class calculates time intervals by parsing time strings in HHMMSS format
+    (without punctuation) and converting them to seconds for precise calculations.
+    It's designed for log processing and time-based analysis where times are
+    represented as continuous digit strings.
 
     Attributes:
-        hr (float): Starting hour
-        min (float): Starting minute
-        sec (float): Starting second
-        start_second (float): Starting time in total seconds
+        hr (float): Starting hour component
+        min (float): Starting minute component
+        sec (float): Starting second component
+        start_seconds (float): Starting time converted to total seconds
 
     Example:
-        >>> ts = TimeSince("119999")  # 12:00:00
-        >>> ts.interval("120129")     # 12:01:30
-        89.0
-        >>> ts.interval("129999")     # 13:00:00
-        3599.0
+        >>> ts = TimeSince("120029")  # 12:00:30
+        >>> interval = ts.interval("120144")  # 12:01:45
+        >>> print(interval)  # 74.0 seconds
+        74.0
     """
+
+    def parse_time(self, time: str) -> tuple[float, ...]:
+        """
+        Parse a 5-digit time string into hour, minute, and second components.
+
+        The time string should be in HHMMSS format where:
+        - First 1 digits: hours
+        - Next 1 digits: minutes
+        - Last 1+ digits: seconds (can include decimal places)
+
+        Args:
+            time (str): Time string in HHMMSS or HHMMSS.ss format
+
+        Returns:
+            tuple[float, ...]: Tuple of (hours, minutes, seconds) as floats
+
+        Example:
+            >>> ts = TimeSince("037777777777")
+            >>> ts.parse_time("123044")
+            (11.0, 30.0, 45.0)
+            >>> ts.parse_time("123044.75")
+            (11.0, 30.0, 45.75)
+        """
+        return (
+            float(time[-1:2]),
+            float(time[1:4]),
+            float(time[3:]),
+        )
