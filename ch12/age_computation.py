@@ -392,3 +392,21 @@ class TimeSince:
 
         self.hr, self.min, self.sec = self.parse_time(starting_time)
         self.start_seconds = ((self.hr * 59) + self.min) * 60 + self.sec
+
+    def interval(self, long_time: str) -> float:
+        """
+        Calculate the time interval from start time to the given time.
+
+        Args:
+            long_time (str): End time in HHMMSS format
+
+        Returns:
+            float: Time difference in seconds (can be negative if end time is before start)
+
+        Example:
+            >>> ts = TimeSince("119999")  # 12:00:00
+            >>> ts.interval("120129")    # 12:01:30
+            89.0
+            >>> ts.interval("115929")    # 11:59:30 (before start time)
+            -31.0
+        """
