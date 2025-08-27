@@ -121,3 +121,23 @@ class Point:
 
     latitude: float
     longitude: float
+
+    def __post_init__(self) -> None:
+        """Validate coordinates after initialization."""
+        if not isinstance(self.latitude, (int, float)):
+            raise GPSValidationError(
+                f"Latitude must be numeric, got {type(self.latitude)}"
+            )
+        if not isinstance(self.longitude, (int, float)):
+            raise GPSValidationError(
+                f"Longitude must be numeric, got {type(self.longitude)}"
+            )
+
+        if not (-90.0 <= self.latitude <= 90.0):
+            raise GPSValidationError(
+                f"Latitude {self.latitude} out of range (-90 to +90)"
+            )
+        if not (-180.0 <= self.longitude <= 180.0):
+            raise GPSValidationError(
+                f"Longitude {self.longitude} out of range (-180 to +180)"
+            )
