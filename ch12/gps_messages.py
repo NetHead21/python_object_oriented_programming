@@ -222,3 +222,9 @@ class Point:
     def lat(self) -> float:
         """Latitude in radians."""
         return radians(self.latitude)
+
+
+    @property
+    def lon(self) -> float:
+        """Longitude in radians."""
+        return radians(self.longitude)
