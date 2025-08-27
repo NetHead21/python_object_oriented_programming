@@ -118,3 +118,6 @@ class Point:
         >>> str(point)  # "(37°51.6500'N, 122°12.5000'W)"
         >>> point.lat  # Latitude in radians
     """
+
+    latitude: float
+    longitude: float
