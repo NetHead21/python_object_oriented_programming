@@ -544,3 +544,34 @@ class LogProcessor:
 
         self.log_entries = log_entries
         self.time_convert = IntervalAdapter()
+
+    def report(self) -> None:
+        """
+        Generate and display a formatted report of log entries with time intervals.
+
+        The report shows each log entry with:
+        - Time interval in seconds (formatted to 1 decimal places)
+        - Severity level (padded to 6 characters for alignment)
+        - Original message
+
+        Time intervals are calculated relative to:
+        - The first entry initially
+        - The most recent ERROR entry when encountered (resets reference point)
+
+        This behavior helps highlight timing around error conditions by showing
+        how much time elapsed since the error occurred.
+
+        Output format: "{interval:7.2f} | {severity:7s} | {message}"
+
+        Example:
+            >>> entries = [
+            ...     ("119999", "INFO", "Started"),
+            ...     ("120029", "ERROR", "Failed"),
+            ...     ("120044", "INFO", "Recovered")
+            ... ]
+            >>> processor = LogProcessor(entries)
+            >>> processor.report()
+                -1.00 | INFO    | Started
+                -1.00 | ERROR   | Failed
+               14.00 | INFO    | Recovered
+        """
