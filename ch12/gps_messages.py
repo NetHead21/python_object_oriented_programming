@@ -201,3 +201,18 @@ class Point:
         Returns:
             str: Formatted string like "(37°51.6500'N, 122°12.5000'W)"
         """
+        
+        lat = abs(self.latitude)
+        lat_deg = floor(lat)
+        lat_min = (lat - lat_deg) * 60
+        lat_dir = "N" if self.latitude >= 0 else "S"
+
+        lon = abs(self.longitude)
+        lon_deg = floor(lon)
+        lon_min = (lon - lon_deg) * 60
+        lon_dir = "E" if self.longitude >= 0 else "W"
+
+        return (
+            f"({lat_deg:02.0f}°{lat_min:07.4f}'{lat_dir}, "
+            f"{lon_deg:03.0f}°{lon_min:07.4f}'{lon_dir})"
+        )
