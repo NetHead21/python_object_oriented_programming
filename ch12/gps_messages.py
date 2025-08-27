@@ -228,3 +228,15 @@ class Point:
     def lon(self) -> float:
         """Longitude in radians."""
         return radians(self.longitude)
+
+
+    def distance_to(self, other: "Point") -> float:
+        """
+        Calculate great circle distance to another point using haversine formula.
+
+        Args:
+            other (Point): Target point
+
+        Returns:
+            float: Distance in kilometers
+        """
