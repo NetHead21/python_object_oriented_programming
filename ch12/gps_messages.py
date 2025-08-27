@@ -79,3 +79,8 @@ class GPSParsingError(Exception):
     """Raised when GPS message parsing fails due to invalid format."""
 
     pass
+
+class GPSValidationError(Exception):
+    """Raised when GPS data validation fails."""
+
+    pass
