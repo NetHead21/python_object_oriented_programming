@@ -490,3 +490,35 @@ class IntervalAdapter:
 ia = IntervalAdapter()
 print(ia.time_offset("000122", "020304"))
 print(ia.time_offset("000122", "030405"))
+
+
+class LogProcessor:
+    """
+    Log entry processor that calculates and displays time intervals for log analysis.
+
+    This class processes a list of log entries and displays them with calculated
+    time intervals. It uses adaptive time interval calculation to show relative
+    timing from ERROR events or the beginning of the log sequence. This is useful
+    for analyzing system events and understanding timing relationships in logs.
+
+    The processor automatically adjusts the reference time to ERROR events when
+    they occur, providing context for understanding error-related timing patterns.
+
+    Attributes:
+        log_entries (list[tuple[str, str, str]]): List of (time, severity, message) tuples
+        time_convert (IntervalAdapter): Adapter for efficient time interval calculations
+
+    Example:
+        >>> log_data = [
+        ...     ("119999", "INFO", "System started"),
+        ...     ("120029", "INFO", "Loading modules"),
+        ...     ("120044", "ERROR", "Module failed"),
+        ...     ("120049", "INFO", "Retrying module"),
+        ... ]
+        >>> processor = LogProcessor(log_data)
+        >>> processor.report()
+            -1.00 | INFO    | System started
+           29.00 | INFO    | Loading modules
+            -1.00 | ERROR   | Module failed
+            4.00 | INFO    | Retrying module
+    """
