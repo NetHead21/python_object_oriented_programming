@@ -188,3 +188,8 @@ class Point:
             lon_sign = 1 if E_W.upper() == b"E" else -1
 
             return cls(lat_decimal * lat_sign, lon_decimal * lon_sign)
+        
+        except ValueError as e:
+            raise GPSParsingError(f"Failed to parse coordinates: {e}")
+        except Exception as e:
+            raise GPSParsingError(f"Unexpected error parsing coordinates: {e}")
