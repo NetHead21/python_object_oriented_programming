@@ -541,3 +541,6 @@ class LogProcessor:
             ... ]
             >>> processor = LogProcessor(entries)
         """
+
+        self.log_entries = log_entries
+        self.time_convert = IntervalAdapter()
