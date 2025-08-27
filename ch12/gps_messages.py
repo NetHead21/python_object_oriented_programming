@@ -169,3 +169,22 @@ class Point:
             >>> Point.from_bytes(b"3751.65", b"S", b"14507.36", b"E")
             Point(latitude=-37.8608333, longitude=145.1226667)
         """
+
+        try:
+            # Parse latitude (DDMM.MMMM format)
+            if len(latitude) < 4:
+                raise GPSParsingError(f"Latitude field too short: {latitude}")
+            lat_deg = float(latitude[:2])
+            lat_min = float(latitude[2:])
+            lat_decimal = lat_deg + lat_min / 60.0
+            lat_sign = 1 if N_S.upper() == b"N" else -1
+
+            # Parse longitude (DDDMM.MMMM format)
+            if len(longitude) < 5:
+                raise GPSParsingError(f"Longitude field too short: {longitude}")
+            lon_deg = float(longitude[:3])
+            lon_min = float(longitude[3:])
+            lon_decimal = lon_deg + lon_min / 60.0
+            lon_sign = 1 if E_W.upper() == b"E" else -1
+
+            return cls(lat_decimal * lat_sign, lon_decimal * lon_sign)
