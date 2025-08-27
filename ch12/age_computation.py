@@ -582,3 +582,15 @@ class LogProcessor:
                 first_time = log_time
             interval = self.time_convert.time_offset(first_time, log_time)
             print(f"{interval:7.2f} | {severity:7s} | {message}")
+
+
+data = [
+    ("000122", "INFO", "Gila Flats 1959-08-20"),
+    ("000141", "INFO", "test block 15"),
+    ("004200", "ERROR", "intrinsic field chamber door locked"),
+    ("004207.11", "INFO", "generator power active"),
+    ("004231.33", "WARNING", "extra mass detected"),
+]
+
+lp = LogProcessor(data)
+lp.report()
