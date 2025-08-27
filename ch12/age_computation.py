@@ -522,3 +522,22 @@ class LogProcessor:
             -1.00 | ERROR   | Module failed
             4.00 | INFO    | Retrying module
     """
+
+    def __init__(self, log_entries: list[tuple[str, str, str]]) -> None:
+        """
+        Initialize the log processor with a list of log entries.
+
+        Args:
+            log_entries (list[tuple[str, str, str]]): List of log entries where each
+                entry is a tuple of (time_string, severity_level, message).
+                Time should be in HHMMSS format, severity is typically
+                INFO/WARNING/ERROR, and message is the log content.
+
+        Example:
+            >>> entries = [
+            ...     ("89999", "INFO", "Application started"),
+            ...     ("90014", "WARNING", "Low memory"),
+            ...     ("90029", "ERROR", "Connection failed"),
+            ... ]
+            >>> processor = LogProcessor(entries)
+        """
