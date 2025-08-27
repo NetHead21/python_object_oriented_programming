@@ -201,7 +201,7 @@ class Point:
         Returns:
             str: Formatted string like "(37°51.6500'N, 122°12.5000'W)"
         """
-        
+
         lat = abs(self.latitude)
         lat_deg = floor(lat)
         lat_min = (lat - lat_deg) * 60
@@ -216,3 +216,9 @@ class Point:
             f"({lat_deg:02.0f}°{lat_min:07.4f}'{lat_dir}, "
             f"{lon_deg:03.0f}°{lon_min:07.4f}'{lon_dir})"
         )
+
+
+    @property
+    def lat(self) -> float:
+        """Latitude in radians."""
+        return radians(self.latitude)
