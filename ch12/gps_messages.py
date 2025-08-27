@@ -94,3 +94,27 @@ class GPSError(Exception):
     """
 
     pass
+
+
+@dataclass(frozen=True)
+class Point:
+    """
+    Represents a geographic point with latitude and longitude coordinates.
+
+    This immutable dataclass provides conversion from NMEA GPS message byte fields
+    to decimal degrees, along with string formatting and coordinate validation.
+    Supports both decimal degrees and degrees/minutes formats.
+
+    Coordinate Ranges:
+    - Latitude: -90.0 to +90.0 degrees (S to N)
+    - Longitude: -180.0 to +180.0 degrees (W to E)
+
+    Attributes:
+        latitude (float): Latitude in decimal degrees (-90 to +90)
+        longitude (float): Longitude in decimal degrees (-180 to +180)
+
+    Example:
+        >>> point = Point(37.8608, -122.2083)  # San Francisco
+        >>> str(point)  # "(37°51.6500'N, 122°12.5000'W)"
+        >>> point.lat  # Latitude in radians
+    """
