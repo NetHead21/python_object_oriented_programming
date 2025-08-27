@@ -141,3 +141,31 @@ class Point:
             raise GPSValidationError(
                 f"Longitude {self.longitude} out of range (-180 to +180)"
             )
+
+    @classmethod
+    def from_bytes(
+        cls, latitude: bytes, N_S: bytes, longitude: bytes, E_W: bytes
+    ) -> "Point":
+        """
+        Convert NMEA latitude/longitude byte fields to a Point.
+
+        NMEA format uses DDMM.MMMM for latitude and DDDMM.MMMM for longitude,
+        where DD/DDD are degrees and MM.MMMM are decimal minutes.
+
+        Args:
+            latitude (bytes): Latitude in DDMM.MMMM format (e.g., b"3751.65")
+            N_S (bytes): North/South indicator (b"N" or b"S")
+            longitude (bytes): Longitude in DDDMM.MMMM format (e.g., b"12158.34")
+            E_W (bytes): East/West indicator (b"E" or b"W")
+
+        Returns:
+            Point: Geographic point with decimal degree coordinates
+
+        Raises:
+            GPSParsingError: If byte fields cannot be parsed
+            GPSValidationError: If coordinates are out of valid range
+
+        Example:
+            >>> Point.from_bytes(b"3751.65", b"S", b"14507.36", b"E")
+            Point(latitude=-37.8608333, longitude=145.1226667)
+        """
