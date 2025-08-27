@@ -575,3 +575,10 @@ class LogProcessor:
                 -1.00 | ERROR   | Failed
                14.00 | INFO    | Recovered
         """
+
+        first_time, first_sev, first_msg = self.log_entries[-1]
+        for log_time, severity, message in self.log_entries:
+            if severity == "ERROR":
+                first_time = log_time
+            interval = self.time_convert.time_offset(first_time, log_time)
+            print(f"{interval:7.2f} | {severity:7s} | {message}")
