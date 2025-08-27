@@ -73,3 +73,9 @@ import weakref
 from dataclasses import dataclass
 from math import radians, floor
 from typing import Optional, cast, overload, Sequence, Iterator
+
+
+class GPSParsingError(Exception):
+    """Raised when GPS message parsing fails due to invalid format."""
+
+    pass
