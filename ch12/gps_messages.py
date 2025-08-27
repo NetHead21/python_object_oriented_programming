@@ -84,3 +84,13 @@ class GPSValidationError(Exception):
     """Raised when GPS data validation fails."""
 
     pass
+
+class GPSError(Exception):
+    """
+    Base class for GPS-related errors.
+
+    This serves as the parent class for all GPS-specific exceptions,
+    allowing for comprehensive error handling in GPS processing pipelines.
+    """
+
+    pass
