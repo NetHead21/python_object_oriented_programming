@@ -193,3 +193,11 @@ class Point:
             raise GPSParsingError(f"Failed to parse coordinates: {e}")
         except Exception as e:
             raise GPSParsingError(f"Unexpected error parsing coordinates: {e}")
+
+    def __str__(self) -> str:
+        """
+        Format coordinates as human-readable degrees/minutes string.
+
+        Returns:
+            str: Formatted string like "(37°51.6500'N, 122°12.5000'W)"
+        """
