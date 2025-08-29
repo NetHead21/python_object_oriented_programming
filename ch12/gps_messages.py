@@ -285,3 +285,15 @@ class Buffer(Sequence[int]):
             bytes: Byte sequence for slice index
         """
         return self.content[index]
+
+    def find_next(self, byte_val: int, start: int = 0) -> int:
+        """
+        Find next occurrence of a byte value.
+
+        Args:
+            byte_val: Byte value to search for (0-255)
+            start: Starting position for search
+
+        Returns:
+            int: Index of next occurrence, or -1 if not found
+        """
