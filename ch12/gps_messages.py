@@ -257,3 +257,26 @@ class Point:
         c = 2 * atan2(sqrt(a), sqrt(1 - a))
 
         return R * c
+
+
+class Buffer(Sequence[int]):
+    """
+    Buffer abstraction for byte-wise access to GPS message data.
+
+    This class wraps a bytes object and provides sequence-like access with both
+    integer access (for individual byte values) and slice access (for byte ranges).
+    It's designed to work efficiently with GPS message parsing where you need to
+    examine individual bytes and extract field ranges.
+
+    The buffer supports:
+    - Integer indexing: Returns byte value as int (0-255)
+    - Slice indexing: Returns bytes object for the slice
+    - Length operations and iteration
+    - Memory-efficient reference to underlying bytes
+
+    Example:
+        >>> buf = Buffer(b"$GPGLL,3751.65,S*77")
+        >>> buf[0]  # Returns 36 (ASCII for '$')
+        >>> buf[1:6]  # Returns b'GPGLL'
+        >>> len(buf)  # Returns 19
+    """
