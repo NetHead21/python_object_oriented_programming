@@ -453,3 +453,10 @@ class Message(abc.ABC):
             GPSValidationError: If coordinates are out of valid range
             RuntimeError: If required fields are missing
         """
+
+        try:
+            return Point.from_bytes(
+                self.latitude(), self.lat_n_s(), self.longitude(), self.lon_e_w()
+            )
+        except (IndexError, RuntimeError) as e:
+            raise GPSError(f"Failed to extract coordinates: {e}")
