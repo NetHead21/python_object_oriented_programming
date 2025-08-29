@@ -294,3 +294,7 @@ class Buffer(Sequence[int]):
         if not isinstance(content, bytes):
             raise TypeError(f"Buffer content must be bytes, got {type(content)}")
         self.content = content
+
+    def __len__(self) -> int:
+        """Return the length of the buffer."""
+        return len(self.content)
