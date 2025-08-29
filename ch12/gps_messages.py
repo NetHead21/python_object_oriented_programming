@@ -394,3 +394,25 @@ class Message(abc.ABC):
             )
 
         return self
+
+    def __getitem__(self, field: int) -> bytes:
+        """
+        Extract a field from the GPS message by index.
+
+        Fields are zero-indexed, with field 0 being the message type (after the '$').
+        This method provides safe bounds checking and handles the last field correctly.
+
+        Args:
+            field (int): Zero-based field index
+
+        Returns:
+            bytes: The field content as bytes
+
+        Raises:
+            RuntimeError: If buffer reference is broken
+            IndexError: If field index is out of range
+
+        Example:
+            >>> msg[0]  # b'GPGLL' (message type)
+            >>> msg[1]  # b'3751.65' (first data field)
+        """
