@@ -416,3 +416,8 @@ class Message(abc.ABC):
             >>> msg[0]  # b'GPGLL' (message type)
             >>> msg[1]  # b'3751.65' (first data field)
         """
+
+        if not hasattr(self, "buffer") or (buffer := self.buffer()) is None:
+            raise RuntimeError(
+                "Buffer reference broken - message may have been garbage collected"
+            )
