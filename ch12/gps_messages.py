@@ -428,3 +428,12 @@ class Message(abc.ABC):
             )
 
         start = self.commas[field] + 1
+
+        # Handle last field correctly (no trailing comma)
+        if field + 1 < len(self.commas):
+            end = self.commas[field + 1]
+        else:
+            # Shouldn't happen in well-formed messages, but handle gracefully
+            end = self.end if self.end is not None else len(buffer)
+
+        return buffer[start:end]
