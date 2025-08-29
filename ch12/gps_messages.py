@@ -333,3 +333,28 @@ class Message(abc.ABC):
         self.offset: int
         self.end: Optional[int]
         self.commas: list[int]
+
+    def from_buffer(self, buffer: Buffer, offset: int) -> "Message":
+        """
+        Parse message from buffer starting at the specified offset.
+
+        This method scans the buffer from the offset position, locating comma
+        separators and the asterisk checksum delimiter to identify field boundaries.
+        It builds a list of field positions for efficient random access.
+
+        Args:
+            buffer (Buffer): GPS message buffer
+            offset (int): Starting position of the message (usually at '$')
+
+        Returns:
+            Message: Self for method chaining
+
+        Raises:
+            GPSError: If message is incomplete or malformed
+            IndexError: If offset is out of buffer bounds
+
+        Example:
+            >>> buf = Buffer(b"$GPGLL,3751.65,S,14507.36,E*77")
+            >>> msg = GPGLL().from_buffer(buf, 0)
+            >>> msg.latitude()  # b'3751.65'
+        """
