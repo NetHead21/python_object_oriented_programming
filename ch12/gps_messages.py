@@ -421,3 +421,10 @@ class Message(abc.ABC):
             raise RuntimeError(
                 "Buffer reference broken - message may have been garbage collected"
             )
+
+        if field < 0 or field >= len(self.commas):
+            raise IndexError(
+                f"Field index {field} out of range (0-{len(self.commas) - 1})"
+            )
+
+        start = self.commas[field] + 1
