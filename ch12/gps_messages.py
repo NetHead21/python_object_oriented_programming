@@ -297,3 +297,7 @@ class Buffer(Sequence[int]):
         Returns:
             int: Index of next occurrence, or -1 if not found
         """
+        try:
+            return self.content.index(byte_val, start)
+        except ValueError:
+            return -1
