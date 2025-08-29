@@ -358,3 +358,6 @@ class Message(abc.ABC):
             >>> msg = GPGLL().from_buffer(buf, 0)
             >>> msg.latitude()  # b'3751.65'
         """
+
+        if not isinstance(buffer, Buffer):
+            raise TypeError(f"Expected Buffer, got {type(buffer)}")
