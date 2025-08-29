@@ -291,3 +291,6 @@ class Buffer(Sequence[int]):
         Raises:
             TypeError: If content is not bytes
         """
+        if not isinstance(content, bytes):
+            raise TypeError(f"Buffer content must be bytes, got {type(content)}")
+        self.content = content
