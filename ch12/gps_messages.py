@@ -361,3 +361,8 @@ class Message(abc.ABC):
 
         if not isinstance(buffer, Buffer):
             raise TypeError(f"Expected Buffer, got {type(buffer)}")
+
+        if offset < 0 or offset >= len(buffer):
+            raise IndexError(
+                f"Offset {offset} out of buffer range (0-{len(buffer) - 1})"
+            )
