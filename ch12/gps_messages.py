@@ -266,3 +266,9 @@ class Buffer(Sequence[int]):
     def __iter__(self) -> Iterator[int]:
         """Iterate over byte values as integers."""
         return iter(self.content)
+
+    @overload
+    def __getitem__(self, index: int) -> int: ...
+
+    @overload
+    def __getitem__(self, index: slice) -> bytes: ...
