@@ -371,3 +371,17 @@ class Message(abc.ABC):
         self.offset = offset
         self.commas = [offset]
         self.end = None
+
+        # Scan for field delimiters with safety limit
+        max_scan = min(offset + 82, len(buffer))
+        for index in range(offset, max_scan):
+            try:
+                byte_val = buffer[index]
+                if byte_val == ord(b","):
+                    self.commas.append(index)
+                elif byte_val == ord(b"*"):
+                    self.commas.append(index)
+                    self.end = index + 3
+                    break
+            except IndexError:
+                break
