@@ -385,3 +385,12 @@ class Message(abc.ABC):
                     break
             except IndexError:
                 break
+
+        if self.end is None:
+            raise GPSError(f"Incomplete message at offset {offset}")
+        if len(self.commas) < 2:
+            raise GPSError(
+                f"Invalid message format - too few fields at offset {offset}"
+            )
+
+        return self
