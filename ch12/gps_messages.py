@@ -301,3 +301,28 @@ class Buffer(Sequence[int]):
             return self.content.index(byte_val, start)
         except ValueError:
             return -1
+
+
+class Message(abc.ABC):
+    """
+    Abstract base class for GPS NMEA message parsing.
+
+    This class implements the Template Method pattern, defining the common structure
+    for parsing GPS messages while allowing subclasses to define specific field mappings.
+    It handles buffer management, field extraction, and coordinate conversion.
+
+    The class uses weak references to avoid circular dependencies with the buffer,
+    ensuring proper memory management in flyweight scenarios.
+
+    Key responsibilities:
+    - Parse message structure and locate field boundaries
+    - Extract individual fields with bounds checking
+    - Provide abstract interface for coordinate access
+    - Handle buffer lifetime through weak references
+
+    Subclasses must implement:
+    - latitude(): Return latitude field bytes
+    - lat_n_s(): Return latitude direction bytes
+    - longitude(): Return longitude field bytes
+    - lon_e_w(): Return longitude direction bytes
+    """
