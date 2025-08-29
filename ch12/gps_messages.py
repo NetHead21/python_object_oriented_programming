@@ -437,3 +437,19 @@ class Message(abc.ABC):
             end = self.end if self.end is not None else len(buffer)
 
         return buffer[start:end]
+
+    def get_fix(self) -> Point:
+        """
+        Extract geographic coordinates as a Point object.
+
+        This method calls the abstract coordinate methods defined by subclasses
+        and converts the raw NMEA byte fields into a validated Point object.
+
+        Returns:
+            Point: Geographic point with decimal degree coordinates
+
+        Raises:
+            GPSParsingError: If coordinate fields cannot be parsed
+            GPSValidationError: If coordinates are out of valid range
+            RuntimeError: If required fields are missing
+        """
