@@ -326,3 +326,10 @@ class Message(abc.ABC):
     - longitude(): Return longitude field bytes
     - lon_e_w(): Return longitude direction bytes
     """
+
+    def __init__(self) -> None:
+        """Initialize empty message ready for buffer parsing."""
+        self.buffer: weakref.ReferenceType[Buffer]
+        self.offset: int
+        self.end: Optional[int]
+        self.commas: list[int]
