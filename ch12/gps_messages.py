@@ -272,3 +272,16 @@ class Buffer(Sequence[int]):
 
     @overload
     def __getitem__(self, index: slice) -> bytes: ...
+
+    def __getitem__(self, index: int | slice) -> int | bytes:
+        """
+        Get buffer content by index or slice.
+
+        Args:
+            index: Integer index for single byte or slice for range
+
+        Returns:
+            int: Single byte value (0-255) for integer index
+            bytes: Byte sequence for slice index
+        """
+        return self.content[index]
