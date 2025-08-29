@@ -280,3 +280,14 @@ class Buffer(Sequence[int]):
         >>> buf[1:6]  # Returns b'GPGLL'
         >>> len(buf)  # Returns 19
     """
+
+    def __init__(self, content: bytes) -> None:
+        """
+        Initialize buffer with bytes content.
+
+        Args:
+            content (bytes): The raw GPS message data
+
+        Raises:
+            TypeError: If content is not bytes
+        """
