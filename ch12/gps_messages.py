@@ -366,3 +366,8 @@ class Message(abc.ABC):
             raise IndexError(
                 f"Offset {offset} out of buffer range (0-{len(buffer) - 1})"
             )
+
+        self.buffer = weakref.ref(buffer)
+        self.offset = offset
+        self.commas = [offset]
+        self.end = None
