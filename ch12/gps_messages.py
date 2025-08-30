@@ -476,3 +476,6 @@ class Message(abc.ABC):
         Returns:
             bool: True if checksum is valid or not present, False if invalid
         """
+
+        if not hasattr(self, "buffer") or (buffer := self.buffer()) is None:
+            return False
