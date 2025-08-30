@@ -499,3 +499,12 @@ class Message(abc.ABC):
             # Extract provided checksum
             if self.end is None or self.end <= star_pos + 1:
                 return False
+            provided_checksum = buffer[star_pos + 1 : self.end].decode(
+                "ascii", errors="ignore"
+            )
+
+            try:
+                expected_checksum = int(provided_checksum, 16)
+                return checksum == expected_checksum
+            except ValueError:
+                return False
