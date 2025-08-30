@@ -468,3 +468,11 @@ class Message(abc.ABC):
     def get_message_type(self) -> bytes:
         """Return the message type (e.g., b'GPGLL')."""
         return self[0]
+
+    def validate_checksum(self) -> bool:
+        """
+        Validate the NMEA checksum if present.
+
+        Returns:
+            bool: True if checksum is valid or not present, False if invalid
+        """
