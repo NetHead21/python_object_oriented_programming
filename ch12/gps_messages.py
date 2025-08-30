@@ -531,3 +531,35 @@ class Message(abc.ABC):
     def lon_e_w(self) -> bytes:
         """Return longitude direction (E/W) as bytes."""
         ...
+
+
+class GPGGA(Message):
+    """
+    GPS Fix Data message parser (GPGGA).
+
+    GPGGA provides essential GPS fix data including time, position, quality indicators,
+    and altitude information. This is one of the most comprehensive GPS message types.
+
+    Message Format:
+    $GPGGA,time,lat,lat_dir,lon,lon_dir,quality,sats,hdop,alt,alt_unit,geoid,geoid_unit,dgps_time,dgps_id*checksum
+
+    Field Mapping:
+    - Field 0: Message type (GPGGA)
+    - Field 1: UTC time (HHMMSS.SSS)
+    - Field 2: Latitude (DDMM.MMMM)
+    - Field 3: Latitude direction (N/S)
+    - Field 4: Longitude (DDDMM.MMMM)
+    - Field 5: Longitude direction (E/W)
+    - Field 6: GPS quality indicator (0=invalid, 1=GPS fix, 2=DGPS fix)
+    - Field 7: Number of satellites in use
+    - Field 8: Horizontal dilution of precision
+    - Field 9: Antenna altitude above mean sea level
+    - Field 10: Units of antenna altitude (M=meters)
+    - Field 11: Geoidal separation
+    - Field 12: Units of geoidal separation (M=meters)
+    - Field 13: Time since last DGPS update
+    - Field 14: DGPS station ID
+
+    Example:
+        $GPGGA,170834,4124.8963,N,08151.6838,W,1,05,1.5,280.2,M,-34.0,M,,*75
+    """
