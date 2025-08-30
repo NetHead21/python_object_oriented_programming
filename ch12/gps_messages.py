@@ -479,7 +479,7 @@ class Message(abc.ABC):
 
         if not hasattr(self, "buffer") or (buffer := self.buffer()) is None:
             return False
-        
+
         try:
             # Find the checksum after the '*'
             star_pos = None
@@ -508,3 +508,6 @@ class Message(abc.ABC):
                 return checksum == expected_checksum
             except ValueError:
                 return False
+
+        except (IndexError, UnicodeDecodeError):
+            return False
