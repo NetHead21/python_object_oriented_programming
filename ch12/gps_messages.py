@@ -460,3 +460,7 @@ class Message(abc.ABC):
             )
         except (IndexError, RuntimeError) as e:
             raise GPSError(f"Failed to extract coordinates: {e}")
+
+    def get_field_count(self) -> int:
+        """Return the number of fields in this message."""
+        return len(self.commas)
