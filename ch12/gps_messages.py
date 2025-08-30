@@ -487,4 +487,6 @@ class Message(abc.ABC):
                 if buffer[pos] == ord(b"*"):
                     star_pos = pos
                     break
-            
+                
+            if star_pos is None:
+                return True  # No checksum present
