@@ -479,3 +479,12 @@ class Message(abc.ABC):
 
         if not hasattr(self, "buffer") or (buffer := self.buffer()) is None:
             return False
+        
+        try:
+            # Find the checksum after the '*'
+            star_pos = None
+            for i, pos in enumerate(self.commas):
+                if buffer[pos] == ord(b"*"):
+                    star_pos = pos
+                    break
+            
