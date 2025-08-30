@@ -464,3 +464,7 @@ class Message(abc.ABC):
     def get_field_count(self) -> int:
         """Return the number of fields in this message."""
         return len(self.commas)
+
+    def get_message_type(self) -> bytes:
+        """Return the message type (e.g., b'GPGLL')."""
+        return self[0]
