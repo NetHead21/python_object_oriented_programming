@@ -495,3 +495,7 @@ class Message(abc.ABC):
             checksum = 0
             for i in range(self.offset + 1, star_pos):  # Skip the '$'
                 checksum ^= buffer[i]
+
+            # Extract provided checksum
+            if self.end is None or self.end <= star_pos + 1:
+                return False
