@@ -521,3 +521,8 @@ class Message(abc.ABC):
     def lat_n_s(self) -> bytes:
         """Return latitude direction (N/S) as bytes."""
         ...
+
+    @abc.abstractmethod
+    def longitude(self) -> bytes:
+        """Return longitude field as bytes."""
+        ...
