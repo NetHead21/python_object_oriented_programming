@@ -511,3 +511,8 @@ class Message(abc.ABC):
 
         except (IndexError, UnicodeDecodeError):
             return False
+
+    @abc.abstractmethod
+    def latitude(self) -> bytes:
+        """Return latitude field as bytes."""
+        ...
