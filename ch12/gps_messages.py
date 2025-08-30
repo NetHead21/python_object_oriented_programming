@@ -567,3 +567,7 @@ class GPGGA(Message):
     def latitude(self) -> bytes:
         """Return latitude field (DDMM.MMMM format)."""
         return self[2]
+
+    def lat_n_s(self) -> bytes:
+        """Return latitude direction (N or S)."""
+        return self[3]
