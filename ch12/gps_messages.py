@@ -526,3 +526,8 @@ class Message(abc.ABC):
     def longitude(self) -> bytes:
         """Return longitude field as bytes."""
         ...
+
+    @abc.abstractmethod
+    def lon_e_w(self) -> bytes:
+        """Return longitude direction (E/W) as bytes."""
+        ...
