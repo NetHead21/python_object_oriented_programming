@@ -607,3 +607,9 @@ class GPGGA(Message):
 raw = Buffer(b"$GPGGA,170834,4124.8963,N,08151.6838,W,1,05,1.5,280.2,M,-34.0,M,,*75")
 m = GPGGA()
 print(m.from_buffer(raw, 0))
+
+fix = m.get_fix()
+print(fix)
+
+print(fix.latitude, fix.longitude)
+print(fix.latitude, fix.longitude)
