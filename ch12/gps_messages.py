@@ -595,3 +595,10 @@ class GPGGA(Message):
             return int(self[6])
         except (ValueError, IndexError):
             return 0
+
+    def get_satellite_count(self) -> int:
+        """Return number of satellite in use."""
+        try:
+            return int(self[7])
+        except (ValueError, IndexError):
+            return 0
