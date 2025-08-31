@@ -583,3 +583,15 @@ class GPGGA(Message):
     def get_time(self) -> bytes:
         """Return UTC time field (HHMMSS.SSS format)."""
         return self[1]
+
+    def get_quality(self) -> int:
+        """
+        Return GPS quality indicator.
+
+        Returns:
+            int: 0=invalid, 1=GPS fix, 2=DGPS fix, 3=PPS fix, etc.
+        """
+        try:
+            return int(self[6])
+        except (ValueError, IndexError):
+            return 0
