@@ -935,3 +935,11 @@ class Client:
     def __init__(self, buffer: Buffer) -> None:
         """Initialize client with GPS message buffer."""
         self.buffer = buffer
+
+    def scan(self) -> None:
+        """
+        Scan the buffer for GPS messages and print their geographic fixes.
+
+        This is a simplified scanning method that prints fixes as they're found.
+        For more control and error handling, use GPSMessageScanner.
+        """
