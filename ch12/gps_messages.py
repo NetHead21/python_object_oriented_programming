@@ -724,3 +724,15 @@ class GPRMC(Message):
     def get_status(self) -> bytes:
         """Return status field (A=valid, V=invalid)."""
         return self[2]
+
+    def get_speed(self) -> float:
+        """
+        Return speed over ground in knots.
+
+        Returns:
+            float: Speed in knots, or 0.0 if invalid
+        """
+        try:
+            return float(self[7])
+        except (ValueError, IndexError):
+            return 0.0
