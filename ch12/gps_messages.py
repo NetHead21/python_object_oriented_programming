@@ -892,7 +892,12 @@ class GPSMessageScanner:
                         else:
                             break
                 else:
-                    pass
+                    # Unknown message type - skip to next
+                    end = self.buffer.find_next(ord(b"*"), start)
+                    if end != -1:
+                        end += 3
+                    else:
+                        break
             except Exception as e:
                 pass
 
