@@ -911,3 +911,14 @@ class GPSMessageScanner:
         Returns:
             dict: Statistics including message counts and error rates
         """
+
+        return {
+            "processed_messages": self.processed_count,
+            "error_count": self.error_count,
+            "message_types": dict(self.message_types),
+            "success_rate": (
+                self.processed_count / (self.processed_count + self.error_count) * 100
+            )
+            if (self.processed_count + self.error_count) > 0
+            else 0.0,
+        }
