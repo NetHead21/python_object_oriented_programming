@@ -865,6 +865,9 @@ class GPSMessageScanner:
                                 )
                             end = cast(int, message.end)
                             continue
+
+                        fix = message.get_fix()
+                        fixes.append(fix)
                     except Exception as e:
                         pass
                 else:
