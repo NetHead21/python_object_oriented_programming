@@ -819,3 +819,17 @@ class GPSMessageScanner:
         self.processed_count = 0
         self.error_count = 0
         self.message_types: dict[bytes, int] = {}
+
+    def scan_all(
+        self, print_fixes: bool = True, validate_checksums: bool = False
+    ) -> list[Point]:
+        """
+        Scan buffer for all GPS messages and extract position fixes.
+
+        Args:
+            print_fixes (bool): Whether to print each fix as it's found
+            validate_checksums (bool): Whether to validate NMEA checksums
+
+        Returns:
+            list[Point]: List of all valid position fixes found
+        """
