@@ -876,6 +876,11 @@ class GPSMessageScanner:
                         fix = message.get_fix()
                         fixes.append(fix)
 
+                        if print_fixes:
+                            print(f"{header.decode()}: {fix}")
+
+                        end = cast(int, message.end)
+
                     except Exception as e:
                         pass
                 else:
