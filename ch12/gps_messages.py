@@ -669,3 +669,34 @@ class GPGLL(Message):
             return self[6] if len(self[6]) > 0 else None
         except IndexError:
             return None
+
+
+class GPRMC(Message):
+    """
+    Recommended Minimum Specific GPS/Transit Data message parser (GPRMC).
+
+    GPRMC provides the recommended minimum data for GPS positioning, including
+    position, velocity, time, and date. This is often considered the most important
+    GPS message as it contains essential navigation data.
+
+    Message Format:
+    $GPRMC,time,status,lat,lat_dir,lon,lon_dir,speed,course,date,mag_var,var_dir,mode*checksum
+
+    Field Mapping:
+    - Field 0: Message type (GPRMC)
+    - Field 1: UTC time (HHMMSS.SSS)
+    - Field 2: Status (A=valid, V=invalid)
+    - Field 3: Latitude (DDMM.MMMM)
+    - Field 4: Latitude direction (N/S)
+    - Field 5: Longitude (DDDMM.MMMM)
+    - Field 6: Longitude direction (E/W)
+    - Field 7: Speed over ground (knots)
+    - Field 8: Course over ground (degrees true)
+    - Field 9: Date (DDMMYY)
+    - Field 10: Magnetic variation (degrees)
+    - Field 11: Direction of magnetic variation (E/W)
+    - Field 12: Mode (A=autonomous, D=differential, E=estimated)
+
+    Example:
+        $GPRMC,225446,A,4916.45,N,12311.12,W,000.5,054.7,191194,020.3,E*68
+    """
