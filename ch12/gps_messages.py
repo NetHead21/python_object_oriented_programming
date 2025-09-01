@@ -866,8 +866,16 @@ class GPSMessageScanner:
                             end = cast(int, message.end)
                             continue
 
+                        # Update statistics
+                        self.processed_count += 1
+                        msg_type = message.get_message_type()
+                        self.message_types[msg_type] = (
+                            self.message_types.get(msg_type, 0) + 1
+                        )
+
                         fix = message.get_fix()
                         fixes.append(fix)
+
                     except Exception as e:
                         pass
                 else:
