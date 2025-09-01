@@ -946,3 +946,10 @@ class Client:
 
         scanner = GPSMessageScanner(self.buffer)
         scanner.scan_all(print_fixes=True, validate_checksums=False)
+
+        # Print summary
+        stats = scanner.get_statistics()
+        print(
+            f"\nScan complete: {stats['processed_messages']} messages processed, "
+            f"{stats['error_count']} errors"
+        )
