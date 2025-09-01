@@ -736,3 +736,15 @@ class GPRMC(Message):
             return float(self[7])
         except (ValueError, IndexError):
             return 0.0
+
+    def get_course(self) -> float:
+        """
+        Return course over ground in degrees true.
+
+        Returns:
+            float: Course in degrees (0-360), or 0.0 if invalid
+        """
+        try:
+            return float(self[8])
+        except (ValueError, IndexError):
+            return 0.0
