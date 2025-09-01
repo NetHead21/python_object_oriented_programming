@@ -881,7 +881,7 @@ class GPSMessageScanner:
 
                         end = cast(int, message.end)
 
-                    except Exception as e:
+                    except (GPSError, GPSParsingError, GPSValidationError) as e:
                         pass
                 else:
                     pass
