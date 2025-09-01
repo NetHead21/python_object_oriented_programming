@@ -833,3 +833,14 @@ class GPSMessageScanner:
         Returns:
             list[Point]: List of all valid position fixes found
         """
+
+        fixes = []
+        end = 0
+
+        while True:
+            try:
+                pass
+            except Exception as e:
+                pass
+
+        return fixes
