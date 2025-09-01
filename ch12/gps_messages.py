@@ -806,3 +806,11 @@ class GPSMessageScanner:
     This class provides robust scanning of GPS message buffers with detailed
     error reporting, message counting, and flexible processing options.
     """
+
+    def __init__(self, buffer: Buffer) -> None:
+        """
+        Initialize scanner with GPS message buffer.
+
+        Args:
+            buffer (Buffer): Buffer containing GPS messages
+        """
