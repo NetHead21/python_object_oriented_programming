@@ -704,3 +704,7 @@ class GPRMC(Message):
     def latitude(self) -> bytes:
         """Return latitude field (DDMM.MMMM format)."""
         return self[3]
+
+    def lat_n_s(self) -> bytes:
+        """Return latitude direction (N or S)."""
+        return self[4]
