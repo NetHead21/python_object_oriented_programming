@@ -712,3 +712,7 @@ class GPRMC(Message):
     def longitude(self) -> bytes:
         """Return longitude field (DDDMM.MMMM format)."""
         return self[5]
+
+    def lon_e_w(self) -> bytes:
+        """Return longitude direction (E or W)."""
+        return self[6]
