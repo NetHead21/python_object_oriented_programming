@@ -782,3 +782,18 @@ def message_factory(header: bytes) -> Optional[Message]:
         ...     msg = factory.from_buffer(buffer, 0)
         ...     fix = msg.get_fix()
     """
+
+    # Normalize header to uppercase for case-insensitive matching
+    header_upper = header.upper()
+
+    if header_upper == b"GPGGA":
+        return GPGGA()
+    elif header_upper == b"GPGLL":
+        return GPGLL()
+    elif header_upper == b"GPRMC":
+        return GPRMC()
+    else:
+        # Could be extended to support additional message types:
+        # GPGSA (Active satellites), GPGSV (Satellites in view),
+        # GPVTG (Track made good), etc.
+        return None
