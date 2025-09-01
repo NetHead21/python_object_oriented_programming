@@ -720,3 +720,7 @@ class GPRMC(Message):
     def get_time(self) -> bytes:
         """Return UTC time field (HHMMSS.SSS format)."""
         return self[1]
+
+    def get_status(self) -> bytes:
+        """Return status field (A=valid, V=invalid)."""
+        return self[2]
