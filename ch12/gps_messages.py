@@ -903,3 +903,11 @@ class GPSMessageScanner:
                 break
 
         return fixes
+
+    def get_statistics(self) -> dict:
+        """
+        Get scanning statistics.
+
+        Returns:
+            dict: Statistics including message counts and error rates
+        """
