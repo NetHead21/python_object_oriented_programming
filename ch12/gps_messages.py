@@ -700,3 +700,7 @@ class GPRMC(Message):
     Example:
         $GPRMC,225446,A,4916.45,N,12311.12,W,000.5,054.7,191194,020.3,E*68
     """
+
+    def latitude(self) -> bytes:
+        """Return latitude field (DDMM.MMMM format)."""
+        return self[3]
