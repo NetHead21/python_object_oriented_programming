@@ -797,3 +797,12 @@ def message_factory(header: bytes) -> Optional[Message]:
         # GPGSA (Active satellites), GPGSV (Satellites in view),
         # GPVTG (Track made good), etc.
         return None
+
+
+class GPSMessageScanner:
+    """
+    Enhanced GPS message scanner with comprehensive error handling and statistics.
+
+    This class provides robust scanning of GPS message buffers with detailed
+    error reporting, message counting, and flexible processing options.
+    """
