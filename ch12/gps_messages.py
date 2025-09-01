@@ -898,7 +898,8 @@ class GPSMessageScanner:
                         end += 3
                     else:
                         break
-            except Exception as e:
-                pass
+
+            except (ValueError, IndexError):
+                break
 
         return fixes
