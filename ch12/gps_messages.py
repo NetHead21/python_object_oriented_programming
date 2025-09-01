@@ -852,7 +852,11 @@ class GPSMessageScanner:
                 message = message_factory(header)
 
                 if message:
-                    pass
+                    try:
+                        # Parse message and extract fix
+                        message.from_buffer(self.buffer, start)
+                    except Exception as e:
+                        pass
                 else:
                     pass
             except Exception as e:
