@@ -931,3 +931,7 @@ class Client:
     This class provides a simple interface for scanning GPS message buffers.
     For more advanced features, use GPSMessageScanner instead.
     """
+
+    def __init__(self, buffer: Buffer) -> None:
+        """Initialize client with GPS message buffer."""
+        self.buffer = buffer
