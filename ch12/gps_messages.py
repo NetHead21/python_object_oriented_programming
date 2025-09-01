@@ -748,3 +748,10 @@ class GPRMC(Message):
             return float(self[8])
         except (ValueError, IndexError):
             return 0.0
+
+    def get_date(self) -> bytes:
+        """Return date field (DDMMYY format)."""
+        try:
+            return self[9]
+        except IndexError:
+            return b""
