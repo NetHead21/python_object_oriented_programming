@@ -814,3 +814,8 @@ class GPSMessageScanner:
         Args:
             buffer (Buffer): Buffer containing GPS messages
         """
+
+        self.buffer = buffer
+        self.processed_count = 0
+        self.error_count = 0
+        self.message_types: dict[bytes, int] = {}
