@@ -662,3 +662,10 @@ class GPGLL(Message):
             return self[5] if len(self[5]) > 0 else None
         except IndexError:
             return None
+
+    def get_status(self) -> Optional[bytes]:
+        """Return status field if present (A=valid, V=invalid)."""
+        try:
+            return self[6] if len(self[6]) > 0 else None
+        except IndexError:
+            return None
