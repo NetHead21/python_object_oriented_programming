@@ -848,6 +848,9 @@ class GPSMessageScanner:
                 if start + 6 >= len(self.buffer):
                     break
 
+                header = self.buffer[start + 1 : start + 6]
+                message = message_factory(header)
+
             except Exception as e:
                 pass
 
