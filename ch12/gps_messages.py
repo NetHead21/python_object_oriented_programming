@@ -855,6 +855,16 @@ class GPSMessageScanner:
                     try:
                         # Parse message and extract fix
                         message.from_buffer(self.buffer, start)
+
+                        # Validate checksum if requested
+                        if validate_checksums and not message.validate_checksum():
+                            self.error_count += 1
+                            if print_fixes:
+                                print(
+                                    f"Warning: Invalid checksum for {header.decode()}"
+                                )
+                            end = cast(int, message.end)
+                            continue
                     except Exception as e:
                         pass
                 else:
