@@ -882,7 +882,15 @@ class GPSMessageScanner:
                         end = cast(int, message.end)
 
                     except (GPSError, GPSParsingError, GPSValidationError) as e:
-                        pass
+                        self.error_count += 1
+                        if print_fixes:
+                            print(f"Error parsing {header.decode()}: {e}")
+                        # Try to find next message
+                        end = self.buffer.find_next(ord(b"*"), start)
+                        if end != -1:
+                            end += 3
+                        else:
+                            break
                 else:
                     pass
             except Exception as e:
