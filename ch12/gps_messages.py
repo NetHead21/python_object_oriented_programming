@@ -613,3 +613,29 @@ print(fix)
 
 print(fix.latitude, fix.longitude)
 print(fix.latitude, fix.longitude)
+
+
+class GPGLL(Message):
+    """
+    GPS Geographic Position - Latitude/Longitude message parser (GPGLL).
+
+    GPGLL provides geographic positioning data with time and status information.
+    This is a simpler message format focused on essential position data.
+
+    Message Format:
+    $GPGLL,lat,lat_dir,lon,lon_dir,time,status,mode*checksum
+
+    Field Mapping:
+    - Field 0: Message type (GPGLL)
+    - Field 1: Latitude (DDMM.MMMM)
+    - Field 2: Latitude direction (N/S)
+    - Field 3: Longitude (DDDMM.MMMM)
+    - Field 4: Longitude direction (E/W)
+    - Field 5: UTC time (HHMMSS.SSS) - optional
+    - Field 6: Status (A=valid, V=invalid) - optional
+    - Field 7: Mode (A=autonomous, D=differential, E=estimated) - optional
+
+    Example:
+        $GPGLL,3751.65,S,14507.36,E*77
+        $GPGLL,3723.2475,N,12158.3416,W,161229.487,A,A*41
+    """
