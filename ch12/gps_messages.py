@@ -922,3 +922,12 @@ class GPSMessageScanner:
             if (self.processed_count + self.error_count) > 0
             else 0.0,
         }
+
+
+class Client:
+    """
+    Simple client for scanning GPS messages (legacy interface).
+
+    This class provides a simple interface for scanning GPS message buffers.
+    For more advanced features, use GPSMessageScanner instead.
+    """
