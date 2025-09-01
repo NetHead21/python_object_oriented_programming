@@ -639,3 +639,7 @@ class GPGLL(Message):
         $GPGLL,3751.65,S,14507.36,E*77
         $GPGLL,3723.2475,N,12158.3416,W,161229.487,A,A*41
     """
+
+    def latitude(self) -> bytes:
+        """Return latitude field (DDMM.MMMM format)."""
+        return self[1]
