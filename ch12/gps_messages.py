@@ -755,3 +755,30 @@ class GPRMC(Message):
             return self[9]
         except IndexError:
             return b""
+
+
+def message_factory(header: bytes) -> Optional[Message]:
+    """
+    Factory function for creating GPS message objects based on message type header.
+
+    This function implements the flyweight pattern by creating lightweight message
+    objects that can be reused for parsing multiple messages of the same type.
+    The factory supports the most common GPS message formats.
+
+    Args:
+        header (bytes): Message type header (e.g., b"GPGGA", b"GPGLL", b"GPRMC")
+
+    Returns:
+        Optional[Message]: Message parser instance, or None if type not supported
+
+    Supported Message Types:
+        - GPGGA: GPS Fix Data (comprehensive position and quality data)
+        - GPGLL: Geographic Position (simple lat/lon with optional time)
+        - GPRMC: Recommended Minimum (position, velocity, time, date)
+
+    Example:
+        >>> factory = message_factory(b"GPGLL")
+        >>> if factory:
+        ...     msg = factory.from_buffer(buffer, 0)
+        ...     fix = msg.get_fix()
+    """
