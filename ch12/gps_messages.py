@@ -647,3 +647,7 @@ class GPGLL(Message):
     def lat_n_s(self) -> bytes:
         """Return latitude direction (N or S)."""
         return self[2]
+
+    def longitude(self) -> bytes:
+        """Return longitude field (DDDMM.MMMM format)."""
+        return self[3]
