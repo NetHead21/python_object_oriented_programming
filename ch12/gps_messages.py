@@ -943,3 +943,6 @@ class Client:
         This is a simplified scanning method that prints fixes as they're found.
         For more control and error handling, use GPSMessageScanner.
         """
+
+        scanner = GPSMessageScanner(self.buffer)
+        scanner.scan_all(print_fixes=True, validate_checksums=False)
