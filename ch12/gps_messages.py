@@ -655,3 +655,10 @@ class GPGLL(Message):
     def lon_e_w(self) -> bytes:
         """Return longitude direction (E or W)."""
         return self[4]
+
+    def get_time(self) -> Optional[bytes]:
+        """Return UTC time field if present (HHMMSS.SSS format)."""
+        try:
+            return self[5] if len(self[5]) > 0 else None
+        except IndexError:
+            return None
