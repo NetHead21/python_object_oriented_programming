@@ -843,6 +843,11 @@ class GPSMessageScanner:
                 start = self.buffer.find_next(ord(b"$"), end)
                 if start == -1:
                     break
+
+                # Extract message type header
+                if start + 6 >= len(self.buffer):
+                    break
+
             except Exception as e:
                 pass
 
