@@ -970,3 +970,14 @@ def main():
     print("=" * 70)
     print("GPS Message Parsing and Flyweight Pattern Demo")
     print("=" * 70)
+
+    # Example 1: Basic Point creation and formatting
+    print("\n1. Basic Point Operations:")
+    print("-" * 30)
+    try:
+        p = Point.from_bytes(b"4916.45", b"N", b"12311.12", b"W")
+        print(f"Point: {p}")
+        print(f"Radians: lat={p.lat:.6f}, lon={p.lon:.6f}")
+        print(f"Decimal: lat={p.latitude:.6f}, lon={p.longitude:.6f}")
+    except (GPSParsingError, GPSValidationError) as e:
+        print(f"Error creating point: {e}")
