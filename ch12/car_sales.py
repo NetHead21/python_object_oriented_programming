@@ -90,3 +90,5 @@ def test_setup(db_name: str = "sales.db") -> sqlite3.Connection:
         >>> conn = test_setup("my_sales.db")
         >>> conn.close()
     """
+
+    conn = sqlite3.connect(db_name)
