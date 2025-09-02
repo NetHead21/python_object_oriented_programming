@@ -1055,3 +1055,11 @@ def main():
     # Example 4: Multi-message buffer processing
     print("\n4. Multi-Message Buffer Processing:")
     print("-" * 40)
+
+    multi_buffer = Buffer(b"""
+    $GPGGA,161229.487,3723.2475,N,12158.3416,W,1,07,1.0,9.0,M,,,,0000*18
+    $GPGLL,3723.2475,N,12158.3416,W,161229.487,A,A*41
+    $GPGSA,A,3,07,02,26,27,09,04,15,,,,,,1.8,1.0,1.5*33
+    $GPVTG,309.62,T,,M,0.13,N,0.2,K,A*23
+    $GPRMC,161229.487,A,3723.2475,N,12158.3416,W,0.13,309.62,120598,,*10
+    """)
