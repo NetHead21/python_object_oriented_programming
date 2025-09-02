@@ -1002,3 +1002,15 @@ def main():
         print(f"  Checksum valid: {gpgga.validate_checksum()}")
     except GPSError as e:
         print(f"  Error: {e}")
+
+    # GPGLL example
+    print("\nGPGLL Message:")
+    raw_gpgll = Buffer(b"$GPGLL,3751.65,S,14507.36,E*77")
+    gpgll = GPGLL()
+    try:
+        gpgll.from_buffer(raw_gpgll, 0)
+        fix_gpgll = gpgll.get_fix()
+        print(f"  Fix: {fix_gpgll}")
+        print(f"  Checksum valid: {gpgll.validate_checksum()}")
+    except GPSError as e:
+        print(f"  Error: {e}")
