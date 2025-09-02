@@ -1033,3 +1033,7 @@ def main():
         )
     except GPSError as e:
         print(f"  Error: {e}")
+
+    # Example 3: Flyweight factory pattern
+    print("\n3. Flyweight Factory Pattern:")
+    print("-" * 35)
