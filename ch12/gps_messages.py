@@ -981,3 +981,7 @@ def main():
         print(f"Decimal: lat={p.latitude:.6f}, lon={p.longitude:.6f}")
     except (GPSParsingError, GPSValidationError) as e:
         print(f"Error creating point: {e}")
+
+    # Example 2: Individual message parsing
+    print("\n2. Individual Message Parsing:")
+    print("-" * 35)
