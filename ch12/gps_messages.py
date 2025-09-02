@@ -1068,3 +1068,18 @@ def main():
     print("Enhanced Scanner Results:")
     scanner = GPSMessageScanner(multi_buffer)
     fixes = scanner.scan_all(print_fixes=True, validate_checksums=True)
+
+    stats = scanner.get_statistics()
+    print("\nStatistics:")
+    print(f"  Total fixes found: {len(fixes)}")
+    print(f"  Messages processed: {stats['processed_messages']}")
+    print(f"  Errors encountered: {stats['error_count']}")
+    print(f"  Success rate: {stats['success_rate']:.1f}%")
+    print(f"  Message types: {stats['message_types']}")
+
+    # Example 5: Distance calculation
+    if len(fixes) >= 2:
+        print("\n5. Distance Calculation:")
+        print("-" * 25)
+        distance = fixes[0].distance_to(fixes[1])
+        print(f"Distance between first two fixes: {distance:.3f} km")
