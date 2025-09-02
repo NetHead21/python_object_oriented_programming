@@ -1087,3 +1087,9 @@ def main():
     # Example 6: Error handling demonstration
     print("\n6. Error Handling:")
     print("-" * 20)
+
+    # Invalid coordinate ranges
+    try:
+        Point(91.0, 0.0)  # Invalid latitude
+    except GPSValidationError as e:
+        print(f"Validation error caught: {e}")
