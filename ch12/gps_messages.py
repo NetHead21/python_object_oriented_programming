@@ -1093,3 +1093,11 @@ def main():
         Point(91.0, 0.0)  # Invalid latitude
     except GPSValidationError as e:
         print(f"Validation error caught: {e}")
+
+    # Invalid message format
+    try:
+        bad_buffer = Buffer(b"$GPGLL,invalid*77")
+        msg = GPGLL().from_buffer(bad_buffer, 0)
+        msg.get_fix()
+    except (GPSError, GPSParsingError) as e:
+        print(f"Parsing error caught: {e}")
