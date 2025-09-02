@@ -953,3 +953,16 @@ class Client:
             f"\nScan complete: {stats['processed_messages']} messages processed, "
             f"{stats['error_count']} errors"
         )
+
+
+# =============================================================================
+# DEMONSTRATION AND EXAMPLES
+# =============================================================================
+
+
+def main():
+    """
+    Comprehensive demonstration of GPS message parsing capabilities.
+
+    This function shows various usage patterns and features of the GPS parsing module.
+    """
