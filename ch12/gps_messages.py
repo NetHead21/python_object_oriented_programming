@@ -1083,3 +1083,7 @@ def main():
         print("-" * 25)
         distance = fixes[0].distance_to(fixes[1])
         print(f"Distance between first two fixes: {distance:.3f} km")
+
+    # Example 6: Error handling demonstration
+    print("\n6. Error Handling:")
+    print("-" * 20)
