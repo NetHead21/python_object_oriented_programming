@@ -1051,3 +1051,7 @@ def main():
             print(f"Same object reused: {fix1 is not fix2 and fix1 == fix2}")
         except GPSError as e:
             print(f"Error: {e}")
+
+    # Example 4: Multi-message buffer processing
+    print("\n4. Multi-Message Buffer Processing:")
+    print("-" * 40)
