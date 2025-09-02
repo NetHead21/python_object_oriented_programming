@@ -1014,3 +1014,22 @@ def main():
         print(f"  Checksum valid: {gpgll.validate_checksum()}")
     except GPSError as e:
         print(f"  Error: {e}")
+
+    # GPRMC example
+    print("\nGPRMC Message:")
+    raw_gprmc = Buffer(
+        b"$GPRMC,225446,A,4916.45,N,12311.12,W,000.5,054.7,191194,020.3,E*68"
+    )
+    gprmc = GPRMC()
+    try:
+        gprmc.from_buffer(raw_gprmc, 0)
+        fix_gprmc = gprmc.get_fix()
+        print(f"  Fix: {fix_gprmc}")
+        print(
+            f"  Speed: {gprmc.get_speed():.1f} knots, Course: {gprmc.get_course():.1f}°"
+        )
+        print(
+            f"  Status: {gprmc.get_status().decode()}, Date: {gprmc.get_date().decode()}"
+        )
+    except GPSError as e:
+        print(f"  Error: {e}")
