@@ -1101,3 +1101,11 @@ def main():
         msg.get_fix()
     except (GPSError, GPSParsingError) as e:
         print(f"Parsing error caught: {e}")
+
+    print("\n" + "=" * 70)
+    print("Demo completed successfully!")
+    print("=" * 70)
+
+
+if __name__ == "__main__":
+    main()
