@@ -985,3 +985,20 @@ def main():
     # Example 2: Individual message parsing
     print("\n2. Individual Message Parsing:")
     print("-" * 35)
+
+    # GPGGA example
+    print("GPGGA Message:")
+    raw_gpgga = Buffer(
+        b"$GPGGA,170834,4124.8963,N,08151.6838,W,1,05,1.5,280.2,M,-34.0,M,,*75"
+    )
+    gpgga = GPGGA()
+    try:
+        gpgga.from_buffer(raw_gpgga, 0)
+        fix_gpgga = gpgga.get_fix()
+        print(f"  Fix: {fix_gpgga}")
+        print(
+            f"  Quality: {gpgga.get_quality()}, Satellites: {gpgga.get_satellite_count()}"
+        )
+        print(f"  Checksum valid: {gpgga.validate_checksum()}")
+    except GPSError as e:
+        print(f"  Error: {e}")
