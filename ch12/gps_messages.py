@@ -1037,3 +1037,17 @@ def main():
     # Example 3: Flyweight factory pattern
     print("\n3. Flyweight Factory Pattern:")
     print("-" * 35)
+
+    buffer = Buffer(b"$GPGLL,3751.65,S,14507.36,E*77")
+    flyweight = message_factory(buffer[1:6])
+    if flyweight:
+        print(f"Created: {flyweight.__class__.__name__}")
+        try:
+            parsed_msg = flyweight.from_buffer(buffer, 0)
+            fix1 = parsed_msg.get_fix()
+            fix2 = parsed_msg.get_fix()  # Reusing same flyweight
+            print(f"Fix 1: {fix1}")
+            print(f"Fix 2: {fix2}")
+            print(f"Same object reused: {fix1 is not fix2 and fix1 == fix2}")
+        except GPSError as e:
+            print(f"Error: {e}")
