@@ -1063,3 +1063,8 @@ def main():
     $GPVTG,309.62,T,,M,0.13,N,0.2,K,A*23
     $GPRMC,161229.487,A,3723.2475,N,12158.3416,W,0.13,309.62,120598,,*10
     """)
+
+    # Using enhanced scanner
+    print("Enhanced Scanner Results:")
+    scanner = GPSMessageScanner(multi_buffer)
+    fixes = scanner.scan_all(print_fixes=True, validate_checksums=True)
