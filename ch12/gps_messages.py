@@ -966,3 +966,7 @@ def main():
 
     This function shows various usage patterns and features of the GPS parsing module.
     """
+
+    print("=" * 70)
+    print("GPS Message Parsing and Flyweight Pattern Demo")
+    print("=" * 70)
