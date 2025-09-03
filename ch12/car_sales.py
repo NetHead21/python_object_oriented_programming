@@ -148,3 +148,6 @@ def test_setup(db_name: str = "sales.db") -> sqlite3.Connection:
         VALUES('Jason', 20000, 2008, 'Toyota Prius', 'false')
         """
     )
+
+    conn.commit()
+    return conn
