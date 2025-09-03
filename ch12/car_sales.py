@@ -208,3 +208,14 @@ class QueryTemplate:
         self.results: list[tuple[str, ...]]
         self.query: str
         self.header: list[str]
+
+    def connect(self) -> None:
+        """
+        Establish connection to the SQLite database.
+
+        Creates a connection to the database specified in db_name.
+        This method is called automatically by process_format().
+
+        Raises:
+            sqlite3.Error: If database connection fails.
+        """
