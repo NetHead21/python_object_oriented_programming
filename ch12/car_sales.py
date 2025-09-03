@@ -104,3 +104,9 @@ def test_setup(db_name: str = "sales.db") -> sqlite3.Connection:
             );
         """
     )
+
+    conn.execute(
+        """
+        DELETE FROM Sales
+        """
+    )
