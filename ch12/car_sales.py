@@ -110,3 +110,10 @@ def test_setup(db_name: str = "sales.db") -> sqlite3.Connection:
         DELETE FROM Sales
         """
     )
+
+    conn.execute(
+        """
+        INSERT INTO Sales 
+        VALUES('Tim', 16000, 2010, 'Honda Fit', 'true')
+        """
+    )
