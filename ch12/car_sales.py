@@ -316,3 +316,33 @@ class QueryTemplate:
         self.do_query()
         with self.output_context():
             self.output_results()
+
+
+class NewVehiclesQuery(QueryTemplate):
+    """
+    Query implementation for filtering new vehicle sales.
+
+    This class extends QueryTemplate to provide a specific query that filters
+    the Sales table to show only new vehicle sales (where new = 'true').
+    The results are output to stdout in CSV format.
+
+    Inherits:
+        QueryTemplate: Base template for database query operations
+
+    Query Details:
+        - Filters Sales table for new vehicles only
+        - Returns all columns for matching records
+        - Headers: ["salesperson", "amt", "year", "model", "new"]
+
+    Example:
+        >>> # Set up database with sample data
+        >>> test_setup()
+        >>>
+        >>> # Query and display new vehicle sales
+        >>> query = NewVehiclesQuery()
+        >>> query.process_format()
+        salesperson,amt,year,model,new
+        Tim,16000,2010,Honda Fit,true
+        Hannah,28000,2009,Ford Mustang,true
+        Hannah,50000,2010,Lincoln Navigator,true
+    """
