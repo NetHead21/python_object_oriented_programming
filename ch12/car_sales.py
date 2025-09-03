@@ -92,3 +92,15 @@ def test_setup(db_name: str = "sales.db") -> sqlite3.Connection:
     """
 
     conn = sqlite3.connect(db_name)
+
+    conn.execute(
+        """
+        CREATE TABLE IF NOT EXISTS Sales(
+            salesperson text,
+            amt currency,
+            year integer,
+            model text,
+            new boolean
+            );
+        """
+    )
