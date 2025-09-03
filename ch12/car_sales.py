@@ -292,3 +292,22 @@ class QueryTemplate:
         writer = csv.writer(self.target_file)
         writer.writerow(self.header)
         writer.writerows(self.results)
+
+    def process_format(self) -> None:
+        """
+        Template method that orchestrates the complete query processing workflow.
+
+        This is the main method that coordinates all steps:
+        1. Connect to database
+        2. Construct query (delegated to subclass)
+        3. Execute query and fetch results
+        4. Output results with proper context management
+
+        This method implements the Template Method pattern, providing
+        a fixed algorithm structure while allowing customization of
+        specific steps through method overriding.
+
+        Example:
+            >>> query = NewVehiclesQuery()
+            >>> query.process_format()  # Complete workflow execution
+        """
