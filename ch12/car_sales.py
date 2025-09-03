@@ -220,3 +220,20 @@ class QueryTemplate:
             sqlite3.Error: If database connection fails.
         """
         self.conn = sqlite3.connect(self.db_name)
+
+    def construct_query(self) -> None:
+        """
+        Abstract method to construct the SQL query and headers.
+
+        Subclasses must implement this method to:
+        - Set self.query to the SQL query string
+        - Set self.header to the list of column headers for output
+
+        Raises:
+            NotImplementedError: Always, as this is an abstract method.
+
+        Example Implementation:
+            >>> def construct_query(self):
+            ...     self.query = "SELECT salesperson, amt FROM Sales"
+            ...     self.header = ["Salesperson", "Amount"]
+        """
