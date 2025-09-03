@@ -254,3 +254,5 @@ class QueryTemplate:
         Note:
             Results are fetched entirely into memory using fetchall().
         """
+        results = self.conn.execute(self.query)
+        self.results = results.fetchall()
