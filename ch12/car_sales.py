@@ -346,3 +346,15 @@ class NewVehiclesQuery(QueryTemplate):
         Hannah,28000,2009,Ford Mustang,true
         Hannah,50000,2010,Lincoln Navigator,true
     """
+
+    def construct_query(self) -> None:
+        """
+        Construct SQL query to filter new vehicle sales.
+
+        Sets up the query to select all columns from Sales table where
+        the 'new' column equals 'true', showing only new vehicle sales.
+
+        Sets:
+            self.query: SQL SELECT statement with WHERE clause
+            self.header: Column headers for CSV output
+        """
