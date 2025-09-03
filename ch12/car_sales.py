@@ -117,3 +117,34 @@ def test_setup(db_name: str = "sales.db") -> sqlite3.Connection:
         VALUES('Tim', 16000, 2010, 'Honda Fit', 'true')
         """
     )
+    conn.execute(
+        """
+        INSERT INTO Sales 
+        VALUES('Tim', 9000, 2006, 'Ford Focus', 'false')
+        """
+    )
+
+    conn.execute(
+        """
+        INSERT INTO Sales 
+        VALUES('Hannah', 8000, 2004, 'Dodge Neon', 'false')
+        """
+    )
+    conn.execute(
+        """
+        INSERT INTO Sales 
+        VALUES('Hannah', 28000, 2009, 'Ford Mustang', 'true')
+        """
+    )
+    conn.execute(
+        """
+        INSERT INTO Sales 
+        VALUES('Hannah', 50000, 2010, 'Lincoln Navigator', 'true')
+        """
+    )
+    conn.execute(
+        """
+        INSERT INTO Sales 
+        VALUES('Jason', 20000, 2008, 'Toyota Prius', 'false')
+        """
+    )
