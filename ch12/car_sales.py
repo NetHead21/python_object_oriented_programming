@@ -237,3 +237,4 @@ class QueryTemplate:
             ...     self.query = "SELECT salesperson, amt FROM Sales"
             ...     self.header = ["Salesperson", "Amount"]
         """
+        raise NotImplementedError("construct_+query not implemented")
