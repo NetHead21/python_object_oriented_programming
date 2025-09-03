@@ -202,3 +202,9 @@ class QueryTemplate:
         Note:
             Connection is not established until connect() is called.
         """
+
+        self.db_name = db_name
+        self.conn: sqlite3.Connection
+        self.results: list[tuple[str, ...]]
+        self.query: str
+        self.header: list[str]
