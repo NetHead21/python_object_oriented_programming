@@ -275,3 +275,17 @@ class QueryTemplate:
         """
         self.target_file = sys.stdout
         return cast(ContextManager[TextIO], contextlib.nullcontext())
+
+    def output_results(self) -> None:
+        """
+        Write query results to the target output in CSV format.
+
+        Uses Python's csv.writer to format results with headers.
+        The output destination is determined by the output_context() method.
+        This method is called automatically by process_format().
+
+        Requires:
+            - self.target_file must be set (via output_context())
+            - self.header must contain column headers
+            - self.results must contain query results
+        """
