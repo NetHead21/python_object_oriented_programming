@@ -358,3 +358,7 @@ class NewVehiclesQuery(QueryTemplate):
             self.query: SQL SELECT statement with WHERE clause
             self.header: Column headers for CSV output
         """
+        self.query = """
+            SELECT * FROM Sales WHERE new = 'true'
+        """
+        self.header = ["salesperson", "amt", "year", "model", "new"]
