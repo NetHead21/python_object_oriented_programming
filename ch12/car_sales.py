@@ -311,3 +311,8 @@ class QueryTemplate:
             >>> query = NewVehiclesQuery()
             >>> query.process_format()  # Complete workflow execution
         """
+        self.connect()
+        self.construct_query()
+        self.do_query()
+        with self.output_context():
+            self.output_results()
