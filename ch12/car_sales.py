@@ -289,3 +289,6 @@ class QueryTemplate:
             - self.header must contain column headers
             - self.results must contain query results
         """
+        writer = csv.writer(self.target_file)
+        writer.writerow(self.header)
+        writer.writerows(self.results)
