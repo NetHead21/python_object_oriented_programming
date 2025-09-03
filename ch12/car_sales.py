@@ -238,3 +238,19 @@ class QueryTemplate:
             ...     self.header = ["Salesperson", "Amount"]
         """
         raise NotImplementedError("construct_+query not implemented")
+
+    def do_query(self) -> None:
+        """
+        Execute the constructed query and fetch all results.
+
+        Runs the SQL query stored in self.query and stores all results
+        in self.results as a list of tuples. This method is called
+        automatically by process_format().
+
+        Requires:
+            - self.conn must be established (via connect())
+            - self.query must be set (via construct_query())
+
+        Note:
+            Results are fetched entirely into memory using fetchall().
+        """
