@@ -190,3 +190,15 @@ class QueryTemplate:
         >>> query = MyQuery()
         >>> query.process_format()  # Executes complete workflow
     """
+
+    def __init__(self, db_name: str = "sales.db") -> None:
+        """
+        Initialize the query template with database configuration.
+
+        Args:
+            db_name (str, optional): Name of the database file to connect to.
+                Defaults to "sales.db".
+
+        Note:
+            Connection is not established until connect() is called.
+        """
