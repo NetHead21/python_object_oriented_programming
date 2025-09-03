@@ -151,3 +151,42 @@ def test_setup(db_name: str = "sales.db") -> sqlite3.Connection:
 
     conn.commit()
     return conn
+
+
+class QueryTemplate:
+    """
+    Abstract base class implementing the Template Method pattern for database queries.
+
+    This class provides a framework for executing database queries and outputting
+    results in CSV format. It defines the overall algorithm structure while allowing
+    subclasses to customize specific steps like query construction and output handling.
+
+    The template method process_format() orchestrates the following steps:
+    1. Connect to database
+    2. Construct query (abstract - must be implemented by subclasses)
+    3. Execute query
+    4. Output results with proper context management
+
+    Attributes:
+        db_name (str): Name of the database file
+        conn (sqlite3.Connection): Database connection object
+        results (list[tuple[str, ...]]): Query results as list of tuples
+        query (str): SQL query string to execute
+        header (list[str]): Column headers for CSV output
+        target_file (TextIO): Output destination for results
+
+    Abstract Methods:
+        construct_query(): Must be implemented to set self.query and self.header
+
+    Template Method:
+        process_format(): Orchestrates the complete query processing workflow
+
+    Example:
+        >>> class MyQuery(QueryTemplate):
+        ...     def construct_query(self):
+        ...         self.query = "SELECT * FROM Sales"
+        ...         self.header = ["salesperson", "amt", "year", "model", "new"]
+        >>>
+        >>> query = MyQuery()
+        >>> query.process_format()  # Executes complete workflow
+    """
