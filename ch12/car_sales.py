@@ -256,3 +256,22 @@ class QueryTemplate:
         """
         results = self.conn.execute(self.query)
         self.results = results.fetchall()
+
+    def output_context(self) -> ContextManager[TextIO]:
+        """
+        Provide context manager for output destination.
+
+        Default implementation outputs to stdout using a null context.
+        Subclasses can override this to provide file-based output or
+        other output destinations.
+
+        Returns:
+            ContextManager[TextIO]: Context manager for output operations.
+
+        Example Override:
+            >>> def output_context(self):
+            ...     self.target_file = open("output.csv", "w")
+            ...     return self.target_file
+        """
+        self.target_file = sys.stdout
+        return cast(ContextManager[TextIO], contextlib.nullcontext())
