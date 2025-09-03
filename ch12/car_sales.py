@@ -219,3 +219,4 @@ class QueryTemplate:
         Raises:
             sqlite3.Error: If database connection fails.
         """
+        self.conn = sqlite3.connect(self.db_name)
