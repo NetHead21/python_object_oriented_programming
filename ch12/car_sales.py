@@ -438,3 +438,32 @@ class SalesGrossQuery(QueryTemplate):
         filepath = Path(f"gross_sales_{today:%Y%m%d}.csv")
         self.target_file = filepath.open("w")
         return self.target_file
+
+
+def main() -> None:
+    """
+    Main function to demonstrate car sales analysis workflow.
+
+    Orchestrates the complete sales analysis process:
+    1. Sets up database with sample sales data
+    2. Runs new vehicles query (output to stdout)
+    3. Runs gross sales query (output to dated CSV file)
+
+    This function demonstrates both types of query implementations:
+    - NewVehiclesQuery: Filters data and displays to console
+    - SalesGrossQuery: Aggregates data and saves to file
+
+    Output Files:
+        - gross_sales_YYYYMMDD.csv: Created in current directory
+
+    Console Output:
+        - New vehicle sales data in CSV format
+
+    Example:
+        >>> main()
+        salesperson,amt,year,model,new
+        Tim,16000,2010,Honda Fit,true
+        Hannah,28000,2009,Ford Mustang,true
+        Hannah,50000,2010,Lincoln Navigator,true
+        # Also creates gross_sales_20250903.csv file
+    """
