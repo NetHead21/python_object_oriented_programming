@@ -416,3 +416,21 @@ class SalesGrossQuery(QueryTemplate):
             SELECT salesperson, sum(amt) FROM Sales GROUP BY salesperson
         """
         self.header = ["salesperson", "total sales"]
+
+    def output_context(self) -> ContextManager[TextIO]:
+        """
+        Create file context for dated CSV output.
+
+        Creates a CSV file with today's date in the filename format
+        "gross_sales_YYYYMMDD.csv" for storing the aggregated sales results.
+
+        Returns:
+            ContextManager[TextIO]: File context manager for the dated CSV file.
+
+        File Format:
+            - Filename: gross_sales_YYYYMMDD.csv (where YYYYMMDD is today's date)
+            - Content: CSV format with headers and sales data
+
+        Example:
+            If run on September 3, 2025, creates "gross_sales_20250903.csv"
+        """
