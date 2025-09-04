@@ -412,3 +412,7 @@ class SalesGrossQuery(QueryTemplate):
             self.query: SQL SELECT with GROUP BY and SUM aggregate
             self.header: Column headers for CSV output
         """
+        self.query = """
+            SELECT salesperson, sum(amt) FROM Sales GROUP BY salesperson
+        """
+        self.header = ["salesperson", "total sales"]
