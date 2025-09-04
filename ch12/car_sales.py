@@ -400,3 +400,15 @@ class SalesGrossQuery(QueryTemplate):
         >>> # Jason,20000
         >>> # Tim,25000
     """
+
+    def construct_query(self):
+        """
+        Construct SQL query to calculate gross sales by salesperson.
+
+        Sets up an aggregated query that groups sales records by salesperson
+        and calculates the sum of sales amounts for each person.
+
+        Sets:
+            self.query: SQL SELECT with GROUP BY and SUM aggregate
+            self.header: Column headers for CSV output
+        """
