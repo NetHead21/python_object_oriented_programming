@@ -467,3 +467,11 @@ def main() -> None:
         Hannah,50000,2010,Lincoln Navigator,true
         # Also creates gross_sales_20250903.csv file
     """
+
+    test_setup()
+
+    task_1 = NewVehiclesQuery()
+    task_1.process_format()
+
+    task_2 = SalesGrossQuery()
+    task_2.process_format()
