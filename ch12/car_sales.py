@@ -434,3 +434,7 @@ class SalesGrossQuery(QueryTemplate):
         Example:
             If run on September 3, 2025, creates "gross_sales_20250903.csv"
         """
+        today = datetime.date.today()
+        filepath = Path(f"gross_sales_{today:%Y%m%d}.csv")
+        self.target_file = filepath.open("w")
+        return self.target_file
