@@ -362,3 +362,41 @@ class NewVehiclesQuery(QueryTemplate):
             SELECT * FROM Sales WHERE new = 'true'
         """
         self.header = ["salesperson", "amt", "year", "model", "new"]
+
+
+class SalesGrossQuery(QueryTemplate):
+    """
+    Query implementation for calculating gross sales by salesperson.
+
+    This class extends QueryTemplate to provide aggregated sales data,
+    grouping by salesperson and summing their total sales amounts.
+    Results are output to a dated CSV file rather than stdout.
+
+    Inherits:
+        QueryTemplate: Base template for database query operations
+
+    Query Details:
+        - Groups Sales records by salesperson
+        - Calculates sum of sales amounts per person
+        - Headers: ["salesperson", "total sales"]
+        - Output: CSV file named "gross_sales_YYYYMMDD.csv"
+
+    File Output:
+        The output_context() method creates a file with today's date
+        in the format "gross_sales_YYYYMMDD.csv" for the results.
+
+    Example:
+        >>> # Set up database with sample data
+        >>> test_setup()
+        >>>
+        >>> # Generate gross sales report to file
+        >>> query = SalesGrossQuery()
+        >>> query.process_format()
+        >>> # Creates file: gross_sales_20250903.csv (example date)
+        >>>
+        >>> # File contents would be:
+        >>> # salesperson,total sales
+        >>> # Hannah,86000
+        >>> # Jason,20000
+        >>> # Tim,25000
+    """
