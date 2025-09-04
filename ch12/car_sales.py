@@ -475,3 +475,7 @@ def main() -> None:
 
     task_2 = SalesGrossQuery()
     task_2.process_format()
+
+
+if __name__ == "__main__":
+    main()
