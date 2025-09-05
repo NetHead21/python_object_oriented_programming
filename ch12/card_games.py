@@ -207,3 +207,24 @@ class Trick(int, Enum):
     """
 
     pass
+
+
+class Hand(list[Card]):
+    """
+    Base class for collections of playing cards.
+
+    This class extends list[Card] to provide a container for cards
+    with game-specific scoring methods. Different games will subclass
+    this to implement their own scoring algorithms.
+
+    The class uses composition over inheritance by extending list
+    rather than containing a list, allowing direct list operations
+    on the hand.
+
+    Example:
+        >>> hand = Hand(Card(10, Suit.Hearts), Card(10, Suit.Spades))
+        >>> len(hand)
+        2
+        >>> hand[0]
+        Card(rank=10, suit=<Suit.Hearts: '♥'>)
+    """
