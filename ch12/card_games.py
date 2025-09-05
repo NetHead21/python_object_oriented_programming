@@ -228,3 +228,16 @@ class Hand(list[Card]):
         >>> hand[0]
         Card(rank=10, suit=<Suit.Hearts: '♥'>)
     """
+
+    def __init__(self, *cards: Card) -> None:
+        """
+        Initialize hand with a collection of cards.
+
+        Args:
+            *cards: Variable number of Card objects to include in hand
+
+        Example:
+            >>> hand = Hand(Card(1, Suit.Clubs), Card(13, Suit.Hearts))
+            >>> len(hand)
+            2
+        """
