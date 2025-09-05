@@ -241,3 +241,4 @@ class Hand(list[Card]):
             >>> len(hand)
             2
         """
+        super().__init__(cards)
