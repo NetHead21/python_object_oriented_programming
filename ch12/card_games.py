@@ -117,3 +117,9 @@ Dependencies:
     - itertools: Combination and permutation utilities
 """
 
+import abc
+import collections
+import itertools
+import random
+from enum import Enum, auto
+from typing import Any, Counter, Iterator, Iterable, NamedTuple, TypeVar, cast, Protocol
