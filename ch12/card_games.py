@@ -147,3 +147,7 @@ class Suit(str, Enum):
         >>> len(list(Suit))
         4
     """
+    Clubs = "♣"
+    Diamonds = "♦"
+    Hearts = "♥"
+    Spades = "♠"
