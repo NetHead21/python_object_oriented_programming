@@ -242,3 +242,18 @@ class Hand(list[Card]):
             2
         """
         super().__init__(cards)
+
+    def scoring(self) -> list[Trick]:
+        """
+        Abstract method for calculating hand score.
+
+        This method should be implemented by subclasses to provide
+        game-specific scoring logic.
+
+        Returns:
+            list[Trick]: List of tricks/combinations found in the hand
+
+        Note:
+            Base implementation returns empty list. Subclasses should override.
+        """
+        pass
