@@ -280,3 +280,20 @@ class CardGameFactory(abc.ABC):
         >>> card = factory.make_card(11, Suit.Hearts)  # Jack of Hearts
         >>> hand = factory.make_hand(card1, card2, card3)
     """
+
+    @abc.abstractmethod
+    def make_card(self, rank: int, suit: Suit) -> "Card":
+        """
+        Create a game-specific card.
+
+        Args:
+            rank (int): Card rank (1-13)
+            suit (Suit): Card suit
+
+        Returns:
+            Card: Game-specific card instance
+
+        Note:
+            Must be implemented by concrete factory subclasses.
+        """
+        ...
