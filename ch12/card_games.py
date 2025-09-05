@@ -192,3 +192,18 @@ class Card(NamedTuple):
             '12♣'
         """
         return f"{self.rank}{self.suit}"
+
+class Trick(int, Enum):
+    """
+    Base enumeration for game-specific scoring tricks/combinations.
+
+    This base class serves as a foundation for game-specific trick
+    enumerations. It inherits from both int and Enum to provide
+    numeric values for scoring calculations.
+
+    Subclasses should define specific tricks for their game type:
+    - CribbageTrick: Fifteens, pairs, runs, right jack
+    - PokerTrick: Pairs, straights, flushes, etc.
+    """
+
+    pass
