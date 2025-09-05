@@ -174,3 +174,20 @@ class Card(NamedTuple):
         >>> card.suit
         <Suit.Spades: '♠'>
     """
+
+    rank: int
+    suit: Suit
+
+    def __str__(self) -> str:
+        """
+        Return string representation of the card.
+
+        Returns:
+            str: Card representation as "rank + suit symbol"
+
+        Example:
+            >>> str(Card(1, Suit.Hearts))
+            '1♥'
+            >>> str(Card(12, Suit.Clubs))
+            '12♣'
+        """
