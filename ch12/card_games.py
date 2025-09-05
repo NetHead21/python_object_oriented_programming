@@ -257,3 +257,26 @@ class Hand(list[Card]):
             Base implementation returns empty list. Subclasses should override.
         """
         pass
+
+
+class CardGameFactory(abc.ABC):
+    """
+    Abstract factory for creating game-specific cards and hands.
+
+    This abstract base class implements the Factory Method pattern,
+    allowing different card games to create their own specialized
+    card and hand types while maintaining a consistent interface.
+
+    The factory pattern enables polymorphic creation of game objects,
+    allowing the same client code to work with different game types
+    by simply switching the factory instance.
+
+    Abstract Methods:
+        make_card: Create a game-specific card
+        make_hand: Create a game-specific hand
+
+    Example:
+        >>> factory = CribbageFactory()
+        >>> card = factory.make_card(11, Suit.Hearts)  # Jack of Hearts
+        >>> hand = factory.make_hand(card1, card2, card3)
+    """
