@@ -151,3 +151,26 @@ class Suit(str, Enum):
     Diamonds = "♦"
     Hearts = "♥"
     Spades = "♠"
+
+
+class Card(NamedTuple):
+    """
+    Immutable representation of a playing card.
+
+    This class uses NamedTuple to create an immutable card object with
+    rank and suit attributes. It provides the foundation for all card
+    types in the game framework.
+
+    Attributes:
+        rank (int): Numeric rank of the card (1-13, where 1=Ace, 11=Jack, 12=Queen, 13=King)
+        suit (Suit): The suit of the card (Clubs, Diamonds, Hearts, Spades)
+
+    Example:
+        >>> card = Card(13, Suit.Spades)  # King of Spades
+        >>> print(card)
+        13♠
+        >>> card.rank
+        13
+        >>> card.suit
+        <Suit.Spades: '♠'>
+    """
