@@ -191,3 +191,4 @@ class Card(NamedTuple):
             >>> str(Card(12, Suit.Clubs))
             '12♣'
         """
+        return f"{self.rank}{self.suit}"
