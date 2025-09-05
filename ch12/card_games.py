@@ -123,3 +123,27 @@ import itertools
 import random
 from enum import Enum, auto
 from typing import Any, Counter, Iterator, Iterable, NamedTuple, TypeVar, cast, Protocol
+
+
+class Suit(str, Enum):
+    """
+    Enumeration of card suits using Unicode symbols.
+
+    This enumeration provides a type-safe way to represent card suits
+    with visual Unicode symbols. It inherits from both str and Enum,
+    allowing suits to be used as strings while maintaining type safety.
+
+    Attributes:
+        Clubs: Black club suit symbol ♣
+        Diamonds: Black diamond suit symbol ♦
+        Hearts: Black heart suit symbol ♥
+        Spades: Black spade suit symbol ♠
+
+    Example:
+        >>> print(Suit.Hearts)
+        ♥
+        >>> isinstance(Suit.Clubs, str)
+        True
+        >>> len(list(Suit))
+        4
+    """
