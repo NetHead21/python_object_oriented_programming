@@ -339,3 +339,7 @@ class CribbageAce(Card):
 
     Fixed: Changed 'point' to 'points' for consistency
     """
+    @property
+    def points(self) -> int:
+        """Return point value of 1 for Ace."""
+        return 1
