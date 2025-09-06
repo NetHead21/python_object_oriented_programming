@@ -377,3 +377,10 @@ class CribbageTrick(Trick):
 
     Fixed: Added missing Right_Jack and corrected 'Fiftleen' to 'Fifteen'
     """
+    Fifteen = auto()
+    Pair = auto()
+    Run_3 = auto()
+    Run_4 = auto()
+    Run_5 = auto()
+    Right_Jack = auto() 
+
