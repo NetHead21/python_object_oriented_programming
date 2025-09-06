@@ -511,3 +511,22 @@ class CribbageHand(Hand):
         
         hand_plus_starter = cast(list[CribbageCard], self + [self.starter])
         hand_plus_starter.sort()
+
+        tricks = list(trick_iter(hand_plus_starter))
+        
+        if run_length(hand_plus_starter) == 5:
+            tricks += [CribbageTrick.Run_5]
+        elif (
+            run_length(hand_plus_starter) == 4 or run_length(hand_plus_starter[1:]) == 4
+        ):
+            tricks += [CribbageTrick.Run_4]
+        elif (
+            run_length(hand_plus_starter) == 3
+            or run_length(hand_plus_starter[1:]) == 3
+            or run_length(hand_plus_starter[2:]) == 3
+        ):
+            tricks += [CribbageTrick.Run_3]
+        right_jack = any(c.rank == 11 and c.suit == self.starter.suit for c in self)
+        if right_jack:
+            tricks += [CribbageTrick.Right_Jack]
+        return tricks
