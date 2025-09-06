@@ -354,3 +354,7 @@ class CribbageFace(Card):
 
     Note: Class name has typo 'CribbaageFace' - should be 'CribbageFace'
     """
+    @property
+    def points(self) -> int:
+        """Return point value of 10 for face cards."""
+        return 10
