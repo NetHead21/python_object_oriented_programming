@@ -297,3 +297,19 @@ class CardGameFactory(abc.ABC):
             Must be implemented by concrete factory subclasses.
         """
         ...
+
+    @abc.abstractmethod
+    def make_hand(self, *cards: Card) -> "Hand":
+        """
+        Create a game-specific hand.
+
+        Args:
+            *cards: Variable number of cards for the hand
+
+        Returns:
+            Hand: Game-specific hand instance
+
+        Note:
+            Must be implemented by concrete factory subclasses.
+        """
+        ...
