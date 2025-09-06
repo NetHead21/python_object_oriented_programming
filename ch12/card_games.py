@@ -313,3 +313,14 @@ class CardGameFactory(abc.ABC):
             Must be implemented by concrete factory subclasses.
         """
         ...
+
+class CribbageCard(Card):
+    """
+    Standard cribbage card with point value equal to rank.
+
+    In cribbage, most cards have a point value equal to their rank
+    for the purpose of making fifteens and other scoring combinations.
+    This class represents cards 2-10.
+
+    Fixed: Changed 'points' to 'points' for consistency
+    """
