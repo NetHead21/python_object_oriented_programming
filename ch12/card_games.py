@@ -358,3 +358,22 @@ class CribbageFace(Card):
     def points(self) -> int:
         """Return point value of 10 for face cards."""
         return 10
+
+
+class CribbageTrick(Trick):
+    """
+    Enumeration of scoring combinations in cribbage.
+
+    This enum defines all the possible scoring tricks/combinations
+    that can be found in a cribbage hand during scoring.
+
+    Scoring Types:
+        Fifteen: Any combination of cards totaling 15 points
+        Pair: Two cards of the same rank
+        Run_3: Three cards in sequence
+        Run_4: Four cards in sequence
+        Run_5: Five cards in sequence
+        Right_Jack: Jack matching the starter card suit
+
+    Fixed: Added missing Right_Jack and corrected 'Fiftleen' to 'Fifteen'
+    """
