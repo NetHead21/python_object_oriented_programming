@@ -492,3 +492,10 @@ class CribbageHand(Hand):
             >>> CribbageTrick.Pair in tricks
             True
         """
+        def trick_iter(cards: list[CribbageCard]) -> Iterator[Trick]:
+            for subset in powerset(cards):
+                if sum(c.points for c in subset) == 15:
+                    yield CribbageTrick.Fifteen
+            for c1, c2 in itertools.combinations(cards, 2):
+                if c1.rank == c2.rank:
+                    yield CribbageTrick.Pair
