@@ -416,3 +416,28 @@ def powerset(iterable: Iterable[C]) -> Iterator[tuple[C, ...]]:
     return itertools.chain.from_iterable(
         itertools.combinations(s, r) for r in range(len(s) + 1)
     )
+
+
+class CribbageHand(Hand):
+    """
+    Specialized hand implementation for cribbage scoring.
+
+    This class extends the base Hand class to provide cribbage-specific
+    functionality including starter card management and comprehensive
+    scoring algorithms for all cribbage combinations.
+
+    Cribbage scoring includes:
+    - Fifteens: Combinations of cards that sum to 15 (2 points each)
+    - Pairs: Two cards of the same rank (2 points each)
+    - Runs: Sequential ranks (1 point per card)
+    - Right Jack: Jack matching starter suit (1 point)
+
+    Attributes:
+        starter (Card): The starter card (upcard) used for scoring
+
+    Example:
+        >>> hand = CribbageHand(Card(5, Suit.Hearts), Card(10, Suit.Clubs))
+        >>> starter = Card(5, Suit.Spades)
+        >>> scored_hand = hand.upcard(starter)
+        >>> tricks = scored_hand.scoring()
+    """
