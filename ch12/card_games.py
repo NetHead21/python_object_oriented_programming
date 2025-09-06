@@ -440,4 +440,5 @@ class CribbageHand(Hand):
         >>> starter = Card(5, Suit.Spades)
         >>> scored_hand = hand.upcard(starter)
         >>> tricks = scored_hand.scoring()
-    """
+    """    
+    starter: Card
