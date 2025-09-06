@@ -386,3 +386,29 @@ class CribbageTrick(Trick):
 
 
 C = TypeVar("C")
+
+
+def powerset(iterable: Iterable[C]) -> Iterator[tuple[C, ...]]:
+    """
+    Generate all possible subsets (powerset) of an iterable.
+
+    This function generates all possible combinations of elements from the
+    input iterable, including the empty set and the full set. It's used
+    in cribbage scoring to find all possible card combinations that sum to 15.
+
+    Args:
+        iterable: Any iterable collection of elements
+
+    Returns:
+        Iterator[tuple[C, ...]]: Iterator yielding all possible subsets as tuples
+
+    Example:
+        >>> list(powerset([1, 2, 3]))
+        [(), (1,), (2,), (3,), (1, 2), (1, 3), (2, 3), (1, 2, 3)]
+
+        >>> # Used for finding card combinations that sum to 15
+        >>> cards = [Card(5, Suit.Hearts), Card(10, Suit.Clubs)]
+        >>> for subset in powerset(cards):
+        ...     if sum(c.rank for c in subset) == 15:
+        ...         print(f"Fifteen: {subset}")
+    """
