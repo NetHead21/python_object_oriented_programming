@@ -499,3 +499,12 @@ class CribbageHand(Hand):
             for c1, c2 in itertools.combinations(cards, 2):
                 if c1.rank == c2.rank:
                     yield CribbageTrick.Pair
+                    
+        def run_length(sorted_cards: list[CribbageCard]) -> int:
+            card_iter = iter(sorted_cards)
+            base = next(card_iter)
+            for offset, card in enumerate(card_iter, start=1):
+                if base.rank + offset != card.rank:
+                    break
+
+            return offset + 1
