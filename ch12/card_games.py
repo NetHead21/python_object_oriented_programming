@@ -412,3 +412,7 @@ def powerset(iterable: Iterable[C]) -> Iterator[tuple[C, ...]]:
         ...     if sum(c.rank for c in subset) == 15:
         ...         print(f"Fifteen: {subset}")
     """
+    s = list(iterable)
+    return itertools.chain.from_iterable(
+        itertools.combinations(s, r) for r in range(len(s) + 1)
+    )
