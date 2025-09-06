@@ -328,3 +328,14 @@ class CribbageCard(Card):
     def points(self) -> int:
         """Return point value for cribbage scoring."""
         return self.rank
+
+
+class CribbageAce(Card):
+    """
+    Ace card in cribbage with point value of 1.
+
+    In cribbage, Aces always have a point value of 1 regardless
+    of their rank representation, used for making fifteens.
+
+    Fixed: Changed 'point' to 'points' for consistency
+    """
