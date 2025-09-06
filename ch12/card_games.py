@@ -343,3 +343,14 @@ class CribbageAce(Card):
     def points(self) -> int:
         """Return point value of 1 for Ace."""
         return 1
+
+
+class CribbageFace(Card):
+    """
+    Face card (Jack, Queen, King) in cribbage with point value of 10.
+
+    In cribbage, all face cards (Jack, Queen, King) have a point
+    value of 10 for the purpose of making fifteens and scoring.
+
+    Note: Class name has typo 'CribbaageFace' - should be 'CribbageFace'
+    """
