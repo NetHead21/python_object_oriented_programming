@@ -465,3 +465,30 @@ class CribbageHand(Hand):
         """
         self.starter = starter
         return self
+
+    def scoring(self) -> list[Trick]:
+        """
+        Calculate all scoring combinations in the cribbage hand.
+
+        Analyzes the hand plus starter card to find all possible scoring
+        combinations according to cribbage rules. Uses powerset analysis
+        to find all card combinations that sum to 15.
+
+        Scoring Rules:
+        - Fifteens: Any combination summing to 15 = 2 points
+        - Pairs: Two cards of same rank = 2 points
+        - Runs: 3+ consecutive ranks = 1 point per card
+        - Right Jack: Jack matching starter suit = 1 point
+
+        Returns:
+            list[Trick]: List of all scoring tricks found in the hand
+
+        Example:
+            >>> # Hand: 5♥, 10♣, Starter: 5♠
+            >>> # Scores: Fifteen (5+10), Pair (5♥,5♠)
+            >>> tricks = hand.scoring()
+            >>> CribbageTrick.Fifteen in tricks
+            True
+            >>> CribbageTrick.Pair in tricks
+            True
+        """
