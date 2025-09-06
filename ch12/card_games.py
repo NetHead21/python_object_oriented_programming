@@ -463,3 +463,5 @@ class CribbageHand(Hand):
             >>> isinstance(scored_hand, CribbageHand)
             True
         """
+        self.starter = starter
+        return self
