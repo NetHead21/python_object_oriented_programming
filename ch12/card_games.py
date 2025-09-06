@@ -442,3 +442,24 @@ class CribbageHand(Hand):
         >>> tricks = scored_hand.scoring()
     """    
     starter: Card
+
+
+    def upcard(self, starter: Card) -> "Hand":
+        """
+        Set the starter card and return the hand for method chaining.
+
+        The starter card (upcard) is used in cribbage scoring and becomes
+        part of the effective hand for calculating points.
+
+        Args:
+            starter (Card): The starter card to use for scoring
+
+        Returns:
+            Hand: Self reference for method chaining
+
+        Example:
+            >>> hand = CribbageHand(Card(6, Suit.Hearts))
+            >>> scored_hand = hand.upcard(Card(9, Suit.Clubs))
+            >>> isinstance(scored_hand, CribbageHand)
+            True
+        """
