@@ -384,3 +384,5 @@ class CribbageTrick(Trick):
     Run_5 = auto()
     Right_Jack = auto() 
 
+
+C = TypeVar("C")
