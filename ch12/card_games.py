@@ -669,3 +669,8 @@ class PokerHand(Hand):
             >>> hand.scoring()
             [<PokerTrick.FullHouse: 6>]
         """
+
+        # Distinct Ranks
+        ranks: Counter[int] = collections.Counter(c.rank for c in self)
+        # Distinct Suits
+        flush = len(set(c.suit for c in self)) == 1
