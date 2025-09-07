@@ -749,3 +749,7 @@ class PokerFactory(CardGameFactory):
         Returns:
             Card: PokerCard with rank 14 for Aces, original rank for others
         """
+        if rank == 1:
+            # Aces above kings
+            rank = 14
+        return PokerCard(rank, suit)
