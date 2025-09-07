@@ -590,3 +590,5 @@ class CribbageFactory(CardGameFactory):
             Hand: CribbageHand instance containing the cards
         """
         return CribbageHand(*cards)
+
+factory = CribbageFactory()
