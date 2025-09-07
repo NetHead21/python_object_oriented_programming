@@ -674,3 +674,43 @@ class PokerHand(Hand):
         ranks: Counter[int] = collections.Counter(c.rank for c in self)
         # Distinct Suits
         flush = len(set(c.suit for c in self)) == 1
+
+        if len(ranks) == 1:
+            # five of kind!
+            raise Exception(f"Broken Hand {self}")
+        elif len(ranks) == 2:
+            # 4-1 or 3-2
+            card, count = ranks.most_common(1)[0]
+            if count == 4:
+                return [PokerTrick.Four]
+            elif count == 3:
+                return [PokerTrick.FullHouse]
+            else:
+                raise Exception(f"Broken Hand {self}")
+        elif len(ranks) == 3:
+            # 3-1-1, or 2-2-1
+            card, count = ranks.most_common(1)[0]
+            if count == 3:
+                return [PokerTrick.Three]
+            elif count == 2:
+                return [PokerTrick.TwoPair]
+            else:
+                raise Exception(f"Broken Hand {self}")
+        elif len(ranks) == 4:
+            # 2-1-1-1
+            return [PokerTrick.Pair]
+        elif len(ranks) == 5:
+            # straight?
+            base = min(ranks)
+            straight = all(base + offset == rank for offset, rank in enumerate(ranks))
+            # straight flush?
+            if straight and flush:
+                return [PokerTrick.StraightFlush]
+            elif straight:
+                return [PokerTrick.Straight]
+            elif flush:
+                return [PokerTrick.Flush]
+            else:
+                return []
+        else:
+            return []
