@@ -714,3 +714,26 @@ class PokerHand(Hand):
                 return []
         else:
             return []
+
+
+class PokerFactory(CardGameFactory):
+    """
+    Concrete factory for creating poker-specific cards and hands.
+
+    This factory implements the CardGameFactory interface to create
+    poker-specific card types with Ace-high ranking (Ace = 14).
+
+    Poker Card Rules:
+    - Rank 1 (Ace): Converted to rank 14 (Ace-high)
+    - All other ranks: Used as-is
+    - All cards: Created as PokerCard instances
+
+    Example:
+        >>> factory = PokerFactory()
+        >>> ace = factory.make_card(1, Suit.Spades)  # Becomes rank 14
+        >>> ace.rank
+        14
+        >>> king = factory.make_card(13, Suit.Hearts)
+        >>> king.rank
+        13
+    """
