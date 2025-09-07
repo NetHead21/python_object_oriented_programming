@@ -753,3 +753,15 @@ class PokerFactory(CardGameFactory):
             # Aces above kings
             rank = 14
         return PokerCard(rank, suit)
+
+    def make_hand(self, *cards: Card) -> "Hand":
+        """
+        Create a poker hand from the given cards.
+
+        Args:
+            *cards: Variable number of Card objects
+
+        Returns:
+            Hand: PokerHand instance for hand evaluation
+        """
+        return PokerHand(*cards)
