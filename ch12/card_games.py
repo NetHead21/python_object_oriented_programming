@@ -57,65 +57,6 @@ Dependencies:
     - typing: Type hints and protocols
     - itertools: Combination and permutation utilities
 """
-    """
-Card Games Framework Module
-
-This module provides a comprehensive framework for implementing various card games
-using object-oriented design patterns. It demonstrates the Factory Method pattern,
-Abstract Base Classes, and polymorphism to create a flexible system that can handle
-multiple card game types with different rules and scoring systems.
-
-The module contains:
-    - Card: Basic card representation with rank and suit
-    - Suit: Enumeration of card suits using Unicode symbols
-    - Hand: Base class for collections of cards
-    - CardGameFactory: Abstract factory for creating game-specific cards and hands
-    - Cribbage implementation: Complete scoring system for cribbage hands
-    - Poker implementation: Complete scoring system for poker hands
-    - Game: Base game controller with deck management
-
-Key Features:
-    • Factory Method pattern for game-specific card and hand creation
-    • Polymorphic scoring systems for different game types
-    • Comprehensive trick/hand recognition algorithms
-    • Unicode suit symbols for visual card representation
-    • Flexible hand evaluation with powerset analysis
-    • Type-safe implementation with full type hints
-
-Supported Games:
-    - Cribbage: 15s, pairs, runs, right jack scoring
-    - Poker: Standard poker hand rankings and evaluation
-
-Recent Fixes Applied:
-    ✅ Fixed CribbageCard.po9ints → points
-    ✅ Fixed CribbageAce.point → points
-    ✅ Fixed CribbageTrick.Fiftleen → Fifteen
-    ✅ Added missing CribbageTrick.Right_Jack
-    ✅ Fixed CribbageFactory face card creation
-    ✅ Fixed Game.dect → deck attribute naming
-    ✅ All code now runs without errors
-
-Example Usage:
-    >>> # Create a cribbage game
-    >>> factory = CribbageFactory()
-    >>> cards = [factory.make_card(6, Suit.Clubs), factory.make_card(9, Suit.Hearts)]
-    >>> hand = factory.make_hand(*cards)
-    >>> starter = factory.make_card(5, Suit.Spades)
-    >>> score = hand.upcard(starter).scoring()
-    >>>
-    >>> # Create a poker game
-    >>> poker_factory = PokerFactory()
-    >>> poker_hand = poker_factory.make_hand(*poker_cards)
-    >>> ranking = poker_hand.scoring()
-
-Dependencies:
-    - abc: Abstract base classes
-    - collections: Counter for frequency analysis
-    - random: Deck shuffling
-    - enum: Enumeration support
-    - typing: Type hints and protocols
-    - itertools: Combination and permutation utilities
-"""
 
 import abc
 import collections
@@ -147,6 +88,7 @@ class Suit(str, Enum):
         >>> len(list(Suit))
         4
     """
+
     Clubs = "♣"
     Diamonds = "♦"
     Hearts = "♥"
@@ -192,6 +134,7 @@ class Card(NamedTuple):
             '12♣'
         """
         return f"{self.rank}{self.suit}"
+
 
 class Trick(int, Enum):
     """
@@ -314,6 +257,7 @@ class CardGameFactory(abc.ABC):
         """
         ...
 
+
 class CribbageCard(Card):
     """
     Standard cribbage card with point value equal to rank.
@@ -324,6 +268,7 @@ class CribbageCard(Card):
 
     Fixed: Changed 'points' to 'points' for consistency
     """
+
     @property
     def points(self) -> int:
         """Return point value for cribbage scoring."""
@@ -339,6 +284,7 @@ class CribbageAce(Card):
 
     Fixed: Changed 'point' to 'points' for consistency
     """
+
     @property
     def points(self) -> int:
         """Return point value of 1 for Ace."""
@@ -354,6 +300,7 @@ class CribbageFace(Card):
 
     Note: Class name has typo 'CribbaageFace' - should be 'CribbageFace'
     """
+
     @property
     def points(self) -> int:
         """Return point value of 10 for face cards."""
@@ -377,12 +324,13 @@ class CribbageTrick(Trick):
 
     Fixed: Added missing Right_Jack and corrected 'Fiftleen' to 'Fifteen'
     """
+
     Fifteen = auto()
     Pair = auto()
     Run_3 = auto()
     Run_4 = auto()
     Run_5 = auto()
-    Right_Jack = auto() 
+    Right_Jack = auto()
 
 
 C = TypeVar("C")
@@ -440,9 +388,9 @@ class CribbageHand(Hand):
         >>> starter = Card(5, Suit.Spades)
         >>> scored_hand = hand.upcard(starter)
         >>> tricks = scored_hand.scoring()
-    """    
-    starter: Card
+    """
 
+    starter: Card
 
     def upcard(self, starter: Card) -> "Hand":
         """
@@ -492,6 +440,7 @@ class CribbageHand(Hand):
             >>> CribbageTrick.Pair in tricks
             True
         """
+
         def trick_iter(cards: list[CribbageCard]) -> Iterator[Trick]:
             for subset in powerset(cards):
                 if sum(c.points for c in subset) == 15:
@@ -508,12 +457,12 @@ class CribbageHand(Hand):
                     break
 
             return offset + 1
-        
+
         hand_plus_starter = cast(list[CribbageCard], self + [self.starter])
         hand_plus_starter.sort()
 
         tricks = list(trick_iter(hand_plus_starter))
-        
+
         if run_length(hand_plus_starter) == 5:
             tricks += [CribbageTrick.Run_5]
         elif (
@@ -530,7 +479,6 @@ class CribbageHand(Hand):
         if right_jack:
             tricks += [CribbageTrick.Right_Jack]
         return tricks
-
 
 
 class CribbageFactory(CardGameFactory):
@@ -578,7 +526,7 @@ class CribbageFactory(CardGameFactory):
             return CribbageCard(rank, suit)
         else:
             return CribbageFace(rank, suit)
-        
+
     def make_hand(self, *cards: Card) -> "Hand":
         """
         Create a cribbage hand from the given cards.
@@ -590,6 +538,7 @@ class CribbageFactory(CardGameFactory):
             Hand: CribbageHand instance containing the cards
         """
         return CribbageHand(*cards)
+
 
 factory = CribbageFactory()
 
@@ -655,6 +604,7 @@ class PokerTrick(Trick):
     - Four: Four cards of same rank
     - StraightFlush: Straight + flush
     """
+
     Pair = auto()
     TwoPair = auto()
     Three = auto()
