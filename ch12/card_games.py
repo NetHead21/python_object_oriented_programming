@@ -635,3 +635,23 @@ class PokerCard(Card):
         if self.rank == 14:
             return f"A{self.suit}"
         return f"{self.rank}{self.suit}"
+
+
+class PokerTrick(Trick):
+    """
+    Enumeration of poker hand rankings and combinations.
+
+    This enum defines all standard poker hand types in order of
+    increasing value/rarity. Used by PokerHand.scoring() to
+    identify and return the hand type.
+
+    Hand Rankings (lowest to highest):
+    - Pair: Two cards of same rank
+    - TwoPair: Two different pairs
+    - Three: Three cards of same rank
+    - Straight: Five sequential ranks
+    - Flush: Five cards of same suit
+    - FullHouse: Three of a kind + pair
+    - Four: Four cards of same rank
+    - StraightFlush: Straight + flush
+    """
