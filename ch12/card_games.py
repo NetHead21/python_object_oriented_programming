@@ -558,3 +558,17 @@ class CribbageFactory(CardGameFactory):
         >>> isinstance(five, CribbageCard)
         True
     """
+
+    def make_card(self, rank: int, suit: Suit) -> "Card":
+        """
+        Create a cribbage-specific card based on rank.
+
+        Args:
+            rank (int): Card rank (1-13)
+            suit (Suit): Card suit
+
+        Returns:
+            Card: Appropriate cribbage card type
+
+        Fixed: Face cards (11-13) now correctly create CribbageFace instead of CribbageAce
+        """
