@@ -691,3 +691,31 @@ class PokerHand(Hand):
         >>> PokerTrick.Pair in ranking
         True
     """
+
+    def scoring(self) -> list[Trick]:
+        """
+        Evaluate the poker hand and return the highest ranking.
+
+        Analyzes the 5-card hand to determine the best poker combination
+        according to standard poker rules. Returns a list containing
+        the single best hand type.
+
+        Returns:
+            list[Trick]: Single-element list with the hand's ranking
+
+        Raises:
+            Exception: If hand contains five of a kind (invalid)
+            Exception: If hand structure is unexpected
+
+        Algorithm:
+        1. Count distinct ranks and suits
+        2. Analyze rank frequency patterns
+        3. Check for straights and flushes
+        4. Return appropriate hand type
+
+        Example:
+            >>> # Full house: 3 Kings + 2 Aces
+            >>> hand = PokerHand(King♠, King♥, King♣, Ace♠, Ace♥)
+            >>> hand.scoring()
+            [<PokerTrick.FullHouse: 6>]
+        """
