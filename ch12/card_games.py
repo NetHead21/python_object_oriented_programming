@@ -592,3 +592,16 @@ class CribbageFactory(CardGameFactory):
         return CribbageHand(*cards)
 
 factory = CribbageFactory()
+
+cards = [
+    factory.make_card(6, Suit.Clubs),
+    factory.make_card(7, Suit.Diamonds),
+    factory.make_card(8, Suit.Hearts),
+    factory.make_card(9, Suit.Spades),
+]
+
+starter = factory.make_card(5, Suit.Spades)
+hand = factory.make_hand(*cards)
+score = sorted(hand.upcard(starter).scoring())
+print(t.name for t in score)
+
