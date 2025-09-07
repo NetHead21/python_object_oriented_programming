@@ -624,3 +624,11 @@ class PokerCard(Card):
         >>> str(king)
         '13♥'
     """
+
+    def __str__(self) -> str:
+        """
+        Return poker-style string representation.
+
+        Returns:
+            str: 'A' + suit for Aces, otherwise rank + suit
+        """
