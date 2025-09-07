@@ -632,3 +632,6 @@ class PokerCard(Card):
         Returns:
             str: 'A' + suit for Aces, otherwise rank + suit
         """
+        if self.rank == 14:
+            return f"A{self.suit}"
+        return f"{self.rank}{self.suit}"
