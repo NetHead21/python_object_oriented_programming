@@ -655,3 +655,11 @@ class PokerTrick(Trick):
     - Four: Four cards of same rank
     - StraightFlush: Straight + flush
     """
+    Pair = auto()
+    TwoPair = auto()
+    Three = auto()
+    Straight = auto()
+    Flush = auto()
+    FullHouse = auto()
+    Four = auto()
+    StraightFlush = auto()
