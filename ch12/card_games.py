@@ -765,3 +765,15 @@ class PokerFactory(CardGameFactory):
             Hand: PokerHand instance for hand evaluation
         """
         return PokerHand(*cards)
+
+
+factory = PokerFactory()
+cards = [
+    factory.make_card(5, Suit.Clubs),
+    factory.make_card(5, Suit.Diamonds),
+    factory.make_card(5, Suit.Hearts),
+    factory.make_card(6, Suit.Spades),
+    factory.make_card(6, Suit.Spades),
+]
+hand = factory.make_hand(*cards)
+print(hand.scoring())
