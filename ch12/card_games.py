@@ -809,3 +809,13 @@ class Game:
             factory: Factory for creating game-specific cards and hands
         """
         self.factory = factory
+
+    def prepare(self) -> None:
+        """
+        Create and shuffle a standard 52-card deck.
+
+        Creates a deck with ranks 1-13 for each suit, then shuffles it.
+        Uses the factory to create appropriate card types for the game.
+
+        Fixed: Corrected 'dect' typo to 'deck'
+        """
