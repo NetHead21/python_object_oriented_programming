@@ -800,3 +800,12 @@ class Game:
         >>> hand = game.deal()  # Deals 5 cards
         >>> game.score(hand)  # Prints hand score
     """
+
+    def __init__(self, factory: CardGameFactory) -> None:
+        """
+        Initialize game with a card factory.
+
+        Args:
+            factory: Factory for creating game-specific cards and hands
+        """
+        self.factory = factory
