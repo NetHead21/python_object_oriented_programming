@@ -663,3 +663,31 @@ class PokerTrick(Trick):
     FullHouse = auto()
     Four = auto()
     StraightFlush = auto()
+
+
+class PokerHand(Hand):
+    """
+    Poker hand implementation with comprehensive hand ranking evaluation.
+
+    This class extends Hand to provide poker-specific hand evaluation
+    that determines the highest-ranking poker combination in a 5-card hand.
+
+    The evaluation algorithm analyzes:
+    - Rank frequency distribution (pairs, trips, quads)
+    - Suit distribution (flush detection)
+    - Sequential ranks (straight detection)
+
+    Hand Evaluation Logic:
+    - 1 distinct rank: Invalid (five of a kind)
+    - 2 distinct ranks: Four of a kind OR Full house
+    - 3 distinct ranks: Three of a kind OR Two pair
+    - 4 distinct ranks: One pair
+    - 5 distinct ranks: Straight, Flush, Straight flush, or High card
+
+    Example:
+        >>> cards = [PokerCard(10, Suit.Hearts), PokerCard(10, Suit.Clubs)]
+        >>> hand = PokerHand(*cards)
+        >>> ranking = hand.scoring()
+        >>> PokerTrick.Pair in ranking
+        True
+    """
