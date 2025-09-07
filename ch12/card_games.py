@@ -819,3 +819,7 @@ class Game:
 
         Fixed: Corrected 'dect' typo to 'deck'
         """
+        self.deck = [
+            self.factory.make_card(r, s) for r in range(1, 14) for s in iter(Suit)
+        ]
+        random.shuffle(self.deck)
