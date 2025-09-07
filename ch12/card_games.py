@@ -823,3 +823,13 @@ class Game:
             self.factory.make_card(r, s) for r in range(1, 14) for s in iter(Suit)
         ]
         random.shuffle(self.deck)
+
+    def deal(self) -> Hand:
+        """
+        Deal a 5-card hand from the deck.
+
+        Returns:
+            Hand: A hand containing the first 5 cards from the deck
+
+        Fixed: Now uses 'deck' instead of 'dect'
+        """
