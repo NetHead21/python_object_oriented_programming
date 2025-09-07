@@ -737,3 +737,15 @@ class PokerFactory(CardGameFactory):
         >>> king.rank
         13
     """
+
+    def make_card(self, rank: int, suit: Suit) -> "Card":
+        """
+        Create a poker card with Ace-high ranking.
+
+        Args:
+            rank (int): Input rank (1-13, where 1 = Ace)
+            suit (Suit): Card suit
+
+        Returns:
+            Card: PokerCard with rank 14 for Aces, original rank for others
+        """
