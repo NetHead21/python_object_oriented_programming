@@ -572,3 +572,9 @@ class CribbageFactory(CardGameFactory):
 
         Fixed: Face cards (11-13) now correctly create CribbageFace instead of CribbageAce
         """
+        if rank == 1:
+            return CribbageAce(rank, suit)
+        elif 2 <= rank < 11:
+            return CribbageCard(rank, suit)
+        else:
+            return CribbageFace(rank, suit)
