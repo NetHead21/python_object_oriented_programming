@@ -777,3 +777,26 @@ cards = [
 ]
 hand = factory.make_hand(*cards)
 print(hand.scoring())
+
+
+class Game:
+    """
+    Base game controller providing deck management and basic game operations.
+
+    This class provides the foundation for card game implementations,
+    handling deck creation, shuffling, dealing, and basic scoring.
+    Uses the factory pattern to create game-specific cards and hands.
+
+    Note: There's a typo in the code - 'dect' should be 'deck'
+
+    Attributes:
+        factory (CardGameFactory): Factory for creating cards and hands
+        deck (list[Card]): The shuffled deck of cards (Note: called 'dect' in code)
+
+    Example:
+        >>> factory = PokerFactory()
+        >>> game = Game(factory)
+        >>> game.prepare()  # Creates and shuffles deck
+        >>> hand = game.deal()  # Deals 5 cards
+        >>> game.score(hand)  # Prints hand score
+    """
