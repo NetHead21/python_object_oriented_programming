@@ -530,3 +530,31 @@ class CribbageHand(Hand):
         if right_jack:
             tricks += [CribbageTrick.Right_Jack]
         return tricks
+
+
+
+class CribbageFactory(CardGameFactory):
+    """
+    Concrete factory for creating cribbage-specific cards and hands.
+
+    This factory implements the CardGameFactory interface to create
+    cribbage-specific card types based on rank, ensuring proper
+    point values for cribbage scoring calculations.
+
+    Card Creation Rules:
+    - Rank 1: Creates CribbageAce (1 point)
+    - Ranks 2-10: Creates CribbageCard (rank points)
+    - Ranks 11-13: Creates CribbageAce (should be CribbageFace for 10 points)
+
+    Note: There's a bug in the factory - face cards (11-13) should
+    create CribbageFace instances, not CribbageAce instances.
+
+    Example:
+        >>> factory = CribbageFactory()
+        >>> ace = factory.make_card(1, Suit.Hearts)
+        >>> isinstance(ace, CribbageAce)
+        True
+        >>> five = factory.make_card(5, Suit.Clubs)
+        >>> isinstance(five, CribbageCard)
+        True
+    """
