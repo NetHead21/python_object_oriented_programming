@@ -605,3 +605,22 @@ hand = factory.make_hand(*cards)
 score = sorted(hand.upcard(starter).scoring())
 print(t.name for t in score)
 
+
+class PokerCard(Card):
+    """
+    Poker-specific card implementation with Ace-high representation.
+
+    This class extends Card to provide poker-specific string representation
+    where Aces (rank 14) are displayed as 'A' rather than '14'.
+
+    In poker, Aces are typically high (rank 14) but can also be low
+    in some straight combinations.
+
+    Example:
+        >>> ace = PokerCard(14, Suit.Spades)
+        >>> str(ace)
+        'A♠'
+        >>> king = PokerCard(13, Suit.Hearts)
+        >>> str(king)
+        '13♥'
+    """
