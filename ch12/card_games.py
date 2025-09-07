@@ -578,3 +578,14 @@ class CribbageFactory(CardGameFactory):
             return CribbageCard(rank, suit)
         else:
             return CribbageFace(rank, suit)
+        
+    def make_hand(self, *cards: Card) -> "Hand":
+        """
+        Create a cribbage hand from the given cards.
+
+        Args:
+            *cards: Variable number of Card objects
+
+        Returns:
+            Hand: CribbageHand instance containing the cards
+        """
