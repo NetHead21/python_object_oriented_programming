@@ -28,3 +28,19 @@ Real-world Applications:
 
 from typing import Any, Iterator, Union
 import copy
+
+
+# =============================================================================
+# 1. Object Creation & Destruction Magic Methods
+# =============================================================================
+
+
+class SmartBankAccount:
+    """
+    Demonstrates object creation and destruction magic methods.
+
+    Magic Methods Used:
+        __new__: Controls object creation (before __init__)
+        __init__: Initializes object after creation
+        __del__: Called when object is garbage collected
+    """
