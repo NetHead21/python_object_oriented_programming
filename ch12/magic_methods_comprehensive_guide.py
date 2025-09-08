@@ -83,3 +83,11 @@ class SmartBankAccount:
         self.balance = initial_balance
         self._initialized = True
         print(f"Initialized account {account_number} with balance ${initial_balance}")
+
+    def __del__(self):
+        """
+        Called when object is about to be garbage collected.
+
+        __del__ is called when the object's reference count reaches zero.
+        Useful for cleanup operations like closing files or network connections.
+        """
