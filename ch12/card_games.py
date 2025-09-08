@@ -888,3 +888,28 @@ class Cribbage(Game):
         up_card = self.deck[5]
         hand = cast(CribbageHand, hand).upcard(up_card)
         print(hand.scoring())
+
+
+class CardGameFactoryProtocol(Protocol):
+    """
+    Protocol definition for card game factory implementations.
+
+    This protocol defines the interface that card game factories must
+    implement, providing structural subtyping for factory objects.
+    It's an alternative to the ABC-based CardGameFactory.
+
+    Note: Class name has typo 'FActory' - should be 'Factory'
+
+    Required Methods:
+        make_card: Create game-specific cards
+        make_hand: Create game-specific hands
+
+    Example:
+        >>> def use_factory(factory: CardGameFActoryProtocol):
+        ...     card = factory.make_card(10, Suit.Hearts)
+        ...     hand = factory.make_hand(card)
+        >>>
+        >>> # Both CribbageFactory and PokerFactory satisfy this protocol
+        >>> use_factory(CribbageFactory())
+        >>> use_factory(PokerFactory())
+    """
