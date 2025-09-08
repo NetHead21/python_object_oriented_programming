@@ -816,8 +816,6 @@ class Game:
 
         Creates a deck with ranks 1-13 for each suit, then shuffles it.
         Uses the factory to create appropriate card types for the game.
-
-        Fixed: Corrected 'dect' typo to 'deck'
         """
         self.deck = [
             self.factory.make_card(r, s) for r in range(1, 14) for s in iter(Suit)
@@ -830,6 +828,14 @@ class Game:
 
         Returns:
             Hand: A hand containing the first 5 cards from the deck
+        """
+        hand = self.factory.make_hand(*self.deck[:5])
+        return hand
 
-        Fixed: Now uses 'deck' instead of 'dect'
+    def score(self, hand: Hand) -> None:
+        """
+        Score a hand and print the results.
+
+        Args:
+            hand: The hand to evaluate and score
         """
