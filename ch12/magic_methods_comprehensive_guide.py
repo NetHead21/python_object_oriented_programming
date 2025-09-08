@@ -132,3 +132,10 @@ class Product:
         Should be unambiguous and ideally evaluable Python code.
         """
         return f"Product(name='{self.name}', price={self.price}, category='{self.category}')"
+
+    def __format__(self, format_spec: str) -> str:
+        """
+        Support custom formatting in f-strings and format().
+
+        Allows custom format specifiers like f"{product:short}" or f"{product:detailed}".
+        """
