@@ -214,3 +214,7 @@ class Vector:
     def __neg__(self) -> "Vector":
         """Unary negation: -v"""
         return Vector(-self.x, -self.y)
+
+    def __abs__(self) -> float:
+        """Magnitude: abs(v)"""
+        return (self.x**2 + self.y**2) ** 0.5
