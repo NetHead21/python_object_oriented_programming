@@ -858,3 +858,19 @@ class Poker(Game):
     """
 
     pass
+
+
+class Cribbage(Game):
+    """
+    Cribbage game implementation with starter card scoring.
+
+    This class extends Game to provide cribbage-specific scoring
+    that includes a starter card (upcard) in the hand evaluation.
+
+    Example:
+        >>> factory = CribbageFactory()
+        >>> cribbage = Cribbage(factory)
+        >>> cribbage.prepare()
+        >>> hand = cribbage.deal()
+        >>> cribbage.score(hand)  # Includes starter card in scoring
+    """
