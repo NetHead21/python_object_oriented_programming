@@ -186,3 +186,9 @@ class Vector:
         if isinstance(other, Vector):
             return Vector(self.x - other.x, self.y - other.y)
         return NotImplemented
+
+    def __mul__(self, scalar: Union[int, float]) -> "Vector":
+        """Scalar multiplication: v * scalar"""
+        if isinstance(scalar, (int, float)):
+            return Vector(self.x * scalar, self.y * scalar)
+        return NotImplemented
