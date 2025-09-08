@@ -147,3 +147,20 @@ class Product:
             return f"${self.price:.2f}"
         else:
             return str(self)
+
+
+# =============================================================================
+# 3. Arithmetic Operations Magic Methods
+# =============================================================================
+
+
+class Vector:
+    """
+    Demonstrates arithmetic magic methods for custom mathematical operations.
+
+    Magic Methods Used:
+        __add__, __sub__, __mul__, __truediv__: Basic arithmetic
+        __iadd__, __isub__, __imul__, __itruediv__: In-place operations
+        __neg__, __pos__, __abs__: Unary operations
+        __pow__: Exponentiation
+    """
