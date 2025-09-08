@@ -196,3 +196,9 @@ class Vector:
     def __rmul__(self, scalar: Union[int, float]) -> "Vector":
         """Right scalar multiplication: scalar * v"""
         return self.__mul__(scalar)
+
+    def __truediv__(self, scalar: Union[int, float]) -> "Vector":
+        """Scalar division: v / scalar"""
+        if isinstance(scalar, (int, float)) and scalar != 0:
+            return Vector(self.x / scalar, self.y / scalar)
+        return NotImplemented
