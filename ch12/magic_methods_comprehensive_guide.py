@@ -210,3 +210,7 @@ class Vector:
             self.y += other.y
             return self
         return NotImplemented
+
+    def __neg__(self) -> "Vector":
+        """Unary negation: -v"""
+        return Vector(-self.x, -self.y)
