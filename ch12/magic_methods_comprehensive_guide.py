@@ -123,3 +123,11 @@ class Product:
         Should be readable and informative for end users.
         """
         return f"{self.name} - ${self.price:.2f}"
+
+    def __repr__(self) -> str:
+        """
+        Return developer-friendly representation.
+
+        Called by repr(obj) and when displaying in interactive shell.
+        Should be unambiguous and ideally evaluable Python code.
+        """
