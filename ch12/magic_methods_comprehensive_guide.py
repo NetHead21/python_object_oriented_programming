@@ -114,3 +114,11 @@ class Product:
         self.name = name
         self.price = price
         self.category = category
+
+    def __str__(self) -> str:
+        """
+        Return human-readable string representation.
+
+        Called by str(obj), print(obj), and f"{obj}".
+        Should be readable and informative for end users.
+        """
