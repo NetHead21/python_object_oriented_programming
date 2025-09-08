@@ -839,3 +839,4 @@ class Game:
         Args:
             hand: The hand to evaluate and score
         """
+        print(hand.scoring())
