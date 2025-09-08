@@ -25,3 +25,6 @@ Real-world Applications:
     - File-like objects with context management
     - Custom collections with iteration support
 """
+
+from typing import Any, Iterator, Union
+import copy
