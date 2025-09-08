@@ -60,3 +60,8 @@ class SmartBankAccount:
         if account_number in cls._accounts:
             print(f"Returning existing account {account_number}")
             return cls._accounts[account_number]
+
+        print(f"Creating new account {account_number}")
+        instance = super().__new__(cls)
+        cls._accounts[account_number] = instance
+        return instance
