@@ -180,3 +180,9 @@ class Vector:
         if isinstance(other, Vector):
             return Vector(self.x + other.x, self.y + other.y)
         return NotImplemented
+
+    def __sub__(self, other: "Vector") -> "Vector":
+        """Vector subtraction: v1 - v2"""
+        if isinstance(other, Vector):
+            return Vector(self.x - other.x, self.y - other.y)
+        return NotImplemented
