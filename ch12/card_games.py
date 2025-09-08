@@ -840,3 +840,21 @@ class Game:
             hand: The hand to evaluate and score
         """
         print(hand.scoring())
+
+
+class Poker(Game):
+    """
+    Poker game implementation using the base Game class.
+
+    This class inherits all functionality from Game without modification,
+    providing standard poker game operations when used with PokerFactory.
+
+    Example:
+        >>> factory = PokerFactory()
+        >>> poker = Poker(factory)
+        >>> poker.prepare()
+        >>> hand = poker.deal()
+        >>> poker.score(hand)  # Prints poker hand ranking
+    """
+
+    pass
