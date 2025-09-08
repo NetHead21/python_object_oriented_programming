@@ -926,3 +926,15 @@ class CardGameFactoryProtocol(Protocol):
             Card: Game-specific card instance
         """
         ...
+
+    def make_hand(self, *cards: Card) -> "Hand":
+        """
+        Create a game-specific hand.
+
+        Args:
+            *cards: Variable number of Card objects
+
+        Returns:
+            Hand: Game-specific hand instance
+        """
+        ...
