@@ -174,3 +174,9 @@ class Vector:
 
     def __repr__(self) -> str:
         return f"Vector({self.x}, {self.y})"
+
+    def __add__(self, other: "Vector") -> "Vector":
+        """Vector addition: v1 + v2"""
+        if isinstance(other, Vector):
+            return Vector(self.x + other.x, self.y + other.y)
+        return NotImplemented
