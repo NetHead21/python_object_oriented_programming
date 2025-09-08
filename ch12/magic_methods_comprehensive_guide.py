@@ -109,3 +109,8 @@ class Product:
         __repr__: Developer-friendly representation (for debugging)
         __format__: Custom formatting for f-strings and format()
     """
+
+    def __init__(self, name: str, price: float, category: str):
+        self.name = name
+        self.price = price
+        self.category = category
