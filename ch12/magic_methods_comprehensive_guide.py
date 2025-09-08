@@ -65,3 +65,11 @@ class SmartBankAccount:
         instance = super().__new__(cls)
         cls._accounts[account_number] = instance
         return instance
+
+    def __init__(self, account_number: str, initial_balance: float = 0.0):
+        """
+        Initialize the object after creation.
+
+        __init__ is called after __new__ to initialize the object.
+        This is where you set up the object's initial state.
+        """
