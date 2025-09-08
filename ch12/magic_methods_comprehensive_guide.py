@@ -93,3 +93,19 @@ class SmartBankAccount:
         """
 
         print(f"Account {self.account_number} is being destroyed")
+
+
+# =============================================================================
+# 2. String Representation Magic Methods
+# =============================================================================
+
+
+class Product:
+    """
+    Demonstrates string representation magic methods.
+
+    Magic Methods Used:
+        __str__: Human-readable string (for end users)
+        __repr__: Developer-friendly representation (for debugging)
+        __format__: Custom formatting for f-strings and format()
+    """
