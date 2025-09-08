@@ -73,3 +73,8 @@ class SmartBankAccount:
         __init__ is called after __new__ to initialize the object.
         This is where you set up the object's initial state.
         """
+
+        # Prevent re-initialization of existing accounts
+        if hasattr(self, "_initialized"):
+            print(f"Account {account_number} already initialized")
+            return
