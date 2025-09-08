@@ -139,3 +139,11 @@ class Product:
 
         Allows custom format specifiers like f"{product:short}" or f"{product:detailed}".
         """
+        if format_spec == "short":
+            return f"{self.name} (${self.price})"
+        elif format_spec == "detailed":
+            return f"{self.name} - ${self.price:.2f} in {self.category}"
+        elif format_spec == "price":
+            return f"${self.price:.2f}"
+        else:
+            return str(self)
