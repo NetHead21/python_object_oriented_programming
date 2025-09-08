@@ -91,3 +91,5 @@ class SmartBankAccount:
         __del__ is called when the object's reference count reaches zero.
         Useful for cleanup operations like closing files or network connections.
         """
+
+        print(f"Account {self.account_number} is being destroyed")
