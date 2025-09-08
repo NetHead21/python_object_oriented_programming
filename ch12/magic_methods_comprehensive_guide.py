@@ -131,3 +131,4 @@ class Product:
         Called by repr(obj) and when displaying in interactive shell.
         Should be unambiguous and ideally evaluable Python code.
         """
+        return f"Product(name='{self.name}', price={self.price}, category='{self.category}')"
