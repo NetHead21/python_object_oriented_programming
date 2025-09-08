@@ -78,3 +78,8 @@ class SmartBankAccount:
         if hasattr(self, "_initialized"):
             print(f"Account {account_number} already initialized")
             return
+
+        self.account_number = account_number
+        self.balance = initial_balance
+        self._initialized = True
+        print(f"Initialized account {account_number} with balance ${initial_balance}")
