@@ -122,3 +122,4 @@ class Product:
         Called by str(obj), print(obj), and f"{obj}".
         Should be readable and informative for end users.
         """
+        return f"{self.name} - ${self.price:.2f}"
