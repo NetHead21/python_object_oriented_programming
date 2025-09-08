@@ -218,3 +218,7 @@ class Vector:
     def __abs__(self) -> float:
         """Magnitude: abs(v)"""
         return (self.x**2 + self.y**2) ** 0.5
+
+    def __pow__(self, power: Union[int, float]) -> float:
+        """Power operation: v ** power (magnitude raised to power)"""
+        return abs(self) ** power
