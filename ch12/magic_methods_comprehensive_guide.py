@@ -164,3 +164,7 @@ class Vector:
         __neg__, __pos__, __abs__: Unary operations
         __pow__: Exponentiation
     """
+
+    def __init__(self, x: float, y: float):
+        self.x = x
+        self.y = y
