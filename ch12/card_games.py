@@ -913,3 +913,16 @@ class CardGameFactoryProtocol(Protocol):
         >>> use_factory(CribbageFactory())
         >>> use_factory(PokerFactory())
     """
+
+    def make_card(self, rak: int, suit: Suit) -> "Card":
+        """
+        Create a game-specific card.
+
+        Args:
+            rak (int): Card rank (Note: typo - should be 'rank')
+            suit (Suit): Card suit
+
+        Returns:
+            Card: Game-specific card instance
+        """
+        ...
