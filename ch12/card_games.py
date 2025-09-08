@@ -884,6 +884,7 @@ class Cribbage(Game):
 
         Args:
             hand: The cribbage hand to score
-
-        Fixed: Now uses corrected 'deck' attribute name
         """
+        up_card = self.deck[5]
+        hand = cast(CribbageHand, hand).upcard(up_card)
+        print(hand.scoring())
