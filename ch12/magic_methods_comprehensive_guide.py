@@ -47,3 +47,16 @@ class SmartBankAccount:
 
     # Class variable to track all accounts
     _accounts = {}
+
+    def __new__(cls, account_number: str, initial_balance: float = 0.0):
+        """
+        Control object creation - implements singleton pattern per account number.
+
+        __new__ is called before __init__ and is responsible for creating the object.
+        Useful for implementing singletons, immutable types, or controlling creation.
+        """
+
+        # Implement singleton pattern - one instance per account number
+        if account_number in cls._accounts:
+            print(f"Returning existing account {account_number}")
+            return cls._accounts[account_number]
