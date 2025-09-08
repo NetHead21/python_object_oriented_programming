@@ -192,3 +192,7 @@ class Vector:
         if isinstance(scalar, (int, float)):
             return Vector(self.x * scalar, self.y * scalar)
         return NotImplemented
+
+    def __rmul__(self, scalar: Union[int, float]) -> "Vector":
+        """Right scalar multiplication: scalar * v"""
+        return self.__mul__(scalar)
