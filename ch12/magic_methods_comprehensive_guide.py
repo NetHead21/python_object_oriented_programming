@@ -202,3 +202,11 @@ class Vector:
         if isinstance(scalar, (int, float)) and scalar != 0:
             return Vector(self.x / scalar, self.y / scalar)
         return NotImplemented
+
+    def __iadd__(self, other: "Vector") -> "Vector":
+        """In-place addition: v1 += v2"""
+        if isinstance(other, Vector):
+            self.x += other.x
+            self.y += other.y
+            return self
+        return NotImplemented
