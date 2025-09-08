@@ -44,3 +44,6 @@ class SmartBankAccount:
         __init__: Initializes object after creation
         __del__: Called when object is garbage collected
     """
+
+    # Class variable to track all accounts
+    _accounts = {}
