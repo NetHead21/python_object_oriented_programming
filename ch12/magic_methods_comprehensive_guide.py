@@ -246,3 +246,6 @@ class Student:
 
     def __str__(self) -> str:
         return f"{self.name} (Grade: {self.grade})"
+
+    def __repr__(self) -> str:
+        return f"Student('{self.name}', {self.grade}, '{self.student_id}')"
