@@ -310,3 +310,6 @@ class Playlist:
     def __init__(self, name: str):
         self.name = name
         self.songs = []
+
+    def __str__(self) -> str:
+        return f"Playlist '{self.name}' with {len(self.songs)} songs"
