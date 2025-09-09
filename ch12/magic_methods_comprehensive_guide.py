@@ -332,3 +332,7 @@ class Playlist:
     def __delitem__(self, index: int) -> None:
         """Delete item by index: del playlist[0]"""
         del self.songs[index]
+
+    def __contains__(self, song: str) -> bool:
+        """Check membership: "song" in playlist"""
+        return song in self.songs
