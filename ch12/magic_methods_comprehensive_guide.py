@@ -255,3 +255,9 @@ class Student:
         if isinstance(other, Student):
             return self.student_id == other.student_id
         return False
+
+    def __lt__(self, other: "Student") -> bool:
+        """Less than comparison: student1 < student2 (by grade)"""
+        if isinstance(other, Student):
+            return self.grade < other.grade
+        return NotImplemented
