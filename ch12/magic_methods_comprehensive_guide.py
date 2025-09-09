@@ -324,3 +324,7 @@ class Playlist:
     def __getitem__(self, index: Union[int, slice]) -> Union[str, list]:
         """Get item by index: playlist[0] or playlist[1:3]"""
         return self.songs[index]
+
+    def __setitem__(self, index: int, song: str) -> None:
+        """Set item by index: playlist[0] = "new song" """
+        self.songs[index] = song
