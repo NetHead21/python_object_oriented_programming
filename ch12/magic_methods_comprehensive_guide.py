@@ -320,3 +320,7 @@ class Playlist:
     def __len__(self) -> int:
         """Return length: len(playlist)"""
         return len(self.songs)
+
+    def __getitem__(self, index: Union[int, slice]) -> Union[str, list]:
+        """Get item by index: playlist[0] or playlist[1:3]"""
+        return self.songs[index]
