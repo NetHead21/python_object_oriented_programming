@@ -313,3 +313,6 @@ class Playlist:
 
     def __str__(self) -> str:
         return f"Playlist '{self.name}' with {len(self.songs)} songs"
+
+    def __repr__(self) -> str:
+        return f"Playlist('{self.name}')"
