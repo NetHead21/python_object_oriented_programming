@@ -222,3 +222,19 @@ class Vector:
     def __pow__(self, power: Union[int, float]) -> float:
         """Power operation: v ** power (magnitude raised to power)"""
         return abs(self) ** power
+
+
+# =============================================================================
+# 4. Comparison Operations Magic Methods
+# =============================================================================
+
+
+class Student:
+    """
+    Demonstrates comparison magic methods for custom sorting and comparison logic.
+
+    Magic Methods Used:
+        __eq__, __ne__: Equality comparison
+        __lt__, __le__, __gt__, __ge__: Ordering comparison
+        __hash__: Make object hashable for use in sets and as dict keys
+    """
