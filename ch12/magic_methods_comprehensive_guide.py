@@ -261,3 +261,9 @@ class Student:
         if isinstance(other, Student):
             return self.grade < other.grade
         return NotImplemented
+
+    def __le__(self, other: "Student") -> bool:
+        """Less than or equal: student1 <= student2"""
+        if isinstance(other, Student):
+            return self.grade <= other.grade
+        return NotImplemented
