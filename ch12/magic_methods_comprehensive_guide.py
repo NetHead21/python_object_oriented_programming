@@ -279,3 +279,12 @@ class Student:
         if isinstance(other, Student):
             return self.grade >= other.grade
         return NotImplemented
+
+    def __hash__(self) -> int:
+        """
+        Make object hashable for use in sets and as dictionary keys.
+
+        Objects that compare equal must have the same hash value.
+        If you implement __eq__, you should also implement __hash__.
+        """
+        return hash(self.student_id)
