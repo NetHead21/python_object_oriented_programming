@@ -288,3 +288,21 @@ class Student:
         If you implement __eq__, you should also implement __hash__.
         """
         return hash(self.student_id)
+
+
+# =============================================================================
+# 5. Container/Sequence Operations Magic Methods
+# =============================================================================
+
+
+class Playlist:
+    """
+    Demonstrates container and sequence magic methods for custom collections.
+
+    Magic Methods Used:
+        __len__: len(obj)
+        __getitem__, __setitem__, __delitem__: Indexing operations
+        __contains__: 'in' operator
+        __iter__: Iteration support
+        __bool__: Truthiness testing
+    """
