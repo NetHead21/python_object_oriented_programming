@@ -306,3 +306,7 @@ class Playlist:
         __iter__: Iteration support
         __bool__: Truthiness testing
     """
+
+    def __init__(self, name: str):
+        self.name = name
+        self.songs = []
