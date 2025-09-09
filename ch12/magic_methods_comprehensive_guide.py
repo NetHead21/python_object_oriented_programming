@@ -243,3 +243,6 @@ class Student:
         self.name = name
         self.grade = grade
         self.student_id = student_id
+
+    def __str__(self) -> str:
+        return f"{self.name} (Grade: {self.grade})"
