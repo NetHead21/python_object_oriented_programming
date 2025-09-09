@@ -328,3 +328,7 @@ class Playlist:
     def __setitem__(self, index: int, song: str) -> None:
         """Set item by index: playlist[0] = "new song" """
         self.songs[index] = song
+
+    def __delitem__(self, index: int) -> None:
+        """Delete item by index: del playlist[0]"""
+        del self.songs[index]
