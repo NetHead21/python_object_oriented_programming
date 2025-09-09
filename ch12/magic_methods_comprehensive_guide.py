@@ -249,3 +249,9 @@ class Student:
 
     def __repr__(self) -> str:
         return f"Student('{self.name}', {self.grade}, '{self.student_id}')"
+
+    def __eq__(self, other: "Student") -> bool:
+        """Equality comparison: student1 == student2"""
+        if isinstance(other, Student):
+            return self.student_id == other.student_id
+        return False
