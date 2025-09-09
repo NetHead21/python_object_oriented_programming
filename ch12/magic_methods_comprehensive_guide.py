@@ -267,3 +267,9 @@ class Student:
         if isinstance(other, Student):
             return self.grade <= other.grade
         return NotImplemented
+
+    def __gt__(self, other: "Student") -> bool:
+        """Greater than: student1 > student2"""
+        if isinstance(other, Student):
+            return self.grade > other.grade
+        return NotImplemented
