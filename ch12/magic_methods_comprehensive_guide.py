@@ -238,3 +238,8 @@ class Student:
         __lt__, __le__, __gt__, __ge__: Ordering comparison
         __hash__: Make object hashable for use in sets and as dict keys
     """
+
+    def __init__(self, name: str, grade: float, student_id: str):
+        self.name = name
+        self.grade = grade
+        self.student_id = student_id
