@@ -336,3 +336,7 @@ class Playlist:
     def __contains__(self, song: str) -> bool:
         """Check membership: "song" in playlist"""
         return song in self.songs
+
+    def __iter__(self) -> Iterator[str]:
+        """Make object iterable: for song in playlist"""
+        return iter(self.songs)
