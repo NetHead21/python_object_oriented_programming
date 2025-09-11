@@ -422,3 +422,7 @@ class ConfigObject:
     def lock(self) -> None:
         """Lock the configuration to prevent further changes."""
         self._locked = True
+
+    def unlock(self) -> None:
+        """Unlock the configuration to allow changes."""
+        self._locked = False
