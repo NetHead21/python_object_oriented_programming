@@ -378,3 +378,11 @@ class ConfigObject:
         # Set initial values
         for key, value in kwargs.items():
             setattr(self, key, value)
+
+    def __getattr__(self, name: str) -> Any:
+        """
+        Called when attribute is not found through normal lookup.
+
+        This is only called if the attribute doesn't exist in the object's
+        __dict__ or in the class hierarchy.
+        """
