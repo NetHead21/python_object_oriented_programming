@@ -443,3 +443,7 @@ class Counter:
     Magic Methods Used:
         __call__: Makes object callable like a function
     """
+
+    def __init__(self, initial_value: int = 0):
+        self.value = initial_value
+        self.call_count = 0
