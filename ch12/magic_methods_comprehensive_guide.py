@@ -340,3 +340,7 @@ class Playlist:
     def __iter__(self) -> Iterator[str]:
         """Make object iterable: for song in playlist"""
         return iter(self.songs)
+
+    def __bool__(self) -> bool:
+        """Truthiness testing: if playlist: ..."""
+        return len(self.songs) > 0
