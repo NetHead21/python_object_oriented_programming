@@ -348,3 +348,7 @@ class Playlist:
     def add_song(self, song: str) -> None:
         """Add a song to the playlist."""
         self.songs.append(song)
+
+    def remove_song(self, song: str) -> None:
+        """Remove a song from the playlist."""
+        self.songs.remove(song)
