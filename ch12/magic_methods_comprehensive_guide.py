@@ -447,3 +447,11 @@ class Counter:
     def __init__(self, initial_value: int = 0):
         self.value = initial_value
         self.call_count = 0
+
+    def __call__(self, increment: int = 1) -> int:
+        """
+        Make the object callable: counter() or counter(5)
+
+        This allows the object to be used like a function.
+        Useful for creating function-like objects with state.
+        """
