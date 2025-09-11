@@ -455,3 +455,6 @@ class Counter:
         This allows the object to be used like a function.
         Useful for creating function-like objects with state.
         """
+        self.value += increment
+        self.call_count += 1
+        return self.value
