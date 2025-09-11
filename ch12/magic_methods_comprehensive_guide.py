@@ -408,3 +408,8 @@ class ConfigObject:
         else:
             # Use object.__setattr__ for special attributes to avoid recursion
             object.__setattr__(self, name, value)
+
+    def __delattr__(self, name: str) -> None:
+        """Called when deleting an attribute: del obj.attr"""
+        if self._locked:
+            raise AttributeError("ConfigObject is locked, cannot delete attributes")
