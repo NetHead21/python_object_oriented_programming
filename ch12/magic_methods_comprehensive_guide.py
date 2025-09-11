@@ -344,3 +344,7 @@ class Playlist:
     def __bool__(self) -> bool:
         """Truthiness testing: if playlist: ..."""
         return len(self.songs) > 0
+
+    def add_song(self, song: str) -> None:
+        """Add a song to the playlist."""
+        self.songs.append(song)
