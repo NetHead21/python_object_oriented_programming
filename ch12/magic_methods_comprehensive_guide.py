@@ -429,3 +429,17 @@ class ConfigObject:
 
     def __repr__(self) -> str:
         return f"ConfigObject({self._data})"
+
+
+# =============================================================================
+# 7. Callable Objects Magic Methods
+# =============================================================================
+
+
+class Counter:
+    """
+    Demonstrates __call__ magic method to make objects callable like functions.
+
+    Magic Methods Used:
+        __call__: Makes object callable like a function
+    """
