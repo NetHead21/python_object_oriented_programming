@@ -397,3 +397,7 @@ class ConfigObject:
         This gives you control over how attributes are set.
         Be careful to avoid infinite recursion.
         """
+
+        # Prevent modification if locked
+        if hasattr(self, "_locked") and self._locked and name not in ["_locked"]:
+            raise AttributeError(f"ConfigObject is locked, cannot set '{name}'")
