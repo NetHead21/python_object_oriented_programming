@@ -374,3 +374,7 @@ class ConfigObject:
         # Use object.__setattr__ to avoid recursion during initialization
         object.__setattr__(self, "_data", {})
         object.__setattr__(self, "_locked", False)
+
+        # Set initial values
+        for key, value in kwargs.items():
+            setattr(self, key, value)
