@@ -352,3 +352,20 @@ class Playlist:
     def remove_song(self, song: str) -> None:
         """Remove a song from the playlist."""
         self.songs.remove(song)
+
+
+# =============================================================================
+# 6. Attribute Access Magic Methods
+# =============================================================================
+
+
+class ConfigObject:
+    """
+    Demonstrates attribute access magic methods for dynamic attribute handling.
+
+    Magic Methods Used:
+        __getattr__: Called when attribute is not found normally
+        __setattr__: Called when setting any attribute
+        __delattr__: Called when deleting an attribute
+        __getattribute__: Called for ALL attribute access (use carefully)
+    """
