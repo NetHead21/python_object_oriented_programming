@@ -426,3 +426,6 @@ class ConfigObject:
     def unlock(self) -> None:
         """Unlock the configuration to allow changes."""
         self._locked = False
+
+    def __repr__(self) -> str:
+        return f"ConfigObject({self._data})"
