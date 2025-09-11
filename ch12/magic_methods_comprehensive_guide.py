@@ -389,3 +389,11 @@ class ConfigObject:
         if name in self._data:
             return self._data[name]
         raise AttributeError(f"'ConfigObject' has no attribute '{name}'")
+
+    def __setattr__(self, name: str, value: Any) -> None:
+        """
+        Called when setting any attribute.
+
+        This gives you control over how attributes are set.
+        Be careful to avoid infinite recursion.
+        """
