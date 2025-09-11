@@ -418,3 +418,7 @@ class ConfigObject:
             del self._data[name]
         else:
             object.__delattr__(self, name)
+
+    def lock(self) -> None:
+        """Lock the configuration to prevent further changes."""
+        self._locked = True
