@@ -401,3 +401,10 @@ class ConfigObject:
         # Prevent modification if locked
         if hasattr(self, "_locked") and self._locked and name not in ["_locked"]:
             raise AttributeError(f"ConfigObject is locked, cannot set '{name}'")
+
+        # Store in _data dict instead of normal attribute storage
+        if hasattr(self, "_data") and not name.startswith("_"):
+            self._data[name] = value
+        else:
+            # Use object.__setattr__ for special attributes to avoid recursion
+            object.__setattr__(self, name, value)
