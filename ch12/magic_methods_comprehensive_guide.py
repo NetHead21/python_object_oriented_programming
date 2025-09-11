@@ -386,3 +386,6 @@ class ConfigObject:
         This is only called if the attribute doesn't exist in the object's
         __dict__ or in the class hierarchy.
         """
+        if name in self._data:
+            return self._data[name]
+        raise AttributeError(f"'ConfigObject' has no attribute '{name}'")
