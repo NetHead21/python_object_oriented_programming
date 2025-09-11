@@ -369,3 +369,8 @@ class ConfigObject:
         __delattr__: Called when deleting an attribute
         __getattribute__: Called for ALL attribute access (use carefully)
     """
+
+    def __init__(self, **kwargs):
+        # Use object.__setattr__ to avoid recursion during initialization
+        object.__setattr__(self, "_data", {})
+        object.__setattr__(self, "_locked", False)
