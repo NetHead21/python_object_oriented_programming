@@ -458,3 +458,6 @@ class Counter:
         self.value += increment
         self.call_count += 1
         return self.value
+
+    def __str__(self) -> str:
+        return f"Counter(value={self.value}, calls={self.call_count})"
