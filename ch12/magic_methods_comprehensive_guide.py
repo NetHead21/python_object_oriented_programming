@@ -413,3 +413,8 @@ class ConfigObject:
         """Called when deleting an attribute: del obj.attr"""
         if self._locked:
             raise AttributeError("ConfigObject is locked, cannot delete attributes")
+
+        if name in self._data:
+            del self._data[name]
+        else:
+            object.__delattr__(self, name)
