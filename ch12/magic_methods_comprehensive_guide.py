@@ -543,3 +543,11 @@ class Document:
         new_doc = Document(self.title, self.content)  # Note: shares content list
         new_doc.metadata = self.metadata.copy()  # Shallow copy of metadata
         return new_doc
+
+    def __deepcopy__(self, memo):
+        """
+        Deep copy: copy.deepcopy(obj)
+
+        Creates a new object and recursively copies all contained objects.
+        memo is used to track already copied objects to handle circular references.
+        """
