@@ -557,3 +557,6 @@ class Document:
         )
         new_doc.metadata = copy.deepcopy(self.metadata, memo)
         return new_doc
+
+    def __repr__(self) -> str:
+        return f"Document('{self.title}', {self.content})"
