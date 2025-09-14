@@ -461,3 +461,18 @@ class Counter:
 
     def __str__(self) -> str:
         return f"Counter(value={self.value}, calls={self.call_count})"
+
+
+# =============================================================================
+# 8. Context Manager Magic Methods
+# =============================================================================
+
+
+class FileManager:
+    """
+    Demonstrates context manager magic methods for 'with' statement support.
+
+    Magic Methods Used:
+        __enter__: Called when entering 'with' block
+        __exit__: Called when exiting 'with' block (handles cleanup)
+    """
