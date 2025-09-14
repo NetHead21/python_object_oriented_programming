@@ -488,3 +488,6 @@ class FileManager:
 
         Should return the resource that will be used in the with block.
         """
+        print(f"Opening file: {self.filename}")
+        self.file = open(self.filename, self.mode)
+        return self.file
