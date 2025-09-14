@@ -551,3 +551,9 @@ class Document:
         Creates a new object and recursively copies all contained objects.
         memo is used to track already copied objects to handle circular references.
         """
+        print("Performing deep copy")
+        new_doc = Document(
+            copy.deepcopy(self.title, memo), copy.deepcopy(self.content, memo)
+        )
+        new_doc.metadata = copy.deepcopy(self.metadata, memo)
+        return new_doc
