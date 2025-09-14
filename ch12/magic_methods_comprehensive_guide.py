@@ -532,3 +532,10 @@ class Document:
         self.title = title
         self.content = content
         self.metadata = {"created": "2024-01-01", "version": 1}
+
+    def __copy__(self):
+        """
+        Shallow copy: copy.copy(obj)
+
+        Creates a new object but shares references to contained objects.
+        """
