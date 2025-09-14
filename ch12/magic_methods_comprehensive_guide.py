@@ -491,3 +491,15 @@ class FileManager:
         print(f"Opening file: {self.filename}")
         self.file = open(self.filename, self.mode)
         return self.file
+
+    def __exit__(self, exc_type, exc_value, traceback):
+        """
+        Called when exiting the 'with' block.
+
+        Parameters:
+            exc_type: Exception type (None if no exception)
+            exc_value: Exception value (None if no exception)
+            traceback: Exception traceback (None if no exception)
+
+        Return True to suppress exceptions, False to propagate them.
+        """
