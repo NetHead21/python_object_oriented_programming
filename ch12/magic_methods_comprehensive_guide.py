@@ -527,3 +527,8 @@ class Document:
         __copy__: Shallow copy behavior
         __deepcopy__: Deep copy behavior
     """
+
+    def __init__(self, title: str, content: list):
+        self.title = title
+        self.content = content
+        self.metadata = {"created": "2024-01-01", "version": 1}
