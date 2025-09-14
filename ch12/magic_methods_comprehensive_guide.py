@@ -590,3 +590,8 @@ class Fibonacci:
         """Return the next Fibonacci number"""
         if self.count >= self.max_count:
             raise StopIteration
+
+        result = self.current
+        self.current, self.next_val = self.next_val, self.current + self.next_val
+        self.count += 1
+        return result
