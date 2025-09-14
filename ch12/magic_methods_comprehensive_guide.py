@@ -512,3 +512,18 @@ class FileManager:
 
         # Return False to propagate exceptions (don't suppress them)
         return False
+
+
+# =============================================================================
+# 9. Copying Magic Methods
+# =============================================================================
+
+
+class Document:
+    """
+    Demonstrates copying magic methods for custom copy behavior.
+
+    Magic Methods Used:
+        __copy__: Shallow copy behavior
+        __deepcopy__: Deep copy behavior
+    """
