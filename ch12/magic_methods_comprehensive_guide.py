@@ -575,3 +575,9 @@ class Fibonacci:
         __iter__: Returns iterator object
         __next__: Returns next item in sequence
     """
+
+    def __init__(self, max_count: int = 10):
+        self.max_count = max_count
+        self.count = 0
+        self.current = 0
+        self.next_val = 1
