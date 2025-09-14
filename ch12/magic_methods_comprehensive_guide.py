@@ -539,3 +539,7 @@ class Document:
 
         Creates a new object but shares references to contained objects.
         """
+        print("Performing shallow copy")
+        new_doc = Document(self.title, self.content)  # Note: shares content list
+        new_doc.metadata = self.metadata.copy()  # Shallow copy of metadata
+        return new_doc
