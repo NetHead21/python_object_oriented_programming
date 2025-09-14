@@ -581,3 +581,7 @@ class Fibonacci:
         self.count = 0
         self.current = 0
         self.next_val = 1
+
+    def __iter__(self):
+        """Return the iterator object (self)"""
+        return self
