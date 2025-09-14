@@ -560,3 +560,18 @@ class Document:
 
     def __repr__(self) -> str:
         return f"Document('{self.title}', {self.content})"
+
+
+# =============================================================================
+# 10. Special Iterator Magic Methods
+# =============================================================================
+
+
+class Fibonacci:
+    """
+    Demonstrates iterator magic methods for custom iteration behavior.
+
+    Magic Methods Used:
+        __iter__: Returns iterator object
+        __next__: Returns next item in sequence
+    """
