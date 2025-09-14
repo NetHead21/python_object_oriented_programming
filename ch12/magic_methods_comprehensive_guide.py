@@ -607,3 +607,9 @@ def demonstrate_object_creation():
     print("\n" + "=" * 60)
     print("1. Object Creation & Destruction Magic Methods")
     print("=" * 60)
+
+    # Demonstrate __new__ singleton pattern
+    print("Creating bank accounts (singleton pattern):")
+    account1 = SmartBankAccount("12345", 1000.0)
+    account2 = SmartBankAccount("12345", 2000.0)  # Same account number
+    account3 = SmartBankAccount("67890", 500.0)  # Different account number
