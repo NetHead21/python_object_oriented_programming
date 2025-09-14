@@ -595,3 +595,15 @@ class Fibonacci:
         self.current, self.next_val = self.next_val, self.current + self.next_val
         self.count += 1
         return result
+
+
+# =============================================================================
+# Demonstration Functions
+# =============================================================================
+
+
+def demonstrate_object_creation():
+    """Demonstrate object creation and destruction magic methods."""
+    print("\n" + "=" * 60)
+    print("1. Object Creation & Destruction Magic Methods")
+    print("=" * 60)
