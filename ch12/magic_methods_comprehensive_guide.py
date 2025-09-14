@@ -476,3 +476,8 @@ class FileManager:
         __enter__: Called when entering 'with' block
         __exit__: Called when exiting 'with' block (handles cleanup)
     """
+
+    def __init__(self, filename: str, mode: str = "r"):
+        self.filename = filename
+        self.mode = mode
+        self.file = None
