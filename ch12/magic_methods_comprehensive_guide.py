@@ -481,3 +481,10 @@ class FileManager:
         self.filename = filename
         self.mode = mode
         self.file = None
+
+    def __enter__(self):
+        """
+        Called when entering the 'with' block.
+
+        Should return the resource that will be used in the with block.
+        """
