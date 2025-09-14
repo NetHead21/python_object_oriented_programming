@@ -613,3 +613,8 @@ def demonstrate_object_creation():
     account1 = SmartBankAccount("12345", 1000.0)
     account2 = SmartBankAccount("12345", 2000.0)  # Same account number
     account3 = SmartBankAccount("67890", 500.0)  # Different account number
+
+    print(f"account1 is account2: {account1 is account2}")  # True
+    print(f"account1 is account3: {account1 is account3}")  # False
+    print(f"Account 1 balance: ${account1.balance}")
+    print(f"Account 2 balance: ${account2.balance}")  # Same as account1
