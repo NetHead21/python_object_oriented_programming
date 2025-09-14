@@ -585,3 +585,8 @@ class Fibonacci:
     def __iter__(self):
         """Return the iterator object (self)"""
         return self
+
+    def __next__(self):
+        """Return the next Fibonacci number"""
+        if self.count >= self.max_count:
+            raise StopIteration
