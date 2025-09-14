@@ -506,3 +506,9 @@ class FileManager:
         if self.file:
             print(f"Closing file: {self.filename}")
             self.file.close()
+
+        if exc_type:
+            print(f"Exception occurred: {exc_type.__name__}: {exc_value}")
+
+        # Return False to propagate exceptions (don't suppress them)
+        return False
