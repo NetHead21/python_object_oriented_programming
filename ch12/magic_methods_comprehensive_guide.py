@@ -503,3 +503,6 @@ class FileManager:
 
         Return True to suppress exceptions, False to propagate them.
         """
+        if self.file:
+            print(f"Closing file: {self.filename}")
+            self.file.close()
