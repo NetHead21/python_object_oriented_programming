@@ -626,3 +626,11 @@ def demonstrate_string_representation():
     print("\n" + "=" * 60)
     print("2. String Representation Magic Methods")
     print("=" * 60)
+
+    product = Product("Laptop", 999.99, "Electronics")
+
+    print(f"str(product): {str(product)}")
+    print(f"repr(product): {repr(product)}")
+    print(f"Short format: {product:short}")
+    print(f"Detailed format: {product:detailed}")
+    print(f"Price format: {product:price}")
