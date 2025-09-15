@@ -673,3 +673,7 @@ def demonstrate_comparison_operations():
         Student("Charlie", 78.5, "S003"),
         Student("Diana", 96.5, "S004"),
     ]
+
+    print("Original students:")
+    for student in students:
+        print(f"  {student}")
