@@ -713,3 +713,7 @@ def demonstrate_container_operations():
     print(f"Length: {len(playlist)}")
     print(f"First song: {playlist[0]}")
     print(f"Last two songs: {playlist[1:3]}")
+
+    # Membership testing
+    print(f"'Bohemian Rhapsody' in playlist: {'Bohemian Rhapsody' in playlist}")
+    print(f"'Yesterday' in playlist: {'Yesterday' in playlist}")
