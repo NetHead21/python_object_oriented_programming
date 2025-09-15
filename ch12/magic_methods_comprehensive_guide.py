@@ -708,3 +708,8 @@ def demonstrate_container_operations():
     playlist.add_song("Bohemian Rhapsody")
     playlist.add_song("Stairway to Heaven")
     playlist.add_song("Hotel California")
+
+    print(f"Playlist: {playlist}")
+    print(f"Length: {len(playlist)}")
+    print(f"First song: {playlist[0]}")
+    print(f"Last two songs: {playlist[1:3]}")
