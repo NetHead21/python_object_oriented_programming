@@ -727,3 +727,7 @@ def demonstrate_container_operations():
     empty_playlist = Playlist("Empty")
     print(f"Playlist is truthy: {bool(playlist)}")
     print(f"Empty playlist is truthy: {bool(empty_playlist)}")
+
+    # Modification
+    playlist[1] = "Imagine"
+    print(f"After changing song 2: {playlist[1]}")
