@@ -618,3 +618,7 @@ def demonstrate_object_creation():
     print(f"account1 is account3: {account1 is account3}")  # False
     print(f"Account 1 balance: ${account1.balance}")
     print(f"Account 2 balance: ${account2.balance}")  # Same as account1
+
+
+def demonstrate_string_representation():
+    """Demonstrate string representation magic methods."""
