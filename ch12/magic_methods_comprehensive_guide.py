@@ -698,3 +698,6 @@ def demonstrate_comparison_operations():
 
 def demonstrate_container_operations():
     """Demonstrate container and sequence magic methods."""
+    print("\n" + "=" * 60)
+    print("5. Container/Sequence Operations Magic Methods")
+    print("=" * 60)
