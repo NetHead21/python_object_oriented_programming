@@ -683,3 +683,10 @@ def demonstrate_comparison_operations():
     print("\nSorted by grade (ascending):")
     for student in students:
         print(f"  {student}")
+
+    # Equality and hashing
+    alice1 = Student("Alice", 85.5, "S001")
+    alice2 = Student("Alice Johnson", 90.0, "S001")  # Same ID, different name/grade
+    print(f"\nEquality test (same student ID):")
+    print(f"alice1 == alice2: {alice1 == alice2}")
+    print(f"hash(alice1) == hash(alice2): {hash(alice1) == hash(alice2)}")
