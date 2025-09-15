@@ -677,3 +677,9 @@ def demonstrate_comparison_operations():
     print("Original students:")
     for student in students:
         print(f"  {student}")
+
+    # Sorting works because we implemented comparison methods
+    students.sort()
+    print("\nSorted by grade (ascending):")
+    for student in students:
+        print(f"  {student}")
