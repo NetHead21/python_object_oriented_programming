@@ -644,3 +644,14 @@ def demonstrate_arithmetic_operations():
 
     v1 = Vector(3, 4)
     v2 = Vector(1, 2)
+
+    print(f"v1 = {v1}")
+    print(f"v2 = {v2}")
+    print(f"v1 + v2 = {v1 + v2}")
+    print(f"v1 - v2 = {v1 - v2}")
+    print(f"v1 * 2 = {v1 * 2}")
+    print(f"3 * v1 = {3 * v1}")
+    print(f"v1 / 2 = {v1 / 2}")
+    print(f"-v1 = {-v1}")
+    print(f"abs(v1) = {abs(v1)}")
+    print(f"v1 ** 2 = {v1**2}")
