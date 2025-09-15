@@ -666,3 +666,10 @@ def demonstrate_comparison_operations():
     print("\n" + "=" * 60)
     print("4. Comparison Operations Magic Methods")
     print("=" * 60)
+
+    students = [
+        Student("Alice", 85.5, "S001"),
+        Student("Bob", 92.0, "S002"),
+        Student("Charlie", 78.5, "S003"),
+        Student("Diana", 96.5, "S004"),
+    ]
