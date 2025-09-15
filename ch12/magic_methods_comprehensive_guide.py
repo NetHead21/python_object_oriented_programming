@@ -634,3 +634,7 @@ def demonstrate_string_representation():
     print(f"Short format: {product:short}")
     print(f"Detailed format: {product:detailed}")
     print(f"Price format: {product:price}")
+
+
+def demonstrate_arithmetic_operations():
+    """Demonstrate arithmetic magic methods."""
