@@ -638,3 +638,6 @@ def demonstrate_string_representation():
 
 def demonstrate_arithmetic_operations():
     """Demonstrate arithmetic magic methods."""
+    print("\n" + "=" * 60)
+    print("3. Arithmetic Operations Magic Methods")
+    print("=" * 60)
