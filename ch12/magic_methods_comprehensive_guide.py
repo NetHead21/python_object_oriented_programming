@@ -659,3 +659,7 @@ def demonstrate_arithmetic_operations():
     # In-place operations
     v1 += v2
     print(f"After v1 += v2: v1 = {v1}")
+
+
+def demonstrate_comparison_operations():
+    """Demonstrate comparison magic methods."""
