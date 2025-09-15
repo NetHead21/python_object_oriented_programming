@@ -701,3 +701,5 @@ def demonstrate_container_operations():
     print("\n" + "=" * 60)
     print("5. Container/Sequence Operations Magic Methods")
     print("=" * 60)
+
+    playlist = Playlist("My Favorites")
