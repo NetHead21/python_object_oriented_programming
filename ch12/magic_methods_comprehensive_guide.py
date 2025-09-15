@@ -717,3 +717,8 @@ def demonstrate_container_operations():
     # Membership testing
     print(f"'Bohemian Rhapsody' in playlist: {'Bohemian Rhapsody' in playlist}")
     print(f"'Yesterday' in playlist: {'Yesterday' in playlist}")
+
+    # Iteration
+    print("All songs:")
+    for i, song in enumerate(playlist, 1):
+        print(f"  {i}. {song}")
