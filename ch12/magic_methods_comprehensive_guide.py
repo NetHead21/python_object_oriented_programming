@@ -663,3 +663,6 @@ def demonstrate_arithmetic_operations():
 
 def demonstrate_comparison_operations():
     """Demonstrate comparison magic methods."""
+    print("\n" + "=" * 60)
+    print("4. Comparison Operations Magic Methods")
+    print("=" * 60)
