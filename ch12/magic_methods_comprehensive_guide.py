@@ -690,3 +690,7 @@ def demonstrate_comparison_operations():
     print(f"\nEquality test (same student ID):")
     print(f"alice1 == alice2: {alice1 == alice2}")
     print(f"hash(alice1) == hash(alice2): {hash(alice1) == hash(alice2)}")
+
+    # Using in sets
+    student_set = {alice1, alice2}  # Should have only one student (same ID)
+    print(f"Set with both Alices: {len(student_set)} student(s)")
