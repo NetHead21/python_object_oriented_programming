@@ -694,3 +694,7 @@ def demonstrate_comparison_operations():
     # Using in sets
     student_set = {alice1, alice2}  # Should have only one student (same ID)
     print(f"Set with both Alices: {len(student_set)} student(s)")
+
+
+def demonstrate_container_operations():
+    """Demonstrate container and sequence magic methods."""
