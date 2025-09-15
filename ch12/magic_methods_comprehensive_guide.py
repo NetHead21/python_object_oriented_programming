@@ -703,3 +703,8 @@ def demonstrate_container_operations():
     print("=" * 60)
 
     playlist = Playlist("My Favorites")
+
+    # Add songs
+    playlist.add_song("Bohemian Rhapsody")
+    playlist.add_song("Stairway to Heaven")
+    playlist.add_song("Hotel California")
