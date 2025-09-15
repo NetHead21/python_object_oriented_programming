@@ -722,3 +722,8 @@ def demonstrate_container_operations():
     print("All songs:")
     for i, song in enumerate(playlist, 1):
         print(f"  {i}. {song}")
+
+    # Truthiness
+    empty_playlist = Playlist("Empty")
+    print(f"Playlist is truthy: {bool(playlist)}")
+    print(f"Empty playlist is truthy: {bool(empty_playlist)}")
