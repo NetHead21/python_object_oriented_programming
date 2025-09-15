@@ -622,3 +622,7 @@ def demonstrate_object_creation():
 
 def demonstrate_string_representation():
     """Demonstrate string representation magic methods."""
+
+    print("\n" + "=" * 60)
+    print("2. String Representation Magic Methods")
+    print("=" * 60)
