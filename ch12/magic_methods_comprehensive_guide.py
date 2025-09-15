@@ -655,3 +655,7 @@ def demonstrate_arithmetic_operations():
     print(f"-v1 = {-v1}")
     print(f"abs(v1) = {abs(v1)}")
     print(f"v1 ** 2 = {v1**2}")
+
+    # In-place operations
+    v1 += v2
+    print(f"After v1 += v2: v1 = {v1}")
