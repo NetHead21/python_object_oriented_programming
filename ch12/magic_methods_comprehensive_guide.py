@@ -777,3 +777,8 @@ def demonstrate_callable_objects():
     # Create counter object
     counter = Counter(10)
     print(f"Initial counter: {counter}")
+
+    # Call the object like a function
+    result1 = counter()  # Default increment of 1
+    result2 = counter(5)  # Increment by 5
+    result3 = counter(-2)  # Decrement by 2
