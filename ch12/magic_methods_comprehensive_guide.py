@@ -751,3 +751,7 @@ def demonstrate_attribute_access():
     print(f"After adding attributes: {config}")
     print(f"Debug mode: {config.debug}")
     print(f"Database URL: {config.database_url}")
+
+    # Lock configuration
+    config.lock()
+    print("Configuration locked")
