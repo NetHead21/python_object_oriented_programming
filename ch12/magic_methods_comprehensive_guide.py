@@ -826,3 +826,7 @@ def demonstrate_copying():
     # Create original document
     original = Document("My Document", ["Chapter 1", "Chapter 2"])
     print(f"Original: {original}")
+
+    # Shallow copy
+    shallow = copy.copy(original)
+    print(f"Shallow copy: {shallow}")
