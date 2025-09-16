@@ -786,3 +786,7 @@ def demonstrate_callable_objects():
     print(f"After counter(): {result1}, counter state: {counter}")
     print(f"After counter(5): {result2}, counter state: {counter}")
     print(f"After counter(-2): {result3}, counter state: {counter}")
+
+
+def demonstrate_context_managers():
+    """Demonstrate context manager magic methods."""
