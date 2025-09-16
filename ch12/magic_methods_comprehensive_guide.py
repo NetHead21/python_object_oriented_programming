@@ -731,3 +731,7 @@ def demonstrate_container_operations():
     # Modification
     playlist[1] = "Imagine"
     print(f"After changing song 2: {playlist[1]}")
+
+
+def demonstrate_attribute_access():
+    """Demonstrate attribute access magic methods."""
