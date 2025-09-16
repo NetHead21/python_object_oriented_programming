@@ -755,3 +755,8 @@ def demonstrate_attribute_access():
     # Lock configuration
     config.lock()
     print("Configuration locked")
+
+    try:
+        config.new_setting = "this will fail"
+    except AttributeError as e:
+        print(f"Error setting locked attribute: {e}")
