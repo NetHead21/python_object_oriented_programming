@@ -773,3 +773,7 @@ def demonstrate_callable_objects():
     print("\n" + "=" * 60)
     print("7. Callable Objects Magic Method")
     print("=" * 60)
+
+    # Create counter object
+    counter = Counter(10)
+    print(f"Initial counter: {counter}")
