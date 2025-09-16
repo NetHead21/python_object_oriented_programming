@@ -769,3 +769,7 @@ def demonstrate_attribute_access():
 
 def demonstrate_callable_objects():
     """Demonstrate callable objects magic method."""
+
+    print("\n" + "=" * 60)
+    print("7. Callable Objects Magic Method")
+    print("=" * 60)
