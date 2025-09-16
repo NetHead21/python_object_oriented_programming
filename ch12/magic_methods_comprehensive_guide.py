@@ -743,3 +743,7 @@ def demonstrate_attribute_access():
     # Create configuration object
     config = ConfigObject(debug=True, port=8080, host="localhost")
     print(f"Initial config: {config}")
+
+    # Dynamic attribute access
+    config.database_url = "postgresql://localhost/mydb"
+    config.max_connections = 100
