@@ -794,3 +794,7 @@ def demonstrate_context_managers():
     print("\n" + "=" * 60)
     print("8. Context Manager Magic Methods")
     print("=" * 60)
+
+    # Create a test file first
+    with open("test_file.txt", "w") as f:
+        f.write("Hello, World!\nThis is a test file.")
