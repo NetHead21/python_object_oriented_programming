@@ -747,3 +747,7 @@ def demonstrate_attribute_access():
     # Dynamic attribute access
     config.database_url = "postgresql://localhost/mydb"
     config.max_connections = 100
+
+    print(f"After adding attributes: {config}")
+    print(f"Debug mode: {config.debug}")
+    print(f"Database URL: {config.database_url}")
