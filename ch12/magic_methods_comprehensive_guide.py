@@ -807,3 +807,11 @@ def demonstrate_context_managers():
             print(f"File content: {content[:30]}...")
     except Exception as e:
         print(f"Error: {e}")
+
+    # Demonstrate exception handling
+    print("\nTesting with non-existent file:")
+    try:
+        with FileManager("non_existent.txt", "r") as file:
+            content = file.read()
+    except FileNotFoundError as e:
+        print(f"Caught exception: {e}")
