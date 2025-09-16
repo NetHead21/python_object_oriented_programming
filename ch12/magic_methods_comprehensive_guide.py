@@ -765,3 +765,7 @@ def demonstrate_attribute_access():
     config.unlock()
     config.new_setting = "this works now"
     print(f"After unlocking: {config}")
+
+
+def demonstrate_callable_objects():
+    """Demonstrate callable objects magic method."""
