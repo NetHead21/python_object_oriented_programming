@@ -819,3 +819,6 @@ def demonstrate_context_managers():
 
 def demonstrate_copying():
     """Demonstrate copying magic methods."""
+    print("\n" + "=" * 60)
+    print("9. Copying Magic Methods")
+    print("=" * 60)
