@@ -739,3 +739,7 @@ def demonstrate_attribute_access():
     print("\n" + "=" * 60)
     print("6. Attribute Access Magic Methods")
     print("=" * 60)
+
+    # Create configuration object
+    config = ConfigObject(debug=True, port=8080, host="localhost")
+    print(f"Initial config: {config}")
