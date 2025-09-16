@@ -790,3 +790,7 @@ def demonstrate_callable_objects():
 
 def demonstrate_context_managers():
     """Demonstrate context manager magic methods."""
+
+    print("\n" + "=" * 60)
+    print("8. Context Manager Magic Methods")
+    print("=" * 60)
