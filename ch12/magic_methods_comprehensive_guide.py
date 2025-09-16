@@ -815,3 +815,7 @@ def demonstrate_context_managers():
             content = file.read()
     except FileNotFoundError as e:
         print(f"Caught exception: {e}")
+
+
+def demonstrate_copying():
+    """Demonstrate copying magic methods."""
