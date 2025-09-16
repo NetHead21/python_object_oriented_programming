@@ -822,3 +822,7 @@ def demonstrate_copying():
     print("\n" + "=" * 60)
     print("9. Copying Magic Methods")
     print("=" * 60)
+
+    # Create original document
+    original = Document("My Document", ["Chapter 1", "Chapter 2"])
+    print(f"Original: {original}")
