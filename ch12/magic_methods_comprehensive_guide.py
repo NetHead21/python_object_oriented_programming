@@ -735,3 +735,7 @@ def demonstrate_container_operations():
 
 def demonstrate_attribute_access():
     """Demonstrate attribute access magic methods."""
+
+    print("\n" + "=" * 60)
+    print("6. Attribute Access Magic Methods")
+    print("=" * 60)
