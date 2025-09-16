@@ -782,3 +782,7 @@ def demonstrate_callable_objects():
     result1 = counter()  # Default increment of 1
     result2 = counter(5)  # Increment by 5
     result3 = counter(-2)  # Decrement by 2
+
+    print(f"After counter(): {result1}, counter state: {counter}")
+    print(f"After counter(5): {result2}, counter state: {counter}")
+    print(f"After counter(-2): {result3}, counter state: {counter}")
