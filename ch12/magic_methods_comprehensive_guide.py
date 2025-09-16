@@ -798,3 +798,12 @@ def demonstrate_context_managers():
     # Create a test file first
     with open("test_file.txt", "w") as f:
         f.write("Hello, World!\nThis is a test file.")
+
+    # Use custom context manager
+    print("Using custom FileManager:")
+    try:
+        with FileManager("test_file.txt", "r") as file:
+            content = file.read()
+            print(f"File content: {content[:30]}...")
+    except Exception as e:
+        print(f"Error: {e}")
