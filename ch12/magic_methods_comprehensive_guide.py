@@ -760,3 +760,8 @@ def demonstrate_attribute_access():
         config.new_setting = "this will fail"
     except AttributeError as e:
         print(f"Error setting locked attribute: {e}")
+
+    # Unlock and modify
+    config.unlock()
+    config.new_setting = "this works now"
+    print(f"After unlocking: {config}")
