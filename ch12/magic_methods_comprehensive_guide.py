@@ -830,3 +830,7 @@ def demonstrate_copying():
     # Shallow copy
     shallow = copy.copy(original)
     print(f"Shallow copy: {shallow}")
+
+    # Deep copy
+    deep = copy.deepcopy(original)
+    print(f"Deep copy: {deep}")
