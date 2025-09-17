@@ -857,3 +857,7 @@ def demonstrate_iteration():
     print("\nUsing Fibonacci in list comprehension:")
     fib_list = list(Fibonacci(8))
     print(f"First 8 Fibonacci numbers: {fib_list}")
+
+
+def demonstrate_magic_methods_summary():
+    """Provide a summary of magic methods usage."""
