@@ -927,3 +927,7 @@ def main():
     print("These examples show how magic methods make your classes")
     print("integrate seamlessly with Python's built-in functions and operators.")
     print("=" * 60)
+
+
+if __name__ == "__main__":
+    main()
