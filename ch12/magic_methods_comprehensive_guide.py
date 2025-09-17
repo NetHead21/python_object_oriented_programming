@@ -921,3 +921,9 @@ def main():
     demonstrate_copying()
     demonstrate_iteration()
     demonstrate_magic_methods_summary()
+
+    print(f"\n{'=' * 60}")
+    print("Magic Methods Demo Complete!")
+    print("These examples show how magic methods make your classes")
+    print("integrate seamlessly with Python's built-in functions and operators.")
+    print("=" * 60)
