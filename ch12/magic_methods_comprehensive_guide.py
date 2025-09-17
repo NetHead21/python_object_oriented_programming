@@ -890,3 +890,8 @@ def demonstrate_magic_methods_summary():
             "__getattr__, __setattr__: Dynamic attribute access",
         ],
     }
+
+    for category, methods in summary.items():
+        print(f"\n{category}:")
+        for method in methods:
+            print(f"  • {method}")
