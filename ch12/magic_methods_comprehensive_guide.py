@@ -848,3 +848,8 @@ def demonstrate_iteration():
     print("\n" + "=" * 60)
     print("10. Iterator Magic Methods")
     print("=" * 60)
+
+    print("Fibonacci sequence (first 10 numbers):")
+    fib = Fibonacci(10)
+    for i, num in enumerate(fib):
+        print(f"F({i}) = {num}")
