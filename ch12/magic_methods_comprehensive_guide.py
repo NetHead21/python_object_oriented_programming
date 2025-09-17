@@ -853,3 +853,7 @@ def demonstrate_iteration():
     fib = Fibonacci(10)
     for i, num in enumerate(fib):
         print(f"F({i}) = {num}")
+
+    print("\nUsing Fibonacci in list comprehension:")
+    fib_list = list(Fibonacci(8))
+    print(f"First 8 Fibonacci numbers: {fib_list}")
