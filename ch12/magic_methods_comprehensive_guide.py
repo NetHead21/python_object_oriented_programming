@@ -873,4 +873,9 @@ def demonstrate_magic_methods_summary():
             "__len__: Length support (len(obj))",
             "__bool__: Truthiness testing (bool(obj))",
         ],
+        "Arithmetic Operations": [
+            "__add__, __sub__, __mul__, __truediv__: Basic arithmetic",
+            "__iadd__, __isub__, __imul__, __itruediv__: In-place operations",
+            "__eq__, __lt__, __le__, __gt__, __ge__: Comparisons",
+        ],
     }
