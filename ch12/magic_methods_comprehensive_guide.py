@@ -834,3 +834,10 @@ def demonstrate_copying():
     # Deep copy
     deep = copy.deepcopy(original)
     print(f"Deep copy: {deep}")
+
+    # Modify original content list
+    original.content.append("Chapter 3")
+    print(f"\nAfter modifying original content:")
+    print(f"Original: {original}")
+    print(f"Shallow copy: {shallow}")  # Shares content list
+    print(f"Deep copy: {deep}")  # Independent content list
