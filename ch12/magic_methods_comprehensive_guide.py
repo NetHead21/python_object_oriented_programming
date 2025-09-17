@@ -861,3 +861,6 @@ def demonstrate_iteration():
 
 def demonstrate_magic_methods_summary():
     """Provide a summary of magic methods usage."""
+    print("\n" + "=" * 60)
+    print("Magic Methods Summary & Best Practices")
+    print("=" * 60)
