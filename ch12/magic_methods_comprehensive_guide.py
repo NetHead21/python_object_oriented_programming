@@ -878,4 +878,9 @@ def demonstrate_magic_methods_summary():
             "__iadd__, __isub__, __imul__, __itruediv__: In-place operations",
             "__eq__, __lt__, __le__, __gt__, __ge__: Comparisons",
         ],
+        "Container Operations": [
+            "__getitem__, __setitem__, __delitem__: Indexing",
+            "__contains__: Membership testing ('in' operator)",
+            "__iter__: Iteration support (for loops)",
+        ],
     }
