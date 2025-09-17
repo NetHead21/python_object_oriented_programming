@@ -909,3 +909,15 @@ def main():
     """Run all magic methods demonstrations."""
     print("Python Magic Methods (Dunder Methods) - Comprehensive Guide")
     print("This demonstrates the most important magic methods in Python classes")
+
+    demonstrate_object_creation()
+    demonstrate_string_representation()
+    demonstrate_arithmetic_operations()
+    demonstrate_comparison_operations()
+    demonstrate_container_operations()
+    demonstrate_attribute_access()
+    demonstrate_callable_objects()
+    demonstrate_context_managers()
+    demonstrate_copying()
+    demonstrate_iteration()
+    demonstrate_magic_methods_summary()
