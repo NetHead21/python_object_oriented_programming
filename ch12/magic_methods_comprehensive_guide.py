@@ -883,4 +883,10 @@ def demonstrate_magic_methods_summary():
             "__contains__: Membership testing ('in' operator)",
             "__iter__: Iteration support (for loops)",
         ],
+        "Advanced Features": [
+            "__call__: Make objects callable",
+            "__enter__, __exit__: Context manager support",
+            "__copy__, __deepcopy__: Custom copying behavior",
+            "__getattr__, __setattr__: Dynamic attribute access",
+        ],
     }
