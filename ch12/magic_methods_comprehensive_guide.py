@@ -895,3 +895,11 @@ def demonstrate_magic_methods_summary():
         print(f"\n{category}:")
         for method in methods:
             print(f"  • {method}")
+
+    print(f"\nBest Practices:")
+    print("  • Always implement __repr__ for debugging")
+    print("  • If you implement __eq__, also implement __hash__")
+    print("  • Use __slots__ for memory efficiency with many instances")
+    print("  • Be careful with __getattribute__ to avoid infinite recursion")
+    print("  • Context managers (__enter__/__exit__) for resource management")
+    print("  • Return NotImplemented for unsupported operations in arithmetic methods")
