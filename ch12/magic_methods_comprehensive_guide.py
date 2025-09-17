@@ -864,3 +864,13 @@ def demonstrate_magic_methods_summary():
     print("\n" + "=" * 60)
     print("Magic Methods Summary & Best Practices")
     print("=" * 60)
+
+    summary = {
+        "Essential Magic Methods": [
+            "__init__: Object initialization",
+            "__str__: Human-readable string representation",
+            "__repr__: Developer-friendly representation",
+            "__len__: Length support (len(obj))",
+            "__bool__: Truthiness testing (bool(obj))",
+        ],
+    }
