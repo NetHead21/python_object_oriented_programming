@@ -903,3 +903,7 @@ def demonstrate_magic_methods_summary():
     print("  • Be careful with __getattribute__ to avoid infinite recursion")
     print("  • Context managers (__enter__/__exit__) for resource management")
     print("  • Return NotImplemented for unsupported operations in arithmetic methods")
+
+
+def main():
+    """Run all magic methods demonstrations."""
