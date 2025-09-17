@@ -841,3 +841,7 @@ def demonstrate_copying():
     print(f"Original: {original}")
     print(f"Shallow copy: {shallow}")  # Shares content list
     print(f"Deep copy: {deep}")  # Independent content list
+
+
+def demonstrate_iteration():
+    """Demonstrate iterator magic methods."""
