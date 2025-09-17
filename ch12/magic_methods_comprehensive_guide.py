@@ -845,3 +845,6 @@ def demonstrate_copying():
 
 def demonstrate_iteration():
     """Demonstrate iterator magic methods."""
+    print("\n" + "=" * 60)
+    print("10. Iterator Magic Methods")
+    print("=" * 60)
