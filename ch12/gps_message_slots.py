@@ -274,3 +274,21 @@ class Message:
         self.offset = 0
         self.end: Optional[int]
         self.commas: list[int]
+
+    def from_buffer(self, buffer: Buffer, offset: int) -> "Message":
+        """Parse a GPS message from the buffer starting at the given offset.
+
+        Sets up the message parsing state by finding comma separators and
+        the message terminator. Creates a weak reference to the buffer to
+        avoid circular references.
+
+        Args:
+            buffer (Buffer): The buffer containing GPS message data
+            offset (int): Starting position of the message in the buffer
+
+        Returns:
+            Message: Self, for method chaining
+
+        Raises:
+            GPSError: If no message terminator '*' is found within 82 bytes
+        """
