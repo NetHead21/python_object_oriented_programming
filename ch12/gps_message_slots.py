@@ -307,3 +307,19 @@ class Message:
         if self.end is None:
             raise GPSError("No end found")
         return self
+
+    def __getitem__(self, field: int) -> bytes:
+        """Extract a field from the parsed message by field number.
+
+        Fields are separated by commas in NMEA messages. This method
+        returns the bytes between comma positions.
+
+        Args:
+            field (int): Field number to extract (0-based)
+
+        Returns:
+            bytes: The field content as bytes
+
+        Raises:
+            RuntimeError: If the buffer reference has been garbage collected
+        """
