@@ -203,3 +203,4 @@ class Buffer(Sequence[int]):
         Returns:
             Iterator[int]: Iterator yielding each byte as an integer
         """
+        return iter(self.content)
