@@ -155,3 +155,7 @@ class Point:
             float: Longitude converted to radians
         """
         return radians(self.longitude)
+
+
+p = Point.from_bytes(b"4916.45", b"N", b"12311.12", b"W")
+print(p)
