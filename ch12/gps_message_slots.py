@@ -146,3 +146,11 @@ class Point:
             float: Latitude converted to radians
         """
         return radians(self.latitude)
+
+    @property
+    def lon(self) -> float:
+        """Get longitude in radians.
+
+        Returns:
+            float: Longitude converted to radians
+        """
