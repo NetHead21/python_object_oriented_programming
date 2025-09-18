@@ -63,3 +63,10 @@ class Point:
         """
         self.latitude = latitude
         self.longitude = longitude
+
+    def __repr__(self) -> str:
+        """Return a detailed string representation for debugging.
+
+        Returns:
+            str: String in format "Point(latitude=XX.XX, longitude=YY.YY)"
+        """
