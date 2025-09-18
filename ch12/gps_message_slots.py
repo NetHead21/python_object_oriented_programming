@@ -337,3 +337,6 @@ class Message:
         Returns:
             Point: Geographic coordinates parsed from the message
         """
+        return Point.from_bytes(
+            self.latitude(), self.lat_n_s(), self.longitude(), self.lon_e_w()
+        )
