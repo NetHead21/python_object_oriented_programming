@@ -71,3 +71,31 @@ class Point:
             str: String in format "Point(latitude=XX.XX, longitude=YY.YY)"
         """
         return f"Point(latitude={self.latitude}, longitude={self.longitude})"
+
+    @classmethod
+    def from_bytes(
+        cls,
+        latitude: bytes,
+        N_S: bytes,
+        longitude: bytes,
+        E_W: bytes,
+    ) -> "Point":
+        """Create a Point from GPS coordinate byte strings.
+
+        Parses GPS coordinates from NMEA format (DDMM.MMMM for latitude,
+        DDDMM.MMMM for longitude) and converts them to decimal degrees.
+
+        Args:
+            latitude (bytes): Latitude in DDMM.MMMM format
+            N_S (bytes): Latitude direction ('N' or 'S')
+            longitude (bytes): Longitude in DDDMM.MMMM format
+            E_W (bytes): Longitude direction ('E' or 'W')
+
+        Returns:
+            Point: New Point instance with parsed coordinates
+
+        Example:
+            >>> point = Point.from_bytes(b"4916.45", b"N", b"12311.12", b"W")
+            >>> print(point.latitude, point.longitude)
+            49.274167 -123.185333
+        """
