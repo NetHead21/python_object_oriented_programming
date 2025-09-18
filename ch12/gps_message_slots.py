@@ -187,3 +187,4 @@ class Buffer(Sequence[int]):
         Args:
             content (bytes): The byte data to wrap
         """
+        self.content = content
