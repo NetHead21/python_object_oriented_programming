@@ -106,3 +106,10 @@ class Point:
         lat_min = float(lat_str[2:])  # Rest are minutes
         lat_decimal = lat_deg + lat_min / 60
         lat_sign = 1 if N_S.upper() == b"N" else -1
+
+        # Parse longitude: DDDMM.MMMM format
+        lon_str = longitude.decode("ascii")
+        lon_deg = float(lon_str[:3])  # First 3 digits are degrees
+        lon_min = float(lon_str[3:])  # Rest are minutes
+        lon_decimal = lon_deg + lon_min / 60
+        lon_sign = 1 if E_W.upper() == b"E" else -1
