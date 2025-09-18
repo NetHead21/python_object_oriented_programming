@@ -367,3 +367,12 @@ class Message:
             bytes: Longitude in DDDMM.MMMM format
         """
         ...
+
+    @abc.abstractmethod
+    def lon_e_w(self) -> bytes:
+        """Extract longitude direction indicator from the message.
+
+        Returns:
+            bytes: Either b'E' (East) or b'W' (West)
+        """
+        ...
