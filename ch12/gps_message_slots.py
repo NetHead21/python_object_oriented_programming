@@ -53,3 +53,11 @@ class Point:
     """
 
     __slots__ = ("latitude", "longitude")
+
+    def __init__(self, latitude: float, longitude: float) -> None:
+        """Initialize a Point with latitude and longitude.
+
+        Args:
+            latitude (float): Latitude in decimal degrees
+            longitude (float): Longitude in decimal degrees
+        """
