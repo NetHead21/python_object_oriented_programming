@@ -358,3 +358,12 @@ class Message:
             bytes: Either b'N' (North) or b'S' (South)
         """
         ...
+
+    @abc.abstractmethod
+    def longitude(self) -> bytes:
+        """Extract longitude field from the message.
+
+        Returns:
+            bytes: Longitude in DDDMM.MMMM format
+        """
+        ...
