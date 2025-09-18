@@ -51,3 +51,5 @@ class Point:
         >>> print(point)
         49°16.4500'N, 123°11.1500'W
     """
+
+    __slots__ = ("latitude", "longitude")
