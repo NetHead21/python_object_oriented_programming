@@ -209,3 +209,8 @@ class Buffer(Sequence[int]):
     def __getitem__(self, index: int) -> int:
         """Get a single byte as an integer."""
         ...
+
+    @overload
+    def __getitem__(self, index: slice) -> bytes:
+        """Get a slice of bytes."""
+        ...
