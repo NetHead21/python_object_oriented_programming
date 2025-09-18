@@ -99,3 +99,10 @@ class Point:
             >>> print(point.latitude, point.longitude)
             49.274167 -123.185333
         """
+
+        # Parse latitude: DDMM.MMMM format
+        lat_str = latitude.decode("ascii")
+        lat_deg = float(lat_str[:2])  # First 2 digits are degrees
+        lat_min = float(lat_str[2:])  # Rest are minutes
+        lat_decimal = lat_deg + lat_min / 60
+        lat_sign = 1 if N_S.upper() == b"N" else -1
