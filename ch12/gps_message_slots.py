@@ -159,3 +159,24 @@ class Point:
 
 p = Point.from_bytes(b"4916.45", b"N", b"12311.12", b"W")
 print(p)
+
+
+class Buffer(Sequence[int]):
+    """Memory-efficient wrapper for byte sequences used in GPS message parsing.
+
+    Implements the Sequence protocol to provide indexing and iteration over
+    bytes as integers. This allows for efficient parsing of GPS message data
+    without copying the underlying byte data.
+
+    Attributes:
+        content (bytes): The underlying byte data
+
+    Example:
+        >>> buffer = Buffer(b"$GPGGA,170834")
+        >>> buffer[0]  # First byte as int
+        36
+        >>> chr(buffer[0])  # Convert to character
+        '$'
+        >>> len(buffer)
+        14
+    """
