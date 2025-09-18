@@ -270,3 +270,7 @@ class Message:
 
     def __init__(self) -> None:
         """Initialize an empty message parser."""
+        self.buffer: weakref.ReferenceType[Buffer]
+        self.offset = 0
+        self.end: Optional[int]
+        self.commas: list[int]
