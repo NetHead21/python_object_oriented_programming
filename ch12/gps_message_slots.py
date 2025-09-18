@@ -137,3 +137,11 @@ class Point:
             f"{lat_deg:02.0f}°{lat_min_sec:07.4f}'{lat_dir}, "
             f"{lon_deg:03.0f}°{lon_min_sec:07.4f}'{lon_dir}"
         )
+
+    @property
+    def lat(self) -> float:
+        """Get latitude in radians.
+
+        Returns:
+            float: Latitude converted to radians
+        """
