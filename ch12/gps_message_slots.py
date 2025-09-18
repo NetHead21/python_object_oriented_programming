@@ -327,3 +327,13 @@ class Message:
             raise RuntimeError("Broken reference")
         start, end = self.commas[field] + 1, self.commas[field + 1]
         return buffer[start:end]
+
+    def get_fix(self) -> Point:
+        """Extract and parse the GPS position fix from the message.
+
+        Calls the abstract methods to get latitude, longitude and direction
+        indicators, then creates a Point object with the parsed coordinates.
+
+        Returns:
+            Point: Geographic coordinates parsed from the message
+        """
