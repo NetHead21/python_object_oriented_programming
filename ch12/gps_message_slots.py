@@ -61,3 +61,5 @@ class Point:
             latitude (float): Latitude in decimal degrees
             longitude (float): Longitude in decimal degrees
         """
+        self.latitude = latitude
+        self.longitude = longitude
