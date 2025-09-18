@@ -265,3 +265,5 @@ class Message:
         end (Optional[int]): Ending position of message in buffer
         commas (list[int]): Positions of comma separators in message
     """
+
+    __slots__ = ("buffer", "offset", "end", "commas")
