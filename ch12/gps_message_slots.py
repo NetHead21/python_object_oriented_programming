@@ -154,3 +154,4 @@ class Point:
         Returns:
             float: Longitude converted to radians
         """
+        return radians(self.longitude)
