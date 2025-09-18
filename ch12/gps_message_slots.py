@@ -323,3 +323,7 @@ class Message:
         Raises:
             RuntimeError: If the buffer reference has been garbage collected
         """
+        if not hasattr(self, "buffer") or (buffer := self.buffer()) is None:
+            raise RuntimeError("Broken reference")
+        start, end = self.commas[field] + 1, self.commas[field + 1]
+        return buffer[start:end]
