@@ -232,3 +232,4 @@ class Buffer(Sequence[int]):
             >>> buffer[1:3]  # Slice
             b'el'
         """
+        return self.content[index]
