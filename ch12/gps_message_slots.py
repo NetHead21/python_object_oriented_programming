@@ -214,3 +214,21 @@ class Buffer(Sequence[int]):
     def __getitem__(self, index: slice) -> bytes:
         """Get a slice of bytes."""
         ...
+
+    def __getitem__(self, index: int | slice) -> int | bytes:
+        """Get item(s) from the buffer by index or slice.
+
+        Args:
+            index: Either an integer index or a slice object
+
+        Returns:
+            int: Single byte as integer if index is int
+            bytes: Byte sequence if index is slice
+
+        Example:
+            >>> buffer = Buffer(b"Hello")
+            >>> buffer[0]  # Single byte
+            72
+            >>> buffer[1:3]  # Slice
+            b'el'
+        """
