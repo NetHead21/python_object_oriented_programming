@@ -145,3 +145,4 @@ class Point:
         Returns:
             float: Latitude converted to radians
         """
+        return radians(self.latitude)
