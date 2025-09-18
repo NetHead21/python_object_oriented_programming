@@ -195,3 +195,11 @@ class Buffer(Sequence[int]):
         Returns:
             int: Number of bytes in the buffer
         """
+        return len(self.content)
+
+    def __iter__(self) -> Iterator[int]:
+        """Iterate over buffer contents as integers.
+
+        Returns:
+            Iterator[int]: Iterator yielding each byte as an integer
+        """
