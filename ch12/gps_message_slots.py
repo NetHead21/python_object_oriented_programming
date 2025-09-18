@@ -267,3 +267,6 @@ class Message:
     """
 
     __slots__ = ("buffer", "offset", "end", "commas")
+
+    def __init__(self) -> None:
+        """Initialize an empty message parser."""
