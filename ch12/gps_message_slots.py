@@ -28,3 +28,8 @@ Example:
     client = Client(buffer)
     client.scan()  # Prints parsed coordinates
 """
+
+import abc
+import weakref
+from math import radians, floor
+from typing import Optional, overload, Sequence, Iterator, cast
