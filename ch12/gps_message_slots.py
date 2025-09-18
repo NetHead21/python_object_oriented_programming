@@ -188,3 +188,10 @@ class Buffer(Sequence[int]):
             content (bytes): The byte data to wrap
         """
         self.content = content
+
+    def __len__(self) -> int:
+        """Return the length of the buffer.
+
+        Returns:
+            int: Number of bytes in the buffer
+        """
