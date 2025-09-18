@@ -292,3 +292,18 @@ class Message:
         Raises:
             GPSError: If no message terminator '*' is found within 82 bytes
         """
+
+        self.buffer = weakref.ref(buffer)
+        self.offset = offset
+        self.commas = [offset]
+        self.end = None
+        for index in range(offset, offset + 82):
+            if buffer[index] == ord(b","):
+                self.commas.append(index)
+            elif buffer[index] == ord(b"*"):
+                self.commas.append(index)
+                self.end = index + 3
+                break
+        if self.end is None:
+            raise GPSError("No end found")
+        return self
