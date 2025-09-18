@@ -340,3 +340,12 @@ class Message:
         return Point.from_bytes(
             self.latitude(), self.lat_n_s(), self.longitude(), self.lon_e_w()
         )
+
+    @abc.abstractmethod
+    def latitude(self) -> bytes:
+        """Extract latitude field from the message.
+
+        Returns:
+            bytes: Latitude in DDMM.MMMM format
+        """
+        ...
