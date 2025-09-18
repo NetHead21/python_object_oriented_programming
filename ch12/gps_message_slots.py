@@ -124,3 +124,16 @@ class Point:
         Returns:
             str: Formatted coordinates like "49°16.4500'N, 123°11.1200'W"
         """
+
+        lat = abs(self.latitude)
+        lat_deg = floor(lat)
+        lat_min_sec = 60 * (lat - lat_deg)
+        lat_dir = "N" if self.latitude >= 0 else "S"
+        lon = abs(self.longitude)
+        lon_deg = floor(lon)
+        lon_min_sec = 60 * (lon - lon_deg)
+        lon_dir = "E" if self.longitude >= 0 else "W"
+        return (
+            f"{lat_deg:02.0f}°{lat_min_sec:07.4f}'{lat_dir}, "
+            f"{lon_deg:03.0f}°{lon_min_sec:07.4f}'{lon_dir}"
+        )
