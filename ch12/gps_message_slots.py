@@ -349,3 +349,12 @@ class Message:
             bytes: Latitude in DDMM.MMMM format
         """
         ...
+
+    @abc.abstractmethod
+    def lat_n_s(self) -> bytes:
+        """Extract latitude direction indicator from the message.
+
+        Returns:
+            bytes: Either b'N' (North) or b'S' (South)
+        """
+        ...
