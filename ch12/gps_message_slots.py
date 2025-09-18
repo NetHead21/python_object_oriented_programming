@@ -233,3 +233,15 @@ class Buffer(Sequence[int]):
             b'el'
         """
         return self.content[index]
+
+
+class GPSError(Exception):
+    """Exception raised when GPS message parsing encounters an error.
+
+    This exception is raised when:
+    - A GPS message is incomplete or malformed
+    - Required message terminator '*' is not found
+    - Buffer contains invalid GPS data
+    """
+
+    pass
