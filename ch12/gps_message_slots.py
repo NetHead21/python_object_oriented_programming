@@ -204,3 +204,8 @@ class Buffer(Sequence[int]):
             Iterator[int]: Iterator yielding each byte as an integer
         """
         return iter(self.content)
+
+    @overload
+    def __getitem__(self, index: int) -> int:
+        """Get a single byte as an integer."""
+        ...
