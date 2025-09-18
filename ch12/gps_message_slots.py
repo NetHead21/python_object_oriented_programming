@@ -245,3 +245,23 @@ class GPSError(Exception):
     """
 
     pass
+
+
+class Message:
+    """Abstract base class for GPS message parsing using the Flyweight pattern.
+
+    This class provides common functionality for parsing NMEA GPS messages.
+    Uses __slots__ for memory efficiency and weak references to prevent
+    memory leaks when multiple messages reference the same buffer.
+
+    The Flyweight pattern is implemented by:
+    - Sharing buffer references across multiple message instances
+    - Using weak references to allow garbage collection
+    - Storing only intrinsic state (parsing positions, not actual data)
+
+    Attributes:
+        buffer (weakref.ReferenceType[Buffer]): Weak reference to message buffer
+        offset (int): Starting position of message in buffer
+        end (Optional[int]): Ending position of message in buffer
+        commas (list[int]): Positions of comma separators in message
+    """
