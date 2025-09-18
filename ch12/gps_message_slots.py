@@ -180,3 +180,10 @@ class Buffer(Sequence[int]):
         >>> len(buffer)
         14
     """
+
+    def __init__(self, content: bytes) -> None:
+        """Initialize the buffer with byte content.
+
+        Args:
+            content (bytes): The byte data to wrap
+        """
