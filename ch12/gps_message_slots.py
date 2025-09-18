@@ -115,3 +115,12 @@ class Point:
         lon_sign = 1 if E_W.upper() == b"E" else -1
 
         return cls(lat_decimal * lat_sign, lon_decimal * lon_sign)
+
+    def __str__(self) -> str:
+        """Return a human-readable string representation of the coordinates.
+
+        Formats coordinates in degrees, minutes format (DD°MM.MMMM'X).
+
+        Returns:
+            str: Formatted coordinates like "49°16.4500'N, 123°11.1200'W"
+        """
