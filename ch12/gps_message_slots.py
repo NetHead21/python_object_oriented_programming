@@ -70,3 +70,4 @@ class Point:
         Returns:
             str: String in format "Point(latitude=XX.XX, longitude=YY.YY)"
         """
+        return f"Point(latitude={self.latitude}, longitude={self.longitude})"
