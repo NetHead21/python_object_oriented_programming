@@ -33,3 +33,21 @@ import abc
 import weakref
 from math import radians, floor
 from typing import Optional, overload, Sequence, Iterator, cast
+
+
+class Point:
+    """Represents a geographic point with latitude and longitude coordinates.
+
+    This class uses __slots__ for memory efficiency and provides methods for
+    parsing GPS coordinates from NMEA message format and formatting them
+    for display.
+
+    Attributes:
+        latitude (float): Latitude in decimal degrees (-90 to +90)
+        longitude (float): Longitude in decimal degrees (-180 to +180)
+
+    Example:
+        >>> point = Point(49.274167, -123.185833)  # Vancouver, BC
+        >>> print(point)
+        49°16.4500'N, 123°11.1500'W
+    """
