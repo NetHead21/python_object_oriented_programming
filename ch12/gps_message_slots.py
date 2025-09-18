@@ -113,3 +113,5 @@ class Point:
         lon_min = float(lon_str[3:])  # Rest are minutes
         lon_decimal = lon_deg + lon_min / 60
         lon_sign = 1 if E_W.upper() == b"E" else -1
+
+        return cls(lat_decimal * lat_sign, lon_decimal * lon_sign)
