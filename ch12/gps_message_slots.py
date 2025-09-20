@@ -376,3 +376,25 @@ class Message:
             bytes: Either b'E' (East) or b'W' (West)
         """
         ...
+
+
+class GPGGA(Message):
+    """Parser for GPGGA (Global Positioning System Fix Data) messages.
+
+    GPGGA messages provide essential GPS fix information including:
+    - Time of fix
+    - Latitude and longitude
+    - Fix quality indicator
+    - Number of satellites
+    - Horizontal dilution of precision
+    - Altitude above mean sea level
+
+    Message format:
+    $GPGGA,hhmmss.ss,ddmm.mmmm,a,dddmm.mmmm,b,q,xx,p.p,a.a,M,g.g,M,s,cccc*hh
+
+    Field positions:
+    - Field 2: Latitude (ddmm.mmmm)
+    - Field 3: Latitude direction (N/S)
+    - Field 4: Longitude (dddmm.mmmm)
+    - Field 5: Longitude direction (E/W)
+    """
