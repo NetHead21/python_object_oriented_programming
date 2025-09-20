@@ -491,3 +491,7 @@ class GPRMC(Message):
     """
 
     __slots__ = ()
+
+    def latitude(self) -> bytes:
+        """Get latitude field from GPRMC message (field 3)."""
+        return self[3]
