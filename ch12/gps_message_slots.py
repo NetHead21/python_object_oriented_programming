@@ -444,3 +444,5 @@ class GPGLL(Message):
     - Field 3: Longitude (dddmm.mmmm)
     - Field 4: Longitude direction (E/W)
     """
+
+    __slots__ = ()
