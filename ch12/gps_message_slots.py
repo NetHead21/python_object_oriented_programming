@@ -425,3 +425,22 @@ print(m.from_buffer(raw, 0))
 
 fix = m.get_fix()
 print(fix)
+
+
+class GPGLL(Message):
+    """Parser for GPGLL (Geographic Position - Latitude/Longitude) messages.
+
+    GPGLL messages provide basic position information:
+    - Latitude and longitude coordinates
+    - Time of position fix
+    - Status indicator (A=valid, V=invalid)
+
+    Message format:
+    $GPGLL,ddmm.mmmm,a,dddmm.mmmm,b,hhmmss.ss,c*hh
+
+    Field positions:
+    - Field 1: Latitude (ddmm.mmmm)
+    - Field 2: Latitude direction (N/S)
+    - Field 3: Longitude (dddmm.mmmm)
+    - Field 4: Longitude direction (E/W)
+    """
