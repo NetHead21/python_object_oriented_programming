@@ -416,3 +416,6 @@ class GPGGA(Message):
     def lon_e_w(self) -> bytes:
         """Get longitude direction from GPGGA message (field 5)."""
         return self[5]
+
+
+raw = Buffer(b"$GPGGA,170834,4124.8963,N,08151.6838,W,1,05,1.5,280.2,M,-34.0,M,,*75")
