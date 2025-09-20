@@ -408,3 +408,7 @@ class GPGGA(Message):
     def lat_n_s(self) -> bytes:
         """Get latitude direction from GPGGA message (field 3)."""
         return self[3]
+
+    def longitude(self) -> bytes:
+        """Get longitude field from GPGGA message (field 4)."""
+        return self[4]
