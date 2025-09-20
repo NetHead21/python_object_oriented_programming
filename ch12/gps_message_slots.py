@@ -489,3 +489,5 @@ class GPRMC(Message):
     - Field 5: Longitude (dddmm.mmmm)
     - Field 6: Longitude direction (E/W)
     """
+
+    __slots__ = ()
