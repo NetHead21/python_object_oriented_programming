@@ -446,3 +446,7 @@ class GPGLL(Message):
     """
 
     __slots__ = ()
+
+    def latitude(self) -> bytes:
+        """Get latitude field from GPGLL message (field 1)."""
+        return self[1]
