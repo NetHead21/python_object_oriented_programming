@@ -467,3 +467,25 @@ class GPGLL(Message):
 raw = Buffer(b"$GPGLL,3751.65,S,14507.36,E*77")
 m = GPGLL()
 print(m.from_buffer(raw, 0))
+
+
+class GPRMC(Message):
+    """Parser for GPRMC (Recommended Minimum Navigation Information) messages.
+
+    GPRMC messages provide comprehensive navigation data:
+    - Time and date of position fix
+    - Position status (A=valid, V=invalid)
+    - Latitude and longitude coordinates
+    - Speed over ground
+    - Course over ground
+    - Magnetic variation
+
+    Message format:
+    $GPRMC,hhmmss.ss,c,ddmm.mmmm,a,dddmm.mmmm,b,s.s,d.d,ddmmyy,m.m,n*hh
+
+    Field positions:
+    - Field 3: Latitude (ddmm.mmmm)
+    - Field 4: Latitude direction (N/S)
+    - Field 5: Longitude (dddmm.mmmm)
+    - Field 6: Longitude direction (E/W)
+    """
