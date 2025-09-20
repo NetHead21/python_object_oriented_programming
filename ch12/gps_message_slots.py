@@ -400,3 +400,7 @@ class GPGGA(Message):
     """
 
     __slots__ = ()
+
+    def latitude(self) -> bytes:
+        """Get latitude field from GPGGA message (field 2)."""
+        return self[2]
