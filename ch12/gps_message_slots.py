@@ -458,3 +458,7 @@ class GPGLL(Message):
     def longitude(self) -> bytes:
         """Get longitude field from GPGLL message (field 3)."""
         return self[3]
+
+    def lon_e_w(self) -> bytes:
+        """Get longitude direction from GPGLL message (field 4)."""
+        return self[4]
