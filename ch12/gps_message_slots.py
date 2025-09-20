@@ -462,3 +462,8 @@ class GPGLL(Message):
     def lon_e_w(self) -> bytes:
         """Get longitude direction from GPGLL message (field 4)."""
         return self[4]
+
+
+raw = Buffer(b"$GPGLL,3751.65,S,14507.36,E*77")
+m = GPGLL()
+print(m.from_buffer(raw, 0))
