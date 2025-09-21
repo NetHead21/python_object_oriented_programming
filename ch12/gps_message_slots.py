@@ -542,3 +542,13 @@ def message_factory(header: bytes) -> Optional[Message]:
         >>> parser is None
         True
     """
+
+    # TODO: Add functools.lru_cache to save storage and time
+    if header == b"GPGGA":
+        return GPGGA()
+    elif header == b"GPGLL":
+        return GPGLL()
+    elif header == b"GPRMC":
+        return GPRMC()
+    else:
+        return None
