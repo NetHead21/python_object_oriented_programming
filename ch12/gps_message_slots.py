@@ -499,3 +499,7 @@ class GPRMC(Message):
     def lat_n_s(self) -> bytes:
         """Get latitude direction from GPRMC message (field 4)."""
         return self[4]
+
+    def longitude(self) -> bytes:
+        """Get longitude field from GPRMC message (field 5)."""
+        return self[5]
