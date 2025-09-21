@@ -507,3 +507,8 @@ class GPRMC(Message):
     def lon_e_w(self) -> bytes:
         """Get longitude direction from GPRMC message (field 6)."""
         return self[6]
+
+
+raw = Buffer(b"$GPRMC,225446,A,4916.45,N,12311.12,W,000.5,054.7,191194,020.3,E*68")
+m = GPRMC()
+print(m.from_buffer(raw, 0))
