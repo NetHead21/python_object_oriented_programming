@@ -512,3 +512,33 @@ class GPRMC(Message):
 raw = Buffer(b"$GPRMC,225446,A,4916.45,N,12311.12,W,000.5,054.7,191194,020.3,E*68")
 m = GPRMC()
 print(m.from_buffer(raw, 0))
+
+
+def message_factory(header: bytes) -> Optional[Message]:
+    """Factory function implementing the Flyweight pattern for GPS messages.
+
+    Creates and returns appropriate message parser instances based on the
+    GPS message type header. This implements the Flyweight pattern by
+    creating lightweight parser objects that share references to the
+    underlying buffer data.
+
+    Args:
+        header (bytes): 5-byte message type identifier (e.g., b'GPGGA')
+
+    Returns:
+        Optional[Message]: Appropriate message parser instance, or None
+                         if the message type is not supported
+
+    Supported message types:
+        - GPGGA: Global Positioning System Fix Data
+        - GPGLL: Geographic Position - Latitude/Longitude
+        - GPRMC: Recommended Minimum Navigation Information
+
+    Example:
+        >>> parser = message_factory(b'GPGGA')
+        >>> isinstance(parser, GPGGA)
+        True
+        >>> parser = message_factory(b'UNKNOWN')
+        >>> parser is None
+        True
+    """
