@@ -552,3 +552,7 @@ def message_factory(header: bytes) -> Optional[Message]:
         return GPRMC()
     else:
         return None
+
+
+buffer = Buffer(b"$GPGLL,3751.65,S,14507.36,E*77")
+flyweight = message_factory(buffer[1:6])
