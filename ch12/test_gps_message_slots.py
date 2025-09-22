@@ -261,3 +261,7 @@ class TestConcreteMessages(unittest.TestCase):
 
     def test_message_slots(self):
         """Test that concrete messages use __slots__."""
+        # Test that classes have __slots__ defined
+        self.assertTrue(hasattr(GPGGA, "__slots__"))
+        self.assertTrue(hasattr(GPGLL, "__slots__"))
+        self.assertTrue(hasattr(GPRMC, "__slots__"))
