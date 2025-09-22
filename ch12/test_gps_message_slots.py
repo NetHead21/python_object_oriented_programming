@@ -4,3 +4,7 @@ This test suite covers all major functionality of the GPS message parsing system
 including Point coordinate handling, Buffer operations, Message parsing, and
 Client stream processing.
 """
+
+import unittest
+import weakref
+from unittest.mock import patch
