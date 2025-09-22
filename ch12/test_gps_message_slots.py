@@ -117,3 +117,9 @@ class TestBuffer(unittest.TestCase):
 
 class TestGPSError(unittest.TestCase):
     """Test cases for GPSError exception."""
+
+    def test_gps_error_inheritance(self):
+        """Test GPSError is an Exception."""
+        error = GPSError("Test error")
+        self.assertIsInstance(error, Exception)
+        self.assertEqual(str(error), "Test error")
