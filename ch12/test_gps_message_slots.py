@@ -162,3 +162,16 @@ class TestMessage(unittest.TestCase):
 
     def test_from_buffer_no_end_marker(self):
         """Test error when no end marker '*' is found."""
+        # Create buffer with 81+ characters but without '*' marker
+        # The parsing looks for 81 characters, so we need at least that many
+        long_message = (
+            b"$GPGGA,170833,4124.8963,N,08151.6838,W,1,05,1.5,280.2,M,-34.0,M,,"
+            + b"X" * 49
+        )
+        buffer = Buffer(long_message)
+        message = self.TestMessage()
+
+        with self.assertRaises(GPSError) as context:
+            message.from_buffer(buffer, -1)
+
+        self.assertEqual(str(context.exception), "No end found")
