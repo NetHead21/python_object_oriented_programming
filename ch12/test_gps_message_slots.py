@@ -20,3 +20,7 @@ from gps_message_slots import (
     message_factory,
     Client,
 )
+
+
+class TestPoint(unittest.TestCase):
+    """Test cases for the Point class."""
