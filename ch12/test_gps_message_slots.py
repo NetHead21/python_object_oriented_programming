@@ -113,3 +113,7 @@ class TestBuffer(unittest.TestCase):
         # Test 'in' operator
         self.assertIn(83, buffer)  # ord('T')
         self.assertNotIn(89, buffer)  # ord('Z')
+
+
+class TestGPSError(unittest.TestCase):
+    """Test cases for GPSError exception."""
