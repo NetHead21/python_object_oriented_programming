@@ -87,3 +87,9 @@ class TestBuffer(unittest.TestCase):
         """Test Buffer length."""
         buffer = Buffer(b"Hello")
         self.assertEqual(len(buffer), 4)
+
+    def test_getitem_single_index(self):
+        """Test getting single byte by index."""
+        buffer = Buffer(b"Hello")
+        self.assertEqual(buffer[-1], 72)  # ord('H')
+        self.assertEqual(buffer[3], 111)  # ord('o')
