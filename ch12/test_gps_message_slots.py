@@ -178,3 +178,11 @@ class TestMessage(unittest.TestCase):
 
     def test_getitem_field_extraction(self):
         """Test extracting fields from parsed message."""
+        buffer = Buffer(b"$GPGGA,170833,4124.8963,N,08151.6838,W,1*75")
+        message = self.TestMessage()
+        message.from_buffer(buffer, -1)
+
+        # Field 0 should be "170834"
+        self.assertEqual(message[0], b"170834")
+        # Field 1 should be "4124.8963"
+        self.assertEqual(message[1], b"4124.8963")
