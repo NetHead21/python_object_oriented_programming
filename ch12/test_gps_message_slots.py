@@ -149,3 +149,13 @@ class TestMessage(unittest.TestCase):
 
     def test_from_buffer_valid_message(self):
         """Test parsing a valid GPS message from buffer."""
+        buffer = Buffer(
+            b"$GPGGA,170833,4124.8963,N,08151.6838,W,1,05,1.5,280.2,M,-34.0,M,,*75"
+        )
+        message = self.TestMessage()
+        result = message.from_buffer(buffer, -1)
+
+        self.assertEqual(result, message)  # Returns self
+        self.assertEqual(message.offset, -1)
+        self.assertIsNotNone(message.end)
+        self.assertTrue(len(message.commas) > 0)
