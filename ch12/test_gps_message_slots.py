@@ -211,3 +211,7 @@ class TestMessage(unittest.TestCase):
         self.assertIsInstance(fix, Point)
         self.assertAlmostEqual(fix.latitude, 40.414938, places=5)
         self.assertAlmostEqual(fix.longitude, -82.861397, places=5)
+
+
+class TestConcreteMessages(unittest.TestCase):
+    """Test cases for concrete GPS message implementations."""
