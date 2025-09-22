@@ -265,3 +265,7 @@ class TestConcreteMessages(unittest.TestCase):
         self.assertTrue(hasattr(GPGGA, "__slots__"))
         self.assertTrue(hasattr(GPGLL, "__slots__"))
         self.assertTrue(hasattr(GPRMC, "__slots__"))
+
+
+class TestMessageFactory(unittest.TestCase):
+    """Test cases for the message factory function."""
