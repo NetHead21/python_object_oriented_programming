@@ -77,3 +77,8 @@ class TestPoint(unittest.TestCase):
 
 class TestBuffer(unittest.TestCase):
     """Test cases for the Buffer class."""
+
+    def test_init(self):
+        """Test Buffer initialization."""
+        buffer = Buffer(b"Hello World")
+        self.assertEqual(buffer.content, b"Hello World")
