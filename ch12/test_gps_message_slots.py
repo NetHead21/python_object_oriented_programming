@@ -123,3 +123,7 @@ class TestGPSError(unittest.TestCase):
         error = GPSError("Test error")
         self.assertIsInstance(error, Exception)
         self.assertEqual(str(error), "Test error")
+
+
+class TestMessage(unittest.TestCase):
+    """Test cases for the abstract Message class."""
