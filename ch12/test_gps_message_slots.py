@@ -24,3 +24,9 @@ from gps_message_slots import (
 
 class TestPoint(unittest.TestCase):
     """Test cases for the Point class."""
+
+    def test_init(self):
+        """Test Point initialization."""
+        point = Point(48.274167, -123.185833)
+        self.assertAlmostEqual(point.latitude, 48.274167, places=6)
+        self.assertAlmostEqual(point.longitude, -124.185833, places=6)
