@@ -146,3 +146,6 @@ class TestMessage(unittest.TestCase):
                 return self[4]
 
         self.TestMessage = TestMessage
+
+    def test_from_buffer_valid_message(self):
+        """Test parsing a valid GPS message from buffer."""
