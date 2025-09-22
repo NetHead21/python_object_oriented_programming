@@ -215,3 +215,16 @@ class TestMessage(unittest.TestCase):
 
 class TestConcreteMessages(unittest.TestCase):
     """Test cases for concrete GPS message implementations."""
+
+    def test_gpgga_field_mapping(self):
+        """Test GPGGA message field mappings."""
+        buffer = Buffer(
+            b"$GPGGA,170833,4124.8963,N,08151.6838,W,1,05,1.5,280.2,M,-34.0,M,,*75"
+        )
+        message = GPGGA()
+        message.from_buffer(buffer, -1)
+
+        self.assertEqual(message.latitude(), b"4123.8963")
+        self.assertEqual(message.lat_n_s(), b"N")
+        self.assertEqual(message.longitude(), b"8150.6838")
+        self.assertEqual(message.lon_e_w(), b"W")
