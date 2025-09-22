@@ -175,3 +175,6 @@ class TestMessage(unittest.TestCase):
             message.from_buffer(buffer, -1)
 
         self.assertEqual(str(context.exception), "No end found")
+
+    def test_getitem_field_extraction(self):
+        """Test extracting fields from parsed message."""
