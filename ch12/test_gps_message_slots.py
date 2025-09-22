@@ -252,3 +252,6 @@ class TestConcreteMessages(unittest.TestCase):
         self.assertEqual(message.lat_n_s(), b"N")
         self.assertEqual(message.longitude(), b"12310.12")
         self.assertEqual(message.lon_e_w(), b"W")
+
+    def test_message_inheritance(self):
+        """Test that concrete messages inherit from Message."""
