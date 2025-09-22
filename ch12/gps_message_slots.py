@@ -556,3 +556,83 @@ def message_factory(header: bytes) -> Optional[Message]:
 
 buffer = Buffer(b"$GPGLL,3751.65,S,14507.36,E*77")
 flyweight = message_factory(buffer[1:6])
+
+
+class Client:
+    """GPS message scanner that processes NMEA messages from a buffer.
+
+    The Client class scans through a GPS data buffer to find and parse
+    individual NMEA messages. It uses the message factory pattern to
+    create appropriate message parsers and extract GPS fixes.
+
+    This class implements a simple state machine that:
+    1. Searches for message start markers ('$')
+    2. Identifies message types from headers
+    3. Creates appropriate parser instances
+    4. Extracts and prints GPS coordinates
+    5. Handles parsing errors gracefully
+
+    Attributes:
+        buffer (Buffer): The GPS data buffer to scan
+
+    Example:
+        >>> data = b"$GPGGA,170834,4916.45,N,12311.12,W,1,*69"
+        >>> buffer = Buffer(data)
+        >>> client = Client(buffer)
+        >>> client.scan()  # Prints parsed coordinates
+        49°16.4500'N, 123°11.1200'W
+    """
+
+    def __init__(self, buffer: Buffer) -> None:
+        """Initialize the client with a GPS data buffer.
+
+        Args:
+            buffer (Buffer): The buffer containing GPS message data
+        """
+        self.buffer = buffer
+
+    def scan(self) -> None:
+        """Scan the buffer for GPS messages and print coordinates.
+
+        This method iterates through the buffer looking for NMEA messages
+        that start with '$'. For each message found, it:
+        - Extracts the message header (5 characters after '$')
+        - Uses the message factory to create an appropriate parser
+        - Parses the message and extracts GPS coordinates
+        - Prints the coordinate fix
+        - Continues scanning from the end of the current message
+
+        The scanning stops when:
+        - No more '$' markers are found in the buffer
+        - A malformed message is encountered (missing '*' terminator)
+
+        Raises:
+            No exceptions are raised - parsing errors are handled gracefully
+            by catching ValueError and GPSError internally.
+
+        Example:
+            >>> data = b"$GPGGA,170834,4916.45,N,12311.12,W,1,*69$GPGLL,4916.45,N,12311.12,W,170834,A,*2B"
+            >>> client = Client(Buffer(data))
+            >>> client.scan()
+            49°16.4500'N, 123°11.1200'W
+            49°16.4500'N, 123°11.1200'W
+        """
+        end = 0
+        while True:
+            try:
+                start = self.buffer.index(ord(b"$"), end)
+                header = self.buffer[start + 1 : start + 6]
+                m = message_factory(header)
+                if m:
+                    fix = m.from_buffer(self.buffer, start).get_fix()
+                    print(fix)
+                    end = cast(int, m.end)
+                else:
+                    star = self.buffer.index(ord(b"*"), end)
+                    end = star + 3
+            except ValueError:
+                # No "$" found: no more messages
+                break
+            except GPSError:
+                # No final "*" found: last message damaged
+                break
