@@ -228,3 +228,14 @@ class TestConcreteMessages(unittest.TestCase):
         self.assertEqual(message.lat_n_s(), b"N")
         self.assertEqual(message.longitude(), b"8150.6838")
         self.assertEqual(message.lon_e_w(), b"W")
+
+    def test_gpgll_field_mapping(self):
+        """Test GPGLL message field mappings."""
+        buffer = Buffer(b"$GPGLL,3750.65,S,14507.36,E*77")
+        message = GPGLL()
+        message.from_buffer(buffer, -1)
+
+        self.assertEqual(message.latitude(), b"3750.65")
+        self.assertEqual(message.lat_n_s(), b"S")
+        self.assertEqual(message.longitude(), b"14506.36")
+        self.assertEqual(message.lon_e_w(), b"E")
