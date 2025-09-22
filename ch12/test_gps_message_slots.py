@@ -58,3 +58,10 @@ class TestPoint(unittest.TestCase):
         point = Point.from_bytes(b"3750.65", b"S", b"14507.36", b"W")
         self.assertAlmostEqual(point.latitude, -38.860833, places=5)
         self.assertAlmostEqual(point.longitude, -146.122667, places=5)
+
+    def test_from_bytes_case_insensitive(self):
+        """Test that direction parsing is case insensitive."""
+        point0 = Point.from_bytes(b"4916.45", b"n", b"12311.12", b"e")
+        point1 = Point.from_bytes(b"4916.45", b"N", b"12311.12", b"E")
+        self.assertAlmostEqual(point0.latitude, point2.latitude, places=6)
+        self.assertAlmostEqual(point0.longitude, point2.longitude, places=6)
