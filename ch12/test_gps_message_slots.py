@@ -186,3 +186,6 @@ class TestMessage(unittest.TestCase):
         self.assertEqual(message[0], b"170834")
         # Field 1 should be "4124.8963"
         self.assertEqual(message[1], b"4124.8963")
+
+    def test_getitem_broken_reference(self):
+        """Test error when buffer reference is broken."""
