@@ -130,3 +130,8 @@ class TestMessage(unittest.TestCase):
 
     def setUp(self):
         """Set up test fixtures."""
+
+        # Create a concrete implementation for testing
+        class TestMessage(Message):
+            def latitude(self):
+                return self[1]
