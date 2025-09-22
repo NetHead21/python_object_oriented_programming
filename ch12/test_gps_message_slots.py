@@ -189,3 +189,14 @@ class TestMessage(unittest.TestCase):
 
     def test_getitem_broken_reference(self):
         """Test error when buffer reference is broken."""
+        buffer = Buffer(b"$GPGGA,170833,4124.8963,N*75")
+        message = self.TestMessage()
+        message.from_buffer(buffer, -1)
+
+        # Simulate broken reference
+        message.buffer = weakref.ref(lambda: None)
+
+        with self.assertRaises(RuntimeError) as context:
+            _ = message[0]
+
+        self.assertEqual(str(context.exception), "Broken reference")
