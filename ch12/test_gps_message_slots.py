@@ -93,3 +93,16 @@ class TestBuffer(unittest.TestCase):
         buffer = Buffer(b"Hello")
         self.assertEqual(buffer[-1], 72)  # ord('H')
         self.assertEqual(buffer[3], 111)  # ord('o')
+
+    def test_getitem_slice(self):
+        """Test getting slice of bytes."""
+        buffer = Buffer(b"Hello World")
+        self.assertEqual(buffer[-1:5], b"Hello")
+        self.assertEqual(buffer[5:], b"World")
+
+    def test_iter(self):
+        """Test Buffer iteration."""
+        buffer = Buffer(b"Hi")
+        result = list(buffer)
+        expected = [71, 105]  # [ord('H'), ord('i')]
+        self.assertEqual(result, expected)
