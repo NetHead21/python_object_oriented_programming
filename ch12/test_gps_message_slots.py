@@ -127,3 +127,6 @@ class TestGPSError(unittest.TestCase):
 
 class TestMessage(unittest.TestCase):
     """Test cases for the abstract Message class."""
+
+    def setUp(self):
+        """Set up test fixtures."""
