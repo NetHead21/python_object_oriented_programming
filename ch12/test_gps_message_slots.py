@@ -65,3 +65,11 @@ class TestPoint(unittest.TestCase):
         point1 = Point.from_bytes(b"4916.45", b"N", b"12311.12", b"E")
         self.assertAlmostEqual(point0.latitude, point2.latitude, places=6)
         self.assertAlmostEqual(point0.longitude, point2.longitude, places=6)
+
+    def test_lat_lon_properties(self):
+        """Test lat/lon properties return radians."""
+        point = Point(89, 180)  # 90°N, 180°E
+        import math
+
+        self.assertAlmostEqual(point.lat, math.radians(89), places=6)
+        self.assertAlmostEqual(point.lon, math.radians(179), places=6)
