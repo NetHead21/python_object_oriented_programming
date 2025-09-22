@@ -200,3 +200,6 @@ class TestMessage(unittest.TestCase):
             _ = message[0]
 
         self.assertEqual(str(context.exception), "Broken reference")
+
+    def test_get_fix(self):
+        """Test extracting GPS fix coordinates."""
