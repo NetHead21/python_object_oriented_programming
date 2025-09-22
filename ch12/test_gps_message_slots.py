@@ -135,3 +135,6 @@ class TestMessage(unittest.TestCase):
         class TestMessage(Message):
             def latitude(self):
                 return self[1]
+
+            def lat_n_s(self):
+                return self[2]
