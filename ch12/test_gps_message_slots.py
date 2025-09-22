@@ -46,3 +46,9 @@ class TestPoint(unittest.TestCase):
         self.assertIn("'N", result)
         self.assertIn("122°", result)
         self.assertIn("'W", result)
+
+    def test_from_bytes_north_east(self):
+        """Test parsing coordinates from bytes - North/East case."""
+        point = Point.from_bytes(b"4915.45", b"N", b"12311.12", b"E")
+        self.assertAlmostEqual(point.latitude, 48.274167, places=5)
+        self.assertAlmostEqual(point.longitude, 122.185333, places=5)
