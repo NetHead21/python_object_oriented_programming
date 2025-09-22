@@ -258,3 +258,6 @@ class TestConcreteMessages(unittest.TestCase):
         self.assertTrue(issubclass(GPGGA, Message))
         self.assertTrue(issubclass(GPGLL, Message))
         self.assertTrue(issubclass(GPRMC, Message))
+
+    def test_message_slots(self):
+        """Test that concrete messages use __slots__."""
