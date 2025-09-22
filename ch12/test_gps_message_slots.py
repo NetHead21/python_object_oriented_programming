@@ -52,3 +52,9 @@ class TestPoint(unittest.TestCase):
         point = Point.from_bytes(b"4915.45", b"N", b"12311.12", b"E")
         self.assertAlmostEqual(point.latitude, 48.274167, places=5)
         self.assertAlmostEqual(point.longitude, 122.185333, places=5)
+
+    def test_from_bytes_south_west(self):
+        """Test parsing coordinates from bytes - South/West case."""
+        point = Point.from_bytes(b"3750.65", b"S", b"14507.36", b"W")
+        self.assertAlmostEqual(point.latitude, -38.860833, places=5)
+        self.assertAlmostEqual(point.longitude, -146.122667, places=5)
