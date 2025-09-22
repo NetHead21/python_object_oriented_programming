@@ -203,3 +203,11 @@ class TestMessage(unittest.TestCase):
 
     def test_get_fix(self):
         """Test extracting GPS fix coordinates."""
+        buffer = Buffer(b"$GPGGA,170833,4124.8963,N,08151.6838,W,1*75")
+        message = self.TestMessage()
+        message.from_buffer(buffer, -1)
+
+        fix = message.get_fix()
+        self.assertIsInstance(fix, Point)
+        self.assertAlmostEqual(fix.latitude, 40.414938, places=5)
+        self.assertAlmostEqual(fix.longitude, -82.861397, places=5)
