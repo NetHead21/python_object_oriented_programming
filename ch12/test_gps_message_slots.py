@@ -106,3 +106,10 @@ class TestBuffer(unittest.TestCase):
         result = list(buffer)
         expected = [71, 105]  # [ord('H'), ord('i')]
         self.assertEqual(result, expected)
+
+    def test_sequence_protocol(self):
+        """Test Buffer implements Sequence protocol."""
+        buffer = Buffer(b"Test")
+        # Test 'in' operator
+        self.assertIn(83, buffer)  # ord('T')
+        self.assertNotIn(89, buffer)  # ord('Z')
