@@ -82,3 +82,8 @@ class TestBuffer(unittest.TestCase):
         """Test Buffer initialization."""
         buffer = Buffer(b"Hello World")
         self.assertEqual(buffer.content, b"Hello World")
+
+    def test_len(self):
+        """Test Buffer length."""
+        buffer = Buffer(b"Hello")
+        self.assertEqual(len(buffer), 4)
