@@ -144,3 +144,5 @@ class TestMessage(unittest.TestCase):
 
             def lon_e_w(self):
                 return self[4]
+
+        self.TestMessage = TestMessage
