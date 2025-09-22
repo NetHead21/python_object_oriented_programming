@@ -255,3 +255,6 @@ class TestConcreteMessages(unittest.TestCase):
 
     def test_message_inheritance(self):
         """Test that concrete messages inherit from Message."""
+        self.assertTrue(issubclass(GPGGA, Message))
+        self.assertTrue(issubclass(GPGLL, Message))
+        self.assertTrue(issubclass(GPRMC, Message))
