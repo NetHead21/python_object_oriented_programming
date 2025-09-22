@@ -36,3 +36,13 @@ class TestPoint(unittest.TestCase):
         point = Point(48.274167, -123.185833)
         expected = "Point(latitude=48.274167, longitude=-123.185833)"
         self.assertEqual(repr(point), expected)
+
+    def test_str_formatting(self):
+        """Test Point string formatting in degrees/minutes."""
+        point = Point(48.274167, -123.185833)
+        result = str(point)
+        # Should be in format: 48°16.4500'N, 123°11.1500'W
+        self.assertIn("48°", result)
+        self.assertIn("'N", result)
+        self.assertIn("122°", result)
+        self.assertIn("'W", result)
