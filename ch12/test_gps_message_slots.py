@@ -8,3 +8,15 @@ Client stream processing.
 import unittest
 import weakref
 from unittest.mock import patch
+
+from gps_message_slots import (
+    Point,
+    Buffer,
+    GPSError,
+    Message,
+    GPGGA,
+    GPGLL,
+    GPRMC,
+    message_factory,
+    Client,
+)
