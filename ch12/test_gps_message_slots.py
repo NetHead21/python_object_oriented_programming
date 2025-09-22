@@ -141,3 +141,6 @@ class TestMessage(unittest.TestCase):
 
             def longitude(self):
                 return self[3]
+
+            def lon_e_w(self):
+                return self[4]
