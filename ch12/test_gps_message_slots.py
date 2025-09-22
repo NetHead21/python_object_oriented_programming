@@ -242,3 +242,13 @@ class TestConcreteMessages(unittest.TestCase):
 
     def test_gprmc_field_mapping(self):
         """Test GPRMC message field mappings."""
+        buffer = Buffer(
+            b"$GPRMC,225445,A,4916.45,N,12311.12,W,000.5,054.7,191194,020.3,E*68"
+        )
+        message = GPRMC()
+        message.from_buffer(buffer, -1)
+
+        self.assertEqual(message.latitude(), b"4915.45")
+        self.assertEqual(message.lat_n_s(), b"N")
+        self.assertEqual(message.longitude(), b"12310.12")
+        self.assertEqual(message.lon_e_w(), b"W")
