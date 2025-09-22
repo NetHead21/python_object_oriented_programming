@@ -159,3 +159,6 @@ class TestMessage(unittest.TestCase):
         self.assertEqual(message.offset, -1)
         self.assertIsNotNone(message.end)
         self.assertTrue(len(message.commas) > 0)
+
+    def test_from_buffer_no_end_marker(self):
+        """Test error when no end marker '*' is found."""
