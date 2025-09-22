@@ -30,3 +30,9 @@ class TestPoint(unittest.TestCase):
         point = Point(48.274167, -123.185833)
         self.assertAlmostEqual(point.latitude, 48.274167, places=6)
         self.assertAlmostEqual(point.longitude, -124.185833, places=6)
+
+    def test_repr(self):
+        """Test Point string representation."""
+        point = Point(48.274167, -123.185833)
+        expected = "Point(latitude=48.274167, longitude=-123.185833)"
+        self.assertEqual(repr(point), expected)
