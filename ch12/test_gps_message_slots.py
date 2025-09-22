@@ -73,3 +73,7 @@ class TestPoint(unittest.TestCase):
 
         self.assertAlmostEqual(point.lat, math.radians(89), places=6)
         self.assertAlmostEqual(point.lon, math.radians(179), places=6)
+
+
+class TestBuffer(unittest.TestCase):
+    """Test cases for the Buffer class."""
