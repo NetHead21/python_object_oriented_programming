@@ -239,3 +239,6 @@ class TestConcreteMessages(unittest.TestCase):
         self.assertEqual(message.lat_n_s(), b"S")
         self.assertEqual(message.longitude(), b"14506.36")
         self.assertEqual(message.lon_e_w(), b"E")
+
+    def test_gprmc_field_mapping(self):
+        """Test GPRMC message field mappings."""
