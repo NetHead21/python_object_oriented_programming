@@ -331,3 +331,10 @@ class TestClient(unittest.TestCase):
     @patch("builtins.print")
     def test_client_scan_unknown_message(self, mock_print):
         """Test Client handling unknown message types."""
+        # Create buffer with unknown message type
+        buffer = Buffer(
+            b"$GPXXX,170833,4124.8963,N*75$GPGGA,170834,4124.8963,N,08151.6838,W,1*75"
+        )
+        client = Client(buffer)
+
+        client.scan()
