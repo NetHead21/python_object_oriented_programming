@@ -345,3 +345,10 @@ class TestClient(unittest.TestCase):
     @patch("builtins.print")
     def test_client_scan_malformed_message(self, mock_print):
         """Test Client handling malformed messages."""
+        # Create buffer with malformed message (81+ chars but no end marker)
+        buffer = Buffer(
+            b"$GPGGA,170833,4124.8963,N,08151.6838,W,1,05,1.5,280.2,M,-34.0,M,,XXXXXXXXXXXXXXXXXX"
+        )
+        client = Client(buffer)
+
+        client.scan()
