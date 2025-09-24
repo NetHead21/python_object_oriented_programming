@@ -301,3 +301,12 @@ class TestMessageFactory(unittest.TestCase):
 
 class TestClient(unittest.TestCase):
     """Test cases for the Client class."""
+
+    def setUp(self):
+        """Set up test fixtures."""
+        # Sample GPS data with multiple messages
+        self.sample_data = (
+            b"$GPGGA,170833,4124.8963,N,08151.6838,W,1,05,1.5,280.2,M,-34.0,M,,*75"
+            b"$GPGLL,3750.65,S,14507.36,E*77"
+            b"$GPRMC,225445,A,4916.45,N,12311.12,W,000.5,054.7,191194,020.3,E*68"
+        )
