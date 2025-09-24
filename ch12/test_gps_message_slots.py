@@ -279,3 +279,8 @@ class TestMessageFactory(unittest.TestCase):
         """Test factory creates GPGLL message."""
         message = message_factory(b"GPGLL")
         self.assertIsInstance(message, GPGLL)
+
+    def test_factory_gprmc(self):
+        """Test factory creates GPRMC message."""
+        message = message_factory(b"GPRMC")
+        self.assertIsInstance(message, GPRMC)
