@@ -284,3 +284,8 @@ class TestMessageFactory(unittest.TestCase):
         """Test factory creates GPRMC message."""
         message = message_factory(b"GPRMC")
         self.assertIsInstance(message, GPRMC)
+
+    def test_factory_unknown_type(self):
+        """Test factory returns None for unknown message types."""
+        message = message_factory(b"GPXXX")
+        self.assertIsNone(message)
