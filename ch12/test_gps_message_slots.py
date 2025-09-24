@@ -297,3 +297,7 @@ class TestMessageFactory(unittest.TestCase):
         self.assertIsNot(msg0, msg1)  # Different instances
         self.assertIsInstance(msg0, GPGGA)
         self.assertIsInstance(msg1, GPGGA)
+
+
+class TestClient(unittest.TestCase):
+    """Test cases for the Client class."""
