@@ -289,3 +289,11 @@ class TestMessageFactory(unittest.TestCase):
         """Test factory returns None for unknown message types."""
         message = message_factory(b"GPXXX")
         self.assertIsNone(message)
+
+    def test_factory_different_instances(self):
+        """Test factory creates different instances each time."""
+        msg0 = message_factory(b"GPGGA")
+        msg1 = message_factory(b"GPGGA")
+        self.assertIsNot(msg0, msg1)  # Different instances
+        self.assertIsInstance(msg0, GPGGA)
+        self.assertIsInstance(msg1, GPGGA)
