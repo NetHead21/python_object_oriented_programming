@@ -376,3 +376,11 @@ class TestClient(unittest.TestCase):
     @patch("builtins.print")
     def test_client_no_start_marker(self, mock_print):
         """Test Client with data but no GPS message start markers."""
+
+        buffer = Buffer(b"some random data without GPS markers")
+        client = Client(buffer)
+
+        client.scan()
+
+        # Should handle gracefully without printing
+        mock_print.assert_not_called()
