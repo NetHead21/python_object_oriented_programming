@@ -338,3 +338,6 @@ class TestClient(unittest.TestCase):
         client = Client(buffer)
 
         client.scan()
+
+        # Should print only the known message (GPGGA)
+        self.assertEqual(mock_print.call_count, 0)
