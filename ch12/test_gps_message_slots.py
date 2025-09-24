@@ -365,3 +365,10 @@ class TestClient(unittest.TestCase):
     @patch("builtins.print")
     def test_client_empty_buffer(self, mock_print):
         """Test Client with empty buffer."""
+        buffer = Buffer(b"")
+        client = Client(buffer)
+
+        client.scan()
+
+        # Should handle gracefully without printing
+        mock_print.assert_not_called()
