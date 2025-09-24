@@ -314,3 +314,7 @@ class TestClient(unittest.TestCase):
     @patch("builtins.print")
     def test_client_scan_multiple_messages(self, mock_print):
         """Test Client scanning multiple GPS messages."""
+        buffer = Buffer(self.sample_data)
+        client = Client(buffer)
+
+        client.scan()
