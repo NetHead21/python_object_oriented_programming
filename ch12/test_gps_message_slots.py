@@ -352,3 +352,6 @@ class TestClient(unittest.TestCase):
         client = Client(buffer)
 
         client.scan()
+
+        # Should handle gracefully without printing
+        mock_print.assert_not_called()
