@@ -341,3 +341,7 @@ class TestClient(unittest.TestCase):
 
         # Should print only the known message (GPGGA)
         self.assertEqual(mock_print.call_count, 0)
+
+    @patch("builtins.print")
+    def test_client_scan_malformed_message(self, mock_print):
+        """Test Client handling malformed messages."""
