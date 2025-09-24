@@ -355,3 +355,9 @@ class TestClient(unittest.TestCase):
 
         # Should handle gracefully without printing
         mock_print.assert_not_called()
+
+    def test_client_init(self):
+        """Test Client initialization."""
+        buffer = Buffer(b"test data")
+        client = Client(buffer)
+        self.assertEqual(client.buffer, buffer)
