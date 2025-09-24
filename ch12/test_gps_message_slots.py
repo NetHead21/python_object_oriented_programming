@@ -274,3 +274,8 @@ class TestMessageFactory(unittest.TestCase):
         """Test factory creates GPGGA message."""
         message = message_factory(b"GPGGA")
         self.assertIsInstance(message, GPGGA)
+
+    def test_factory_gpgll(self):
+        """Test factory creates GPGLL message."""
+        message = message_factory(b"GPGLL")
+        self.assertIsInstance(message, GPGLL)
