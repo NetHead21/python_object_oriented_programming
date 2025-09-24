@@ -361,3 +361,7 @@ class TestClient(unittest.TestCase):
         buffer = Buffer(b"test data")
         client = Client(buffer)
         self.assertEqual(client.buffer, buffer)
+
+    @patch("builtins.print")
+    def test_client_empty_buffer(self, mock_print):
+        """Test Client with empty buffer."""
