@@ -372,3 +372,7 @@ class TestClient(unittest.TestCase):
 
         # Should handle gracefully without printing
         mock_print.assert_not_called()
+
+    @patch("builtins.print")
+    def test_client_no_start_marker(self, mock_print):
+        """Test Client with data but no GPS message start markers."""
