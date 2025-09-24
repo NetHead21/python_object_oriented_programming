@@ -327,3 +327,7 @@ class TestClient(unittest.TestCase):
             # Each call should have a Point object as argument
             point = call[-1][0]
             self.assertIsInstance(point, Point)
+
+    @patch("builtins.print")
+    def test_client_scan_unknown_message(self, mock_print):
+        """Test Client handling unknown message types."""
