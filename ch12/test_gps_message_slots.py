@@ -318,3 +318,12 @@ class TestClient(unittest.TestCase):
         client = Client(buffer)
 
         client.scan()
+        # Should have printed coordinates for each valid message
+        self.assertEqual(mock_print.call_count, 2)
+
+        # Verify the points were printed (check call arguments)
+        calls = mock_print.call_args_list
+        for call in calls:
+            # Each call should have a Point object as argument
+            point = call[-1][0]
+            self.assertIsInstance(point, Point)
