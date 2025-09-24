@@ -310,3 +310,7 @@ class TestClient(unittest.TestCase):
             b"$GPGLL,3750.65,S,14507.36,E*77"
             b"$GPRMC,225445,A,4916.45,N,12311.12,W,000.5,054.7,191194,020.3,E*68"
         )
+
+    @patch("builtins.print")
+    def test_client_scan_multiple_messages(self, mock_print):
+        """Test Client scanning multiple GPS messages."""
