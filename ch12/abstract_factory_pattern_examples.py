@@ -147,3 +147,22 @@ class Window(ABC):
         MacWindow: macOS window with traffic light buttons
         LinuxWindow: Desktop environment themed window
     """
+
+    @abstractmethod
+    def render(self) -> str:
+        """Render the window with platform-specific decorations and styling.
+
+        Creates the visual representation of the window including title bar,
+        borders, control buttons, and any platform-specific decorations.
+        The styling follows the target platform's design guidelines and
+        integrates properly with the desktop environment.
+
+        Returns:
+            str: Description of the rendered window appearance
+
+        Examples:
+            Windows: "Rendering Windows window with title bar and minimize/maximize buttons"
+            Mac: "Rendering Mac window with unified title bar and traffic lights"
+            Linux: "Rendering Linux window with customizable decorations"
+        """
+        pass
