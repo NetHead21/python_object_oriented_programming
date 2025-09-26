@@ -401,3 +401,6 @@ class LinuxButton(Button):
 
 class LinuxWindow(Window):
     """Concrete product - Linux-style window"""
+
+    def render(self) -> str:
+        return "Rendering Linux window with customizable decorations"
