@@ -383,3 +383,6 @@ class MacMenu(Menu):
 
     def render(self) -> str:
         return "Rendering Mac menu with translucent background"
+
+    def select_item(self, item: str) -> str:
+        return f"Mac menu item '{item}' selected with spring animation"
