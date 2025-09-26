@@ -363,3 +363,6 @@ class MacButton(Button):
 
     def render(self) -> str:
         return "Rendering Mac button with subtle shadow and system font"
+
+    def click(self) -> str:
+        return "Mac button clicked with gentle haptic feedback"
