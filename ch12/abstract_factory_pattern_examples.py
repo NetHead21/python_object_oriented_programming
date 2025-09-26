@@ -261,3 +261,15 @@ class WindowsButton(Button):
     The button follows Microsoft's design guidelines for consistency
     with other Windows applications and system components.
     """
+
+    def render(self) -> str:
+        """Render a Windows-style button with native styling.
+
+        Creates a button that follows Windows Fluent Design principles
+        with appropriate colors, shadows, and visual effects that match
+        the current Windows theme and accessibility settings.
+
+        Returns:
+            str: Description of the Windows button rendering process
+        """
+        return "Rendering Windows button with rounded corners and gradient"
