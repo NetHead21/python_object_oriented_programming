@@ -65,3 +65,7 @@ Real-world analogies:
 - Operating systems (Windows vs Mac vs Linux - each provides families
   of compatible UI components and system services)
 """
+
+from abc import ABC, abstractmethod
+from typing import List
+from enum import Enum
