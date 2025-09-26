@@ -127,3 +127,23 @@ class Button(ABC):
             Linux: "Linux button clicked with configurable action"
         """
         pass
+
+
+class Window(ABC):
+    """Abstract product interface for application windows across different platforms.
+
+    This class defines the common interface for creating and managing application
+    windows. Each platform implements this interface to provide native window
+    behavior that follows the operating system's window management conventions.
+
+    Windows created through this interface will have platform-appropriate:
+    - Title bars and decorations
+    - Resize and minimize/maximize controls
+    - Close button behavior and animations
+    - Focus and z-order management
+
+    Examples:
+        WindowsWindow: Native Windows window with Aero styling
+        MacWindow: macOS window with traffic light buttons
+        LinuxWindow: Desktop environment themed window
+    """
