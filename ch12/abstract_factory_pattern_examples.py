@@ -352,3 +352,6 @@ class WindowsMenu(Menu):
             str: Description of the Windows menu rendering
         """
         return "Rendering Windows menu with drop shadows and hover effects"
+
+    def select_item(self, item: str) -> str:
+        return f"Windows menu item '{item}' selected with highlight animation"
