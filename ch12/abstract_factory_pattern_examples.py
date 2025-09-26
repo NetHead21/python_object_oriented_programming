@@ -411,3 +411,6 @@ class LinuxWindow(Window):
 
 class LinuxMenu(Menu):
     """Concrete product - Linux-style menu"""
+
+    def render(self) -> str:
+        return "Rendering Linux menu with theme-based styling"
