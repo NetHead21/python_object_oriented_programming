@@ -384,3 +384,7 @@ class TestClient(unittest.TestCase):
 
         # Should handle gracefully without printing
         mock_print.assert_not_called()
+
+
+class TestIntegration(unittest.TestCase):
+    """Integration tests for the complete GPS parsing system."""
