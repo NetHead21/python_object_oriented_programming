@@ -397,3 +397,7 @@ class LinuxButton(Button):
 
     def click(self) -> str:
         return "Linux button clicked with configurable action"
+
+
+class LinuxWindow(Window):
+    """Concrete product - Linux-style window"""
