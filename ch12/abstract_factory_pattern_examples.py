@@ -313,3 +313,14 @@ class WindowsWindow(Window):
             str: Description of the Windows window rendering
         """
         return "Rendering Windows window with title bar and minimize/maximize buttons"
+
+    def close(self) -> str:
+        """Handle Windows window close with appropriate animation.
+
+        Closes the window using Windows-style fade animation and
+        proper cleanup that integrates with Windows window management.
+
+        Returns:
+            str: Description of the Windows window close operation
+        """
+        return "Windows window closing with fade animation"
