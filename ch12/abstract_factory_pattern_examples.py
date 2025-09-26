@@ -301,3 +301,15 @@ class WindowsWindow(Window):
     The window follows Windows design guidelines and provides the
     familiar user experience expected in Windows applications.
     """
+
+    def render(self) -> str:
+        """Render a Windows-style application window.
+
+        Creates a window with Windows-specific decorations including
+        title bar, system buttons, and visual styling that matches
+        the current Windows theme and user preferences.
+
+        Returns:
+            str: Description of the Windows window rendering
+        """
+        return "Rendering Windows window with title bar and minimize/maximize buttons"
