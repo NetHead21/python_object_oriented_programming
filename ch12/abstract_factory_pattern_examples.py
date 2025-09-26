@@ -373,3 +373,6 @@ class MacWindow(Window):
 
     def render(self) -> str:
         return "Rendering Mac window with unified title bar and traffic lights"
+
+    def close(self) -> str:
+        return "Mac window closing with smooth scale animation"
