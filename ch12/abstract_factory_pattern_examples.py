@@ -355,3 +355,8 @@ class WindowsMenu(Menu):
 
     def select_item(self, item: str) -> str:
         return f"Windows menu item '{item}' selected with highlight animation"
+
+
+# Concrete Products - Mac Style
+class MacButton(Button):
+    """Concrete product - Mac-style button"""
