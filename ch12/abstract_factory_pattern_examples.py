@@ -407,3 +407,7 @@ class LinuxWindow(Window):
 
     def close(self) -> str:
         return "Linux window closing with user-defined animation"
+
+
+class LinuxMenu(Menu):
+    """Concrete product - Linux-style menu"""
