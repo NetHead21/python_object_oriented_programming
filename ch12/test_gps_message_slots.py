@@ -391,3 +391,9 @@ class TestIntegration(unittest.TestCase):
 
     def test_end_to_end_parsing(self):
         """Test complete end-to-end GPS message parsing."""
+
+        # Real GPS message
+        gps_data = (
+            b"$GPGGA,170833,4124.8963,N,08151.6838,W,1,05,1.5,280.2,M,-34.0,M,,*75"
+        )
+        buffer = Buffer(gps_data)
