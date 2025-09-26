@@ -386,3 +386,8 @@ class MacMenu(Menu):
 
     def select_item(self, item: str) -> str:
         return f"Mac menu item '{item}' selected with spring animation"
+
+
+# Concrete Products - Linux Style
+class LinuxButton(Button):
+    """Concrete product - Linux-style button"""
