@@ -91,3 +91,21 @@ class Button(ABC):
         MacButton implements macOS-style button with native appearance
         LinuxButton implements theme-based button following desktop environment
     """
+
+    @abstractmethod
+    def render(self) -> str:
+        """Render the button with platform-specific styling.
+
+        This method handles the visual representation of the button,
+        applying appropriate styling, colors, fonts, and visual effects
+        that match the target platform's design guidelines.
+
+        Returns:
+            str: Description of the rendered button appearance
+
+        Examples:
+            Windows: "Rendering Windows button with rounded corners and gradient"
+            Mac: "Rendering Mac button with subtle shadow and system font"
+            Linux: "Rendering Linux button with flat design and theme colors"
+        """
+        pass
