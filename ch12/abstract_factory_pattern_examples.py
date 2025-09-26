@@ -366,3 +366,7 @@ class MacButton(Button):
 
     def click(self) -> str:
         return "Mac button clicked with gentle haptic feedback"
+
+
+class MacWindow(Window):
+    """Concrete product - Mac-style window"""
