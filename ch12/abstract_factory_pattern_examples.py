@@ -184,3 +184,25 @@ class Window(ABC):
             Linux: "Linux window closing with user-defined animation"
         """
         pass
+
+
+class Menu(ABC):
+    """Abstract product interface for application menus across different platforms.
+
+    This class defines the common interface for creating platform-specific menu
+    systems. Each platform implements menus with their own visual style,
+    interaction patterns, and accessibility features while maintaining
+    consistent functionality.
+
+    Menu implementations handle:
+    - Platform-appropriate styling and theming
+    - Keyboard shortcuts and mnemonics
+    - Dropdown/popup behavior and animations
+    - Menu item highlighting and selection feedback
+    - Accessibility features (screen readers, high contrast)
+
+    Examples:
+        WindowsMenu: Windows-style menu with drop shadows and system colors
+        MacMenu: macOS menu with translucent background and spring animations
+        LinuxMenu: Theme-based menu following desktop environment guidelines
+    """
