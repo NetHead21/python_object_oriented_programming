@@ -360,3 +360,6 @@ class WindowsMenu(Menu):
 # Concrete Products - Mac Style
 class MacButton(Button):
     """Concrete product - Mac-style button"""
+
+    def render(self) -> str:
+        return "Rendering Mac button with subtle shadow and system font"
