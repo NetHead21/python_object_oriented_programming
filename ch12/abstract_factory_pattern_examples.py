@@ -69,3 +69,25 @@ Real-world analogies:
 from abc import ABC, abstractmethod
 from typing import List
 from enum import Enum
+
+
+# =============================================================================
+# Example 1: GUI Components (Cross-Platform UI)
+# =============================================================================
+
+
+class Button(ABC):
+    """Abstract product interface for UI buttons across different platforms.
+
+    This class defines the common interface that all platform-specific buttons
+    must implement. It's part of the Abstract Factory pattern where different
+    GUI factories create platform-appropriate button implementations.
+
+    The Button interface ensures all concrete buttons provide consistent
+    functionality while allowing platform-specific visual styling and behavior.
+
+    Examples:
+        WindowsButton implements Windows-style button with system look
+        MacButton implements macOS-style button with native appearance
+        LinuxButton implements theme-based button following desktop environment
+    """
