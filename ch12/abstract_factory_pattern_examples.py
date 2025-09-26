@@ -404,3 +404,6 @@ class LinuxWindow(Window):
 
     def render(self) -> str:
         return "Rendering Linux window with customizable decorations"
+
+    def close(self) -> str:
+        return "Linux window closing with user-defined animation"
