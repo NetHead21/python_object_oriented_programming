@@ -224,3 +224,23 @@ class Menu(ABC):
             Linux: "Rendering Linux menu with theme-based styling"
         """
         pass
+
+    @abstractmethod
+    def select_item(self, item: str) -> str:
+        """Handle menu item selection with platform-specific feedback.
+
+        Processes menu item selection including visual feedback, animations,
+        keyboard shortcuts, and any platform-specific interaction patterns.
+
+        Args:
+            item (str): The name or identifier of the selected menu item
+
+        Returns:
+            str: Description of the selection interaction and feedback
+
+        Examples:
+            Windows: "Windows menu item 'File' selected with highlight animation"
+            Mac: "Mac menu item 'File' selected with spring animation"
+            Linux: "Linux menu item 'File' selected with custom transition"
+        """
+        pass
