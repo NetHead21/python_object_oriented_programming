@@ -391,3 +391,6 @@ class MacMenu(Menu):
 # Concrete Products - Linux Style
 class LinuxButton(Button):
     """Concrete product - Linux-style button"""
+
+    def render(self) -> str:
+        return "Rendering Linux button with flat design and theme colors"
