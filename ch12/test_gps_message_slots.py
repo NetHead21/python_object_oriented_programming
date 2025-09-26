@@ -388,3 +388,6 @@ class TestClient(unittest.TestCase):
 
 class TestIntegration(unittest.TestCase):
     """Integration tests for the complete GPS parsing system."""
+
+    def test_end_to_end_parsing(self):
+        """Test complete end-to-end GPS message parsing."""
