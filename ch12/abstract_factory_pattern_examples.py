@@ -394,3 +394,6 @@ class LinuxButton(Button):
 
     def render(self) -> str:
         return "Rendering Linux button with flat design and theme colors"
+
+    def click(self) -> str:
+        return "Linux button clicked with configurable action"
