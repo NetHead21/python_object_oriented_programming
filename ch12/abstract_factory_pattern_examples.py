@@ -166,3 +166,21 @@ class Window(ABC):
             Linux: "Rendering Linux window with customizable decorations"
         """
         pass
+
+    @abstractmethod
+    def close(self) -> str:
+        """Handle window close operations with platform-appropriate behavior.
+
+        Manages the window closing process including any confirmation dialogs,
+        cleanup operations, and closing animations that match the platform's
+        expected user experience.
+
+        Returns:
+            str: Description of the close operation and animation
+
+        Examples:
+            Windows: "Windows window closing with fade animation"
+            Mac: "Mac window closing with smooth scale animation"
+            Linux: "Linux window closing with user-defined animation"
+        """
+        pass
