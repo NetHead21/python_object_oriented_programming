@@ -324,3 +324,19 @@ class WindowsWindow(Window):
             str: Description of the Windows window close operation
         """
         return "Windows window closing with fade animation"
+
+
+class WindowsMenu(Menu):
+    """Concrete implementation of Menu for Windows platform.
+
+    This class implements the Menu interface specifically for Windows,
+    providing native Windows menu functionality including:
+    - Windows-style drop shadows and visual effects
+    - Integration with Windows accessibility features
+    - Keyboard shortcuts and mnemonic support
+    - Proper hover and selection feedback
+    - Context menu support and sub-menu handling
+
+    The menu follows Windows design patterns and provides familiar
+    interaction behaviors expected by Windows users.
+    """
