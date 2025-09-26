@@ -376,3 +376,7 @@ class MacWindow(Window):
 
     def close(self) -> str:
         return "Mac window closing with smooth scale animation"
+
+
+class MacMenu(Menu):
+    """Concrete product - Mac-style menu"""
