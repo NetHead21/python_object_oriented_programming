@@ -414,3 +414,6 @@ class LinuxMenu(Menu):
 
     def render(self) -> str:
         return "Rendering Linux menu with theme-based styling"
+
+    def select_item(self, item: str) -> str:
+        return f"Linux menu item '{item}' selected with custom transition"
