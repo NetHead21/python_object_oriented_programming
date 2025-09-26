@@ -380,3 +380,6 @@ class MacWindow(Window):
 
 class MacMenu(Menu):
     """Concrete product - Mac-style menu"""
+
+    def render(self) -> str:
+        return "Rendering Mac menu with translucent background"
