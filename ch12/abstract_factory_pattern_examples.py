@@ -244,3 +244,20 @@ class Menu(ABC):
             Linux: "Linux menu item 'File' selected with custom transition"
         """
         pass
+
+
+# Concrete Products - Windows Style
+class WindowsButton(Button):
+    """Concrete implementation of Button for Windows platform.
+
+    This class implements the Button interface specifically for Windows,
+    providing native Windows look and feel including:
+    - Windows Fluent Design styling
+    - Rounded corners and gradient backgrounds
+    - Windows system sounds for interactions
+    - Proper focus indicators and accessibility support
+    - Integration with Windows themes and high contrast modes
+
+    The button follows Microsoft's design guidelines for consistency
+    with other Windows applications and system components.
+    """
