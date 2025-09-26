@@ -370,3 +370,6 @@ class MacButton(Button):
 
 class MacWindow(Window):
     """Concrete product - Mac-style window"""
+
+    def render(self) -> str:
+        return "Rendering Mac window with unified title bar and traffic lights"
