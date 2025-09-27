@@ -563,3 +563,7 @@ class MacFactory(GUIFactory):
 
     def create_menu(self) -> Menu:
         return MacMenu()
+
+
+class LinuxFactory(GUIFactory):
+    """Concrete factory for Linux GUI components"""
