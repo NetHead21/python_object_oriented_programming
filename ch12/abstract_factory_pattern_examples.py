@@ -534,3 +534,11 @@ class WindowsFactory(GUIFactory):
             Button: WindowsButton instance with Windows styling and behavior
         """
         return WindowsButton()
+
+    def create_window(self) -> Window:
+        """Create a Windows-specific window component.
+
+        Returns:
+            Window: WindowsWindow instance with Windows decorations and controls
+        """
+        return WindowsWindow()
