@@ -611,3 +611,11 @@ class Application:
         >>> mac_app.create_ui()
         >>> mac_app.render_ui()
     """
+
+    def __init__(self, factory: GUIFactory):
+        """Initialize the application with a specific GUI factory.
+
+        Args:
+            factory (GUIFactory): The factory to use for creating GUI components.
+                                 This determines the platform/style of all components.
+        """
