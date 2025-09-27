@@ -560,3 +560,6 @@ class MacFactory(GUIFactory):
 
     def create_window(self) -> Window:
         return MacWindow()
+
+    def create_menu(self) -> Menu:
+        return MacMenu()
