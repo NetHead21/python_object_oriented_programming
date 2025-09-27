@@ -576,3 +576,38 @@ class LinuxFactory(GUIFactory):
 
     def create_menu(self) -> Menu:
         return LinuxMenu()
+
+
+# Client Code - Application using the factory
+class Application:
+    """Client application that uses the Abstract Factory pattern for GUI creation.
+
+    This class demonstrates how client code should interact with the Abstract
+    Factory pattern. It depends only on the abstract factory interface and
+    product interfaces, making it platform-agnostic and easily testable.
+
+    Key design principles demonstrated:
+    - Dependency on abstractions, not concrete classes
+    - Platform-agnostic client code
+    - Easy switching between different GUI implementations
+    - Factory injection for flexibility and testability
+
+    The application doesn't know or care whether it's creating Windows, Mac,
+    or Linux components - it just uses the factory interface to create
+    compatible components that work together.
+
+    Attributes:
+        factory (GUIFactory): The factory used to create GUI components
+        components (List): List of created GUI components
+
+    Example:
+        >>> # Create Windows application
+        >>> windows_app = Application(WindowsFactory())
+        >>> windows_app.create_ui()
+        >>> windows_app.render_ui()
+
+        >>> # Switch to Mac without changing application code
+        >>> mac_app = Application(MacFactory())
+        >>> mac_app.create_ui()
+        >>> mac_app.render_ui()
+    """
