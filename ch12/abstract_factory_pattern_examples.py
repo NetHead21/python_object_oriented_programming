@@ -570,3 +570,6 @@ class LinuxFactory(GUIFactory):
 
     def create_button(self) -> Button:
         return LinuxButton()
+
+    def create_window(self) -> Window:
+        return LinuxWindow()
