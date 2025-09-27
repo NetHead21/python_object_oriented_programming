@@ -480,3 +480,20 @@ class GUIFactory(ABC):
             LinuxFactory returns LinuxWindow with desktop environment theme
         """
         pass
+
+    @abstractmethod
+    def create_menu(self) -> Menu:
+        """Create a platform-specific menu component.
+
+        Factory method that creates a menu system that follows the
+        platform's menu conventions, styling, and interaction patterns.
+
+        Returns:
+            Menu: A concrete menu implementation for this platform
+
+        Examples:
+            WindowsFactory returns WindowsMenu with system styling
+            MacFactory returns MacMenu with translucent effects
+            LinuxFactory returns LinuxMenu with desktop theme integration
+        """
+        pass
