@@ -573,3 +573,6 @@ class LinuxFactory(GUIFactory):
 
     def create_window(self) -> Window:
         return LinuxWindow()
+
+    def create_menu(self) -> Menu:
+        return LinuxMenu()
