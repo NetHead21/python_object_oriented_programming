@@ -417,3 +417,30 @@ class LinuxMenu(Menu):
 
     def select_item(self, item: str) -> str:
         return f"Linux menu item '{item}' selected with custom transition"
+
+
+# Abstract Factory
+class GUIFactory(ABC):
+    """Abstract factory interface for creating families of GUI components.
+
+    This is the core of the Abstract Factory pattern, defining the interface
+    that all concrete GUI factories must implement. It ensures that families
+    of related GUI components (Button, Window, Menu) are created together
+    and are compatible with each other.
+
+    The factory pattern provides several key benefits:
+    - Ensures consistency: All components from one factory match visually
+    - Easy switching: Change platforms by changing the factory instance
+    - Extensibility: Add new platforms by implementing this interface
+    - Testability: Mock factories can be created for testing
+
+    Each concrete factory (Windows, Mac, Linux) implements this interface
+    to create platform-appropriate components that work together seamlessly.
+
+    Example:
+        >>> factory = WindowsFactory()
+        >>> button = factory.create_button()    # WindowsButton
+        >>> window = factory.create_window()    # WindowsWindow
+        >>> menu = factory.create_menu()        # WindowsMenu
+        >>> # All three components have consistent Windows styling
+    """
