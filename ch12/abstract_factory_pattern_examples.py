@@ -542,3 +542,11 @@ class WindowsFactory(GUIFactory):
             Window: WindowsWindow instance with Windows decorations and controls
         """
         return WindowsWindow()
+
+    def create_menu(self) -> Menu:
+        """Create a Windows-specific menu component.
+
+        Returns:
+            Menu: WindowsMenu instance with Windows styling and behavior
+        """
+        return WindowsMenu()
