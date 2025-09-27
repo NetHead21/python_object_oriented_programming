@@ -554,3 +554,6 @@ class WindowsFactory(GUIFactory):
 
 class MacFactory(GUIFactory):
     """Concrete factory for Mac GUI components"""
+
+    def create_button(self) -> Button:
+        return MacButton()
