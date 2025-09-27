@@ -444,3 +444,21 @@ class GUIFactory(ABC):
         >>> menu = factory.create_menu()        # WindowsMenu
         >>> # All three components have consistent Windows styling
     """
+
+    @abstractmethod
+    def create_button(self) -> Button:
+        """Create a platform-specific button component.
+
+        Factory method that creates a button implementation appropriate
+        for the target platform. The returned button will have the correct
+        styling, behavior, and integration for the platform.
+
+        Returns:
+            Button: A concrete button implementation for this platform
+
+        Examples:
+            WindowsFactory returns WindowsButton with Windows styling
+            MacFactory returns MacButton with macOS styling
+            LinuxFactory returns LinuxButton with desktop theme styling
+        """
+        pass
