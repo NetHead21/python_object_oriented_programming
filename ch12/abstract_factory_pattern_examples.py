@@ -462,3 +462,21 @@ class GUIFactory(ABC):
             LinuxFactory returns LinuxButton with desktop theme styling
         """
         pass
+
+    @abstractmethod
+    def create_window(self) -> Window:
+        """Create a platform-specific window component.
+
+        Factory method that creates a window implementation with proper
+        platform integration including native decorations, controls,
+        and behavior patterns.
+
+        Returns:
+            Window: A concrete window implementation for this platform
+
+        Examples:
+            WindowsFactory returns WindowsWindow with Aero styling
+            MacFactory returns MacWindow with traffic light buttons
+            LinuxFactory returns LinuxWindow with desktop environment theme
+        """
+        pass
