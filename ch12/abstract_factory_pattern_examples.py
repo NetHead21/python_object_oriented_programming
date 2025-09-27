@@ -622,3 +622,18 @@ class Application:
 
         self.factory = factory
         self.components = []
+
+    def create_ui(self):
+        """Create the complete user interface using the injected factory.
+
+        Uses the factory to create a complete set of compatible GUI components.
+        All components will be from the same platform family, ensuring
+        visual consistency and proper interaction behavior.
+
+        Returns:
+            List: The created GUI components (Button, Window, Menu)
+
+        Note:
+            This method demonstrates how client code stays platform-agnostic
+            by depending only on abstract interfaces.
+        """
