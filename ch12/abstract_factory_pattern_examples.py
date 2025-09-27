@@ -550,3 +550,7 @@ class WindowsFactory(GUIFactory):
             Menu: WindowsMenu instance with Windows styling and behavior
         """
         return WindowsMenu()
+
+
+class MacFactory(GUIFactory):
+    """Concrete factory for Mac GUI components"""
