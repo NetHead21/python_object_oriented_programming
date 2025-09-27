@@ -619,3 +619,6 @@ class Application:
             factory (GUIFactory): The factory to use for creating GUI components.
                                  This determines the platform/style of all components.
         """
+
+        self.factory = factory
+        self.components = []
