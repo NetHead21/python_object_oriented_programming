@@ -526,3 +526,11 @@ class WindowsFactory(GUIFactory):
         >>> menu = factory.create_menu()
         >>> # All three components have consistent Windows styling
     """
+
+    def create_button(self) -> Button:
+        """Create a Windows-specific button component.
+
+        Returns:
+            Button: WindowsButton instance with Windows styling and behavior
+        """
+        return WindowsButton()
