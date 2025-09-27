@@ -641,3 +641,6 @@ class Application:
         button = self.factory.create_button()
         window = self.factory.create_window()
         menu = self.factory.create_menu()
+
+        self.components = [button, window, menu]
+        return self.components
