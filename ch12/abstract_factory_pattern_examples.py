@@ -557,3 +557,6 @@ class MacFactory(GUIFactory):
 
     def create_button(self) -> Button:
         return MacButton()
+
+    def create_window(self) -> Window:
+        return MacWindow()
