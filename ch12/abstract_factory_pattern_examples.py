@@ -567,3 +567,6 @@ class MacFactory(GUIFactory):
 
 class LinuxFactory(GUIFactory):
     """Concrete factory for Linux GUI components"""
+
+    def create_button(self) -> Button:
+        return LinuxButton()
