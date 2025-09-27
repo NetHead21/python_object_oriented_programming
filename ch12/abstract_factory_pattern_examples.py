@@ -637,3 +637,7 @@ class Application:
             This method demonstrates how client code stays platform-agnostic
             by depending only on abstract interfaces.
         """
+
+        button = self.factory.create_button()
+        window = self.factory.create_window()
+        menu = self.factory.create_menu()
