@@ -771,3 +771,21 @@ class Cache(ABC):
             InMemory: "Retrieved from memory cache: user_123"
         """
         pass
+
+    @abstractmethod
+    def set(self, key: str, value: str) -> str:
+        """Store a value in the cache with the given key.
+
+        Args:
+            key (str): The cache key for storage
+            value (str): The value to cache
+
+        Returns:
+            str: Description of the cache storage operation
+
+        Examples:
+            Redis: "Stored in Redis cache: user_123 = user_data"
+            Memcached: "Stored in Memcached: user_123 = user_data"
+            InMemory: "Stored in memory cache: user_123 = user_data"
+        """
+        pass
