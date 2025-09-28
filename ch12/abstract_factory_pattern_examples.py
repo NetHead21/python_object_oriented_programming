@@ -862,3 +862,6 @@ class PostgreSQL(Database):
 
     def connect(self) -> str:
         return "Connected to PostgreSQL with SSL encryption"
+
+    def execute_query(self, query: str) -> str:
+        return f"Executing PostgreSQL query: {query} with ACID compliance"
