@@ -854,3 +854,8 @@ class RedisCache(Cache):
 class FileLogger(Logger):
     def log(self, message: str) -> str:
         return f"Logged to file: {message}"
+
+
+# PostgreSQL Infrastructure
+class PostgreSQL(Database):
+    """Postgres-specific implementation of the Database interface."""
