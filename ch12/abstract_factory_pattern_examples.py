@@ -833,3 +833,6 @@ class Logger(ABC):
 # MySQL Infrastructure
 class MySQL(Database):
     """MySQL-specific implementation of the Database interface."""
+
+    def connect(self) -> str:
+        return "Connected to MySQL database with connection pooling"
