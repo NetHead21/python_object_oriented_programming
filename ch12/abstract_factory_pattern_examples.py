@@ -828,3 +828,8 @@ class Logger(ABC):
             Console: "Console log: Application started successfully"
         """
         pass
+
+
+# MySQL Infrastructure
+class MySQL(Database):
+    """MySQL-specific implementation of the Database interface."""
