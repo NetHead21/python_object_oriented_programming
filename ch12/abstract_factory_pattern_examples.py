@@ -843,3 +843,6 @@ class MySQL(Database):
 
 class RedisCache(Cache):
     """"""
+
+    def get(self, key: str) -> str:
+        return f"Retrieved from Redis cache: {key}"
