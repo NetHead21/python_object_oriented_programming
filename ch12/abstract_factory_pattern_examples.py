@@ -754,3 +754,20 @@ class Cache(ABC):
         MemcachedCache: High-performance cache for staging
         InMemoryCache: Simple cache for development and testing
     """
+
+    @abstractmethod
+    def get(self, key: str) -> str:
+        """Retrieve a value from the cache by its key.
+
+        Args:
+            key (str): The cache key to look up
+
+        Returns:
+            str: Description of the cache retrieval operation
+
+        Examples:
+            Redis: "Retrieved from Redis cache: user_123"
+            Memcached: "Retrieved from Memcached: user_123"
+            InMemory: "Retrieved from memory cache: user_123"
+        """
+        pass
