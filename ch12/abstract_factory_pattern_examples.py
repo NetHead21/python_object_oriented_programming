@@ -859,3 +859,6 @@ class FileLogger(Logger):
 # PostgreSQL Infrastructure
 class PostgreSQL(Database):
     """Postgres-specific implementation of the Database interface."""
+
+    def connect(self) -> str:
+        return "Connected to PostgreSQL with SSL encryption"
