@@ -789,3 +789,25 @@ class Cache(ABC):
             InMemory: "Stored in memory cache: user_123 = user_data"
         """
         pass
+
+
+class Logger(ABC):
+    """Abstract product interface for logging systems across different environments.
+
+    This class defines the common interface for all logging implementations
+    in the infrastructure Abstract Factory. Different environments may
+    require different logging approaches (files, syslog, console) but all
+    must provide consistent logging capabilities.
+
+    Logger implementations should handle:
+    - Message formatting and timestamp handling
+    - Log level management and filtering
+    - Output destination management
+    - Error handling and fallback logging
+    - Performance considerations for high-volume logging
+
+    Examples:
+        FileLogger: Production logging to rotating files
+        SyslogLogger: System logging for staging environments
+        ConsoleLogger: Development logging to console output
+    """
