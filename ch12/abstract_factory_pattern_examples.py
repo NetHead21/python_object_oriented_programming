@@ -659,3 +659,7 @@ class Application:
             For Windows factory:
             ["Rendering Windows button...", "Rendering Windows window...", "Rendering Windows menu..."]
         """
+        results = []
+        for component in self.components:
+            results.append(component.render())
+        return results
