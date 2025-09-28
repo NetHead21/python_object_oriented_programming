@@ -712,3 +712,23 @@ class Database(ABC):
             SQLite: "Connected to SQLite local database"
         """
         pass
+
+    @abstractmethod
+    def execute_query(self, query: str) -> str:
+        """Execute a database query with appropriate optimization and error handling.
+
+        Processes SQL queries using database-specific optimization strategies,
+        parameter binding, and error handling appropriate for the database system.
+
+        Args:
+            query (str): The SQL query to execute
+
+        Returns:
+            str: Description of query execution with database-specific details
+
+        Examples:
+            MySQL: "Executing MySQL query: {query} with optimization"
+            PostgreSQL: "Executing PostgreSQL query: {query} with ACID compliance"
+            SQLite: "Executing SQLite query: {query} on local file"
+        """
+        pass
