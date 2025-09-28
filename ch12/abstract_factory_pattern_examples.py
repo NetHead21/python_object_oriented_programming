@@ -644,3 +644,18 @@ class Application:
 
         self.components = [button, window, menu]
         return self.components
+
+    def render_ui(self):
+        """Render all created UI components with their platform-specific styling.
+
+        Calls the render method on each component, which will execute the
+        platform-appropriate rendering logic based on the concrete implementations
+        created by the factory.
+
+        Returns:
+            List[str]: Descriptions of how each component was rendered
+
+        Example:
+            For Windows factory:
+            ["Rendering Windows button...", "Rendering Windows window...", "Rendering Windows menu..."]
+        """
