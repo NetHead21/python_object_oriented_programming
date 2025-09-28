@@ -836,3 +836,6 @@ class MySQL(Database):
 
     def connect(self) -> str:
         return "Connected to MySQL database with connection pooling"
+
+    def execute_query(self, query: str) -> str:
+        return f"Executing MySQL query: {query} with optimization"
