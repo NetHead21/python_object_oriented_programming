@@ -663,3 +663,34 @@ class Application:
         for component in self.components:
             results.append(component.render())
         return results
+
+
+# =============================================================================
+# Example 2: Database Abstraction Layer
+# =============================================================================
+
+
+class Database(ABC):
+    """Abstract product interface for database connections across different systems.
+
+    This class defines the common interface that all database implementations
+    must provide, regardless of the underlying database technology. It's part
+    of an infrastructure Abstract Factory that creates compatible sets of
+    database, caching, and logging components.
+
+    The Database interface abstracts away the specific details of different
+    database systems (MySQL, PostgreSQL, SQLite) while providing a consistent
+    API for data operations.
+
+    Implementations should handle:
+    - Connection establishment and management
+    - Query execution with proper error handling
+    - Database-specific optimizations
+    - Connection pooling and resource management
+    - Transaction support where applicable
+
+    Examples:
+        MySQL: Production database with connection pooling
+        PostgreSQL: Staging database with SSL encryption
+        SQLite: Development database with local file storage
+    """
