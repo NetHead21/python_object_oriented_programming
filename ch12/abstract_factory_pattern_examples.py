@@ -732,3 +732,25 @@ class Database(ABC):
             SQLite: "Executing SQLite query: {query} on local file"
         """
         pass
+
+
+class Cache(ABC):
+    """Abstract product interface for caching systems across different environments.
+
+    This class defines the common interface for all cache implementations
+    in the infrastructure Abstract Factory. Different environments may use
+    different caching technologies (Redis, Memcached, in-memory) but all
+    must provide consistent get/set operations.
+
+    Cache implementations should handle:
+    - Key-value storage and retrieval
+    - Expiration and eviction policies
+    - Network communication (for distributed caches)
+    - Serialization/deserialization of cached data
+    - Error handling and fallback behavior
+
+    Examples:
+        RedisCache: Distributed cache for production environments
+        MemcachedCache: High-performance cache for staging
+        InMemoryCache: Simple cache for development and testing
+    """
