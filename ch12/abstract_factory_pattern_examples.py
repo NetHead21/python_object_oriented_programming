@@ -839,3 +839,7 @@ class MySQL(Database):
 
     def execute_query(self, query: str) -> str:
         return f"Executing MySQL query: {query} with optimization"
+
+
+class RedisCache(Cache):
+    """"""
