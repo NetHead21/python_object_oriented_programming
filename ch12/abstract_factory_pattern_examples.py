@@ -842,10 +842,15 @@ class MySQL(Database):
 
 
 class RedisCache(Cache):
-    """"""
+    """Cache impelemention for Redis"""
 
     def get(self, key: str) -> str:
         return f"Retrieved from Redis cache: {key}"
 
     def set(self, key: str, value: str) -> str:
         return f"Stored in Redis cache: {key} = {value}"
+
+
+class FileLogger(Logger):
+    def log(self, message: str) -> str:
+        return f"Logged to file: {message}"
