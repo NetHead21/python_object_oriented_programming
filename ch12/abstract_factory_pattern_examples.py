@@ -811,3 +811,20 @@ class Logger(ABC):
         SyslogLogger: System logging for staging environments
         ConsoleLogger: Development logging to console output
     """
+
+    @abstractmethod
+    def log(self, message: str) -> str:
+        """Log a message using the environment-appropriate logging mechanism.
+
+        Args:
+            message (str): The message to log
+
+        Returns:
+            str: Description of where and how the message was logged
+
+        Examples:
+            File: "Logged to file: Application started successfully"
+            Syslog: "Logged to syslog: Application started successfully"
+            Console: "Console log: Application started successfully"
+        """
+        pass
