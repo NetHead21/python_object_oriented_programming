@@ -846,3 +846,6 @@ class RedisCache(Cache):
 
     def get(self, key: str) -> str:
         return f"Retrieved from Redis cache: {key}"
+
+    def set(self, key: str, value: str) -> str:
+        return f"Stored in Redis cache: {key} = {value}"
