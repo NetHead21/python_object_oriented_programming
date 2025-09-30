@@ -895,3 +895,6 @@ class SQLite(Database):
 
 class InMemoryCache(Cache):
     """Cache implementation for in-memory caching"""
+
+    def get(self, key: str) -> str:
+        return f"Retrieved from memory cache: {key}"
