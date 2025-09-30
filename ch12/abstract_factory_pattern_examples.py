@@ -872,3 +872,6 @@ class MemcachedCache(Cache):
 
     def get(self, key: str) -> str:
         return f"Retrieved from Memcached: {key}"
+
+    def set(self, key: str, value: str) -> str:
+        return f"Stored in Memcached: {key} = {value}"
