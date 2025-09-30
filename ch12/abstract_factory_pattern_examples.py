@@ -885,3 +885,6 @@ class SyslogLogger(Logger):
 # SQLite Infrastructure
 class SQLite(Database):
     """SQLite-specific implementation of the Database interface."""
+
+    def connect(self) -> str:
+        return "Connected to SQLite local database"
