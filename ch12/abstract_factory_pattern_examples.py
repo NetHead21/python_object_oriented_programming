@@ -930,3 +930,6 @@ class ProductionFactory(InfrastructureFactory):
 
     def create_cache(self) -> Cache:
         return RedisCache()
+
+    def create_logger(self) -> Logger:
+        return FileLogger()
