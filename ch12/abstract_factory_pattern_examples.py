@@ -908,3 +908,7 @@ class ConsoleLogger(Logger):
 # Infrastructure Factory
 class InfrastructureFactory(ABC):
     """Abstract factory for creating infrastructure components"""
+
+    @abstractmethod
+    def create_database(self) -> Database:
+        pass
