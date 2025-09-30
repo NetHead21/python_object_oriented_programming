@@ -940,3 +940,6 @@ class StagingFactory(InfrastructureFactory):
 
     def create_database(self) -> Database:
         return PostgreSQL()
+
+    def create_cache(self) -> Cache:
+        return MemcachedCache()
