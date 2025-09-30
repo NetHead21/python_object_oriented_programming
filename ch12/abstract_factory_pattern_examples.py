@@ -898,3 +898,8 @@ class InMemoryCache(Cache):
 
     def get(self, key: str) -> str:
         return f"Retrieved from memory cache: {key}"
+
+
+class ConsoleLogger(Logger):
+    def log(self, message: str) -> str:
+        return f"Console log: {message}"
