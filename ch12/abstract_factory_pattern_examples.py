@@ -924,3 +924,6 @@ class InfrastructureFactory(ABC):
 
 class ProductionFactory(InfrastructureFactory):
     """Factory for production environment"""
+
+    def create_database(self) -> Database:
+        return MySQL()
