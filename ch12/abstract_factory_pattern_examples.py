@@ -927,3 +927,6 @@ class ProductionFactory(InfrastructureFactory):
 
     def create_database(self) -> Database:
         return MySQL()
+
+    def create_cache(self) -> Cache:
+        return RedisCache()
