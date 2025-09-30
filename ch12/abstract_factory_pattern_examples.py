@@ -933,3 +933,7 @@ class ProductionFactory(InfrastructureFactory):
 
     def create_logger(self) -> Logger:
         return FileLogger()
+
+
+class StagingFactory(InfrastructureFactory):
+    """Factory for staging environment"""
