@@ -920,3 +920,7 @@ class InfrastructureFactory(ABC):
     @abstractmethod
     def create_logger(self) -> Logger:
         pass
+
+
+class ProductionFactory(InfrastructureFactory):
+    """Factory for production environment"""
