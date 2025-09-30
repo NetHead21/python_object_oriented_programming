@@ -937,3 +937,6 @@ class ProductionFactory(InfrastructureFactory):
 
 class StagingFactory(InfrastructureFactory):
     """Factory for staging environment"""
+
+    def create_database(self) -> Database:
+        return PostgreSQL()
