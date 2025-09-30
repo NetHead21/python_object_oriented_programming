@@ -912,3 +912,7 @@ class InfrastructureFactory(ABC):
     @abstractmethod
     def create_database(self) -> Database:
         pass
+
+    @abstractmethod
+    def create_cache(self) -> Cache:
+        pass
