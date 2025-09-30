@@ -875,3 +875,8 @@ class MemcachedCache(Cache):
 
     def set(self, key: str, value: str) -> str:
         return f"Stored in Memcached: {key} = {value}"
+
+
+class SyslogLogger(Logger):
+    def log(self, message: str) -> str:
+        return f"Logged to syslog: {message}"
