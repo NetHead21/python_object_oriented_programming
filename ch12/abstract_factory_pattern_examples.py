@@ -916,3 +916,7 @@ class InfrastructureFactory(ABC):
     @abstractmethod
     def create_cache(self) -> Cache:
         pass
+
+    @abstractmethod
+    def create_logger(self) -> Logger:
+        pass
