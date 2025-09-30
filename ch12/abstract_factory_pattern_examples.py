@@ -880,3 +880,8 @@ class MemcachedCache(Cache):
 class SyslogLogger(Logger):
     def log(self, message: str) -> str:
         return f"Logged to syslog: {message}"
+
+
+# SQLite Infrastructure
+class SQLite(Database):
+    """SQLite-specific implementation of the Database interface."""
