@@ -891,3 +891,7 @@ class SQLite(Database):
 
     def execute_query(self, query: str) -> str:
         return f"Executing SQLite query: {query} on local file"
+
+
+class InMemoryCache(Cache):
+    """Cache implementation for in-memory caching"""
