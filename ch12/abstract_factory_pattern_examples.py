@@ -888,3 +888,6 @@ class SQLite(Database):
 
     def connect(self) -> str:
         return "Connected to SQLite local database"
+
+    def execute_query(self, query: str) -> str:
+        return f"Executing SQLite query: {query} on local file"
