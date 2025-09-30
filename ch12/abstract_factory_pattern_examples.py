@@ -868,3 +868,7 @@ class PostgreSQL(Database):
 
 
 class MemcachedCache(Cache):
+    """Cache implementation for Memcached"""
+
+    def get(self, key: str) -> str:
+        return f"Retrieved from Memcached: {key}"
