@@ -943,3 +943,6 @@ class StagingFactory(InfrastructureFactory):
 
     def create_cache(self) -> Cache:
         return MemcachedCache()
+
+    def create_logger(self) -> Logger:
+        return SyslogLogger()
