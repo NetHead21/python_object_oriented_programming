@@ -903,3 +903,8 @@ class InMemoryCache(Cache):
 class ConsoleLogger(Logger):
     def log(self, message: str) -> str:
         return f"Console log: {message}"
+
+
+# Infrastructure Factory
+class InfrastructureFactory(ABC):
+    """Abstract factory for creating infrastructure components"""
