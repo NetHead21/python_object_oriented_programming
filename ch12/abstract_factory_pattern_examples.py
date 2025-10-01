@@ -1108,3 +1108,7 @@ class Interior(ABC):
         FabricInterior: Comfortable and practical for economy vehicles
         SustainableInterior: Eco-friendly materials for electric vehicles
     """
+
+    @abstractmethod
+    def describe(self) -> str:
+        pass
