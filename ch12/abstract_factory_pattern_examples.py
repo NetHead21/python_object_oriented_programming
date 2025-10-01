@@ -992,3 +992,30 @@ class DataService:
         operations.append(self.logger.log(f"Retrieved user data for {user_id}"))
 
         return operations
+
+
+# =============================================================================
+# Example 3: Vehicle Manufacturing
+# =============================================================================
+
+
+class Engine(ABC):
+    """Abstract product interface for vehicle engines across different vehicle types.
+
+    This class defines the common interface for all engine implementations
+    in the vehicle manufacturing Abstract Factory. Different vehicle types
+    (luxury, economy, electric) require different engine technologies but
+    all must provide consistent power delivery and control interfaces.
+
+    Engine implementations should handle:
+    - Power generation and delivery characteristics
+    - Startup procedures and engine management
+    - Performance specifications and capabilities
+    - Fuel/energy consumption optimization
+    - Integration with vehicle control systems
+
+    Examples:
+        V8Engine: High-performance engine for luxury vehicles
+        I4Engine: Efficient 4-cylinder engine for economy vehicles
+        ElectricMotor: Zero-emission motor for electric vehicles
+    """
