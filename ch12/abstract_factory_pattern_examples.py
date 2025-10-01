@@ -964,3 +964,8 @@ class DevelopmentFactory(InfrastructureFactory):
 # Service using the infrastructure
 class DataService:
     """Service that uses infrastructure components"""
+
+    def __init__(self, factory: InfrastructureFactory):
+        self.db = factory.create_database()
+        self.cache = factory.create_cache()
+        self.logger = factory.create_logger()
