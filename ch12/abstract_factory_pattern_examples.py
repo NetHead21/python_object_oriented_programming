@@ -973,3 +973,6 @@ class DataService:
     def get_user_data(self, user_id: str) -> List[str]:
         """Get user data with caching and logging"""
         operations = []
+
+        # Connect to database
+        operations.append(self.db.connect())
