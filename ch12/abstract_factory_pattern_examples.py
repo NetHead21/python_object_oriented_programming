@@ -959,3 +959,8 @@ class DevelopmentFactory(InfrastructureFactory):
 
     def create_logger(self) -> Logger:
         return ConsoleLogger()
+
+
+# Service using the infrastructure
+class DataService:
+    """Service that uses infrastructure components"""
