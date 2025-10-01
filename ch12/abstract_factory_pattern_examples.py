@@ -976,3 +976,6 @@ class DataService:
 
         # Connect to database
         operations.append(self.db.connect())
+
+        # Check cache first
+        operations.append(self.cache.get(f"user_{user_id}"))
