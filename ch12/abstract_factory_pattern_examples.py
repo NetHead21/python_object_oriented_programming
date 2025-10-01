@@ -950,3 +950,6 @@ class StagingFactory(InfrastructureFactory):
 
 class DevelopmentFactory(InfrastructureFactory):
     """Factory for development environment"""
+
+    def create_database(self) -> Database:
+        return SQLite()
