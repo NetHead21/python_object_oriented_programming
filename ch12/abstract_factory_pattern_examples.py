@@ -984,3 +984,6 @@ class DataService:
         operations.append(
             self.db.execute_query(f"SELECT * FROM users WHERE id = {user_id}")
         )
+
+        # Cache the result
+        operations.append(self.cache.set(f"user_{user_id}", f"user_data_{user_id}"))
