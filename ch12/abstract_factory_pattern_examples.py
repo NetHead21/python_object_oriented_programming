@@ -1019,3 +1019,17 @@ class Engine(ABC):
         I4Engine: Efficient 4-cylinder engine for economy vehicles
         ElectricMotor: Zero-emission motor for electric vehicles
     """
+
+    @abstractmethod
+    def start(self) -> str:
+        """Start the engine with appropriate startup sequence.
+
+        Returns:
+            str: Description of the engine startup process and characteristics
+
+        Examples:
+            V8: "V8 engine roaring to life with 450 HP"
+            I4: "4-cylinder engine starting efficiently with 120 HP"
+            Electric: "Electric motor silently activating with instant torque"
+        """
+        pass
