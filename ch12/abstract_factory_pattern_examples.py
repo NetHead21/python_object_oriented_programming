@@ -1069,3 +1069,20 @@ class Transmission(ABC):
         ManualTransmission: Driver-controlled shifting for economy vehicles
         SingleSpeedTransmission: Direct drive for electric vehicles
     """
+
+    @abstractmethod
+    def shift_gear(self, gear: int) -> str:
+        """Handle gear shifting with transmission-appropriate behavior.
+
+        Args:
+            gear (int): The target gear number
+
+        Returns:
+            str: Description of the gear shifting process and feedback
+
+        Examples:
+            Automatic: "Smoothly shifting to gear 2 with paddle shifters"
+            Manual: "Manual shifting to gear 2 for driver engagement"
+            SingleSpeed: "Single-speed transmission providing seamless acceleration"
+        """
+        pass
