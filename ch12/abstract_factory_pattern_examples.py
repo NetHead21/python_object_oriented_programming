@@ -946,3 +946,7 @@ class StagingFactory(InfrastructureFactory):
 
     def create_logger(self) -> Logger:
         return SyslogLogger()
+
+
+class DevelopmentFactory(InfrastructureFactory):
+    """Factory for development environment"""
