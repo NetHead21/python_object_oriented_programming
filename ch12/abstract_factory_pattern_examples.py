@@ -1047,3 +1047,25 @@ class Engine(ABC):
             Electric: "Delivering 300 HP with zero emissions"
         """
         pass
+
+
+class Transmission(ABC):
+    """Abstract product interface for vehicle transmissions across different vehicle types.
+
+    This class defines the common interface for all transmission implementations
+    in the vehicle manufacturing Abstract Factory. Different vehicle types
+    may use different transmission technologies (automatic, manual, single-speed)
+    but all must provide consistent gear management and power delivery.
+
+    Transmission implementations should handle:
+    - Gear shifting mechanics and control
+    - Power transfer optimization
+    - Driver interaction patterns
+    - Integration with engine management systems
+    - Efficiency and performance characteristics
+
+    Examples:
+        AutomaticTransmission: Smooth shifting for luxury vehicles
+        ManualTransmission: Driver-controlled shifting for economy vehicles
+        SingleSpeedTransmission: Direct drive for electric vehicles
+    """
