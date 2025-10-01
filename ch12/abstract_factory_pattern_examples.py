@@ -956,3 +956,6 @@ class DevelopmentFactory(InfrastructureFactory):
 
     def create_cache(self) -> Cache:
         return InMemoryCache()
+
+    def create_logger(self) -> Logger:
+        return ConsoleLogger()
