@@ -979,3 +979,8 @@ class DataService:
 
         # Check cache first
         operations.append(self.cache.get(f"user_{user_id}"))
+
+        # Query database if not in cache
+        operations.append(
+            self.db.execute_query(f"SELECT * FROM users WHERE id = {user_id}")
+        )
