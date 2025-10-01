@@ -1033,3 +1033,17 @@ class Engine(ABC):
             Electric: "Electric motor silently activating with instant torque"
         """
         pass
+
+    @abstractmethod
+    def get_power(self) -> str:
+        """Get the power specifications and delivery characteristics.
+
+        Returns:
+            str: Description of the engine's power output and characteristics
+
+        Examples:
+            V8: "Delivering 450 HP and 500 lb-ft torque"
+            I4: "Providing 120 HP with excellent fuel economy"
+            Electric: "Delivering 300 HP with zero emissions"
+        """
+        pass
