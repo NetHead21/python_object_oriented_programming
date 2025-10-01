@@ -969,3 +969,7 @@ class DataService:
         self.db = factory.create_database()
         self.cache = factory.create_cache()
         self.logger = factory.create_logger()
+
+    def get_user_data(self, user_id: str) -> List[str]:
+        """Get user data with caching and logging"""
+        operations = []
