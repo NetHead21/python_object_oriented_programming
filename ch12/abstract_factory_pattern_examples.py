@@ -987,3 +987,8 @@ class DataService:
 
         # Cache the result
         operations.append(self.cache.set(f"user_{user_id}", f"user_data_{user_id}"))
+
+        # Log the operation
+        operations.append(self.logger.log(f"Retrieved user data for {user_id}"))
+
+        return operations
