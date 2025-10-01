@@ -1086,3 +1086,25 @@ class Transmission(ABC):
             SingleSpeed: "Single-speed transmission providing seamless acceleration"
         """
         pass
+
+
+class Interior(ABC):
+    """Abstract product interface for vehicle interiors across different vehicle types.
+
+    This class defines the common interface for all interior implementations
+    in the vehicle manufacturing Abstract Factory. Different vehicle types
+    require different interior approaches (luxury, economy, sustainable) but
+    all must provide passenger comfort and functionality.
+
+    Interior implementations should handle:
+    - Seating comfort and adjustability
+    - Material selection and quality
+    - Feature integration and controls
+    - Aesthetic design and styling
+    - Sustainability and environmental considerations
+
+    Examples:
+        LeatherInterior: Premium materials and features for luxury vehicles
+        FabricInterior: Comfortable and practical for economy vehicles
+        SustainableInterior: Eco-friendly materials for electric vehicles
+    """
