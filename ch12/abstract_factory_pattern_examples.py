@@ -1202,3 +1202,6 @@ class LuxuryVehicleFactory(VehicleFactory):
 
     def create_transmission(self) -> Transmission:
         return AutomaticTransmission()
+
+    def create_interior(self) -> Interior:
+        return LeatherInterior()
