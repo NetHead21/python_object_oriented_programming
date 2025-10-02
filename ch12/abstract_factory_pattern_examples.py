@@ -1170,3 +1170,8 @@ class ElectricMotor(Engine):
 class SingleSpeedTransmission(Transmission):
     def shift_gear(self, gear: int) -> str:
         return "Single-speed transmission providing seamless acceleration"
+
+
+class SustainableInterior(Interior):
+    def describe(self) -> str:
+        return "Eco-friendly recycled materials with minimalist design"
