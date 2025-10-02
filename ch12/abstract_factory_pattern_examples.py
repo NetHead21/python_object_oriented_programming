@@ -1154,3 +1154,8 @@ class ManualTransmission(Transmission):
 class FabricInterior(Interior):
     def describe(self) -> str:
         return "Comfortable fabric seats with basic adjustments"
+
+
+# Electric Vehicle Components
+class ElectricMotor(Engine):
+    """Concrete product - Electric motor for electric vehicles"""
