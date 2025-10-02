@@ -1196,3 +1196,6 @@ class VehicleFactory(ABC):
 
 class LuxuryVehicleFactory(VehicleFactory):
     """Factory for luxury vehicles"""
+
+    def create_engine(self) -> Engine:
+        return V8Engine()
