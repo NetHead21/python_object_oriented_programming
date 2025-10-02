@@ -1112,3 +1112,7 @@ class Interior(ABC):
     @abstractmethod
     def describe(self) -> str:
         pass
+
+
+# Luxury Vehicle Components
+class V8Engine(Engine):
