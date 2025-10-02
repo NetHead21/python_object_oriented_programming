@@ -1128,3 +1128,8 @@ class V8Engine(Engine):
 class AutomaticTransmission(Transmission):
     def shift_gear(self, gear: int) -> str:
         return f"Smoothly shifting to gear {gear} with paddle shifters"
+
+
+class LeatherInterior(Interior):
+    def describe(self) -> str:
+        return "Premium leather seats with massage function and heated/cooled options"
