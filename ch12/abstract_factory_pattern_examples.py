@@ -1165,3 +1165,8 @@ class ElectricMotor(Engine):
 
     def get_power(self) -> str:
         return "Delivering 300 HP with zero emissions"
+
+
+class SingleSpeedTransmission(Transmission):
+    def shift_gear(self, gear: int) -> str:
+        return "Single-speed transmission providing seamless acceleration"
