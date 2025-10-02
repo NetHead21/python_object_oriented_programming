@@ -1192,3 +1192,7 @@ class VehicleFactory(ABC):
     @abstractmethod
     def create_interior(self) -> Interior:
         pass
+
+
+class LuxuryVehicleFactory(VehicleFactory):
+    """Factory for luxury vehicles"""
