@@ -1162,3 +1162,6 @@ class ElectricMotor(Engine):
 
     def start(self) -> str:
         return "Electric motor silently activating with instant torque"
+
+    def get_power(self) -> str:
+        return "Delivering 300 HP with zero emissions"
