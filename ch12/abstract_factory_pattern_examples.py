@@ -1188,3 +1188,7 @@ class VehicleFactory(ABC):
     @abstractmethod
     def create_transmission(self) -> Transmission:
         pass
+
+    @abstractmethod
+    def create_interior(self) -> Interior:
+        pass
