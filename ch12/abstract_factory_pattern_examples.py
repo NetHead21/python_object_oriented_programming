@@ -1144,3 +1144,8 @@ class I4Engine(Engine):
 
     def get_power(self) -> str:
         return "Providing 120 HP with excellent fuel economy"
+
+
+class ManualTransmission(Transmission):
+    def shift_gear(self, gear: int) -> str:
+        return f"Manual shifting to gear {gear} for driver engagement"
