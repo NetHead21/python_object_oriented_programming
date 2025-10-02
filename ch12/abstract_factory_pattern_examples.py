@@ -1141,3 +1141,6 @@ class I4Engine(Engine):
 
     def start(self) -> str:
         return "4-cylinder engine starting efficiently with 120 HP"
+
+    def get_power(self) -> str:
+        return "Providing 120 HP with excellent fuel economy"
