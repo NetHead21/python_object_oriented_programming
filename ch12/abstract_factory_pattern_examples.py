@@ -1138,3 +1138,6 @@ class LeatherInterior(Interior):
 # Economy Vehicle Components
 class I4Engine(Engine):
     """Concrete product - 4-cylinder engine for economy vehicles"""
+
+    def start(self) -> str:
+        return "4-cylinder engine starting efficiently with 120 HP"
