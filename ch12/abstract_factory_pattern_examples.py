@@ -1180,3 +1180,7 @@ class SustainableInterior(Interior):
 # Vehicle Factories
 class VehicleFactory(ABC):
     """Abstract factory for creating vehicle components"""
+
+    @abstractmethod
+    def create_engine(self) -> Engine:
+        pass
