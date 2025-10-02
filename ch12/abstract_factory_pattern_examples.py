@@ -1116,3 +1116,7 @@ class Interior(ABC):
 
 # Luxury Vehicle Components
 class V8Engine(Engine):
+    """Concrete product - V8 engine for luxury vehicles"""
+
+    def start(self) -> str:
+        return "V8 engine roaring to life with 450 HP"
