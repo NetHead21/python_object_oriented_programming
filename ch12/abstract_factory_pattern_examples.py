@@ -1159,3 +1159,6 @@ class FabricInterior(Interior):
 # Electric Vehicle Components
 class ElectricMotor(Engine):
     """Concrete product - Electric motor for electric vehicles"""
+
+    def start(self) -> str:
+        return "Electric motor silently activating with instant torque"
