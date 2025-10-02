@@ -1175,3 +1175,8 @@ class SingleSpeedTransmission(Transmission):
 class SustainableInterior(Interior):
     def describe(self) -> str:
         return "Eco-friendly recycled materials with minimalist design"
+
+
+# Vehicle Factories
+class VehicleFactory(ABC):
+    """Abstract factory for creating vehicle components"""
