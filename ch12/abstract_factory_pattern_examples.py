@@ -1133,3 +1133,8 @@ class AutomaticTransmission(Transmission):
 class LeatherInterior(Interior):
     def describe(self) -> str:
         return "Premium leather seats with massage function and heated/cooled options"
+
+
+# Economy Vehicle Components
+class I4Engine(Engine):
+    """Concrete product - 4-cylinder engine for economy vehicles"""
