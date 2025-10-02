@@ -1199,3 +1199,6 @@ class LuxuryVehicleFactory(VehicleFactory):
 
     def create_engine(self) -> Engine:
         return V8Engine()
+
+    def create_transmission(self) -> Transmission:
+        return AutomaticTransmission()
