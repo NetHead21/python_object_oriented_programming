@@ -1120,3 +1120,6 @@ class V8Engine(Engine):
 
     def start(self) -> str:
         return "V8 engine roaring to life with 450 HP"
+
+    def get_power(self) -> str:
+        return "Delivering 450 HP and 500 lb-ft torque"
