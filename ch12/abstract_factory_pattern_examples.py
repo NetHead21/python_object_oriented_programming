@@ -1149,3 +1149,8 @@ class I4Engine(Engine):
 class ManualTransmission(Transmission):
     def shift_gear(self, gear: int) -> str:
         return f"Manual shifting to gear {gear} for driver engagement"
+
+
+class FabricInterior(Interior):
+    def describe(self) -> str:
+        return "Comfortable fabric seats with basic adjustments"
