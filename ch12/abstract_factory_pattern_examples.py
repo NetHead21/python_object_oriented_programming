@@ -1123,3 +1123,8 @@ class V8Engine(Engine):
 
     def get_power(self) -> str:
         return "Delivering 450 HP and 500 lb-ft torque"
+
+
+class AutomaticTransmission(Transmission):
+    def shift_gear(self, gear: int) -> str:
+        return f"Smoothly shifting to gear {gear} with paddle shifters"
