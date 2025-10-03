@@ -1225,3 +1225,6 @@ class ElectricVehicleFactory(VehicleFactory):
 
     def create_engine(self) -> Engine:
         return ElectricMotor()
+
+    def create_transmission(self) -> Transmission:
+        return SingleSpeedTransmission()
