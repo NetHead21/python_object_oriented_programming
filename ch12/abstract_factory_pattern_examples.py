@@ -1305,3 +1305,16 @@ class Vehicle:
             self.transmission.shift_gear(1),
             self.interior.describe(),
         ]
+
+
+# =============================================================================
+# Factory Selector Utility
+# =============================================================================
+
+
+class Platform(Enum):
+    """Enumeration for platform types"""
+
+    WINDOWS = "windows"
+    MAC = "mac"
+    LINUX = "linux"
