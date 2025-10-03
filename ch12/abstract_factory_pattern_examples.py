@@ -1212,3 +1212,6 @@ class EconomyVehicleFactory(VehicleFactory):
 
     def create_engine(self) -> Engine:
         return I4Engine()
+
+    def create_transmission(self) -> Transmission:
+        return ManualTransmission()
