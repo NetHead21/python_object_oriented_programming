@@ -1298,3 +1298,10 @@ class Vehicle:
              "Smoothly shifting to gear 1 with paddle shifters",
              "Premium leather seats with massage function and heated/cooled options"]
         """
+        return [
+            f"Starting {self.model}:",
+            self.engine.start(),
+            self.engine.get_power(),
+            self.transmission.shift_gear(1),
+            self.interior.describe(),
+        ]
