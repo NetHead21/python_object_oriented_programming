@@ -1318,3 +1318,11 @@ class Platform(Enum):
     WINDOWS = "windows"
     MAC = "mac"
     LINUX = "linux"
+
+
+class Environment(Enum):
+    """Enumeration for deployment environments"""
+
+    DEVELOPMENT = "development"
+    STAGING = "staging"
+    PRODUCTION = "production"
