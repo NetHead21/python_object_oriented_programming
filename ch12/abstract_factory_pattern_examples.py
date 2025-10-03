@@ -1400,3 +1400,10 @@ def get_infrastructure_factory(env: Environment) -> InfrastructureFactory:
         >>> isinstance(db, MySQL)
         True
     """
+
+    factories = {
+        Environment.DEVELOPMENT: DevelopmentFactory(),
+        Environment.STAGING: StagingFactory(),
+        Environment.PRODUCTION: ProductionFactory(),
+    }
+    return factories[env]
