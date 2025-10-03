@@ -1275,3 +1275,7 @@ class Vehicle:
             factory (VehicleFactory): The factory that creates compatible components
             model (str): The specific model name for this vehicle
         """
+        self.model = model
+        self.engine = factory.create_engine()
+        self.transmission = factory.create_transmission()
+        self.interior = factory.create_interior()
