@@ -1326,3 +1326,11 @@ class Environment(Enum):
     DEVELOPMENT = "development"
     STAGING = "staging"
     PRODUCTION = "production"
+
+
+class VehicleType(Enum):
+    """Enumeration for vehicle types"""
+
+    LUXURY = "luxury"
+    ECONOMY = "economy"
+    ELECTRIC = "electric"
