@@ -1364,3 +1364,9 @@ def get_gui_factory(platform: Platform) -> GUIFactory:
         >>> isinstance(button, WindowsButton)
         True
     """
+    factories = {
+        Platform.WINDOWS: WindowsFactory(),
+        Platform.MAC: MacFactory(),
+        Platform.LINUX: LinuxFactory(),
+    }
+    return factories[platform]
