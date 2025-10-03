@@ -1215,3 +1215,6 @@ class EconomyVehicleFactory(VehicleFactory):
 
     def create_transmission(self) -> Transmission:
         return ManualTransmission()
+
+    def create_interior(self) -> Interior:
+        return FabricInterior()
