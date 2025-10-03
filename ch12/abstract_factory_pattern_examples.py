@@ -1267,3 +1267,11 @@ class Vehicle:
         >>> startup_info = bmw.start_vehicle()
         >>> # All components will be luxury-grade and compatible
     """
+
+    def __init__(self, factory: VehicleFactory, model: str):
+        """Initialize a vehicle using components from the specified factory.
+
+        Args:
+            factory (VehicleFactory): The factory that creates compatible components
+            model (str): The specific model name for this vehicle
+        """
