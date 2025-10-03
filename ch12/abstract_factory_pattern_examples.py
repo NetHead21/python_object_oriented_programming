@@ -1228,3 +1228,6 @@ class ElectricVehicleFactory(VehicleFactory):
 
     def create_transmission(self) -> Transmission:
         return SingleSpeedTransmission()
+
+    def create_interior(self) -> Interior:
+        return SustainableInterior()
