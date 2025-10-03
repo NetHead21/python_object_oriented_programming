@@ -1279,3 +1279,22 @@ class Vehicle:
         self.engine = factory.create_engine()
         self.transmission = factory.create_transmission()
         self.interior = factory.create_interior()
+
+    def start_vehicle(self) -> List[str]:
+        """Start the vehicle and provide detailed information about all components.
+
+        This method demonstrates how all components work together as a cohesive
+        unit. The startup sequence engages the engine, transmission, and provides
+        information about the interior features.
+
+        Returns:
+            List[str]: Detailed description of vehicle startup and component specifications
+
+        Example:
+            For a luxury vehicle:
+            ["Starting BMW M5:",
+             "V8 engine roaring to life with 450 HP",
+             "Delivering 450 HP and 500 lb-ft torque",
+             "Smoothly shifting to gear 1 with paddle shifters",
+             "Premium leather seats with massage function and heated/cooled options"]
+        """
