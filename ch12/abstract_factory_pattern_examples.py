@@ -1334,3 +1334,33 @@ class VehicleType(Enum):
     LUXURY = "luxury"
     ECONOMY = "economy"
     ELECTRIC = "electric"
+
+
+def get_gui_factory(platform: Platform) -> GUIFactory:
+    """Factory selector function for GUI component families.
+
+    This utility function demonstrates how to implement factory selection
+    in a clean, maintainable way. It uses a dictionary mapping to associate
+    platform types with their corresponding factory implementations.
+
+    This pattern is commonly used in real applications for:
+    - Configuration-driven factory selection
+    - Runtime platform detection and adaptation
+    - Plugin architecture where factories are loaded dynamically
+    - Testing scenarios with different factory implementations
+
+    Args:
+        platform (Platform): The target platform enum value
+
+    Returns:
+        GUIFactory: A concrete factory instance for the specified platform
+
+    Raises:
+        KeyError: If an unsupported platform is specified
+
+    Example:
+        >>> factory = get_gui_factory(Platform.WINDOWS)
+        >>> button = factory.create_button()  # WindowsButton
+        >>> isinstance(button, WindowsButton)
+        True
+    """
