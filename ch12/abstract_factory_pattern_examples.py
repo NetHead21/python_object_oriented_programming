@@ -1218,3 +1218,7 @@ class EconomyVehicleFactory(VehicleFactory):
 
     def create_interior(self) -> Interior:
         return FabricInterior()
+
+
+class ElectricVehicleFactory(VehicleFactory):
+    """Factory for electric vehicles"""
