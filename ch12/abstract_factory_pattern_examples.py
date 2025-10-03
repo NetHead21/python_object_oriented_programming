@@ -1231,3 +1231,39 @@ class ElectricVehicleFactory(VehicleFactory):
 
     def create_interior(self) -> Interior:
         return SustainableInterior()
+
+
+class Vehicle:
+    """Vehicle assembly class that demonstrates the Abstract Factory pattern in manufacturing.
+
+    This class represents a complete vehicle that is assembled using components
+    created by a vehicle factory. It demonstrates how the Abstract Factory pattern
+    ensures that all components in a vehicle are compatible and from the same
+    product family.
+
+    Key design principles demonstrated:
+    - Component compatibility: All parts work together seamlessly
+    - Factory injection: Vehicle type determined by factory choice
+    - Consistent manufacturing: All components match the vehicle category
+    - Abstraction: Vehicle doesn't know specific component implementations
+
+    The vehicle assembly process ensures that:
+    - Luxury vehicles get luxury components (V8 engine, leather interior, etc.)
+    - Economy vehicles get economy components (4-cylinder engine, fabric interior, etc.)
+    - Electric vehicles get electric components (electric motor, sustainable interior, etc.)
+
+    This prevents incompatible combinations like putting a V8 engine in an
+    electric vehicle or leather seats in an economy car.
+
+    Attributes:
+        model (str): The specific vehicle model name
+        engine (Engine): The engine component for this vehicle
+        transmission (Transmission): The transmission component for this vehicle
+        interior (Interior): The interior component for this vehicle
+
+    Example:
+        >>> luxury_factory = LuxuryVehicleFactory()
+        >>> bmw = Vehicle(luxury_factory, "BMW M5")
+        >>> startup_info = bmw.start_vehicle()
+        >>> # All components will be luxury-grade and compatible
+    """
