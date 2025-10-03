@@ -1209,3 +1209,6 @@ class LuxuryVehicleFactory(VehicleFactory):
 
 class EconomyVehicleFactory(VehicleFactory):
     """Factory for economy vehicles"""
+
+    def create_engine(self) -> Engine:
+        return I4Engine()
