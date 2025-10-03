@@ -1370,3 +1370,33 @@ def get_gui_factory(platform: Platform) -> GUIFactory:
         Platform.LINUX: LinuxFactory(),
     }
     return factories[platform]
+
+
+def get_infrastructure_factory(env: Environment) -> InfrastructureFactory:
+    """Factory selector function for infrastructure component families.
+
+    This function demonstrates environment-based factory selection, a common
+    pattern in enterprise applications where different environments (dev,
+    staging, prod) require different implementations of the same services.
+
+    The pattern enables:
+    - Environment-specific configurations without code changes
+    - Easy deployment across different infrastructure setups
+    - Testing with lightweight implementations in development
+    - Production optimization with enterprise-grade implementations
+
+    Args:
+        env (Environment): The target environment enum value
+
+    Returns:
+        InfrastructureFactory: A concrete factory for the specified environment
+
+    Raises:
+        KeyError: If an unsupported environment is specified
+
+    Example:
+        >>> factory = get_infrastructure_factory(Environment.PRODUCTION)
+        >>> db = factory.create_database()  # MySQL instance
+        >>> isinstance(db, MySQL)
+        True
+    """
