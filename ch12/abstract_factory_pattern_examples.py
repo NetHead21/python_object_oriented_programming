@@ -1222,3 +1222,6 @@ class EconomyVehicleFactory(VehicleFactory):
 
 class ElectricVehicleFactory(VehicleFactory):
     """Factory for electric vehicles"""
+
+    def create_engine(self) -> Engine:
+        return ElectricMotor()
