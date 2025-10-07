@@ -223,3 +223,5 @@ class Directory(FileSystemComponent):
         Args:
             name (str): Directory name
         """
+        super().__init__(name)
+        self.children: List[FileSystemComponent] = []
