@@ -1447,3 +1447,7 @@ def demo_gui_factory():
     This demonstrates the key benefit of Abstract Factory: platform-agnostic
     client code that can work with any compatible family of components.
     """
+
+    print("=" * 60)
+    print("GUI Factory Pattern Demo")
+    print("=" * 60)
