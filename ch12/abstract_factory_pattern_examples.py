@@ -1417,3 +1417,33 @@ def get_vehicle_factory(vehicle_type: VehicleType) -> VehicleFactory:
         VehicleType.ELECTRIC: ElectricVehicleFactory(),
     }
     return factories[vehicle_type]
+
+
+# =============================================================================
+# Demo and Testing Functions
+# =============================================================================
+
+
+def demo_gui_factory():
+    """Demonstrate the GUI Abstract Factory pattern with multiple platforms.
+
+    This function showcases how the Abstract Factory pattern enables easy
+    switching between different platform implementations while maintaining
+    consistent client code. It creates applications for Windows, Mac, and
+    Linux, demonstrating that:
+
+    1. Client code remains unchanged across platforms
+    2. All components within a platform family are compatible
+    3. Platform switching requires only changing the factory
+    4. Each platform maintains its unique characteristics
+
+    The demo shows:
+    - Factory creation for each platform
+    - Application instantiation with different factories
+    - UI component creation through the factory
+    - Component rendering with platform-specific results
+    - User interaction handling across platforms
+
+    This demonstrates the key benefit of Abstract Factory: platform-agnostic
+    client code that can work with any compatible family of components.
+    """
