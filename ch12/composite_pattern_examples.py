@@ -188,3 +188,6 @@ class File(FileSystemComponent):
         Returns:
             str: Formatted file representation
         """
+        prefix = "  " * indent
+        size_kb = self.size / 1024
+        return f"{prefix}📄 {self.name} ({size_kb:.1f} KB, {self.content_type})"
