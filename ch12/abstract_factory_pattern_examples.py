@@ -1504,3 +1504,18 @@ def demo_vehicle_factory():
     print("\n" + "=" * 60)
     print("Vehicle Factory Pattern Demo")
     print("=" * 60)
+
+    vehicle_configs = [
+        (VehicleType.LUXURY, "BMW M5"),
+        (VehicleType.ECONOMY, "Honda Civic"),
+        (VehicleType.ELECTRIC, "Tesla Model S"),
+    ]
+
+    for vehicle_type, model in vehicle_configs:
+        print(f"\n--- {vehicle_type.value.upper()} Vehicle ---")
+        factory = get_vehicle_factory(vehicle_type)
+        vehicle = Vehicle(factory, model)
+
+        startup_info = vehicle.start_vehicle()
+        for info in startup_info:
+            print(f"  {info}")
