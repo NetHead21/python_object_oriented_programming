@@ -44,3 +44,22 @@ REAL-WORLD EXAMPLES:
 from abc import ABC, abstractmethod
 from typing import List, Optional
 import math
+
+
+# =============================================================================
+# Example 1: File System Hierarchy
+# =============================================================================
+
+
+class FileSystemComponent(ABC):
+    """Abstract component for file system objects.
+
+    This is the base component that defines the common interface for both
+    files (leaf objects) and directories (composite objects). It establishes
+    the contract that all file system objects must follow.
+
+    The interface supports both individual operations (like getting size)
+    and composite operations (like adding/removing children). Not all
+    operations are meaningful for all types - for example, files can't
+    have children added to them.
+    """
