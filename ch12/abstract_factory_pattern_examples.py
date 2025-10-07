@@ -1523,3 +1523,7 @@ def demo_vehicle_factory():
 
 def demonstrate_pattern_benefits():
     """Show the key benefits of the Abstract Factory pattern"""
+
+    print("\n" + "=" * 60)
+    print("Abstract Factory Pattern Benefits")
+    print("=" * 60)
