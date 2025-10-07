@@ -72,3 +72,16 @@ class FileSystemComponent(ABC):
         """
         self.name = name
         self.parent: Optional["FileSystemComponent"] = None
+
+    @abstractmethod
+    def get_size(self) -> int:
+        """Get the size of this component in bytes.
+
+        For files, this returns the actual file size.
+        For directories, this recursively calculates the total size
+        of all contained files and subdirectories.
+
+        Returns:
+            int: Size in bytes
+        """
+        pass
