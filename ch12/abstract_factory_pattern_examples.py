@@ -1451,3 +1451,25 @@ def demo_gui_factory():
     print("=" * 60)
     print("GUI Factory Pattern Demo")
     print("=" * 60)
+
+    platforms = [Platform.WINDOWS, Platform.MAC, Platform.LINUX]
+
+    for platform in platforms:
+        print(f"\n--- {platform.value.upper()} Platform ---")
+        factory = get_gui_factory(platform)
+        app = Application(factory)
+        app.create_ui()
+
+        # Render components
+        renders = app.render_ui()
+        for render in renders:
+            print(f"  {render}")
+
+        # Test interactions
+        button = app.components[0]
+        window = app.components[1]
+        menu = app.components[2]
+
+        print(f"  {button.click()}")
+        print(f"  {window.close()}")
+        print(f"  {menu.select_item('File')}")
