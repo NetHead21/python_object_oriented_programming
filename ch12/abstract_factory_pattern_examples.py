@@ -1496,3 +1496,7 @@ def demo_infrastructure_factory():
         operations = service.get_user_data("12345")
         for operation in operations:
             print(f"  {operation}")
+
+
+def demo_vehicle_factory():
+    """Demonstrate the vehicle factory pattern"""
