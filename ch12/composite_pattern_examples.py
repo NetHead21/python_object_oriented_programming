@@ -208,3 +208,11 @@ class File(FileSystemComponent):
             return f"[Image data: {self.name}]"
         else:
             return f"[Binary data: {self.size} bytes]"
+
+
+class Directory(FileSystemComponent):
+    """Composite component representing a directory in the file system.
+
+    Directories can contain other directories and files, forming a tree
+    structure. They implement the composite operations for managing children.
+    """
