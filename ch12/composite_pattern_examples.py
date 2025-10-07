@@ -40,3 +40,7 @@ REAL-WORLD EXAMPLES:
 - Menu systems (items and submenus)
 - Graphics systems (shapes and groups)
 """
+
+from abc import ABC, abstractmethod
+from typing import List, Optional
+import math
