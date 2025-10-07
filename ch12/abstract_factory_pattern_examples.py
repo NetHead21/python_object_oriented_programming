@@ -1473,3 +1473,7 @@ def demo_gui_factory():
         print(f"  {button.click()}")
         print(f"  {window.close()}")
         print(f"  {menu.select_item('File')}")
+
+
+def demo_infrastructure_factory():
+    """Demonstrate the infrastructure factory pattern"""
