@@ -158,3 +158,12 @@ class File(FileSystemComponent):
     Files are terminal nodes in the file system tree - they cannot contain
     other components. They have a specific size and content type.
     """
+
+    def __init__(self, name: str, size: int, content_type: str = "text"):
+        """Initialize a file with name, size, and content type.
+
+        Args:
+            name (str): File name including extension
+            size (int): File size in bytes
+            content_type (str): Type of content (text, binary, image, etc.)
+        """
