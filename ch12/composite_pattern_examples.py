@@ -63,3 +63,10 @@ class FileSystemComponent(ABC):
     operations are meaningful for all types - for example, files can't
     have children added to them.
     """
+
+    def __init__(self, name: str):
+        """Initialize the file system component with a name.
+
+        Args:
+            name (str): The name of the file or directory
+        """
