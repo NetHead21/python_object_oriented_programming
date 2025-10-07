@@ -150,3 +150,11 @@ class FileSystemComponent(ABC):
         if self.parent is None:
             return self.name
         return f"{self.parent.get_path()}/{self.name}"
+
+
+class File(FileSystemComponent):
+    """Leaf component representing a file in the file system.
+
+    Files are terminal nodes in the file system tree - they cannot contain
+    other components. They have a specific size and content type.
+    """
