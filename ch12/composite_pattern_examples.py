@@ -140,3 +140,13 @@ class FileSystemComponent(ABC):
         if self.name == name:
             return self
         return None
+
+    def get_path(self) -> str:
+        """Get the full path of this component.
+
+        Returns:
+            str: Full path from root to this component
+        """
+        if self.parent is None:
+            return self.name
+        return f"{self.parent.get_path()}/{self.name}"
