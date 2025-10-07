@@ -170,3 +170,11 @@ class File(FileSystemComponent):
         super().__init__(name)
         self.size = size
         self.content_type = content_type
+
+    def get_size(self) -> int:
+        """Get the file size.
+
+        Returns:
+            int: File size in bytes
+        """
+        return self.size
