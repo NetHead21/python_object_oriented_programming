@@ -1481,3 +1481,18 @@ def demo_infrastructure_factory():
     print("\n" + "=" * 60)
     print("Infrastructure Factory Pattern Demo")
     print("=" * 60)
+
+    environments = [
+        Environment.DEVELOPMENT,
+        Environment.STAGING,
+        Environment.PRODUCTION,
+    ]
+
+    for env in environments:
+        print(f"\n--- {env.value.upper()} Environment ---")
+        factory = get_infrastructure_factory(env)
+        service = DataService(factory)
+
+        operations = service.get_user_data("12345")
+        for operation in operations:
+            print(f"  {operation}")
