@@ -1477,3 +1477,7 @@ def demo_gui_factory():
 
 def demo_infrastructure_factory():
     """Demonstrate the infrastructure factory pattern"""
+
+    print("\n" + "=" * 60)
+    print("Infrastructure Factory Pattern Demo")
+    print("=" * 60)
