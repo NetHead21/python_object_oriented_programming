@@ -1547,3 +1547,23 @@ def demonstrate_pattern_benefits():
     print("\n5. TESTABILITY:")
     print("   - Easy to create mock factories for testing")
     print("   - Inject different factories for different test scenarios")
+
+
+if __name__ == "__main__":
+    """Main execution block demonstrating comprehensive Abstract Factory examples.
+    
+    This section runs multiple demonstrations of the Abstract Factory pattern
+    across different domains to show its versatility and practical applications.
+    
+    The demonstrations include:
+    1. GUI Factory: Cross-platform user interface components
+    2. Infrastructure Factory: Environment-specific system components  
+    3. Vehicle Factory: Different types of vehicle manufacturing
+    4. Pattern Benefits: Key advantages and design principles
+    
+    Each example shows how the pattern enables:
+    - Easy switching between product families
+    - Consistent compatibility within families
+    - Clean separation of concerns
+    - Extensible and maintainable code
+    """
