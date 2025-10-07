@@ -97,3 +97,14 @@ class FileSystemComponent(ABC):
             str: Formatted string representation of the component
         """
         pass
+
+    def add(self, component: "FileSystemComponent") -> None:
+        """Add a child component (only meaningful for directories).
+
+        Args:
+            component: The component to add as a child
+
+        Raises:
+            NotImplementedError: For leaf components that can't have children
+        """
+        raise NotImplementedError("Cannot add to a leaf component")
