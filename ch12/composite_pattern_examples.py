@@ -191,3 +191,13 @@ class File(FileSystemComponent):
         prefix = "  " * indent
         size_kb = self.size / 1024
         return f"{prefix}📄 {self.name} ({size_kb:.1f} KB, {self.content_type})"
+
+    def get_content_preview(self, chars: int = 50) -> str:
+        """Get a preview of the file content (simulated).
+
+        Args:
+            chars (int): Number of characters to preview
+
+        Returns:
+            str: Simulated content preview
+        """
