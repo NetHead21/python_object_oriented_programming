@@ -85,3 +85,15 @@ class FileSystemComponent(ABC):
             int: Size in bytes
         """
         pass
+
+    @abstractmethod
+    def display(self, indent: int = 0) -> str:
+        """Display the component with proper indentation for tree structure.
+
+        Args:
+            indent (int): Current indentation level for tree display
+
+        Returns:
+            str: Formatted string representation of the component
+        """
+        pass
