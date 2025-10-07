@@ -108,3 +108,14 @@ class FileSystemComponent(ABC):
             NotImplementedError: For leaf components that can't have children
         """
         raise NotImplementedError("Cannot add to a leaf component")
+
+    def remove(self, component: "FileSystemComponent") -> None:
+        """Remove a child component (only meaningful for directories).
+
+        Args:
+            component: The component to remove
+
+        Raises:
+            NotImplementedError: For leaf components that don't have children
+        """
+        raise NotImplementedError("Cannot remove from a leaf component")
