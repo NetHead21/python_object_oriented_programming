@@ -119,3 +119,11 @@ class FileSystemComponent(ABC):
             NotImplementedError: For leaf components that don't have children
         """
         raise NotImplementedError("Cannot remove from a leaf component")
+
+    def get_children(self) -> List["FileSystemComponent"]:
+        """Get list of child components (only meaningful for directories).
+
+        Returns:
+            List: Empty list for leaf components
+        """
+        return []
