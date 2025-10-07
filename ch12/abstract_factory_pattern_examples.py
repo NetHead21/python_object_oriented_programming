@@ -1500,3 +1500,7 @@ def demo_infrastructure_factory():
 
 def demo_vehicle_factory():
     """Demonstrate the vehicle factory pattern"""
+
+    print("\n" + "=" * 60)
+    print("Vehicle Factory Pattern Demo")
+    print("=" * 60)
