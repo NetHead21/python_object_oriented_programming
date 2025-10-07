@@ -178,3 +178,13 @@ class File(FileSystemComponent):
             int: File size in bytes
         """
         return self.size
+
+    def display(self, indent: int = 0) -> str:
+        """Display the file with proper indentation and details.
+
+        Args:
+            indent (int): Current indentation level
+
+        Returns:
+            str: Formatted file representation
+        """
