@@ -216,3 +216,10 @@ class Directory(FileSystemComponent):
     Directories can contain other directories and files, forming a tree
     structure. They implement the composite operations for managing children.
     """
+
+    def __init__(self, name: str):
+        """Initialize an empty directory.
+
+        Args:
+            name (str): Directory name
+        """
