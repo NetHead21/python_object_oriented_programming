@@ -127,3 +127,16 @@ class FileSystemComponent(ABC):
             List: Empty list for leaf components
         """
         return []
+
+    def find(self, name: str) -> Optional["FileSystemComponent"]:
+        """Find a component by name in the tree structure.
+
+        Args:
+            name (str): Name of the component to find
+
+        Returns:
+            Optional[FileSystemComponent]: Found component or None
+        """
+        if self.name == name:
+            return self
+        return None
