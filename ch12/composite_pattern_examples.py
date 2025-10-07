@@ -167,3 +167,6 @@ class File(FileSystemComponent):
             size (int): File size in bytes
             content_type (str): Type of content (text, binary, image, etc.)
         """
+        super().__init__(name)
+        self.size = size
+        self.content_type = content_type
