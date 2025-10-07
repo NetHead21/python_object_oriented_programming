@@ -1411,3 +1411,9 @@ def get_infrastructure_factory(env: Environment) -> InfrastructureFactory:
 
 def get_vehicle_factory(vehicle_type: VehicleType) -> VehicleFactory:
     """Factory selector for vehicle components"""
+    factories = {
+        VehicleType.LUXURY: LuxuryVehicleFactory(),
+        VehicleType.ECONOMY: EconomyVehicleFactory(),
+        VehicleType.ELECTRIC: ElectricVehicleFactory(),
+    }
+    return factories[vehicle_type]
