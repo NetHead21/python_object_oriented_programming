@@ -201,3 +201,10 @@ class File(FileSystemComponent):
         Returns:
             str: Simulated content preview
         """
+
+        if self.content_type == "text":
+            return f"Sample text content from {self.name}..."[:chars]
+        elif self.content_type == "image":
+            return f"[Image data: {self.name}]"
+        else:
+            return f"[Binary data: {self.size} bytes]"
