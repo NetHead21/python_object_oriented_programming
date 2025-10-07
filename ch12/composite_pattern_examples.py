@@ -70,3 +70,5 @@ class FileSystemComponent(ABC):
         Args:
             name (str): The name of the file or directory
         """
+        self.name = name
+        self.parent: Optional["FileSystemComponent"] = None
