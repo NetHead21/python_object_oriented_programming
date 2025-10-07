@@ -1519,3 +1519,7 @@ def demo_vehicle_factory():
         startup_info = vehicle.start_vehicle()
         for info in startup_info:
             print(f"  {info}")
+
+
+def demonstrate_pattern_benefits():
+    """Show the key benefits of the Abstract Factory pattern"""
