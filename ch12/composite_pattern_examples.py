@@ -252,3 +252,13 @@ class Directory(FileSystemComponent):
             List[FileSystemComponent]: List of files and subdirectories
         """
         return self.children.copy()
+
+    def get_size(self) -> int:
+        """Get the total size of the directory and all its contents.
+
+        This recursively calculates the size by summing all contained
+        files and subdirectories.
+
+        Returns:
+            int: Total size in bytes
+        """
