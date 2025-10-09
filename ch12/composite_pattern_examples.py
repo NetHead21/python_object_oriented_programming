@@ -302,3 +302,10 @@ class Directory(FileSystemComponent):
                 return found
 
         return None
+
+    def get_file_count(self) -> int:
+        """Get the total number of files in this directory tree.
+
+        Returns:
+            int: Total number of files (excluding directories)
+        """
