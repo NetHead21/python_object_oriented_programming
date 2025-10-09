@@ -389,3 +389,4 @@ class OrganizationComponent(ABC):
         Args:
             component: The component to add as a direct report
         """
+        raise NotImplementedError("Cannot add reports to individual employees")
