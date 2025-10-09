@@ -232,3 +232,12 @@ class Directory(FileSystemComponent):
         Args:
             component: File or Directory to add
         """
+        component.parent = self
+        self.children.append(component)
+
+    def remove(self, component: FileSystemComponent) -> None:
+        """Remove a file or subdirectory from this directory.
+
+        Args:
+            component: File or Directory to remove
+        """
