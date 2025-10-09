@@ -341,3 +341,11 @@ class OrganizationComponent(ABC):
     This defines the common interface for both individual employees
     and organizational units (departments, teams, etc.).
     """
+
+    def __init__(self, name: str, title: str):
+        """Initialize an organizational component.
+
+        Args:
+            name (str): Name of the person or unit
+            title (str): Title or designation
+        """
