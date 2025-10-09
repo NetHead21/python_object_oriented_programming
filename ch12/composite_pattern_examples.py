@@ -398,3 +398,11 @@ class OrganizationComponent(ABC):
             component: The component to remove
         """
         raise NotImplementedError("Cannot remove reports from individual employees")
+
+    def get_reports(self) -> List["OrganizationComponent"]:
+        """Get all direct reports.
+
+        Returns:
+            List: Empty list for individual employees
+        """
+        return []
