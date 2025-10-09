@@ -349,3 +349,6 @@ class OrganizationComponent(ABC):
             name (str): Name of the person or unit
             title (str): Title or designation
         """
+        self.name = name
+        self.title = title
+        self.manager: Optional["OrganizationComponent"] = None
