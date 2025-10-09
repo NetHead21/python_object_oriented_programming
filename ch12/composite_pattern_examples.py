@@ -251,3 +251,4 @@ class Directory(FileSystemComponent):
         Returns:
             List[FileSystemComponent]: List of files and subdirectories
         """
+        return self.children.copy()
