@@ -328,3 +328,16 @@ class Directory(FileSystemComponent):
             if isinstance(child, Directory):
                 count += 1 + child.get_directory_count()
         return count
+
+
+# =============================================================================
+# Example 2: Organization Structure
+# =============================================================================
+
+
+class OrganizationComponent(ABC):
+    """Abstract component for organizational hierarchy.
+
+    This defines the common interface for both individual employees
+    and organizational units (departments, teams, etc.).
+    """
