@@ -244,3 +244,10 @@ class Directory(FileSystemComponent):
         if component in self.children:
             component.parent = None
             self.children.remove(component)
+
+    def get_children(self) -> List[FileSystemComponent]:
+        """Get all direct children of this directory.
+
+        Returns:
+            List[FileSystemComponent]: List of files and subdirectories
+        """
