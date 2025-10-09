@@ -276,3 +276,10 @@ class Directory(FileSystemComponent):
         Returns:
             str: Formatted directory tree representation
         """
+        prefix = "  " * indent
+        result = f"{prefix}📁 {self.name}/ ({len(self.children)} items, {self.get_size() / 1024:.1f} KB total)\n"
+
+        for child in sorted(self.children, key=lambda x: (isinstance(x, File), x.name)):
+            result += child.display(indent + 1) + "\n"
+
+        return result.rstrip()
