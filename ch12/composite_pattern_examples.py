@@ -323,3 +323,8 @@ class Directory(FileSystemComponent):
         Returns:
             int: Total number of subdirectories
         """
+        count = 0
+        for child in self.children:
+            if isinstance(child, Directory):
+                count += 1 + child.get_directory_count()
+        return count
