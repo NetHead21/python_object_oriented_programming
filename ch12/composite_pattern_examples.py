@@ -309,3 +309,10 @@ class Directory(FileSystemComponent):
         Returns:
             int: Total number of files (excluding directories)
         """
+        count = 0
+        for child in self.children:
+            if isinstance(child, File):
+                count += 1
+            elif isinstance(child, Directory):
+                count += child.get_file_count()
+        return count
