@@ -225,3 +225,10 @@ class Directory(FileSystemComponent):
         """
         super().__init__(name)
         self.children: List[FileSystemComponent] = []
+
+    def add(self, component: FileSystemComponent) -> None:
+        """Add a file or subdirectory to this directory.
+
+        Args:
+            component: File or Directory to add
+        """
