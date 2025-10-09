@@ -241,3 +241,6 @@ class Directory(FileSystemComponent):
         Args:
             component: File or Directory to remove
         """
+        if component in self.children:
+            component.parent = None
+            self.children.remove(component)
