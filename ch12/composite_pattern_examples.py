@@ -316,3 +316,10 @@ class Directory(FileSystemComponent):
             elif isinstance(child, Directory):
                 count += child.get_file_count()
         return count
+
+    def get_directory_count(self) -> int:
+        """Get the total number of subdirectories in this directory tree.
+
+        Returns:
+            int: Total number of subdirectories
+        """
