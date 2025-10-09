@@ -352,3 +352,12 @@ class OrganizationComponent(ABC):
         self.name = name
         self.title = title
         self.manager: Optional["OrganizationComponent"] = None
+
+    @abstractmethod
+    def get_salary_cost(self) -> float:
+        """Get the total salary cost for this component.
+
+        Returns:
+            float: Total salary cost
+        """
+        pass
