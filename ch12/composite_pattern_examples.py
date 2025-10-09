@@ -370,3 +370,15 @@ class OrganizationComponent(ABC):
             int: Number of people
         """
         pass
+
+    @abstractmethod
+    def display_hierarchy(self, indent: int = 0) -> str:
+        """Display the organizational hierarchy.
+
+        Args:
+            indent (int): Indentation level
+
+        Returns:
+            str: Formatted hierarchy display
+        """
+        pass
