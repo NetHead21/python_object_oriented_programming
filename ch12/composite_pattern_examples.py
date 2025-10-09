@@ -283,3 +283,13 @@ class Directory(FileSystemComponent):
             result += child.display(indent + 1) + "\n"
 
         return result.rstrip()
+
+    def find(self, name: str) -> Optional[FileSystemComponent]:
+        """Find a component by name in this directory tree.
+
+        Args:
+            name (str): Name to search for
+
+        Returns:
+            Optional[FileSystemComponent]: Found component or None
+        """
