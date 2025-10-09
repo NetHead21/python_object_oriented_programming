@@ -262,3 +262,7 @@ class Directory(FileSystemComponent):
         Returns:
             int: Total size in bytes
         """
+        total_size = 0
+        for child in self.children:
+            total_size += child.get_size()
+        return total_size
