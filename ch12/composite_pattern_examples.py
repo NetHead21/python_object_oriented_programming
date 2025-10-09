@@ -397,3 +397,4 @@ class OrganizationComponent(ABC):
         Args:
             component: The component to remove
         """
+        raise NotImplementedError("Cannot remove reports from individual employees")
