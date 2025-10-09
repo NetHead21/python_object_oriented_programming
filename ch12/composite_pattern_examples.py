@@ -390,3 +390,10 @@ class OrganizationComponent(ABC):
             component: The component to add as a direct report
         """
         raise NotImplementedError("Cannot add reports to individual employees")
+
+    def remove_report(self, component: "OrganizationComponent") -> None:
+        """Remove a direct report (only for managers/departments).
+
+        Args:
+            component: The component to remove
+        """
