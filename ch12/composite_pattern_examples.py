@@ -361,3 +361,12 @@ class OrganizationComponent(ABC):
             float: Total salary cost
         """
         pass
+
+    @abstractmethod
+    def get_headcount(self) -> int:
+        """Get the total number of people in this component.
+
+        Returns:
+            int: Number of people
+        """
+        pass
