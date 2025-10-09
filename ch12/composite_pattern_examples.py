@@ -382,3 +382,10 @@ class OrganizationComponent(ABC):
             str: Formatted hierarchy display
         """
         pass
+
+    def add_report(self, component: "OrganizationComponent") -> None:
+        """Add a direct report (only for managers/departments).
+
+        Args:
+            component: The component to add as a direct report
+        """
