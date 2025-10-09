@@ -293,3 +293,12 @@ class Directory(FileSystemComponent):
         Returns:
             Optional[FileSystemComponent]: Found component or None
         """
+        if self.name == name:
+            return self
+
+        for child in self.children:
+            found = child.find(name)
+            if found:
+                return found
+
+        return None
