@@ -266,3 +266,13 @@ class Directory(FileSystemComponent):
         for child in self.children:
             total_size += child.get_size()
         return total_size
+
+    def display(self, indent: int = 0) -> str:
+        """Display the directory tree with proper indentation.
+
+        Args:
+            indent (int): Current indentation level
+
+        Returns:
+            str: Formatted directory tree representation
+        """
