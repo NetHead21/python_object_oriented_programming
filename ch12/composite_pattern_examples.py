@@ -474,3 +474,4 @@ class Employee(OrganizationComponent):
         Returns:
             str: Comma-separated list of skills
         """
+        return ", ".join(self.skills) if self.skills else "No skills listed"
