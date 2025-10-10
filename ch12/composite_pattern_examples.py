@@ -452,3 +452,13 @@ class Employee(OrganizationComponent):
             int: Always returns 1
         """
         return 1
+
+    def display_hierarchy(self, indent: int = 0) -> str:
+        """Display employee information with indentation.
+
+        Args:
+            indent (int): Indentation level
+
+        Returns:
+            str: Formatted employee display
+        """
