@@ -444,3 +444,11 @@ class Employee(OrganizationComponent):
             float: Annual salary
         """
         return self.salary
+
+    def get_headcount(self) -> int:
+        """Individual employee counts as 1.
+
+        Returns:
+            int: Always returns 1
+        """
+        return 1
