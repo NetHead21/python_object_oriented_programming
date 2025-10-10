@@ -511,3 +511,6 @@ class Department(OrganizationComponent):
         Args:
             component: Employee or Department to remove
         """
+        if component in self.members:
+            component.manager = None
+            self.members.remove(component)
