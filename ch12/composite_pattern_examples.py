@@ -492,3 +492,6 @@ class Department(OrganizationComponent):
             title (str): Department title/type
             budget (float): Annual budget
         """
+        super().__init__(name, title)
+        self.budget = budget
+        self.members: List[OrganizationComponent] = []
