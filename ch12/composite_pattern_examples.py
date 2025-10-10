@@ -483,3 +483,12 @@ class Department(OrganizationComponent):
     Departments can contain employees and other departments,
     forming a hierarchical organizational structure.
     """
+
+    def __init__(self, name: str, title: str = "Department", budget: float = 0.0):
+        """Initialize a department.
+
+        Args:
+            name (str): Department name
+            title (str): Department title/type
+            budget (float): Annual budget
+        """
