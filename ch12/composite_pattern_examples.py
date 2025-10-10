@@ -432,3 +432,7 @@ class Employee(OrganizationComponent):
             department (str): Department name
             skills (List[str]): List of skills
         """
+        super().__init__(name, title)
+        self.salary = salary
+        self.department = department
+        self.skills = skills or []
