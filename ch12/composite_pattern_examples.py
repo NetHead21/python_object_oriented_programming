@@ -533,3 +533,10 @@ class Department(OrganizationComponent):
         for member in self.members:
             total_cost += member.get_salary_cost()
         return total_cost
+
+    def get_headcount(self) -> int:
+        """Get the total number of people in the department.
+
+        Returns:
+            int: Total headcount including subdepartments
+        """
