@@ -495,3 +495,10 @@ class Department(OrganizationComponent):
         super().__init__(name, title)
         self.budget = budget
         self.members: List[OrganizationComponent] = []
+
+    def add_report(self, component: OrganizationComponent) -> None:
+        """Add an employee or subdepartment to this department.
+
+        Args:
+            component: Employee or Department to add
+        """
