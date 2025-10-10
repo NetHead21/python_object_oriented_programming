@@ -475,3 +475,11 @@ class Employee(OrganizationComponent):
             str: Comma-separated list of skills
         """
         return ", ".join(self.skills) if self.skills else "No skills listed"
+
+
+class Department(OrganizationComponent):
+    """Composite component representing a department or team.
+
+    Departments can contain employees and other departments,
+    forming a hierarchical organizational structure.
+    """
