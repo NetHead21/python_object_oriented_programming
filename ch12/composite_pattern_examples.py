@@ -522,3 +522,10 @@ class Department(OrganizationComponent):
             List[OrganizationComponent]: List of employees and subdepartments
         """
         return self.members.copy()
+
+    def get_salary_cost(self) -> float:
+        """Get the total salary cost for the entire department.
+
+        Returns:
+            float: Total salary cost including all subdepartments
+        """
