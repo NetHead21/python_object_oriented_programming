@@ -436,3 +436,11 @@ class Employee(OrganizationComponent):
         self.salary = salary
         self.department = department
         self.skills = skills or []
+
+    def get_salary_cost(self) -> float:
+        """Get the employee's salary.
+
+        Returns:
+            float: Annual salary
+        """
+        return self.salary
