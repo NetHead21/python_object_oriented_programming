@@ -514,3 +514,11 @@ class Department(OrganizationComponent):
         if component in self.members:
             component.manager = None
             self.members.remove(component)
+
+    def get_reports(self) -> List[OrganizationComponent]:
+        """Get all direct reports in this department.
+
+        Returns:
+            List[OrganizationComponent]: List of employees and subdepartments
+        """
+        return self.members.copy()
