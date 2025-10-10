@@ -540,3 +540,7 @@ class Department(OrganizationComponent):
         Returns:
             int: Total headcount including subdepartments
         """
+        total_count = 0
+        for member in self.members:
+            total_count += member.get_headcount()
+        return total_count
