@@ -502,3 +502,5 @@ class Department(OrganizationComponent):
         Args:
             component: Employee or Department to add
         """
+        component.manager = self
+        self.members.append(component)
