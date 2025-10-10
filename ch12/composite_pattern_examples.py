@@ -462,3 +462,8 @@ class Employee(OrganizationComponent):
         Returns:
             str: Formatted employee display
         """
+        prefix = "  " * indent
+        return (
+            f"{prefix}👤 {self.name} - {self.title} "
+            f"(${self.salary:,.0f}/year, {self.department})"
+        )
