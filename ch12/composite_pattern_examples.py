@@ -414,3 +414,21 @@ class Employee(OrganizationComponent):
     Employees are terminal nodes in the organizational hierarchy.
     They have specific salary, department, and skill information.
     """
+
+    def __init__(
+        self,
+        name: str,
+        title: str,
+        salary: float,
+        department: str = "",
+        skills: List[str] = None,
+    ):
+        """Initialize an employee.
+
+        Args:
+            name (str): Employee name
+            title (str): Job title
+            salary (float): Annual salary
+            department (str): Department name
+            skills (List[str]): List of skills
+        """
