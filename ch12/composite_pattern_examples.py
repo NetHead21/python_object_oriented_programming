@@ -529,3 +529,7 @@ class Department(OrganizationComponent):
         Returns:
             float: Total salary cost including all subdepartments
         """
+        total_cost = 0.0
+        for member in self.members:
+            total_cost += member.get_salary_cost()
+        return total_cost
