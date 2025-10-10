@@ -467,3 +467,10 @@ class Employee(OrganizationComponent):
             f"{prefix}👤 {self.name} - {self.title} "
             f"(${self.salary:,.0f}/year, {self.department})"
         )
+
+    def get_skills_summary(self) -> str:
+        """Get a summary of the employee's skills.
+
+        Returns:
+            str: Comma-separated list of skills
+        """
