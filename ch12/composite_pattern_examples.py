@@ -406,3 +406,11 @@ class OrganizationComponent(ABC):
             List: Empty list for individual employees
         """
         return []
+
+
+class Employee(OrganizationComponent):
+    """Leaf component representing an individual employee.
+
+    Employees are terminal nodes in the organizational hierarchy.
+    They have specific salary, department, and skill information.
+    """
