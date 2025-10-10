@@ -504,3 +504,10 @@ class Department(OrganizationComponent):
         """
         component.manager = self
         self.members.append(component)
+
+    def remove_report(self, component: OrganizationComponent) -> None:
+        """Remove an employee or subdepartment from this department.
+
+        Args:
+            component: Employee or Department to remove
+        """
