@@ -668,3 +668,11 @@ class UIComponent(ABC):
             component: Child component to remove
         """
         raise NotImplementedError("Cannot remove children from leaf components")
+
+    def get_children(self) -> List["UIComponent"]:
+        """Get all child components.
+
+        Returns:
+            List: Empty list for leaf components
+        """
+        return []
