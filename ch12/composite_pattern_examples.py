@@ -851,3 +851,10 @@ class Panel(UIComponent):
         self.children: List[UIComponent] = []
         self.background_color = "lightgray"
         self.border = True
+
+    def add_child(self, component: UIComponent) -> None:
+        """Add a child component to this panel.
+
+        Args:
+            component: UI component to add as child
+        """
