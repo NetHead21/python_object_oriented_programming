@@ -643,3 +643,12 @@ class UIComponent(ABC):
             str: Rendered component representation
         """
         pass
+
+    @abstractmethod
+    def get_bounds(self) -> tuple:
+        """Get the bounding rectangle of the component.
+
+        Returns:
+            tuple: (x, y, width, height) bounds
+        """
+        pass
