@@ -577,3 +577,6 @@ class Department(OrganizationComponent):
         Returns:
             float: Percentage of budget used by salary costs
         """
+        if self.budget == 0:
+            return 0.0
+        return (self.get_salary_cost() / self.budget) * 100
