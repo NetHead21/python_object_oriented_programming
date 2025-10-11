@@ -810,3 +810,11 @@ class Label(UIComponent):
             f"{prefix}🏷️  Label '{self.text}' at ({self.x}, {self.y}) "
             f"[{self.width}x{self.height}] - {visibility}"
         )
+
+    def get_bounds(self) -> tuple:
+        """Get the label's bounding rectangle.
+
+        Returns:
+            tuple: (x, y, width, height)
+        """
+        return (self.x, self.y, self.width, self.height)
