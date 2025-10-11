@@ -867,3 +867,6 @@ class Panel(UIComponent):
         Args:
             component: UI component to remove
         """
+        if component in self.children:
+            component.parent = None
+            self.children.remove(component)
