@@ -769,3 +769,23 @@ class Label(UIComponent):
 
     Labels display text and are terminal UI elements.
     """
+
+    def __init__(
+        self,
+        name: str,
+        text: str,
+        x: int = 0,
+        y: int = 0,
+        width: int = 100,
+        height: int = 20,
+    ):
+        """Initialize a label with text content.
+
+        Args:
+            name (str): Label identifier
+            text (str): Label text content
+            x (int): X position
+            y (int): Y position
+            width (int): Label width
+            height (int): Label height
+        """
