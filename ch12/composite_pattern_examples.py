@@ -847,3 +847,7 @@ class Panel(UIComponent):
             width (int): Panel width
             height (int): Panel height
         """
+        super().__init__(name, x, y, width, height)
+        self.children: List[UIComponent] = []
+        self.background_color = "lightgray"
+        self.border = True
