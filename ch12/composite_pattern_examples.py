@@ -631,3 +631,15 @@ class UIComponent(ABC):
         self.height = height
         self.visible = True
         self.parent: Optional["UIComponent"] = None
+
+    @abstractmethod
+    def render(self, indent: int = 0) -> str:
+        """Render the component for display.
+
+        Args:
+            indent (int): Indentation level for nested display
+
+        Returns:
+            str: Rendered component representation
+        """
+        pass
