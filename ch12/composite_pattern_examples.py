@@ -818,3 +818,11 @@ class Label(UIComponent):
             tuple: (x, y, width, height)
         """
         return (self.x, self.y, self.width, self.height)
+
+    def set_text(self, text: str) -> None:
+        """Update the label text.
+
+        Args:
+            text (str): New text content
+        """
+        self.text = text
