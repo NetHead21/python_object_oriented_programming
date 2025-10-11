@@ -652,3 +652,11 @@ class UIComponent(ABC):
             tuple: (x, y, width, height) bounds
         """
         pass
+
+    def add_child(self, component: "UIComponent") -> None:
+        """Add a child component (only for containers).
+
+        Args:
+            component: Child component to add
+        """
+        raise NotImplementedError("Cannot add children to leaf components")
