@@ -598,3 +598,16 @@ class Department(OrganizationComponent):
                 if found:
                     return found
         return None
+
+
+# =============================================================================
+# Example 3: UI Component System
+# =============================================================================
+
+
+class UIComponent(ABC):
+    """Abstract component for UI elements.
+
+    This defines the common interface for both individual UI elements
+    (buttons, labels) and container elements (panels, windows).
+    """
