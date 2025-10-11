@@ -860,3 +860,10 @@ class Panel(UIComponent):
         """
         component.parent = self
         self.children.append(component)
+
+    def remove_child(self, component: UIComponent) -> None:
+        """Remove a child component from this panel.
+
+        Args:
+            component: UI component to remove
+        """
