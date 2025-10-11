@@ -894,3 +894,7 @@ class Panel(UIComponent):
             f"{prefix}📦 Panel '{self.name}' at ({self.x}, {self.y}) "
             f"[{self.width}x{self.height}] - {len(self.children)} children, {visibility}\n"
         )
+        for child in self.children:
+            result += child.render(indent + 1) + "\n"
+
+        return result.rstrip()
