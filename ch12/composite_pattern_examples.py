@@ -560,3 +560,8 @@ class Department(OrganizationComponent):
             f"{self.get_headcount()} people, "
             f"${self.get_salary_cost():,.0f} total cost\n"
         )
+
+        # Sort members: departments first, then employees by name
+        sorted_members = sorted(
+            self.members, key=lambda x: (isinstance(x, Employee), x.name)
+        )
