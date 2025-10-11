@@ -758,3 +758,7 @@ class Button(UIComponent):
         Returns:
             str: Click action description
         """
+        if self.enabled and self.visible:
+            return f"Button '{self.text}' clicked!"
+        else:
+            return f"Button '{self.text}' cannot be clicked (disabled or hidden)"
