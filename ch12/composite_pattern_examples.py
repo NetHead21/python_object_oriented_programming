@@ -580,3 +580,13 @@ class Department(OrganizationComponent):
         if self.budget == 0:
             return 0.0
         return (self.get_salary_cost() / self.budget) * 100
+
+    def find_employee(self, name: str) -> Optional[Employee]:
+        """Find an employee by name in the department hierarchy.
+
+        Args:
+            name (str): Employee name to search for
+
+        Returns:
+            Optional[Employee]: Found employee or None
+        """
