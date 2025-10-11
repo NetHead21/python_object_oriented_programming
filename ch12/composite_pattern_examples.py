@@ -878,3 +878,13 @@ class Panel(UIComponent):
             List[UIComponent]: List of child components
         """
         return self.children.copy()
+
+    def render(self, indent: int = 0) -> str:
+        """Render the panel and all its children.
+
+        Args:
+            indent (int): Indentation level
+
+        Returns:
+            str: Panel rendering representation
+        """
