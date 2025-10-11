@@ -570,3 +570,10 @@ class Department(OrganizationComponent):
             result += member.display_hierarchy(indent + 1) + "\n"
 
         return result.rstrip()
+
+    def get_budget_utilization(self) -> float:
+        """Calculate budget utilization percentage.
+
+        Returns:
+            float: Percentage of budget used by salary costs
+        """
