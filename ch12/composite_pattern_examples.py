@@ -544,3 +544,13 @@ class Department(OrganizationComponent):
         for member in self.members:
             total_count += member.get_headcount()
         return total_count
+
+    def display_hierarchy(self, indent: int = 0) -> str:
+        """Display the department hierarchy with all members.
+
+        Args:
+            indent (int): Indentation level
+
+        Returns:
+            str: Formatted department hierarchy
+        """
