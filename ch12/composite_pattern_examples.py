@@ -834,3 +834,16 @@ class Panel(UIComponent):
     Panels can contain other UI components (buttons, labels, other panels)
     and manage their layout and rendering.
     """
+
+    def __init__(
+        self, name: str, x: int = 0, y: int = 0, width: int = 200, height: int = 150
+    ):
+        """Initialize a panel container.
+
+        Args:
+            name (str): Panel identifier
+            x (int): X position
+            y (int): Y position
+            width (int): Panel width
+            height (int): Panel height
+        """
