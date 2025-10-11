@@ -751,3 +751,10 @@ class Button(UIComponent):
             tuple: (x, y, width, height)
         """
         return (self.x, self.y, self.width, self.height)
+
+    def click(self) -> str:
+        """Simulate button click action.
+
+        Returns:
+            str: Click action description
+        """
