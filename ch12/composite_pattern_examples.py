@@ -826,3 +826,11 @@ class Label(UIComponent):
             text (str): New text content
         """
         self.text = text
+
+
+class Panel(UIComponent):
+    """Composite component representing a UI panel/container.
+
+    Panels can contain other UI components (buttons, labels, other panels)
+    and manage their layout and rendering.
+    """
