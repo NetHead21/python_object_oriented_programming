@@ -565,3 +565,8 @@ class Department(OrganizationComponent):
         sorted_members = sorted(
             self.members, key=lambda x: (isinstance(x, Employee), x.name)
         )
+
+        for member in sorted_members:
+            result += member.display_hierarchy(indent + 1) + "\n"
+
+        return result.rstrip()
