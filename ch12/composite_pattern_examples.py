@@ -611,3 +611,16 @@ class UIComponent(ABC):
     This defines the common interface for both individual UI elements
     (buttons, labels) and container elements (panels, windows).
     """
+
+    def __init__(
+        self, name: str, x: int = 0, y: int = 0, width: int = 100, height: int = 50
+    ):
+        """Initialize a UI component with position and size.
+
+        Args:
+            name (str): Component name/identifier
+            x (int): X position
+            y (int): Y position
+            width (int): Component width
+            height (int): Component height
+        """
