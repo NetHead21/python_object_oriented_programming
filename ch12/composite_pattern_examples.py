@@ -888,3 +888,9 @@ class Panel(UIComponent):
         Returns:
             str: Panel rendering representation
         """
+        prefix = "  " * indent
+        visibility = "visible" if self.visible else "hidden"
+        result = (
+            f"{prefix}📦 Panel '{self.name}' at ({self.x}, {self.y}) "
+            f"[{self.width}x{self.height}] - {len(self.children)} children, {visibility}\n"
+        )
