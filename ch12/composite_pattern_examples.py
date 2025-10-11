@@ -726,3 +726,13 @@ class Button(UIComponent):
         self.text = text
         self.enabled = True
         self.style = "default"
+
+    def render(self, indent: int = 0) -> str:
+        """Render the button with its current state.
+
+        Args:
+            indent (int): Indentation level
+
+        Returns:
+            str: Button rendering representation
+        """
