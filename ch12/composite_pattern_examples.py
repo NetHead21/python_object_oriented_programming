@@ -684,3 +684,13 @@ class UIComponent(ABC):
             visible (bool): Whether component should be visible
         """
         self.visible = visible
+
+    def move(self, dx: int, dy: int) -> None:
+        """Move the component by the specified offset.
+
+        Args:
+            dx (int): X offset
+            dy (int): Y offset
+        """
+        self.x += dx
+        self.y += dy
