@@ -624,3 +624,10 @@ class UIComponent(ABC):
             width (int): Component width
             height (int): Component height
         """
+        self.name = name
+        self.x = x
+        self.y = y
+        self.width = width
+        self.height = height
+        self.visible = True
+        self.parent: Optional["UIComponent"] = None
