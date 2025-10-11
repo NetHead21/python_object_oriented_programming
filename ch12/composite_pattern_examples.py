@@ -722,3 +722,7 @@ class Button(UIComponent):
             width (int): Button width
             height (int): Button height
         """
+        super().__init__(name, x, y, width, height)
+        self.text = text
+        self.enabled = True
+        self.style = "default"
