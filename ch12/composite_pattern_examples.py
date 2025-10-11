@@ -858,3 +858,5 @@ class Panel(UIComponent):
         Args:
             component: UI component to add as child
         """
+        component.parent = self
+        self.children.append(component)
