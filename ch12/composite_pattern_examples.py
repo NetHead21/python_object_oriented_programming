@@ -736,3 +736,10 @@ class Button(UIComponent):
         Returns:
             str: Button rendering representation
         """
+        prefix = "  " * indent
+        status = "enabled" if self.enabled else "disabled"
+        visibility = "visible" if self.visible else "hidden"
+        return (
+            f"{prefix}🔘 Button '{self.text}' at ({self.x}, {self.y}) "
+            f"[{self.width}x{self.height}] - {status}, {visibility}"
+        )
