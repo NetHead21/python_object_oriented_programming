@@ -702,3 +702,23 @@ class Button(UIComponent):
     Buttons are terminal UI elements that can be clicked but
     cannot contain other components.
     """
+
+    def __init__(
+        self,
+        name: str,
+        text: str,
+        x: int = 0,
+        y: int = 0,
+        width: int = 100,
+        height: int = 30,
+    ):
+        """Initialize a button with text and styling.
+
+        Args:
+            name (str): Button identifier
+            text (str): Button text/label
+            x (int): X position
+            y (int): Y position
+            width (int): Button width
+            height (int): Button height
+        """
