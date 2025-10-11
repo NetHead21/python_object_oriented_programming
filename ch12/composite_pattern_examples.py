@@ -870,3 +870,11 @@ class Panel(UIComponent):
         if component in self.children:
             component.parent = None
             self.children.remove(component)
+
+    def get_children(self) -> List[UIComponent]:
+        """Get all child components.
+
+        Returns:
+            List[UIComponent]: List of child components
+        """
+        return self.children.copy()
