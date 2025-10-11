@@ -676,3 +676,11 @@ class UIComponent(ABC):
             List: Empty list for leaf components
         """
         return []
+
+    def set_visible(self, visible: bool) -> None:
+        """Set the visibility of this component and all children.
+
+        Args:
+            visible (bool): Whether component should be visible
+        """
+        self.visible = visible
