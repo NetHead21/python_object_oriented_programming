@@ -590,3 +590,11 @@ class Department(OrganizationComponent):
         Returns:
             Optional[Employee]: Found employee or None
         """
+        for member in self.members:
+            if isinstance(member, Employee) and member.name == name:
+                return member
+            elif isinstance(member, Department):
+                found = member.find_employee(name)
+                if found:
+                    return found
+        return None
