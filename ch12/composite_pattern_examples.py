@@ -803,3 +803,10 @@ class Label(UIComponent):
         Returns:
             str: Label rendering representation
         """
+
+        prefix = "  " * indent
+        visibility = "visible" if self.visible else "hidden"
+        return (
+            f"{prefix}🏷️  Label '{self.text}' at ({self.x}, {self.y}) "
+            f"[{self.width}x{self.height}] - {visibility}"
+        )
