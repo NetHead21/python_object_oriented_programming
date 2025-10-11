@@ -554,3 +554,9 @@ class Department(OrganizationComponent):
         Returns:
             str: Formatted department hierarchy
         """
+        prefix = "  " * indent
+        result = (
+            f"{prefix}🏢 {self.name} ({self.title}) - "
+            f"{self.get_headcount()} people, "
+            f"${self.get_salary_cost():,.0f} total cost\n"
+        )
