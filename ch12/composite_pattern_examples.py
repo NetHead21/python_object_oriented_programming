@@ -789,3 +789,7 @@ class Label(UIComponent):
             width (int): Label width
             height (int): Label height
         """
+        super().__init__(name, x, y, width, height)
+        self.text = text
+        self.font_size = 12
+        self.color = "black"
