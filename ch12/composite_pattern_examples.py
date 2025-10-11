@@ -660,3 +660,11 @@ class UIComponent(ABC):
             component: Child component to add
         """
         raise NotImplementedError("Cannot add children to leaf components")
+
+    def remove_child(self, component: "UIComponent") -> None:
+        """Remove a child component (only for containers).
+
+        Args:
+            component: Child component to remove
+        """
+        raise NotImplementedError("Cannot remove children from leaf components")
