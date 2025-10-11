@@ -743,3 +743,11 @@ class Button(UIComponent):
             f"{prefix}🔘 Button '{self.text}' at ({self.x}, {self.y}) "
             f"[{self.width}x{self.height}] - {status}, {visibility}"
         )
+
+    def get_bounds(self) -> tuple:
+        """Get the button's bounding rectangle.
+
+        Returns:
+            tuple: (x, y, width, height)
+        """
+        return (self.x, self.y, self.width, self.height)
