@@ -762,3 +762,10 @@ class Button(UIComponent):
             return f"Button '{self.text}' clicked!"
         else:
             return f"Button '{self.text}' cannot be clicked (disabled or hidden)"
+
+
+class Label(UIComponent):
+    """Leaf component representing a UI label.
+
+    Labels display text and are terminal UI elements.
+    """
