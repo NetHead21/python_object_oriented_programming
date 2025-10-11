@@ -793,3 +793,13 @@ class Label(UIComponent):
         self.text = text
         self.font_size = 12
         self.color = "black"
+
+    def render(self, indent: int = 0) -> str:
+        """Render the label with its text.
+
+        Args:
+            indent (int): Indentation level
+
+        Returns:
+            str: Label rendering representation
+        """
