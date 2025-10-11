@@ -694,3 +694,11 @@ class UIComponent(ABC):
         """
         self.x += dx
         self.y += dy
+
+
+class Button(UIComponent):
+    """Leaf component representing a UI button.
+
+    Buttons are terminal UI elements that can be clicked but
+    cannot contain other components.
+    """
