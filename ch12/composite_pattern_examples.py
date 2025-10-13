@@ -1044,3 +1044,11 @@ class Number(MathExpression):
             int: Always returns 0
         """
         return 0
+
+
+class BinaryOperation(MathExpression):
+    """Composite component representing a binary mathematical operation.
+
+    Binary operations have two operands (left and right) and an operator.
+    They can contain numbers or other operations, forming expression trees.
+    """
