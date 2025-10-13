@@ -1064,3 +1064,14 @@ class BinaryOperation(MathExpression):
         self.left = left
         self.operator = operator
         self.right = right
+
+    def evaluate(self) -> float:
+        """Evaluate the binary operation.
+
+        Returns:
+            float: Result of the operation
+
+        Raises:
+            ValueError: For unsupported operators
+            ZeroDivisionError: For division by zero
+        """
