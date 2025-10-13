@@ -916,3 +916,14 @@ class Panel(UIComponent):
         self.visible = visible
         for child in self.children:
             child.set_visible(visible)
+
+    def move(self, dx: int, dy: int) -> None:
+        """Move panel and all children by offset.
+
+        Args:
+            dx (int): X offset
+            dy (int): Y offset
+        """
+        super().move(dx, dy)
+        for child in self.children:
+            child.move(dx, dy)
