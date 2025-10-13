@@ -1003,3 +1003,10 @@ class MathExpression(ABC):
             int: Complexity score (number of operations)
         """
         pass
+
+
+class Number(MathExpression):
+    """Leaf component representing a numeric value.
+
+    Numbers are terminal nodes in mathematical expression trees.
+    """
