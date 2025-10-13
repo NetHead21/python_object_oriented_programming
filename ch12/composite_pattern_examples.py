@@ -1036,3 +1036,11 @@ class Number(MathExpression):
         if self.value == int(self.value):
             return str(int(self.value))
         return str(self.value)
+
+    def get_complexity(self) -> int:
+        """Numbers have complexity 0 (no operations).
+
+        Returns:
+            int: Always returns 0
+        """
+        return 0
