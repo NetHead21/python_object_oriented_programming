@@ -963,3 +963,16 @@ class Panel(UIComponent):
             else:
                 count += 1
         return count
+
+
+# =============================================================================
+# Example 4: Mathematical Expression Tree
+# =============================================================================
+
+
+class MathExpression(ABC):
+    """Abstract component for mathematical expressions.
+
+    This defines the common interface for both numbers (leaf nodes)
+    and operations (composite nodes) in mathematical expression trees.
+    """
