@@ -956,3 +956,10 @@ class Panel(UIComponent):
         Returns:
             int: Total component count including this panel
         """
+        count = 1  # This panel
+        for child in self.children:
+            if isinstance(child, Panel):
+                count += child.get_total_components()
+            else:
+                count += 1
+        return count
