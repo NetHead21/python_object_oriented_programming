@@ -1026,3 +1026,13 @@ class Number(MathExpression):
             float: The number's value
         """
         return self.value
+
+    def to_string(self) -> str:
+        """Get string representation of the number.
+
+        Returns:
+            str: String representation
+        """
+        if self.value == int(self.value):
+            return str(int(self.value))
+        return str(self.value)
