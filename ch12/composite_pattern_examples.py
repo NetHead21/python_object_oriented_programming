@@ -985,3 +985,12 @@ class MathExpression(ABC):
             float: The calculated result
         """
         pass
+
+    @abstractmethod
+    def to_string(self) -> str:
+        """Convert the expression to its string representation.
+
+        Returns:
+            str: String representation of the expression
+        """
+        pass
