@@ -1018,3 +1018,11 @@ class Number(MathExpression):
             value (float): The numeric value
         """
         self.value = value
+
+    def evaluate(self) -> float:
+        """Get the numeric value.
+
+        Returns:
+            float: The number's value
+        """
+        return self.value
