@@ -1075,3 +1075,21 @@ class BinaryOperation(MathExpression):
             ValueError: For unsupported operators
             ZeroDivisionError: For division by zero
         """
+
+        left_val = self.left.evaluate()
+        right_val = self.right.evaluate()
+
+        if self.operator == "+":
+            return left_val + right_val
+        elif self.operator == "-":
+            return left_val - right_val
+        elif self.operator == "*":
+            return left_val * right_val
+        elif self.operator == "/":
+            if right_val == 0:
+                raise ZeroDivisionError("Division by zero")
+            return left_val / right_val
+        elif self.operator == "^":
+            return left_val**right_val
+        else:
+            raise ValueError(f"Unsupported operator: {self.operator}")
