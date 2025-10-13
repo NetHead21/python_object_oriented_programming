@@ -1052,3 +1052,15 @@ class BinaryOperation(MathExpression):
     Binary operations have two operands (left and right) and an operator.
     They can contain numbers or other operations, forming expression trees.
     """
+
+    def __init__(self, left: MathExpression, operator: str, right: MathExpression):
+        """Initialize a binary operation.
+
+        Args:
+            left (MathExpression): Left operand
+            operator (str): Operation symbol (+, -, *, /, ^)
+            right (MathExpression): Right operand
+        """
+        self.left = left
+        self.operator = operator
+        self.right = right
