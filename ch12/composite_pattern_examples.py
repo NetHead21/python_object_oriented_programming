@@ -906,3 +906,13 @@ class Panel(UIComponent):
             tuple: (x, y, width, height)
         """
         return (self.x, self.y, self.width, self.height)
+
+    def set_visible(self, visible: bool) -> None:
+        """Set visibility of panel and all children.
+
+        Args:
+            visible (bool): Whether panel should be visible
+        """
+        self.visible = visible
+        for child in self.children:
+            child.set_visible(visible)
