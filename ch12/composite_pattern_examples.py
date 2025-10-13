@@ -937,3 +937,15 @@ class Panel(UIComponent):
         Returns:
             Optional[UIComponent]: Found component or None
         """
+        if self.name == name:
+            return self
+
+        for child in self.children:
+            if child.name == name:
+                return child
+            if isinstance(child, Panel):
+                found = child.find_component(name)
+                if found:
+                    return found
+
+        return None
