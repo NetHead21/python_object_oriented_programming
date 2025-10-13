@@ -1010,3 +1010,11 @@ class Number(MathExpression):
 
     Numbers are terminal nodes in mathematical expression trees.
     """
+
+    def __init__(self, value: float):
+        """Initialize a number with a specific value.
+
+        Args:
+            value (float): The numeric value
+        """
+        self.value = value
