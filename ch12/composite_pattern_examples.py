@@ -976,3 +976,12 @@ class MathExpression(ABC):
     This defines the common interface for both numbers (leaf nodes)
     and operations (composite nodes) in mathematical expression trees.
     """
+
+    @abstractmethod
+    def evaluate(self) -> float:
+        """Evaluate the expression to get its numeric value.
+
+        Returns:
+            float: The calculated result
+        """
+        pass
