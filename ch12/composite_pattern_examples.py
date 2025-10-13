@@ -994,3 +994,12 @@ class MathExpression(ABC):
             str: String representation of the expression
         """
         pass
+
+    @abstractmethod
+    def get_complexity(self) -> int:
+        """Get the complexity score of the expression.
+
+        Returns:
+            int: Complexity score (number of operations)
+        """
+        pass
