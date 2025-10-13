@@ -1110,3 +1110,11 @@ class BinaryOperation(MathExpression):
             right_str = f"({right_str})"
 
         return f"{left_str} {self.operator} {right_str}"
+
+    def get_complexity(self) -> int:
+        """Get the complexity of the operation tree.
+
+        Returns:
+            int: 1 plus the complexity of both operands
+        """
+        return 1 + self.left.get_complexity() + self.right.get_complexity()
