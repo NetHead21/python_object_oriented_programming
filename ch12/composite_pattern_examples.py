@@ -898,3 +898,11 @@ class Panel(UIComponent):
             result += child.render(indent + 1) + "\n"
 
         return result.rstrip()
+
+    def get_bounds(self) -> tuple:
+        """Get the panel's bounding rectangle.
+
+        Returns:
+            tuple: (x, y, width, height)
+        """
+        return (self.x, self.y, self.width, self.height)
