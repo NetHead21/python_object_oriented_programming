@@ -949,3 +949,10 @@ class Panel(UIComponent):
                     return found
 
         return None
+
+    def get_total_components(self) -> int:
+        """Get total number of components in this panel tree.
+
+        Returns:
+            int: Total component count including this panel
+        """
