@@ -927,3 +927,13 @@ class Panel(UIComponent):
         super().move(dx, dy)
         for child in self.children:
             child.move(dx, dy)
+
+    def find_component(self, name: str) -> Optional[UIComponent]:
+        """Find a component by name in the panel hierarchy.
+
+        Args:
+            name (str): Component name to search for
+
+        Returns:
+            Optional[UIComponent]: Found component or None
+        """
