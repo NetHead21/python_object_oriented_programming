@@ -1093,3 +1093,20 @@ class BinaryOperation(MathExpression):
             return left_val**right_val
         else:
             raise ValueError(f"Unsupported operator: {self.operator}")
+
+    def to_string(self) -> str:
+        """Get string representation of the operation.
+
+        Returns:
+            str: Infix notation with parentheses
+        """
+        left_str = self.left.to_string()
+        right_str = self.right.to_string()
+
+        # Add parentheses for clarity in complex expressions
+        if isinstance(self.left, BinaryOperation):
+            left_str = f"({left_str})"
+        if isinstance(self.right, BinaryOperation):
+            right_str = f"({right_str})"
+
+        return f"{left_str} {self.operator} {right_str}"
