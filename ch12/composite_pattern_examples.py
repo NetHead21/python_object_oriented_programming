@@ -1125,3 +1125,13 @@ class UnaryOperation(MathExpression):
 
     Unary operations have one operand and an operator (like negation, sqrt).
     """
+
+    def __init__(self, operator: str, operand: MathExpression):
+        """Initialize a unary operation.
+
+        Args:
+            operator (str): Operation symbol (-, sqrt, abs)
+            operand (MathExpression): The operand
+        """
+        self.operator = operator
+        self.operand = operand
