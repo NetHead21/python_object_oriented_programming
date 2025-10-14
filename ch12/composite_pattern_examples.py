@@ -1344,3 +1344,13 @@ def create_sample_organization() -> Department:
             ["Product Demos", "Market Research"],
         )
     )
+
+    company.add_report(engineering)
+    company.add_report(sales)
+    company.add_report(
+        Employee(
+            "Jack Thompson", "CEO", 200000.0, "Executive", ["Strategy", "Leadership"]
+        )
+    )
+
+    return company
