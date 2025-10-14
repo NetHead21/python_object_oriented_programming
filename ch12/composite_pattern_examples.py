@@ -1505,3 +1505,7 @@ def demo_organization():
         print(
             f"   Engineering budget utilization: {engineering.get_budget_utilization():.1f}%"
         )
+
+
+def demo_ui_components():
+    """Demonstrate the UI components composite pattern."""
