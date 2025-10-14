@@ -1430,3 +1430,12 @@ def create_sample_math_expression() -> MathExpression:
     final_expression = BinaryOperation(multiplication, "-", division)
 
     return final_expression
+
+
+# =============================================================================
+# Demonstration Functions
+# =============================================================================
+
+
+def demo_file_system():
+    """Demonstrate the file system composite pattern."""
