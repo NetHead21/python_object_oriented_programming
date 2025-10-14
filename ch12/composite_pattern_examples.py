@@ -1529,3 +1529,16 @@ def demo_ui_components():
     if button and isinstance(button, Button):
         print(f"   Found: {button.name} - '{button.text}'")
         print(f"   Click result: {button.click()}")
+
+    # Demonstrate composite operations
+    print("\n🔧 Composite Operations:")
+    print("   Moving sidebar by 10 pixels...")
+    sidebar = main_window.find_component("Sidebar")
+    if sidebar:
+        original_pos = sidebar.get_bounds()
+        sidebar.move(10, 0)
+        new_pos = sidebar.get_bounds()
+        print(f"   Sidebar moved from {original_pos[:2]} to {new_pos[:2]}")
+
+        # Move it back
+        sidebar.move(-10, 0)
