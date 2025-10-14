@@ -1314,3 +1314,33 @@ def create_sample_organization() -> Department:
             ["Leadership", "Architecture"],
         )
     )
+
+    # Sales Department
+    sales = Department("Sales", "Department", 1200000.0)
+    sales.add_report(
+        Employee(
+            "Grace Taylor",
+            "Sales Manager",
+            130000.0,
+            "Sales",
+            ["B2B Sales", "CRM", "Negotiation"],
+        )
+    )
+    sales.add_report(
+        Employee(
+            "Henry Clark",
+            "Sales Representative",
+            80000.0,
+            "Sales",
+            ["Lead Generation", "Customer Relations"],
+        )
+    )
+    sales.add_report(
+        Employee(
+            "Ivy Anderson",
+            "Sales Representative",
+            75000.0,
+            "Sales",
+            ["Product Demos", "Market Research"],
+        )
+    )
