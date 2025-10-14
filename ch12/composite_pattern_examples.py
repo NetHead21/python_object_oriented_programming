@@ -1558,3 +1558,10 @@ def demo_math_expressions():
     print(f"   Expression: {expression.to_string()}")
     print(f"   Result: {expression.evaluate()}")
     print(f"   Complexity: {expression.get_complexity()} operations")
+
+    # Demonstrate building expressions step by step
+    print("\n🔧 Building Expressions:")
+
+    # Simple expression: 5 + 3
+    simple = BinaryOperation(Number(5), "+", Number(3))
+    print(f"   Simple: {simple.to_string()} = {simple.evaluate()}")
