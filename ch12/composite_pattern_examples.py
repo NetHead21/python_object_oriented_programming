@@ -1565,3 +1565,16 @@ def demo_math_expressions():
     # Simple expression: 5 + 3
     simple = BinaryOperation(Number(5), "+", Number(3))
     print(f"   Simple: {simple.to_string()} = {simple.evaluate()}")
+
+    # Complex expression with the simple one: (5 + 3) * 4
+    complex_expr = BinaryOperation(simple, "*", Number(4))
+    print(f"   Complex: {complex_expr.to_string()} = {complex_expr.evaluate()}")
+
+    # Add unary operation: abs(-10)
+    abs_expr = UnaryOperation("abs", Number(-10))
+    print(f"   Unary: {abs_expr.to_string()} = {abs_expr.evaluate()}")
+
+    # Combine everything: ((5 + 3) * 4) + abs(-10)
+    final = BinaryOperation(complex_expr, "+", abs_expr)
+    print(f"   Final: {final.to_string()} = {final.evaluate()}")
+    print(f"   Final complexity: {final.get_complexity()} operations")
