@@ -1381,3 +1381,16 @@ def create_sample_ui() -> Panel:
     sidebar.add_child(Button("SettingsButton", "Settings", 10, 60, 180, 40))
     sidebar.add_child(Button("AboutButton", "About", 10, 110, 180, 40))
     content.add_child(sidebar)
+
+    # Create main content area
+    main_content = Panel("MainContent", 220, 10, 570, 440)
+    main_content.add_child(
+        Label("WelcomeLabel", "Welcome to My Application!", 20, 20, 400, 30)
+    )
+    main_content.add_child(
+        Label("DescriptionLabel", "This is a sample UI structure.", 20, 60, 400, 20)
+    )
+    main_content.add_child(Button("ActionButton", "Click Me", 20, 100, 120, 40))
+    content.add_child(main_content)
+
+    main_window.add_child(content)
