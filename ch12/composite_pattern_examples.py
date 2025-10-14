@@ -1591,3 +1591,15 @@ def demonstrate_pattern_benefits():
     print(
         "   - Client code doesn't distinguish between individual and composite objects"
     )
+
+    fs = create_sample_file_system()
+    file = fs.find("main.py")  # Individual file
+    directory = fs.find("src")  # Composite directory
+
+    print(f"   File size: {file.get_size() if file else 'N/A'} bytes")
+    print(f"   Directory size: {directory.get_size() if directory else 'N/A'} bytes")
+    print("   → Same get_size() method works for both!")
+
+    print("\n2. 🔄 RECURSIVE COMPOSITION:")
+    print("   - Operations automatically traverse the entire tree structure")
+    print("   - No need for client to manually handle tree traversal")
