@@ -1603,3 +1603,10 @@ def demonstrate_pattern_benefits():
     print("\n2. 🔄 RECURSIVE COMPOSITION:")
     print("   - Operations automatically traverse the entire tree structure")
     print("   - No need for client to manually handle tree traversal")
+
+    ui = create_sample_ui()
+    print(f"   Moving main window affects all {ui.get_total_components()} components")
+
+    print("\n3. 🏗️ EASY STRUCTURE BUILDING:")
+    print("   - Add/remove components dynamically")
+    print("   - Flexible tree construction and modification")
