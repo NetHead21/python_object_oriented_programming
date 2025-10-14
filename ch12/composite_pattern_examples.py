@@ -1118,3 +1118,10 @@ class BinaryOperation(MathExpression):
             int: 1 plus the complexity of both operands
         """
         return 1 + self.left.get_complexity() + self.right.get_complexity()
+
+
+class UnaryOperation(MathExpression):
+    """Composite component representing a unary mathematical operation.
+
+    Unary operations have one operand and an operator (like negation, sqrt).
+    """
