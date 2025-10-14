@@ -1546,3 +1546,15 @@ def demo_ui_components():
 
 def demo_math_expressions():
     """Demonstrate the mathematical expression composite pattern."""
+
+    print("\n" + "=" * 70)
+    print("MATHEMATICAL EXPRESSIONS COMPOSITE PATTERN DEMO")
+    print("=" * 70)
+
+    # Create and demonstrate expression
+    expression = create_sample_math_expression()
+
+    print("🧮 Mathematical Expression Tree:")
+    print(f"   Expression: {expression.to_string()}")
+    print(f"   Result: {expression.evaluate()}")
+    print(f"   Complexity: {expression.get_complexity()} operations")
