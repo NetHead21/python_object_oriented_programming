@@ -1245,3 +1245,9 @@ def create_sample_organization() -> Department:
     Returns:
         Department: Root department with employees and subdepartments
     """
+
+    # Create root company
+    company = Department("TechCorp", "Company", 5000000.0)
+
+    # Engineering Department
+    engineering = Department("Engineering", "Department", 2000000.0)
