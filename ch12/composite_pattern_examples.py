@@ -1165,3 +1165,17 @@ class UnaryOperation(MathExpression):
         Returns:
             str: String representation with appropriate notation
         """
+
+        operand_str = self.operand.to_string()
+
+        if isinstance(self.operand, BinaryOperation):
+            operand_str = f"({operand_str})"
+
+        if self.operator == "-":
+            return f"-{operand_str}"
+        elif self.operator == "sqrt":
+            return f"sqrt({operand_str})"
+        elif self.operator == "abs":
+            return f"abs({operand_str})"
+        else:
+            return f"{self.operator}({operand_str})"
