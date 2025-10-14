@@ -1187,3 +1187,16 @@ class UnaryOperation(MathExpression):
             int: 1 plus the complexity of the operand
         """
         return 1 + self.operand.get_complexity()
+
+
+# =============================================================================
+# Utility Functions and Demonstrations
+# =============================================================================
+
+
+def create_sample_file_system() -> Directory:
+    """Create a sample file system structure for demonstration.
+
+    Returns:
+        Directory: Root directory with sample files and subdirectories
+    """
