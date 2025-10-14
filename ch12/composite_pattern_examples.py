@@ -1251,3 +1251,24 @@ def create_sample_organization() -> Department:
 
     # Engineering Department
     engineering = Department("Engineering", "Department", 2000000.0)
+
+    # Frontend Team
+    frontend = Department("Frontend Team", "Team", 600000.0)
+    frontend.add_report(
+        Employee(
+            "Alice Johnson",
+            "Senior Frontend Developer",
+            120000.0,
+            "Engineering",
+            ["React", "JavaScript", "CSS"],
+        )
+    )
+    frontend.add_report(
+        Employee(
+            "Bob Smith",
+            "Frontend Developer",
+            95000.0,
+            "Engineering",
+            ["Vue.js", "HTML", "SASS"],
+        )
+    )
