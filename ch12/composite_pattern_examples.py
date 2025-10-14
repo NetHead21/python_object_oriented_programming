@@ -1509,3 +1509,16 @@ def demo_organization():
 
 def demo_ui_components():
     """Demonstrate the UI components composite pattern."""
+
+    print("\n" + "=" * 70)
+    print("UI COMPONENTS COMPOSITE PATTERN DEMO")
+    print("=" * 70)
+
+    # Create and display UI
+    main_window = create_sample_ui()
+    print("🖥️ UI Component Hierarchy:")
+    print(main_window.render())
+
+    print("\n📊 UI Statistics:")
+    print(f"   Total components: {main_window.get_total_components()}")
+    print(f"   Window bounds: {main_window.get_bounds()}")
