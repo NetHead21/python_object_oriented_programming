@@ -1371,3 +1371,6 @@ def create_sample_ui() -> Panel:
     header.add_child(Label("Title", "My Application", 20, 20, 200, 30))
     header.add_child(Button("CloseButton", "X", 750, 20, 30, 30))
     main_window.add_child(header)
+
+    # Create content panel
+    content = Panel("Content", 0, 80, 800, 460)
