@@ -1135,3 +1135,13 @@ class UnaryOperation(MathExpression):
         """
         self.operator = operator
         self.operand = operand
+
+    def evaluate(self) -> float:
+        """Evaluate the unary operation.
+
+        Returns:
+            float: Result of the operation
+
+        Raises:
+            ValueError: For unsupported operators or invalid operations
+        """
