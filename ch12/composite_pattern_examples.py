@@ -1470,3 +1470,16 @@ def demo_file_system():
 
 def demo_organization():
     """Demonstrate the organization composite pattern."""
+    print("\n" + "=" * 70)
+    print("ORGANIZATION COMPOSITE PATTERN DEMO")
+    print("=" * 70)
+
+    # Create and display organization
+    company = create_sample_organization()
+    print("🏢 Organization Hierarchy:")
+    print(company.display_hierarchy())
+
+    print("\n📊 Organization Statistics:")
+    print(f"   Total employees: {company.get_headcount()}")
+    print(f"   Total salary cost: ${company.get_salary_cost():,.0f}")
+    print(f"   Budget utilization: {company.get_budget_utilization():.1f}%")
