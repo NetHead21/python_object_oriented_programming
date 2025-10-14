@@ -1459,3 +1459,10 @@ def demo_file_system():
     found = root.find("models")
     if found:
         print(f"   Found: {found.get_path()} ({type(found).__name__})")
+
+    # Show individual component operations
+    print("\n🔧 Individual Operations:")
+    src_dir = root.find("src")
+    if src_dir:
+        print(f"   'src' directory size: {src_dir.get_size() / 1024:.1f} KB")
+        print(f"   'src' directory files: {src_dir.get_file_count()}")
