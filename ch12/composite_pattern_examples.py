@@ -1410,3 +1410,23 @@ def create_sample_math_expression() -> MathExpression:
     Returns:
         MathExpression: Complex mathematical expression
     """
+
+    # Create expression: ((3 + 4) * 2) - sqrt(16) / 2
+    # This demonstrates nested operations and different operator types
+
+    # Sub-expression: (3 + 4)
+    addition = BinaryOperation(Number(3), "+", Number(4))
+
+    # Sub-expression: ((3 + 4) * 2)
+    multiplication = BinaryOperation(addition, "*", Number(2))
+
+    # Sub-expression: sqrt(16)
+    sqrt_op = UnaryOperation("sqrt", Number(16))
+
+    # Sub-expression: sqrt(16) / 2
+    division = BinaryOperation(sqrt_op, "/", Number(2))
+
+    # Final expression: ((3 + 4) * 2) - sqrt(16) / 2
+    final_expression = BinaryOperation(multiplication, "-", division)
+
+    return final_expression
