@@ -1179,3 +1179,11 @@ class UnaryOperation(MathExpression):
             return f"abs({operand_str})"
         else:
             return f"{self.operator}({operand_str})"
+
+    def get_complexity(self) -> int:
+        """Get the complexity of the unary operation.
+
+        Returns:
+            int: 1 plus the complexity of the operand
+        """
+        return 1 + self.operand.get_complexity()
