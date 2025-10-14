@@ -1448,3 +1448,14 @@ def demo_file_system():
     root = create_sample_file_system()
     print("📁 Complete File System Structure:")
     print(root.display())
+
+    print("\n📊 File System Statistics:")
+    print(f"   Total size: {root.get_size() / 1024:.1f} KB")
+    print(f"   Total files: {root.get_file_count()}")
+    print(f"   Total directories: {root.get_directory_count() + 1}")  # +1 for root
+
+    # Demonstrate search functionality
+    print("\n🔍 Search Results:")
+    found = root.find("models")
+    if found:
+        print(f"   Found: {found.get_path()} ({type(found).__name__})")
