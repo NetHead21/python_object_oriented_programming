@@ -1237,3 +1237,11 @@ def create_sample_file_system() -> Directory:
     root.add(tests)
 
     return root
+
+
+def create_sample_organization() -> Department:
+    """Create a sample organization structure for demonstration.
+
+    Returns:
+        Department: Root department with employees and subdepartments
+    """
