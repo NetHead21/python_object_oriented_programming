@@ -1394,3 +1394,11 @@ def create_sample_ui() -> Panel:
     content.add_child(main_content)
 
     main_window.add_child(content)
+
+    # Create footer
+    footer = Panel("Footer", 0, 540, 800, 60)
+    footer.add_child(Label("StatusLabel", "Ready", 20, 20, 100, 20))
+    footer.add_child(Label("VersionLabel", "v1.0.0", 700, 20, 80, 20))
+    main_window.add_child(footer)
+
+    return main_window
