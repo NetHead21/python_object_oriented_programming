@@ -1200,3 +1200,40 @@ def create_sample_file_system() -> Directory:
     Returns:
         Directory: Root directory with sample files and subdirectories
     """
+
+    # Create root directory
+    root = Directory("MyProject")
+
+    # Add some files to root
+    root.add(File("README.md", 2048, "text"))
+    root.add(File("LICENSE", 1024, "text"))
+    root.add(File("requirements.txt", 512, "text"))
+
+    # Create source code directory
+    src = Directory("src")
+    src.add(File("main.py", 4096, "text"))
+    src.add(File("utils.py", 2048, "text"))
+    src.add(File("config.json", 1024, "text"))
+
+    # Create subdirectory in src
+    models = Directory("models")
+    models.add(File("user.py", 3072, "text"))
+    models.add(File("product.py", 2560, "text"))
+    src.add(models)
+
+    root.add(src)
+
+    # Create documentation directory
+    docs = Directory("docs")
+    docs.add(File("api.md", 8192, "text"))
+    docs.add(File("tutorial.md", 6144, "text"))
+    docs.add(File("diagram.png", 204800, "image"))
+    root.add(docs)
+
+    # Create test directory
+    tests = Directory("tests")
+    tests.add(File("test_main.py", 3072, "text"))
+    tests.add(File("test_utils.py", 2048, "text"))
+    root.add(tests)
+
+    return root
