@@ -1490,3 +1490,18 @@ def demo_organization():
     if employee:
         print(f"   Found: {employee.name} - {employee.title}")
         print(f"   Skills: {employee.get_skills_summary()}")
+
+    # Show department-specific operations
+    print("\n🔧 Department Analysis:")
+    engineering = None
+    for member in company.get_reports():
+        if isinstance(member, Department) and member.name == "Engineering":
+            engineering = member
+            break
+
+    if engineering:
+        print(f"   Engineering headcount: {engineering.get_headcount()}")
+        print(f"   Engineering cost: ${engineering.get_salary_cost():,.0f}")
+        print(
+            f"   Engineering budget utilization: {engineering.get_budget_utilization():.1f}%"
+        )
