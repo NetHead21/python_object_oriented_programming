@@ -1354,3 +1354,11 @@ def create_sample_organization() -> Department:
     )
 
     return company
+
+
+def create_sample_ui() -> Panel:
+    """Create a sample UI structure for demonstration.
+
+    Returns:
+        Panel: Root panel with various UI components
+    """
