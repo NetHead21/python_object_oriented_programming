@@ -1630,3 +1630,9 @@ def demonstrate_pattern_benefits():
 
 if __name__ == "__main__":
     """Main execution demonstrating all Composite pattern examples."""
+
+    print("COMPOSITE DESIGN PATTERN - COMPREHENSIVE EXAMPLES")
+    print("=" * 70)
+    print("The Composite pattern composes objects into tree structures")
+    print("to represent part-whole hierarchies, allowing uniform treatment")
+    print("of individual objects and compositions of objects.")
