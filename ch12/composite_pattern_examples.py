@@ -1158,3 +1158,10 @@ class UnaryOperation(MathExpression):
             return abs(operand_val)
         else:
             raise ValueError(f"Unsupported unary operator: {self.operator}")
+
+    def to_string(self) -> str:
+        """Get string representation of the unary operation.
+
+        Returns:
+            str: String representation with appropriate notation
+        """
