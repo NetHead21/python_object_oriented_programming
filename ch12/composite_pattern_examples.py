@@ -1466,3 +1466,7 @@ def demo_file_system():
     if src_dir:
         print(f"   'src' directory size: {src_dir.get_size() / 1024:.1f} KB")
         print(f"   'src' directory files: {src_dir.get_file_count()}")
+
+
+def demo_organization():
+    """Demonstrate the organization composite pattern."""
