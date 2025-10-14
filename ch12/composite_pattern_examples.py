@@ -1402,3 +1402,11 @@ def create_sample_ui() -> Panel:
     main_window.add_child(footer)
 
     return main_window
+
+
+def create_sample_math_expression() -> MathExpression:
+    """Create a sample mathematical expression tree for demonstration.
+
+    Returns:
+        MathExpression: Complex mathematical expression
+    """
