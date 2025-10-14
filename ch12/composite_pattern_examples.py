@@ -1483,3 +1483,10 @@ def demo_organization():
     print(f"   Total employees: {company.get_headcount()}")
     print(f"   Total salary cost: ${company.get_salary_cost():,.0f}")
     print(f"   Budget utilization: {company.get_budget_utilization():.1f}%")
+
+    # Demonstrate search functionality
+    print("\n🔍 Employee Search:")
+    employee = company.find_employee("Alice Johnson")
+    if employee:
+        print(f"   Found: {employee.name} - {employee.title}")
+        print(f"   Skills: {employee.get_skills_summary()}")
