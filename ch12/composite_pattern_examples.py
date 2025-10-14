@@ -1145,3 +1145,16 @@ class UnaryOperation(MathExpression):
         Raises:
             ValueError: For unsupported operators or invalid operations
         """
+
+        operand_val = self.operand.evaluate()
+
+        if self.operator == "-":
+            return -operand_val
+        elif self.operator == "sqrt":
+            if operand_val < 0:
+                raise ValueError("Cannot take square root of negative number")
+            return math.sqrt(operand_val)
+        elif self.operator == "abs":
+            return abs(operand_val)
+        else:
+            raise ValueError(f"Unsupported unary operator: {self.operator}")
