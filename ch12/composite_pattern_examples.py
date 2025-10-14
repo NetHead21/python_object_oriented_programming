@@ -1522,3 +1522,10 @@ def demo_ui_components():
     print("\n📊 UI Statistics:")
     print(f"   Total components: {main_window.get_total_components()}")
     print(f"   Window bounds: {main_window.get_bounds()}")
+
+    # Demonstrate search functionality
+    print("\n🔍 Component Search:")
+    button = main_window.find_component("ActionButton")
+    if button and isinstance(button, Button):
+        print(f"   Found: {button.name} - '{button.text}'")
+        print(f"   Click result: {button.click()}")
