@@ -1374,3 +1374,10 @@ def create_sample_ui() -> Panel:
 
     # Create content panel
     content = Panel("Content", 0, 80, 800, 460)
+
+    # Create left sidebar
+    sidebar = Panel("Sidebar", 10, 10, 200, 440)
+    sidebar.add_child(Button("HomeButton", "Home", 10, 10, 180, 40))
+    sidebar.add_child(Button("SettingsButton", "Settings", 10, 60, 180, 40))
+    sidebar.add_child(Button("AboutButton", "About", 10, 110, 180, 40))
+    content.add_child(sidebar)
