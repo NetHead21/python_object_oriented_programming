@@ -1636,3 +1636,10 @@ if __name__ == "__main__":
     print("The Composite pattern composes objects into tree structures")
     print("to represent part-whole hierarchies, allowing uniform treatment")
     print("of individual objects and compositions of objects.")
+
+    # Run all demonstrations
+    demo_file_system()
+    demo_organization()
+    demo_ui_components()
+    demo_math_expressions()
+    demonstrate_pattern_benefits()
