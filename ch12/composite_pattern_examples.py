@@ -1362,3 +1362,6 @@ def create_sample_ui() -> Panel:
     Returns:
         Panel: Root panel with various UI components
     """
+
+    # Create main window
+    main_window = Panel("MainWindow", 0, 0, 800, 600)
