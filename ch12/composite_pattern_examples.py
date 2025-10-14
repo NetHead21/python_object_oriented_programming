@@ -1578,3 +1578,16 @@ def demo_math_expressions():
     final = BinaryOperation(complex_expr, "+", abs_expr)
     print(f"   Final: {final.to_string()} = {final.evaluate()}")
     print(f"   Final complexity: {final.get_complexity()} operations")
+
+
+def demonstrate_pattern_benefits():
+    """Show the key benefits of the Composite pattern."""
+    print("\n" + "=" * 70)
+    print("COMPOSITE PATTERN BENEFITS DEMONSTRATION")
+    print("=" * 70)
+
+    print("\n1. 🌳 UNIFORM TREATMENT:")
+    print("   - Same operations work on leaves and composites")
+    print(
+        "   - Client code doesn't distinguish between individual and composite objects"
+    )
