@@ -1626,3 +1626,7 @@ def demonstrate_pattern_benefits():
     print("   Example: Processing any file system component")
     print("   def process_component(component):")
     print("       return component.get_size()  # Works for files AND directories!")
+
+
+if __name__ == "__main__":
+    """Main execution demonstrating all Composite pattern examples."""
