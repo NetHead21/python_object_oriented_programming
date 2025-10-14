@@ -1272,3 +1272,45 @@ def create_sample_organization() -> Department:
             ["Vue.js", "HTML", "SASS"],
         )
     )
+
+    # Backend Team
+    backend = Department("Backend Team", "Team", 700000.0)
+    backend.add_report(
+        Employee(
+            "Carol Davis",
+            "Senior Backend Developer",
+            125000.0,
+            "Engineering",
+            ["Python", "Django", "PostgreSQL"],
+        )
+    )
+    backend.add_report(
+        Employee(
+            "David Wilson",
+            "Backend Developer",
+            100000.0,
+            "Engineering",
+            ["Node.js", "MongoDB", "Express"],
+        )
+    )
+    backend.add_report(
+        Employee(
+            "Eve Brown",
+            "DevOps Engineer",
+            110000.0,
+            "Engineering",
+            ["Docker", "AWS", "Kubernetes"],
+        )
+    )
+
+    engineering.add_report(frontend)
+    engineering.add_report(backend)
+    engineering.add_report(
+        Employee(
+            "Frank Miller",
+            "Engineering Manager",
+            150000.0,
+            "Engineering",
+            ["Leadership", "Architecture"],
+        )
+    )
