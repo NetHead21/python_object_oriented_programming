@@ -1542,3 +1542,7 @@ def demo_ui_components():
 
         # Move it back
         sidebar.move(-10, 0)
+
+
+def demo_math_expressions():
+    """Demonstrate the mathematical expression composite pattern."""
