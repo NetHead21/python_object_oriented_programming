@@ -1439,3 +1439,12 @@ def create_sample_math_expression() -> MathExpression:
 
 def demo_file_system():
     """Demonstrate the file system composite pattern."""
+
+    print("=" * 70)
+    print("FILE SYSTEM COMPOSITE PATTERN DEMO")
+    print("=" * 70)
+
+    # Create and display file system
+    root = create_sample_file_system()
+    print("📁 Complete File System Structure:")
+    print(root.display())
