@@ -1365,3 +1365,9 @@ def create_sample_ui() -> Panel:
 
     # Create main window
     main_window = Panel("MainWindow", 0, 0, 800, 600)
+
+    # Create header panel
+    header = Panel("Header", 0, 0, 800, 80)
+    header.add_child(Label("Title", "My Application", 20, 20, 200, 30))
+    header.add_child(Button("CloseButton", "X", 750, 20, 30, 30))
+    main_window.add_child(header)
