@@ -20,3 +20,8 @@ class TestAverage(unittest.TestCase):
         """Test that all None values raises ValueError."""
         with self.assertRaises(ValueError):
             average([None, None, None])
+
+    def test_average_empty_list(self):
+        """Test that empty list raises ValueError."""
+        with self.assertRaises(ValueError):
+            average([])
