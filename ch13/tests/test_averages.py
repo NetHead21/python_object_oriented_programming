@@ -58,3 +58,8 @@ class TestAverage(unittest.TestCase):
         """Test average with very large numbers."""
         self.assertEqual(average([1e10, 2e10, 3e10]), 2e10)
         self.assertAlmostEqual(average([1e15, 1e15, 1e15]), 1e15)
+
+    def test_average_very_small_numbers(self):
+        """Test average with very small numbers."""
+        self.assertAlmostEqual(average([1e-10, 2e-10, 3e-10]), 2e-10)
+        self.assertAlmostEqual(average([0.0001, 0.0002, 0.0003]), 0.0002)
