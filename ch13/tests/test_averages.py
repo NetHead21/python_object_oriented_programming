@@ -91,3 +91,10 @@ class TestAverage(unittest.TestCase):
         """Test average with large dataset."""
         large_list = list(range(1, 101))  # 1 to 100
         self.assertEqual(average(large_list), 50.5)
+
+    def test_average_large_dataset_with_none(self):
+        """Test average with large dataset containing None values."""
+        # Every other number is None
+        large_list = [i if i % 2 == 0 else None for i in range(1, 101)]
+        expected = sum(i for i in range(1, 101) if i % 2 == 0) / 50
+        self.assertEqual(average(large_list), expected)
