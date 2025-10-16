@@ -69,3 +69,8 @@ class TestAverage(unittest.TestCase):
         self.assertEqual(average([0, 0, 0]), 0.0)
         self.assertEqual(average([1, 0, -1]), 0.0)
         self.assertEqual(average([0]), 0.0)
+
+    def test_average_zeros_with_none(self):
+        """Test average with zeros and None values."""
+        self.assertEqual(average([0, None, 0, None, 0]), 0.0)
+        self.assertEqual(average([None, 0, None]), 0.0)
