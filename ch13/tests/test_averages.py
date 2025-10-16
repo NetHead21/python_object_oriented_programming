@@ -11,4 +11,7 @@ def average(seq: list[Optional[float]]) -> float:
 
 
 class TestAverage(unittest.TestCase):
-    pass
+
+    def test_average_with_none(self):
+        """Test average calculation with some None values."""
+        self.assertAlmostEqual(average([1, 2, None, 4]), 2.3333333333333335)    pass
