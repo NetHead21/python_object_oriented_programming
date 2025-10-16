@@ -11,10 +11,9 @@ def average(seq: list[Optional[float]]) -> float:
 
 
 class TestAverage(unittest.TestCase):
-
     def test_average_with_none(self):
         """Test average calculation with some None values."""
-        self.assertAlmostEqual(average([1, 2, None, 4]), 2.3333333333333335)    pass
+        self.assertAlmostEqual(average([1, 2, None, 4]), 2.3333333333333335)
 
     def test_average_all_none(self):
         """Test that all None values raises ValueError."""
@@ -25,3 +24,7 @@ class TestAverage(unittest.TestCase):
         """Test that empty list raises ValueError."""
         with self.assertRaises(ValueError):
             average([])
+
+    def test_average_no_none(self):
+        """Test average with no None values."""
+        self.assertEqual(average([1, 2, 3, 4]), 2.5)
