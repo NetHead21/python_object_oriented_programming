@@ -33,3 +33,8 @@ class TestAverage(unittest.TestCase):
         """Test average with a single value."""
         self.assertEqual(average([5]), 5.0)
         self.assertEqual(average([42.5]), 42.5)
+
+    def test_average_single_value_with_none(self):
+        """Test average with single value and None."""
+        self.assertEqual(average([None, 10]), 10.0)
+        self.assertEqual(average([10, None]), 10.0)
