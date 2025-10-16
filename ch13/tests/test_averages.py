@@ -43,3 +43,8 @@ class TestAverage(unittest.TestCase):
         """Test average with negative numbers."""
         self.assertEqual(average([-1, -2, -3, -4]), -2.5)
         self.assertEqual(average([-5, 5]), 0.0)
+
+    def test_average_mixed_positive_negative(self):
+        """Test average with mixed positive and negative numbers."""
+        self.assertEqual(average([10, -5, 3, -2]), 1.5)
+        self.assertAlmostEqual(average([1.5, -2.5, 3.0, -1.0]), 0.25)
