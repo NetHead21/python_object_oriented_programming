@@ -8,3 +8,7 @@ def average(seq: list[Optional[float]]) -> float:
     if not filtered_seq:
         raise ValueError("Cannot compute average of empty sequence")
     return sum(filtered_seq) / len(filtered_seq)
+
+
+class TestAverage(unittest.TestCase):
+    pass
