@@ -15,3 +15,8 @@ class TestAverage(unittest.TestCase):
     def test_average_with_none(self):
         """Test average calculation with some None values."""
         self.assertAlmostEqual(average([1, 2, None, 4]), 2.3333333333333335)    pass
+
+    def test_average_all_none(self):
+        """Test that all None values raises ValueError."""
+        with self.assertRaises(ValueError):
+            average([None, None, None])
