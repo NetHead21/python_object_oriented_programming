@@ -81,3 +81,8 @@ class TestAverage(unittest.TestCase):
         self.assertAlmostEqual(
             average([None, None, 1, None, None, 2, None, None, 3, None]), 2.0
         )
+
+    def test_average_alternating_none(self):
+        """Test average with alternating None and numbers."""
+        self.assertEqual(average([1, None, 2, None, 3, None, 4]), 2.5)
+        self.assertAlmostEqual(average([None, 5, None, 10, None, 15]), 10.0)
