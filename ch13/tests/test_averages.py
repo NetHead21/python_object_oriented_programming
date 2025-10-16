@@ -86,3 +86,8 @@ class TestAverage(unittest.TestCase):
         """Test average with alternating None and numbers."""
         self.assertEqual(average([1, None, 2, None, 3, None, 4]), 2.5)
         self.assertAlmostEqual(average([None, 5, None, 10, None, 15]), 10.0)
+
+    def test_average_large_dataset(self):
+        """Test average with large dataset."""
+        large_list = list(range(1, 101))  # 1 to 100
+        self.assertEqual(average(large_list), 50.5)
