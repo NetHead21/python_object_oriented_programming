@@ -74,3 +74,10 @@ class TestAverage(unittest.TestCase):
         """Test average with zeros and None values."""
         self.assertEqual(average([0, None, 0, None, 0]), 0.0)
         self.assertEqual(average([None, 0, None]), 0.0)
+
+    def test_average_many_none_values(self):
+        """Test average with many None values and few numbers."""
+        self.assertEqual(average([None, None, None, 5, None, None]), 5.0)
+        self.assertAlmostEqual(
+            average([None, None, 1, None, None, 2, None, None, 3, None]), 2.0
+        )
