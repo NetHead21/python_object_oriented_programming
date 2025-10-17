@@ -106,3 +106,6 @@ class TestAverage(unittest.TestCase):
 
         result = average([0.1, 0.1, 0.1])
         self.assertAlmostEqual(result, 0.1, places=10)
+
+    def test_average_infinity_handling(self):
+        """Test average behavior with infinity (implementation dependent)."""
