@@ -47,3 +47,11 @@ def mock_hashlib(monkeypatch: any) -> Mock:
     mock_hashlib = Mock(sha256=Mock(return_value=sentinel.checksum))
     monkeypatch.setattr(checksum_writer, "hashlib", mock_hashlib)
     return mock_hashlib
+
+
+def test_file_checksum(mock_hashlib: Mock, tmp_path: Path) -> None:
+    source_file = tmp_path / "some_file"
+    source_file.write_text("Test content")
+    cw = checksum_writer.FileChecksum(source_file)
+    assert cw.source == source_file
+    assert cw.checksum == sentinel.checksum
