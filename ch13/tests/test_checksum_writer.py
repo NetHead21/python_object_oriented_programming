@@ -94,3 +94,11 @@ class TestChecksumEdgeCases:
         content = checksum_path.read_text()
         assert "binary.bin" in content
         assert len(content.strip().split()[1]) == 64  # SHA-256 is 64 hex chars
+
+    def test_checksum_large_file(self, tmp_path: Path) -> None:
+        """Test checksum computation for a large file."""
+        source_file = tmp_path / "large.dat"
+        # Create a 1MB file
+        large_data = b"A" * (1024 * 1024)
+        source_file.write_bytes(large_data)
+        checksum_path = tmp_path / "large.sha256"
