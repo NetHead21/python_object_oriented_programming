@@ -64,3 +64,20 @@ def test_file_checksum(mock_hashlib: Mock, tmp_path: Path) -> None:
 
 class TestChecksumEdgeCases:
     """Test edge cases for the checksum function."""
+
+    def test_checksum_empty_file(self, tmp_path: Path) -> None:
+        """Test checksum computation for an empty file."""
+        source_file = tmp_path / "empty.txt"
+        source_file.write_bytes(b"")
+        checksum_path = tmp_path / "empty.sha256"
+
+        checksum_writer.checksum(source_file, checksum_path)
+
+        assert checksum_path.exists()
+        name, checksum = checksum_path.read_text().strip().split()
+        assert name == "empty.txt"
+        # SHA-256 of empty string
+        assert (
+            checksum
+            == "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        )
