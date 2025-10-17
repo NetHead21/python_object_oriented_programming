@@ -22,3 +22,21 @@ def working_directory(tmp_path: Path) -> Iterator[tuple[Path, Path]]:
     # Cleanup is handled by tmp_path fixture
     checksum.unlink(missing_ok=True)
     source_file.unlink(missing_ok=True)
+
+
+@pytest.mark.skipif(sys.version_info < (3, 9), reason="Requires Python 3.9+ features")
+def test_checksum(working_directory: tuple[Path, Path]) -> None:
+    source_file, old_checksum_path = working_directory
+    checksum_writer.checksum(source_file, old_checksum_path)
+
+    # Verify backup file creation
+    backup_path = old_checksum_path.with_stem(f"(old) {old_checksum_path.stem}")
+    assert backup_path.exists()
+    assert old_checksum_path.exists()
+
+    # Verify checksum content
+    name, checksum = old_checksum_path.read_text().strip().split()
+    assert name == source_file.name
+    assert (
+        checksum == "5861e7aa80232351e5ada53e36b4f0be98e463758e6f243f5fd55635c8cc8197"
+    )
