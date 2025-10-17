@@ -128,3 +128,6 @@ class TestAverage(unittest.TestCase):
         """Test average with duplicate values."""
         self.assertEqual(average([5, 5, 5, 5]), 5.0)
         self.assertEqual(average([1, 1, 1, 2, 2, 2]), 1.5)
+
+    def test_average_duplicate_values_with_none(self):
+        """Test average with duplicate values and None."""
