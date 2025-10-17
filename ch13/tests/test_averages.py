@@ -109,3 +109,7 @@ class TestAverage(unittest.TestCase):
 
     def test_average_infinity_handling(self):
         """Test average behavior with infinity (implementation dependent)."""
+        # Note: Current implementation may not handle infinity gracefully
+        # These tests document current behavior
+        result = average([float("inf"), 1, 2])
+        self.assertTrue(result == float("inf") or result > 1e308)
