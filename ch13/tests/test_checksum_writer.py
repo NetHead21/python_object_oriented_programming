@@ -115,3 +115,9 @@ class TestChecksumEdgeCases:
         source_file = tmp_path / "file-with_special.chars[123].txt"
         source_file.write_bytes(b"data")
         checksum_path = tmp_path / "special.sha256"
+
+        checksum_writer.checksum(source_file, checksum_path)
+
+        assert checksum_path.exists()
+        content = checksum_path.read_text()
+        assert "file-with_special.chars[123].txt" in content
