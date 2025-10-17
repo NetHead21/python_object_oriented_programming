@@ -68,3 +68,9 @@ def checksum(source: Path, checksum_path: Path) -> None:
         - Each call overwrites the previous backup
         - The entire source file is read into memory for hashing
     """
+
+    if checksum_path.exists():
+        backup = checksum_path.with_stem(f"(old) {checksum_path.stem}")
+        backup.write_text(checksum_path.read_text())
+    checksum = hashlib.sha256(source.read_bytes())
+    checksum_path.write_text(f"{source.name} {checksum.hexdigest()}\n")
