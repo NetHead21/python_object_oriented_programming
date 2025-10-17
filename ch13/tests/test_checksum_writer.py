@@ -40,3 +40,10 @@ def test_checksum(working_directory: tuple[Path, Path]) -> None:
     assert (
         checksum == "5861e7aa80232351e5ada53e36b4f0be98e463758e6f243f5fd55635c8cc8197"
     )
+
+
+@pytest.fixture
+def mock_hashlib(monkeypatch: any) -> Mock:
+    mock_hashlib = Mock(sha256=Mock(return_value=sentinel.checksum))
+    monkeypatch.setattr(checksum_writer, "hashlib", mock_hashlib)
+    return mock_hashlib
