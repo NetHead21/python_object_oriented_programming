@@ -109,3 +109,9 @@ class TestChecksumEdgeCases:
         name, checksum = checksum_path.read_text().strip().split()
         assert name == "large.dat"
         assert len(checksum) == 64
+
+    def test_checksum_special_characters_in_filename(self, tmp_path: Path) -> None:
+        """Test checksum with special characters in filename."""
+        source_file = tmp_path / "file-with_special.chars[123].txt"
+        source_file.write_bytes(b"data")
+        checksum_path = tmp_path / "special.sha256"
