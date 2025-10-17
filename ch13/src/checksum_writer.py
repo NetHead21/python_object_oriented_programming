@@ -23,3 +23,6 @@ Typical Usage:
     file_checksum = FileChecksum(source_file)
     digest = file_checksum.checksum.hexdigest()
 """
+
+from pathlib import Path
+import hashlib
