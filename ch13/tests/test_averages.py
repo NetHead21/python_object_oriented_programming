@@ -121,3 +121,5 @@ class TestAverage(unittest.TestCase):
 
     def test_average_none_at_boundaries(self):
         """Test average with None at start and end."""
+        self.assertEqual(average([None, 1, 2, 3, None]), 2.0)
+        self.assertAlmostEqual(average([None, None, 5, 10, 15, None, None]), 10.0)
