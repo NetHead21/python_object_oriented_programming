@@ -88,3 +88,9 @@ class TestChecksumEdgeCases:
         binary_data = bytes([0, 1, 2, 3, 255, 254, 253, 128])
         source_file.write_bytes(binary_data)
         checksum_path = tmp_path / "binary.sha256"
+        checksum_writer.checksum(source_file, checksum_path)
+
+        assert checksum_path.exists()
+        content = checksum_path.read_text()
+        assert "binary.bin" in content
+        assert len(content.strip().split()[1]) == 64  # SHA-256 is 64 hex chars
