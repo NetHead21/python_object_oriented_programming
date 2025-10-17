@@ -131,3 +131,5 @@ class TestAverage(unittest.TestCase):
 
     def test_average_duplicate_values_with_none(self):
         """Test average with duplicate values and None."""
+        self.assertEqual(average([5, None, 5, None, 5]), 5.0)
+        self.assertAlmostEqual(average([None, 2, 2, None, 3, 3, None]), 2.5)
