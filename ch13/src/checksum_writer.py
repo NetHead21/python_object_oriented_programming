@@ -143,3 +143,5 @@ class FileChecksum:
             >>> print(fc.checksum.hexdigest()[:16])
             a1b2c3d4e5f6g7h8
         """
+        self.source = source
+        self.checksum = hashlib.sha256(source.read_bytes())
