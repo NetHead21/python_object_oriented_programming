@@ -113,3 +113,6 @@ class TestAverage(unittest.TestCase):
         # These tests document current behavior
         result = average([float("inf"), 1, 2])
         self.assertTrue(result == float("inf") or result > 1e308)
+
+    def test_average_mixed_int_float(self):
+        """Test average with mixed integers and floats."""
