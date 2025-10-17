@@ -9,3 +9,9 @@ def checksum(source: Path, checksum_path: Path) -> None:
         backup.write_text(checksum_path.read_text())
     checksum = hashlib.sha256(source.read_bytes())
     checksum_path.write_text(f"{source.name} {checksum.hexdigest()}\n")
+
+
+class FileChecksum:
+    def __init__(self, source: Path) -> None:
+        self.source = source
+        self.checksum = hashlib.sha256(source.read_bytes())
