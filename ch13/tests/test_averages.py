@@ -98,3 +98,6 @@ class TestAverage(unittest.TestCase):
         large_list = [i if i % 2 == 0 else None for i in range(1, 101)]
         expected = sum(i for i in range(1, 101) if i % 2 == 0) / 50
         self.assertEqual(average(large_list), expected)
+
+    def test_average_precision(self):
+        """Test average with numbers requiring high precision."""
