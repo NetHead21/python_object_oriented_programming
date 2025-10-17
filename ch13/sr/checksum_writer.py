@@ -76,6 +76,48 @@ def checksum(source: Path, checksum_path: Path) -> None:
 
 
 class FileChecksum:
+    """A class for managing file checksums with SHA-256 hashing.
+
+    This class encapsulates the checksum computation for a file, storing
+    both the file path and its computed hash. It provides an object-oriented
+    interface for working with file checksums.
+
+    The checksum is computed immediately upon initialization by reading the
+    entire file into memory and generating its SHA-256 hash.
+
+    Attributes:
+        source (Path): Path to the source file.
+        checksum (hashlib.sha256): SHA-256 hash object containing the
+            computed checksum of the file.
+
+    Examples:
+        >>> from pathlib import Path
+        >>> file_path = Path('archive.tar.gz')
+        >>> fc = FileChecksum(file_path)
+        >>> print(f"Checksum: {fc.checksum.hexdigest()}")
+        Checksum: a1b2c3d4e5f6...
+
+        >>> # Access the source file information
+        >>> print(f"File: {fc.source.name}")
+        File: archive.tar.gz
+
+        >>> # Get checksum in different formats
+        >>> hex_digest = fc.checksum.hexdigest()
+        >>> digest_size = fc.checksum.digest_size
+        >>> print(f"Digest size: {digest_size} bytes")
+        Digest size: 32 bytes
+
+    Note:
+        - The entire file is read into memory during initialization
+        - For very large files, consider streaming approaches
+        - The checksum object can be used for verification operations
+
+    Raises:
+        FileNotFoundError: If the source file does not exist.
+        PermissionError: If there are insufficient permissions to read the file.
+        IOError: If there are issues reading the file.
+    """
+
     def __init__(self, source: Path) -> None:
         self.source = source
         self.checksum = hashlib.sha256(source.read_bytes())
