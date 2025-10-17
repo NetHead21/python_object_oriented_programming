@@ -55,3 +55,12 @@ def test_file_checksum(mock_hashlib: Mock, tmp_path: Path) -> None:
     cw = checksum_writer.FileChecksum(source_file)
     assert cw.source == source_file
     assert cw.checksum == sentinel.checksum
+
+
+# ============================================================================
+# Edge Case Tests
+# ============================================================================
+
+
+class TestChecksumEdgeCases:
+    """Test edge cases for the checksum function."""
