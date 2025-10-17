@@ -101,3 +101,5 @@ class TestAverage(unittest.TestCase):
 
     def test_average_precision(self):
         """Test average with numbers requiring high precision."""
+        result = average([1 / 3, 1 / 3, 1 / 3])
+        self.assertAlmostEqual(result, 1 / 3, places=10)
