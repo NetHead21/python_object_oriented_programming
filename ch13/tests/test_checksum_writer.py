@@ -102,3 +102,10 @@ class TestChecksumEdgeCases:
         large_data = b"A" * (1024 * 1024)
         source_file.write_bytes(large_data)
         checksum_path = tmp_path / "large.sha256"
+
+        checksum_writer.checksum(source_file, checksum_path)
+
+        assert checksum_path.exists()
+        name, checksum = checksum_path.read_text().strip().split()
+        assert name == "large.dat"
+        assert len(checksum) == 64
