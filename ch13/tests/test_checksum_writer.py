@@ -81,3 +81,10 @@ class TestChecksumEdgeCases:
             checksum
             == "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
         )
+
+    def test_checksum_binary_file(self, tmp_path: Path) -> None:
+        """Test checksum computation for binary data."""
+        source_file = tmp_path / "binary.bin"
+        binary_data = bytes([0, 1, 2, 3, 255, 254, 253, 128])
+        source_file.write_bytes(binary_data)
+        checksum_path = tmp_path / "binary.sha256"
