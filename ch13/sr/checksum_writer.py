@@ -119,5 +119,28 @@ class FileChecksum:
     """
 
     def __init__(self, source: Path) -> None:
+        """Initialize FileChecksum with a source file.
+
+        Computes the SHA-256 checksum of the provided file immediately
+        upon initialization. The entire file is read into memory for
+        hash computation.
+
+        Args:
+            source (Path): Path to the file to compute checksum for.
+                Must be a valid, readable file path.
+
+        Raises:
+            FileNotFoundError: If the source file does not exist.
+            PermissionError: If the file cannot be read due to permissions.
+            IsADirectoryError: If source points to a directory instead of a file.
+            IOError: If there are other I/O errors reading the file.
+
+        Examples:
+            >>> from pathlib import Path
+            >>> fc = FileChecksum(Path('data.bin'))
+            >>> # Checksum is immediately available
+            >>> print(fc.checksum.hexdigest()[:16])
+            a1b2c3d4e5f6g7h8
+        """
         self.source = source
         self.checksum = hashlib.sha256(source.read_bytes())
