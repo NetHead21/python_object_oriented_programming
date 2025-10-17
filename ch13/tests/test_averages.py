@@ -118,3 +118,6 @@ class TestAverage(unittest.TestCase):
         """Test average with mixed integers and floats."""
         self.assertEqual(average([1, 2.5, 3, 4.5]), 2.75)
         self.assertAlmostEqual(average([10, 20.0, 30, 40.0]), 25.0)
+
+    def test_average_none_at_boundaries(self):
+        """Test average with None at start and end."""
