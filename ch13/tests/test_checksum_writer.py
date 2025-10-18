@@ -207,3 +207,9 @@ class TestChecksumEdgeCases:
             source_file = tmp_path / f"file{ext}"
             source_file.write_bytes(b"test data")
             checksum_path = tmp_path / f"checksum{ext}.sha256"
+
+            checksum_writer.checksum(source_file, checksum_path)
+
+            assert checksum_path.exists()
+            name = checksum_path.read_text().strip().split()[0]
+            assert name == f"file{ext}"
