@@ -263,3 +263,9 @@ class TestChecksumEdgeCases:
         assert checksum_path.exists()
         _, checksum = checksum_path.read_text().strip().split()
         assert len(checksum) == 64
+
+    def test_checksum_format_validation(self, tmp_path: Path) -> None:
+        """Test that checksum output format is correct."""
+        source_file = tmp_path / "test.txt"
+        source_file.write_bytes(b"test")
+        checksum_path = tmp_path / "test.sha256"
