@@ -134,3 +134,9 @@ class TestChecksumEdgeCases:
         name, checksum = checksum_path.read_text().strip().split()
         assert name == "unicode.txt"
         assert len(checksum) == 64
+
+    def test_checksum_without_existing_checksum_file(self, tmp_path: Path) -> None:
+        """Test checksum when checksum file doesn't exist initially."""
+        source_file = tmp_path / "new.txt"
+        source_file.write_bytes(b"New content")
+        checksum_path = tmp_path / "new.sha256"
