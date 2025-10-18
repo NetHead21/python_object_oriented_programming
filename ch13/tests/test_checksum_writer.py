@@ -217,3 +217,11 @@ class TestChecksumEdgeCases:
     def test_checksum_same_content_different_files(self, tmp_path: Path) -> None:
         """Test that files with same content produce the same checksum."""
         content = b"Identical content"
+
+        file1 = tmp_path / "file1.txt"
+        file1.write_bytes(content)
+        checksum1_path = tmp_path / "file1.sha256"
+
+        file2 = tmp_path / "file2.txt"
+        file2.write_bytes(content)
+        checksum2_path = tmp_path / "file2.sha256"
