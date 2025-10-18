@@ -163,3 +163,11 @@ class TestChecksumEdgeCases:
         # New checksum should be different from "old_checksum_value"
         content = checksum_path.read_text()
         assert "old_checksum_value" not in content
+
+    def test_checksum_backup_preserves_old_content(self, tmp_path: Path) -> None:
+        """Test that backup file contains the old checksum."""
+        source_file = tmp_path / "data.txt"
+        source_file.write_bytes(b"Data")
+        checksum_path = tmp_path / "data.sha256"
+        old_content = "data.txt old_checksum_12345"
+        checksum_path.write_text(old_content)
