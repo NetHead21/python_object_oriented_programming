@@ -283,3 +283,12 @@ class TestChecksumEdgeCases:
         assert all(c in "0123456789abcdef" for c in parts[1])
         # Should end with newline
         assert content.endswith("\n")
+
+
+class TestFileChecksumEdgeCases:
+    """Test edge cases for the FileChecksum class."""
+
+    def test_file_checksum_empty_file(self, tmp_path: Path) -> None:
+        """Test FileChecksum with empty file."""
+        source_file = tmp_path / "empty.txt"
+        source_file.write_bytes(b"")
