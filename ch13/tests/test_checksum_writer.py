@@ -183,3 +183,10 @@ class TestChecksumEdgeCases:
         source_file = tmp_path / "data.txt"
         source_file.write_bytes(b"Data")
         checksum_path = tmp_path / "data.sha256"
+
+        # First checksum
+        checksum_path.write_text("data.txt first_checksum")
+        checksum_writer.checksum(source_file, checksum_path)
+
+        backup_path = checksum_path.with_stem(f"(old) {checksum_path.stem}")
+        first_backup = backup_path.read_text()
