@@ -269,3 +269,17 @@ class TestChecksumEdgeCases:
         source_file = tmp_path / "test.txt"
         source_file.write_bytes(b"test")
         checksum_path = tmp_path / "test.sha256"
+
+        checksum_writer.checksum(source_file, checksum_path)
+
+        content = checksum_path.read_text()
+        parts = content.strip().split()
+
+        # Should have exactly 2 parts: filename and checksum
+        assert len(parts) == 2
+        assert parts[0] == "test.txt"
+        # Checksum should be 64 hex characters
+        assert len(parts[1]) == 64
+        assert all(c in "0123456789abcdef" for c in parts[1])
+        # Should end with newline
+        assert content.endswith("\n")
