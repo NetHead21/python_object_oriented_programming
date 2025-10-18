@@ -150,3 +150,10 @@ class TestChecksumEdgeCases:
         # No backup should be created
         backup_path = checksum_path.with_stem(f"(old) {checksum_path.stem}")
         assert not backup_path.exists()
+
+    def test_checksum_overwrites_existing_file(self, tmp_path: Path) -> None:
+        """Test that checksum overwrites existing checksum file."""
+        source_file = tmp_path / "data.txt"
+        source_file.write_bytes(b"Original data")
+        checksum_path = tmp_path / "data.sha256"
+        checksum_path.write_text("data.txt old_checksum_value\n")
