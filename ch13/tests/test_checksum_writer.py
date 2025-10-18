@@ -171,3 +171,9 @@ class TestChecksumEdgeCases:
         checksum_path = tmp_path / "data.sha256"
         old_content = "data.txt old_checksum_12345"
         checksum_path.write_text(old_content)
+
+        checksum_writer.checksum(source_file, checksum_path)
+
+        backup_path = checksum_path.with_stem(f"(old) {checksum_path.stem}")
+        assert backup_path.exists()
+        assert backup_path.read_text() == old_content
