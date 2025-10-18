@@ -177,3 +177,9 @@ class TestChecksumEdgeCases:
         backup_path = checksum_path.with_stem(f"(old) {checksum_path.stem}")
         assert backup_path.exists()
         assert backup_path.read_text() == old_content
+
+    def test_checksum_multiple_backups(self, tmp_path: Path) -> None:
+        """Test that multiple checksum calls create only one backup (overwriting)."""
+        source_file = tmp_path / "data.txt"
+        source_file.write_bytes(b"Data")
+        checksum_path = tmp_path / "data.sha256"
