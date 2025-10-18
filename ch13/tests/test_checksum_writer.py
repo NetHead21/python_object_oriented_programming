@@ -198,3 +198,7 @@ class TestChecksumEdgeCases:
         second_backup = backup_path.read_text()
         assert second_backup != first_backup
         assert "first_checksum" not in second_backup
+
+    def test_checksum_different_extensions(self, tmp_path: Path) -> None:
+        """Test checksum with various file extensions."""
+        extensions = [".txt", ".bin", ".dat", ".log", ".json", ".xml", ""]
