@@ -202,3 +202,8 @@ class TestChecksumEdgeCases:
     def test_checksum_different_extensions(self, tmp_path: Path) -> None:
         """Test checksum with various file extensions."""
         extensions = [".txt", ".bin", ".dat", ".log", ".json", ".xml", ""]
+
+        for ext in extensions:
+            source_file = tmp_path / f"file{ext}"
+            source_file.write_bytes(b"test data")
+            checksum_path = tmp_path / f"checksum{ext}.sha256"
