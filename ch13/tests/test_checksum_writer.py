@@ -140,3 +140,13 @@ class TestChecksumEdgeCases:
         source_file = tmp_path / "new.txt"
         source_file.write_bytes(b"New content")
         checksum_path = tmp_path / "new.sha256"
+
+        # Ensure checksum file doesn't exist
+        assert not checksum_path.exists()
+
+        checksum_writer.checksum(source_file, checksum_path)
+
+        assert checksum_path.exists()
+        # No backup should be created
+        backup_path = checksum_path.with_stem(f"(old) {checksum_path.stem}")
+        assert not backup_path.exists()
