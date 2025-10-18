@@ -292,3 +292,11 @@ class TestFileChecksumEdgeCases:
         """Test FileChecksum with empty file."""
         source_file = tmp_path / "empty.txt"
         source_file.write_bytes(b"")
+
+        fc = checksum_writer.FileChecksum(source_file)
+
+        assert fc.source == source_file
+        assert (
+            fc.checksum.hexdigest()
+            == "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        )
