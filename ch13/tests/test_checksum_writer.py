@@ -127,3 +127,10 @@ class TestChecksumEdgeCases:
         source_file = tmp_path / "unicode.txt"
         source_file.write_text("Hello 世界 🌍 مرحبا", encoding="utf-8")
         checksum_path = tmp_path / "unicode.sha256"
+
+        checksum_writer.checksum(source_file, checksum_path)
+
+        assert checksum_path.exists()
+        name, checksum = checksum_path.read_text().strip().split()
+        assert name == "unicode.txt"
+        assert len(checksum) == 64
