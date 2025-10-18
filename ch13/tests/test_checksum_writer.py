@@ -190,3 +190,11 @@ class TestChecksumEdgeCases:
 
         backup_path = checksum_path.with_stem(f"(old) {checksum_path.stem}")
         first_backup = backup_path.read_text()
+
+        # Second checksum
+        checksum_writer.checksum(source_file, checksum_path)
+
+        # Backup should now contain the previous checksum, not the first one
+        second_backup = backup_path.read_text()
+        assert second_backup != first_backup
+        assert "first_checksum" not in second_backup
