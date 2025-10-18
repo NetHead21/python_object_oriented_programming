@@ -251,3 +251,9 @@ class TestChecksumEdgeCases:
         _, hash2 = checksum2_path.read_text().strip().split()
 
         assert hash1 != hash2
+
+    def test_checksum_newlines_in_content(self, tmp_path: Path) -> None:
+        """Test checksum with various newline types."""
+        source_file = tmp_path / "newlines.txt"
+        source_file.write_bytes(b"Line1\nLine2\r\nLine3\rLine4")
+        checksum_path = tmp_path / "newlines.sha256"
