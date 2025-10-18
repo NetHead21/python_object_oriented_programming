@@ -213,3 +213,7 @@ class TestChecksumEdgeCases:
             assert checksum_path.exists()
             name = checksum_path.read_text().strip().split()[0]
             assert name == f"file{ext}"
+
+    def test_checksum_same_content_different_files(self, tmp_path: Path) -> None:
+        """Test that files with same content produce the same checksum."""
+        content = b"Identical content"
