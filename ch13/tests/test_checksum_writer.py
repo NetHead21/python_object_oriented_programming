@@ -225,3 +225,11 @@ class TestChecksumEdgeCases:
         file2 = tmp_path / "file2.txt"
         file2.write_bytes(content)
         checksum2_path = tmp_path / "file2.sha256"
+
+        checksum_writer.checksum(file1, checksum1_path)
+        checksum_writer.checksum(file2, checksum2_path)
+
+        _, hash1 = checksum1_path.read_text().strip().split()
+        _, hash2 = checksum2_path.read_text().strip().split()
+
+        assert hash1 == hash2
