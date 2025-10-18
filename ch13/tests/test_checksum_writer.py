@@ -257,3 +257,9 @@ class TestChecksumEdgeCases:
         source_file = tmp_path / "newlines.txt"
         source_file.write_bytes(b"Line1\nLine2\r\nLine3\rLine4")
         checksum_path = tmp_path / "newlines.sha256"
+
+        checksum_writer.checksum(source_file, checksum_path)
+
+        assert checksum_path.exists()
+        _, checksum = checksum_path.read_text().strip().split()
+        assert len(checksum) == 64
