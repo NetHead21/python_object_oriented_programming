@@ -157,3 +157,9 @@ class TestChecksumEdgeCases:
         source_file.write_bytes(b"Original data")
         checksum_path = tmp_path / "data.sha256"
         checksum_path.write_text("data.txt old_checksum_value\n")
+
+        checksum_writer.checksum(source_file, checksum_path)
+
+        # New checksum should be different from "old_checksum_value"
+        content = checksum_path.read_text()
+        assert "old_checksum_value" not in content
