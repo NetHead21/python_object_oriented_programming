@@ -233,3 +233,9 @@ class TestChecksumEdgeCases:
         _, hash2 = checksum2_path.read_text().strip().split()
 
         assert hash1 == hash2
+
+    def test_checksum_different_content_different_hashes(self, tmp_path: Path) -> None:
+        """Test that files with different content produce different checksums."""
+        file1 = tmp_path / "file1.txt"
+        file1.write_bytes(b"Content A")
+        checksum1_path = tmp_path / "file1.sha256"
