@@ -121,3 +121,9 @@ class TestChecksumEdgeCases:
         assert checksum_path.exists()
         content = checksum_path.read_text()
         assert "file-with_special.chars[123].txt" in content
+
+    def test_checksum_unicode_content(self, tmp_path: Path) -> None:
+        """Test checksum with Unicode content in file."""
+        source_file = tmp_path / "unicode.txt"
+        source_file.write_text("Hello 世界 🌍 مرحبا", encoding="utf-8")
+        checksum_path = tmp_path / "unicode.sha256"
