@@ -333,3 +333,11 @@ class TestFileChecksumEdgeCases:
 
         assert fc.source == source_file
         assert len(fc.checksum.hexdigest()) == 64
+
+    def test_file_checksum_same_content_same_hash(self, tmp_path: Path) -> None:
+        """Test that same content produces same hash."""
+        content = b"Test content"
+
+        file1 = tmp_path / "file1.txt"
+        file1.write_bytes(content)
+        fc1 = checksum_writer.FileChecksum(file1)
