@@ -318,3 +318,8 @@ class TestFileChecksumEdgeCases:
         # Create a 5MB file
         large_data = b"X" * (5 * 1024 * 1024)
         source_file.write_bytes(large_data)
+
+        fc = checksum_writer.FileChecksum(source_file)
+
+        assert fc.source == source_file
+        assert len(fc.checksum.hexdigest()) == 64
