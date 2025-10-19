@@ -380,3 +380,7 @@ class TestFileChecksumEdgeCases:
         source_file.write_bytes(b"test")
 
         fc = checksum_writer.FileChecksum(source_file)
+        # SHA-256 digest size is 32 bytes
+        assert fc.checksum.digest_size == 32
+        # Hex digest is 64 characters (32 bytes * 2)
+        assert len(fc.checksum.hexdigest()) == 64
