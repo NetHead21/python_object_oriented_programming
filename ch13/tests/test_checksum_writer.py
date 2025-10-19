@@ -455,3 +455,10 @@ class TestErrorCases:
 
         with pytest.raises(FileNotFoundError):
             checksum_writer.checksum(source_file, checksum_path)
+
+    def test_file_checksum_nonexistent_file(self, tmp_path: Path) -> None:
+        """Test FileChecksum with non-existent file."""
+        source_file = tmp_path / "nonexistent.txt"
+
+        with pytest.raises(FileNotFoundError):
+            checksum_writer.FileChecksum(source_file)
