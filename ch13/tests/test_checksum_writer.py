@@ -341,3 +341,9 @@ class TestFileChecksumEdgeCases:
         file1 = tmp_path / "file1.txt"
         file1.write_bytes(content)
         fc1 = checksum_writer.FileChecksum(file1)
+
+        file2 = tmp_path / "file2.txt"
+        file2.write_bytes(content)
+        fc2 = checksum_writer.FileChecksum(file2)
+
+        assert fc1.checksum.hexdigest() == fc2.checksum.hexdigest()
