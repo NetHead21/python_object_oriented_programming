@@ -300,3 +300,9 @@ class TestFileChecksumEdgeCases:
             fc.checksum.hexdigest()
             == "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
         )
+
+    def test_file_checksum_binary_data(self, tmp_path: Path) -> None:
+        """Test FileChecksum with binary data."""
+        source_file = tmp_path / "binary.bin"
+        binary_data = bytes(range(256))
+        source_file.write_bytes(binary_data)
