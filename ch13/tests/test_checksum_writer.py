@@ -384,3 +384,8 @@ class TestFileChecksumEdgeCases:
         assert fc.checksum.digest_size == 32
         # Hex digest is 64 characters (32 bytes * 2)
         assert len(fc.checksum.hexdigest()) == 64
+
+    def test_file_checksum_known_hash(self, tmp_path: Path) -> None:
+        """Test FileChecksum produces known correct hash."""
+        source_file = tmp_path / "known.txt"
+        source_file.write_bytes(b"hello world")
