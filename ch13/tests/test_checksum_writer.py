@@ -422,3 +422,14 @@ class TestFileChecksumEdgeCases:
 
         # All checksums should be unique
         assert len(set(checksums)) == 5
+
+    def test_file_checksum_whitespace_content(self, tmp_path: Path) -> None:
+        """Test FileChecksum with various whitespace."""
+        test_cases = [
+            (b" ", "single space"),
+            (b"\t", "tab"),
+            (b"\n", "newline"),
+            (b"\r\n", "CRLF"),
+            (b"   ", "multiple spaces"),
+            (b" \t\n ", "mixed whitespace"),
+        ]
