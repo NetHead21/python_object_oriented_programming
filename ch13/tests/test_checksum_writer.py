@@ -471,3 +471,11 @@ class TestErrorCases:
 
         with pytest.raises(IsADirectoryError):
             checksum_writer.checksum(source_dir, checksum_path)
+
+    def test_file_checksum_directory_as_source(self, tmp_path: Path) -> None:
+        """Test FileChecksum with directory as source."""
+        source_dir = tmp_path / "directory"
+        source_dir.mkdir()
+
+        with pytest.raises(IsADirectoryError):
+            checksum_writer.FileChecksum(source_dir)
