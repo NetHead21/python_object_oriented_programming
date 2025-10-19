@@ -395,3 +395,8 @@ class TestFileChecksumEdgeCases:
         # Known SHA-256 hash of "hello world"
         expected = "b94d27b9934d3e08a52e52d7da7dabfac484efe37a5380ee9088f7ace2efcde9"
         assert fc.checksum.hexdigest() == expected
+
+    def test_file_checksum_source_attribute(self, tmp_path: Path) -> None:
+        """Test that source attribute is correctly set."""
+        source_file = tmp_path / "test.txt"
+        source_file.write_bytes(b"test")
