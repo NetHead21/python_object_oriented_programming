@@ -347,3 +347,11 @@ class TestFileChecksumEdgeCases:
         fc2 = checksum_writer.FileChecksum(file2)
 
         assert fc1.checksum.hexdigest() == fc2.checksum.hexdigest()
+
+    def test_file_checksum_different_content_different_hash(
+        self, tmp_path: Path
+    ) -> None:
+        """Test that different content produces different hashes."""
+        file1 = tmp_path / "file1.txt"
+        file1.write_bytes(b"Content A")
+        fc1 = checksum_writer.FileChecksum(file1)
