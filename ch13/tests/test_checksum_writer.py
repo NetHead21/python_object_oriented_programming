@@ -400,3 +400,9 @@ class TestFileChecksumEdgeCases:
         """Test that source attribute is correctly set."""
         source_file = tmp_path / "test.txt"
         source_file.write_bytes(b"test")
+
+        fc = checksum_writer.FileChecksum(source_file)
+
+        assert fc.source == source_file
+        assert fc.source.name == "test.txt"
+        assert fc.source.parent == tmp_path
