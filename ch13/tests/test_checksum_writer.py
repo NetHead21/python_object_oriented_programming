@@ -443,3 +443,15 @@ class TestFileChecksumEdgeCases:
 
         # All should produce different hashes
         assert len(set(hashes)) == len(hashes)
+
+
+class TestErrorCases:
+    """Test error handling in checksum_writer."""
+
+    def test_checksum_nonexistent_source_file(self, tmp_path: Path) -> None:
+        """Test checksum with non-existent source file."""
+        source_file = tmp_path / "nonexistent.txt"
+        checksum_path = tmp_path / "checksum.sha256"
+
+        with pytest.raises(FileNotFoundError):
+            checksum_writer.checksum(source_file, checksum_path)
