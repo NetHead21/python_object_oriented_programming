@@ -311,3 +311,10 @@ class TestFileChecksumEdgeCases:
 
         assert fc.source == source_file
         assert len(fc.checksum.hexdigest()) == 64
+
+    def test_file_checksum_large_file(self, tmp_path: Path) -> None:
+        """Test FileChecksum with large file."""
+        source_file = tmp_path / "large.dat"
+        # Create a 5MB file
+        large_data = b"X" * (5 * 1024 * 1024)
+        source_file.write_bytes(large_data)
