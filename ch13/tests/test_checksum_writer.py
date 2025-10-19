@@ -433,3 +433,13 @@ class TestFileChecksumEdgeCases:
             (b"   ", "multiple spaces"),
             (b" \t\n ", "mixed whitespace"),
         ]
+
+        hashes = []
+        for content, description in test_cases:
+            source_file = tmp_path / f"{description.replace(' ', '_')}.txt"
+            source_file.write_bytes(content)
+            fc = checksum_writer.FileChecksum(source_file)
+            hashes.append(fc.checksum.hexdigest())
+
+        # All should produce different hashes
+        assert len(set(hashes)) == len(hashes)
