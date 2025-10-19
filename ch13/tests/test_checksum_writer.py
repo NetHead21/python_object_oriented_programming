@@ -306,3 +306,8 @@ class TestFileChecksumEdgeCases:
         source_file = tmp_path / "binary.bin"
         binary_data = bytes(range(256))
         source_file.write_bytes(binary_data)
+
+        fc = checksum_writer.FileChecksum(source_file)
+
+        assert fc.source == source_file
+        assert len(fc.checksum.hexdigest()) == 64
