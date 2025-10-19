@@ -361,3 +361,9 @@ class TestFileChecksumEdgeCases:
         fc2 = checksum_writer.FileChecksum(file2)
 
         assert fc1.checksum.hexdigest() != fc2.checksum.hexdigest()
+
+    def test_file_checksum_single_byte_difference(self, tmp_path: Path) -> None:
+        """Test that single byte difference produces different hash."""
+        file1 = tmp_path / "file1.txt"
+        file1.write_bytes(b"Test content")
+        fc1 = checksum_writer.FileChecksum(file1)
