@@ -406,3 +406,19 @@ class TestFileChecksumEdgeCases:
         assert fc.source == source_file
         assert fc.source.name == "test.txt"
         assert fc.source.parent == tmp_path
+
+    def test_file_checksum_multiple_instances(self, tmp_path: Path) -> None:
+        """Test creating multiple FileChecksum instances."""
+        files = []
+        checksums = []
+
+        for i in range(5):
+            file = tmp_path / f"file{i}.txt"
+            file.write_bytes(f"Content {i}".encode())
+            files.append(file)
+
+            fc = checksum_writer.FileChecksum(file)
+            checksums.append(fc.checksum.hexdigest())
+
+        # All checksums should be unique
+        assert len(set(checksums)) == 5
