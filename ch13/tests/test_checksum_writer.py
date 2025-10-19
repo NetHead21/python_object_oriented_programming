@@ -373,3 +373,10 @@ class TestFileChecksumEdgeCases:
         fc2 = checksum_writer.FileChecksum(file2)
 
         assert fc1.checksum.hexdigest() != fc2.checksum.hexdigest()
+
+    def test_file_checksum_digest_size(self, tmp_path: Path) -> None:
+        """Test that checksum has correct digest size."""
+        source_file = tmp_path / "test.txt"
+        source_file.write_bytes(b"test")
+
+        fc = checksum_writer.FileChecksum(source_file)
