@@ -462,3 +462,12 @@ class TestErrorCases:
 
         with pytest.raises(FileNotFoundError):
             checksum_writer.FileChecksum(source_file)
+
+    def test_checksum_directory_as_source(self, tmp_path: Path) -> None:
+        """Test checksum with directory as source."""
+        source_dir = tmp_path / "directory"
+        source_dir.mkdir()
+        checksum_path = tmp_path / "checksum.sha256"
+
+        with pytest.raises(IsADirectoryError):
+            checksum_writer.checksum(source_dir, checksum_path)
