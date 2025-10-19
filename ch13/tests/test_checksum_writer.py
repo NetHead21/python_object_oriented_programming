@@ -328,3 +328,8 @@ class TestFileChecksumEdgeCases:
         """Test FileChecksum with Unicode content."""
         source_file = tmp_path / "unicode.txt"
         source_file.write_text("Hello 世界 🌍", encoding="utf-8")
+
+        fc = checksum_writer.FileChecksum(source_file)
+
+        assert fc.source == source_file
+        assert len(fc.checksum.hexdigest()) == 64
