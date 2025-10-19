@@ -389,3 +389,9 @@ class TestFileChecksumEdgeCases:
         """Test FileChecksum produces known correct hash."""
         source_file = tmp_path / "known.txt"
         source_file.write_bytes(b"hello world")
+
+        fc = checksum_writer.FileChecksum(source_file)
+
+        # Known SHA-256 hash of "hello world"
+        expected = "b94d27b9934d3e08a52e52d7da7dabfac484efe37a5380ee9088f7ace2efcde9"
+        assert fc.checksum.hexdigest() == expected
