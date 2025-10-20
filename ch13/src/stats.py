@@ -291,3 +291,53 @@ class StatsList(List[Optional[float]]):
             raise ValueError("Cannot compute variance of empty sequence")
         mean_value = sum(clean) / len(clean)
         return sum((x - mean_value) ** 2 for x in clean) / len(clean)
+
+    def stddev(self) -> float:
+        """Calculate the standard deviation of non-None values.
+
+        Computes the population standard deviation, which is the square root
+        of the variance. Standard deviation measures the typical distance of
+        values from the mean, expressed in the same units as the data.
+
+        The formula used is: √[Σ(x - μ)² / N]
+        where μ is the mean and N is the count of non-None values.
+
+        Returns:
+            float: The population standard deviation of non-None values.
+
+        Raises:
+            ValueError: If the list is empty or contains only None values.
+
+        Examples:
+            >>> data = StatsList([1, 2, 3, 4, 5])
+            >>> round(data.stddev(), 4)
+            1.4142
+
+            >>> data = StatsList([10, 10, 10, 10])
+            >>> data.stddev()
+            0.0
+
+            >>> data = StatsList([1, None, 5, None, 9])
+            >>> round(data.stddev(), 4)
+            3.2660
+
+            >>> data = StatsList([None])
+            >>> data.stddev()
+            Traceback (most recent call last):
+            ...
+            ValueError: Cannot compute variance of empty sequence
+
+        Note:
+            - None values are filtered before computation
+            - This computes population standard deviation (divides by N)
+            - For sample standard deviation, use statistics.stdev() from stdlib
+            - Standard deviation is always non-negative
+            - A stddev of 0 means all values are identical
+            - Expressed in the same units as the original data
+            - Time complexity: O(n) where n is the length of the list
+
+        See Also:
+            - variance(): The square of standard deviation
+            - statistics.stdev(): Sample standard deviation from standard library
+            - statistics.pstdev(): Population standard deviation from standard library
+        """
