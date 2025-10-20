@@ -230,3 +230,9 @@ class StatsList(List[Optional[float]]):
             - statistics.mode(): Standard library mode function
             - statistics.multimode(): Returns all modes (Python 3.8+)
         """
+        freqs: DefaultDict[float, int] = collections.defaultdict(int)
+        for item in filter(None, self):
+            freqs[item] += 1
+        mode_freq = max(freqs.values(), default=0)
+        modes = [item for item, value in freqs.items() if value == mode_freq]
+        return modes
