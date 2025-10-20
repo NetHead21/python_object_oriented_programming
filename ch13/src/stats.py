@@ -564,3 +564,8 @@ class StatsList(List[Optional[float]]):
             - variance(): Another measure of spread
             - stddev(): Standard deviation (spread in same units as data)
         """
+        clean = [x for x in self if x is not None]
+        if not clean:
+            raise ValueError("Cannot compute range of empty sequence")
+
+        return float(max(clean) - min(clean))
