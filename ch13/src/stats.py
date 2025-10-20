@@ -181,3 +181,52 @@ class StatsList(List[Optional[float]]):
         else:
             idx = len(clean) // 2
             return (clean[idx] + clean[idx - 1]) / 2
+
+    def mode(self) -> list[float]:
+        """Find the most frequently occurring non-None value(s).
+
+        Identifies the value(s) that appear most often in the list. If multiple
+        values appear with the same highest frequency, all are returned. This
+        is multimodal behavior.
+
+        Returns:
+            list[float]: A list of the most frequently occurring value(s).
+                Returns empty list if the sequence contains only None values.
+                Returns all values if each appears exactly once (uniform distribution).
+
+        Examples:
+            >>> data = StatsList([1, 2, 2, 3, 4])
+            >>> data.mode()
+            [2]
+
+            >>> # Multiple modes (bimodal)
+            >>> data = StatsList([1, 1, 2, 2, 3])
+            >>> sorted(data.mode())
+            [1, 2]
+
+            >>> # All values appear once (uniform distribution)
+            >>> data = StatsList([1, 2, 3, 4])
+            >>> sorted(data.mode())
+            [1, 2, 3, 4]
+
+            >>> # With None values
+            >>> data = StatsList([1, None, 2, 2, None, 3])
+            >>> data.mode()
+            [2]
+
+            >>> # Empty after filtering
+            >>> data = StatsList([None, None])
+            >>> data.mode()
+            []
+
+        Note:
+            - None values are filtered before counting frequencies
+            - Returns a list even if there's only one mode
+            - Empty list is returned for all-None sequences (no ValueError)
+            - The order of modes in the result is not guaranteed
+            - Time complexity: O(n) where n is the length of the list
+
+        See Also:
+            - statistics.mode(): Standard library mode function
+            - statistics.multimode(): Returns all modes (Python 3.8+)
+        """
