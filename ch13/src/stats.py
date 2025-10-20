@@ -285,3 +285,9 @@ class StatsList(List[Optional[float]]):
             - statistics.variance(): Sample variance from standard library
             - statistics.pvariance(): Population variance from standard library
         """
+
+        clean = list(filter(None, self))
+        if not clean:
+            raise ValueError("Cannot compute variance of empty sequence")
+        mean_value = sum(clean) / len(clean)
+        return sum((x - mean_value) ** 2 for x in clean) / len(clean)
