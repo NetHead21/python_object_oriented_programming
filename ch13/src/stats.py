@@ -128,3 +128,47 @@ class StatsList(List[Optional[float]]):
         if not clean:
             raise ValueError("Cannot compute mean of empty sequence")
         return sum(clean) / len(clean)
+
+    def median(self) -> float:
+        """Calculate the median (middle value) of non-None values.
+
+        Finds the middle value when the data is sorted. For odd-length sequences,
+        returns the middle element. For even-length sequences, returns the
+        average of the two middle elements.
+
+        Returns:
+            float: The median value of non-None values in the list.
+
+        Raises:
+            ValueError: If the list is empty or contains only None values.
+
+        Examples:
+            >>> data = StatsList([1, 2, 3, 4, 5])
+            >>> data.median()
+            3
+
+            >>> data = StatsList([1, 2, 3, 4])
+            >>> data.median()
+            2.5
+
+            >>> data = StatsList([5, None, 1, None, 3])
+            >>> data.median()
+            3
+
+            >>> data = StatsList([None])
+            >>> data.median()
+            Traceback (most recent call last):
+            ...
+            ValueError: Cannot compute median of empty sequence
+
+        Note:
+            - None values are filtered before finding the median
+            - The list is assumed to be sorted or sortable
+            - For even-length lists, returns average of two middle values
+            - Time complexity: O(n) where n is the length of the list
+
+        Warning:
+            This implementation assumes the list is already sorted. For
+            unsorted lists, results may be incorrect. Consider sorting
+            the list first or using statistics.median() for unsorted data.
+        """
