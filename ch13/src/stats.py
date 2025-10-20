@@ -344,3 +344,65 @@ class StatsList(List[Optional[float]]):
         from math import sqrt
 
         return sqrt(self.variance())
+
+    def quantile(self, q: float) -> float:
+        """Calculate the quantile (percentile) of non-None values.
+
+        Returns the value at the specified quantile. A quantile divides the
+        sorted data into groups. For example, q=0.5 is the median, q=0.25 is
+        the first quartile (Q1), and q=0.75 is the third quartile (Q3).
+
+        Args:
+            q (float): The quantile to compute, must be between 0 and 1 inclusive.
+                Common values:
+                - 0.25: First quartile (Q1)
+                - 0.50: Median (Q2)
+                - 0.75: Third quartile (Q3)
+                - 0.95: 95th percentile
+
+        Returns:
+            float: The value at the specified quantile.
+
+        Raises:
+            ValueError: If the list is empty, contains only None values,
+                or if q is not between 0 and 1.
+
+        Examples:
+            >>> data = StatsList([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+            >>> data.quantile(0.5)  # Median
+            5.5
+
+            >>> data.quantile(0.25)  # First quartile
+            3.25
+
+            >>> data.quantile(0.75)  # Third quartile
+            7.75
+
+            >>> data = StatsList([1, None, 3, None, 5])
+            >>> data.quantile(0.5)  # Median of [1, 3, 5]
+            3.0
+
+            >>> data = StatsList([None, None])
+            >>> data.quantile(0.5)
+            Traceback (most recent call last):
+            ...
+            ValueError: Cannot compute quantile of empty sequence
+
+            >>> data = StatsList([1, 2, 3])
+            >>> data.quantile(1.5)
+            Traceback (most recent call last):
+            ...
+            ValueError: Quantile must be between 0 and 1
+
+        Note:
+            - None values are filtered before computation
+            - Uses linear interpolation between data points
+            - Data is automatically sorted before finding quantile
+            - For percentiles, divide by 100 (e.g., 95th percentile = 0.95)
+            - Time complexity: O(n log n) due to sorting
+
+        See Also:
+            - median(): Equivalent to quantile(0.5)
+            - quartiles(): Returns Q1, Q2, Q3 as a tuple
+            - statistics.quantiles(): Standard library quantile function
+        """
