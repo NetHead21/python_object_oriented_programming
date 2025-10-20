@@ -341,3 +341,6 @@ class StatsList(List[Optional[float]]):
             - statistics.stdev(): Sample standard deviation from standard library
             - statistics.pstdev(): Population standard deviation from standard library
         """
+        from math import sqrt
+
+        return sqrt(self.variance())
