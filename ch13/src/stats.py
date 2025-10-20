@@ -236,3 +236,52 @@ class StatsList(List[Optional[float]]):
         mode_freq = max(freqs.values(), default=0)
         modes = [item for item, value in freqs.items() if value == mode_freq]
         return modes
+
+    def variance(self) -> float:
+        """Calculate the variance of non-None values.
+
+        Computes the population variance, which measures how spread out the
+        values are from the mean. Variance is the average of squared deviations
+        from the mean.
+
+        The formula used is: Σ(x - μ)² / N
+        where μ is the mean and N is the count of non-None values.
+
+        Returns:
+            float: The population variance of non-None values.
+
+        Raises:
+            ValueError: If the list is empty or contains only None values.
+
+        Examples:
+            >>> data = StatsList([1, 2, 3, 4, 5])
+            >>> data.variance()
+            2.0
+
+            >>> data = StatsList([10, 10, 10, 10])
+            >>> data.variance()
+            0.0
+
+            >>> data = StatsList([1, None, 5, None, 9])
+            >>> data.variance()
+            10.666666666666666
+
+            >>> data = StatsList([None, None])
+            >>> data.variance()
+            Traceback (most recent call last):
+            ...
+            ValueError: Cannot compute variance of empty sequence
+
+        Note:
+            - None values are filtered before computation
+            - This computes population variance (divides by N)
+            - For sample variance, use statistics.variance() from stdlib
+            - Variance is always non-negative
+            - A variance of 0 means all values are identical
+            - Time complexity: O(n) where n is the length of the list
+
+        See Also:
+            - stddev(): Square root of variance (standard deviation)
+            - statistics.variance(): Sample variance from standard library
+            - statistics.pvariance(): Population variance from standard library
+        """
