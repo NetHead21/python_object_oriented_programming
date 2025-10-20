@@ -415,3 +415,9 @@ class StatsList(List[Optional[float]]):
 
         clean_sorted = sorted(clean)
         n = len(clean_sorted)
+
+        # Handle edge cases
+        if q == 0:
+            return float(clean_sorted[0])
+        if q == 1:
+            return float(clean_sorted[-1])
