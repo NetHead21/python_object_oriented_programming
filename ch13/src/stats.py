@@ -421,3 +421,11 @@ class StatsList(List[Optional[float]]):
             return float(clean_sorted[0])
         if q == 1:
             return float(clean_sorted[-1])
+
+        # Linear interpolation method
+        index = q * (n - 1)
+        lower_index = int(index)
+        upper_index = lower_index + 1
+
+        if upper_index >= n:
+            return float(clean_sorted[-1])
