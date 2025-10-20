@@ -429,3 +429,10 @@ class StatsList(List[Optional[float]]):
 
         if upper_index >= n:
             return float(clean_sorted[-1])
+
+        # Interpolate between lower and upper values
+        weight = index - lower_index
+        lower_value = clean_sorted[lower_index]
+        upper_value = clean_sorted[upper_index]
+
+        return lower_value + weight * (upper_value - lower_value)
