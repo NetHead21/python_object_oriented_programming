@@ -90,3 +90,36 @@ class StatsList(List[Optional[float]]):
         ValueError: When statistical operations are attempted on empty or
             all-None sequences.
     """
+
+    def mean(self) -> float:
+        """Calculate the arithmetic mean (average) of non-None values.
+
+        Computes the sum of all non-None values divided by the count of
+        non-None values. This is the most common measure of central tendency.
+
+        Returns:
+            float: The arithmetic mean of non-None values in the list.
+
+        Raises:
+            ValueError: If the list is empty or contains only None values.
+
+        Examples:
+            >>> data = StatsList([1, 2, 3, 4, 5])
+            >>> data.mean()
+            3.0
+
+            >>> data = StatsList([1, 2, None, 4, None])
+            >>> data.mean()
+            2.3333333333333335
+
+            >>> data = StatsList([None, None])
+            >>> data.mean()
+            Traceback (most recent call last):
+            ...
+            ValueError: Cannot compute mean of empty sequence
+
+        Note:
+            - None values are automatically filtered before computation
+            - Returns a float even if all input values are integers
+            - Time complexity: O(n) where n is the length of the list
+        """
