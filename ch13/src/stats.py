@@ -406,3 +406,12 @@ class StatsList(List[Optional[float]]):
             - quartiles(): Returns Q1, Q2, Q3 as a tuple
             - statistics.quantiles(): Standard library quantile function
         """
+        if not 0 <= q <= 1:
+            raise ValueError("Quantile must be between 0 and 1")
+
+        clean = [x for x in self if x is not None]
+        if not clean:
+            raise ValueError("Cannot compute quantile of empty sequence")
+
+        clean_sorted = sorted(clean)
+        n = len(clean_sorted)
