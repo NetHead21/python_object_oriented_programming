@@ -25,3 +25,6 @@ Typical Usage:
 
     print(f"Mean: {average}, Median: {middle}, Mode: {most_common}")
 """
+
+import collections
+from typing import Optional, DefaultDict, List
