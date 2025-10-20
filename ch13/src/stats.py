@@ -123,3 +123,8 @@ class StatsList(List[Optional[float]]):
             - Returns a float even if all input values are integers
             - Time complexity: O(n) where n is the length of the list
         """
+
+        clean = list(filter(None, self))
+        if not clean:
+            raise ValueError("Cannot compute mean of empty sequence")
+        return sum(clean) / len(clean)
