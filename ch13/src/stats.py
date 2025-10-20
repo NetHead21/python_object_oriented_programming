@@ -516,3 +516,51 @@ class StatsList(List[Optional[float]]):
             "range": float(clean_sorted[-1]) - float(clean_sorted[0]),
             "none_count": len(self) - len(clean),
         }
+
+    def range(self) -> float:
+        """Calculate the range of non-None values.
+
+        The range is the difference between the maximum and minimum values
+        in the dataset. It provides a simple measure of the spread of data.
+
+        Returns:
+            float: The range (max - min) of non-None values.
+
+        Raises:
+            ValueError: If the list is empty or contains only None values.
+
+        Examples:
+            >>> data = StatsList([1, 2, 3, 4, 5])
+            >>> data.range()
+            4.0
+
+            >>> data = StatsList([10, 10, 10])
+            >>> data.range()
+            0.0
+
+            >>> data = StatsList([1, None, 5, None, 9])
+            >>> data.range()
+            8.0
+
+            >>> data = StatsList([-5, 0, 5])
+            >>> data.range()
+            10.0
+
+            >>> data = StatsList([None, None])
+            >>> data.range()
+            Traceback (most recent call last):
+            ...
+            ValueError: Cannot compute range of empty sequence
+
+        Note:
+            - None values are filtered before computation
+            - Range is sensitive to outliers
+            - A range of 0 means all values are identical
+            - Always returns a non-negative value
+            - Time complexity: O(n) where n is the length of the list
+
+        See Also:
+            - iqr(): Interquartile range (more robust to outliers)
+            - variance(): Another measure of spread
+            - stddev(): Standard deviation (spread in same units as data)
+        """
