@@ -498,3 +498,21 @@ class StatsList(List[Optional[float]]):
             - describe(): Alternative method name (if implemented)
             - mean(), median(), stddev(): Individual statistic methods
         """
+        clean = [x for x in self if x is not None]
+        if not clean:
+            raise ValueError("Cannot compute summary of empty sequence")
+
+        clean_sorted = sorted(clean)
+
+        return {
+            "count": len(clean),
+            "mean": self.mean(),
+            "std": self.stddev(),
+            "min": float(clean_sorted[0]),
+            "q1": self.quantile(0.25),
+            "median": self.quantile(0.5),
+            "q3": self.quantile(0.75),
+            "max": float(clean_sorted[-1]),
+            "range": float(clean_sorted[-1]) - float(clean_sorted[0]),
+            "none_count": len(self) - len(clean),
+        }
