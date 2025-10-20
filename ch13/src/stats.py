@@ -172,3 +172,12 @@ class StatsList(List[Optional[float]]):
             unsorted lists, results may be incorrect. Consider sorting
             the list first or using statistics.median() for unsorted data.
         """
+        clean = list(filter(None, self))
+        if not clean:
+            raise ValueError("Cannot compute median of empty sequence")
+
+        if len(clean) % 2:
+            return clean[len(clean) // 2]
+        else:
+            idx = len(clean) // 2
+            return (clean[idx] + clean[idx - 1]) / 2
