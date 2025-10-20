@@ -436,3 +436,65 @@ class StatsList(List[Optional[float]]):
         upper_value = clean_sorted[upper_index]
 
         return lower_value + weight * (upper_value - lower_value)
+
+    def summary(self) -> dict:
+        """Generate a comprehensive statistical summary of the data.
+
+        Returns a dictionary containing key statistical measures including
+        count, mean, standard deviation, minimum, quartiles, median, and
+        maximum. This provides a quick overview of the data distribution.
+
+        Returns:
+            dict: A dictionary with the following keys:
+                - 'count': Number of non-None values
+                - 'mean': Arithmetic mean
+                - 'std': Standard deviation
+                - 'min': Minimum value
+                - 'q1': First quartile (25th percentile)
+                - 'median': Median (50th percentile)
+                - 'q3': Third quartile (75th percentile)
+                - 'max': Maximum value
+                - 'range': Difference between max and min
+                - 'none_count': Number of None values
+
+        Raises:
+            ValueError: If the list is empty or contains only None values.
+
+        Examples:
+            >>> data = StatsList([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+            >>> summary = data.summary()
+            >>> summary['count']
+            10
+            >>> summary['mean']
+            5.5
+            >>> summary['median']
+            5.5
+
+            >>> data = StatsList([1, None, 3, None, 5, 7, 9])
+            >>> summary = data.summary()
+            >>> summary['count']
+            5
+            >>> summary['none_count']
+            2
+            >>> summary['min']
+            1.0
+            >>> summary['max']
+            9.0
+
+            >>> data = StatsList([None, None])
+            >>> data.summary()
+            Traceback (most recent call last):
+            ...
+            ValueError: Cannot compute summary of empty sequence
+
+        Note:
+            - None values are excluded from all calculations
+            - All statistics are computed on the same filtered dataset
+            - Useful for quick exploratory data analysis
+            - Similar to pandas.DataFrame.describe()
+            - Time complexity: O(n log n) due to sorting for quantiles
+
+        See Also:
+            - describe(): Alternative method name (if implemented)
+            - mean(), median(), stddev(): Individual statistic methods
+        """
