@@ -31,3 +31,9 @@ class TestMean:
         data = StatsList([None, None, None])
         with pytest.raises(ValueError, match="Cannot compute mean of empty sequence"):
             data.mean()
+
+    def test_mean_empty_list_raises_error(self):
+        """Test that empty list raises ValueError."""
+        data = StatsList([])
+        with pytest.raises(ValueError, match="Cannot compute mean of empty sequence"):
+            data.mean()
