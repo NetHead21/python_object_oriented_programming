@@ -25,3 +25,9 @@ class TestMean:
         """Test mean calculation with some None values."""
         data = StatsList([1, 2, None, 4, None])
         assert data.mean() == pytest.approx(2.3333333, rel=1e-5)
+
+    def test_mean_all_none_raises_error(self):
+        """Test that all None values raises ValueError."""
+        data = StatsList([None, None, None])
+        with pytest.raises(ValueError, match="Cannot compute mean of empty sequence"):
+            data.mean()
