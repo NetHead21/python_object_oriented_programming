@@ -66,3 +66,8 @@ class TestMean:
 
 class TestMedian:
     """Test cases for the median() method."""
+
+    def test_median_odd_count(self):
+        """Test median with odd number of elements."""
+        data = StatsList([1, 2, 3, 4, 5])
+        assert data.median() == 3
