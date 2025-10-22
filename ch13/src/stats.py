@@ -651,3 +651,65 @@ class StatsList(List[Optional[float]]):
             - len(self): Total count including None values
         """
         return len([x for x in self if x is None])
+
+    def remove_outliers(
+        self, method: str = "iqr", threshold: float = 1.5
+    ) -> "StatsList":
+        """Remove outliers from the data and return a new StatsList.
+
+        Creates a new StatsList with outliers removed based on the specified
+        method. The original list is not modified. None values are preserved
+        in the output.
+
+        Args:
+            method (str): The method to use for outlier detection.
+                Options:
+                - 'iqr': Interquartile range method (default)
+                    Removes values outside [Q1 - threshold*IQR, Q3 + threshold*IQR]
+                - 'zscore': Z-score method
+                    Removes values with |z-score| > threshold
+            threshold (float): The threshold for outlier detection.
+                For 'iqr': typically 1.5 (default) or 3.0
+                For 'zscore': typically 2.0, 2.5, or 3.0
+
+        Returns:
+            StatsList: A new StatsList with outliers removed and None values preserved.
+
+        Raises:
+            ValueError: If the list is empty, contains only None values,
+                or if an invalid method is specified.
+
+        Examples:
+            >>> data = StatsList([1, 2, 3, 4, 5, 100])  # 100 is an outlier
+            >>> cleaned = data.remove_outliers()
+            >>> list(cleaned)
+            [1, 2, 3, 4, 5]
+
+            >>> data = StatsList([1, None, 2, 3, None, 100])
+            >>> cleaned = data.remove_outliers()
+            >>> list(cleaned)
+            [1, None, 2, 3, None]
+
+            >>> data = StatsList([1, 2, 3, 4, 5, 100])
+            >>> cleaned = data.remove_outliers(method='zscore', threshold=2.0)
+            >>> list(cleaned)
+            [1, 2, 3, 4, 5]
+
+            >>> data = StatsList([None, None])
+            >>> data.remove_outliers()
+            Traceback (most recent call last):
+            ...
+            ValueError: Cannot remove outliers from empty sequence
+
+        Note:
+            - Original list is not modified (returns new StatsList)
+            - None values are preserved in the output
+            - IQR method is more robust to extreme outliers
+            - Z-score method assumes roughly normal distribution
+            - Use threshold=3.0 for more conservative outlier removal
+            - Time complexity: O(n log n) for IQR method, O(n) for zscore
+
+        See Also:
+            - quantile(): Used internally for IQR method
+            - mean(), stddev(): Used internally for z-score method
+        """
