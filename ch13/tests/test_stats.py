@@ -52,3 +52,8 @@ class TestMean:
         """Test mean with mixed positive and negative numbers."""
         data = StatsList([-2, -1, 0, 1, 2])
         assert data.mean() == 0.0
+
+    def test_mean_single_value(self):
+        """Test mean with a single value."""
+        data = StatsList([42])
+        assert data.mean() == 42.0
