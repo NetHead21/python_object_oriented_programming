@@ -713,3 +713,39 @@ class StatsList(List[Optional[float]]):
             - quantile(): Used internally for IQR method
             - mean(), stddev(): Used internally for z-score method
         """
+
+        clean = [x for x in self if x is not None]
+        if not clean:
+            raise ValueError("Cannot remove outliers from empty sequence")
+
+        if method == "iqr":
+            # Interquartile range method
+            q1 = self.quantile(0.25)
+            q3 = self.quantile(0.75)
+            iqr = q3 - q1
+            lower_bound = q1 - threshold * iqr
+            upper_bound = q3 + threshold * iqr
+
+            # Filter outliers, preserve None values
+            filtered = StatsList(
+                [
+                    x if x is None or (lower_bound <= x <= upper_bound) else None
+                    for x in self
+                ]
+            )
+            # Remove the None values that were created from outliers
+            result = StatsList(
+                [
+                    x
+                    for x in filtered
+                    if x is not None or self[filtered.index(x)] is None
+                ]
+            )
+            # Simpler approach: keep None if original was None, keep value if not outlier
+            result = StatsList(
+                [
+                    x
+                    for i, x in enumerate(self)
+                    if x is None or (lower_bound <= x <= upper_bound)
+                ]
+            )
