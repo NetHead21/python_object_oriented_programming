@@ -76,3 +76,9 @@ class TestMedian:
         """Test median with even number of elements."""
         data = StatsList([1, 2, 3, 4])
         assert data.median() == 2.5
+
+    def test_median_with_none(self):
+        """Test median calculation ignores None values."""
+        # Note: median() expects pre-sorted data as per docstring
+        data = StatsList([1, None, 3, None, 5])
+        assert data.median() == 3
