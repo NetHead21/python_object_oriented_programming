@@ -612,3 +612,41 @@ class StatsList(List[Optional[float]]):
             - len(self): Total count including None values
         """
         return len([x for x in self if x is not None])
+
+    def count_none(self) -> int:
+        """Count the number of None values in the list.
+
+        Returns the total number of None (missing) values in the dataset.
+        This is useful for data quality assessment and understanding the
+        completeness of the data.
+
+        Returns:
+            int: The count of None values.
+
+        Examples:
+            >>> data = StatsList([1, 2, 3, 4, 5])
+            >>> data.count_none()
+            0
+
+            >>> data = StatsList([1, None, 3, None, 5])
+            >>> data.count_none()
+            2
+
+            >>> data = StatsList([None, None, None])
+            >>> data.count_none()
+            3
+
+            >>> data = StatsList([])
+            >>> data.count_none()
+            0
+
+        Note:
+            - Returns 0 for lists with no None values
+            - Does not raise ValueError (unlike statistical methods)
+            - Useful for data quality checks
+            - Time complexity: O(n) where n is the length of the list
+
+        See Also:
+            - count(): Count the number of non-None values
+            - len(self): Total count including None values
+        """
