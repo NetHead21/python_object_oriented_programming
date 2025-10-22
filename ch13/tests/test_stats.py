@@ -15,3 +15,8 @@ import pytest
 
 class TestMean:
     """Test cases for the mean() method."""
+
+    def test_mean_simple_integers(self):
+        """Test mean with simple integer values."""
+        data = StatsList([1, 2, 3, 4, 5])
+        assert data.mean() == 3.0
