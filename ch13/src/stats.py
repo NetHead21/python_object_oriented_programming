@@ -569,3 +569,45 @@ class StatsList(List[Optional[float]]):
             raise ValueError("Cannot compute range of empty sequence")
 
         return float(max(clean) - min(clean))
+
+    def count(self) -> int:
+        """Count the number of non-None values in the list.
+
+        Returns the total number of valid (non-None) numeric values in the
+        dataset. This is useful for understanding how many values are actually
+        available for statistical computation.
+
+        Returns:
+            int: The count of non-None values.
+
+        Examples:
+            >>> data = StatsList([1, 2, 3, 4, 5])
+            >>> data.count()
+            5
+
+            >>> data = StatsList([1, None, 3, None, 5])
+            >>> data.count()
+            3
+
+            >>> data = StatsList([None, None, None])
+            >>> data.count()
+            0
+
+            >>> data = StatsList([])
+            >>> data.count()
+            0
+
+            >>> data = StatsList([0, 0, 0])
+            >>> data.count()
+            3
+
+        Note:
+            - Returns 0 for empty lists or all-None lists
+            - Does not raise ValueError (unlike other statistical methods)
+            - Zero values (0) are counted as valid values
+            - Time complexity: O(n) where n is the length of the list
+
+        See Also:
+            - count_none(): Count the number of None values
+            - len(self): Total count including None values
+        """
