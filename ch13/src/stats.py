@@ -650,3 +650,4 @@ class StatsList(List[Optional[float]]):
             - count(): Count the number of non-None values
             - len(self): Total count including None values
         """
+        return len([x for x in self if x is None])
