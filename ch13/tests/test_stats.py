@@ -42,3 +42,8 @@ class TestMean:
         """Test mean with floating point numbers."""
         data = StatsList([1.5, 2.5, 3.5])
         assert data.mean() == 2.5
+
+    def test_mean_negative_numbers(self):
+        """Test mean with negative numbers."""
+        data = StatsList([-1, -2, -3, -4, -5])
+        assert data.mean() == -3.0
