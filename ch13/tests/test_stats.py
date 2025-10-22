@@ -57,3 +57,12 @@ class TestMean:
         """Test mean with a single value."""
         data = StatsList([42])
         assert data.mean() == 42.0
+
+
+# =============================================================================
+# Tests for median()
+# =============================================================================
+
+
+class TestMedian:
+    """Test cases for the median() method."""
