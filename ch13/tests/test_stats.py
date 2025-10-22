@@ -37,3 +37,8 @@ class TestMean:
         data = StatsList([])
         with pytest.raises(ValueError, match="Cannot compute mean of empty sequence"):
             data.mean()
+
+    def test_mean_floats(self):
+        """Test mean with floating point numbers."""
+        data = StatsList([1.5, 2.5, 3.5])
+        assert data.mean() == 2.5
