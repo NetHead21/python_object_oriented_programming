@@ -749,3 +749,26 @@ class StatsList(List[Optional[float]]):
                     if x is None or (lower_bound <= x <= upper_bound)
                 ]
             )
+
+        elif method == "zscore":
+            # Z-score method
+            mean_val = self.mean()
+            std_val = self.stddev()
+
+            if std_val == 0:
+                # All values are the same, no outliers
+                return StatsList(self)
+
+            # Filter outliers, preserve None values
+            result = StatsList(
+                [
+                    x
+                    for x in self
+                    if x is None or abs((x - mean_val) / std_val) <= threshold
+                ]
+            )
+
+        else:
+            raise ValueError(f"Unknown method '{method}'. Use 'iqr' or 'zscore'")
+
+        return result
