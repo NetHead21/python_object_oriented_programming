@@ -82,3 +82,8 @@ class TestMedian:
         # Note: median() expects pre-sorted data as per docstring
         data = StatsList([1, None, 3, None, 5])
         assert data.median() == 3
+
+    def test_median_single_value(self):
+        """Test median with single value."""
+        data = StatsList([42])
+        assert data.median() == 42
