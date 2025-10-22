@@ -71,3 +71,8 @@ class TestMedian:
         """Test median with odd number of elements."""
         data = StatsList([1, 2, 3, 4, 5])
         assert data.median() == 3
+
+    def test_median_even_count(self):
+        """Test median with even number of elements."""
+        data = StatsList([1, 2, 3, 4])
+        assert data.median() == 2.5
