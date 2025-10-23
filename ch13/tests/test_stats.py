@@ -93,3 +93,9 @@ class TestMedian:
         data = StatsList([None, None])
         with pytest.raises(ValueError, match="Cannot compute median of empty sequence"):
             data.median()
+
+    def test_median_empty_raises_error(self):
+        """Test that empty list raises ValueError."""
+        data = StatsList([])
+        with pytest.raises(ValueError, match="Cannot compute median of empty sequence"):
+            data.median()
