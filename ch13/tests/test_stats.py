@@ -352,3 +352,11 @@ class TestSummary:
             ValueError, match="Cannot compute summary of empty sequence"
         ):
             data.summary()
+
+    def test_summary_empty_raises_error(self):
+        """Test that empty list raises ValueError."""
+        data = StatsList([])
+        with pytest.raises(
+            ValueError, match="Cannot compute summary of empty sequence"
+        ):
+            data.summary()
