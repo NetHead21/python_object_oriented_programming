@@ -113,3 +113,8 @@ class TestMedian:
 
 class TestMode:
     """Test cases for the mode() method."""
+
+    def test_mode_single_mode(self):
+        """Test mode with a single most frequent value."""
+        data = StatsList([1, 2, 2, 3, 4])
+        assert data.mode() == [2]
