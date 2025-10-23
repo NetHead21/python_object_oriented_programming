@@ -118,3 +118,9 @@ class TestMode:
         """Test mode with a single most frequent value."""
         data = StatsList([1, 2, 2, 3, 4])
         assert data.mode() == [2]
+
+    def test_mode_bimodal(self):
+        """Test mode with two values having same frequency."""
+        data = StatsList([1, 1, 2, 2, 3])
+        result = sorted(data.mode())
+        assert result == [1, 2]
