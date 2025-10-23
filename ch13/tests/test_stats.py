@@ -273,3 +273,13 @@ class TestQuantile:
         """Test quantile with None values."""
         data = StatsList([1, None, 3, None, 5])
         assert data.quantile(0.5) == 3.0
+
+    def test_quantile_zero(self):
+        """Test quantile at 0 (minimum)."""
+        data = StatsList([5, 2, 8, 1, 9])
+        assert data.quantile(0) == 1.0
+
+    def test_quantile_one(self):
+        """Test quantile at 1 (maximum)."""
+        data = StatsList([5, 2, 8, 1, 9])
+        assert data.quantile(1) == 9.0
