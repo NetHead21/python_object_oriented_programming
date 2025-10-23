@@ -190,3 +190,8 @@ class TestVariance:
             ValueError, match="Cannot compute variance of empty sequence"
         ):
             data.variance()
+
+    def test_variance_single_value(self):
+        """Test variance with single value (should be 0)."""
+        data = StatsList([5])
+        assert data.variance() == 0.0
