@@ -344,3 +344,11 @@ class TestSummary:
         assert summary["none_count"] == 2
         assert summary["min"] == 1.0
         assert summary["max"] == 9.0
+
+    def test_summary_all_none_raises_error(self):
+        """Test that all None values raises ValueError."""
+        data = StatsList([None, None])
+        with pytest.raises(
+            ValueError, match="Cannot compute summary of empty sequence"
+        ):
+            data.summary()
