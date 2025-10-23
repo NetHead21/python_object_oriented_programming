@@ -99,3 +99,8 @@ class TestMedian:
         data = StatsList([])
         with pytest.raises(ValueError, match="Cannot compute median of empty sequence"):
             data.median()
+
+    def test_median_two_values(self):
+        """Test median with two values."""
+        data = StatsList([1, 3])
+        assert data.median() == 2.0
