@@ -145,3 +145,8 @@ class TestMode:
         """Test mode with empty list."""
         data = StatsList([])
         assert data.mode() == []
+
+    def test_mode_all_same(self):
+        """Test mode when all values are the same."""
+        data = StatsList([5, 5, 5, 5])
+        assert data.mode() == [5]
