@@ -210,3 +210,8 @@ class TestVariance:
 
 class TestStddev:
     """Test cases for the stddev() method."""
+
+    def test_stddev_simple(self):
+        """Test standard deviation with simple values."""
+        data = StatsList([1, 2, 3, 4, 5])
+        assert round(data.stddev(), 4) == 1.4142
