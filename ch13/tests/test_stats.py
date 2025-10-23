@@ -169,3 +169,8 @@ class TestVariance:
         """Test variance when all values are identical."""
         data = StatsList([10, 10, 10, 10])
         assert data.variance() == 0.0
+
+    def test_variance_with_none(self):
+        """Test variance with None values."""
+        data = StatsList([1, None, 5, None, 9])
+        assert data.variance() == pytest.approx(10.666666, rel=1e-5)
