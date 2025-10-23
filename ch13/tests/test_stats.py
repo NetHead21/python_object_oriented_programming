@@ -295,3 +295,11 @@ class TestQuantile:
         data = StatsList([1, 2, 3])
         with pytest.raises(ValueError, match="Quantile must be between 0 and 1"):
             data.quantile(1.5)
+
+    def test_quantile_empty_raises_error(self):
+        """Test that empty list raises ValueError."""
+        data = StatsList([None, None])
+        with pytest.raises(
+            ValueError, match="Cannot compute quantile of empty sequence"
+        ):
+            data.quantile(0.5)
