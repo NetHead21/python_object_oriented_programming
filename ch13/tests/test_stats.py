@@ -366,3 +366,9 @@ class TestSummary:
         data = StatsList([10, 20, 30, 40, 50])
         summary = data.summary()
         assert summary["range"] == 40.0
+
+    def test_summary_no_none_values(self):
+        """Test summary with no None values."""
+        data = StatsList([1, 2, 3, 4, 5])
+        summary = data.summary()
+        assert summary["none_count"] == 0
