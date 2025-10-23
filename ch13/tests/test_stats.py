@@ -182,3 +182,11 @@ class TestVariance:
             ValueError, match="Cannot compute variance of empty sequence"
         ):
             data.variance()
+
+    def test_variance_empty_raises_error(self):
+        """Test that empty list raises ValueError."""
+        data = StatsList([])
+        with pytest.raises(
+            ValueError, match="Cannot compute variance of empty sequence"
+        ):
+            data.variance()
