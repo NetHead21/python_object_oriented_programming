@@ -104,3 +104,12 @@ class TestMedian:
         """Test median with two values."""
         data = StatsList([1, 3])
         assert data.median() == 2.0
+
+
+# =============================================================================
+# Tests for mode()
+# =============================================================================
+
+
+class TestMode:
+    """Test cases for the mode() method."""
