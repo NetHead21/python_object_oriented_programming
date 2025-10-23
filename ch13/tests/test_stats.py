@@ -225,3 +225,9 @@ class TestStddev:
         """Test standard deviation with None values."""
         data = StatsList([1, None, 5, None, 9])
         assert round(data.stddev(), 4) == 3.2660
+
+    def test_stddev_all_none_raises_error(self):
+        """Test that all None values raises ValueError."""
+        data = StatsList([None])
+        with pytest.raises(ValueError):
+            data.stddev()
