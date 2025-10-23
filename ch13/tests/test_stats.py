@@ -140,3 +140,8 @@ class TestMode:
         """Test mode with all None values."""
         data = StatsList([None, None])
         assert data.mode() == []
+
+    def test_mode_empty_list(self):
+        """Test mode with empty list."""
+        data = StatsList([])
+        assert data.mode() == []
