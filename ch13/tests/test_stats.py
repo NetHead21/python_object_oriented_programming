@@ -360,3 +360,9 @@ class TestSummary:
             ValueError, match="Cannot compute summary of empty sequence"
         ):
             data.summary()
+
+    def test_summary_range_calculation(self):
+        """Test that range is correctly calculated."""
+        data = StatsList([10, 20, 30, 40, 50])
+        summary = data.summary()
+        assert summary["range"] == 40.0
