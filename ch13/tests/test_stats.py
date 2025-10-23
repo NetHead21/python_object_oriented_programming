@@ -164,3 +164,8 @@ class TestVariance:
         """Test variance with simple values."""
         data = StatsList([1, 2, 3, 4, 5])
         assert data.variance() == 2.0
+
+    def test_variance_all_same(self):
+        """Test variance when all values are identical."""
+        data = StatsList([10, 10, 10, 10])
+        assert data.variance() == 0.0
