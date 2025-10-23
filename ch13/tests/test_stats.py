@@ -124,3 +124,9 @@ class TestMode:
         data = StatsList([1, 1, 2, 2, 3])
         result = sorted(data.mode())
         assert result == [1, 2]
+
+    def test_mode_uniform_distribution(self):
+        """Test mode when all values appear once."""
+        data = StatsList([1, 2, 3, 4])
+        result = sorted(data.mode())
+        assert result == [1, 2, 3, 4]
