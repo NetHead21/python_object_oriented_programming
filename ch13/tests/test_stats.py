@@ -237,3 +237,10 @@ class TestStddev:
         data = StatsList([])
         with pytest.raises(ValueError):
             data.stddev()
+
+    def test_stddev_is_sqrt_of_variance(self):
+        """Test that stddev is the square root of variance."""
+        data = StatsList([1, 2, 3, 4, 5])
+        import math
+
+        assert data.stddev() == pytest.approx(math.sqrt(data.variance()))
