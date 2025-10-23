@@ -283,3 +283,9 @@ class TestQuantile:
         """Test quantile at 1 (maximum)."""
         data = StatsList([5, 2, 8, 1, 9])
         assert data.quantile(1) == 9.0
+
+    def test_quantile_invalid_below_zero(self):
+        """Test that quantile < 0 raises ValueError."""
+        data = StatsList([1, 2, 3])
+        with pytest.raises(ValueError, match="Quantile must be between 0 and 1"):
+            data.quantile(-0.1)
