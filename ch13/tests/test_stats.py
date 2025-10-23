@@ -215,3 +215,8 @@ class TestStddev:
         """Test standard deviation with simple values."""
         data = StatsList([1, 2, 3, 4, 5])
         assert round(data.stddev(), 4) == 1.4142
+
+    def test_stddev_all_same(self):
+        """Test standard deviation when all values are identical."""
+        data = StatsList([10, 10, 10, 10])
+        assert data.stddev() == 0.0
