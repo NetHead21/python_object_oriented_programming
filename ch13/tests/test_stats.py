@@ -150,3 +150,12 @@ class TestMode:
         """Test mode when all values are the same."""
         data = StatsList([5, 5, 5, 5])
         assert data.mode() == [5]
+
+
+# =============================================================================
+# Tests for variance()
+# =============================================================================
+
+
+class TestVariance:
+    """Test cases for the variance() method."""
