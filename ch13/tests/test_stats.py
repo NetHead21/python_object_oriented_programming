@@ -318,3 +318,19 @@ class TestQuantile:
 
 class TestSummary:
     """Test cases for the summary() method."""
+
+    def test_summary_complete(self):
+        """Test summary returns all expected keys."""
+        data = StatsList([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+        summary = data.summary()
+
+        assert summary["count"] == 10
+        assert summary["mean"] == 5.5
+        assert summary["median"] == 5.5
+        assert "std" in summary
+        assert "min" in summary
+        assert "max" in summary
+        assert "q1" in summary
+        assert "q3" in summary
+        assert "range" in summary
+        assert "none_count" in summary
