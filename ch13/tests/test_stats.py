@@ -201,3 +201,12 @@ class TestVariance:
         data = StatsList([-2, -1, 0, 1, 2])
         # Variance of [-2, -1, 0, 1, 2]: mean=0, sum of squared deviations = 4+1+0+1+4 = 10, variance = 10/5 = 2.5
         assert data.variance() == 2.5
+
+
+# =============================================================================
+# Tests for stddev()
+# =============================================================================
+
+
+class TestStddev:
+    """Test cases for the stddev() method."""
