@@ -130,3 +130,8 @@ class TestMode:
         data = StatsList([1, 2, 3, 4])
         result = sorted(data.mode())
         assert result == [1, 2, 3, 4]
+
+    def test_mode_with_none(self):
+        """Test mode with None values."""
+        data = StatsList([1, None, 2, 2, None, 3])
+        assert data.mode() == [2]
