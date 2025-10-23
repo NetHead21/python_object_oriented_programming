@@ -174,3 +174,11 @@ class TestVariance:
         """Test variance with None values."""
         data = StatsList([1, None, 5, None, 9])
         assert data.variance() == pytest.approx(10.666666, rel=1e-5)
+
+    def test_variance_all_none_raises_error(self):
+        """Test that all None values raises ValueError."""
+        data = StatsList([None, None])
+        with pytest.raises(
+            ValueError, match="Cannot compute variance of empty sequence"
+        ):
+            data.variance()
