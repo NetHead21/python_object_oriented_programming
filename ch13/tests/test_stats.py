@@ -87,3 +87,9 @@ class TestMedian:
         """Test median with single value."""
         data = StatsList([42])
         assert data.median() == 42
+
+    def test_median_all_none_raises_error(self):
+        """Test that all None values raises ValueError."""
+        data = StatsList([None, None])
+        with pytest.raises(ValueError, match="Cannot compute median of empty sequence"):
+            data.median()
