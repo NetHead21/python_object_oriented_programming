@@ -309,3 +309,12 @@ class TestQuantile:
         data = StatsList([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
         # Use approximate comparison for floating point
         assert abs(data.quantile(0.95) - 9.55) < 0.01
+
+
+# =============================================================================
+# Tests for summary()
+# =============================================================================
+
+
+class TestSummary:
+    """Test cases for the summary() method."""
