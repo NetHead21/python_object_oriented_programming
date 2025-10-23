@@ -303,3 +303,9 @@ class TestQuantile:
             ValueError, match="Cannot compute quantile of empty sequence"
         ):
             data.quantile(0.5)
+
+    def test_quantile_95th_percentile(self):
+        """Test 95th percentile."""
+        data = StatsList([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+        # Use approximate comparison for floating point
+        assert abs(data.quantile(0.95) - 9.55) < 0.01
