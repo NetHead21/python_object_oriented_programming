@@ -334,3 +334,13 @@ class TestSummary:
         assert "q3" in summary
         assert "range" in summary
         assert "none_count" in summary
+
+    def test_summary_with_none(self):
+        """Test summary with None values."""
+        data = StatsList([1, None, 3, None, 5, 7, 9])
+        summary = data.summary()
+
+        assert summary["count"] == 5
+        assert summary["none_count"] == 2
+        assert summary["min"] == 1.0
+        assert summary["max"] == 9.0
