@@ -244,3 +244,12 @@ class TestStddev:
         import math
 
         assert data.stddev() == pytest.approx(math.sqrt(data.variance()))
+
+
+# =============================================================================
+# Tests for quantile()
+# =============================================================================
+
+
+class TestQuantile:
+    """Test cases for the quantile() method."""
