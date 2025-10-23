@@ -253,3 +253,8 @@ class TestStddev:
 
 class TestQuantile:
     """Test cases for the quantile() method."""
+
+    def test_quantile_median(self):
+        """Test quantile at 0.5 (median)."""
+        data = StatsList([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+        assert data.quantile(0.5) == 5.5
