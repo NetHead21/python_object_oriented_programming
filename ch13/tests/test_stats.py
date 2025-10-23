@@ -231,3 +231,9 @@ class TestStddev:
         data = StatsList([None])
         with pytest.raises(ValueError):
             data.stddev()
+
+    def test_stddev_empty_raises_error(self):
+        """Test that empty list raises ValueError."""
+        data = StatsList([])
+        with pytest.raises(ValueError):
+            data.stddev()
