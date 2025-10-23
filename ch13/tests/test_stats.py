@@ -268,3 +268,8 @@ class TestQuantile:
         """Test third quartile (Q3)."""
         data = StatsList([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
         assert data.quantile(0.75) == 7.75
+
+    def test_quantile_with_none(self):
+        """Test quantile with None values."""
+        data = StatsList([1, None, 3, None, 5])
+        assert data.quantile(0.5) == 3.0
