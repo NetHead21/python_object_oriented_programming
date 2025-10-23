@@ -220,3 +220,8 @@ class TestStddev:
         """Test standard deviation when all values are identical."""
         data = StatsList([10, 10, 10, 10])
         assert data.stddev() == 0.0
+
+    def test_stddev_with_none(self):
+        """Test standard deviation with None values."""
+        data = StatsList([1, None, 5, None, 9])
+        assert round(data.stddev(), 4) == 3.2660
