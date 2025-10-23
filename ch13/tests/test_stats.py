@@ -159,3 +159,8 @@ class TestMode:
 
 class TestVariance:
     """Test cases for the variance() method."""
+
+    def test_variance_simple(self):
+        """Test variance with simple values."""
+        data = StatsList([1, 2, 3, 4, 5])
+        assert data.variance() == 2.0
