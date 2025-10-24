@@ -413,3 +413,8 @@ class TestRange:
         data = StatsList([])
         with pytest.raises(ValueError, match="Cannot compute range of empty sequence"):
             data.range()
+
+    def test_range_single_value(self):
+        """Test range with single value (should be 0)."""
+        data = StatsList([42])
+        assert data.range() == 0.0
