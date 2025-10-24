@@ -432,3 +432,8 @@ class TestRange:
 
 class TestCount:
     """Test cases for the count() method."""
+
+    def test_count_no_none(self):
+        """Test count with no None values."""
+        data = StatsList([1, 2, 3, 4, 5])
+        assert data.count() == 5
