@@ -401,3 +401,9 @@ class TestRange:
         """Test range with negative values."""
         data = StatsList([-5, 0, 5])
         assert data.range() == 10.0
+
+    def test_range_all_none_raises_error(self):
+        """Test that all None values raises ValueError."""
+        data = StatsList([None, None])
+        with pytest.raises(ValueError, match="Cannot compute range of empty sequence"):
+            data.range()
