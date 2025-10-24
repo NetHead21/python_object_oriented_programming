@@ -457,3 +457,8 @@ class TestCount:
         """Test count with zero values (zeros should be counted)."""
         data = StatsList([0, 0, 0])
         assert data.count() == 3
+
+    def test_count_mixed(self):
+        """Test count with mixed values and None."""
+        data = StatsList([1, 2, None, 0, None, -1])
+        assert data.count() == 4
