@@ -423,3 +423,12 @@ class TestRange:
         """Test range with large spread."""
         data = StatsList([1, 1000])
         assert data.range() == 999.0
+
+
+# =============================================================================
+# Tests for count()
+# =============================================================================
+
+
+class TestCount:
+    """Test cases for the count() method."""
