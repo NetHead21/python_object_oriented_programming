@@ -447,3 +447,8 @@ class TestCount:
         """Test count with all None values."""
         data = StatsList([None, None, None])
         assert data.count() == 0
+
+    def test_count_empty_list(self):
+        """Test count with empty list."""
+        data = StatsList([])
+        assert data.count() == 0
