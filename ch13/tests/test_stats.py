@@ -481,3 +481,8 @@ class TestCountNone:
         """Test count_none with some None values."""
         data = StatsList([1, None, 3, None, 5])
         assert data.count_none() == 2
+
+    def test_count_none_all_none(self):
+        """Test count_none with all None values."""
+        data = StatsList([None, None, None])
+        assert data.count_none() == 3
