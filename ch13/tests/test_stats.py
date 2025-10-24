@@ -452,3 +452,8 @@ class TestCount:
         """Test count with empty list."""
         data = StatsList([])
         assert data.count() == 0
+
+    def test_count_with_zeros(self):
+        """Test count with zero values (zeros should be counted)."""
+        data = StatsList([0, 0, 0])
+        assert data.count() == 3
