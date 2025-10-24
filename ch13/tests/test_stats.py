@@ -396,3 +396,8 @@ class TestRange:
         """Test range with None values."""
         data = StatsList([1, None, 5, None, 9])
         assert data.range() == 8.0
+
+    def test_range_negative_values(self):
+        """Test range with negative values."""
+        data = StatsList([-5, 0, 5])
+        assert data.range() == 10.0
