@@ -391,3 +391,8 @@ class TestRange:
         """Test range when all values are the same."""
         data = StatsList([10, 10, 10])
         assert data.range() == 0.0
+
+    def test_range_with_none(self):
+        """Test range with None values."""
+        data = StatsList([1, None, 5, None, 9])
+        assert data.range() == 8.0
