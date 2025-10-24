@@ -372,3 +372,12 @@ class TestSummary:
         data = StatsList([1, 2, 3, 4, 5])
         summary = data.summary()
         assert summary["none_count"] == 0
+
+
+# =============================================================================
+# Tests for range()
+# =============================================================================
+
+
+class TestRange:
+    """Test cases for the range() method."""
