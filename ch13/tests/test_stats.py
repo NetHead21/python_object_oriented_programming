@@ -407,3 +407,9 @@ class TestRange:
         data = StatsList([None, None])
         with pytest.raises(ValueError, match="Cannot compute range of empty sequence"):
             data.range()
+
+    def test_range_empty_raises_error(self):
+        """Test that empty list raises ValueError."""
+        data = StatsList([])
+        with pytest.raises(ValueError, match="Cannot compute range of empty sequence"):
+            data.range()
