@@ -381,3 +381,8 @@ class TestSummary:
 
 class TestRange:
     """Test cases for the range() method."""
+
+    def test_range_simple(self):
+        """Test range with simple values."""
+        data = StatsList([1, 2, 3, 4, 5])
+        assert data.range() == 4.0
