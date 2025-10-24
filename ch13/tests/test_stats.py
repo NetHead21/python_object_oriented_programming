@@ -418,3 +418,8 @@ class TestRange:
         """Test range with single value (should be 0)."""
         data = StatsList([42])
         assert data.range() == 0.0
+
+    def test_range_large_spread(self):
+        """Test range with large spread."""
+        data = StatsList([1, 1000])
+        assert data.range() == 999.0
