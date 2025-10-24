@@ -462,3 +462,12 @@ class TestCount:
         """Test count with mixed values and None."""
         data = StatsList([1, 2, None, 0, None, -1])
         assert data.count() == 4
+
+
+# =============================================================================
+# Tests for count_none()
+# =============================================================================
+
+
+class TestCountNone:
+    """Test cases for the count_none() method."""
