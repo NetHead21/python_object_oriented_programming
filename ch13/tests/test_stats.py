@@ -533,3 +533,9 @@ class TestRemoveOutliers:
         cleaned = data.remove_outliers(method="iqr")
         assert len(cleaned) == 5
         assert list(cleaned) == [1, 2, 3, 4, 5]
+
+    def test_remove_outliers_all_same(self):
+        """Test outlier removal when all values are the same."""
+        data = StatsList([5, 5, 5, 5])
+        cleaned = data.remove_outliers(method="zscore")
+        assert len(cleaned) == 4
