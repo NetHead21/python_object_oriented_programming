@@ -569,3 +569,9 @@ class TestRemoveOutliers:
         cleaned_lenient = data.remove_outliers(method="iqr", threshold=3.0)
         # Lenient threshold should keep more values
         assert len(cleaned_lenient) >= len(cleaned_strict)
+
+    def test_remove_outliers_negative_values(self):
+        """Test outlier removal with negative outliers."""
+        data = StatsList([-100, 1, 2, 3, 4, 5])
+        cleaned = data.remove_outliers(method="iqr")
+        assert -100 not in cleaned
