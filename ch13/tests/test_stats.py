@@ -496,3 +496,12 @@ class TestCountNone:
         """Test count_none with single None value."""
         data = StatsList([1, 2, None, 4])
         assert data.count_none() == 1
+
+
+# =============================================================================
+# Tests for remove_outliers()
+# =============================================================================
+
+
+class TestRemoveOutliers:
+    """Test cases for the remove_outliers() method."""
