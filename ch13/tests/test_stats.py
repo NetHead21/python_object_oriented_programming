@@ -637,3 +637,12 @@ class TestEdgeCases:
         summary = cleaned.summary()
         assert summary["count"] > 0
         assert summary["none_count"] == 2
+
+    def test_statslist_is_list(self):
+        """Test that StatsList behaves like a list."""
+        data = StatsList([1, 2, 3])
+        assert isinstance(data, list)
+        assert len(data) == 3
+        assert data[0] == 1
+        data.append(4)
+        assert len(data) == 4
