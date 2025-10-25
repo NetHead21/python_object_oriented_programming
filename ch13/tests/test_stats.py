@@ -646,3 +646,11 @@ class TestEdgeCases:
         assert data[0] == 1
         data.append(4)
         assert len(data) == 4
+
+    def test_statslist_append_none(self):
+        """Test appending None to StatsList."""
+        data = StatsList([1, 2, 3])
+        data.append(None)
+        assert len(data) == 4
+        assert data.count() == 3
+        assert data.count_none() == 1
