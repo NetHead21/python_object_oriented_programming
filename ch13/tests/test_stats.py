@@ -584,3 +584,9 @@ class TestRemoveOutliers:
 
 class TestEdgeCases:
     """Test edge cases and special scenarios."""
+
+    def test_zero_values_not_filtered(self):
+        """Test that zero values are not treated as None."""
+        data = StatsList([0, 1, 2, 3])
+        assert data.count() == 4
+        assert 0.0 in [data.quantile(0)]
