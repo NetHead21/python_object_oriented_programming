@@ -600,3 +600,8 @@ class TestEdgeCases:
         """Test handling of very large numbers."""
         data = StatsList([1e10, 2e10, 3e10])
         assert data.mean() == 2e10
+
+    def test_very_small_numbers(self):
+        """Test handling of very small numbers."""
+        data = StatsList([1e-10, 2e-10, 3e-10])
+        assert data.mean() == pytest.approx(2e-10)
