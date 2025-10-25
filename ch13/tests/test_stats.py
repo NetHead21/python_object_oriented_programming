@@ -595,3 +595,8 @@ class TestEdgeCases:
         """Test handling of negative zero."""
         data = StatsList([-0.0, 0.0, 1.0])
         assert data.count() == 3
+
+    def test_very_large_numbers(self):
+        """Test handling of very large numbers."""
+        data = StatsList([1e10, 2e10, 3e10])
+        assert data.mean() == 2e10
