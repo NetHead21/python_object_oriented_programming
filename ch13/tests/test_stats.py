@@ -547,3 +547,9 @@ class TestRemoveOutliers:
             ValueError, match="Cannot remove outliers from empty sequence"
         ):
             data.remove_outliers()
+
+    def test_remove_outliers_invalid_method(self):
+        """Test that invalid method raises ValueError."""
+        data = StatsList([1, 2, 3])
+        with pytest.raises(ValueError, match="Unknown method"):
+            data.remove_outliers(method="invalid")
