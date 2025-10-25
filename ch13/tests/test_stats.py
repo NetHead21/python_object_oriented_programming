@@ -520,3 +520,9 @@ class TestRemoveOutliers:
         assert 100 not in cleaned
         # None values should be preserved
         assert cleaned.count_none() == 2
+
+    def test_remove_outliers_zscore_method(self):
+        """Test outlier removal with Z-score method."""
+        data = StatsList([1, 2, 3, 4, 5, 100])
+        cleaned = data.remove_outliers(method="zscore", threshold=2.0)
+        assert 100 not in cleaned
