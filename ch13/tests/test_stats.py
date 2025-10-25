@@ -561,3 +561,11 @@ class TestRemoveOutliers:
         assert cleaned is not data
         assert 100 in data  # Original unchanged
         assert 100 not in cleaned
+
+    def test_remove_outliers_custom_threshold(self):
+        """Test outlier removal with custom threshold."""
+        data = StatsList([1, 2, 3, 4, 5, 10])
+        cleaned_strict = data.remove_outliers(method="iqr", threshold=1.5)
+        cleaned_lenient = data.remove_outliers(method="iqr", threshold=3.0)
+        # Lenient threshold should keep more values
+        assert len(cleaned_lenient) >= len(cleaned_strict)
