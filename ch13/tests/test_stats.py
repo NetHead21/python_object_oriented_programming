@@ -610,3 +610,14 @@ class TestEdgeCases:
         """Test mixed integer and float values."""
         data = StatsList([1, 2.5, 3, 4.5])
         assert data.mean() == 2.75
+
+    def test_single_value_all_methods(self):
+        """Test all methods with single value."""
+        data = StatsList([42])
+        assert data.mean() == 42.0
+        assert data.median() == 42
+        assert data.mode() == [42]
+        assert data.variance() == 0.0
+        assert data.stddev() == 0.0
+        assert data.range() == 0.0
+        assert data.count() == 1
