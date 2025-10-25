@@ -621,3 +621,11 @@ class TestEdgeCases:
         assert data.stddev() == 0.0
         assert data.range() == 0.0
         assert data.count() == 1
+
+    def test_two_values_all_methods(self):
+        """Test all methods with two values."""
+        data = StatsList([1, 5])
+        assert data.mean() == 3.0
+        assert data.median() == 3.0
+        assert data.range() == 4.0
+        assert data.count() == 2
