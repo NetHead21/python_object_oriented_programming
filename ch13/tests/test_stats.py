@@ -629,3 +629,11 @@ class TestEdgeCases:
         assert data.median() == 3.0
         assert data.range() == 4.0
         assert data.count() == 2
+
+    def test_chain_operations(self):
+        """Test chaining multiple operations."""
+        data = StatsList([1, 2, None, 3, 4, 5, None, 100])
+        cleaned = data.remove_outliers()
+        summary = cleaned.summary()
+        assert summary["count"] > 0
+        assert summary["none_count"] == 2
