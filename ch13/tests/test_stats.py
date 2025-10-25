@@ -505,3 +505,10 @@ class TestCountNone:
 
 class TestRemoveOutliers:
     """Test cases for the remove_outliers() method."""
+
+    def test_remove_outliers_iqr_method(self):
+        """Test outlier removal with IQR method."""
+        data = StatsList([1, 2, 3, 4, 5, 100])
+        cleaned = data.remove_outliers(method="iqr")
+        assert 100 not in cleaned
+        assert all(x in cleaned for x in [1, 2, 3, 4, 5])
