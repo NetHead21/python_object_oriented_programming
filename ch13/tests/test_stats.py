@@ -512,3 +512,11 @@ class TestRemoveOutliers:
         cleaned = data.remove_outliers(method="iqr")
         assert 100 not in cleaned
         assert all(x in cleaned for x in [1, 2, 3, 4, 5])
+
+    def test_remove_outliers_iqr_with_none(self):
+        """Test outlier removal with None values."""
+        data = StatsList([1, None, 2, 3, None, 100])
+        cleaned = data.remove_outliers(method="iqr")
+        assert 100 not in cleaned
+        # None values should be preserved
+        assert cleaned.count_none() == 2
