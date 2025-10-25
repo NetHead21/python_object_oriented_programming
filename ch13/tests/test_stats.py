@@ -605,3 +605,8 @@ class TestEdgeCases:
         """Test handling of very small numbers."""
         data = StatsList([1e-10, 2e-10, 3e-10])
         assert data.mean() == pytest.approx(2e-10)
+
+    def test_mixed_int_float(self):
+        """Test mixed integer and float values."""
+        data = StatsList([1, 2.5, 3, 4.5])
+        assert data.mean() == 2.75
