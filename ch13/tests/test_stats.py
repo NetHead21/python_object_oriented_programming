@@ -575,3 +575,12 @@ class TestRemoveOutliers:
         data = StatsList([-100, 1, 2, 3, 4, 5])
         cleaned = data.remove_outliers(method="iqr")
         assert -100 not in cleaned
+
+
+# =============================================================================
+# Edge Cases and Integration Tests
+# =============================================================================
+
+
+class TestEdgeCases:
+    """Test edge cases and special scenarios."""
