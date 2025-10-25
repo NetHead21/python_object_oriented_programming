@@ -590,3 +590,8 @@ class TestEdgeCases:
         data = StatsList([0, 1, 2, 3])
         assert data.count() == 4
         assert 0.0 in [data.quantile(0)]
+
+    def test_negative_zero(self):
+        """Test handling of negative zero."""
+        data = StatsList([-0.0, 0.0, 1.0])
+        assert data.count() == 3
