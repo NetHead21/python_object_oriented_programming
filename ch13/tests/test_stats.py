@@ -553,3 +553,11 @@ class TestRemoveOutliers:
         data = StatsList([1, 2, 3])
         with pytest.raises(ValueError, match="Unknown method"):
             data.remove_outliers(method="invalid")
+
+    def test_remove_outliers_returns_new_list(self):
+        """Test that remove_outliers returns a new list."""
+        data = StatsList([1, 2, 3, 4, 5, 100])
+        cleaned = data.remove_outliers()
+        assert cleaned is not data
+        assert 100 in data  # Original unchanged
+        assert 100 not in cleaned
