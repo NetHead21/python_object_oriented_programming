@@ -539,3 +539,11 @@ class TestRemoveOutliers:
         data = StatsList([5, 5, 5, 5])
         cleaned = data.remove_outliers(method="zscore")
         assert len(cleaned) == 4
+
+    def test_remove_outliers_empty_raises_error(self):
+        """Test that empty list raises ValueError."""
+        data = StatsList([None, None])
+        with pytest.raises(
+            ValueError, match="Cannot remove outliers from empty sequence"
+        ):
+            data.remove_outliers()
