@@ -526,3 +526,10 @@ class TestRemoveOutliers:
         data = StatsList([1, 2, 3, 4, 5, 100])
         cleaned = data.remove_outliers(method="zscore", threshold=2.0)
         assert 100 not in cleaned
+
+    def test_remove_outliers_no_outliers(self):
+        """Test outlier removal when there are no outliers."""
+        data = StatsList([1, 2, 3, 4, 5])
+        cleaned = data.remove_outliers(method="iqr")
+        assert len(cleaned) == 5
+        assert list(cleaned) == [1, 2, 3, 4, 5]
