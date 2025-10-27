@@ -138,3 +138,17 @@ class VigenereCipher:
             keyword (str): The keyword to use for encryption (case-insensitive).
         """
         self.keyword = keyword.upper()
+
+    def encode(self, plaintext: str) -> str:
+        """Encode plaintext (returns hardcoded value - incomplete implementation).
+
+        Args:
+            plaintext (str): The plaintext to encode.
+
+        Returns:
+            str: A hardcoded ciphertext string (not actual encryption).
+
+        Note:
+            This is a stub implementation. Use VigenereCipherV2 or V3 for real encoding.
+        """
+        return "XECWQXUIVCRKHWA"
