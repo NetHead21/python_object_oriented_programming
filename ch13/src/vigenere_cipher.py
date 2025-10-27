@@ -70,3 +70,34 @@ def combine_chars(plain: str, key: str) -> str:
     plain = ascii_uppercase.index(plain.upper())
     key = ascii_uppercase.index(key.upper())
     return ascii_uppercase[(plain + key) % len(ascii_uppercase)]
+
+
+def separate_chars(cipher: str, key: str) -> str:
+    """Decode a single ciphertext character using a keyword character.
+
+    Separates a ciphertext character from a keyword character by shifting the
+    ciphertext backward in the alphabet by the position of the keyword character.
+    This is the core decoding operation of the Vigenère cipher.
+
+    Args:
+        cipher (str): A single character from the ciphertext (A-Z, case-insensitive).
+        key (str): A single character from the keyword (A-Z, case-insensitive).
+
+    Returns:
+        str: The decoded character (uppercase A-Z).
+
+    Raises:
+        ValueError: If either character is not in the alphabet.
+
+    Example:
+        >>> separate_chars('L', 'L')  # L(11) - L(11) = A(0)
+        'A'
+        >>> separate_chars('X', 'E')  # X(23) - E(4) = T(19)
+        'T'
+        >>> separate_chars('A', 'B')  # A(0) - B(1) = Z(25) (wraps around)
+        'Z'
+
+    Note:
+        Uses modulo arithmetic to wrap around the alphabet (negative wraps to end).
+        This is the inverse operation of combine_chars().
+    """
