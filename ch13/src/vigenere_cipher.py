@@ -267,3 +267,5 @@ class VigenereCipherV2:
             >>> cipher.extend_keyword(10)
             'ABCABCABCA'
         """
+        repeats = length // len(self.keyword) + 1
+        return (self.keyword * repeats)[:length]
