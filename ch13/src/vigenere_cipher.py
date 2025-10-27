@@ -36,3 +36,33 @@ Note:
 
 from string import ascii_uppercase
 from typing import Callable
+
+
+def combine_chars(plain: str, key: str) -> str:
+    """Encode a single plaintext character using a keyword character.
+
+    Combines a plaintext character with a keyword character by shifting the
+    plaintext forward in the alphabet by the position of the keyword character.
+    This is the core encoding operation of the Vigenère cipher.
+
+    Args:
+        plain (str): A single character from the plaintext (A-Z, case-insensitive).
+        key (str): A single character from the keyword (A-Z, case-insensitive).
+
+    Returns:
+        str: The encoded character (uppercase A-Z).
+
+    Raises:
+        ValueError: If either character is not in the alphabet.
+
+    Example:
+        >>> combine_chars('A', 'L')  # A(0) + L(11) = L(11)
+        'L'
+        >>> combine_chars('T', 'E')  # T(19) + E(4) = X(23)
+        'X'
+        >>> combine_chars('Z', 'B')  # Z(25) + B(1) = A(0) (wraps around)
+        'A'
+
+    Note:
+        Uses modulo arithmetic to wrap around the alphabet (Z wraps to A).
+    """
