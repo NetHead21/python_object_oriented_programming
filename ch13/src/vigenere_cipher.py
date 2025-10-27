@@ -130,3 +130,11 @@ class VigenereCipher:
         This is an incomplete implementation for demonstration purposes only.
         It does not perform actual encryption.
     """
+
+    def __init__(self, keyword: str) -> None:
+        """Initialize the cipher with a keyword.
+
+        Args:
+            keyword (str): The keyword to use for encryption (case-insensitive).
+        """
+        self.keyword = keyword.upper()
