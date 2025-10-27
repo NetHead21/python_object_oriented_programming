@@ -101,3 +101,6 @@ def separate_chars(cipher: str, key: str) -> str:
         Uses modulo arithmetic to wrap around the alphabet (negative wraps to end).
         This is the inverse operation of combine_chars().
     """
+    cipher = ascii_uppercase.index(cipher.upper())
+    key = ascii_uppercase.index(key.upper())
+    return ascii_uppercase[(cipher - key) % len(ascii_uppercase)]
