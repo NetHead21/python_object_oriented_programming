@@ -171,3 +171,31 @@ class VigenereCipher:
         """
         repeats = length // len(self.keyword) + 1
         return (self.keyword * repeats)[:length]
+
+
+class VigenereCipherV2:
+    """Vigenère cipher implementation - Version 2 (Complete, but not DRY).
+
+    This is a complete, working implementation of the Vigenère cipher with both
+    encoding and decoding capabilities. However, it contains code duplication
+    between the encode() and decode() methods.
+
+    This version demonstrates a functional but not optimally refactored solution.
+    See VigenereCipherV3 for a refactored version following DRY principles.
+
+    Attributes:
+        keyword (str): The encryption keyword, stored in uppercase.
+
+    Example:
+        >>> cipher = VigenereCipherV2("LEMON")
+        >>> encrypted = cipher.encode("ATTACKATDAWN")
+        >>> print(encrypted)
+        'LXFOPVEFRNHR'
+        >>> decrypted = cipher.decode(encrypted)
+        >>> print(decrypted)
+        'ATTACKATDAWN'
+
+    Note:
+        This implementation works correctly but has code duplication.
+        VigenereCipherV3 provides a more maintainable refactored version.
+    """
