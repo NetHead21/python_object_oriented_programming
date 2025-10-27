@@ -376,3 +376,20 @@ class VigenereCipherV3:
             'HELLOWORLD'
         """
         return self._code(ciphertext, separate_chars)
+
+    def extend_keyword(self, length: int) -> str:
+        """Extend the keyword to match the desired length by repeating it.
+
+        Args:
+            length (int): The desired length of the extended keyword.
+
+        Returns:
+            str: The keyword repeated and truncated to the specified length.
+
+        Example:
+            >>> cipher = VigenereCipherV3("DOG")
+            >>> cipher.extend_keyword(8)
+            'DOGDOGDO'
+        """
+        repeats = length // len(self.keyword) + 1
+        return (self.keyword * repeats)[:length]
