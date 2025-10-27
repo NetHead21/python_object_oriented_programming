@@ -252,3 +252,18 @@ class VigenereCipherV2:
         keyword = self.extend_keyword(len(ciphertext))
         decoded = (separate_chars(c, k) for c, k in zip(ciphertext.upper(), keyword))
         return "".join(decoded)
+
+    def extend_keyword(self, length: int) -> str:
+        """Extend the keyword to match the desired length by repeating it.
+
+        Args:
+            length (int): The desired length of the extended keyword.
+
+        Returns:
+            str: The keyword repeated and truncated to the specified length.
+
+        Example:
+            >>> cipher = VigenereCipherV2("ABC")
+            >>> cipher.extend_keyword(10)
+            'ABCABCABCA'
+        """
