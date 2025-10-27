@@ -231,3 +231,21 @@ class VigenereCipherV2:
         keyword = self.extend_keyword(len(plaintext))
         encoded = (combine_chars(p, k) for p, k in zip(plaintext.upper(), keyword))
         return "".join(encoded)
+
+    def decode(self, ciphertext: str) -> str:
+        """Decode ciphertext using the Vigenère cipher.
+
+        Decrypts the ciphertext by shifting each character backward in the alphabet
+        based on the corresponding character in the repeated keyword.
+
+        Args:
+            ciphertext (str): The ciphertext to decode (uppercase letters).
+
+        Returns:
+            str: The decoded plaintext in uppercase.
+
+        Example:
+            >>> cipher = VigenereCipherV2("KEY")
+            >>> cipher.decode("RIJVS")
+            'HELLO'
+        """
