@@ -425,3 +425,7 @@ def demo() -> None:
     print(f"Plaintext:  {plaintext}")
     print(f"Ciphertext: {ciphertext}")
     print(f"Decoded:    {decoded}")
+
+
+if __name__ == "__main__":
+    demo()
