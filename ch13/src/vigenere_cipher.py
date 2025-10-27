@@ -228,3 +228,6 @@ class VigenereCipherV2:
         Note:
             Non-alphabetic characters are not handled in this version.
         """
+        keyword = self.extend_keyword(len(plaintext))
+        encoded = (combine_chars(p, k) for p, k in zip(plaintext.upper(), keyword))
+        return "".join(encoded)
