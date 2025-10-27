@@ -199,3 +199,11 @@ class VigenereCipherV2:
         This implementation works correctly but has code duplication.
         VigenereCipherV3 provides a more maintainable refactored version.
     """
+
+    def __init__(self, keyword: str) -> None:
+        """Initialize the cipher with a keyword.
+
+        Args:
+            keyword (str): The keyword to use for encryption/decryption (case-insensitive).
+        """
+        self.keyword = keyword.upper()
