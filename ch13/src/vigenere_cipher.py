@@ -299,3 +299,11 @@ class VigenereCipherV3:
         - More maintainable and extensible
         - Demonstrates Strategy pattern with combiner functions
     """
+
+    def __init__(self, keyword: str) -> None:
+        """Initialize the cipher with a keyword.
+
+        Args:
+            keyword (str): The keyword to use for encryption/decryption (case-insensitive).
+        """
+        self.keyword = keyword.upper()
