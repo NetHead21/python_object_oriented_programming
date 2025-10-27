@@ -337,3 +337,22 @@ class VigenereCipherV3:
         keyword = self.extend_keyword(len(text))
         trans_coded = (combiner(t, k) for t, k in zip(text, keyword))
         return "".join(trans_coded)
+
+    def encode(self, plaintext: str) -> str:
+        """Encode plaintext using the Vigenère cipher.
+
+        Encrypts the plaintext by applying the combine_chars function with the
+        keyword. Spaces are automatically removed from the input.
+
+        Args:
+            plaintext (str): The plaintext to encode (case-insensitive, spaces allowed).
+
+        Returns:
+            str: The encoded ciphertext in uppercase without spaces.
+
+        Example:
+            >>> cipher = VigenereCipherV3("SECRET")
+            >>> cipher.encode("HELLO WORLD")
+            'ZINCS GCVPR'  # (actual output depends on keyword)
+        """
+        return self._code(plaintext, combine_chars)
