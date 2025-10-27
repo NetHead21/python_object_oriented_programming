@@ -269,3 +269,33 @@ class VigenereCipherV2:
         """
         repeats = length // len(self.keyword) + 1
         return (self.keyword * repeats)[:length]
+
+
+class VigenereCipherV3:
+    """Vigenère cipher implementation - Version 3 (Refactored with DRY).
+
+    This is the refactored version of VigenereCipherV2 that eliminates code
+    duplication by extracting common logic into a private _code() method.
+    This version also handles spaces by removing them before encoding.
+
+    This implementation follows the DRY (Don't Repeat Yourself) principle and
+    demonstrates the Strategy pattern by accepting different combiner functions.
+
+    Attributes:
+        keyword (str): The encryption keyword, stored in uppercase.
+
+    Example:
+        >>> cipher = VigenereCipherV3("LEMON")
+        >>> encrypted = cipher.encode("ATTACK AT DAWN")  # Spaces removed
+        >>> print(encrypted)
+        'LXFOPVEFRNHR'
+        >>> decrypted = cipher.decode(encrypted)
+        >>> print(decrypted)
+        'ATTACKATDAWN'
+
+    Advantages over V2:
+        - No code duplication between encode() and decode()
+        - Handles spaces in input text
+        - More maintainable and extensible
+        - Demonstrates Strategy pattern with combiner functions
+    """
