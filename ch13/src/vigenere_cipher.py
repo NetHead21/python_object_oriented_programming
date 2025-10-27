@@ -207,3 +207,24 @@ class VigenereCipherV2:
             keyword (str): The keyword to use for encryption/decryption (case-insensitive).
         """
         self.keyword = keyword.upper()
+
+    def encode(self, plaintext: str) -> str:
+        """Encode plaintext using the Vigenère cipher.
+
+        Encrypts the plaintext by shifting each character forward in the alphabet
+        based on the corresponding character in the repeated keyword.
+
+        Args:
+            plaintext (str): The plaintext to encode (letters only, case-insensitive).
+
+        Returns:
+            str: The encoded ciphertext in uppercase.
+
+        Example:
+            >>> cipher = VigenereCipherV2("KEY")
+            >>> cipher.encode("HELLO")
+            'RIJVS'
+
+        Note:
+            Non-alphabetic characters are not handled in this version.
+        """
