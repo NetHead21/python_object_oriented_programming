@@ -33,3 +33,6 @@ Note:
     This implementation only works with uppercase letters A-Z. Spaces and
     special characters are removed during encoding.
 """
+
+from string import ascii_uppercase
+from typing import Callable
