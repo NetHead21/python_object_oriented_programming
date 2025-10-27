@@ -356,3 +356,23 @@ class VigenereCipherV3:
             'ZINCS GCVPR'  # (actual output depends on keyword)
         """
         return self._code(plaintext, combine_chars)
+
+    def decode(self, ciphertext: str) -> str:
+        """Decode ciphertext using the Vigenère cipher.
+
+        Decrypts the ciphertext by applying the separate_chars function with the
+        keyword.
+
+        Args:
+            ciphertext (str): The ciphertext to decode (uppercase letters).
+
+        Returns:
+            str: The decoded plaintext in uppercase without spaces.
+
+        Example:
+            >>> cipher = VigenereCipherV3("SECRET")
+            >>> encrypted = cipher.encode("HELLOWORLD")
+            >>> cipher.decode(encrypted)
+            'HELLOWORLD'
+        """
+        return self._code(ciphertext, separate_chars)
