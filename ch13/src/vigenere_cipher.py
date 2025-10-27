@@ -104,3 +104,29 @@ def separate_chars(cipher: str, key: str) -> str:
     cipher = ascii_uppercase.index(cipher.upper())
     key = ascii_uppercase.index(key.upper())
     return ascii_uppercase[(cipher - key) % len(ascii_uppercase)]
+
+
+class VigenereCipher:
+    """Vigenère cipher implementation - Version 1 (Incomplete).
+
+    This is an initial, incomplete implementation that demonstrates the basic
+    structure of the cipher. The encode method returns a hardcoded value and
+    there is no decode method.
+
+    This version is included for educational purposes to show the evolution
+    of the implementation. Use VigenereCipherV2 or VigenereCipherV3 for
+    actual encryption/decryption.
+
+    Attributes:
+        keyword (str): The encryption keyword, stored in uppercase.
+
+    Example:
+        >>> cipher = VigenereCipher("LEMON")
+        >>> # Note: This returns a hardcoded value, not actual encryption
+        >>> cipher.encode("ATTACKATDAWN")
+        'XECWQXUIVCRKHWA'
+
+    Note:
+        This is an incomplete implementation for demonstration purposes only.
+        It does not perform actual encryption.
+    """
