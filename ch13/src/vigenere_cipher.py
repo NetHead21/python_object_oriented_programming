@@ -249,3 +249,6 @@ class VigenereCipherV2:
             >>> cipher.decode("RIJVS")
             'HELLO'
         """
+        keyword = self.extend_keyword(len(ciphertext))
+        decoded = (separate_chars(c, k) for c, k in zip(ciphertext.upper(), keyword))
+        return "".join(decoded)
