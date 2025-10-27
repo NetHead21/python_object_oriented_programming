@@ -66,3 +66,7 @@ def combine_chars(plain: str, key: str) -> str:
     Note:
         Uses modulo arithmetic to wrap around the alphabet (Z wraps to A).
     """
+
+    plain = ascii_uppercase.index(plain.upper())
+    key = ascii_uppercase.index(key.upper())
+    return ascii_uppercase[(plain + key) % len(ascii_uppercase)]
