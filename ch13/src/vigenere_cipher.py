@@ -333,3 +333,7 @@ class VigenereCipherV3:
         Note:
             This is an internal method. Use encode() or decode() instead.
         """
+        text = text.replace(" ", "").upper()
+        keyword = self.extend_keyword(len(text))
+        trans_coded = (combiner(t, k) for t, k in zip(text, keyword))
+        return "".join(trans_coded)
