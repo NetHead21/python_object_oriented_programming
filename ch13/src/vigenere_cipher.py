@@ -307,3 +307,29 @@ class VigenereCipherV3:
             keyword (str): The keyword to use for encryption/decryption (case-insensitive).
         """
         self.keyword = keyword.upper()
+
+    def _code(self, text: str, combiner: Callable[[str, str], str]) -> str:
+        """Internal method to encode or decode text using a combiner function.
+
+        This private method contains the common logic for both encoding and
+        decoding. It removes spaces, extends the keyword, and applies the
+        provided combiner function to each character pair.
+
+        Args:
+            text (str): The text to encode or decode (case-insensitive).
+            combiner (Callable[[str, str], str]): Function to combine/separate
+                characters (combine_chars for encoding, separate_chars for decoding).
+
+        Returns:
+            str: The transformed text in uppercase without spaces.
+
+        Example:
+            >>> cipher = VigenereCipherV3("KEY")
+            >>> cipher._code("HELLO", combine_chars)  # Encoding
+            'RIJVS'
+            >>> cipher._code("RIJVS", separate_chars)  # Decoding
+            'HELLO'
+
+        Note:
+            This is an internal method. Use encode() or decode() instead.
+        """
