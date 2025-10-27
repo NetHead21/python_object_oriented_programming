@@ -152,3 +152,22 @@ class VigenereCipher:
             This is a stub implementation. Use VigenereCipherV2 or V3 for real encoding.
         """
         return "XECWQXUIVCRKHWA"
+
+    def extend_keyword(self, length: int) -> str:
+        """Extend the keyword to match the desired length by repeating it.
+
+        Args:
+            length (int): The desired length of the extended keyword.
+
+        Returns:
+            str: The keyword repeated and truncated to the specified length.
+
+        Example:
+            >>> cipher = VigenereCipher("LEMON")
+            >>> cipher.extend_keyword(15)
+            'LEMONLEMONLEMON'
+            >>> cipher.extend_keyword(7)
+            'LEMONLE'
+        """
+        repeats = length // len(self.keyword) + 1
+        return (self.keyword * repeats)[:length]
