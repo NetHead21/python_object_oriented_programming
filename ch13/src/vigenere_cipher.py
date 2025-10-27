@@ -393,3 +393,35 @@ class VigenereCipherV3:
         """
         repeats = length // len(self.keyword) + 1
         return (self.keyword * repeats)[:length]
+
+
+def demo() -> None:
+    """Demonstrate the Vigenère cipher encoding and decoding.
+
+    This function creates a VigenereCipherV3 instance with the keyword "LEMON",
+    encodes a plaintext message, then decodes it back to verify the cipher works
+    correctly. The demonstration shows the full encryption/decryption cycle.
+
+    This demonstrates that:
+    1. The same keyword must be used for both encoding and decoding
+    2. The cipher is reversible (decode(encode(text)) == text)
+    3. The encoding transforms plaintext into unreadable ciphertext
+    4. Version 3 (refactored) properly handles the complete cycle
+
+    Example Output:
+        >>> demo()
+        Plaintext:  ATTACKATDAWN
+        Ciphertext: LXFOPVEFRNHR
+        Decoded:    ATTACKATDAWN
+
+    Note:
+        Uses VigenereCipherV3 (the refactored version) which properly implements
+        both encoding and decoding with no code duplication.
+    """
+    vigenere = VigenereCipherV3("LEMON")
+    plaintext = "ATTACKATDAWN"
+    ciphertext = vigenere.encode(plaintext)
+    decoded = vigenere.decode(ciphertext)
+    print(f"Plaintext:  {plaintext}")
+    print(f"Ciphertext: {ciphertext}")
+    print(f"Decoded:    {decoded}")
