@@ -11,3 +11,12 @@ from src.vigenere_cipher import (
     separate_chars,
 )
 import pytest
+
+
+# Version 1. Incomplete
+
+
+@pytest.fixture
+def vigenere_train() -> VigenereCipher:
+    cipher = VigenereCipher("TRAIN")
+    return cipher
