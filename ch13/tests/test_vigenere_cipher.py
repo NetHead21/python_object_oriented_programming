@@ -123,3 +123,13 @@ def test_encode_v3(vigenere_v3_train: VigenereCipherV3) -> None:
 def test_decode_v3(vigenere_v3_train: VigenereCipherV3) -> None:
     decoded = vigenere_v3_train.decode("XECWQXUIVCRKHWA")
     assert decoded == "ENCODEDINPYTHON"
+
+
+def test_encode_characters_v3(vigenere_v3_train: VigenereCipherV3) -> None:
+    encoded = vigenere_v3_train.encode("E")
+    assert encoded == "X"
+
+
+def test_encode_spaces_v3(vigenere_v3_train: VigenereCipherV3) -> None:
+    encoded = vigenere_v3_train.encode("ENCODED IN PYTHON")
+    assert encoded == "XECWQXUIVCRKHWA"
