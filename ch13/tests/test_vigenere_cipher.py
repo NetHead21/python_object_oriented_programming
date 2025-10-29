@@ -113,3 +113,8 @@ def test_encode_lowercase_v2(vigenere_v2_train: VigenereCipherV2) -> None:
 def vigenere_v3_train() -> VigenereCipherV3:
     cipher = VigenereCipherV3("TRAIN")
     return cipher
+
+
+def test_encode_v3(vigenere_v3_train: VigenereCipherV3) -> None:
+    encoded = vigenere_v3_train.encode("ENCODEDINPYTHON")
+    assert encoded == "XECWQXUIVCRKHWA"
