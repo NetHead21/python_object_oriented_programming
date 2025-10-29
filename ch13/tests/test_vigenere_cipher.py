@@ -242,3 +242,9 @@ def test_all_same_keyword_character() -> None:
 
     assert cipher_v2.encode(plaintext) == expected
     assert cipher_v3.encode(plaintext) == expected
+
+
+def test_extend_keyword_edge_cases(vigenere_train: VigenereCipher) -> None:
+    """Test extend_keyword with various edge cases"""
+    # Extend to exact multiple of keyword length
+    assert vigenere_train.extend_keyword(10) == "TRAINTRAIN"
