@@ -20,3 +20,8 @@ import pytest
 def vigenere_train() -> VigenereCipher:
     cipher = VigenereCipher("TRAIN")
     return cipher
+
+
+def test_encode(vigenere_train: VigenereCipher) -> None:
+    encoded = vigenere_train.encode("ENCODEDINPYTHON")
+    assert encoded == "XECWQXUIVCRKHWA"
