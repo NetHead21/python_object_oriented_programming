@@ -254,3 +254,10 @@ def test_extend_keyword_edge_cases(vigenere_train: VigenereCipher) -> None:
 
     # Extend to 1
     assert vigenere_train.extend_keyword(1) == "T"
+
+
+def test_case_insensitive_keyword() -> None:
+    """Test that keywords are case-insensitive"""
+    cipher_lower = VigenereCipherV3("lemon")
+    cipher_upper = VigenereCipherV3("LEMON")
+    cipher_mixed = VigenereCipherV3("LeMoN")
