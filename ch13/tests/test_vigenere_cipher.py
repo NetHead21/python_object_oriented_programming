@@ -218,3 +218,8 @@ def test_keyword_longer_than_plaintext() -> None:
 
     assert cipher_v2.decode(encoded_v2) == plaintext
     assert cipher_v3.decode(encoded_v3) == plaintext
+
+
+def test_repeated_characters() -> None:
+    """Test encoding of repeated characters"""
+    cipher = VigenereCipherV3("KEY")
