@@ -92,3 +92,9 @@ def test_decode_v2(vigenere_v2_train: VigenereCipherV2) -> None:
 def test_encode_characters_v2(vigenere_v2_train: VigenereCipherV2) -> None:
     encoded = vigenere_v2_train.encode("E")
     assert encoded == "X"
+
+
+@pytest.mark.xfail(reason="Fails with version 1 and 2 of VigenereCipher")
+def test_encode_spaces_v2(vigenere_v2_train: VigenereCipherV2) -> None:
+    encoded = vigenere_v2_train.encode("ENCODED IN PYTHON")
+    assert encoded == "XECWQXUIVCRKHWA"
