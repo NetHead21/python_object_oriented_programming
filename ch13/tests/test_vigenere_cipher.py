@@ -152,3 +152,6 @@ def test_non_alpha_raises() -> None:
 
     with pytest.raises(ValueError):
         combine_chars("1", "A")
+
+    with pytest.raises(ValueError):
+        combine_chars("A", "!")
