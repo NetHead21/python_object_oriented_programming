@@ -118,3 +118,8 @@ def vigenere_v3_train() -> VigenereCipherV3:
 def test_encode_v3(vigenere_v3_train: VigenereCipherV3) -> None:
     encoded = vigenere_v3_train.encode("ENCODEDINPYTHON")
     assert encoded == "XECWQXUIVCRKHWA"
+
+
+def test_decode_v3(vigenere_v3_train: VigenereCipherV3) -> None:
+    decoded = vigenere_v3_train.decode("XECWQXUIVCRKHWA")
+    assert decoded == "ENCODEDINPYTHON"
