@@ -25,3 +25,9 @@ def vigenere_train() -> VigenereCipher:
 def test_encode(vigenere_train: VigenereCipher) -> None:
     encoded = vigenere_train.encode("ENCODEDINPYTHON")
     assert encoded == "XECWQXUIVCRKHWA"
+
+
+@pytest.mark.xfail(reason="Fails with version 1 of VigenereCipher - no decode method")
+def test_decode(vigenere_train: VigenereCipher) -> None:
+    decoded = vigenere_train.decode("XECWQXUIVCRKHWA")
+    assert decoded == "ENCODEDINPYTHON"
