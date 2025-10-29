@@ -77,3 +77,8 @@ def test_combine_separate() -> None:
 def vigenere_v2_train() -> VigenereCipherV2:
     cipher = VigenereCipherV2("TRAIN")
     return cipher
+
+
+def test_encode_v2(vigenere_v2_train: VigenereCipherV2) -> None:
+    encoded = vigenere_v2_train.encode("ENCODEDINPYTHON")
+    assert encoded == "XECWQXUIVCRKHWA"
