@@ -47,3 +47,10 @@ def test_encode_spaces(vigenere_train: VigenereCipher) -> None:
 def test_combine_character() -> None:
     assert combine_chars("E", "T") == "X"
     assert combine_chars("N", "R") == "E"
+
+
+def test_extend_keyword(vigenere_train: VigenereCipher) -> None:
+    extended = vigenere_train.extend_keyword(16)
+    assert extended == "TRAINTRAINTRAINT"
+    extend = vigenere_train.extend_keyword(5)
+    assert extend == "TRAIN"
