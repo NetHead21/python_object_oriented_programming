@@ -37,3 +37,8 @@ def test_decode(vigenere_train: VigenereCipher) -> None:
 def test_encode_characters(vigenere_train: VigenereCipher) -> None:
     encoded = vigenere_train.encode("E")
     assert encoded == "X"
+
+
+def test_encode_spaces(vigenere_train: VigenereCipher) -> None:
+    encoded = vigenere_train.encode("encoded in Python")
+    assert encoded == "XECWQXUIVCRKHWA"
