@@ -229,3 +229,9 @@ def test_repeated_characters() -> None:
     # A + K, A + E, A + Y, A + K
     assert encoded == "KEYK"
     assert cipher.decode(encoded) == "AAAA"
+
+
+def test_all_same_keyword_character() -> None:
+    """Test with keyword containing all same characters"""
+    cipher_v2 = VigenereCipherV2("BBB")
+    cipher_v3 = VigenereCipherV3("BBB")
