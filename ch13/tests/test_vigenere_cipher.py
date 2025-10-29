@@ -104,3 +104,12 @@ def test_encode_spaces_v2(vigenere_v2_train: VigenereCipherV2) -> None:
 def test_encode_lowercase_v2(vigenere_v2_train: VigenereCipherV2) -> None:
     encoded = vigenere_v2_train.encode("encodedinpython")
     assert encoded == "XECWQXUIVCRKHWA"
+
+
+# Version 3. Complete
+
+
+@pytest.fixture
+def vigenere_v3_train() -> VigenereCipherV3:
+    cipher = VigenereCipherV3("TRAIN")
+    return cipher
