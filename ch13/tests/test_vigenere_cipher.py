@@ -31,3 +31,9 @@ def test_encode(vigenere_train: VigenereCipher) -> None:
 def test_decode(vigenere_train: VigenereCipher) -> None:
     decoded = vigenere_train.decode("XECWQXUIVCRKHWA")
     assert decoded == "ENCODEDINPYTHON"
+
+
+@pytest.mark.xfail(reason="Fails with version 1 of VigenereCipher")
+def test_encode_characters(vigenere_train: VigenereCipher) -> None:
+    encoded = vigenere_train.encode("E")
+    assert encoded == "X"
