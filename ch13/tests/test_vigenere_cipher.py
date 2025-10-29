@@ -158,3 +158,25 @@ def test_non_alpha_raises() -> None:
 
     with pytest.raises(ValueError):
         separate_chars("@", "A")
+
+
+def test_empty_string_v2_and_v3(
+    vigenere_v2_train: VigenereCipherV2, vigenere_v3_train: VigenereCipherV3
+) -> None:
+    # Encoding/decoding an empty string should return an empty string
+    assert vigenere_v2_train.encode("") == ""
+    assert vigenere_v2_train.decode("") == ""
+    assert vigenere_v3_train.encode("") == ""
+    assert vigenere_v3_train.decode("") == ""
+
+
+def test_roundtrip_various_strings(
+    vigenere_v2_train: VigenereCipherV2, vigenere_v3_train: VigenereCipherV3
+) -> None:
+    samples = ["A", "HELLO", "ATTACKATDAWN", "XYZ"]
+    for s in samples:
+        enc2 = vigenere_v2_train.encode(s)
+        assert vigenere_v2_train.decode(enc2) == s.upper()
+
+        enc3 = vigenere_v3_train.encode(s)
+        assert vigenere_v3_train.decode(enc3) == s.upper()
