@@ -180,3 +180,12 @@ def test_roundtrip_various_strings(
 
         enc3 = vigenere_v3_train.encode(s)
         assert vigenere_v3_train.decode(enc3) == s.upper()
+
+
+def test_v3_handles_spaces_and_case() -> None:
+    # V3 should remove spaces and work with mixed case
+    cipher = VigenereCipherV3("LEMON")
+    plaintext = "Attack At Dawn"
+    ciphertext = cipher.encode(plaintext)
+    assert ciphertext == "LXFOPVEFRNHR"
+    assert cipher.decode(ciphertext) == "ATTACKATDAWN"
