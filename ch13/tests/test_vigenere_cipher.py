@@ -133,3 +133,8 @@ def test_encode_characters_v3(vigenere_v3_train: VigenereCipherV3) -> None:
 def test_encode_spaces_v3(vigenere_v3_train: VigenereCipherV3) -> None:
     encoded = vigenere_v3_train.encode("ENCODED IN PYTHON")
     assert encoded == "XECWQXUIVCRKHWA"
+
+
+def test_encode_lowercase_v3(vigenere_v3_train: VigenereCipherV3) -> None:
+    encoded = vigenere_v3_train.encode("encodedinpython")
+    assert encoded == "XECWQXUIVCRKHWA"
