@@ -189,3 +189,12 @@ def test_v3_handles_spaces_and_case() -> None:
     ciphertext = cipher.encode(plaintext)
     assert ciphertext == "LXFOPVEFRNHR"
     assert cipher.decode(ciphertext) == "ATTACKATDAWN"
+
+
+# Additional edge case tests
+
+
+def test_single_character_keyword() -> None:
+    """Test cipher with a single character keyword (Caesar cipher)"""
+    cipher_v2 = VigenereCipherV2("A")
+    cipher_v3 = VigenereCipherV3("A")
