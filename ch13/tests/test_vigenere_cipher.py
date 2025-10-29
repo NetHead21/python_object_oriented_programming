@@ -149,3 +149,6 @@ def test_wraparound_behavior() -> None:
 def test_non_alpha_raises() -> None:
     # combine_chars/separate_chars should raise ValueError for non-alphabetic input
     import pytest
+
+    with pytest.raises(ValueError):
+        combine_chars("1", "A")
