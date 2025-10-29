@@ -144,3 +144,8 @@ def test_wraparound_behavior() -> None:
     # Z + B -> A, and A - B -> Z
     assert combine_chars("Z", "B") == "A"
     assert separate_chars("A", "B") == "Z"
+
+
+def test_non_alpha_raises() -> None:
+    # combine_chars/separate_chars should raise ValueError for non-alphabetic input
+    import pytest
