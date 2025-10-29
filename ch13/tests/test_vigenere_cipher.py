@@ -248,3 +248,9 @@ def test_extend_keyword_edge_cases(vigenere_train: VigenereCipher) -> None:
     """Test extend_keyword with various edge cases"""
     # Extend to exact multiple of keyword length
     assert vigenere_train.extend_keyword(10) == "TRAINTRAIN"
+
+    # Extend to 0 length
+    assert vigenere_train.extend_keyword(0) == ""
+
+    # Extend to 1
+    assert vigenere_train.extend_keyword(1) == "T"
