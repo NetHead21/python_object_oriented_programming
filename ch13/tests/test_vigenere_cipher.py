@@ -42,3 +42,8 @@ def test_encode_characters(vigenere_train: VigenereCipher) -> None:
 def test_encode_spaces(vigenere_train: VigenereCipher) -> None:
     encoded = vigenere_train.encode("encoded in Python")
     assert encoded == "XECWQXUIVCRKHWA"
+
+
+def test_combine_character() -> None:
+    assert combine_chars("E", "T") == "X"
+    assert combine_chars("N", "R") == "E"
