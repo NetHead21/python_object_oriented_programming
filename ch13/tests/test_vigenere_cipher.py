@@ -223,3 +223,9 @@ def test_keyword_longer_than_plaintext() -> None:
 def test_repeated_characters() -> None:
     """Test encoding of repeated characters"""
     cipher = VigenereCipherV3("KEY")
+
+    # Same character repeated should encode differently based on keyword position
+    encoded = cipher.encode("AAAA")
+    # A + K, A + E, A + Y, A + K
+    assert encoded == "KEYK"
+    assert cipher.decode(encoded) == "AAAA"
