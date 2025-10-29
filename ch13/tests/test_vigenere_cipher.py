@@ -198,3 +198,10 @@ def test_single_character_keyword() -> None:
     """Test cipher with a single character keyword (Caesar cipher)"""
     cipher_v2 = VigenereCipherV2("A")
     cipher_v3 = VigenereCipherV3("A")
+
+    # 'A' keyword means no shift (offset 0)
+    assert cipher_v2.encode("HELLO") == "HELLO"
+    assert cipher_v2.decode("HELLO") == "HELLO"
+
+    assert cipher_v3.encode("HELLO") == "HELLO"
+    assert cipher_v3.decode("HELLO") == "HELLO"
