@@ -270,3 +270,11 @@ def test_case_insensitive_keyword() -> None:
 
     # All should produce the same result
     assert encoded_lower == encoded_upper == encoded_mixed == "LXFOPVEFRNHR"
+
+
+def test_case_insensitive_plaintext() -> None:
+    """Test that plaintext is case-insensitive"""
+    cipher = VigenereCipherV3("KEY")
+
+    assert cipher.encode("hello") == cipher.encode("HELLO")
+    assert cipher.encode("HeLLo") == cipher.encode("hello")
