@@ -62,3 +62,12 @@ def test_extend_keyword(vigenere_train: VigenereCipher) -> None:
 def test_separate_characters() -> None:
     assert separate_chars("X", "T") == "E"
     assert separate_chars("E", "R") == "N"
+
+
+from string import ascii_uppercase
+
+
+def test_combine_separate() -> None:
+    for c in ascii_uppercase:
+        for k in ascii_uppercase:
+            assert separate_chars(combine_chars(c, k), k) == c
