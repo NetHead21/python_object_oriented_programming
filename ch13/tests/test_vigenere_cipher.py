@@ -138,3 +138,9 @@ def test_encode_spaces_v3(vigenere_v3_train: VigenereCipherV3) -> None:
 def test_encode_lowercase_v3(vigenere_v3_train: VigenereCipherV3) -> None:
     encoded = vigenere_v3_train.encode("encodedinpython")
     assert encoded == "XECWQXUIVCRKHWA"
+
+
+def test_wraparound_behavior() -> None:
+    # Z + B -> A, and A - B -> Z
+    assert combine_chars("Z", "B") == "A"
+    assert separate_chars("A", "B") == "Z"
