@@ -235,3 +235,10 @@ def test_all_same_keyword_character() -> None:
     """Test with keyword containing all same characters"""
     cipher_v2 = VigenereCipherV2("BBB")
     cipher_v3 = VigenereCipherV3("BBB")
+
+    plaintext = "HELLO"
+    # Each character should shift by 1 (B offset)
+    expected = "IFMMP"
+
+    assert cipher_v2.encode(plaintext) == expected
+    assert cipher_v3.encode(plaintext) == expected
