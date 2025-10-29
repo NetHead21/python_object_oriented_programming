@@ -261,3 +261,12 @@ def test_case_insensitive_keyword() -> None:
     cipher_lower = VigenereCipherV3("lemon")
     cipher_upper = VigenereCipherV3("LEMON")
     cipher_mixed = VigenereCipherV3("LeMoN")
+
+    plaintext = "ATTACKATDAWN"
+
+    encoded_lower = cipher_lower.encode(plaintext)
+    encoded_upper = cipher_upper.encode(plaintext)
+    encoded_mixed = cipher_mixed.encode(plaintext)
+
+    # All should produce the same result
+    assert encoded_lower == encoded_upper == encoded_mixed == "LXFOPVEFRNHR"
