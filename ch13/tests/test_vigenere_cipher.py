@@ -54,3 +54,11 @@ def test_extend_keyword(vigenere_train: VigenereCipher) -> None:
     assert extended == "TRAINTRAINTRAINT"
     extend = vigenere_train.extend_keyword(5)
     assert extend == "TRAIN"
+
+
+# Version 2. Complete
+
+
+def test_separate_characters() -> None:
+    assert separate_chars("X", "T") == "E"
+    assert separate_chars("E", "R") == "N"
