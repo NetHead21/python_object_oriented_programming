@@ -211,3 +211,10 @@ def test_keyword_longer_than_plaintext() -> None:
     """Test when keyword is longer than the plaintext"""
     cipher_v2 = VigenereCipherV2("VERYLONGKEYWORD")
     cipher_v3 = VigenereCipherV3("VERYLONGKEYWORD")
+
+    plaintext = "HI"
+    encoded_v2 = cipher_v2.encode(plaintext)
+    encoded_v3 = cipher_v3.encode(plaintext)
+
+    assert cipher_v2.decode(encoded_v2) == plaintext
+    assert cipher_v3.decode(encoded_v3) == plaintext
