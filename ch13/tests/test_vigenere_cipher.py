@@ -205,3 +205,9 @@ def test_single_character_keyword() -> None:
 
     assert cipher_v3.encode("HELLO") == "HELLO"
     assert cipher_v3.decode("HELLO") == "HELLO"
+
+
+def test_keyword_longer_than_plaintext() -> None:
+    """Test when keyword is longer than the plaintext"""
+    cipher_v2 = VigenereCipherV2("VERYLONGKEYWORD")
+    cipher_v3 = VigenereCipherV3("VERYLONGKEYWORD")
