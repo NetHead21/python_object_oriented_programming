@@ -71,3 +71,9 @@ def test_combine_separate() -> None:
     for c in ascii_uppercase:
         for k in ascii_uppercase:
             assert separate_chars(combine_chars(c, k), k) == c
+
+
+@pytest.fixture
+def vigenere_v2_train() -> VigenereCipherV2:
+    cipher = VigenereCipherV2("TRAIN")
+    return cipher
