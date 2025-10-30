@@ -87,3 +87,30 @@ class FlightStatusTracker:
             redis.ConnectionError: If unable to connect to Redis server.
         """
         self.redis = redis.Redis(host="127.0.0.1", port=6379, db=0)
+
+    def change_status(self, flight: str, status: Status) -> None:
+        """Update the status of a flight in Redis.
+
+        Records a new status for the specified flight with the current UTC timestamp.
+        The data is stored in Redis with key format "flightno:{flight}" and value
+        format "{ISO_timestamp} | {status_value}".
+
+        Args:
+            flight (str): Flight number/identifier (e.g., "AA123", "DL456").
+            status (Status): New status from the Status enum.
+
+        Returns:
+            None
+
+        Raises:
+            ValueError: If status is not a valid Status enum instance.
+            redis.ConnectionError: If Redis connection fails.
+
+        Example:
+            >>> tracker = FlightStatusTracker()
+            >>> tracker.change_status("UA789", Status.ON_TIME)
+            >>> tracker.change_status("SW101", Status.DELAYED)
+
+        Note:
+            This overwrites any previous status for the flight. No history is kept.
+        """
