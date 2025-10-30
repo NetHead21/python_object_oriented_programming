@@ -56,3 +56,24 @@ class Status(str, Enum):
     CANCELLED = "CANCELLED"
     DELAYED = "DELAYED"
     ON_TIME = "ON TIME"
+
+
+class FlightStatusTracker:
+    """Track flight status changes using Redis for persistence.
+
+    This class provides methods to update and retrieve flight status information
+    stored in a Redis database. Each status change is timestamped with the current
+    UTC time.
+
+    The Redis connection is hardcoded to localhost:6379 database 0. For more
+    flexible configuration, consider using FlightStatusTracker_Alt instead.
+
+    Attributes:
+        redis (redis.Redis): Redis client connection instance.
+
+    Example:
+        >>> tracker = FlightStatusTracker()
+        >>> tracker.change_status("DL456", Status.DELAYED)
+        >>> timestamp, status = tracker.get_status("DL456")
+        >>> print(f"Status: {status}, Updated: {timestamp}")
+    """
