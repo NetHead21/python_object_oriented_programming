@@ -307,3 +307,9 @@ def test_combine_chars_case_insensitive() -> None:
     """Test that combine_chars handles lowercase input"""
     assert combine_chars("a", "b") == combine_chars("A", "B")
     assert combine_chars("z", "a") == combine_chars("Z", "A")
+
+
+def test_separate_chars_case_insensitive() -> None:
+    """Test that separate_chars handles lowercase input"""
+    assert separate_chars("b", "a") == separate_chars("B", "A")
+    assert separate_chars("a", "z") == separate_chars("A", "Z")
