@@ -377,3 +377,8 @@ def test_different_keywords_produce_different_results() -> None:
     assert encoded1 != encoded2
     assert encoded1 != encoded3
     assert encoded2 != encoded3
+
+
+def test_wrong_keyword_fails_decoding() -> None:
+    """Test that using wrong keyword produces incorrect decoding"""
+    plaintext = "SECRETMESSAGE"
