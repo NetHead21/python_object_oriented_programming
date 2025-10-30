@@ -284,3 +284,10 @@ def test_long_text_encoding() -> None:
     """Test encoding of longer text"""
     cipher = VigenereCipherV3("SECRET")
     long_text = "THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG"
+
+    encoded = cipher.encode(long_text)
+    decoded = cipher.decode(encoded)
+
+    # Spaces should be removed
+    assert decoded == long_text.replace(" ", "")
+    assert " " not in encoded
