@@ -382,3 +382,12 @@ def test_different_keywords_produce_different_results() -> None:
 def test_wrong_keyword_fails_decoding() -> None:
     """Test that using wrong keyword produces incorrect decoding"""
     plaintext = "SECRETMESSAGE"
+
+    cipher_encode = VigenereCipherV3("CORRECTKEY")
+    cipher_decode_wrong = VigenereCipherV3("WRONGKEY")
+
+    encoded = cipher_encode.encode(plaintext)
+    decoded_wrong = cipher_decode_wrong.decode(encoded)
+
+    # Should not match original plaintext
+    assert decoded_wrong != plaintext
