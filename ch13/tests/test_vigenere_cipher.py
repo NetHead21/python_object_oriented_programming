@@ -353,3 +353,9 @@ def test_v3_encode_decode_symmetry() -> None:
         "The Quick Brown Fox",
         "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
     ]
+
+    for text in test_cases:
+        encoded = cipher.encode(text)
+        decoded = cipher.decode(encoded)
+        # V3 removes spaces, so compare without spaces
+        assert decoded == text.replace(" ", "").upper()
