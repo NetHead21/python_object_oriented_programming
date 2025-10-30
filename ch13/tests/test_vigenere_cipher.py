@@ -296,3 +296,8 @@ def test_long_text_encoding() -> None:
 def test_multiple_spaces_v3() -> None:
     """Test that V3 handles multiple consecutive spaces"""
     cipher = VigenereCipherV3("KEY")
+
+    text_with_spaces = "HELLO    WORLD"
+    text_no_spaces = "HELLOWORLD"
+
+    assert cipher.encode(text_with_spaces) == cipher.encode(text_no_spaces)
