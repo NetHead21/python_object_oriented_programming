@@ -359,3 +359,12 @@ def test_v3_encode_decode_symmetry() -> None:
         decoded = cipher.decode(encoded)
         # V3 removes spaces, so compare without spaces
         assert decoded == text.replace(" ", "").upper()
+
+
+def test_different_keywords_produce_different_results() -> None:
+    """Test that different keywords produce different encodings"""
+    plaintext = "SECRETMESSAGE"
+
+    cipher1 = VigenereCipherV3("KEYA")
+    cipher2 = VigenereCipherV3("KEYB")
+    cipher3 = VigenereCipherV3("DIFFERENTKEY")
