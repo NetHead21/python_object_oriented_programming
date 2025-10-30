@@ -322,3 +322,11 @@ def test_boundary_characters() -> None:
     assert combine_chars("Z", "A") == "Z"  # 25 + 0 = 25
     assert combine_chars("A", "Z") == "Z"  # 0 + 25 = 25
     assert combine_chars("Z", "Z") == "Y"  # 25 + 25 = 50 % 26 = 24
+
+
+def test_decode_boundary_characters() -> None:
+    """Test decoding with boundary characters"""
+    assert separate_chars("A", "A") == "A"  # 0 - 0 = 0
+    assert separate_chars("Z", "A") == "Z"  # 25 - 0 = 25
+    assert separate_chars("Z", "Z") == "A"  # 25 - 25 = 0
+    assert separate_chars("A", "Z") == "B"  # 0 - 25 = -25 % 26 = 1
