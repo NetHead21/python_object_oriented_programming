@@ -114,3 +114,10 @@ class FlightStatusTracker:
         Note:
             This overwrites any previous status for the flight. No history is kept.
         """
+
+        if not isinstance(status, Status):
+            raise ValueError(f"{status!r} is not a valid Status")
+        key = f"flightno:{flight}"
+        now = datetime.datetime.now(tz=datetime.timezone.utc)
+        value = f"{now.isoformat()} | {status.value}"
+        self.redis.set(key, value)
