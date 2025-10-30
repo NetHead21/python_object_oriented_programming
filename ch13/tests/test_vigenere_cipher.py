@@ -391,3 +391,16 @@ def test_wrong_keyword_fails_decoding() -> None:
 
     # Should not match original plaintext
     assert decoded_wrong != plaintext
+
+
+def test_alphabet_coverage() -> None:
+    """Test that all letters of the alphabet can be encoded and decoded"""
+    cipher = VigenereCipherV3("KEY")
+    alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
+    encoded = cipher.encode(alphabet)
+    decoded = cipher.decode(encoded)
+
+    assert decoded == alphabet
+    assert len(encoded) == 26
+    assert len(decoded) == 26
