@@ -77,3 +77,13 @@ class FlightStatusTracker:
         >>> timestamp, status = tracker.get_status("DL456")
         >>> print(f"Status: {status}, Updated: {timestamp}")
     """
+
+    def __init__(self) -> None:
+        """Initialize the flight status tracker with Redis connection.
+
+        Creates a Redis connection to localhost:6379, database 0.
+
+        Raises:
+            redis.ConnectionError: If unable to connect to Redis server.
+        """
+        self.redis = redis.Redis(host="127.0.0.1", port=6379, db=0)
