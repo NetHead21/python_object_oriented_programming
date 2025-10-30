@@ -291,3 +291,8 @@ def test_long_text_encoding() -> None:
     # Spaces should be removed
     assert decoded == long_text.replace(" ", "")
     assert " " not in encoded
+
+
+def test_multiple_spaces_v3() -> None:
+    """Test that V3 handles multiple consecutive spaces"""
+    cipher = VigenereCipherV3("KEY")
