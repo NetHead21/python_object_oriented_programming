@@ -278,3 +278,9 @@ def test_case_insensitive_plaintext() -> None:
 
     assert cipher.encode("hello") == cipher.encode("HELLO")
     assert cipher.encode("HeLLo") == cipher.encode("hello")
+
+
+def test_long_text_encoding() -> None:
+    """Test encoding of longer text"""
+    cipher = VigenereCipherV3("SECRET")
+    long_text = "THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG"
