@@ -368,3 +368,12 @@ def test_different_keywords_produce_different_results() -> None:
     cipher1 = VigenereCipherV3("KEYA")
     cipher2 = VigenereCipherV3("KEYB")
     cipher3 = VigenereCipherV3("DIFFERENTKEY")
+
+    encoded1 = cipher1.encode(plaintext)
+    encoded2 = cipher2.encode(plaintext)
+    encoded3 = cipher3.encode(plaintext)
+
+    # All should be different
+    assert encoded1 != encoded2
+    assert encoded1 != encoded3
+    assert encoded2 != encoded3
