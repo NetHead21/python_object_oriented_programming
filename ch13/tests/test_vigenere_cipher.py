@@ -313,3 +313,12 @@ def test_separate_chars_case_insensitive() -> None:
     """Test that separate_chars handles lowercase input"""
     assert separate_chars("b", "a") == separate_chars("B", "A")
     assert separate_chars("a", "z") == separate_chars("A", "Z")
+
+
+def test_boundary_characters() -> None:
+    """Test encoding with boundary characters (A and Z)"""
+    # A is at position 0, Z is at position 25
+    assert combine_chars("A", "A") == "A"  # 0 + 0 = 0
+    assert combine_chars("Z", "A") == "Z"  # 25 + 0 = 25
+    assert combine_chars("A", "Z") == "Z"  # 0 + 25 = 25
+    assert combine_chars("Z", "Z") == "Y"  # 25 + 25 = 50 % 26 = 24
