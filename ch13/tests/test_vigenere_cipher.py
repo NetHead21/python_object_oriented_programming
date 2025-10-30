@@ -330,3 +330,26 @@ def test_decode_boundary_characters() -> None:
     assert separate_chars("Z", "A") == "Z"  # 25 - 0 = 25
     assert separate_chars("Z", "Z") == "A"  # 25 - 25 = 0
     assert separate_chars("A", "Z") == "B"  # 0 - 25 = -25 % 26 = 1
+
+
+def test_v2_encode_decode_symmetry() -> None:
+    """Test that encode/decode are perfect inverses for V2"""
+    cipher = VigenereCipherV2("RANDOM")
+    test_cases = ["A", "Z", "HELLO", "ZZZZZ", "ABCDEFGHIJKLMNOPQRSTUVWXYZ"]
+
+    for text in test_cases:
+        encoded = cipher.encode(text)
+        decoded = cipher.decode(encoded)
+        assert decoded == text.upper()
+
+
+def test_v3_encode_decode_symmetry() -> None:
+    """Test that encode/decode are perfect inverses for V3"""
+    cipher = VigenereCipherV3("RANDOM")
+    test_cases = [
+        "A",
+        "Z",
+        "hello world",
+        "The Quick Brown Fox",
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+    ]
