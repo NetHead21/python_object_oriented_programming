@@ -31,3 +31,28 @@ import datetime
 from enum import Enum
 import redis
 from typing import Optional
+
+
+class Status(str, Enum):
+    """Enumeration of valid flight status values.
+
+    This enum defines the three possible states for a flight. It inherits from
+    both str and Enum, making instances directly comparable to strings and
+    serializable without additional conversion.
+
+    Attributes:
+        CANCELLED: Flight has been cancelled
+        DELAYED: Flight is delayed from scheduled time
+        ON_TIME: Flight is on schedule
+
+    Example:
+        >>> status = Status.ON_TIME
+        >>> print(status.value)
+        'ON TIME'
+        >>> status == "ON TIME"
+        True
+    """
+
+    CANCELLED = "CANCELLED"
+    DELAYED = "DELAYED"
+    ON_TIME = "ON TIME"
