@@ -24,3 +24,12 @@ def tracker(
     fst = flight_status_redis.FlightStatusTracker()
     monkeypatch.setattr(fst, "redis", mock_redis)
     return fst
+
+
+def test_monkeypatch_class(
+    tracker: flight_status_redis.FlightStatusTracker, mock_redis: Mock
+) -> None:
+    with pytest.raises(ValueError) as ex:
+        tracker.change_status("AC101", "lost")
+    assert ex.value.args[0] == "'lost' is not a valid Status"
+    assert mock_redis.set.call_count == 0
