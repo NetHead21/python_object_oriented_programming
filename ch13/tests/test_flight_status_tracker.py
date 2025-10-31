@@ -116,3 +116,17 @@ def test_change_status_invalid_type_dict(
         tracker.change_status("FL123", {"status": "ON_TIME"})
     assert "is not a valid Status" in str(ex.value)
     assert mock_redis.set.call_count == 0
+
+
+def test_change_status_empty_flight_number(
+    tracker: flight_status_redis.FlightStatusTracker, mock_redis: Mock
+) -> None:
+    """Test that empty flight number is allowed (edge case)."""
+    fake_now = datetime.datetime(2020, 10, 26, 23, 24, 25)
+
+    with patch("src.flight_status_redis.datetime.datetime") as mock_dt:
+        mock_dt.now = Mock(return_value=fake_now)
+        tracker.change_status("", flight_status_redis.Status.ON_TIME)
+
+    expected = "2020-10-26T23:24:25 | ON TIME"
+    mock_redis.set.assert_called_once_with("flightno:", expected)
