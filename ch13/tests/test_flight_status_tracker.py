@@ -3,3 +3,14 @@ from unittest.mock import Mock, patch, call
 import pytest
 import sys
 from pathlib import Path
+
+
+# Add parent directory to path to import from src
+sys.path.insert(0, str(Path(__file__).parent.parent))
+from src import flight_status_redis
+
+
+@pytest.fixture
+def mock_redis() -> Mock:
+    mock_redis_instance = Mock(set=Mock(return_value=True))
+    return mock_redis_instance
