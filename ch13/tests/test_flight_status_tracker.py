@@ -159,3 +159,22 @@ def test_change_status_very_long_flight_number(
 
     expected = "2020-10-26T23:24:25 | ON TIME"
     mock_redis.set.assert_called_once_with(f"flightno:{long_flight}", expected)
+
+
+def test_change_status_updates_existing_flight(
+    tracker: flight_status_redis.FlightStatusTracker, mock_redis: Mock
+) -> None:
+    """Test that changing status multiple times for same flight works."""
+    fake_now = datetime.datetime(2020, 10, 26, 23, 24, 25)
+
+    with patch("src.flight_status_redis.datetime.datetime") as mock_dt:
+        mock_dt.now = Mock(return_value=fake_now)
+        tracker.change_status("FL100", flight_status_redis.Status.ON_TIME)
+        tracker.change_status("FL100", flight_status_redis.Status.DELAYED)
+        tracker.change_status("FL100", flight_status_redis.Status.CANCELLED)
+
+    assert mock_redis.set.call_count == 3
+    # Last call should be CANCELLED
+    last_call = mock_redis.set.call_args_list[-1]
+    assert last_call[0][0] == "flightno:FL100"
+    assert "CANCELLED" in last_call[0][1]
