@@ -216,3 +216,36 @@ class FlightStatusTracker_Alt:
             if redis_instance
             else redis.Redis(host="127.0.0.1", port=6379, db=0)
         )
+
+
+def demo() -> None:
+    """Demonstrate basic usage of the FlightStatusTracker.
+
+    Creates a tracker instance, sets a flight status to ON_TIME, retrieves it,
+    and prints the timestamp and status to console.
+
+    This function is meant for testing and demonstration purposes.
+
+    Returns:
+        None
+
+    Side Effects:
+        - Connects to Redis at localhost:6379
+        - Sets flight "42" status to ON_TIME
+        - Prints timestamp and status to stdout
+
+    Example:
+        $ python flight_status_redis.py
+        2025-10-19 10:30:45.123456+00:00 Status.ON_TIME
+
+    Note:
+        Will fail if Redis server is not running on localhost:6379.
+    """
+    fst = FlightStatusTracker()
+    fst.change_status("42", Status.ON_TIME)
+    as_of, status = fst.get_status("42")
+    print(as_of, status)
+
+
+if __name__ == "__main__":
+    demo()
