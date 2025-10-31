@@ -197,3 +197,22 @@ class FlightStatusTracker_Alt:
         >>> mock_redis = Mock()
         >>> tracker = FlightStatusTracker_Alt(redis_instance=mock_redis)
     """
+
+    def __init__(self, redis_instance: Optional[redis.Connection] = None) -> None:
+        """Initialize tracker with optional Redis connection injection.
+
+        Args:
+            redis_instance (Optional[redis.Connection]): Custom Redis connection
+                to use. If None, creates a default connection to localhost:6379, db=0.
+
+        Example:
+            >>> tracker = FlightStatusTracker_Alt()  # Uses default
+            >>>
+            >>> custom = redis.Redis(host="10.0.0.1", port=6379, db=2)
+            >>> tracker = FlightStatusTracker_Alt(redis_instance=custom)
+        """
+        self.redis = (
+            redis_instance
+            if redis_instance
+            else redis.Redis(host="127.0.0.1", port=6379, db=0)
+        )
