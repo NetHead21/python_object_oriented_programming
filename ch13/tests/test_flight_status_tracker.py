@@ -33,3 +33,20 @@ def test_monkeypatch_class(
         tracker.change_status("AC101", "lost")
     assert ex.value.args[0] == "'lost' is not a valid Status"
     assert mock_redis.set.call_count == 0
+
+
+def test_patch_class(
+    tracker: flight_status_redis.FlightStatusTracker, mock_redis: Mock
+) -> None:
+    fake_now = datetime.datetime(2020, 10, 26, 23, 24, 25)
+    utc = datetime.timezone.utc
+    with patch("src.flight_status_redis.datetime") as mock_datetime:
+        mock_datetime.datetime = Mock(now=Mock(return_value=fake_now))
+        mock_datetime.timezone = Mock(utc=utc)
+        tracker.change_status("AC101", flight_status_redis.Status.ON_TIME)
+    mock_datetime.datetime.now.assert_called_once_with(tz=utc)
+    expected = "2020-10-26T23:24:25 | ON TIME"
+    mock_redis.set.assert_called_once_with("flightno:AC101", expected)
+
+    assert mock_datetime.datetime.now.mock_calls == [call(tz=utc)]
+    assert mock_redis.set.mock_calls == [call("flightno:AC101", expected)]
