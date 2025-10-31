@@ -191,3 +191,17 @@ def test_get_status_flight_not_found(
     assert timestamp is None
     assert status is None
     mock_redis.get.assert_called_once_with("flightno:NONEXISTENT")
+
+
+def test_get_status_valid_flight(
+    tracker: flight_status_redis.FlightStatusTracker, mock_redis: Mock
+) -> None:
+    """Test getting status for existing flight."""
+    mock_value = "2020-10-26T23:24:25 | ON TIME"
+    mock_redis.get = Mock(return_value=mock_value)
+
+    timestamp, status = tracker.get_status("FL200")
+
+    assert timestamp == datetime.datetime(2020, 10, 26, 23, 24, 25)
+    assert status == flight_status_redis.Status.ON_TIME
+    mock_redis.get.assert_called_once_with("flightno:FL200")
