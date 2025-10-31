@@ -50,3 +50,17 @@ def test_patch_class(
 
     assert mock_datetime.datetime.now.mock_calls == [call(tz=utc)]
     assert mock_redis.set.mock_calls == [call("flightno:AC101", expected)]
+
+
+def test_patch_class_2(
+    tracker: flight_status_redis.FlightStatusTracker, mock_redis: Mock
+) -> None:
+    mock_datetime_now = Mock(return_value=datetime.datetime(2020, 10, 26, 23, 24, 25))
+    with patch("src.flight_status_redis.datetime.datetime", now=mock_datetime_now):
+        tracker.change_status("AC101", flight_status_redis.Status.ON_TIME)
+    mock_datetime_now.assert_called_once_with(tz=datetime.timezone.utc)
+    expected = "2020-10-26T23:24:25 | ON TIME"
+    mock_redis.set.assert_called_once_with("flightno:AC101", expected)
+
+    assert mock_datetime_now.mock_calls == [call(tz=datetime.timezone.utc)]
+    assert mock_redis.set.mock_calls == [call("flightno:AC101", expected)]
