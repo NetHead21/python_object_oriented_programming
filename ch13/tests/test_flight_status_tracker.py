@@ -144,3 +144,18 @@ def test_change_status_special_characters_in_flight_number(
 
     expected = "2020-10-26T23:24:25 | DELAYED"
     mock_redis.set.assert_called_once_with("flightno:FL-123/A", expected)
+
+
+def test_change_status_very_long_flight_number(
+    tracker: flight_status_redis.FlightStatusTracker, mock_redis: Mock
+) -> None:
+    """Test very long flight number (stress test)."""
+    fake_now = datetime.datetime(2020, 10, 26, 23, 24, 25)
+    long_flight = "A" * 1000
+
+    with patch("src.flight_status_redis.datetime.datetime") as mock_dt:
+        mock_dt.now = Mock(return_value=fake_now)
+        tracker.change_status(long_flight, flight_status_redis.Status.ON_TIME)
+
+    expected = "2020-10-26T23:24:25 | ON TIME"
+    mock_redis.set.assert_called_once_with(f"flightno:{long_flight}", expected)
