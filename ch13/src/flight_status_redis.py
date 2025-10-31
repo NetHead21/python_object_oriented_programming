@@ -166,3 +166,34 @@ class FlightStatusTracker:
             status = Status(text_status.strip())
             return timestamp, status
         return None, None
+
+
+class FlightStatusTracker_Alt:
+    """Alternative flight status tracker with dependency injection support.
+
+    This is an improved version of FlightStatusTracker that allows injecting a
+    custom Redis connection, making it more testable and flexible. If no Redis
+    instance is provided, it creates a default connection to localhost:6379.
+
+    This class demonstrates the Dependency Injection pattern, allowing for:
+    - Easy unit testing with mock Redis instances
+    - Configuration of Redis connection parameters
+    - Use of Redis clusters or alternative configurations
+
+    Attributes:
+        redis (redis.Connection): Redis client connection instance.
+
+    Example:
+        # Using default connection
+        >>> tracker = FlightStatusTracker_Alt()
+
+        # Using custom connection
+        >>> import redis
+        >>> custom_redis = redis.Redis(host="redis.example.com", port=6380, db=1)
+        >>> tracker = FlightStatusTracker_Alt(redis_instance=custom_redis)
+
+        # Using mock for testing
+        >>> from unittest.mock import Mock
+        >>> mock_redis = Mock()
+        >>> tracker = FlightStatusTracker_Alt(redis_instance=mock_redis)
+    """
