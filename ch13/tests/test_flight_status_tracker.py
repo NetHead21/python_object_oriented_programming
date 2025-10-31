@@ -178,3 +178,16 @@ def test_change_status_updates_existing_flight(
     last_call = mock_redis.set.call_args_list[-1]
     assert last_call[0][0] == "flightno:FL100"
     assert "CANCELLED" in last_call[0][1]
+
+
+def test_get_status_flight_not_found(
+    tracker: flight_status_redis.FlightStatusTracker, mock_redis: Mock
+) -> None:
+    """Test getting status for non-existent flight returns None, None."""
+    mock_redis.get = Mock(return_value=None)
+
+    timestamp, status = tracker.get_status("NONEXISTENT")
+
+    assert timestamp is None
+    assert status is None
+    mock_redis.get.assert_called_once_with("flightno:NONEXISTENT")
