@@ -158,3 +158,11 @@ class FlightStatusTracker:
             The returned datetime is timezone-aware (UTC). The status string is
             parsed back into a Status enum instance.
         """
+        key = f"flightno:{flight}"
+        value = self.redis.get(key)
+        if value:
+            text_timestamp, text_status = value.split("|")
+            timestamp = datetime.datetime.fromisoformat(text_timestamp.strip())
+            status = Status(text_status.strip())
+            return timestamp, status
+        return None, None
