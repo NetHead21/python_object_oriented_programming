@@ -64,3 +64,25 @@ def test_patch_class_2(
 
     assert mock_datetime_now.mock_calls == [call(tz=datetime.timezone.utc)]
     assert mock_redis.set.mock_calls == [call("flightno:AC101", expected)]
+
+
+# === Edge Case Tests ===
+
+
+def test_change_status_all_status_types(
+    tracker: flight_status_redis.FlightStatusTracker, mock_redis: Mock
+) -> None:
+    """Test that all Status enum values can be set."""
+    fake_now = datetime.datetime(2020, 10, 26, 23, 24, 25)
+
+    with patch("src.flight_status_redis.datetime.datetime") as mock_dt:
+        mock_dt.now = Mock(return_value=fake_now)
+
+        # Test CANCELLED
+        tracker.change_status("FL001", flight_status_redis.Status.CANCELLED)
+        # Test DELAYED
+        tracker.change_status("FL002", flight_status_redis.Status.DELAYED)
+        # Test ON_TIME
+        tracker.change_status("FL003", flight_status_redis.Status.ON_TIME)
+
+    assert mock_redis.set.call_count == 3
