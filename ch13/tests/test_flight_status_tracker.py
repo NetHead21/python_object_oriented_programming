@@ -86,3 +86,13 @@ def test_change_status_all_status_types(
         tracker.change_status("FL003", flight_status_redis.Status.ON_TIME)
 
     assert mock_redis.set.call_count == 3
+
+
+def test_change_status_invalid_type_none(
+    tracker: flight_status_redis.FlightStatusTracker, mock_redis: Mock
+) -> None:
+    """Test that None is rejected as invalid status."""
+    with pytest.raises(ValueError) as ex:
+        tracker.change_status("FL123", None)
+    assert "is not a valid Status" in str(ex.value)
+    assert mock_redis.set.call_count == 0
