@@ -121,3 +121,40 @@ class FlightStatusTracker:
         now = datetime.datetime.now(tz=datetime.timezone.utc)
         value = f"{now.isoformat()} | {status.value}"
         self.redis.set(key, value)
+
+    def get_status(
+        self, flight: str
+    ) -> tuple[Optional[datetime.datetime], Optional[Status]]:
+        """Retrieve the current status of a flight from Redis.
+
+        Looks up the flight status in Redis and parses the stored timestamp
+        and status value. If the flight is not found, returns (None, None).
+
+        Args:
+            flight (str): Flight number/identifier to look up.
+
+        Returns:
+            tuple[Optional[datetime.datetime], Optional[Status]]: A tuple containing:
+                - timestamp: When the status was last updated (timezone-aware), or None
+                - status: Current Status enum value, or None
+
+        Raises:
+            redis.ConnectionError: If Redis connection fails.
+            ValueError: If stored status value is not a valid Status enum value.
+
+        Example:
+            >>> tracker = FlightStatusTracker()
+            >>> tracker.change_status("BA200", Status.ON_TIME)
+            >>> timestamp, status = tracker.get_status("BA200")
+            >>> if status:
+            ...     print(f"Flight BA200: {status} as of {timestamp}")
+
+            # Non-existent flight
+            >>> timestamp, status = tracker.get_status("FAKE123")
+            >>> print(timestamp, status)
+            None None
+
+        Note:
+            The returned datetime is timezone-aware (UTC). The status string is
+            parsed back into a Status enum instance.
+        """
