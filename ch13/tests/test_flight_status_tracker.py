@@ -14,3 +14,13 @@ from src import flight_status_redis
 def mock_redis() -> Mock:
     mock_redis_instance = Mock(set=Mock(return_value=True))
     return mock_redis_instance
+
+
+@pytest.fixture
+def tracker(
+    monkeypatch: pytest.MonkeyPatch, mock_redis: Mock
+) -> flight_status_redis.FlightStatusTracker:
+    """Depending on the test scenario, this may require a running REDIS server."""
+    fst = flight_status_redis.FlightStatusTracker()
+    monkeypatch.setattr(fst, "redis", mock_redis)
+    return fst
