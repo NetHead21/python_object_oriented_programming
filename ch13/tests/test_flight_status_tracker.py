@@ -281,3 +281,14 @@ def test_get_status_invalid_status_value(
 
     with pytest.raises(ValueError):
         tracker.get_status("FL800")
+
+
+def test_get_status_invalid_timestamp(
+    tracker: flight_status_redis.FlightStatusTracker, mock_redis: Mock
+) -> None:
+    """Test that invalid timestamp format raises error."""
+    mock_value = "invalid-timestamp | ON TIME"
+    mock_redis.get = Mock(return_value=mock_value)
+
+    with pytest.raises(ValueError):
+        tracker.get_status("FL900")
