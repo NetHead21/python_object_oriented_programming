@@ -305,3 +305,14 @@ def test_get_status_empty_flight_number(
     assert timestamp is None
     assert status is None
     mock_redis.get.assert_called_once_with("flightno:")
+
+
+# === FlightStatusTracker_Alt Tests ===
+
+
+def test_tracker_alt_with_custom_redis() -> None:
+    """Test FlightStatusTracker_Alt accepts custom Redis instance."""
+    mock_redis = Mock()
+    tracker = flight_status_redis.FlightStatusTracker_Alt(redis_instance=mock_redis)
+
+    assert tracker.redis is mock_redis
