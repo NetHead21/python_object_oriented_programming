@@ -422,3 +422,10 @@ def test_redis_key_format(
     with patch("src.flight_status_redis.datetime.datetime") as mock_dt:
         mock_dt.now = Mock(return_value=fake_now)
         tracker.change_status("TEST123", flight_status_redis.Status.ON_TIME)
+
+    call_args = mock_redis.set.call_args[0]
+    key = call_args[0]
+
+    assert key.startswith("flightno:")
+    assert "TEST123" in key
+    assert key == "flightno:TEST123"
