@@ -259,3 +259,14 @@ def test_get_status_with_timezone(
         2020, 10, 26, 23, 24, 25, tzinfo=datetime.timezone.utc
     )
     assert status == flight_status_redis.Status.DELAYED
+
+
+def test_get_status_invalid_format_missing_separator(
+    tracker: flight_status_redis.FlightStatusTracker, mock_redis: Mock
+) -> None:
+    """Test that invalid format (missing |) raises error."""
+    mock_value = "2020-10-26T23:24:25 ON TIME"
+    mock_redis.get = Mock(return_value=mock_value)
+
+    with pytest.raises(ValueError):
+        tracker.get_status("FL700")
