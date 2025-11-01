@@ -324,3 +324,11 @@ def test_tracker_alt_with_none_creates_default() -> None:
         _ = flight_status_redis.FlightStatusTracker_Alt(redis_instance=None)
 
         mock_redis_class.assert_called_once_with(host="127.0.0.1", port=6379, db=0)
+
+
+def test_tracker_alt_without_argument_creates_default() -> None:
+    """Test FlightStatusTracker_Alt creates default Redis when no argument."""
+    with patch("src.flight_status_redis.redis.Redis") as mock_redis_class:
+        _ = flight_status_redis.FlightStatusTracker_Alt()
+
+        mock_redis_class.assert_called_once_with(host="127.0.0.1", port=6379, db=0)
