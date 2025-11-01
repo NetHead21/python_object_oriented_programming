@@ -411,3 +411,10 @@ def test_multiple_flights_different_statuses(
     assert "DELAYED" in calls[1][0][1]
     assert calls[2][0][0] == "flightno:CC300"
     assert "CANCELLED" in calls[2][0][1]
+
+
+def test_redis_key_format(
+    tracker: flight_status_redis.FlightStatusTracker, mock_redis: Mock
+) -> None:
+    """Test that Redis key is formatted correctly."""
+    fake_now = datetime.datetime(2020, 10, 26, 23, 24, 25)
