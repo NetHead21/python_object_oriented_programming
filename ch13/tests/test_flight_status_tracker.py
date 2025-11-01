@@ -402,3 +402,12 @@ def test_multiple_flights_different_statuses(
         tracker.change_status("CC300", flight_status_redis.Status.CANCELLED)
 
     assert mock_redis.set.call_count == 3
+
+    # Verify each call
+    calls = mock_redis.set.call_args_list
+    assert calls[0][0][0] == "flightno:AA100"
+    assert "ON TIME" in calls[0][0][1]
+    assert calls[1][0][0] == "flightno:BB200"
+    assert "DELAYED" in calls[1][0][1]
+    assert calls[2][0][0] == "flightno:CC300"
+    assert "CANCELLED" in calls[2][0][1]
