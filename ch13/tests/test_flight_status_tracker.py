@@ -231,3 +231,16 @@ def test_get_status_delayed_flight(
 
     assert timestamp == datetime.datetime(2020, 12, 1, 14, 45, 30)
     assert status == flight_status_redis.Status.DELAYED
+
+
+def test_get_status_with_microseconds(
+    tracker: flight_status_redis.FlightStatusTracker, mock_redis: Mock
+) -> None:
+    """Test parsing timestamp with microseconds."""
+    mock_value = "2020-10-26T23:24:25.123456 | ON TIME"
+    mock_redis.get = Mock(return_value=mock_value)
+
+    timestamp, status = tracker.get_status("FL500")
+
+    assert timestamp == datetime.datetime(2020, 10, 26, 23, 24, 25, 123456)
+    assert status == flight_status_redis.Status.ON_TIME
