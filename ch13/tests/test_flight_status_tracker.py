@@ -436,3 +436,16 @@ def test_redis_value_format(
 ) -> None:
     """Test that Redis value is formatted correctly."""
     fake_now = datetime.datetime(2020, 10, 26, 23, 24, 25)
+
+    with patch("src.flight_status_redis.datetime.datetime") as mock_dt:
+        mock_dt.now = Mock(return_value=fake_now)
+        tracker.change_status("TEST456", flight_status_redis.Status.DELAYED)
+
+    call_args = mock_redis.set.call_args[0]
+    value = call_args[1]
+
+    assert "|" in value
+    parts = value.split("|")
+    assert len(parts) == 2
+    assert parts[1].strip() == "DELAYED"
+    assert "2020-10-26" in parts[0]
