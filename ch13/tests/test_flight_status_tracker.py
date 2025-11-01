@@ -358,3 +358,12 @@ def test_status_enum_from_value() -> None:
     assert (
         flight_status_redis.Status("CANCELLED") == flight_status_redis.Status.CANCELLED
     )
+
+
+def test_status_enum_invalid_value() -> None:
+    """Test that invalid status value raises error."""
+    with pytest.raises(ValueError):
+        flight_status_redis.Status("INVALID")
+
+
+# === Integration Tests ===
