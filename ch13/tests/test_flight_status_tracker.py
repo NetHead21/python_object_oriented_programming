@@ -218,3 +218,16 @@ def test_get_status_cancelled_flight(
 
     assert timestamp == datetime.datetime(2020, 11, 15, 10, 30, 0)
     assert status == flight_status_redis.Status.CANCELLED
+
+
+def test_get_status_delayed_flight(
+    tracker: flight_status_redis.FlightStatusTracker, mock_redis: Mock
+) -> None:
+    """Test getting DELAYED status."""
+    mock_value = "2020-12-01T14:45:30 | DELAYED"
+    mock_redis.get = Mock(return_value=mock_value)
+
+    timestamp, status = tracker.get_status("FL400")
+
+    assert timestamp == datetime.datetime(2020, 12, 1, 14, 45, 30)
+    assert status == flight_status_redis.Status.DELAYED
