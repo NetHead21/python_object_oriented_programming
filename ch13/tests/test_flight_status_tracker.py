@@ -292,3 +292,16 @@ def test_get_status_invalid_timestamp(
 
     with pytest.raises(ValueError):
         tracker.get_status("FL900")
+
+
+def test_get_status_empty_flight_number(
+    tracker: flight_status_redis.FlightStatusTracker, mock_redis: Mock
+) -> None:
+    """Test getting status for empty flight number."""
+    mock_redis.get = Mock(return_value=None)
+
+    timestamp, status = tracker.get_status("")
+
+    assert timestamp is None
+    assert status is None
+    mock_redis.get.assert_called_once_with("flightno:")
