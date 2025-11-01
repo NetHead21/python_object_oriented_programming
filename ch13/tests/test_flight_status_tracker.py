@@ -429,3 +429,10 @@ def test_redis_key_format(
     assert key.startswith("flightno:")
     assert "TEST123" in key
     assert key == "flightno:TEST123"
+
+
+def test_redis_value_format(
+    tracker: flight_status_redis.FlightStatusTracker, mock_redis: Mock
+) -> None:
+    """Test that Redis value is formatted correctly."""
+    fake_now = datetime.datetime(2020, 10, 26, 23, 24, 25)
