@@ -418,3 +418,7 @@ def test_redis_key_format(
 ) -> None:
     """Test that Redis key is formatted correctly."""
     fake_now = datetime.datetime(2020, 10, 26, 23, 24, 25)
+
+    with patch("src.flight_status_redis.datetime.datetime") as mock_dt:
+        mock_dt.now = Mock(return_value=fake_now)
+        tracker.change_status("TEST123", flight_status_redis.Status.ON_TIME)
