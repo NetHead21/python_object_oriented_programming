@@ -244,3 +244,18 @@ def test_get_status_with_microseconds(
 
     assert timestamp == datetime.datetime(2020, 10, 26, 23, 24, 25, 123456)
     assert status == flight_status_redis.Status.ON_TIME
+
+
+def test_get_status_with_timezone(
+    tracker: flight_status_redis.FlightStatusTracker, mock_redis: Mock
+) -> None:
+    """Test parsing timestamp with timezone info."""
+    mock_value = "2020-10-26T23:24:25+00:00 | DELAYED"
+    mock_redis.get = Mock(return_value=mock_value)
+
+    timestamp, status = tracker.get_status("FL600")
+
+    assert timestamp == datetime.datetime(
+        2020, 10, 26, 23, 24, 25, tzinfo=datetime.timezone.utc
+    )
+    assert status == flight_status_redis.Status.DELAYED
