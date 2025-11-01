@@ -394,3 +394,11 @@ def test_multiple_flights_different_statuses(
 ) -> None:
     """Test tracking multiple flights with different statuses."""
     fake_now = datetime.datetime(2020, 10, 26, 23, 24, 25)
+
+    with patch("src.flight_status_redis.datetime.datetime") as mock_dt:
+        mock_dt.now = Mock(return_value=fake_now)
+        tracker.change_status("AA100", flight_status_redis.Status.ON_TIME)
+        tracker.change_status("BB200", flight_status_redis.Status.DELAYED)
+        tracker.change_status("CC300", flight_status_redis.Status.CANCELLED)
+
+    assert mock_redis.set.call_count == 3
