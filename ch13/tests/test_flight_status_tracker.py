@@ -270,3 +270,14 @@ def test_get_status_invalid_format_missing_separator(
 
     with pytest.raises(ValueError):
         tracker.get_status("FL700")
+
+
+def test_get_status_invalid_status_value(
+    tracker: flight_status_redis.FlightStatusTracker, mock_redis: Mock
+) -> None:
+    """Test that invalid status value raises error."""
+    mock_value = "2020-10-26T23:24:25 | UNKNOWN_STATUS"
+    mock_redis.get = Mock(return_value=mock_value)
+
+    with pytest.raises(ValueError):
+        tracker.get_status("FL800")
