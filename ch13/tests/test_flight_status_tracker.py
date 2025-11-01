@@ -349,3 +349,12 @@ def test_status_enum_string_comparison() -> None:
     assert flight_status_redis.Status.ON_TIME == "ON TIME"
     assert flight_status_redis.Status.DELAYED == "DELAYED"
     assert flight_status_redis.Status.CANCELLED == "CANCELLED"
+
+
+def test_status_enum_from_value() -> None:
+    """Test creating Status from string value."""
+    assert flight_status_redis.Status("ON TIME") == flight_status_redis.Status.ON_TIME
+    assert flight_status_redis.Status("DELAYED") == flight_status_redis.Status.DELAYED
+    assert (
+        flight_status_redis.Status("CANCELLED") == flight_status_redis.Status.CANCELLED
+    )
