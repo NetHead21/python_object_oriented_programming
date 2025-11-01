@@ -387,3 +387,10 @@ def test_change_and_get_status_integration(
 
     assert timestamp == fake_now
     assert status == flight_status_redis.Status.DELAYED
+
+
+def test_multiple_flights_different_statuses(
+    tracker: flight_status_redis.FlightStatusTracker, mock_redis: Mock
+) -> None:
+    """Test tracking multiple flights with different statuses."""
+    fake_now = datetime.datetime(2020, 10, 26, 23, 24, 25)
