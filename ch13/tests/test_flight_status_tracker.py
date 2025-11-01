@@ -332,3 +332,13 @@ def test_tracker_alt_without_argument_creates_default() -> None:
         _ = flight_status_redis.FlightStatusTracker_Alt()
 
         mock_redis_class.assert_called_once_with(host="127.0.0.1", port=6379, db=0)
+
+
+# === Status Enum Tests ===
+
+
+def test_status_enum_values() -> None:
+    """Test that Status enum has correct values."""
+    assert flight_status_redis.Status.CANCELLED.value == "CANCELLED"
+    assert flight_status_redis.Status.DELAYED.value == "DELAYED"
+    assert flight_status_redis.Status.ON_TIME.value == "ON TIME"
