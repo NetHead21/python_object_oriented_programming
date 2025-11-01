@@ -380,3 +380,10 @@ def test_change_and_get_status_integration(
     with patch("src.flight_status_redis.datetime.datetime") as mock_dt:
         mock_dt.now = Mock(return_value=fake_now)
         tracker.change_status("INT001", flight_status_redis.Status.DELAYED)
+
+    # Mock the get operation
+    mock_redis.get = Mock(return_value=expected_value)
+    timestamp, status = tracker.get_status("INT001")
+
+    assert timestamp == fake_now
+    assert status == flight_status_redis.Status.DELAYED
