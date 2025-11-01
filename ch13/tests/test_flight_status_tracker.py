@@ -375,3 +375,8 @@ def test_change_and_get_status_integration(
     """Test full workflow of changing and retrieving status."""
     fake_now = datetime.datetime(2020, 10, 26, 23, 24, 25, tzinfo=datetime.timezone.utc)
     expected_value = "2020-10-26T23:24:25+00:00 | DELAYED"
+
+    # Mock the set operation
+    with patch("src.flight_status_redis.datetime.datetime") as mock_dt:
+        mock_dt.now = Mock(return_value=fake_now)
+        tracker.change_status("INT001", flight_status_redis.Status.DELAYED)
