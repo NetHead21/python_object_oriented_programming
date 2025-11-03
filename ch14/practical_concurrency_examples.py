@@ -122,3 +122,10 @@ class WebScraper:
                     successful.append(result)
                 else:
                     failed.append(result)
+
+        return {
+            "successful": successful,
+            "failed": failed,
+            "total": len(urls),
+            "success_rate": len(successful) / len(urls) if urls else 0,
+        }
