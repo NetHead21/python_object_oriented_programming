@@ -171,3 +171,23 @@ class DataProcessor:
         return DataRecord(
             id=record.id, value=record.value * 2, category=record.category.upper()
         )
+
+    @staticmethod
+    def process_batch_parallel(
+        records: List[DataRecord], num_workers: int = None
+    ) -> List[DataRecord]:
+        """Process records in parallel using multiprocessing.
+
+        Args:
+            records: List of records to process
+            num_workers: Number of worker processes (default: CPU count)
+
+        Returns:
+            List of processed records
+
+        Example:
+            >>> records = [DataRecord(i, i*1.5, "type_a") for i in range(100)]
+            >>> processed = DataProcessor.process_batch_parallel(records)
+            >>> len(processed) == len(records)
+            True
+        """
