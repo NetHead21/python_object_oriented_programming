@@ -207,3 +207,17 @@ class DataProcessor:
         )
 
         return results
+
+    @staticmethod
+    def process_in_chunks(
+        records: List[DataRecord], chunk_size: int = 100
+    ) -> List[DataRecord]:
+        """Process records in chunks for better memory efficiency.
+
+        Args:
+            records: List of records to process
+            chunk_size: Size of each chunk
+
+        Returns:
+            List of all processed records
+        """
