@@ -52,3 +52,12 @@ class WebScraper:
         Returns:
             Dictionary containing URL and simulated content
         """
+        print(f"Fetching: {url}")
+        time.sleep(1)  # Simulate network delay
+
+        return {
+            "url": url,
+            "status": 200,
+            "content": f"Content from {url}",
+            "timestamp": datetime.now().isoformat(),
+        }
