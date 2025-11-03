@@ -90,3 +90,13 @@ class WebScraper:
         print(f"Scraped {len(urls)} URLs in {elapsed:.2f} seconds")
 
         return results
+
+    def scrape_with_error_handling(self, urls: List[str]) -> Dict[str, Any]:
+        """Scrape URLs with comprehensive error handling.
+
+        Args:
+            urls: List of URLs to scrape
+
+        Returns:
+            Dictionary with successful results and errors
+        """
