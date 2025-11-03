@@ -167,3 +167,8 @@ def main(host: str, port: int, target: Path) -> None:
         LogDataCatcher.log_file = unified_log
         with socketserver.TCPServer((host, port), LogDataCatcher) as server:
             server.serve_forever()
+
+
+if __name__ == "__main__":
+    HOST, PORT = "localhost", 18842
+    main(HOST, PORT, Path("one.log"))
