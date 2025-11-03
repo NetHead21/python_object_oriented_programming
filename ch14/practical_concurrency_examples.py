@@ -78,3 +78,15 @@ class WebScraper:
             >>> len(results)
             10
         """
+
+        start_time = time.time()
+
+        with concurrent.futures.ThreadPoolExecutor(
+            max_workers=self.max_workers
+        ) as executor:
+            results = list(executor.map(self.fetch_page, urls))
+
+        elapsed = time.time() - start_time
+        print(f"Scraped {len(urls)} URLs in {elapsed:.2f} seconds")
+
+        return results
