@@ -359,3 +359,11 @@ class StreamProcessor:
         self.queue = multiprocessing.Queue(maxsize=buffer_size)
         self.results = []
         self.running = False
+
+    def producer(self, data_source: Callable[[], Any], duration: int) -> None:
+        """Produce data and add to queue.
+
+        Args:
+            data_source: Function that generates data
+            duration: How long to produce data (seconds)
+        """
