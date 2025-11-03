@@ -221,3 +221,19 @@ class DataProcessor:
         Returns:
             List of all processed records
         """
+
+        def process_chunk(chunk: List[DataRecord]) -> List[DataRecord]:
+            """Process a chunk of records."""
+            return [DataProcessor.process_record(r) for r in chunk]
+
+        # Split into chunks
+        chunks = [
+            records[i : i + chunk_size] for i in range(0, len(records), chunk_size)
+        ]
+
+        # Process chunks in parallel
+        with concurrent.futures.ProcessPoolExecutor() as executor:
+            processed_chunks = list(executor.map(process_chunk, chunks))
+
+        # Flatten results
+        return [record for chunk in processed_chunks for record in chunk]
