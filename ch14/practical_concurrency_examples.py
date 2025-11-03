@@ -237,3 +237,16 @@ class DataProcessor:
 
         # Flatten results
         return [record for chunk in processed_chunks for record in chunk]
+
+
+# ============================================================================
+# EXAMPLE 3: ASYNC WEB API CLIENT
+# ============================================================================
+
+
+class AsyncAPIClient:
+    """Asynchronous API client using asyncio.
+
+    Demonstrates efficient API interaction using async/await for
+    handling many concurrent API requests.
+    """
