@@ -328,3 +328,12 @@ class AsyncAPIClient:
         Raises:
             Exception: If all retries fail
         """
+
+        for attempt in range(max_retries):
+            try:
+                return await self.fetch_resource(resource_id)
+            except Exception:
+                if attempt == max_retries - 1:
+                    raise
+                print(f"Retry {attempt + 1}/{max_retries} for resource {resource_id}")
+                await asyncio.sleep(2**attempt)  # Exponential backoff
