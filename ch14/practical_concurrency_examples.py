@@ -401,3 +401,22 @@ class StreamProcessor:
             count += 1
 
         print(f"Consumer finished: {count} items processed")
+
+    def run_stream_processing(
+        self,
+        data_source: Callable[[], Any],
+        processor: Callable[[Any], Any],
+        duration: int = 5,
+        num_consumers: int = 2,
+    ) -> List[Any]:
+        """Run the stream processing pipeline.
+
+        Args:
+            data_source: Function that generates data
+            processor: Function to process each item
+            duration: How long to run (seconds)
+            num_consumers: Number of consumer threads
+
+        Returns:
+            List of processed results
+        """
