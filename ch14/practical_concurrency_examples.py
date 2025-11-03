@@ -151,3 +151,23 @@ class DataProcessor:
     Demonstrates CPU-intensive data processing using multiple processes
     to achieve true parallelism.
     """
+
+    @staticmethod
+    def process_record(record: DataRecord) -> DataRecord:
+        """Process a single data record (CPU-intensive operation).
+
+        Args:
+            record: Record to process
+
+        Returns:
+            Processed record
+        """
+        # Simulate CPU-intensive computation
+        result = 0
+        for i in range(1000000):
+            result += i * record.value
+
+        # Transform the record
+        return DataRecord(
+            id=record.id, value=record.value * 2, category=record.category.upper()
+        )
