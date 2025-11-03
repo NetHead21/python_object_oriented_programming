@@ -129,3 +129,17 @@ class WebScraper:
             "total": len(urls),
             "success_rate": len(successful) / len(urls) if urls else 0,
         }
+
+
+# ============================================================================
+# EXAMPLE 2: PARALLEL DATA PROCESSING
+# ============================================================================
+
+
+@dataclass
+class DataRecord:
+    """Represents a data record to be processed."""
+
+    id: int
+    value: float
+    category: str
