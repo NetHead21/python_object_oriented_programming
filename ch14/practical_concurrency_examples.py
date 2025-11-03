@@ -420,3 +420,11 @@ class StreamProcessor:
         Returns:
             List of processed results
         """
+
+        self.running = True
+        self.results = []
+
+        # Start producer thread
+        producer_thread = threading.Thread(
+            target=self.producer, args=(data_source, duration)
+        )
