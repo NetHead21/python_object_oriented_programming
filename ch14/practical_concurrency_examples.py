@@ -32,3 +32,11 @@ class WebScraper:
     Demonstrates efficient web scraping by making multiple HTTP requests
     concurrently, reducing total scraping time.
     """
+
+    def __init__(self, max_workers: int = 5):
+        """Initialize the web scraper.
+
+        Args:
+            max_workers: Maximum number of concurrent requests
+        """
+        self.max_workers = max_workers
