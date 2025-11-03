@@ -270,3 +270,13 @@ class AsyncAPIClient:
         Returns:
             Resource data
         """
+
+        async with self.semaphore:  # Rate limiting
+            print(f"Fetching resource {resource_id}")
+            await asyncio.sleep(0.5)  # Simulate API call
+
+            return {
+                "id": resource_id,
+                "data": f"Resource data for {resource_id}",
+                "timestamp": datetime.now().isoformat(),
+            }
