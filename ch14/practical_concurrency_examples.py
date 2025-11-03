@@ -100,3 +100,13 @@ class WebScraper:
         Returns:
             Dictionary with successful results and errors
         """
+        successful = []
+        failed = []
+
+        def safe_fetch(url: str) -> tuple[bool, Any]:
+            """Fetch with exception handling."""
+            try:
+                result = self.fetch_page(url)
+                return True, result
+            except Exception as e:
+                return False, {"url": url, "error": str(e)}
