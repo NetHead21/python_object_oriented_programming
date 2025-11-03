@@ -299,3 +299,16 @@ class AsyncAPIClient:
             >>> len(results)
             20
         """
+
+        start_time = time.time()
+
+        # Create tasks for all requests
+        tasks = [self.fetch_resource(rid) for rid in resource_ids]
+
+        # Execute all tasks concurrently
+        results = await asyncio.gather(*tasks)
+
+        elapsed = time.time() - start_time
+        print(f"Fetched {len(resource_ids)} resources in {elapsed:.2f}s")
+
+        return results
