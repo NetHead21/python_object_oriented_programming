@@ -96,3 +96,15 @@ def work(i: int) -> int:
     f = factorial(i)
     logger.info("Factorial(%d) = %d", i, f)
     return f
+
+
+if __name__ == "__main__":
+    HOST, PORT = "localhost", 18842
+    socket_handler = logging.handlers.SocketHandler(HOST, PORT)
+    stream_handler = logging.StreamHandler(sys.stderr)
+    logging.basicConfig(handlers=[socket_handler, stream_handler], level=logging.INFO)
+
+    for i in range(10):
+        work(i)
+
+    logging.shutdown()
