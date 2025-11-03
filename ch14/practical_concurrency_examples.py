@@ -260,3 +260,13 @@ class AsyncAPIClient:
         """
         self.base_url = base_url
         self.semaphore = asyncio.Semaphore(rate_limit)
+
+    async def fetch_resource(self, resource_id: int) -> Dict[str, Any]:
+        """Fetch a single resource from the API.
+
+        Args:
+            resource_id: ID of the resource to fetch
+
+        Returns:
+            Resource data
+        """
