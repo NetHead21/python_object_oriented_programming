@@ -387,3 +387,17 @@ class StreamProcessor:
         Args:
             processor: Function to process each data item
         """
+
+        count = 0
+
+        while self.running:
+            data = self.queue.get()
+
+            if data is None:
+                break
+
+            result = processor(data)
+            self.results.append(result)
+            count += 1
+
+        print(f"Consumer finished: {count} items processed")
