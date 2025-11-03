@@ -143,3 +143,11 @@ class DataRecord:
     id: int
     value: float
     category: str
+
+
+class DataProcessor:
+    """Parallel data processor using multiprocessing.
+
+    Demonstrates CPU-intensive data processing using multiple processes
+    to achieve true parallelism.
+    """
