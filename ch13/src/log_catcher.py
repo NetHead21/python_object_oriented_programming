@@ -30,3 +30,35 @@ from typing import TextIO
 import pickle
 import sys
 import struct
+
+
+class LogDataCatcher(socketserver.BaseRequestHandler):
+    """TCP request handler that receives and processes remote log records.
+
+    This handler receives pickled log records sent via SocketHandler,
+    unpickles them, and writes them to a JSON log file. Each connection
+    can send multiple log records in sequence.
+
+    The handler implements the logging protocol:
+    1. Read 4-byte size header (big-endian unsigned long)
+    2. Read payload bytes based on the size
+    3. Unpickle the log record dictionary
+    4. Write to JSON log file
+    5. Repeat until connection closes
+
+    Class Attributes:
+        log_file (TextIO): The output file for writing log records.
+        count (int): Counter for total number of log records received.
+        size_format (str): Struct format string for size header (">L" = big-endian unsigned long).
+        size_bytes (int): Number of bytes in the size header (4 bytes).
+
+    Instance Attributes:
+        request: The socket object for the client connection.
+        client_address: Tuple of (host, port) for the client.
+
+    Example:
+        The handler is used automatically by TCPServer:
+
+            >>> with socketserver.TCPServer((host, port), LogDataCatcher) as server:
+            ...     server.serve_forever()
+    """
