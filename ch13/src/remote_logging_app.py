@@ -29,3 +29,10 @@ Note:
     The log catcher server (log_catcher.py) must be running before starting
     this application, otherwise the SocketHandler will fail to connect.
 """
+
+import logging
+import logging.handlers
+import sys
+from math import factorial
+
+logger = logging.getLogger("app")
