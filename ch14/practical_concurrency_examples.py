@@ -367,3 +367,16 @@ class StreamProcessor:
             data_source: Function that generates data
             duration: How long to produce data (seconds)
         """
+
+        start_time = time.time()
+        count = 0
+
+        while time.time() - start_time < duration and self.running:
+            data = data_source()
+            self.queue.put(data)
+            count += 1
+            time.sleep(0.1)
+
+        # Signal completion
+        self.queue.put(None)
+        print(f"Producer finished: {count} items produced")
