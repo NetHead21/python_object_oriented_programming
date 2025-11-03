@@ -61,3 +61,20 @@ class WebScraper:
             "content": f"Content from {url}",
             "timestamp": datetime.now().isoformat(),
         }
+
+    def scrape_urls(self, urls: List[str]) -> List[Dict[str, Any]]:
+        """Scrape multiple URLs concurrently.
+
+        Args:
+            urls: List of URLs to scrape
+
+        Returns:
+            List of results from all URLs
+
+        Example:
+            >>> scraper = WebScraper(max_workers=3)
+            >>> urls = [f"http://example.com/page{i}" for i in range(10)]
+            >>> results = scraper.scrape_urls(urls)
+            >>> len(results)
+            10
+        """
