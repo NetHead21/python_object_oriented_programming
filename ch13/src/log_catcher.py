@@ -116,3 +116,50 @@ class LogDataCatcher(socketserver.BaseRequestHandler):
                 size_header_bytes = self.request.recv(LogDataCatcher.size_bytes)
             except (ConnectionResetError, BrokenPipeError):
                 break
+
+
+def main(host: str, port: int, target: Path) -> None:
+    """Start the log catcher server and listen for incoming log records.
+
+    Creates a TCP server that listens on the specified host and port,
+    receiving log records from remote clients and writing them to a
+    unified JSON log file.
+
+    The server runs indefinitely (serve_forever) until interrupted
+    by a keyboard interrupt (Ctrl+C) or system signal.
+
+    Args:
+        host (str): The hostname or IP address to bind to (e.g., "localhost", "0.0.0.0").
+        port (int): The port number to listen on (e.g., 18842).
+        target (Path): Path to the output log file where records will be written.
+
+    Returns:
+        None
+
+    Raises:
+        OSError: If the port is already in use or binding fails.
+        PermissionError: If unable to create or write to the target file.
+        KeyboardInterrupt: When user interrupts with Ctrl+C (handled gracefully).
+
+    Side Effects:
+        - Creates and opens the target file for writing (overwrites if exists)
+        - Binds to the specified network interface and port
+        - Runs indefinitely until interrupted
+        - Sets LogDataCatcher.log_file class variable
+
+    Example:
+        Start server on localhost:18842, writing to "unified.log":
+
+            >>> from pathlib import Path
+            >>> main("localhost", 18842, Path("unified.log"))
+            # Server runs until Ctrl+C
+
+        Start server on all interfaces:
+
+            >>> main("0.0.0.0", 18842, Path("all_logs.json"))
+
+    Note:
+        The target file is opened in write mode ("w"), which will truncate
+        any existing file. Each log record is written as a separate JSON
+        line (JSONL format).
+    """
