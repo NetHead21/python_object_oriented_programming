@@ -428,3 +428,9 @@ class StreamProcessor:
         producer_thread = threading.Thread(
             target=self.producer, args=(data_source, duration)
         )
+
+        # Start consumer threads
+        consumer_threads = [
+            threading.Thread(target=self.consumer, args=(processor,))
+            for _ in range(num_consumers)
+        ]
