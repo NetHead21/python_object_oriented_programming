@@ -163,3 +163,7 @@ def main(host: str, port: int, target: Path) -> None:
         any existing file. Each log record is written as a separate JSON
         line (JSONL format).
     """
+    with target.open("w") as unified_log:
+        LogDataCatcher.log_file = unified_log
+        with socketserver.TCPServer((host, port), LogDataCatcher) as server:
+            server.serve_forever()
