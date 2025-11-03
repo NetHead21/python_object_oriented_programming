@@ -380,3 +380,10 @@ class StreamProcessor:
         # Signal completion
         self.queue.put(None)
         print(f"Producer finished: {count} items produced")
+
+    def consumer(self, processor: Callable[[Any], Any]) -> None:
+        """Consume and process data from queue.
+
+        Args:
+            processor: Function to process each data item
+        """
