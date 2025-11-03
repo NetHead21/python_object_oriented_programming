@@ -19,3 +19,16 @@ import multiprocessing
 from typing import List, Dict, Any, Callable
 from dataclasses import dataclass
 from datetime import datetime
+
+
+# ============================================================================
+# EXAMPLE 1: WEB SCRAPING WITH CONCURRENT REQUESTS
+# ============================================================================
+
+
+class WebScraper:
+    """Concurrent web scraper using ThreadPoolExecutor.
+
+    Demonstrates efficient web scraping by making multiple HTTP requests
+    concurrently, reducing total scraping time.
+    """
