@@ -312,3 +312,19 @@ class AsyncAPIClient:
         print(f"Fetched {len(resource_ids)} resources in {elapsed:.2f}s")
 
         return results
+
+    async def fetch_with_retry(
+        self, resource_id: int, max_retries: int = 3
+    ) -> Dict[str, Any]:
+        """Fetch resource with automatic retry on failure.
+
+        Args:
+            resource_id: ID of the resource
+            max_retries: Maximum number of retry attempts
+
+        Returns:
+            Resource data
+
+        Raises:
+            Exception: If all retries fail
+        """
