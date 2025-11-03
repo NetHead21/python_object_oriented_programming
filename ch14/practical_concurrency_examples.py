@@ -337,3 +337,15 @@ class AsyncAPIClient:
                     raise
                 print(f"Retry {attempt + 1}/{max_retries} for resource {resource_id}")
                 await asyncio.sleep(2**attempt)  # Exponential backoff
+
+
+# ============================================================================
+# EXAMPLE 4: REAL-TIME DATA STREAM PROCESSOR
+# ============================================================================
+
+
+class StreamProcessor:
+    """Process real-time data streams using threading and queues.
+
+    Demonstrates the producer-consumer pattern for handling streaming data.
+    """
