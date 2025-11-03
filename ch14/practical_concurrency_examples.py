@@ -191,3 +191,19 @@ class DataProcessor:
             >>> len(processed) == len(records)
             True
         """
+        if num_workers is None:
+            num_workers = multiprocessing.cpu_count()
+
+        start_time = time.time()
+
+        with concurrent.futures.ProcessPoolExecutor(
+            max_workers=num_workers
+        ) as executor:
+            results = list(executor.map(DataProcessor.process_record, records))
+
+        elapsed = time.time() - start_time
+        print(
+            f"Processed {len(records)} records in {elapsed:.2f}s using {num_workers} workers"
+        )
+
+        return results
