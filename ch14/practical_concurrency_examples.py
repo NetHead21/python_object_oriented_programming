@@ -349,3 +349,13 @@ class StreamProcessor:
 
     Demonstrates the producer-consumer pattern for handling streaming data.
     """
+
+    def __init__(self, buffer_size: int = 100):
+        """Initialize the stream processor.
+
+        Args:
+            buffer_size: Size of the internal queue buffer
+        """
+        self.queue = multiprocessing.Queue(maxsize=buffer_size)
+        self.results = []
+        self.running = False
