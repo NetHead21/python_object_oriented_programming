@@ -91,3 +91,8 @@ def work(i: int) -> int:
         or could be a bug that should log only the input: "Factorial(%d)" or
         "Computing Factorial(%d)".
     """
+
+    logger.info("Factorial(%d) = %d", i)
+    f = factorial(i)
+    logger.info("Factorial(%d) = %d", i, f)
+    return f
