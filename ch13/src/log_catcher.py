@@ -100,3 +100,19 @@ class LogDataCatcher(socketserver.BaseRequestHandler):
             This method is called automatically by the server framework.
             Each received log record is written as a JSON line to the output file.
         """
+
+        size_header_bytes = self.request.recv(LogDataCatcher.size_bytes)
+        while size_header_bytes:
+            payload_size = struct.unpack(LogDataCatcher.size_format, size_header_bytes)
+            print(f"{size_header_bytes=} {payload_size=}", file=sys.stderr)
+            payload_bytes = self.request.recv(payload_size[0])
+            print(f"{len(payload_bytes)=}", file=sys.stderr)
+            payload = pickle.loads(payload_bytes)
+            LogDataCatcher.count += 1
+            print(f"{self.client_address[0]} {LogDataCatcher.count} {payload!r}")
+            self.log_file.write(json.dumps(payload) + "\n")
+
+            try:
+                size_header_bytes = self.request.recv(LogDataCatcher.size_bytes)
+            except (ConnectionResetError, BrokenPipeError):
+                break
