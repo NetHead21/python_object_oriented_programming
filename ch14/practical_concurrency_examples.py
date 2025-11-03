@@ -280,3 +280,22 @@ class AsyncAPIClient:
                 "data": f"Resource data for {resource_id}",
                 "timestamp": datetime.now().isoformat(),
             }
+
+    async def fetch_multiple_resources(
+        self, resource_ids: List[int]
+    ) -> List[Dict[str, Any]]:
+        """Fetch multiple resources concurrently.
+
+        Args:
+            resource_ids: List of resource IDs to fetch
+
+        Returns:
+            List of resource data
+
+        Example:
+            >>> client = AsyncAPIClient("https://api.example.com")
+            >>> ids = list(range(20))
+            >>> results = asyncio.run(client.fetch_multiple_resources(ids))
+            >>> len(results)
+            20
+        """
