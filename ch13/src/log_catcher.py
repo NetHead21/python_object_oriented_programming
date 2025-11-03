@@ -67,3 +67,36 @@ class LogDataCatcher(socketserver.BaseRequestHandler):
     count: int = 0
     size_format = ">L"
     size_bytes = struct.calcsize(size_format)
+
+    def handle(self) -> None:
+        """Handle incoming log records from a client connection.
+
+        This method is called automatically by the TCPServer when a client
+        connects. It continuously reads log records until the connection
+        closes or an error occurs.
+
+        The protocol for each log record:
+        1. Receive 4-byte size header
+        2. Unpack to get payload size
+        3. Receive payload bytes
+        4. Unpickle to get log record dictionary
+        5. Write to JSON log file
+        6. Increment counter and print diagnostic info
+
+        The loop continues until:
+        - Client closes connection (empty size_header_bytes)
+        - ConnectionResetError occurs
+        - BrokenPipeError occurs
+
+        Returns:
+            None
+
+        Side Effects:
+            - Writes log records to self.log_file
+            - Increments class variable LogDataCatcher.count
+            - Prints diagnostic information to stderr and stdout
+
+        Example:
+            This method is called automatically by the server framework.
+            Each received log record is written as a JSON line to the output file.
+        """
