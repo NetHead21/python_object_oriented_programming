@@ -250,3 +250,13 @@ class AsyncAPIClient:
     Demonstrates efficient API interaction using async/await for
     handling many concurrent API requests.
     """
+
+    def __init__(self, base_url: str, rate_limit: int = 10):
+        """Initialize the API client.
+
+        Args:
+            base_url: Base URL for the API
+            rate_limit: Maximum concurrent requests
+        """
+        self.base_url = base_url
+        self.semaphore = asyncio.Semaphore(rate_limit)
