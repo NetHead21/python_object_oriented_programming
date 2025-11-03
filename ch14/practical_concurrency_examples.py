@@ -110,3 +110,15 @@ class WebScraper:
                 return True, result
             except Exception as e:
                 return False, {"url": url, "error": str(e)}
+
+        with concurrent.futures.ThreadPoolExecutor(
+            max_workers=self.max_workers
+        ) as executor:
+            futures = {executor.submit(safe_fetch, url): url for url in urls}
+
+            for future in concurrent.futures.as_completed(futures):
+                success, result = future.result()
+                if success:
+                    successful.append(result)
+                else:
+                    failed.append(result)
