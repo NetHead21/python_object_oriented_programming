@@ -62,3 +62,8 @@ class LogDataCatcher(socketserver.BaseRequestHandler):
             >>> with socketserver.TCPServer((host, port), LogDataCatcher) as server:
             ...     server.serve_forever()
     """
+
+    log_file: TextIO
+    count: int = 0
+    size_format = ">L"
+    size_bytes = struct.calcsize(size_format)
