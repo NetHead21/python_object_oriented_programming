@@ -464,3 +464,14 @@ class FileProcessor:
 
     Demonstrates parallel file I/O and processing using multiprocessing.
     """
+
+    @staticmethod
+    def process_file(file_info: tuple[str, Callable]) -> Dict[str, Any]:
+        """Process a single file.
+
+        Args:
+            file_info: Tuple of (filename, processing_function)
+
+        Returns:
+            Processing result
+        """
