@@ -434,3 +434,7 @@ class StreamProcessor:
             threading.Thread(target=self.consumer, args=(processor,))
             for _ in range(num_consumers)
         ]
+
+        producer_thread.start()
+        for thread in consumer_threads:
+            thread.start()
