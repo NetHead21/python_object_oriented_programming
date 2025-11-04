@@ -452,3 +452,15 @@ class StreamProcessor:
 
         self.running = False
         return self.results
+
+
+# ============================================================================
+# EXAMPLE 5: PARALLEL FILE PROCESSOR
+# ============================================================================
+
+
+class FileProcessor:
+    """Process multiple files in parallel.
+
+    Demonstrates parallel file I/O and processing using multiprocessing.
+    """
