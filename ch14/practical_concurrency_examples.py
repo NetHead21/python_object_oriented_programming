@@ -558,3 +558,13 @@ class AsyncBatchProcessor:
         """
         await asyncio.sleep(0.1)  # Simulate async I/O
         return f"Processed: {item}"
+
+    async def process_batch(self, batch: List[Any]) -> List[Any]:
+        """Process a batch of items.
+
+        Args:
+            batch: List of items to process
+
+        Returns:
+            List of processed items
+        """
