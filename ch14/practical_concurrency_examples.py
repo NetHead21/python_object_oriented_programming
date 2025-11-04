@@ -438,3 +438,10 @@ class StreamProcessor:
         producer_thread.start()
         for thread in consumer_threads:
             thread.start()
+
+        # Wait for producer to finish
+        producer_thread.join()
+
+        # Signal consumers to stop
+        for _ in range(num_consumers):
+            self.queue.put(None)
