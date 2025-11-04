@@ -568,3 +568,8 @@ class AsyncBatchProcessor:
         Returns:
             List of processed items
         """
+        async with self.semaphore:
+            print(f"Processing batch of {len(batch)} items")
+            tasks = [self.process_item(item) for item in batch]
+            results = await asyncio.gather(*tasks)
+            return results
