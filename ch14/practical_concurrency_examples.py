@@ -590,3 +590,9 @@ class AsyncBatchProcessor:
             >>> len(results)
             50
         """
+
+        # Split into batches
+        batches = [
+            items[i : i + self.batch_size]
+            for i in range(0, len(items), self.batch_size)
+        ]
