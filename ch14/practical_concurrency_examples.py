@@ -511,3 +511,8 @@ class FileProcessor:
             >>> files = [f"file_{i}.txt" for i in range(10)]
             >>> results = FileProcessor.process_files_parallel(files, word_count)
         """
+
+        if max_workers is None:
+            max_workers = min(len(filenames), multiprocessing.cpu_count())
+
+        file_infos = [(f, processor) for f in filenames]
