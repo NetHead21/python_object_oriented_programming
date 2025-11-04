@@ -546,3 +546,15 @@ class AsyncBatchProcessor:
         """
         self.batch_size = batch_size
         self.semaphore = asyncio.Semaphore(max_concurrent)
+
+    async def process_item(self, item: Any) -> Any:
+        """Process a single item asynchronously.
+
+        Args:
+            item: Item to process
+
+        Returns:
+            Processed item
+        """
+        await asyncio.sleep(0.1)  # Simulate async I/O
+        return f"Processed: {item}"
