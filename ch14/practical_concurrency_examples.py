@@ -523,3 +523,26 @@ class FileProcessor:
             results = list(executor.map(FileProcessor.process_file, file_infos))
 
         return results
+
+
+# ============================================================================
+# EXAMPLE 6: ASYNC BATCH PROCESSOR
+# ============================================================================
+
+
+class AsyncBatchProcessor:
+    """Asynchronous batch processor for I/O-bound operations.
+
+    Demonstrates efficient batch processing using asyncio with
+    configurable batch sizes and concurrency limits.
+    """
+
+    def __init__(self, batch_size: int = 10, max_concurrent: int = 5):
+        """Initialize the batch processor.
+
+        Args:
+            batch_size: Number of items per batch
+            max_concurrent: Maximum concurrent batches
+        """
+        self.batch_size = batch_size
+        self.semaphore = asyncio.Semaphore(max_concurrent)
