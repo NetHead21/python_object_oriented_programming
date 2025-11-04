@@ -626,3 +626,16 @@ def demo_web_scraping() -> None:
 
 def demo_data_processing() -> None:
     """Demonstrate parallel data processing."""
+
+    print("\n" + "=" * 70)
+    print("DEMO: Parallel Data Processing")
+    print("=" * 70)
+
+    # Create sample data
+    records = [DataRecord(i, i * 1.5, f"category_{i % 3}") for i in range(20)]
+
+    print(f"Processing {len(records)} records...")
+    processed = DataProcessor.process_batch_parallel(records, num_workers=4)
+
+    print(f"Processed {len(processed)} records")
+    print(f"Sample result: {processed[0]}")
