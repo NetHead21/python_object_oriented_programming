@@ -603,3 +603,12 @@ class AsyncBatchProcessor:
 
         # Flatten results
         return [item for batch in batch_results for item in batch]
+
+
+# ============================================================================
+# DEMONSTRATION FUNCTIONS
+# ============================================================================
+
+
+def demo_web_scraping() -> None:
+    """Demonstrate concurrent web scraping."""
