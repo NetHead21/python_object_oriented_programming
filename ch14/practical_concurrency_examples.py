@@ -490,3 +490,24 @@ class FileProcessor:
             return {"filename": filename, "status": "success", "result": result}
         except Exception as e:
             return {"filename": filename, "status": "error", "error": str(e)}
+
+    @staticmethod
+    def process_files_parallel(
+        filenames: List[str], processor: Callable[[str], Any], max_workers: int = None
+    ) -> List[Dict[str, Any]]:
+        """Process multiple files in parallel.
+
+        Args:
+            filenames: List of file paths
+            processor: Function to process file content
+            max_workers: Number of worker processes
+
+        Returns:
+            List of processing results
+
+        Example:
+            >>> def word_count(content: str) -> int:
+            ...     return len(content.split())
+            >>> files = [f"file_{i}.txt" for i in range(10)]
+            >>> results = FileProcessor.process_files_parallel(files, word_count)
+        """
