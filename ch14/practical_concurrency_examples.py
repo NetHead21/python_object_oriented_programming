@@ -600,3 +600,6 @@ class AsyncBatchProcessor:
         # Process all batches concurrently
         batch_tasks = [self.process_batch(batch) for batch in batches]
         batch_results = await asyncio.gather(*batch_tasks)
+
+        # Flatten results
+        return [item for batch in batch_results for item in batch]
