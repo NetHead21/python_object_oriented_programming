@@ -475,3 +475,18 @@ class FileProcessor:
         Returns:
             Processing result
         """
+
+        filename, processor = file_info
+
+        try:
+            # Simulate file reading and processing
+            print(f"Processing {filename}")
+            time.sleep(0.5)  # Simulate I/O
+
+            # In real scenario, read file content here
+            content = f"Content of {filename}"
+            result = processor(content)
+
+            return {"filename": filename, "status": "success", "result": result}
+        except Exception as e:
+            return {"filename": filename, "status": "error", "error": str(e)}
