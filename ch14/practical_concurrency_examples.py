@@ -445,3 +445,10 @@ class StreamProcessor:
         # Signal consumers to stop
         for _ in range(num_consumers):
             self.queue.put(None)
+
+        # Wait for consumers to finish
+        for thread in consumer_threads:
+            thread.join()
+
+        self.running = False
+        return self.results
