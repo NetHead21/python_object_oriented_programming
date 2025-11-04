@@ -516,3 +516,10 @@ class FileProcessor:
             max_workers = min(len(filenames), multiprocessing.cpu_count())
 
         file_infos = [(f, processor) for f in filenames]
+
+        with concurrent.futures.ProcessPoolExecutor(
+            max_workers=max_workers
+        ) as executor:
+            results = list(executor.map(FileProcessor.process_file, file_infos))
+
+        return results
