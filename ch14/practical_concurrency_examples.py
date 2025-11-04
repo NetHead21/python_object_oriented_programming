@@ -612,3 +612,13 @@ class AsyncBatchProcessor:
 
 def demo_web_scraping() -> None:
     """Demonstrate concurrent web scraping."""
+
+    print("\n" + "=" * 70)
+    print("DEMO: Concurrent Web Scraping")
+    print("=" * 70)
+
+    scraper = WebScraper(max_workers=5)
+    urls = [f"http://example.com/page{i}" for i in range(10)]
+
+    results = scraper.scrape_urls(urls)
+    print(f"\nScraped {len(results)} pages successfully")
