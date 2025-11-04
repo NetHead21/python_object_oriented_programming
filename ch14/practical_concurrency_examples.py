@@ -622,3 +622,7 @@ def demo_web_scraping() -> None:
 
     results = scraper.scrape_urls(urls)
     print(f"\nScraped {len(results)} pages successfully")
+
+
+def demo_data_processing() -> None:
+    """Demonstrate parallel data processing."""
