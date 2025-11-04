@@ -573,3 +573,20 @@ class AsyncBatchProcessor:
             tasks = [self.process_item(item) for item in batch]
             results = await asyncio.gather(*tasks)
             return results
+
+    async def process_all(self, items: List[Any]) -> List[Any]:
+        """Process all items in batches.
+
+        Args:
+            items: List of all items to process
+
+        Returns:
+            List of all processed items
+
+        Example:
+            >>> processor = AsyncBatchProcessor(batch_size=5, max_concurrent=3)
+            >>> items = list(range(50))
+            >>> results = asyncio.run(processor.process_all(items))
+            >>> len(results)
+            50
+        """
