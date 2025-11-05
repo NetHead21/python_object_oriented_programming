@@ -663,3 +663,14 @@ def demo_stream_processing() -> None:
     print("\n" + "=" * 70)
     print("DEMO: Stream Processing")
     print("=" * 70)
+
+    # Data source that generates random data
+    import random
+
+    def data_source():
+        return {"value": random.randint(1, 100), "timestamp": time.time()}
+
+    def processor(data):
+        # Simple processing: add processed flag
+        data["processed"] = True
+        return data
