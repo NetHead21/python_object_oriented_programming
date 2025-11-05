@@ -674,3 +674,10 @@ def demo_stream_processing() -> None:
         # Simple processing: add processed flag
         data["processed"] = True
         return data
+
+    stream = StreamProcessor(buffer_size=50)
+    results = stream.run_stream_processing(
+        data_source=data_source, processor=processor, duration=3, num_consumers=2
+    )
+
+    print(f"\nProcessed {len(results)} items from stream")
