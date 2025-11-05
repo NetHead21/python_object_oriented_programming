@@ -120,3 +120,15 @@ class ThreadingExamples:
             Producer: Added item 1 to queue
             ...
         """
+
+        queue: Queue = Queue(maxsize=5)
+
+        def producer(num_items: int) -> None:
+            """Produces items and adds them to the queue."""
+            for i in range(num_items):
+                item = f"item {i}"
+                queue.put(item)
+                print(f"Producer: Added {item} to queue")
+                time.sleep(0.1)
+            # Signal completion
+            queue.put(None)
