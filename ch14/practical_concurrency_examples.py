@@ -689,3 +689,13 @@ def demonstrate_all_practical() -> None:
     demo_data_processing()
     demo_async_api()
     demo_stream_processing()
+
+
+if __name__ == "__main__":
+    print("Practical Concurrency Examples loaded.")
+    print("Run demonstrate_all_practical() to see all demos.")
+    print("\nIndividual demos:")
+    print("  - demo_web_scraping()")
+    print("  - demo_data_processing()")
+    print("  - demo_async_api()")
+    print("  - demo_stream_processing()")
