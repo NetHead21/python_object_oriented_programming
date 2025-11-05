@@ -84,3 +84,13 @@ class ThreadingExamples:
             >>> ThreadingExamples.thread_with_lock()
             Final counter value: 100000
         """
+
+        counter = 0
+        lock = threading.Lock()
+
+        def increment_counter(iterations: int) -> None:
+            """Safely increment a shared counter using a lock."""
+            nonlocal counter
+            for _ in range(iterations):
+                with lock:  # Acquire lock automatically
+                    counter += 1
