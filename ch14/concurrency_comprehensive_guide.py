@@ -50,3 +50,9 @@ class ThreadingExamples:
             Thread Thread-2 completed
             All threads finished
         """
+
+        def worker(thread_id: int, duration: float) -> None:
+            """Simulates work by sleeping for a duration."""
+            print(f"Thread {threading.current_thread().name} starting work...")
+            time.sleep(duration)
+            print(f"Thread {threading.current_thread().name} completed")
