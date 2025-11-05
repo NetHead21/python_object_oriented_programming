@@ -94,3 +94,14 @@ class ThreadingExamples:
             for _ in range(iterations):
                 with lock:  # Acquire lock automatically
                     counter += 1
+
+        threads = []
+        for _ in range(10):
+            thread = threading.Thread(target=increment_counter, args=(10000,))
+            threads.append(thread)
+            thread.start()
+
+        for thread in threads:
+            thread.join()
+
+        print(f"Final counter value: {counter}")
