@@ -681,3 +681,11 @@ def demo_stream_processing() -> None:
     )
 
     print(f"\nProcessed {len(results)} items from stream")
+
+
+def demonstrate_all_practical() -> None:
+    """Run all practical demonstrations."""
+    demo_web_scraping()
+    demo_data_processing()
+    demo_async_api()
+    demo_stream_processing()
