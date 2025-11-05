@@ -656,3 +656,10 @@ def demo_async_api() -> None:
         return results
 
     asyncio.run(run_demo())
+
+
+def demo_stream_processing() -> None:
+    """Demonstrate real-time stream processing."""
+    print("\n" + "=" * 70)
+    print("DEMO: Stream Processing")
+    print("=" * 70)
