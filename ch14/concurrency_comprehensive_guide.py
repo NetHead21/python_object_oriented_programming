@@ -72,3 +72,15 @@ class ThreadingExamples:
         thread2.join()
 
         print("All threads finished")
+
+    @staticmethod
+    def thread_with_lock() -> None:
+        """Demonstrate thread synchronization using locks to prevent race conditions.
+
+        Locks ensure that only one thread can access shared resources at a time,
+        preventing data corruption from simultaneous access.
+
+        Example:
+            >>> ThreadingExamples.thread_with_lock()
+            Final counter value: 100000
+        """
