@@ -21,3 +21,18 @@ import time
 import concurrent.futures
 from typing import List, Any
 from queue import Queue
+
+
+# ============================================================================
+# SECTION 1: THREADING - CONCURRENT EXECUTION (I/O-BOUND TASKS)
+# ============================================================================
+
+
+class ThreadingExamples:
+    """Examples demonstrating Python threading for concurrent execution.
+
+    Threading is best for I/O-bound tasks where the program spends time waiting
+    for external resources (network, disk, user input). Python's GIL (Global
+    Interpreter Lock) prevents true parallel execution of Python bytecode, but
+    threads can run concurrently during I/O operations.
+    """
