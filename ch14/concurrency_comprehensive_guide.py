@@ -56,3 +56,7 @@ class ThreadingExamples:
             print(f"Thread {threading.current_thread().name} starting work...")
             time.sleep(duration)
             print(f"Thread {threading.current_thread().name} completed")
+
+        # Create threads
+        thread1 = threading.Thread(target=worker, args=(1, 2))
+        thread2 = threading.Thread(target=worker, args=(2, 1))
