@@ -639,3 +639,10 @@ def demo_data_processing() -> None:
 
     print(f"Processed {len(processed)} records")
     print(f"Sample result: {processed[0]}")
+
+
+def demo_async_api() -> None:
+    """Demonstrate async API client."""
+    print("\n" + "=" * 70)
+    print("DEMO: Async API Client")
+    print("=" * 70)
