@@ -646,3 +646,13 @@ def demo_async_api() -> None:
     print("\n" + "=" * 70)
     print("DEMO: Async API Client")
     print("=" * 70)
+
+    async def run_demo():
+        client = AsyncAPIClient("https://api.example.com", rate_limit=5)
+        resource_ids = list(range(15))
+
+        results = await client.fetch_multiple_resources(resource_ids)
+        print(f"\nFetched {len(results)} resources")
+        return results
+
+    asyncio.run(run_demo())
