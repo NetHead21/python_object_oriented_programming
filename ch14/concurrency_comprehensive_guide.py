@@ -132,3 +132,13 @@ class ThreadingExamples:
                 time.sleep(0.1)
             # Signal completion
             queue.put(None)
+
+        def consumer() -> None:
+            """Consumes items from the queue until receiving None."""
+            while True:
+                item = queue.get()
+                if item is None:
+                    break
+                print(f"Consumer: Processing {item}")
+                time.sleep(0.2)
+                queue.task_done()
