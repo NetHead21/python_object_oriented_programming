@@ -105,3 +105,18 @@ class ThreadingExamples:
             thread.join()
 
         print(f"Final counter value: {counter}")
+
+    @staticmethod
+    def producer_consumer_pattern() -> None:
+        """Demonstrate producer-consumer pattern using Queue.
+
+        The Queue class is thread-safe and provides a simple way to pass data
+        between threads without explicit locking.
+
+        Example:
+            >>> ThreadingExamples.producer_consumer_pattern()
+            Producer: Added item 0 to queue
+            Consumer: Processing item 0
+            Producer: Added item 1 to queue
+            ...
+        """
