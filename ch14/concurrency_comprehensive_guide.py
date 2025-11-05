@@ -64,3 +64,11 @@ class ThreadingExamples:
         # Start threads
         thread1.start()
         thread2.start()
+
+        print("Main thread continues...")
+
+        # Wait for threads to complete
+        thread1.join()
+        thread2.join()
+
+        print("All threads finished")
