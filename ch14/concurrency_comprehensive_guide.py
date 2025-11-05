@@ -60,3 +60,7 @@ class ThreadingExamples:
         # Create threads
         thread1 = threading.Thread(target=worker, args=(1, 2))
         thread2 = threading.Thread(target=worker, args=(2, 1))
+
+        # Start threads
+        thread1.start()
+        thread2.start()
