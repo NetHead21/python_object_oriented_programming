@@ -276,3 +276,20 @@ class MultiprocessingExamples:
             process2.join()
 
             print(f"Results: {list(results)}")
+
+    @staticmethod
+    def process_pool_example(numbers: List[int]) -> List[int]:
+        """Demonstrate using ProcessPoolExecutor for parallel computation.
+
+        Args:
+            numbers: List of numbers to process
+
+        Returns:
+            List of results from parallel computation
+
+        Example:
+            >>> numbers = [1000, 2000, 3000, 4000]
+            >>> results = MultiprocessingExamples.process_pool_example(numbers)
+            >>> len(results) == len(numbers)
+            True
+        """
