@@ -215,3 +215,17 @@ class ThreadPoolExample:
             results = list(executor.map(process_item, items))
 
         return results
+
+
+# ============================================================================
+# SECTION 2: MULTIPROCESSING - TRUE PARALLELISM (CPU-BOUND TASKS)
+# ============================================================================
+
+
+class MultiprocessingExamples:
+    """Examples demonstrating multiprocessing for CPU-bound tasks.
+
+    Multiprocessing bypasses the GIL by using separate Python processes,
+    enabling true parallel execution on multiple CPU cores. Best for
+    CPU-intensive computations.
+    """
