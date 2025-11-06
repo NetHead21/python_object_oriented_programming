@@ -192,3 +192,14 @@ class ThreadPoolExample:
             results = [future.result() for future in futures]
 
         return results
+
+    @staticmethod
+    def map_example() -> List[int]:
+        """Demonstrate using map() for parallel execution.
+
+        The map() method is useful when you want to apply a function to
+        multiple inputs and collect the results.
+
+        Returns:
+            List of processed results
+        """
