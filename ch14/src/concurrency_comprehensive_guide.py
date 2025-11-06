@@ -255,3 +255,9 @@ class MultiprocessingExamples:
             Process 2 computing...
             Results: [328350, 328350]
         """
+
+        def worker(process_id: int, n: int, results: List) -> None:
+            """Worker function for process."""
+            print(f"Process {process_id} computing...")
+            result = MultiprocessingExamples.cpu_intensive_task(n)
+            results.append(result)
