@@ -299,3 +299,10 @@ class MultiprocessingExamples:
                 executor.map(MultiprocessingExamples.cpu_intensive_task, numbers)
             )
         return results
+
+    @staticmethod
+    def compare_sequential_vs_parallel() -> None:
+        """Compare execution time of sequential vs parallel processing.
+
+        Demonstrates the performance benefit of parallelism for CPU-bound tasks.
+        """
