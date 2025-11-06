@@ -335,3 +335,11 @@ class ProcessCommunication:
         Queue provides a thread and process-safe FIFO data structure
         for passing messages between processes.
         """
+
+        def producer(queue: multiprocessing.Queue, items: List[Any]) -> None:
+            """Produces items and puts them in the queue."""
+            for item in items:
+                queue.put(item)
+                print(f"Produced: {item}")
+                time.sleep(0.1)
+            queue.put(None)  # Sentinel value
