@@ -244,3 +244,14 @@ class MultiprocessingExamples:
         for i in range(n):
             result += i * i
         return result
+
+    @staticmethod
+    def basic_process_example() -> None:
+        """Demonstrate basic process creation and execution.
+
+        Example:
+            >>> MultiprocessingExamples.basic_process_example()
+            Process 1 computing...
+            Process 2 computing...
+            Results: [328350, 328350]
+        """
