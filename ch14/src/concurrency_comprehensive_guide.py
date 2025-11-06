@@ -293,3 +293,9 @@ class MultiprocessingExamples:
             >>> len(results) == len(numbers)
             True
         """
+
+        with concurrent.futures.ProcessPoolExecutor(max_workers=4) as executor:
+            results = list(
+                executor.map(MultiprocessingExamples.cpu_intensive_task, numbers)
+            )
+        return results
