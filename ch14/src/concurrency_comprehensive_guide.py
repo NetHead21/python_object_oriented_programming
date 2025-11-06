@@ -323,3 +323,7 @@ class MultiprocessingExamples:
         print(f"Sequential time: {sequential_time:.2f} seconds")
         print(f"Parallel time: {parallel_time:.2f} seconds")
         print(f"Speedup: {sequential_time / parallel_time:.2f}x")
+
+
+class ProcessCommunication:
+    """Examples of inter-process communication patterns."""
