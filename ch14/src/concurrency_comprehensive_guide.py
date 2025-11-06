@@ -203,3 +203,8 @@ class ThreadPoolExample:
         Returns:
             List of processed results
         """
+
+        def process_item(item: int) -> int:
+            """Simulates processing an item."""
+            time.sleep(0.5)
+            return item * item
