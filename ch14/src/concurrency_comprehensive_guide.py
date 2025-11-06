@@ -313,3 +313,13 @@ class MultiprocessingExamples:
         start_time = time.time()
         _ = [MultiprocessingExamples.cpu_intensive_task(n) for n in numbers]
         sequential_time = time.time() - start_time
+
+        # Parallel execution
+        start_time = time.time()
+        with concurrent.futures.ProcessPoolExecutor() as executor:
+            _ = list(executor.map(MultiprocessingExamples.cpu_intensive_task, numbers))
+        parallel_time = time.time() - start_time
+
+        print(f"Sequential time: {sequential_time:.2f} seconds")
+        print(f"Parallel time: {parallel_time:.2f} seconds")
+        print(f"Speedup: {sequential_time / parallel_time:.2f}x")
