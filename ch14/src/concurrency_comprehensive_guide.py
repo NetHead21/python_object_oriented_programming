@@ -151,3 +151,11 @@ class ThreadingExamples:
 
         producer_thread.join()
         consumer_thread.join()
+
+
+class ThreadPoolExample:
+    """Examples using ThreadPoolExecutor for managing thread pools.
+
+    ThreadPoolExecutor provides a high-level interface for asynchronously
+    executing callables using a pool of worker threads.
+    """
