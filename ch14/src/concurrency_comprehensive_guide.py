@@ -183,3 +183,12 @@ class ThreadPoolExample:
             time.sleep(1)  # Simulate network delay
             print(f"Completed download: {url}")
             return f"Content from {url}"
+
+        with concurrent.futures.ThreadPoolExecutor(max_workers=3) as executor:
+            # Submit all tasks and get futures
+            futures = [executor.submit(fetch_url, url) for url in urls]
+
+            # Wait for all futures to complete and collect results
+            results = [future.result() for future in futures]
+
+        return results
