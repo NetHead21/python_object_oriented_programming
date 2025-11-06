@@ -261,3 +261,18 @@ class MultiprocessingExamples:
             print(f"Process {process_id} computing...")
             result = MultiprocessingExamples.cpu_intensive_task(n)
             results.append(result)
+
+        # Using Manager for shared list
+        with multiprocessing.Manager() as manager:
+            results = manager.list()
+
+            process1 = multiprocessing.Process(target=worker, args=(1, 1000, results))
+            process2 = multiprocessing.Process(target=worker, args=(2, 1000, results))
+
+            process1.start()
+            process2.start()
+
+            process1.join()
+            process2.join()
+
+            print(f"Results: {list(results)}")
