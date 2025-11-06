@@ -208,3 +208,10 @@ class ThreadPoolExample:
             """Simulates processing an item."""
             time.sleep(0.5)
             return item * item
+
+        items = list(range(10))
+
+        with concurrent.futures.ThreadPoolExecutor(max_workers=4) as executor:
+            results = list(executor.map(process_item, items))
+
+        return results
