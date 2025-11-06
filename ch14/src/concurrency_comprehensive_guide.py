@@ -176,3 +176,10 @@ class ThreadPoolExample:
             >>> len(results)
             5
         """
+
+        def fetch_url(url: str) -> str:
+            """Simulates downloading a URL."""
+            print(f"Starting download: {url}")
+            time.sleep(1)  # Simulate network delay
+            print(f"Completed download: {url}")
+            return f"Content from {url}"
