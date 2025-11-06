@@ -229,3 +229,18 @@ class MultiprocessingExamples:
     enabling true parallel execution on multiple CPU cores. Best for
     CPU-intensive computations.
     """
+
+    @staticmethod
+    def cpu_intensive_task(n: int) -> int:
+        """Simulates a CPU-intensive computation.
+
+        Args:
+            n: Upper limit for computation
+
+        Returns:
+            Sum of squares up to n
+        """
+        result = 0
+        for i in range(n):
+            result += i * i
+        return result
