@@ -306,3 +306,10 @@ class MultiprocessingExamples:
 
         Demonstrates the performance benefit of parallelism for CPU-bound tasks.
         """
+
+        numbers = [5000000] * 8
+
+        # Sequential execution
+        start_time = time.time()
+        _ = [MultiprocessingExamples.cpu_intensive_task(n) for n in numbers]
+        sequential_time = time.time() - start_time
