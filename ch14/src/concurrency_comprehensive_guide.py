@@ -159,3 +159,20 @@ class ThreadPoolExample:
     ThreadPoolExecutor provides a high-level interface for asynchronously
     executing callables using a pool of worker threads.
     """
+
+    @staticmethod
+    def download_simulation(urls: List[str]) -> List[str]:
+        """Simulate downloading multiple URLs concurrently.
+
+        Args:
+            urls: List of URLs to "download"
+
+        Returns:
+            List of results from each download
+
+        Example:
+            >>> urls = [f"http://example.com/page{i}" for i in range(5)]
+            >>> results = ThreadPoolExample.download_simulation(urls)
+            >>> len(results)
+            5
+        """
