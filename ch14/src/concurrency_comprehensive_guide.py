@@ -327,3 +327,11 @@ class MultiprocessingExamples:
 
 class ProcessCommunication:
     """Examples of inter-process communication patterns."""
+
+    @staticmethod
+    def queue_communication() -> None:
+        """Demonstrate process communication using Queue.
+
+        Queue provides a thread and process-safe FIFO data structure
+        for passing messages between processes.
+        """
