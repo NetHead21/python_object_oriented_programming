@@ -372,3 +372,13 @@ class ProcessCommunication:
         Pipe creates a pair of connection objects for two-way communication
         between processes.
         """
+
+        def worker(conn: multiprocessing.connection.Connection) -> None:
+            """Worker process that communicates via pipe."""
+            # Receive message
+            msg = conn.recv()
+            print(f"Worker received: {msg}")
+
+            # Send response
+            conn.send(f"Processed: {msg}")
+            conn.close()
