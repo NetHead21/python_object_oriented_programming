@@ -517,3 +517,9 @@ class AsyncIOExamples:
                 await asyncio.sleep(0.5)
                 print("Resource acquired")
                 return self
+
+            async def __aexit__(self, exc_type, exc_val, exc_tb):
+                """Async exit method."""
+                print("Releasing async resource...")
+                await asyncio.sleep(0.5)
+                print("Resource released")
