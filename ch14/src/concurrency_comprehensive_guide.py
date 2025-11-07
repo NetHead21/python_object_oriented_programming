@@ -396,3 +396,17 @@ class ProcessCommunication:
         print(f"Parent received: {response}")
 
         process.join()
+
+
+# ============================================================================
+# SECTION 3: ASYNCIO - ASYNCHRONOUS I/O (COOPERATIVE MULTITASKING)
+# ============================================================================
+
+
+class AsyncIOExamples:
+    """Examples demonstrating asyncio for asynchronous programming.
+
+    AsyncIO uses cooperative multitasking with coroutines, allowing efficient
+    handling of I/O-bound operations without threads or processes. Perfect for
+    network programming, web scraping, and handling many concurrent connections.
+    """
