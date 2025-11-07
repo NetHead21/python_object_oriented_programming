@@ -547,3 +547,8 @@ class ConcurrencyPatterns:
 
         Timeouts prevent operations from hanging indefinitely.
         """
+
+        def long_running_task():
+            """Simulates a long-running task."""
+            time.sleep(10)
+            return "Task completed"
