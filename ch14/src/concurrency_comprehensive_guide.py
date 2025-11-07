@@ -572,3 +572,9 @@ class ConcurrencyPatterns:
             """Simulates a slow async operation."""
             await asyncio.sleep(5)
             return "Operation completed"
+
+        try:
+            result = await asyncio.wait_for(slow_operation(), timeout=2.0)
+            print(f"Result: {result}")
+        except asyncio.TimeoutError:
+            print("Async operation timed out!")
