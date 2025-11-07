@@ -352,3 +352,15 @@ class ProcessCommunication:
                     break
                 print(f"Consumed: {item}")
                 time.sleep(0.2)
+
+        queue = multiprocessing.Queue()
+        items = list(range(10))
+
+        prod = multiprocessing.Process(target=producer, args=(queue, items))
+        cons = multiprocessing.Process(target=consumer, args=(queue,))
+
+        prod.start()
+        cons.start()
+
+        prod.join()
+        cons.join()
