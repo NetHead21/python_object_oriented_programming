@@ -343,3 +343,12 @@ class ProcessCommunication:
                 print(f"Produced: {item}")
                 time.sleep(0.1)
             queue.put(None)  # Sentinel value
+
+        def consumer(queue: multiprocessing.Queue) -> None:
+            """Consumes items from the queue."""
+            while True:
+                item = queue.get()
+                if item is None:
+                    break
+                print(f"Consumed: {item}")
+                time.sleep(0.2)
