@@ -494,3 +494,8 @@ class AsyncIOExamples:
             for i in range(count):
                 await asyncio.sleep(0.1)
                 yield i
+
+        # Consume async generator
+        print("Async generator output:")
+        async for value in async_range(5):
+            print(f"Received: {value}")
