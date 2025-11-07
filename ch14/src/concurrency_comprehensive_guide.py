@@ -466,3 +466,17 @@ class AsyncIOExamples:
         await asyncio.sleep(1)  # Simulate network delay
         print(f"Completed {url}")
         return f"Data from {url}"
+
+    @staticmethod
+    async def fetch_multiple_urls(urls: List[str]) -> List[str]:
+        """Fetch multiple URLs concurrently using asyncio.
+
+        Args:
+            urls: List of URLs to fetch
+
+        Returns:
+            List of fetched data
+        """
+        tasks = [AsyncIOExamples.fetch_data_async(url) for url in urls]
+        results = await asyncio.gather(*tasks)
+        return results
