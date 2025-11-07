@@ -499,3 +499,11 @@ class AsyncIOExamples:
         print("Async generator output:")
         async for value in async_range(5):
             print(f"Received: {value}")
+
+    @staticmethod
+    async def async_context_manager() -> None:
+        """Demonstrate async context managers.
+
+        Async context managers use __aenter__ and __aexit__ methods
+        for resource management in async code.
+        """
