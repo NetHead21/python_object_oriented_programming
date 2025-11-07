@@ -567,3 +567,8 @@ class ConcurrencyPatterns:
 
         AsyncIO provides built-in timeout support for async operations.
         """
+
+        async def slow_operation():
+            """Simulates a slow async operation."""
+            await asyncio.sleep(5)
+            return "Operation completed"
