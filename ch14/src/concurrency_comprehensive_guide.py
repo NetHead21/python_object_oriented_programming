@@ -531,3 +531,19 @@ class AsyncIOExamples:
 
         async with AsyncResource() as resource:
             await resource.use_resource()
+
+
+# ============================================================================
+# SECTION 4: PRACTICAL PATTERNS AND BEST PRACTICES
+# ============================================================================
+
+
+class ConcurrencyPatterns:
+    """Common concurrency patterns and best practices."""
+
+    @staticmethod
+    def timeout_pattern() -> None:
+        """Demonstrate timeout pattern for long-running operations.
+
+        Timeouts prevent operations from hanging indefinitely.
+        """
