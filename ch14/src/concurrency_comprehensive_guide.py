@@ -426,3 +426,28 @@ class AsyncIOExamples:
         await asyncio.sleep(duration)  # Non-blocking sleep
         print(f"Task {task_id} completed")
         return f"Result from task {task_id}"
+
+    @staticmethod
+    async def run_concurrent_tasks() -> List[str]:
+        """Run multiple async tasks concurrently.
+
+        Returns:
+            List of results from all tasks
+
+        Example:
+            >>> asyncio.run(AsyncIOExamples.run_concurrent_tasks())
+            Task 1 started
+            Task 2 started
+            Task 3 started
+            ...
+        """
+        # Create multiple tasks
+        tasks = [
+            asyncio.create_task(AsyncIOExamples.async_task(1, 2)),
+            asyncio.create_task(AsyncIOExamples.async_task(2, 1)),
+            asyncio.create_task(AsyncIOExamples.async_task(3, 3)),
+        ]
+
+        # Wait for all tasks to complete
+        results = await asyncio.gather(*tasks)
+        return results
