@@ -451,3 +451,18 @@ class AsyncIOExamples:
         # Wait for all tasks to complete
         results = await asyncio.gather(*tasks)
         return results
+
+    @staticmethod
+    async def fetch_data_async(url: str) -> str:
+        """Simulates fetching data asynchronously.
+
+        Args:
+            url: URL to fetch
+
+        Returns:
+            Fetched data
+        """
+        print(f"Fetching {url}...")
+        await asyncio.sleep(1)  # Simulate network delay
+        print(f"Completed {url}")
+        return f"Data from {url}"
