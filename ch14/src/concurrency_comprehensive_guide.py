@@ -528,3 +528,6 @@ class AsyncIOExamples:
                 """Use the resource."""
                 print("Using resource...")
                 await asyncio.sleep(1)
+
+        async with AsyncResource() as resource:
+            await resource.use_resource()
