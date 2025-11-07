@@ -480,3 +480,11 @@ class AsyncIOExamples:
         tasks = [AsyncIOExamples.fetch_data_async(url) for url in urls]
         results = await asyncio.gather(*tasks)
         return results
+
+    @staticmethod
+    async def async_generator_example() -> None:
+        """Demonstrate async generators for streaming data.
+
+        Async generators allow you to produce values asynchronously,
+        useful for processing streams of data.
+        """
