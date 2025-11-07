@@ -488,3 +488,9 @@ class AsyncIOExamples:
         Async generators allow you to produce values asynchronously,
         useful for processing streams of data.
         """
+
+        async def async_range(count: int):
+            """Async generator that yields numbers."""
+            for i in range(count):
+                await asyncio.sleep(0.1)
+                yield i
