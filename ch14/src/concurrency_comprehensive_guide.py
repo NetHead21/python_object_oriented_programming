@@ -507,3 +507,13 @@ class AsyncIOExamples:
         Async context managers use __aenter__ and __aexit__ methods
         for resource management in async code.
         """
+
+        class AsyncResource:
+            """Example async context manager."""
+
+            async def __aenter__(self):
+                """Async enter method."""
+                print("Acquiring async resource...")
+                await asyncio.sleep(0.5)
+                print("Resource acquired")
+                return self
