@@ -552,3 +552,11 @@ class ConcurrencyPatterns:
             """Simulates a long-running task."""
             time.sleep(10)
             return "Task completed"
+
+        with concurrent.futures.ThreadPoolExecutor() as executor:
+            future = executor.submit(long_running_task)
+            try:
+                result = future.result(timeout=2)  # 2-second timeout
+                print(f"Result: {result}")
+            except concurrent.futures.TimeoutError:
+                print("Task timed out!")
