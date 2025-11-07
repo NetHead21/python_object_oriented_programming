@@ -382,3 +382,17 @@ class ProcessCommunication:
             # Send response
             conn.send(f"Processed: {msg}")
             conn.close()
+
+        parent_conn, child_conn = multiprocessing.Pipe()
+
+        process = multiprocessing.Process(target=worker, args=(child_conn,))
+        process.start()
+
+        # Send message from parent
+        parent_conn.send("Hello from parent")
+
+        # Receive response
+        response = parent_conn.recv()
+        print(f"Parent received: {response}")
+
+        process.join()
