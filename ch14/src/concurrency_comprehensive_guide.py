@@ -364,3 +364,11 @@ class ProcessCommunication:
 
         prod.join()
         cons.join()
+
+    @staticmethod
+    def pipe_communication() -> None:
+        """Demonstrate bi-directional communication using Pipe.
+
+        Pipe creates a pair of connection objects for two-way communication
+        between processes.
+        """
