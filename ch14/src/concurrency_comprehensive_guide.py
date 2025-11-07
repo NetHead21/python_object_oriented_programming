@@ -560,3 +560,10 @@ class ConcurrencyPatterns:
                 print(f"Result: {result}")
             except concurrent.futures.TimeoutError:
                 print("Task timed out!")
+
+    @staticmethod
+    async def async_timeout_pattern() -> None:
+        """Demonstrate async timeout pattern.
+
+        AsyncIO provides built-in timeout support for async operations.
+        """
