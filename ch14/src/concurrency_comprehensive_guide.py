@@ -410,3 +410,19 @@ class AsyncIOExamples:
     handling of I/O-bound operations without threads or processes. Perfect for
     network programming, web scraping, and handling many concurrent connections.
     """
+
+    @staticmethod
+    async def async_task(task_id: int, duration: float) -> str:
+        """Simulates an asynchronous task.
+
+        Args:
+            task_id: Identifier for the task
+            duration: How long the task takes
+
+        Returns:
+            Result message
+        """
+        print(f"Task {task_id} started")
+        await asyncio.sleep(duration)  # Non-blocking sleep
+        print(f"Task {task_id} completed")
+        return f"Result from task {task_id}"
