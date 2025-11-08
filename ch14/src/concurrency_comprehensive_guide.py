@@ -681,3 +681,13 @@ class ErrorHandling:
             if n < 0:
                 raise ValueError("Negative number not allowed")
             return n * n
+
+        with concurrent.futures.ThreadPoolExecutor() as executor:
+            futures = [executor.submit(failing_task, i) for i in [-1, 2, -3, 4]]
+
+            for i, future in enumerate(futures):
+                try:
+                    result = future.result()
+                    print(f"Task {i}: Result = {result}")
+                except Exception as e:
+                    print(f"Task {i}: Exception = {e}")
