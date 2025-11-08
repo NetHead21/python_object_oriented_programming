@@ -628,3 +628,7 @@ class ConcurrencyPatterns:
             future.add_done_callback(callback)
             # Wait for completion
             concurrent.futures.wait([future])
+
+
+class ErrorHandling:
+    """Examples of error handling in concurrent code."""
