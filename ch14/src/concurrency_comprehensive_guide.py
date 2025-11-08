@@ -736,3 +736,9 @@ class PerformanceComparison:
         async def async_io_task():
             """Async version of I/O task."""
             await asyncio.sleep(0.5)
+
+        # Sequential
+        start = time.time()
+        for _ in range(num_tasks):
+            io_task()
+        sequential_time = time.time() - start
