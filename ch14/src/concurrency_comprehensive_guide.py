@@ -659,3 +659,11 @@ class ErrorHandling:
             thread = threading.Thread(target=risky_task, args=(i,))
             threads.append(thread)
             thread.start()
+
+        for thread in threads:
+            thread.join()
+
+        if exceptions:
+            print("Exceptions caught:")
+            for task_id, error in exceptions:
+                print(f"  Task {task_id}: {error}")
