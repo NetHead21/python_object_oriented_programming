@@ -612,3 +612,8 @@ class ConcurrencyPatterns:
         Callbacks allow you to specify code to run when a future completes,
         useful for handling results asynchronously.
         """
+
+        def task(n: int) -> int:
+            """Simple task that squares a number."""
+            time.sleep(1)
+            return n * n
