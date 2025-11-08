@@ -732,3 +732,7 @@ class PerformanceComparison:
         def io_task():
             """Simulates I/O operation."""
             time.sleep(0.5)
+
+        async def async_io_task():
+            """Async version of I/O task."""
+            await asyncio.sleep(0.5)
