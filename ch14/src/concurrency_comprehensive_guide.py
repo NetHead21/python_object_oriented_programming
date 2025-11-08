@@ -742,3 +742,10 @@ class PerformanceComparison:
         for _ in range(num_tasks):
             io_task()
         sequential_time = time.time() - start
+
+        # Threading
+        start = time.time()
+        with concurrent.futures.ThreadPoolExecutor() as executor:
+            futures = [executor.submit(io_task) for _ in range(num_tasks)]
+            concurrent.futures.wait(futures)
+        threading_time = time.time() - start
