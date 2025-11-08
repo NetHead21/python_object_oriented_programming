@@ -675,3 +675,9 @@ class ErrorHandling:
         Futures capture exceptions, which can be retrieved when
         calling result() or checked with exception().
         """
+
+        def failing_task(n: int) -> int:
+            """Task that may fail."""
+            if n < 0:
+                raise ValueError("Negative number not allowed")
+            return n * n
