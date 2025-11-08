@@ -667,3 +667,11 @@ class ErrorHandling:
             print("Exceptions caught:")
             for task_id, error in exceptions:
                 print(f"  Task {task_id}: {error}")
+
+    @staticmethod
+    def future_exception_handling() -> None:
+        """Demonstrate exception handling with futures.
+
+        Futures capture exceptions, which can be retrieved when
+        calling result() or checked with exception().
+        """
