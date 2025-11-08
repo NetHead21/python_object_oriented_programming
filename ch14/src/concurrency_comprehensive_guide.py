@@ -586,3 +586,12 @@ class ConcurrencyPatterns:
         Semaphores control the number of threads that can access a resource
         simultaneously, useful for rate limiting.
         """
+
+        semaphore = threading.Semaphore(3)  # Max 3 concurrent accesses
+
+        def limited_access(worker_id: int):
+            """Function with limited concurrent access."""
+            with semaphore:
+                print(f"Worker {worker_id} acquired semaphore")
+                time.sleep(2)
+                print(f"Worker {worker_id} releasing semaphore")
