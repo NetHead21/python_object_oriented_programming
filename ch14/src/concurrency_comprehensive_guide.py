@@ -691,3 +691,7 @@ class ErrorHandling:
                     print(f"Task {i}: Result = {result}")
                 except Exception as e:
                     print(f"Task {i}: Exception = {e}")
+
+    @staticmethod
+    async def async_exception_handling() -> None:
+        """Demonstrate exception handling in async code."""
