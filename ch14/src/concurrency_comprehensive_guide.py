@@ -604,3 +604,11 @@ class ConcurrencyPatterns:
 
         for thread in threads:
             thread.join()
+
+    @staticmethod
+    def future_callback_pattern() -> None:
+        """Demonstrate callbacks with futures.
+
+        Callbacks allow you to specify code to run when a future completes,
+        useful for handling results asynchronously.
+        """
