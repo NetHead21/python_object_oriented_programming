@@ -728,3 +728,7 @@ class PerformanceComparison:
         Args:
             num_tasks: Number of I/O tasks to simulate
         """
+
+        def io_task():
+            """Simulates I/O operation."""
+            time.sleep(0.5)
