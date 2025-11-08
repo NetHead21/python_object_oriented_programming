@@ -711,3 +711,12 @@ class ErrorHandling:
                 print(f"Task {i}: Exception = {result}")
             else:
                 print(f"Task {i}: Result = {result}")
+
+
+# ============================================================================
+# SECTION 5: PERFORMANCE COMPARISON AND GUIDELINES
+# ============================================================================
+
+
+class PerformanceComparison:
+    """Compare different concurrency approaches."""
