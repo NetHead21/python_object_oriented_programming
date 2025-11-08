@@ -595,3 +595,12 @@ class ConcurrencyPatterns:
                 print(f"Worker {worker_id} acquired semaphore")
                 time.sleep(2)
                 print(f"Worker {worker_id} releasing semaphore")
+
+        threads = []
+        for i in range(10):
+            thread = threading.Thread(target=limited_access, args=(i,))
+            threads.append(thread)
+            thread.start()
+
+        for thread in threads:
+            thread.join()
