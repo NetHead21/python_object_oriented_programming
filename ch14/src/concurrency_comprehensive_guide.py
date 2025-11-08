@@ -695,3 +695,10 @@ class ErrorHandling:
     @staticmethod
     async def async_exception_handling() -> None:
         """Demonstrate exception handling in async code."""
+
+        async def risky_async_task(task_id: int):
+            """Async task that may raise an exception."""
+            await asyncio.sleep(0.1)
+            if task_id % 2 == 0:
+                raise ValueError(f"Error in async task {task_id}")
+            return f"Success: {task_id}"
