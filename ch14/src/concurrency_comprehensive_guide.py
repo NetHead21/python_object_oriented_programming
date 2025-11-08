@@ -578,3 +578,11 @@ class ConcurrencyPatterns:
             print(f"Result: {result}")
         except asyncio.TimeoutError:
             print("Async operation timed out!")
+
+    @staticmethod
+    def semaphore_pattern() -> None:
+        """Demonstrate semaphore for limiting concurrent access.
+
+        Semaphores control the number of threads that can access a resource
+        simultaneously, useful for rate limiting.
+        """
