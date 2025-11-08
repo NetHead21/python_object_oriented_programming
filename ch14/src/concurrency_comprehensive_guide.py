@@ -640,3 +640,16 @@ class ErrorHandling:
         Exceptions in threads don't propagate to the main thread,
         so they must be caught and handled within the thread.
         """
+
+        exceptions = []
+        lock = threading.Lock()
+
+        def risky_task(task_id: int):
+            """Task that may raise an exception."""
+            try:
+                if task_id % 2 == 0:
+                    raise ValueError(f"Error in task {task_id}")
+                print(f"Task {task_id} completed successfully")
+            except Exception as e:
+                with lock:
+                    exceptions.append((task_id, str(e)))
