@@ -702,3 +702,12 @@ class ErrorHandling:
             if task_id % 2 == 0:
                 raise ValueError(f"Error in async task {task_id}")
             return f"Success: {task_id}"
+
+        tasks = [risky_async_task(i) for i in range(5)]
+        results = await asyncio.gather(*tasks, return_exceptions=True)
+
+        for i, result in enumerate(results):
+            if isinstance(result, Exception):
+                print(f"Task {i}: Exception = {result}")
+            else:
+                print(f"Task {i}: Result = {result}")
