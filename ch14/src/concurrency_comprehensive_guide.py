@@ -617,3 +617,8 @@ class ConcurrencyPatterns:
             """Simple task that squares a number."""
             time.sleep(1)
             return n * n
+
+        def callback(future: concurrent.futures.Future):
+            """Callback function executed when future completes."""
+            result = future.result()
+            print(f"Callback received result: {result}")
