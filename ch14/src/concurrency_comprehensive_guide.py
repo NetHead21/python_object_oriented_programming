@@ -622,3 +622,9 @@ class ConcurrencyPatterns:
             """Callback function executed when future completes."""
             result = future.result()
             print(f"Callback received result: {result}")
+
+        with concurrent.futures.ThreadPoolExecutor() as executor:
+            future = executor.submit(task, 5)
+            future.add_done_callback(callback)
+            # Wait for completion
+            concurrent.futures.wait([future])
