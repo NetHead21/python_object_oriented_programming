@@ -632,3 +632,11 @@ class ConcurrencyPatterns:
 
 class ErrorHandling:
     """Examples of error handling in concurrent code."""
+
+    @staticmethod
+    def thread_exception_handling() -> None:
+        """Demonstrate exception handling in threads.
+
+        Exceptions in threads don't propagate to the main thread,
+        so they must be caught and handled within the thread.
+        """
