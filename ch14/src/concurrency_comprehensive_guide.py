@@ -720,3 +720,11 @@ class ErrorHandling:
 
 class PerformanceComparison:
     """Compare different concurrency approaches."""
+
+    @staticmethod
+    def io_bound_comparison(num_tasks: int = 10) -> None:
+        """Compare threading vs asyncio for I/O-bound tasks.
+
+        Args:
+            num_tasks: Number of I/O tasks to simulate
+        """
