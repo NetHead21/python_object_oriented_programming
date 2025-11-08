@@ -653,3 +653,9 @@ class ErrorHandling:
             except Exception as e:
                 with lock:
                     exceptions.append((task_id, str(e)))
+
+        threads = []
+        for i in range(5):
+            thread = threading.Thread(target=risky_task, args=(i,))
+            threads.append(thread)
+            thread.start()
