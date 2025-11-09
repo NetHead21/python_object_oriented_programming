@@ -749,3 +749,8 @@ class PerformanceComparison:
             futures = [executor.submit(io_task) for _ in range(num_tasks)]
             concurrent.futures.wait(futures)
         threading_time = time.time() - start
+
+        # AsyncIO
+        async def run_async():
+            tasks = [async_io_task() for _ in range(num_tasks)]
+            await asyncio.gather(*tasks)
