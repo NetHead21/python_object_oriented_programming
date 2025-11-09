@@ -886,3 +886,6 @@ def demonstrate_all() -> None:
 
     print("\n--- 4. AsyncIO Concurrent Tasks ---")
     asyncio.run(AsyncIOExamples.run_concurrent_tasks())
+
+    print("\n--- 5. Performance Comparison (I/O-bound) ---")
+    PerformanceComparison.io_bound_comparison(10)
