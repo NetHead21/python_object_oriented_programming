@@ -771,3 +771,10 @@ class PerformanceComparison:
         Args:
             num_tasks: Number of CPU tasks to run
         """
+
+        def cpu_task():
+            """CPU-intensive computation."""
+            result = 0
+            for i in range(10000000):
+                result += i * i
+            return result
