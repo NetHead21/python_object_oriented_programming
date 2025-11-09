@@ -36,3 +36,8 @@ def word_count_processor(content):
 def simple_content_processor(content):
     """Simple processor that returns content length."""
     return len(content)
+
+
+def char_count_processor(content):
+    """Count characters in content."""
+    return len(content)
