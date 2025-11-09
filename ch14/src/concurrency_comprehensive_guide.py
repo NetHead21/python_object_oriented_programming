@@ -778,3 +778,8 @@ class PerformanceComparison:
             for i in range(10000000):
                 result += i * i
             return result
+
+        # Sequential
+        start = time.time()
+        _ = [cpu_task() for _ in range(num_tasks)]
+        sequential_time = time.time() - start
