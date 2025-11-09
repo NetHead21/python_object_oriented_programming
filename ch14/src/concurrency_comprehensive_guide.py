@@ -889,3 +889,23 @@ def demonstrate_all() -> None:
 
     print("\n--- 5. Performance Comparison (I/O-bound) ---")
     PerformanceComparison.io_bound_comparison(10)
+
+    print("\n--- Guidelines ---")
+    print_guidelines()
+
+
+if __name__ == "__main__":
+    # Note: Some examples require being run in specific contexts
+    # Uncomment the demonstration you want to run:
+
+    # demonstrate_all()
+
+    # Or run individual examples:
+    # ThreadingExamples.basic_thread_example()
+    # asyncio.run(AsyncIOExamples.run_concurrent_tasks())
+    # MultiprocessingExamples.compare_sequential_vs_parallel()
+
+    print("Concurrency examples loaded. Call demonstrate_all() to run demonstrations.")
+    print(
+        "Note: Some multiprocessing examples may require running in if __name__ == '__main__' block."
+    )
