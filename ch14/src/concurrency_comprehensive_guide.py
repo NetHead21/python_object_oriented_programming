@@ -878,3 +878,8 @@ def demonstrate_all() -> None:
     print("\n--- 2. Thread Pool (simulated downloads) ---")
     urls = [f"http://example.com/page{i}" for i in range(5)]
     ThreadPoolExample.download_simulation(urls)
+
+    print("\n--- 3. Multiprocessing Pool ---")
+    numbers = [1000000, 2000000, 3000000]
+    results = MultiprocessingExamples.process_pool_example(numbers)
+    print(f"Results: {results}")
