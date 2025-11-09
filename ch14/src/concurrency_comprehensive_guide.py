@@ -867,3 +867,10 @@ def demonstrate_all() -> None:
     This function provides a comprehensive demonstration of all the
     concurrency techniques covered in this module.
     """
+
+    print("=" * 70)
+    print("PYTHON CONCURRENCY AND PARALLELISM DEMONSTRATIONS")
+    print("=" * 70)
+
+    print("\n--- 1. Basic Threading ---")
+    ThreadingExamples.basic_thread_example()
