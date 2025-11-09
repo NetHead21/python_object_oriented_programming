@@ -754,3 +754,12 @@ class PerformanceComparison:
         async def run_async():
             tasks = [async_io_task() for _ in range(num_tasks)]
             await asyncio.gather(*tasks)
+
+        start = time.time()
+        asyncio.run(run_async())
+        asyncio_time = time.time() - start
+
+        print(f"I/O-Bound Task Comparison ({num_tasks} tasks):")
+        print(f"  Sequential: {sequential_time:.2f}s")
+        print(f"  Threading:  {threading_time:.2f}s")
+        print(f"  AsyncIO:    {asyncio_time:.2f}s")
