@@ -800,3 +800,57 @@ class PerformanceComparison:
         print(f"  Sequential:      {sequential_time:.2f}s")
         print(f"  Threading:       {threading_time:.2f}s")
         print(f"  Multiprocessing: {multiprocessing_time:.2f}s")
+
+
+# ============================================================================
+# GUIDELINES AND BEST PRACTICES
+# ============================================================================
+
+
+def print_guidelines() -> None:
+    """Print guidelines for choosing concurrency approaches."""
+    guidelines = """
+    ============================================================
+    CONCURRENCY AND PARALLELISM GUIDELINES
+    ============================================================
+    
+    WHEN TO USE THREADING:
+    ✓ I/O-bound tasks (network requests, file I/O, database queries)
+    ✓ Need to share memory between concurrent operations
+    ✓ Working with libraries that release the GIL (NumPy, some C extensions)
+    ✗ CPU-bound tasks (GIL prevents true parallelism)
+    
+    WHEN TO USE MULTIPROCESSING:
+    ✓ CPU-bound tasks (heavy computations, data processing)
+    ✓ Need true parallelism across multiple CPU cores
+    ✓ Tasks are independent and don't need to share much data
+    ✗ Need to share large amounts of data (serialization overhead)
+    ✗ Quick, lightweight tasks (process creation overhead)
+    
+    WHEN TO USE ASYNCIO:
+    ✓ I/O-bound tasks with many concurrent operations
+    ✓ Network programming (web servers, API clients)
+    ✓ Need fine-grained control over task scheduling
+    ✓ Working with async libraries (aiohttp, asyncpg)
+    ✗ CPU-bound tasks
+    ✗ Working with blocking libraries
+    
+    KEY PRINCIPLES:
+    1. Avoid shared mutable state when possible
+    2. Use appropriate synchronization primitives (locks, semaphores)
+    3. Handle exceptions in concurrent code explicitly
+    4. Consider using higher-level abstractions (ThreadPoolExecutor, asyncio.gather)
+    5. Profile before optimizing - measure the actual bottleneck
+    6. Be aware of the GIL's impact on threading
+    7. Use asyncio for I/O-bound tasks with many connections
+    8. Use multiprocessing for CPU-bound parallel computation
+    
+    COMMON PITFALLS:
+    • Deadlocks: Circular dependencies in lock acquisition
+    • Race conditions: Unsynchronized access to shared data
+    • Resource leaks: Not properly closing threads/processes
+    • Blocking the event loop: Using blocking calls in async code
+    • Excessive context switching: Too many threads/processes
+    ============================================================
+    """
+    print(guidelines)
