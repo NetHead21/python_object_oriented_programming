@@ -221,19 +221,19 @@ class DataProcessor:
         Returns:
             List of all processed records
         """
-
-        def process_chunk(chunk: List[DataRecord]) -> List[DataRecord]:
-            """Process a chunk of records."""
-            return [DataProcessor.process_record(r) for r in chunk]
-
         # Split into chunks
         chunks = [
             records[i : i + chunk_size] for i in range(0, len(records), chunk_size)
         ]
 
-        # Process chunks in parallel
-        with concurrent.futures.ProcessPoolExecutor() as executor:
-            processed_chunks = list(executor.map(process_chunk, chunks))
+        # Process chunks in parallel using threading to avoid pickling issues
+        with concurrent.futures.ThreadPoolExecutor() as executor:
+            processed_chunks = list(
+                executor.map(
+                    lambda chunk: [DataProcessor.process_record(r) for r in chunk],
+                    chunks,
+                )
+            )
 
         # Flatten results
         return [record for chunk in processed_chunks for record in chunk]
@@ -511,6 +511,9 @@ class FileProcessor:
             >>> files = [f"file_{i}.txt" for i in range(10)]
             >>> results = FileProcessor.process_files_parallel(files, word_count)
         """
+        # Handle empty list
+        if not filenames:
+            return []
 
         if max_workers is None:
             max_workers = min(len(filenames), multiprocessing.cpu_count())
