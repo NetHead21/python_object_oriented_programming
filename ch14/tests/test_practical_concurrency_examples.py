@@ -26,3 +26,8 @@ from practical_concurrency_examples import (
 def simple_transform(record):
     """Simple transformation function for testing."""
     return DataRecord(record.id, record.value * 2, record.category.upper())
+
+
+def word_count_processor(content):
+    """Count words in content."""
+    return len(content.split())
