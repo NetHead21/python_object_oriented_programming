@@ -795,3 +795,8 @@ class PerformanceComparison:
         with concurrent.futures.ProcessPoolExecutor() as executor:
             _ = list(executor.map(lambda _: cpu_task(), range(num_tasks)))
         multiprocessing_time = time.time() - start
+
+        print(f"CPU-Bound Task Comparison ({num_tasks} tasks):")
+        print(f"  Sequential:      {sequential_time:.2f}s")
+        print(f"  Threading:       {threading_time:.2f}s")
+        print(f"  Multiprocessing: {multiprocessing_time:.2f}s")
