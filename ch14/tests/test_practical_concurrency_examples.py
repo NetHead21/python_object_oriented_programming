@@ -31,3 +31,8 @@ def simple_transform(record):
 def word_count_processor(content):
     """Count words in content."""
     return len(content.split())
+
+
+def simple_content_processor(content):
+    """Simple processor that returns content length."""
+    return len(content)
