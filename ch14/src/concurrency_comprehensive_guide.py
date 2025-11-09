@@ -874,3 +874,7 @@ def demonstrate_all() -> None:
 
     print("\n--- 1. Basic Threading ---")
     ThreadingExamples.basic_thread_example()
+
+    print("\n--- 2. Thread Pool (simulated downloads) ---")
+    urls = [f"http://example.com/page{i}" for i in range(5)]
+    ThreadPoolExample.download_simulation(urls)
