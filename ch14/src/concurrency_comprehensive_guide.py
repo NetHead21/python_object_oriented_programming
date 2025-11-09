@@ -854,3 +854,16 @@ def print_guidelines() -> None:
     ============================================================
     """
     print(guidelines)
+
+
+# ============================================================================
+# DEMONSTRATION FUNCTION
+# ============================================================================
+
+
+def demonstrate_all() -> None:
+    """Run demonstrations of various concurrency approaches.
+
+    This function provides a comprehensive demonstration of all the
+    concurrency techniques covered in this module.
+    """
