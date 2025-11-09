@@ -783,3 +783,9 @@ class PerformanceComparison:
         start = time.time()
         _ = [cpu_task() for _ in range(num_tasks)]
         sequential_time = time.time() - start
+
+        # Threading (won't help due to GIL)
+        start = time.time()
+        with concurrent.futures.ThreadPoolExecutor() as executor:
+            _ = list(executor.map(lambda _: cpu_task(), range(num_tasks)))
+        threading_time = time.time() - start
