@@ -20,3 +20,9 @@ from practical_concurrency_examples import (
     FileProcessor,
     AsyncBatchProcessor,
 )
+
+
+# Module-level functions for pickling (needed for multiprocessing)
+def simple_transform(record):
+    """Simple transformation function for testing."""
+    return DataRecord(record.id, record.value * 2, record.category.upper())
