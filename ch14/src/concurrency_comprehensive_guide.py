@@ -763,3 +763,11 @@ class PerformanceComparison:
         print(f"  Sequential: {sequential_time:.2f}s")
         print(f"  Threading:  {threading_time:.2f}s")
         print(f"  AsyncIO:    {asyncio_time:.2f}s")
+
+    @staticmethod
+    def cpu_bound_comparison(num_tasks: int = 8) -> None:
+        """Compare threading vs multiprocessing for CPU-bound tasks.
+
+        Args:
+            num_tasks: Number of CPU tasks to run
+        """
