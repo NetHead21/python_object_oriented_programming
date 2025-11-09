@@ -883,3 +883,6 @@ def demonstrate_all() -> None:
     numbers = [1000000, 2000000, 3000000]
     results = MultiprocessingExamples.process_pool_example(numbers)
     print(f"Results: {results}")
+
+    print("\n--- 4. AsyncIO Concurrent Tasks ---")
+    asyncio.run(AsyncIOExamples.run_concurrent_tasks())
