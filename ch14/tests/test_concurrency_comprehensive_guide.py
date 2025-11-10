@@ -665,3 +665,8 @@ class TestWebScraper:
 
         assert len(results) == 1
         assert results[0]["url"] == "http://example.com"
+
+    def test_scrape_with_error_handling_all_success(self):
+        """Test error handling when all requests succeed."""
+        scraper = WebScraper(max_workers=2)
+        urls = [f"http://example.com/page{i}" for i in range(3)]
