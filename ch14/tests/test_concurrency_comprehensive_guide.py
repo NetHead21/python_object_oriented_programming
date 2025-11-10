@@ -627,3 +627,8 @@ class TestWebScraper:
         result = scraper.fetch_page(url)
 
         assert result["content"] == f"Content from {url}"
+
+    def test_scrape_urls_returns_all_results(self):
+        """Test that scrape_urls returns results for all URLs."""
+        scraper = WebScraper(max_workers=2)
+        urls = [f"http://example.com/page{i}" for i in range(5)]
