@@ -596,3 +596,8 @@ class TestPerformance:
 
 class TestWebScraper:
     """Test suite for WebScraper class."""
+
+    def test_init_default_workers(self):
+        """Test WebScraper initialization with default workers."""
+        scraper = WebScraper()
+        assert scraper.max_workers == 5
