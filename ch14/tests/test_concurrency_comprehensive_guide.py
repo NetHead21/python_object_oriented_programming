@@ -645,3 +645,8 @@ class TestWebScraper:
         start = time.time()
         results = scraper.scrape_urls(urls)
         elapsed = time.time() - start
+
+        # With 3 workers and 6 URLs (1s each), should take ~2s
+        # Sequential would take 6s
+        assert elapsed < 3.5  # Allow some overhead
+        assert len(results) == 6
