@@ -727,3 +727,11 @@ class TestWebScraper:
 
 class TestDataRecord:
     """Test suite for DataRecord dataclass."""
+
+    def test_datarecord_creation(self):
+        """Test creating a DataRecord instance."""
+        record = DataRecord(id=1, value=10.5, category="test")
+
+        assert record.id == 1
+        assert record.value == 10.5
+        assert record.category == "test"
