@@ -641,3 +641,7 @@ class TestWebScraper:
         """Test that concurrent scraping is faster than sequential."""
         scraper = WebScraper(max_workers=3)
         urls = [f"http://example.com/page{i}" for i in range(6)]
+
+        start = time.time()
+        results = scraper.scrape_urls(urls)
+        elapsed = time.time() - start
