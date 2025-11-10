@@ -699,3 +699,8 @@ class TestWebScraper:
 
         assert result["total"] == 0
         assert result["success_rate"] == 0
+
+    @patch.object(WebScraper, "fetch_page")
+    def test_scrape_with_error_handling_partial_failure(self, mock_fetch):
+        """Test error handling when some requests fail."""
+        scraper = WebScraper()
