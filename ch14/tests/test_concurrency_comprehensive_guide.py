@@ -684,3 +684,10 @@ class TestWebScraper:
         urls = ["http://example.com"]
 
         result = scraper.scrape_with_error_handling(urls)
+
+        assert "successful" in result
+        assert "failed" in result
+        assert "total" in result
+        assert "success_rate" in result
+        assert isinstance(result["successful"], list)
+        assert isinstance(result["failed"], list)
