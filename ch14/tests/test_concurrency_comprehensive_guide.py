@@ -601,3 +601,8 @@ class TestWebScraper:
         """Test WebScraper initialization with default workers."""
         scraper = WebScraper()
         assert scraper.max_workers == 5
+
+    def test_init_custom_workers(self):
+        """Test WebScraper initialization with custom worker count."""
+        scraper = WebScraper(max_workers=10)
+        assert scraper.max_workers == 10
