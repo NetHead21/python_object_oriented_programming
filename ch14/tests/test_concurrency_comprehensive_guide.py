@@ -735,3 +735,10 @@ class TestDataRecord:
         assert record.id == 1
         assert record.value == 10.5
         assert record.category == "test"
+
+    def test_datarecord_equality(self):
+        """Test DataRecord equality comparison."""
+        record1 = DataRecord(id=1, value=10.5, category="test")
+        record2 = DataRecord(id=1, value=10.5, category="test")
+
+        assert record1 == record2
