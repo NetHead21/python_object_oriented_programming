@@ -657,3 +657,11 @@ class TestWebScraper:
         results = scraper.scrape_urls([])
 
         assert results == []
+
+    def test_scrape_urls_single_url(self):
+        """Test scraping with single URL."""
+        scraper = WebScraper()
+        results = scraper.scrape_urls(["http://example.com"])
+
+        assert len(results) == 1
+        assert results[0]["url"] == "http://example.com"
