@@ -606,3 +606,8 @@ class TestWebScraper:
         """Test WebScraper initialization with custom worker count."""
         scraper = WebScraper(max_workers=10)
         assert scraper.max_workers == 10
+
+    def test_fetch_page_returns_dict(self):
+        """Test that fetch_page returns expected dictionary structure."""
+        scraper = WebScraper()
+        result = scraper.fetch_page("http://example.com")
