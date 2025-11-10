@@ -742,3 +742,10 @@ class TestDataRecord:
         record2 = DataRecord(id=1, value=10.5, category="test")
 
         assert record1 == record2
+
+    def test_datarecord_different_values(self):
+        """Test DataRecords with different values are not equal."""
+        record1 = DataRecord(id=1, value=10.5, category="test")
+        record2 = DataRecord(id=2, value=10.5, category="test")
+
+        assert record1 != record2
