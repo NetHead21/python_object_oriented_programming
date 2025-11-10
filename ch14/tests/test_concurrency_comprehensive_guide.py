@@ -704,3 +704,17 @@ class TestWebScraper:
     def test_scrape_with_error_handling_partial_failure(self, mock_fetch):
         """Test error handling when some requests fail."""
         scraper = WebScraper()
+
+        # Make first call succeed, second fail
+        mock_fetch.side_effect = [
+            {"url": "url1", "status": 200, "content": "ok", "timestamp": "2024-01-01"},
+            Exception("Network error"),
+        ]
+
+        urls = ["http://example.com/1", "http://example.com/2"]
+        result = scraper.scrape_with_error_handling(urls)
+
+        assert result["total"] == 2
+        assert len(result["successful"]) == 1
+        assert len(result["failed"]) == 1
+        assert 0 < result["success_rate"] < 1
