@@ -619,3 +619,11 @@ class TestWebScraper:
         assert "timestamp" in result
         assert result["url"] == "http://example.com"
         assert result["status"] == 200
+
+    def test_fetch_page_content_format(self):
+        """Test that fetched page content has expected format."""
+        scraper = WebScraper()
+        url = "http://test.com/page1"
+        result = scraper.fetch_page(url)
+
+        assert result["content"] == f"Content from {url}"
