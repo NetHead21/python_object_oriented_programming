@@ -691,3 +691,11 @@ class TestWebScraper:
         assert "success_rate" in result
         assert isinstance(result["successful"], list)
         assert isinstance(result["failed"], list)
+
+    def test_scrape_with_error_handling_empty_urls(self):
+        """Test error handling with empty URL list."""
+        scraper = WebScraper()
+        result = scraper.scrape_with_error_handling([])
+
+        assert result["total"] == 0
+        assert result["success_rate"] == 0
