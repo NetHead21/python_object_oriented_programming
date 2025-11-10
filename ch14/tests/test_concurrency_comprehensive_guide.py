@@ -718,3 +718,12 @@ class TestWebScraper:
         assert len(result["successful"]) == 1
         assert len(result["failed"]) == 1
         assert 0 < result["success_rate"] < 1
+
+
+# ============================================================================
+# DATAPROCESSOR TESTS
+# ============================================================================
+
+
+class TestDataRecord:
+    """Test suite for DataRecord dataclass."""
