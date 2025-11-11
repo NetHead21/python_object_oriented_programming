@@ -842,3 +842,19 @@ class TestDataProcessor:
         processed = DataProcessor.process_in_chunks(records, chunk_size=1)
 
         assert len(processed) == 5
+
+
+# ============================================================================
+# ASYNCAPICLIENT TESTS
+# ============================================================================
+
+
+class TestAsyncAPIClient:
+    """Test suite for AsyncAPIClient class."""
+
+    def test_init_default_rate_limit(self):
+        """Test AsyncAPIClient initialization with default rate limit."""
+        client = AsyncAPIClient("https://api.example.com")
+
+        assert client.base_url == "https://api.example.com"
+        assert client.semaphore._value == 10
