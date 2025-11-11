@@ -916,3 +916,18 @@ class TestAsyncAPIClient:
         results = await client.fetch_multiple_resources([])
 
         assert results == []
+
+    @pytest.mark.asyncio
+    async def test_fetch_multiple_resources_performance(self):
+        """Test that async fetching is faster than sequential."""
+        client = AsyncAPIClient("https://api.example.com", rate_limit=20)
+        ids = list(range(10))
+
+        start = time.time()
+        results = await client.fetch_multiple_resources(ids)
+        elapsed = time.time() - start
+
+        # 10 resources at 0.5s each would take 5s sequentially
+        # Async should be much faster
+        assert elapsed < 2.0
+        assert len(results) == 10
