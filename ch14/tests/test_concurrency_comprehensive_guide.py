@@ -749,3 +749,15 @@ class TestDataRecord:
         record2 = DataRecord(id=2, value=10.5, category="test")
 
         assert record1 != record2
+
+
+class TestDataProcessor:
+    """Test suite for DataProcessor class."""
+
+    def test_process_record_transforms_value(self):
+        """Test that process_record doubles the value."""
+        record = DataRecord(id=1, value=5.0, category="test")
+        processed = DataProcessor.process_record(record)
+
+        assert processed.value == 10.0
+        assert processed.id == 1
