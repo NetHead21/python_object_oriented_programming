@@ -826,3 +826,11 @@ class TestDataProcessor:
         for i, record in enumerate(processed):
             assert record.value == float(i) * 2
             assert record.category == "TEST"
+
+    def test_process_in_chunks_handles_uneven_chunks(self):
+        """Test chunk processing with records not evenly divisible by chunk_size."""
+        records = [DataRecord(i, float(i), "test") for i in range(11)]
+
+        processed = DataProcessor.process_in_chunks(records, chunk_size=5)
+
+        assert len(processed) == 11
