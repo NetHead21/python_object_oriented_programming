@@ -950,3 +950,18 @@ class TestAsyncAPIClient:
         with patch.object(client, "fetch_resource", side_effect=Exception("API Error")):
             with pytest.raises(Exception):
                 await client.fetch_with_retry(1, max_retries=2)
+
+    @pytest.mark.asyncio
+    async def test_rate_limiting_with_semaphore(self):
+        """Test that rate limiting semaphore works correctly."""
+        client = AsyncAPIClient("https://api.example.com", rate_limit=3)
+
+        # Initial semaphore value
+        assert client.semaphore._value == 3
+
+        # Start multiple concurrent fetches
+        tasks = [client.fetch_resource(i) for i in range(5)]
+        await asyncio.gather(*tasks)
+
+        # After completion, semaphore should be released
+        assert client.semaphore._value == 3
