@@ -834,3 +834,11 @@ class TestDataProcessor:
         processed = DataProcessor.process_in_chunks(records, chunk_size=5)
 
         assert len(processed) == 11
+
+    def test_process_in_chunks_small_chunk_size(self):
+        """Test chunk processing with very small chunk size."""
+        records = [DataRecord(i, float(i), "test") for i in range(5)]
+
+        processed = DataProcessor.process_in_chunks(records, chunk_size=1)
+
+        assert len(processed) == 5
