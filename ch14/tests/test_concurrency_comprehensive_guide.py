@@ -793,3 +793,9 @@ class TestDataProcessor:
         for i, record in enumerate(processed):
             assert record.value == float(i) * 2
             assert record.category == "TEST"
+
+    def test_process_batch_parallel_empty_list(self):
+        """Test parallel processing with empty list."""
+        processed = DataProcessor.process_batch_parallel([])
+
+        assert processed == []
