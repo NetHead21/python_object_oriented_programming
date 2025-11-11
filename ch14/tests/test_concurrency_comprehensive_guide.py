@@ -783,3 +783,13 @@ class TestDataProcessor:
         processed = DataProcessor.process_batch_parallel(records, num_workers=2)
 
         assert len(processed) == len(records)
+
+    def test_process_batch_parallel_transforms_correctly(self):
+        """Test that batch processing transforms all records correctly."""
+        records = [DataRecord(i, float(i), "test") for i in range(5)]
+
+        processed = DataProcessor.process_batch_parallel(records, num_workers=2)
+
+        for i, record in enumerate(processed):
+            assert record.value == float(i) * 2
+            assert record.category == "TEST"
