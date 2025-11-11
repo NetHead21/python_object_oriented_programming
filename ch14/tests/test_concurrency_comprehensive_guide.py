@@ -761,3 +761,10 @@ class TestDataProcessor:
 
         assert processed.value == 10.0
         assert processed.id == 1
+
+    def test_process_record_uppercases_category(self):
+        """Test that process_record uppercases category."""
+        record = DataRecord(id=1, value=5.0, category="test")
+        processed = DataProcessor.process_record(record)
+
+        assert processed.category == "TEST"
