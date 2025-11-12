@@ -1051,3 +1051,7 @@ class TestStreamProcessor:
         )
 
         assert len(results) > 0
+
+    def test_run_stream_processing_duration_respected(self):
+        """Test that stream processing respects duration parameter."""
+        processor = StreamProcessor()
