@@ -1017,3 +1017,6 @@ class TestStreamProcessor:
     def test_run_stream_processing_with_single_consumer(self):
         """Test stream processing with single consumer."""
         processor = StreamProcessor()
+
+        def data_source():
+            return {"value": 1}
