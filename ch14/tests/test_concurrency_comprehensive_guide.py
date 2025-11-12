@@ -994,3 +994,7 @@ class TestStreamProcessor:
         processor = StreamProcessor(buffer_size=20)
 
         counter = {"value": 0}
+
+        def data_source():
+            counter["value"] += 1
+            return {"id": counter["value"], "data": f"item_{counter['value']}"}
