@@ -1061,3 +1061,12 @@ class TestStreamProcessor:
 
         def data_processor(item):
             return item
+
+        start = time.time()
+        processor.run_stream_processing(
+            data_source=data_source,
+            processor=data_processor,
+            duration=2,
+            num_consumers=1,
+        )
+        elapsed = time.time() - start
