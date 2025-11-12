@@ -998,3 +998,7 @@ class TestStreamProcessor:
         def data_source():
             counter["value"] += 1
             return {"id": counter["value"], "data": f"item_{counter['value']}"}
+
+        def data_processor(item):
+            item["processed"] = True
+            return item
