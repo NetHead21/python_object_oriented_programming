@@ -1013,3 +1013,7 @@ class TestStreamProcessor:
         assert len(results) > 0
         assert all("processed" in r for r in results)
         assert all(r["processed"] is True for r in results)
+
+    def test_run_stream_processing_with_single_consumer(self):
+        """Test stream processing with single consumer."""
+        processor = StreamProcessor()
