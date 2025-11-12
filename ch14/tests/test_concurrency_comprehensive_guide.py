@@ -1084,3 +1084,12 @@ class TestStreamProcessor:
 
         def data_processor(item):
             return item
+
+        processor.run_stream_processing(
+            data_source=data_source,
+            processor=data_processor,
+            duration=1,
+            num_consumers=1,
+        )
+
+        assert processor.running is False
