@@ -1105,3 +1105,6 @@ class TestFileProcessor:
 
     def test_process_file_success(self):
         """Test successful file processing."""
+
+        def processor(content):
+            return len(content)
