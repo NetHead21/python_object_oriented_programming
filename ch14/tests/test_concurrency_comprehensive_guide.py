@@ -1213,3 +1213,14 @@ class TestAsyncBatchProcessor:
         result = await processor.process_item("test_item")
 
         assert result == "Processed: test_item"
+
+    @pytest.mark.asyncio
+    async def test_process_item_handles_different_types(self):
+        """Test that process_item handles different item types."""
+        processor = AsyncBatchProcessor()
+
+        result1 = await processor.process_item(123)
+        result2 = await processor.process_item("text")
+
+        assert "123" in result1
+        assert "text" in result2
