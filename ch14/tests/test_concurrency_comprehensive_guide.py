@@ -1108,3 +1108,10 @@ class TestFileProcessor:
 
         def processor(content):
             return len(content)
+
+        result = FileProcessor.process_file(("test.txt", processor))
+
+        assert result["filename"] == "test.txt"
+        assert result["status"] == "success"
+        assert "result" in result
+        assert isinstance(result["result"], int)
