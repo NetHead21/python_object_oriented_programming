@@ -1147,3 +1147,7 @@ class TestFileProcessor:
 
         assert len(results) == len(filenames)
         assert all(isinstance(r, dict) for r in results)
+
+    def test_process_files_parallel_all_successful(self):
+        """Test that all files are processed successfully."""
+        filenames = [f"file_{i}.txt" for i in range(3)]
