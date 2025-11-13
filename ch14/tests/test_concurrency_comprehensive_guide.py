@@ -1235,3 +1235,12 @@ class TestAsyncBatchProcessor:
 
         assert len(results) == len(batch)
         assert all("Processed:" in r for r in results)
+
+    @pytest.mark.asyncio
+    async def test_process_batch_empty_list(self):
+        """Test processing empty batch."""
+        processor = AsyncBatchProcessor()
+
+        results = await processor.process_batch([])
+
+        assert results == []
