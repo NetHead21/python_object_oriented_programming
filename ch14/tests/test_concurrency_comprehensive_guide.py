@@ -1140,3 +1140,10 @@ class TestFileProcessor:
     def test_process_files_parallel_returns_all_results(self):
         """Test that parallel file processing returns results for all files."""
         filenames = [f"file_{i}.txt" for i in range(5)]
+
+        results = FileProcessor.process_files_parallel(
+            filenames, word_count_processor, max_workers=2
+        )
+
+        assert len(results) == len(filenames)
+        assert all(isinstance(r, dict) for r in results)
