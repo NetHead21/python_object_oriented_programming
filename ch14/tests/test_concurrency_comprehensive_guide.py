@@ -1136,3 +1136,7 @@ class TestFileProcessor:
 
         mock_processor.assert_called_once()
         assert result["result"] == "processed"
+
+    def test_process_files_parallel_returns_all_results(self):
+        """Test that parallel file processing returns results for all files."""
+        filenames = [f"file_{i}.txt" for i in range(5)]
