@@ -1230,3 +1230,8 @@ class TestAsyncBatchProcessor:
         """Test that process_batch returns all processed items."""
         processor = AsyncBatchProcessor()
         batch = ["item1", "item2", "item3"]
+
+        results = await processor.process_batch(batch)
+
+        assert len(results) == len(batch)
+        assert all("Processed:" in r for r in results)
