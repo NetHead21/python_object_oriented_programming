@@ -1131,3 +1131,8 @@ class TestFileProcessor:
     def test_process_file_processor_called(self):
         """Test that processor function is called correctly."""
         mock_processor = Mock(return_value="processed")
+
+        result = FileProcessor.process_file(("file.txt", mock_processor))
+
+        mock_processor.assert_called_once()
+        assert result["result"] == "processed"
