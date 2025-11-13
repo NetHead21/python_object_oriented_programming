@@ -1163,3 +1163,12 @@ class TestFileProcessor:
         results = FileProcessor.process_files_parallel([], simple_content_processor)
 
         assert results == []
+
+    def test_process_files_parallel_single_file(self):
+        """Test parallel file processing with single file."""
+        results = FileProcessor.process_files_parallel(
+            ["single.txt"], simple_content_processor
+        )
+
+        assert len(results) == 1
+        assert results[0]["status"] == "success"
