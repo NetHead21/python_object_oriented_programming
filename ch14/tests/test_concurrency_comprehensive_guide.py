@@ -1224,3 +1224,9 @@ class TestAsyncBatchProcessor:
 
         assert "123" in result1
         assert "text" in result2
+
+    @pytest.mark.asyncio
+    async def test_process_batch_returns_all_items(self):
+        """Test that process_batch returns all processed items."""
+        processor = AsyncBatchProcessor()
+        batch = ["item1", "item2", "item3"]
