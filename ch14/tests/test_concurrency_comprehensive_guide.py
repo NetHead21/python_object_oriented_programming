@@ -1182,3 +1182,12 @@ class TestFileProcessor:
         )
 
         assert len(results) == 10
+
+
+# ============================================================================
+# ASYNCBATCHPROCESSOR TESTS
+# ============================================================================
+
+
+class TestAsyncBatchProcessor:
+    """Test suite for AsyncBatchProcessor class."""
