@@ -1191,3 +1191,10 @@ class TestFileProcessor:
 
 class TestAsyncBatchProcessor:
     """Test suite for AsyncBatchProcessor class."""
+
+    def test_init_default_values(self):
+        """Test AsyncBatchProcessor initialization with defaults."""
+        processor = AsyncBatchProcessor()
+
+        assert processor.batch_size == 10
+        assert processor.semaphore._value == 5
