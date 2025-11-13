@@ -1151,3 +1151,9 @@ class TestFileProcessor:
     def test_process_files_parallel_all_successful(self):
         """Test that all files are processed successfully."""
         filenames = [f"file_{i}.txt" for i in range(3)]
+
+        results = FileProcessor.process_files_parallel(
+            filenames, simple_content_processor
+        )
+
+        assert all(r["status"] == "success" for r in results)
