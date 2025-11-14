@@ -1260,3 +1260,7 @@ class TestAsyncBatchProcessor:
         """Test that process_all correctly batches items."""
         processor = AsyncBatchProcessor(batch_size=3)
         items = list(range(10))
+        results = await processor.process_all(items)
+
+        # Should process 10 items in batches of 3
+        assert len(results) == 10
