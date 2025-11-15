@@ -1351,3 +1351,8 @@ class TestIntegration:
 
         # Extract IDs for batch processing
         items = [r["id"] for r in resources]
+
+        # Process in batches
+        results = await processor.process_all(items)
+
+        assert len(results) == len(resources)
