@@ -1278,3 +1278,8 @@ class TestAsyncBatchProcessor:
     async def test_process_all_single_item(self):
         """Test processing single item."""
         processor = AsyncBatchProcessor(batch_size=5)
+
+        results = await processor.process_all(["single"])
+
+        assert len(results) == 1
+        assert "Processed: single" in results[0]
