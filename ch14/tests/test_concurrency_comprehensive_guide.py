@@ -1289,3 +1289,12 @@ class TestAsyncBatchProcessor:
         """Test that batch processing is faster than sequential."""
         processor = AsyncBatchProcessor(batch_size=10, max_concurrent=5)
         items = list(range(50))
+
+        start = time.time()
+        results = await processor.process_all(items)
+        elapsed = time.time() - start
+
+        # 50 items at 0.1s each would take 5s sequentially
+        # With batching and concurrency should be much faster
+        assert elapsed < 2.0
+        assert len(results) == 50
