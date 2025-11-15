@@ -1309,3 +1309,17 @@ class TestAsyncBatchProcessor:
 
         for i, item in enumerate(items):
             assert item in results[i]
+
+
+# ============================================================================
+# INTEGRATION TESTS
+# ============================================================================
+
+
+class TestIntegration:
+    """Integration tests for combined functionality."""
+
+    def test_webscraper_with_dataprocessor_workflow(self):
+        """Test combining web scraping with data processing."""
+        scraper = WebScraper(max_workers=2)
+        urls = [f"http://example.com/data{i}" for i in range(5)]
