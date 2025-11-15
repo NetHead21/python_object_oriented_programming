@@ -1304,3 +1304,8 @@ class TestAsyncBatchProcessor:
         """Test that process_all maintains item order."""
         processor = AsyncBatchProcessor(batch_size=3)
         items = [f"item_{i}" for i in range(10)]
+
+        results = await processor.process_all(items)
+
+        for i, item in enumerate(items):
+            assert item in results[i]
