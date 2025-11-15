@@ -1269,3 +1269,7 @@ class TestAsyncBatchProcessor:
     async def test_process_all_empty_list(self):
         """Test processing empty item list."""
         processor = AsyncBatchProcessor()
+
+        results = await processor.process_all([])
+
+        assert results == []
