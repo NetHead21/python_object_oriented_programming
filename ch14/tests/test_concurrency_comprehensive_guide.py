@@ -1264,3 +1264,8 @@ class TestAsyncBatchProcessor:
 
         # Should process 10 items in batches of 3
         assert len(results) == 10
+
+    @pytest.mark.asyncio
+    async def test_process_all_empty_list(self):
+        """Test processing empty item list."""
+        processor = AsyncBatchProcessor()
