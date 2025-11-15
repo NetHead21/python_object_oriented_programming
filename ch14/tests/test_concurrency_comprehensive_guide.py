@@ -1332,3 +1332,9 @@ class TestIntegration:
             DataRecord(id=i, value=float(i), category="scraped")
             for i in range(len(scraped_data))
         ]
+
+        # Process data
+        processed = DataProcessor.process_batch_parallel(records, num_workers=2)
+
+        assert len(processed) == len(scraped_data)
+        assert all(r.category == "SCRAPED" for r in processed)
