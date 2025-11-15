@@ -1338,3 +1338,9 @@ class TestIntegration:
 
         assert len(processed) == len(scraped_data)
         assert all(r.category == "SCRAPED" for r in processed)
+
+    @pytest.mark.asyncio
+    async def test_async_client_with_batch_processor(self):
+        """Test combining async API client with batch processor."""
+        client = AsyncAPIClient("https://api.example.com", rate_limit=10)
+        processor = AsyncBatchProcessor(batch_size=5, max_concurrent=3)
