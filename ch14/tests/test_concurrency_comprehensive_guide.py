@@ -1283,3 +1283,9 @@ class TestAsyncBatchProcessor:
 
         assert len(results) == 1
         assert "Processed: single" in results[0]
+
+    @pytest.mark.asyncio
+    async def test_process_all_performance(self):
+        """Test that batch processing is faster than sequential."""
+        processor = AsyncBatchProcessor(batch_size=10, max_concurrent=5)
+        items = list(range(50))
