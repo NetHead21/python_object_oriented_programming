@@ -1323,3 +1323,12 @@ class TestIntegration:
         """Test combining web scraping with data processing."""
         scraper = WebScraper(max_workers=2)
         urls = [f"http://example.com/data{i}" for i in range(5)]
+
+        # Scrape data
+        scraped_data = scraper.scrape_urls(urls)
+
+        # Convert to DataRecords
+        records = [
+            DataRecord(id=i, value=float(i), category="scraped")
+            for i in range(len(scraped_data))
+        ]
