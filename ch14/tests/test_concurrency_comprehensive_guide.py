@@ -1469,3 +1469,6 @@ class TestPerformance:
         start = time.time()
         scraper_large.scrape_urls(urls)
         time_large = time.time() - start
+
+        # More workers should be faster (or at least not significantly slower)
+        assert time_large <= time_small * 1.5
