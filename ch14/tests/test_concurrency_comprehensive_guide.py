@@ -1395,3 +1395,10 @@ class TestEdgeCases:
         processed = DataProcessor.process_record(record)
 
         assert processed.value == 0.0
+
+    def test_dataprocessor_negative_value(self):
+        """Test DataProcessor with negative value."""
+        record = DataRecord(id=1, value=-5.0, category="test")
+        processed = DataProcessor.process_record(record)
+
+        assert processed.value == -10.0
