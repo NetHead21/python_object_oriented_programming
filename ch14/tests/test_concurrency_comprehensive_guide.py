@@ -1472,3 +1472,7 @@ class TestPerformance:
 
         # More workers should be faster (or at least not significantly slower)
         assert time_large <= time_small * 1.5
+
+    def test_dataprocessor_parallel_faster_than_sequential(self):
+        """Test that parallel processing is faster than sequential."""
+        records = [DataRecord(i, float(i), "test") for i in range(20)]
