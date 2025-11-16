@@ -1464,3 +1464,8 @@ class TestPerformance:
         start = time.time()
         scraper_small.scrape_urls(urls)
         time_small = time.time() - start
+
+        scraper_large = WebScraper(max_workers=10)
+        start = time.time()
+        scraper_large.scrape_urls(urls)
+        time_large = time.time() - start
