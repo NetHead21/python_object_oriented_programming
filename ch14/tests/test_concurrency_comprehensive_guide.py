@@ -1411,3 +1411,6 @@ class TestEdgeCases:
         results = await client.fetch_multiple_resources([1, 2])
 
         assert len(results) == 2
+
+    def test_batch_processor_batch_size_larger_than_items(self):
+        """Test AsyncBatchProcessor when batch size exceeds item count."""
