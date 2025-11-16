@@ -1424,3 +1424,7 @@ class TestEdgeCases:
             assert len(results) == 5
 
         asyncio.run(test())
+
+    def test_stream_processor_zero_duration(self):
+        """Test StreamProcessor with very short duration."""
+        processor = StreamProcessor()
