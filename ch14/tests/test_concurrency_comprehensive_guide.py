@@ -1442,3 +1442,6 @@ class TestEdgeCases:
             duration=0,
             num_consumers=1,
         )
+
+        # Should handle gracefully
+        assert isinstance(results, list)
