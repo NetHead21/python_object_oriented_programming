@@ -1481,3 +1481,8 @@ class TestPerformance:
         start = time.time()
         sequential_results = [DataProcessor.process_record(r) for r in records]
         sequential_time = time.time() - start
+
+        # Parallel processing
+        start = time.time()
+        parallel_results = DataProcessor.process_batch_parallel(records, num_workers=4)
+        parallel_time = time.time() - start
