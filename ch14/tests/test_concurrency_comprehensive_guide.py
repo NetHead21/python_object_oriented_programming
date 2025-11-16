@@ -1384,3 +1384,7 @@ class TestEdgeCases:
         """Test WebScraper with very large worker count."""
         scraper = WebScraper(max_workers=100)
         urls = [f"http://example.com/page{i}" for i in range(5)]
+
+        results = scraper.scrape_urls(urls)
+
+        assert len(results) == 5
