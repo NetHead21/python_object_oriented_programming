@@ -1388,3 +1388,10 @@ class TestEdgeCases:
         results = scraper.scrape_urls(urls)
 
         assert len(results) == 5
+
+    def test_dataprocessor_zero_value(self):
+        """Test DataProcessor with zero value."""
+        record = DataRecord(id=1, value=0.0, category="test")
+        processed = DataProcessor.process_record(record)
+
+        assert processed.value == 0.0
