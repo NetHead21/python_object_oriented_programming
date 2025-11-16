@@ -1490,3 +1490,7 @@ class TestPerformance:
         assert len(sequential_results) == len(parallel_results)
         # Parallel should be faster (though overhead might affect very small datasets)
         assert parallel_time < sequential_time * 1.2
+
+
+if __name__ == "__main__":
+    pytest.main([__file__, "-v", "--tb=short"])
