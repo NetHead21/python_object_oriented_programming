@@ -1458,3 +1458,9 @@ class TestPerformance:
     def test_webscraper_scalability(self):
         """Test that WebScraper scales with worker count."""
         urls = [f"http://example.com/page{i}" for i in range(20)]
+
+        # Test with different worker counts
+        scraper_small = WebScraper(max_workers=2)
+        start = time.time()
+        scraper_small.scrape_urls(urls)
+        time_small = time.time() - start
