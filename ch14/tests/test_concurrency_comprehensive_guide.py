@@ -1445,3 +1445,16 @@ class TestEdgeCases:
 
         # Should handle gracefully
         assert isinstance(results, list)
+
+
+# ============================================================================
+# PERFORMANCE TESTS
+# ============================================================================
+
+
+class TestPerformance:
+    """Performance and scalability tests."""
+
+    def test_webscraper_scalability(self):
+        """Test that WebScraper scales with worker count."""
+        urls = [f"http://example.com/page{i}" for i in range(20)]
