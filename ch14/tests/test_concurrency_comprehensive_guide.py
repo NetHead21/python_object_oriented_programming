@@ -1414,3 +1414,11 @@ class TestEdgeCases:
 
     def test_batch_processor_batch_size_larger_than_items(self):
         """Test AsyncBatchProcessor when batch size exceeds item count."""
+
+        async def test():
+            processor = AsyncBatchProcessor(batch_size=100)
+            items = list(range(5))
+
+            results = await processor.process_all(items)
+
+            assert len(results) == 5
