@@ -1434,3 +1434,11 @@ class TestEdgeCases:
 
         def data_processor(item):
             return item
+
+        # Very short duration might produce 0 or few results
+        results = processor.run_stream_processing(
+            data_source=data_source,
+            processor=data_processor,
+            duration=0,
+            num_consumers=1,
+        )
