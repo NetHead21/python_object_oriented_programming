@@ -1422,3 +1422,5 @@ class TestEdgeCases:
             results = await processor.process_all(items)
 
             assert len(results) == 5
+
+        asyncio.run(test())
