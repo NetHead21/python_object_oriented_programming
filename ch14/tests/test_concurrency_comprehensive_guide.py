@@ -1407,3 +1407,7 @@ class TestEdgeCases:
     async def test_async_client_zero_rate_limit(self):
         """Test AsyncAPIClient with rate limit of 1."""
         client = AsyncAPIClient("https://api.example.com", rate_limit=1)
+
+        results = await client.fetch_multiple_resources([1, 2])
+
+        assert len(results) == 2
