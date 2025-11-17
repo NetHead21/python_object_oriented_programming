@@ -14,3 +14,8 @@ async def sleepers(how_many: int = 5) -> None:
     tasks = [asyncio.create_task(random_sleep(i)) for i in range(how_many)]
     print(f"Waiting for {how_many} tasks")
     await asyncio.gather(*tasks)
+
+
+if __name__ == "__main__":
+    asyncio.run(sleepers(5))
+    print("Done with the sleepers")
