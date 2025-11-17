@@ -65,3 +65,9 @@ class TestWebScraper:
         """Test that fetch_page returns a dictionary."""
         scraper = WebScraper()
         result = scraper.fetch_page("http://example.com")
+
+        assert isinstance(result, dict)
+        assert "url" in result
+        assert "status" in result
+        assert "content" in result
+        assert "timestamp" in result
