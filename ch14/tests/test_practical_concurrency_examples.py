@@ -77,3 +77,7 @@ class TestWebScraper:
         scraper = WebScraper()
         url = "http://test.com"
         result = scraper.fetch_page(url)
+
+        assert result["url"] == url
+        assert result["status"] == 200
+        assert f"Content from {url}" in result["content"]
