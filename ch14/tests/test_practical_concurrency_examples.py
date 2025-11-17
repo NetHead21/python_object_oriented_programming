@@ -131,3 +131,8 @@ class TestWebScraper:
         assert len(result["successful"]) == 3
         assert len(result["failed"]) == 0
         assert result["success_rate"] == 1.0
+
+    def test_scrape_with_error_handling_structure(self):
+        """Test that error handling returns correct structure."""
+        scraper = WebScraper()
+        result = scraper.scrape_with_error_handling(["http://test.com"])
