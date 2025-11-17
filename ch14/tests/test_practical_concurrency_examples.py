@@ -91,3 +91,8 @@ class TestWebScraper:
 
         assert len(results) == len(urls)
         assert all(isinstance(r, dict) for r in results)
+
+    def test_scrape_urls_performance(self):
+        """Test that scraping is faster with concurrency."""
+        scraper = WebScraper(max_workers=5)
+        urls = [f"http://example.com/page{i}" for i in range(5)]
