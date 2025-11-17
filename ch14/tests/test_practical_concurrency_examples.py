@@ -100,3 +100,8 @@ class TestWebScraper:
         start = time.time()
         results = scraper.scrape_urls(urls)
         elapsed = time.time() - start
+
+        # With 5 workers and 5 URLs taking 1 second each, should complete in ~1-2 seconds
+        # not 5 seconds (sequential)
+        assert elapsed < 3.0
+        assert len(results) == 5
