@@ -126,3 +126,8 @@ class TestWebScraper:
         urls = [f"http://example.com/page{i}" for i in range(3)]
 
         result = scraper.scrape_with_error_handling(urls)
+
+        assert result["total"] == 3
+        assert len(result["successful"]) == 3
+        assert len(result["failed"]) == 0
+        assert result["success_rate"] == 1.0
