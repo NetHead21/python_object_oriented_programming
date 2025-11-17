@@ -86,3 +86,8 @@ class TestWebScraper:
         """Test that scrape_urls returns results for all URLs."""
         scraper = WebScraper(max_workers=2)
         urls = [f"http://example.com/page{i}" for i in range(5)]
+
+        results = scraper.scrape_urls(urls)
+
+        assert len(results) == len(urls)
+        assert all(isinstance(r, dict) for r in results)
