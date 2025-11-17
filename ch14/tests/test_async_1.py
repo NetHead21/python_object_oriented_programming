@@ -25,3 +25,10 @@ def test_random_sleep(mock_random, mock_sleep, capsys):
     mock_sleep.assert_called_once_with(2.5)
     out, err = capsys.readouterr()
     assert out.splitlines() == ["42 sleeps for 2.50 seconds", "42 awakens, refreshed"]
+
+
+@fixture
+def mock_random_sleep(monkeypatch):
+    random_sleep = AsyncMock()
+    monkeypatch.setattr(async_1, "random_sleep", random_sleep)
+    return random_sleep
