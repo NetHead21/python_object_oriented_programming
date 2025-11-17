@@ -41,3 +41,12 @@ def simple_content_processor(content):
 def char_count_processor(content):
     """Count characters in content."""
     return len(content)
+
+
+# ============================================================================
+# WEBSCRAPER TESTS
+# ============================================================================
+
+
+class TestWebScraper:
+    """Test suite for WebScraper class."""
