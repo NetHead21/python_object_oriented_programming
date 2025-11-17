@@ -136,3 +136,8 @@ class TestWebScraper:
         """Test that error handling returns correct structure."""
         scraper = WebScraper()
         result = scraper.scrape_with_error_handling(["http://test.com"])
+
+        assert "successful" in result
+        assert "failed" in result
+        assert "total" in result
+        assert "success_rate" in result
