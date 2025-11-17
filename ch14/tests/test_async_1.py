@@ -16,3 +16,12 @@ def mock_sleep(monkeypatch):
     sleep = AsyncMock()
     monkeypatch.setattr(asyncio, "sleep", sleep)
     return sleep
+
+
+def test_random_sleep(mock_random, mock_sleep, capsys):
+    asyncio.run(async_1.random_sleep(42))
+    assert mock_random.random.mock_calls == [call()]
+    mock_sleep.assert_awaited()
+    mock_sleep.assert_called_once_with(2.5)
+    out, err = capsys.readouterr()
+    assert out.splitlines() == ["42 sleeps for 2.50 seconds", "42 awakens, refreshed"]
