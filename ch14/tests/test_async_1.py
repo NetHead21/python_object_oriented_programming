@@ -32,3 +32,10 @@ def mock_random_sleep(monkeypatch):
     random_sleep = AsyncMock()
     monkeypatch.setattr(async_1, "random_sleep", random_sleep)
     return random_sleep
+
+
+def test_sleepers(mock_random_sleep, capsys):
+    asyncio.run(async_1.sleepers(2))
+    mock_random_sleep.mock_calls == [call(0), call(1)]
+    out, err = capsys.readouterr()
+    assert out.splitlines() == ["Creating 2 tasks", "Waiting for 2 tasks"]
