@@ -96,3 +96,7 @@ class TestWebScraper:
         """Test that scraping is faster with concurrency."""
         scraper = WebScraper(max_workers=5)
         urls = [f"http://example.com/page{i}" for i in range(5)]
+
+        start = time.time()
+        results = scraper.scrape_urls(urls)
+        elapsed = time.time() - start
