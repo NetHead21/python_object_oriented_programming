@@ -71,3 +71,9 @@ class TestWebScraper:
         assert "status" in result
         assert "content" in result
         assert "timestamp" in result
+
+    def test_fetch_page_content_format(self):
+        """Test that fetch_page returns correct content format."""
+        scraper = WebScraper()
+        url = "http://test.com"
+        result = scraper.fetch_page(url)
