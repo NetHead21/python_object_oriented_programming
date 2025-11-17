@@ -105,3 +105,9 @@ class TestWebScraper:
         # not 5 seconds (sequential)
         assert elapsed < 3.0
         assert len(results) == 5
+
+    def test_scrape_urls_empty_list(self):
+        """Test scraping empty URL list."""
+        scraper = WebScraper()
+        results = scraper.scrape_urls([])
+        assert results == []
