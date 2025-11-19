@@ -263,3 +263,7 @@ class TestDataProcessor:
         processed = DataProcessor.process_in_chunks(records, chunk_size=10)
 
         assert len(processed) == len(records)
+
+    def test_process_in_chunks_transforms_correctly(self):
+        """Test that chunk processing transforms correctly."""
+        records = [DataRecord(i, float(i), "test") for i in range(10)]
