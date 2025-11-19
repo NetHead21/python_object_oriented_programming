@@ -149,3 +149,7 @@ class TestWebScraper:
 
         assert result["total"] == 0
         assert result["success_rate"] == 0
+
+    def test_scrape_with_error_handling_partial_failure(self):
+        """Test error handling when some requests succeed."""
+        scraper = WebScraper()
