@@ -311,3 +311,9 @@ class TestAsyncAPIClient:
         client = AsyncAPIClient("https://api.example.com", rate_limit=5)
 
         assert client.semaphore._value == 5
+
+    @pytest.mark.asyncio
+    async def test_fetch_resource_returns_dict(self):
+        """Test that fetch_resource returns a dictionary."""
+        client = AsyncAPIClient("https://api.example.com")
+        result = await client.fetch_resource(1)
