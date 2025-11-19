@@ -234,3 +234,7 @@ class TestDataProcessor:
         processed = DataProcessor.process_batch_parallel(records, num_workers=2)
 
         assert len(processed) == len(records)
+
+    def test_process_batch_parallel_transforms_correctly(self):
+        """Test that batch processing transforms correctly."""
+        records = [DataRecord(i, float(i), "test") for i in range(5)]
