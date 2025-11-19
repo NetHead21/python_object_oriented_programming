@@ -395,3 +395,6 @@ class TestAsyncAPIClient:
     async def test_rate_limiting_with_semaphore(self):
         """Test that rate limiting is applied via semaphore."""
         client = AsyncAPIClient("https://api.example.com", rate_limit=3)
+
+        # Before any requests
+        assert client.semaphore._value == 3
