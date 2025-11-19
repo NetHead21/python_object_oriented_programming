@@ -305,3 +305,9 @@ class TestAsyncAPIClient:
 
         assert client.base_url == "https://api.example.com"
         assert client.semaphore._value == 10
+
+    def test_init_custom_rate_limit(self):
+        """Test AsyncAPIClient initialization with custom rate limit."""
+        client = AsyncAPIClient("https://api.example.com", rate_limit=5)
+
+        assert client.semaphore._value == 5
