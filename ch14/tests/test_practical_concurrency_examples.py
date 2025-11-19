@@ -183,3 +183,7 @@ class TestDataRecord:
     def test_datarecord_creation(self):
         """Test creating a DataRecord instance."""
         record = DataRecord(1, 10.5, "test")
+
+        assert record.id == 1
+        assert record.value == 10.5
+        assert record.category == "test"
