@@ -381,3 +381,8 @@ class TestAsyncAPIClient:
         result = await client.fetch_with_retry(1, max_retries=3)
 
         assert result["id"] == 1
+
+    @pytest.mark.asyncio
+    async def test_fetch_with_retry_respects_max_retries(self):
+        """Test that fetch with retry respects max_retries parameter."""
+        client = AsyncAPIClient("https://api.example.com")
