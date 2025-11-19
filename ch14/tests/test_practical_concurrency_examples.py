@@ -386,3 +386,7 @@ class TestAsyncAPIClient:
     async def test_fetch_with_retry_respects_max_retries(self):
         """Test that fetch with retry respects max_retries parameter."""
         client = AsyncAPIClient("https://api.example.com")
+
+        # Should complete successfully
+        result = await client.fetch_with_retry(5, max_retries=2)
+        assert result["id"] == 5
