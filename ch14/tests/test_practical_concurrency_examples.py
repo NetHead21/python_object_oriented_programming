@@ -317,3 +317,8 @@ class TestAsyncAPIClient:
         """Test that fetch_resource returns a dictionary."""
         client = AsyncAPIClient("https://api.example.com")
         result = await client.fetch_resource(1)
+
+        assert isinstance(result, dict)
+        assert "id" in result
+        assert "data" in result
+        assert "timestamp" in result
