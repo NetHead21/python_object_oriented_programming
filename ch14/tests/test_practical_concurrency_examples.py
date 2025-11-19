@@ -398,3 +398,7 @@ class TestAsyncAPIClient:
 
         # Before any requests
         assert client.semaphore._value == 3
+
+        # Start multiple requests
+        resource_ids = list(range(5))
+        await client.fetch_multiple_resources(resource_ids)
