@@ -330,3 +330,13 @@ class TestAsyncAPIClient:
         result = await client.fetch_resource(42)
 
         assert result["id"] == 42
+
+    @pytest.mark.asyncio
+    async def test_fetch_multiple_resources_returns_all(self):
+        """Test that fetching multiple resources returns all results."""
+        client = AsyncAPIClient("https://api.example.com")
+        resource_ids = [1, 2, 3, 4, 5]
+
+        results = await client.fetch_multiple_resources(resource_ids)
+
+        assert len(results) == len(resource_ids)
