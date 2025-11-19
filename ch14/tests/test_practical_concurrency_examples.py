@@ -201,3 +201,14 @@ class TestDataRecord:
         record2 = DataRecord(2, 20.5, "other")
 
         assert record1 != record2
+
+
+class TestDataProcessor:
+    """Test suite for DataProcessor class."""
+
+    def test_process_record_transforms_value(self):
+        """Test that process_record doubles the value."""
+        record = DataRecord(1, 5.0, "test")
+        processed = DataProcessor.process_record(record)
+
+        assert processed.value == 10.0
