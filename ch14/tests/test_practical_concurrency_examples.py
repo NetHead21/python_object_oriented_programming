@@ -346,3 +346,8 @@ class TestAsyncAPIClient:
         """Test that fetched resources have correct IDs."""
         client = AsyncAPIClient("https://api.example.com")
         resource_ids = [10, 20, 30]
+
+        results = await client.fetch_multiple_resources(resource_ids)
+
+        returned_ids = [r["id"] for r in results]
+        assert set(returned_ids) == set(resource_ids)
