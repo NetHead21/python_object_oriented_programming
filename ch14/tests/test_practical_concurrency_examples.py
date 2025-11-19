@@ -373,3 +373,11 @@ class TestAsyncAPIClient:
         # Should be faster than 10 * 0.5 = 5 seconds (sequential)
         assert elapsed < 2.0
         assert len(results) == 10
+
+    @pytest.mark.asyncio
+    async def test_fetch_with_retry_success_first_attempt(self):
+        """Test fetch with retry succeeds on first attempt."""
+        client = AsyncAPIClient("https://api.example.com")
+        result = await client.fetch_with_retry(1, max_retries=3)
+
+        assert result["id"] == 1
