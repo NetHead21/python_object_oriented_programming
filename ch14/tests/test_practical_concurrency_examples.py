@@ -365,3 +365,7 @@ class TestAsyncAPIClient:
         """Test that async fetching is faster than sequential."""
         client = AsyncAPIClient("https://api.example.com")
         resource_ids = list(range(10))
+
+        start = time.time()
+        results = await client.fetch_multiple_resources(resource_ids)
+        elapsed = time.time() - start
