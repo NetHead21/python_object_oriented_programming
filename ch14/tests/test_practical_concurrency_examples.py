@@ -351,3 +351,11 @@ class TestAsyncAPIClient:
 
         returned_ids = [r["id"] for r in results]
         assert set(returned_ids) == set(resource_ids)
+
+    @pytest.mark.asyncio
+    async def test_fetch_multiple_resources_empty_list(self):
+        """Test fetching with empty resource list."""
+        client = AsyncAPIClient("https://api.example.com")
+        results = await client.fetch_multiple_resources([])
+
+        assert results == []
