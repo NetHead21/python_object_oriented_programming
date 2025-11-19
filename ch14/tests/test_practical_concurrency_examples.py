@@ -289,3 +289,12 @@ class TestDataProcessor:
         processed = DataProcessor.process_in_chunks(records, chunk_size=1)
 
         assert len(processed) == 5
+
+
+# ============================================================================
+# ASYNCAPICLIENT TESTS
+# ============================================================================
+
+
+class TestAsyncAPIClient:
+    """Test suite for AsyncAPIClient class."""
