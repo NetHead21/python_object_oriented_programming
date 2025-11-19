@@ -256,3 +256,7 @@ class TestDataProcessor:
 
         assert len(processed) == 1
         assert processed[0].value == 10.0
+
+    def test_process_in_chunks_returns_all_records(self):
+        """Test that chunk processing returns all records."""
+        records = [DataRecord(i, float(i), "test") for i in range(25)]
