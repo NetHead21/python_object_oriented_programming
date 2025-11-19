@@ -402,3 +402,6 @@ class TestAsyncAPIClient:
         # Start multiple requests
         resource_ids = list(range(5))
         await client.fetch_multiple_resources(resource_ids)
+
+        # After completion, semaphore should be released
+        assert client.semaphore._value == 3
