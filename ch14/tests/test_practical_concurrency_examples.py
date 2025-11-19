@@ -153,3 +153,11 @@ class TestWebScraper:
     def test_scrape_with_error_handling_partial_failure(self):
         """Test error handling when some requests succeed."""
         scraper = WebScraper()
+
+        # Mock fetch_page to fail on specific URLs
+        original_fetch = scraper.fetch_page
+
+        def mock_fetch(url):
+            if "fail" in url:
+                raise Exception("Simulated error")
+            return original_fetch(url)
