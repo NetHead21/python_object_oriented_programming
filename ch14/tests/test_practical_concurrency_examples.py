@@ -390,3 +390,8 @@ class TestAsyncAPIClient:
         # Should complete successfully
         result = await client.fetch_with_retry(5, max_retries=2)
         assert result["id"] == 5
+
+    @pytest.mark.asyncio
+    async def test_rate_limiting_with_semaphore(self):
+        """Test that rate limiting is applied via semaphore."""
+        client = AsyncAPIClient("https://api.example.com", rate_limit=3)
