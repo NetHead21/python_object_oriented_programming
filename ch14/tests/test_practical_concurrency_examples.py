@@ -252,3 +252,7 @@ class TestDataProcessor:
     def test_process_batch_parallel_single_record(self):
         """Test batch processing with single record."""
         records = [DataRecord(1, 5.0, "test")]
+        processed = DataProcessor.process_batch_parallel(records)
+
+        assert len(processed) == 1
+        assert processed[0].value == 10.0
