@@ -170,3 +170,12 @@ class TestWebScraper:
         assert result["total"] == 3
         assert len(result["successful"]) == 2
         assert len(result["failed"]) == 1
+
+
+# ============================================================================
+# DATARECORD AND DATAPROCESSOR TESTS
+# ============================================================================
+
+
+class TestDataRecord:
+    """Test suite for DataRecord dataclass."""
