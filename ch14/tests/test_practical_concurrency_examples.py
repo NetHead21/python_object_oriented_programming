@@ -226,3 +226,11 @@ class TestDataProcessor:
         processed = DataProcessor.process_record(record)
 
         assert processed.id == 42
+
+    def test_process_batch_parallel_returns_all_records(self):
+        """Test that parallel processing returns all records."""
+        records = [DataRecord(i, float(i), "test") for i in range(10)]
+
+        processed = DataProcessor.process_batch_parallel(records, num_workers=2)
+
+        assert len(processed) == len(records)
