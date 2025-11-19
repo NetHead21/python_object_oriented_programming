@@ -322,3 +322,11 @@ class TestAsyncAPIClient:
         assert "id" in result
         assert "data" in result
         assert "timestamp" in result
+
+    @pytest.mark.asyncio
+    async def test_fetch_resource_correct_id(self):
+        """Test that fetch_resource returns correct resource ID."""
+        client = AsyncAPIClient("https://api.example.com")
+        result = await client.fetch_resource(42)
+
+        assert result["id"] == 42
