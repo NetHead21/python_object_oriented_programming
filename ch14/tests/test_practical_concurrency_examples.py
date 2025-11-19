@@ -219,3 +219,10 @@ class TestDataProcessor:
         processed = DataProcessor.process_record(record)
 
         assert processed.category == "TEST"
+
+    def test_process_record_maintains_id(self):
+        """Test that process_record keeps the same ID."""
+        record = DataRecord(42, 5.0, "test")
+        processed = DataProcessor.process_record(record)
+
+        assert processed.id == 42
