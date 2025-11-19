@@ -369,3 +369,7 @@ class TestAsyncAPIClient:
         start = time.time()
         results = await client.fetch_multiple_resources(resource_ids)
         elapsed = time.time() - start
+
+        # Should be faster than 10 * 0.5 = 5 seconds (sequential)
+        assert elapsed < 2.0
+        assert len(results) == 10
