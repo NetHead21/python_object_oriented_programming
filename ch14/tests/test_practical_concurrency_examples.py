@@ -161,3 +161,12 @@ class TestWebScraper:
             if "fail" in url:
                 raise Exception("Simulated error")
             return original_fetch(url)
+
+        scraper.fetch_page = mock_fetch
+
+        urls = ["http://success.com", "http://fail.com", "http://success2.com"]
+        result = scraper.scrape_with_error_handling(urls)
+
+        assert result["total"] == 3
+        assert len(result["successful"]) == 2
+        assert len(result["failed"]) == 1
