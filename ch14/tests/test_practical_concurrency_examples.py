@@ -517,3 +517,6 @@ class TestStreamProcessor:
     def test_processor_state_after_completion(self):
         """Test that processor state is reset after completion."""
         processor = StreamProcessor()
+
+        def data_source():
+            return {"value": 1}
