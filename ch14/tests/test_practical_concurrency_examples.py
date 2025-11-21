@@ -428,3 +428,7 @@ class TestStreamProcessor:
         processor = StreamProcessor(buffer_size=50)
 
         assert processor.queue._maxsize == 50
+
+    def test_run_stream_processing_produces_results(self):
+        """Test that stream processing produces results."""
+        processor = StreamProcessor()
