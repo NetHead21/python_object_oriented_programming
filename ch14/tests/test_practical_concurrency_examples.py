@@ -432,3 +432,6 @@ class TestStreamProcessor:
     def test_run_stream_processing_produces_results(self):
         """Test that stream processing produces results."""
         processor = StreamProcessor()
+
+        def data_source():
+            return {"value": 1}
