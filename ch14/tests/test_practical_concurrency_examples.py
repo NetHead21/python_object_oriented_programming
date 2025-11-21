@@ -494,3 +494,6 @@ class TestStreamProcessor:
     def test_run_stream_processing_duration_respected(self):
         """Test that stream processing respects duration parameter."""
         processor = StreamProcessor()
+
+        def data_source():
+            return {"value": 1}
