@@ -509,3 +509,11 @@ class TestStreamProcessor:
             num_consumers=1,
         )
         elapsed = time.time() - start
+
+        # Should complete in approximately the specified duration
+        # More lenient timing due to async overhead and system variability
+        assert 1.5 < elapsed < 10.0, f"Expected duration ~2s, got {elapsed}s"
+
+    def test_processor_state_after_completion(self):
+        """Test that processor state is reset after completion."""
+        processor = StreamProcessor()
