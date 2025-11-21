@@ -405,3 +405,16 @@ class TestAsyncAPIClient:
 
         # After completion, semaphore should be released
         assert client.semaphore._value == 3
+
+
+# ============================================================================
+# STREAMPROCESSOR TESTS
+# ============================================================================
+
+
+class TestStreamProcessor:
+    """Test suite for StreamProcessor class."""
+
+    def test_init_default_buffer(self):
+        """Test StreamProcessor initialization with default buffer size."""
+        processor = StreamProcessor()
