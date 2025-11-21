@@ -453,3 +453,7 @@ class TestStreamProcessor:
         processor = StreamProcessor()
 
         counter = [0]
+
+        def data_source():
+            counter[0] += 1
+            return {"id": counter[0]}
