@@ -418,3 +418,7 @@ class TestStreamProcessor:
     def test_init_default_buffer(self):
         """Test StreamProcessor initialization with default buffer size."""
         processor = StreamProcessor()
+
+        assert processor.results == []
+        assert processor.running is False
+        assert processor.queue._maxsize == 100
