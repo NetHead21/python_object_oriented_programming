@@ -474,3 +474,6 @@ class TestStreamProcessor:
     def test_run_stream_processing_multiple_consumers(self):
         """Test stream processing with multiple consumers."""
         processor = StreamProcessor()
+
+        def data_source():
+            return {"value": 42}
