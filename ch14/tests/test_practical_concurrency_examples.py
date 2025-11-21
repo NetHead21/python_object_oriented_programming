@@ -447,3 +447,9 @@ class TestStreamProcessor:
         )
 
         assert len(results) > 0
+
+    def test_run_stream_processing_with_single_consumer(self):
+        """Test stream processing with single consumer."""
+        processor = StreamProcessor()
+
+        counter = [0]
