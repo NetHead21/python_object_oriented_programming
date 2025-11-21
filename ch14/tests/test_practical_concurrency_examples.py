@@ -477,3 +477,6 @@ class TestStreamProcessor:
 
         def data_source():
             return {"value": 42}
+
+        def data_processor(item):
+            return item["value"]
