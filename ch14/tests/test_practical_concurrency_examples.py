@@ -422,3 +422,9 @@ class TestStreamProcessor:
         assert processor.results == []
         assert processor.running is False
         assert processor.queue._maxsize == 100
+
+    def test_init_custom_buffer(self):
+        """Test StreamProcessor initialization with custom buffer size."""
+        processor = StreamProcessor(buffer_size=50)
+
+        assert processor.queue._maxsize == 50
