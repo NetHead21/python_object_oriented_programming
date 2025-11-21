@@ -461,3 +461,12 @@ class TestStreamProcessor:
         def data_processor(item):
             item["processed"] = True
             return item
+
+        results = processor.run_stream_processing(
+            data_source=data_source,
+            processor=data_processor,
+            duration=1,
+            num_consumers=1,
+        )
+
+        assert all("processed" in r for r in results)
