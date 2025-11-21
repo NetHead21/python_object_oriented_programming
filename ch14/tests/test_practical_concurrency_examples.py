@@ -470,3 +470,7 @@ class TestStreamProcessor:
         )
 
         assert all("processed" in r for r in results)
+
+    def test_run_stream_processing_multiple_consumers(self):
+        """Test stream processing with multiple consumers."""
+        processor = StreamProcessor()
