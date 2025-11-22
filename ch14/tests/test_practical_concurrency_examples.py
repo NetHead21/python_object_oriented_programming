@@ -541,3 +541,9 @@ class TestStreamProcessor:
 
 class TestFileProcessor:
     """Test suite for FileProcessor class."""
+
+    def test_process_file_success(self):
+        """Test successful file processing."""
+
+        def processor(content):
+            return len(content)
