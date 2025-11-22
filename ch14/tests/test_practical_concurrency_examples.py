@@ -622,3 +622,12 @@ class TestFileProcessor:
 
         assert len(results) == 10
         assert all(r["status"] == "success" for r in results)
+
+
+# ============================================================================
+# ASYNCBATCHPROCESSOR TESTS
+# ============================================================================
+
+
+class TestAsyncBatchProcessor:
+    """Test suite for AsyncBatchProcessor class."""
