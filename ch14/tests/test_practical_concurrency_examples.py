@@ -559,3 +559,9 @@ class TestFileProcessor:
 
         def processor(content):
             return content.upper()
+
+        result = FileProcessor.process_file(("file.txt", processor))
+
+        assert "filename" in result
+        assert "status" in result
+        assert "result" in result
