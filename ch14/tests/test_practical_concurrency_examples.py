@@ -596,3 +596,9 @@ class TestFileProcessor:
 
         assert len(results) == 3
         assert all(r["status"] == "success" for r in results)
+
+    def test_process_files_parallel_empty_list(self):
+        """Test parallel file processing with empty file list."""
+        results = FileProcessor.process_files_parallel([], simple_content_processor)
+
+        assert results == []
