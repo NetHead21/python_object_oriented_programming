@@ -553,3 +553,9 @@ class TestFileProcessor:
         assert result["filename"] == "test.txt"
         assert result["status"] == "success"
         assert "result" in result
+
+    def test_process_file_returns_expected_structure(self):
+        """Test that process_file returns expected dictionary structure."""
+
+        def processor(content):
+            return content.upper()
