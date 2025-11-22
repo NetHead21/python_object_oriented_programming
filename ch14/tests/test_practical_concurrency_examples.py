@@ -532,3 +532,12 @@ class TestStreamProcessor:
         )
 
         assert processor.running is False
+
+
+# ============================================================================
+# FILEPROCESSOR TESTS
+# ============================================================================
+
+
+class TestFileProcessor:
+    """Test suite for FileProcessor class."""
