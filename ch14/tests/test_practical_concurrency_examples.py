@@ -611,3 +611,7 @@ class TestFileProcessor:
 
         assert len(results) == 1
         assert results[0]["filename"] == "single.txt"
+
+    def test_process_files_parallel_custom_workers(self):
+        """Test parallel file processing with custom worker count."""
+        filenames = [f"file_{i}.txt" for i in range(10)]
