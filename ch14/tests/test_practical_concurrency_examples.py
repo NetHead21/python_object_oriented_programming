@@ -653,3 +653,8 @@ class TestAsyncBatchProcessor:
         result = await processor.process_item("test")
 
         assert result == "Processed: test"
+
+    @pytest.mark.asyncio
+    async def test_process_item_handles_different_types(self):
+        """Test that process_item handles different item types."""
+        processor = AsyncBatchProcessor()
