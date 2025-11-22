@@ -615,3 +615,10 @@ class TestFileProcessor:
     def test_process_files_parallel_custom_workers(self):
         """Test parallel file processing with custom worker count."""
         filenames = [f"file_{i}.txt" for i in range(10)]
+
+        results = FileProcessor.process_files_parallel(
+            filenames, simple_content_processor, max_workers=4
+        )
+
+        assert len(results) == 10
+        assert all(r["status"] == "success" for r in results)
