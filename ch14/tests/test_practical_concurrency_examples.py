@@ -608,3 +608,6 @@ class TestFileProcessor:
         results = FileProcessor.process_files_parallel(
             ["single.txt"], simple_content_processor
         )
+
+        assert len(results) == 1
+        assert results[0]["filename"] == "single.txt"
