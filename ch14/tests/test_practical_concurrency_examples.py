@@ -658,3 +658,11 @@ class TestAsyncBatchProcessor:
     async def test_process_item_handles_different_types(self):
         """Test that process_item handles different item types."""
         processor = AsyncBatchProcessor()
+
+        result1 = await processor.process_item(42)
+        result2 = await processor.process_item("string")
+        result3 = await processor.process_item([1, 2, 3])
+
+        assert result1 == "Processed: 42"
+        assert result2 == "Processed: string"
+        assert "Processed:" in result3
