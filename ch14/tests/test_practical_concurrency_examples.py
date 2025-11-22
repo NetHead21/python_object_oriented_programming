@@ -638,3 +638,10 @@ class TestAsyncBatchProcessor:
 
         assert processor.batch_size == 10
         assert processor.semaphore._value == 5
+
+    def test_init_custom_values(self):
+        """Test AsyncBatchProcessor initialization with custom values."""
+        processor = AsyncBatchProcessor(batch_size=20, max_concurrent=3)
+
+        assert processor.batch_size == 20
+        assert processor.semaphore._value == 3
