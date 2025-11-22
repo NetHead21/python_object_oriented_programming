@@ -645,3 +645,11 @@ class TestAsyncBatchProcessor:
 
         assert processor.batch_size == 20
         assert processor.semaphore._value == 3
+
+    @pytest.mark.asyncio
+    async def test_process_item_returns_processed_string(self):
+        """Test that process_item returns processed string."""
+        processor = AsyncBatchProcessor()
+        result = await processor.process_item("test")
+
+        assert result == "Processed: test"
