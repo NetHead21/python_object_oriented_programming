@@ -565,3 +565,7 @@ class TestFileProcessor:
         assert "filename" in result
         assert "status" in result
         assert "result" in result
+
+    def test_process_file_processor_called(self):
+        """Test that processor function is called correctly."""
+        mock_processor = Mock(return_value="processed")
