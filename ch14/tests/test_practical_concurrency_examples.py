@@ -718,3 +718,6 @@ class TestAsyncBatchProcessor:
         """Test processing single item."""
         processor = AsyncBatchProcessor()
         results = await processor.process_all([42])
+
+        assert len(results) == 1
+        assert results[0] == "Processed: 42"
