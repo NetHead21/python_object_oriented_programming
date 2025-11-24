@@ -764,3 +764,9 @@ class TestIntegration:
 
         # Scrape data
         scraped_data = scraper.scrape_urls(urls)
+
+        # Convert to DataRecords
+        records = [
+            DataRecord(i, float(len(d["content"])), "web")
+            for i, d in enumerate(scraped_data)
+        ]
