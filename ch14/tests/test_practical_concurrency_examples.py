@@ -694,3 +694,9 @@ class TestAsyncBatchProcessor:
         results = await processor.process_all(items)
 
         assert len(results) == len(items)
+
+    @pytest.mark.asyncio
+    async def test_process_all_correct_batching(self):
+        """Test that process_all correctly batches items."""
+        processor = AsyncBatchProcessor(batch_size=3)
+        items = list(range(10))
