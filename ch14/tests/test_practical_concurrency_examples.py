@@ -770,3 +770,9 @@ class TestIntegration:
             DataRecord(i, float(len(d["content"])), "web")
             for i, d in enumerate(scraped_data)
         ]
+
+        # Process in parallel
+        processed = DataProcessor.process_batch_parallel(records, num_workers=2)
+
+        assert len(processed) == len(urls)
+        assert all(r.category == "WEB" for r in processed)
