@@ -786,3 +786,6 @@ class TestIntegration:
         # Fetch resources
         resource_ids = list(range(10))
         resources = await client.fetch_multiple_resources(resource_ids)
+
+        # Extract IDs for batch processing
+        ids_to_process = [r["id"] for r in resources]
