@@ -743,3 +743,7 @@ class TestAsyncBatchProcessor:
         items = list(range(15))
 
         results = await processor.process_all(items)
+
+        # Extract numbers from "Processed: N" format
+        processed_numbers = [int(r.split(": ")[1]) for r in results]
+        assert processed_numbers == items
