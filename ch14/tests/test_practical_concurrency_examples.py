@@ -761,3 +761,6 @@ class TestIntegration:
         """Test workflow combining web scraping and data processing."""
         scraper = WebScraper(max_workers=3)
         urls = [f"http://example.com/data{i}" for i in range(5)]
+
+        # Scrape data
+        scraped_data = scraper.scrape_urls(urls)
