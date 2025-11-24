@@ -731,3 +731,7 @@ class TestAsyncBatchProcessor:
         start = time.time()
         results = await processor.process_all(items)
         elapsed = time.time() - start
+
+        assert len(results) == 50
+        # Should be much faster than 50 * 0.1 = 5 seconds (sequential)
+        assert elapsed < 2.0
