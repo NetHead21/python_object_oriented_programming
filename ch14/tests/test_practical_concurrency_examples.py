@@ -727,3 +727,7 @@ class TestAsyncBatchProcessor:
         """Test that batch processing is efficient."""
         processor = AsyncBatchProcessor(batch_size=10, max_concurrent=5)
         items = list(range(50))
+
+        start = time.time()
+        results = await processor.process_all(items)
+        elapsed = time.time() - start
