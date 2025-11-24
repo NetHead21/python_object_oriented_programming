@@ -712,3 +712,9 @@ class TestAsyncBatchProcessor:
         processor = AsyncBatchProcessor()
         results = await processor.process_all([])
         assert results == []
+
+    @pytest.mark.asyncio
+    async def test_process_all_single_item(self):
+        """Test processing single item."""
+        processor = AsyncBatchProcessor()
+        results = await processor.process_all([42])
