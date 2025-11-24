@@ -747,3 +747,12 @@ class TestAsyncBatchProcessor:
         # Extract numbers from "Processed: N" format
         processed_numbers = [int(r.split(": ")[1]) for r in results]
         assert processed_numbers == items
+
+
+# ============================================================================
+# INTEGRATION TESTS
+# ============================================================================
+
+
+class TestIntegration:
+    """Integration tests combining multiple concepts."""
