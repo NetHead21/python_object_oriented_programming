@@ -782,3 +782,7 @@ class TestIntegration:
         """Test combining async API client with batch processor."""
         client = AsyncAPIClient("https://api.example.com", rate_limit=5)
         processor = AsyncBatchProcessor(batch_size=5, max_concurrent=3)
+
+        # Fetch resources
+        resource_ids = list(range(10))
+        resources = await client.fetch_multiple_resources(resource_ids)
