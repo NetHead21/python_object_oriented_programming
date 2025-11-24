@@ -756,3 +756,8 @@ class TestAsyncBatchProcessor:
 
 class TestIntegration:
     """Integration tests combining multiple concepts."""
+
+    def test_webscraper_with_dataprocessor_workflow(self):
+        """Test workflow combining web scraping and data processing."""
+        scraper = WebScraper(max_workers=3)
+        urls = [f"http://example.com/data{i}" for i in range(5)]
