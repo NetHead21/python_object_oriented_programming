@@ -735,3 +735,9 @@ class TestAsyncBatchProcessor:
         assert len(results) == 50
         # Should be much faster than 50 * 0.1 = 5 seconds (sequential)
         assert elapsed < 2.0
+
+    @pytest.mark.asyncio
+    async def test_process_all_maintains_order(self):
+        """Test that process_all maintains item order."""
+        processor = AsyncBatchProcessor(batch_size=5)
+        items = list(range(15))
