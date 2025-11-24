@@ -711,3 +711,4 @@ class TestAsyncBatchProcessor:
         """Test processing empty item list."""
         processor = AsyncBatchProcessor()
         results = await processor.process_all([])
+        assert results == []
