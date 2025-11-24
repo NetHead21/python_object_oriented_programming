@@ -741,3 +741,5 @@ class TestAsyncBatchProcessor:
         """Test that process_all maintains item order."""
         processor = AsyncBatchProcessor(batch_size=5)
         items = list(range(15))
+
+        results = await processor.process_all(items)
