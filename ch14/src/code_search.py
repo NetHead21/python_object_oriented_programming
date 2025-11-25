@@ -118,3 +118,21 @@ class ImportVisitor(ast.NodeVisitor):
         """
         for alias in node.names:
             self.imports.add(alias.name)
+
+    def visit_ImportFrom(self, node: ast.ImportFrom) -> None:
+        """Visit a from-import statement node (e.g., 'from os import path').
+
+        Extracts the module name from 'from x import y' statements and adds
+        it to the imports set. Only the source module (x) is recorded, not
+        the imported names (y).
+
+        Args:
+            node (ast.ImportFrom): The from-import statement AST node to process.
+
+        Example:
+            Processes: from pathlib import Path, PurePath
+            Adds: 'pathlib' to self.imports
+
+        Note:
+            Skips relative imports without a module name (e.g., 'from . import x')
+        """
