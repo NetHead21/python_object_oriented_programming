@@ -804,3 +804,7 @@ class TestIntegration:
 
         # Character count processor
         results2 = FileProcessor.process_files_parallel(filenames, char_count_processor)
+
+        assert len(results1) == len(results2) == len(filenames)
+        assert all(r["status"] == "success" for r in results1)
+        assert all(r["status"] == "success" for r in results2)
