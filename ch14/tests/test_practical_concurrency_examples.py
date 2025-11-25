@@ -798,3 +798,6 @@ class TestIntegration:
     def test_file_processor_with_multiple_processors(self):
         """Test file processor with different processing functions."""
         filenames = [f"file_{i}.txt" for i in range(5)]
+
+        # Word count processor
+        results1 = FileProcessor.process_files_parallel(filenames, word_count_processor)
