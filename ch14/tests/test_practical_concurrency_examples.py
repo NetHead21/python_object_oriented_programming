@@ -887,3 +887,7 @@ class TestEdgeCases:
 @pytest.mark.slow
 class TestPerformance:
     """Performance-related tests (marked as slow)."""
+
+    def test_webscraper_scalability(self):
+        """Test web scraper performance with increasing URLs."""
+        scraper = WebScraper(max_workers=10)
