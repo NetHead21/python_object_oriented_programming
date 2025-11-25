@@ -891,3 +891,9 @@ class TestPerformance:
     def test_webscraper_scalability(self):
         """Test web scraper performance with increasing URLs."""
         scraper = WebScraper(max_workers=10)
+
+        for count in [5, 10, 20]:
+            urls = [f"http://example.com/page{i}" for i in range(count)]
+            start = time.time()
+            results = scraper.scrape_urls(urls)
+            elapsed = time.time() - start
