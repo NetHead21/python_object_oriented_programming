@@ -75,3 +75,25 @@ class ImportResult(NamedTuple):
             bool: True if 'typing' module is imported, False otherwise.
         """
         return "typing" in self.imports
+
+
+class ImportVisitor(ast.NodeVisitor):
+    """AST visitor for extracting import statements from Python code.
+
+    This visitor traverses the Abstract Syntax Tree (AST) of a Python file
+    and collects all imported module names, including both regular imports
+    (import x) and from-imports (from x import y).
+
+    The visitor pattern is used to walk through AST nodes and process
+    specific node types (Import and ImportFrom nodes).
+
+    Attributes:
+        imports (set[str]): Accumulated set of module names found in the file.
+
+    Example:
+        >>> tree = ast.parse('import os\nfrom pathlib import Path')
+        >>> visitor = ImportVisitor()
+        >>> visitor.visit(tree)
+        >>> visitor.imports
+        {'os', 'pathlib'}
+    """
