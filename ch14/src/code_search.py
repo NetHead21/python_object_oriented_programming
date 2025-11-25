@@ -136,3 +136,5 @@ class ImportVisitor(ast.NodeVisitor):
         Note:
             Skips relative imports without a module name (e.g., 'from . import x')
         """
+        if node.module:
+            self.imports.add(node.module)
