@@ -60,3 +60,11 @@ class ImportResult(NamedTuple):
         >>> result.imports
         {'os', 'sys', 'typing'}
     """
+
+
+    path: Path
+    imports: set[str]
+
+    @property
+    def focus(self) -> bool:
+        
