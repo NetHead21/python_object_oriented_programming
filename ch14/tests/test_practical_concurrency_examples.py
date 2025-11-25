@@ -897,3 +897,7 @@ class TestPerformance:
             start = time.time()
             results = scraper.scrape_urls(urls)
             elapsed = time.time() - start
+
+            assert len(results) == count
+            # Should scale well with concurrent requests
+            assert elapsed < count * 0.5
