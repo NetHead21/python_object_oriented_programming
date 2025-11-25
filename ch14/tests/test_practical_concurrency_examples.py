@@ -901,3 +901,7 @@ class TestPerformance:
             assert len(results) == count
             # Should scale well with concurrent requests
             assert elapsed < count * 0.5
+
+    def test_dataprocessor_parallel_faster_than_sequential(self):
+        """Test that parallel processing is faster than sequential."""
+        records = [DataRecord(i, float(i), "test") for i in range(20)]
