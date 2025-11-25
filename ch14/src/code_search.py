@@ -175,3 +175,42 @@ def find_imports(path: Path) -> ImportResult:
 
     # Return results as a named tuple
     return ImportResult(path, iv.imports)
+
+
+def all_source(path: Path, pattern: str) -> Iterator[Path]:
+    """Recursively find all files matching a pattern in a directory tree.
+
+    This generator function walks through a directory tree and yields paths
+    to files matching the specified pattern. It automatically skips common
+    directories that typically don't contain source code (virtual environments,
+    cache directories, version control directories, build artifacts, and IDE
+    configuration).
+
+    The function modifies the dirs list in-place during traversal to prevent
+    os.walk from descending into excluded directories, which improves
+    performance when scanning large projects.
+
+    Args:
+        path (Path): The root directory to start searching from.
+        pattern (str): File pattern to match (supports glob-style wildcards).
+            Examples: '*.py', '*.txt', 'test_*.py'
+
+    Yields:
+        Path: Paths to files matching the pattern, excluding skipped directories.
+
+    Example:
+        >>> for py_file in all_source(Path('/project'), '*.py'):
+        ...     print(py_file)
+        /project/main.py
+        /project/utils/helper.py
+        /project/tests/test_main.py
+
+    Note:
+        Automatically skips the following directories:
+        - Virtual environments: .venv, venv, env, .env, ENV
+        - Version control: .git
+        - Python cache: __pycache__, .pytest_cache, .mypy_cache, .ruff_cache
+        - Build/distribution: build, dist, *.egg-info, .eggs, site-packages
+        - Testing/coverage: .tox, .nox, .hypothesis, .coverage, htmlcov
+        - IDE/editor: .idea, .vscode, node_modules
+    """
