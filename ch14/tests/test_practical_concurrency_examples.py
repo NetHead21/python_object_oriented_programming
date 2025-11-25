@@ -860,3 +860,6 @@ class TestEdgeCases:
     def test_stream_processor_zero_duration(self):
         """Test stream processor with very short duration."""
         processor = StreamProcessor()
+
+        def data_source():
+            return {"value": 1}
