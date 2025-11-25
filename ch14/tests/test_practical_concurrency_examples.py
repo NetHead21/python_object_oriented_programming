@@ -866,3 +866,14 @@ class TestEdgeCases:
 
         def data_processor(item):
             return item
+
+        # Very short duration might result in few or no items
+        results = processor.run_stream_processing(
+            data_source=data_source,
+            processor=data_processor,
+            duration=0.1,
+            num_consumers=1,
+        )
+
+        # Should complete without error
+        assert isinstance(results, list)
