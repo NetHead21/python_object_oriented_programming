@@ -37,3 +37,26 @@ from pathlib import Path
 import sys
 import time
 from typing import Iterator, NamedTuple
+
+
+class ImportResult(NamedTuple):
+    """Container for import analysis results.
+
+    This NamedTuple stores the results of analyzing a single Python file,
+    including the file path and the set of modules it imports.
+
+    Attributes:
+        path (Path): The file path of the analyzed Python source file.
+        imports (set[str]): Set of module names imported in the file.
+
+    Properties:
+        focus (bool): Returns True if the file imports specific modules of
+            interest (currently checks for 'typing' module).
+
+    Example:
+        >>> result = ImportResult(Path('module.py'), {'os', 'sys', 'typing'})
+        >>> result.focus
+        True
+        >>> result.imports
+        {'os', 'sys', 'typing'}
+    """
