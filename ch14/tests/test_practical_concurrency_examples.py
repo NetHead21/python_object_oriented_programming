@@ -915,3 +915,6 @@ class TestPerformance:
         start = time.time()
         DataProcessor.process_batch_parallel(records, num_workers=4)
         parallel_time = time.time() - start
+
+        # Parallel should be faster (though not necessarily 4x due to overhead)
+        assert parallel_time < sequential_time
