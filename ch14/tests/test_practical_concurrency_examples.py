@@ -856,3 +856,7 @@ class TestEdgeCases:
 
         results = await processor.process_all(items)
         assert len(results) == 10
+
+    def test_stream_processor_zero_duration(self):
+        """Test stream processor with very short duration."""
+        processor = StreamProcessor()
