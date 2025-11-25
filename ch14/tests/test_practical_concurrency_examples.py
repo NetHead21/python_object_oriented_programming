@@ -839,3 +839,11 @@ class TestEdgeCases:
         processed = DataProcessor.process_record(record)
 
         assert processed.value == -10.0
+
+    @pytest.mark.asyncio
+    async def test_async_client_zero_rate_limit(self):
+        """Test async client with minimal rate limit."""
+        client = AsyncAPIClient("https://api.example.com", rate_limit=1)
+
+        results = await client.fetch_multiple_resources([1, 2, 3])
+        assert len(results) == 3
