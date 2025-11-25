@@ -101,3 +101,18 @@ class ImportVisitor(ast.NodeVisitor):
     def __init__(self) -> None:
         """Initialize the visitor with an empty imports set."""
         self.imports: set[str] = set()
+
+    def visit_Import(self, node: ast.Import) -> None:
+        """Visit an import statement node (e.g., 'import os').
+
+        Extracts module names from regular import statements and adds them
+        to the imports set. Handles multiple imports in a single statement
+        (e.g., 'import os, sys').
+
+        Args:
+            node (ast.Import): The import statement AST node to process.
+
+        Example:
+            Processes: import os, sys, pathlib
+            Adds: 'os', 'sys', 'pathlib' to self.imports
+        """
