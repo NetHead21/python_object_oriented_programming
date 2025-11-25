@@ -370,3 +370,12 @@ if __name__ == "__main__":
         python code_search.py /path/to/project   # Search specific directory
         python code_search.py path1 path2 path3  # Search multiple directories
     """
+    # Parse command-line arguments
+    options = get_options()
+
+    # Use current directory if no paths specified
+    paths = options.path or [Path.cwd()]
+
+    # Run analysis on each specified path
+    for path in paths:
+        main(path)
