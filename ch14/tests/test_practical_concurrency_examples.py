@@ -847,3 +847,12 @@ class TestEdgeCases:
 
         results = await client.fetch_multiple_resources([1, 2, 3])
         assert len(results) == 3
+
+    @pytest.mark.asyncio
+    async def test_batch_processor_batch_size_larger_than_items(self):
+        """Test batch processor when batch size exceeds item count."""
+        processor = AsyncBatchProcessor(batch_size=100)
+        items = list(range(10))
+
+        results = await processor.process_all(items)
+        assert len(results) == 10
