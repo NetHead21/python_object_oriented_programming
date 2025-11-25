@@ -910,3 +910,8 @@ class TestPerformance:
         start = time.time()
         DataProcessor.process_batch_parallel(records, num_workers=1)
         sequential_time = time.time() - start
+
+        # Parallel (num_workers=4)
+        start = time.time()
+        DataProcessor.process_batch_parallel(records, num_workers=4)
+        parallel_time = time.time() - start
