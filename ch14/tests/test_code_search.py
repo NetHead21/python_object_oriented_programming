@@ -16,3 +16,14 @@ def test_import_result(tmp_path):
     assert not i1.focus
     i2 = code_search.ImportResult(tmp_path, {"math", "typing"})
     assert i2.focus
+
+
+@fixture
+def mock_directory(tmp_path):
+    f1 = tmp_path / "file1.py"
+    f1.write_text("# file1.py\n")
+    d1 = tmp_path / ".tox"
+    d1.mkdir()
+    f2 = tmp_path / ".tox" / "file2.py"
+    f2.write_text("# file2.py\n")
+    return tmp_path
