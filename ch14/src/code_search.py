@@ -355,3 +355,18 @@ def main(base: Path = Path.cwd()) -> None:
     end = time.perf_counter()
     rate = 1000 * (end - start) / len(analyzers) if analyzers else 0
     print(f"Searched {len(analyzers)} files in {base} ({rate:.3f}ms/file)")
+
+
+if __name__ == "__main__":
+    """Command-line entry point.
+    
+    When run as a script, this:
+    1. Parses command-line arguments to get search paths
+    2. Uses current directory if no paths specified
+    3. Runs analysis on each specified path
+    
+    Usage:
+        python code_search.py                    # Search current directory
+        python code_search.py /path/to/project   # Search specific directory
+        python code_search.py path1 path2 path3  # Search multiple directories
+    """
