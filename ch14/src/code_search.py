@@ -97,3 +97,7 @@ class ImportVisitor(ast.NodeVisitor):
         >>> visitor.imports
         {'os', 'pathlib'}
     """
+
+    def __init__(self) -> None:
+        """Initialize the visitor with an empty imports set."""
+        self.imports: set[str] = set()
