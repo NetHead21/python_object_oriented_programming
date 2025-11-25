@@ -801,3 +801,6 @@ class TestIntegration:
 
         # Word count processor
         results1 = FileProcessor.process_files_parallel(filenames, word_count_processor)
+
+        # Character count processor
+        results2 = FileProcessor.process_files_parallel(filenames, char_count_processor)
