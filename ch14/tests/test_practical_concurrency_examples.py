@@ -808,3 +808,20 @@ class TestIntegration:
         assert len(results1) == len(results2) == len(filenames)
         assert all(r["status"] == "success" for r in results1)
         assert all(r["status"] == "success" for r in results2)
+
+
+# ============================================================================
+# EDGE CASES TESTS
+# ============================================================================
+
+
+class TestEdgeCases:
+    """Test edge cases and boundary conditions."""
+
+    def test_webscraper_large_worker_count(self):
+        """Test web scraper with very large worker count."""
+        scraper = WebScraper(max_workers=100)
+        urls = [f"http://example.com/page{i}" for i in range(10)]
+
+        results = scraper.scrape_urls(urls)
+        assert len(results) == 10
