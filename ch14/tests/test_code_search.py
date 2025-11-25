@@ -27,3 +27,8 @@ def mock_directory(tmp_path):
     f2 = tmp_path / ".tox" / "file2.py"
     f2.write_text("# file2.py\n")
     return tmp_path
+
+
+def test_all_source(mock_directory):
+    files = list(code_search.all_source(mock_directory, "*.py"))
+    assert files == [mock_directory / "file1.py"]
