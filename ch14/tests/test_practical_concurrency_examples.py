@@ -863,3 +863,6 @@ class TestEdgeCases:
 
         def data_source():
             return {"value": 1}
+
+        def data_processor(item):
+            return item
