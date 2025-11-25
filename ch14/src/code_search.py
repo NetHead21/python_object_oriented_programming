@@ -116,3 +116,5 @@ class ImportVisitor(ast.NodeVisitor):
             Processes: import os, sys, pathlib
             Adds: 'os', 'sys', 'pathlib' to self.imports
         """
+        for alias in node.names:
+            self.imports.add(alias.name)
