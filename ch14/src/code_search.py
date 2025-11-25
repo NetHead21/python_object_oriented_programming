@@ -61,10 +61,17 @@ class ImportResult(NamedTuple):
         {'os', 'sys', 'typing'}
     """
 
-
     path: Path
     imports: set[str]
 
     @property
     def focus(self) -> bool:
-        
+        """Check if this file imports modules of interest.
+
+        Currently highlights files that import the 'typing' module,
+        which is useful for identifying files using type annotations.
+
+        Returns:
+            bool: True if 'typing' module is imported, False otherwise.
+        """
+        return "typing" in self.imports
