@@ -905,3 +905,8 @@ class TestPerformance:
     def test_dataprocessor_parallel_faster_than_sequential(self):
         """Test that parallel processing is faster than sequential."""
         records = [DataRecord(i, float(i), "test") for i in range(20)]
+
+        # Sequential (num_workers=1)
+        start = time.time()
+        DataProcessor.process_batch_parallel(records, num_workers=1)
+        sequential_time = time.time() - start
