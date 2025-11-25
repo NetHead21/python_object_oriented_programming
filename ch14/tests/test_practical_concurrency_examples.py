@@ -877,3 +877,13 @@ class TestEdgeCases:
 
         # Should complete without error
         assert isinstance(results, list)
+
+
+# ============================================================================
+# PERFORMANCE TESTS
+# ============================================================================
+
+
+@pytest.mark.slow
+class TestPerformance:
+    """Performance-related tests (marked as slow)."""
