@@ -342,3 +342,16 @@ def main(base: Path = Path.cwd()) -> None:
 
         # Collect results as they complete (may finish in any order)
         analyzed = (worker.result() for worker in futures.as_completed(analyzers))
+
+    # Display results sorted by path
+    for example in sorted(analyzed):
+        # Mark focused files with '->' indicator
+        print(
+            f"{'->' if example.focus else '':2s} "
+            f"{example.path.relative_to(base)} {example.imports}"
+        )
+
+    # Calculate and display performance metrics
+    end = time.perf_counter()
+    rate = 1000 * (end - start) / len(analyzers) if analyzers else 0
+    print(f"Searched {len(analyzers)} files in {base} ({rate:.3f}ms/file)")
