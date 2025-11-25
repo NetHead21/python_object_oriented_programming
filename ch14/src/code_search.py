@@ -138,3 +138,31 @@ class ImportVisitor(ast.NodeVisitor):
         """
         if node.module:
             self.imports.add(node.module)
+
+
+def find_imports(path: Path) -> ImportResult:
+    """Analyze a Python file and extract all import statements.
+
+    This function reads a Python source file, parses it into an Abstract
+    Syntax Tree (AST), and uses the ImportVisitor to extract all imported
+    module names.
+
+    Args:
+        path (Path): Path to the Python source file to analyze.
+
+    Returns:
+        ImportResult: A named tuple containing the file path and set of
+            imported module names.
+
+    Raises:
+        SyntaxError: If the Python file contains invalid syntax.
+        FileNotFoundError: If the file doesn't exist.
+        PermissionError: If the file cannot be read due to permissions.
+
+    Example:
+        >>> result = find_imports(Path('my_module.py'))
+        >>> print(f"File: {result.path}")
+        >>> print(f"Imports: {result.imports}")
+        File: my_module.py
+        Imports: {'os', 'sys', 'pathlib'}
+    """
