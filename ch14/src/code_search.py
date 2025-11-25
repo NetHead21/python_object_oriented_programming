@@ -27,3 +27,13 @@ Example Usage:
     from code_search import main
     main(Path('/path/to/project'))
 """
+
+import argparse
+import ast
+from concurrent import futures
+from fnmatch import fnmatch
+import os
+from pathlib import Path
+import sys
+import time
+from typing import Iterator, NamedTuple
