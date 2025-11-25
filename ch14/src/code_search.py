@@ -276,3 +276,19 @@ def get_options(argv: list[str] = sys.argv[1:]) -> argparse.Namespace:
         >>> options.path
         []
     """
+
+    # Create argument parser
+    parser = argparse.ArgumentParser(
+        description="Search Python files for import statements concurrently"
+    )
+
+    # Add path argument (accepts zero or more paths)
+    parser.add_argument(
+        "path",
+        type=Path,
+        nargs="*",
+        help="Directory paths to search (defaults to current directory if omitted)",
+    )
+
+    # Parse and return arguments
+    return parser.parse_args(argv)
