@@ -166,3 +166,12 @@ def find_imports(path: Path) -> ImportResult:
         File: my_module.py
         Imports: {'os', 'sys', 'pathlib'}
     """
+    # Parse the Python file into an Abstract Syntax Tree
+    tree = ast.parse(path.read_text())
+
+    # Create visitor and traverse the AST to collect imports
+    iv = ImportVisitor()
+    iv.visit(tree)
+
+    # Return results as a named tuple
+    return ImportResult(path, iv.imports)
