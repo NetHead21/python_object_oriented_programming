@@ -794,3 +794,7 @@ class TestIntegration:
         results = await processor.process_all(ids_to_process)
 
         assert len(results) == len(resource_ids)
+
+    def test_file_processor_with_multiple_processors(self):
+        """Test file processor with different processing functions."""
+        filenames = [f"file_{i}.txt" for i in range(5)]
