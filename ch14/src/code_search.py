@@ -249,3 +249,30 @@ def all_source(path: Path, pattern: str) -> Iterator[Path]:
 
         # Yield matching files from current directory
         yield from (Path(root) / f for f in files if fnmatch(f, pattern))
+
+
+def get_options(argv: list[str] = sys.argv[1:]) -> argparse.Namespace:
+    """Parse command-line arguments for the code search tool.
+
+    Creates an argument parser and processes command-line arguments to
+    extract the paths to search. If no paths are provided, the current
+    working directory will be used by default.
+
+    Args:
+        argv (list[str], optional): Command-line arguments to parse.
+            Defaults to sys.argv[1:] (all arguments except script name).
+
+    Returns:
+        argparse.Namespace: Parsed arguments containing:
+            - path (list[Path]): List of directory paths to search.
+              Empty list if no paths provided.
+
+    Example:
+        >>> options = get_options(['/project1', '/project2'])
+        >>> options.path
+        [Path('/project1'), Path('/project2')]
+
+        >>> options = get_options([])
+        >>> options.path
+        []
+    """
