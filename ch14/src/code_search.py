@@ -326,3 +326,19 @@ def main(base: Path = Path.cwd()) -> None:
         Typical performance: 10-50ms per file depending on file size and
         system I/O performance.
     """
+
+    # Print the base directory being searched
+    print(f"\n{base}")
+
+    # Start performance timer
+    start = time.perf_counter()
+
+    # Analyze files concurrently using thread pool
+    with futures.ThreadPoolExecutor(24) as pool:
+        # Submit all Python files for analysis
+        analyzers = [
+            pool.submit(find_imports, path) for path in all_source(base, "*.py")
+        ]
+
+        # Collect results as they complete (may finish in any order)
+        analyzed = (worker.result() for worker in futures.as_completed(analyzers))
