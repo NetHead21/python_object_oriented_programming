@@ -214,3 +214,38 @@ def all_source(path: Path, pattern: str) -> Iterator[Path]:
         - Testing/coverage: .tox, .nox, .hypothesis, .coverage, htmlcov
         - IDE/editor: .idea, .vscode, node_modules
     """
+
+    # Walk through directory tree
+    for root, dirs, files in os.walk(path):
+        # Remove directories we want to skip from the dirs list
+        # This prevents os.walk from descending into them
+        for skip in {
+            ".tox",
+            ".venv",
+            "__pycache__",
+            ".git",
+            ".pytest_cache",
+            ".mypy_cache",
+            ".ruff_cache",
+            "venv",
+            "env",
+            ".env",
+            "ENV",
+            "node_modules",
+            ".idea",
+            ".vscode",
+            "build",
+            "dist",
+            "*.egg-info",
+            ".eggs",
+            "htmlcov",
+            ".coverage",
+            ".hypothesis",
+            ".nox",
+            "site-packages",
+        }:
+            if skip in dirs:
+                dirs.remove(skip)
+
+        # Yield matching files from current directory
+        yield from (Path(root) / f for f in files if fnmatch(f, pattern))
