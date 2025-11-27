@@ -233,3 +233,10 @@ class TestImportVisitor:
         visitor = code_search.ImportVisitor()
         visitor.visit(tree)
         assert visitor.imports == {"collections"}
+
+    def test_visitor_nested_package_import(self):
+        """Test visitor with nested package imports."""
+        code = """
+        from os.path import join
+        from concurrent.futures import ThreadPoolExecutor
+        """
