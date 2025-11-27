@@ -170,3 +170,10 @@ class TestImportVisitor:
         visitor = code_search.ImportVisitor()
         visitor.visit(tree)
         assert visitor.imports == {"os"}
+
+    def test_visitor_multiple_imports_single_line(self):
+        """Test visitor with multiple imports on one line."""
+        tree = ast.parse("import os, sys, json")
+        visitor = code_search.ImportVisitor()
+        visitor.visit(tree)
+        assert visitor.imports == {"os", "sys", "json"}
