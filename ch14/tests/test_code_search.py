@@ -72,3 +72,11 @@ def mock_futures_pool(tmp_path, monkeypatch):
     as_completed = Mock(side_effect=lambda futures: futures)
     monkeypatch.setattr(code_search.futures, "as_completed", as_completed)
     return pool_class
+
+
+@fixture
+def mock_all_source(tmp_path, monkeypatch):
+    paths = [tmp_path / "file1.py"]
+    function = Mock(return_value=paths)
+    monkeypatch.setattr(code_search, "all_source", function)
+    return paths
