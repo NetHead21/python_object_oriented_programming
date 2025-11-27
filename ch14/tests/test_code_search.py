@@ -226,3 +226,10 @@ class TestImportVisitor:
         visitor = code_search.ImportVisitor()
         visitor.visit(tree)
         assert visitor.imports == {"numpy"}
+
+    def test_visitor_from_import_as_alias(self):
+        """Test visitor with from-import aliases."""
+        tree = ast.parse("from collections import defaultdict as dd")
+        visitor = code_search.ImportVisitor()
+        visitor.visit(tree)
+        assert visitor.imports == {"collections"}
