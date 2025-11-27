@@ -299,3 +299,8 @@ class TestFindImports:
         import os
         import sys
         '''
+
+        source.write_text(code)
+        result = code_search.find_imports(source)
+
+        assert result.imports == {"os", "sys"}
