@@ -125,3 +125,10 @@ class TestImportResult:
         assert result.path == tmp_path
         assert result.imports == set()
         assert not result.focus
+
+    def test_import_result_with_multiple_imports(self, tmp_path):
+        """Test ImportResult with multiple imports including typing."""
+        imports = {"os", "sys", "typing", "pathlib", "json"}
+        result = code_search.ImportResult(tmp_path, imports)
+        assert result.imports == imports
+        assert result.focus
