@@ -349,3 +349,10 @@ class TestAllSource:
 
         files = list(code_search.all_source(tmp_path, "*.py"))
         assert len(files) == 3
+
+    def test_all_source_skips_venv(self, tmp_path):
+        """Test that .venv directory is skipped."""
+        (tmp_path / "file1.py").write_text("# file1")
+        venv = tmp_path / ".venv"
+        venv.mkdir()
+        (venv / "file2.py").write_text("# file2")
