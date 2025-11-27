@@ -263,3 +263,14 @@ class TestFindImports:
         def main():
             pass
         """
+        source.write_text(code)
+        result = code_search.find_imports(source)
+
+        assert result.path == source
+        assert "os" in result.imports
+        assert "sys" in result.imports
+        assert "pathlib" in result.imports
+        assert "typing" in result.imports
+        assert "json" in result.imports
+        assert "collections" in result.imports
+        assert result.focus
