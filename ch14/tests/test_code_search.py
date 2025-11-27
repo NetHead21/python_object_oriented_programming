@@ -138,3 +138,9 @@ class TestImportResult:
         result1 = code_search.ImportResult(tmp_path, {"os", "sys"})
         result2 = code_search.ImportResult(tmp_path, {"os", "sys"})
         assert result1 == result2
+
+    def test_import_result_ordering(self, tmp_path):
+        """Test that ImportResults can be sorted by path."""
+        result1 = code_search.ImportResult(tmp_path / "a.py", {"os"})
+        result2 = code_search.ImportResult(tmp_path / "b.py", {"sys"})
+        result3 = code_search.ImportResult(tmp_path / "c.py", {"json"})
