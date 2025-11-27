@@ -360,3 +360,7 @@ class TestAllSource:
         files = list(code_search.all_source(tmp_path, "*.py"))
         assert len(files) == 1
         assert files[0].name == "file1.py"
+
+    def test_all_source_skips_multiple_excluded_dirs(self, tmp_path):
+        """Test that multiple excluded directories are skipped."""
+        (tmp_path / "file1.py").write_text("# file1")
