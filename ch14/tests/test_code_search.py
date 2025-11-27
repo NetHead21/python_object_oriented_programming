@@ -147,3 +147,8 @@ class TestImportResult:
 
         sorted_results = sorted([result3, result1, result2])
         assert sorted_results == [result1, result2, result3]
+
+    def test_import_result_focus_case_sensitive(self, tmp_path):
+        """Test that focus check is case-sensitive."""
+        result = code_search.ImportResult(tmp_path, {"Typing", "TYPING"})
+        assert not result.focus  # Should not match "typing"
