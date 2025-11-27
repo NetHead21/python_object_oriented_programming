@@ -240,3 +240,7 @@ class TestImportVisitor:
         from os.path import join
         from concurrent.futures import ThreadPoolExecutor
         """
+        tree = ast.parse(code)
+        visitor = code_search.ImportVisitor()
+        visitor.visit(tree)
+        assert visitor.imports == {"os.path", "concurrent.futures"}
