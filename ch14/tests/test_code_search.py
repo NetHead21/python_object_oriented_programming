@@ -99,3 +99,13 @@ def test_main(
     assert context.submit.mock_calls == [
         call(code_search.find_imports, tmp_path / "file1.py")
     ]
+    future = context.submit.return_value
+    assert future.result.mock_calls == [call()]
+    out, err = capsys.readouterr()
+    target_path = "code.py"
+    assert out.splitlines() == [
+        "",
+        str(tmp_path),
+        f"-> {str(target_path)} {{'typing'}}",
+        f"Searched 1 files in {str(tmp_path)} (420.000ms/file)",
+    ]
