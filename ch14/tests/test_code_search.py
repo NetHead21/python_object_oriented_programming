@@ -356,3 +356,7 @@ class TestAllSource:
         venv = tmp_path / ".venv"
         venv.mkdir()
         (venv / "file2.py").write_text("# file2")
+
+        files = list(code_search.all_source(tmp_path, "*.py"))
+        assert len(files) == 1
+        assert files[0].name == "file1.py"
