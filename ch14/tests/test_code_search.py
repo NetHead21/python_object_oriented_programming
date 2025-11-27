@@ -283,3 +283,11 @@ class TestFindImports:
 
         assert result.imports == set()
         assert not result.focus
+
+    def test_find_imports_only_comments(self, tmp_path):
+        """Test finding imports in file with only comments."""
+        source = tmp_path / "comments.py"
+        source.write_text("# This is a comment\n# import os\n")
+        result = code_search.find_imports(source)
+
+        assert result.imports == set()
