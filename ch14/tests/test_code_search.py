@@ -274,3 +274,12 @@ class TestFindImports:
         assert "json" in result.imports
         assert "collections" in result.imports
         assert result.focus
+
+    def test_find_imports_no_imports(self, tmp_path):
+        """Test finding imports in file with no imports."""
+        source = tmp_path / "no_imports.py"
+        source.write_text("x = 42\nprint(x)\n")
+        result = code_search.find_imports(source)
+
+        assert result.imports == set()
+        assert not result.focus
