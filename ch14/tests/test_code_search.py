@@ -291,3 +291,11 @@ class TestFindImports:
         result = code_search.find_imports(source)
 
         assert result.imports == set()
+
+    def test_find_imports_with_docstring(self, tmp_path):
+        """Test finding imports in file with module docstring."""
+        source = tmp_path / "with_docstring.py"
+        code = '''"""Module docstring."""
+        import os
+        import sys
+        '''
