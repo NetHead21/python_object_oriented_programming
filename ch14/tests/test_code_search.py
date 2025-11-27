@@ -109,3 +109,19 @@ def test_main(
         f"-> {str(target_path)} {{'typing'}}",
         f"Searched 1 files in {str(tmp_path)} (420.000ms/file)",
     ]
+
+
+# ============================================================================
+# ADDITIONAL EDGE CASES AND COMPREHENSIVE TESTS
+# ============================================================================
+
+
+class TestImportResult:
+    """Comprehensive tests for ImportResult class."""
+
+    def test_import_result_with_empty_imports(self, tmp_path):
+        """Test ImportResult with no imports."""
+        result = code_search.ImportResult(tmp_path, set())
+        assert result.path == tmp_path
+        assert result.imports == set()
+        assert not result.focus
