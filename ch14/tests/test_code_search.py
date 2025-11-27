@@ -364,3 +364,16 @@ class TestAllSource:
     def test_all_source_skips_multiple_excluded_dirs(self, tmp_path):
         """Test that multiple excluded directories are skipped."""
         (tmp_path / "file1.py").write_text("# file1")
+
+        for excluded in [
+            ".venv",
+            "__pycache__",
+            ".git",
+            ".pytest_cache",
+            "build",
+            "dist",
+            ".mypy_cache",
+        ]:
+            excluded_dir = tmp_path / excluded
+            excluded_dir.mkdir()
+            (excluded_dir / "file.py").write_text("# excluded")
