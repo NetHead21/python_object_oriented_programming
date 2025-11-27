@@ -32,3 +32,17 @@ def mock_directory(tmp_path):
 def test_all_source(mock_directory):
     files = list(code_search.all_source(mock_directory, "*.py"))
     assert files == [mock_directory / "file1.py"]
+
+
+@fixture
+def mock_code_1(tmp_path):
+    source = tmp_path / "code_1.py"
+    source.write_text("import math\nprint(math.pi)\n")
+    return source
+
+
+@fixture
+def mock_code_2(tmp_path):
+    source = tmp_path / "code_2.py"
+    source.write_text("import math\nfrom typing import Callable\nprint(math.pi)\n")
+    return source
