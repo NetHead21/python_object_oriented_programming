@@ -336,3 +336,13 @@ class TestAllSource:
         files = list(code_search.all_source(tmp_path, "*.py"))
         assert len(files) == 3
         assert all(f.suffix == ".py" for f in files)
+
+    def test_all_source_nested_directories(self, tmp_path):
+        """Test finding files in nested directories."""
+        (tmp_path / "file1.py").write_text("# file1")
+        subdir = tmp_path / "subdir"
+        subdir.mkdir()
+        (subdir / "file2.py").write_text("# file2")
+        subsubdir = subdir / "subsubdir"
+        subsubdir.mkdir()
+        (subsubdir / "file3.py").write_text("# file3")
