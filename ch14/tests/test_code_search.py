@@ -318,3 +318,7 @@ class TestFindImports:
         """
         source.write_text(code)
         result = code_search.find_imports(source)
+
+        assert "sys" in result.imports
+        assert "msvcrt" in result.imports
+        assert "termios" in result.imports
