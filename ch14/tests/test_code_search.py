@@ -80,3 +80,10 @@ def mock_all_source(tmp_path, monkeypatch):
     function = Mock(return_value=paths)
     monkeypatch.setattr(code_search, "all_source", function)
     return paths
+
+
+@fixture
+def mock_time(monkeypatch):
+    time = Mock(perf_counter=Mock(side_effect=[0.0, 0.42]))
+    monkeypatch.setattr(code_search, "time", time)
+    return time
