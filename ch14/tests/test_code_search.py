@@ -212,3 +212,10 @@ class TestImportVisitor:
         visitor = code_search.ImportVisitor()
         visitor.visit(tree)
         assert visitor.imports == {"utils"}
+
+    def test_visitor_relative_import_without_module(self):
+        """Test visitor with relative import without module (should skip)."""
+        tree = ast.parse("from . import something")
+        visitor = code_search.ImportVisitor()
+        visitor.visit(tree)
+        assert visitor.imports == set()
