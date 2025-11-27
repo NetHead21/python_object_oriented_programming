@@ -65,3 +65,10 @@ def mock_futures_pool(tmp_path, monkeypatch):
             return_value=code_search.ImportResult(tmp_path / "code.py", {"typing"})
         )
     )
+    context = MagicMock(submit=Mock(return_value=future))
+    pool = MagicMock(__enter__=Mock(return_value=context))
+    pool_class = Mock(return_value=pool)
+    monkeypatch.setattr(code_search.futures, "ThreadPoolExecutor", pool_class)
+    as_completed = Mock(side_effect=lambda futures: futures)
+    monkeypatch.setattr(code_search.futures, "as_completed", as_completed)
+    return pool_class
