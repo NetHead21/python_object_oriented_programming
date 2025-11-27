@@ -56,3 +56,12 @@ def test_no_typing(mock_code_1):
 def test_typing(mock_code_2):
     actual = code_search.find_imports(mock_code_2)
     assert actual == code_search.ImportResult(mock_code_2, {"math", "typing"})
+
+
+@fixture
+def mock_futures_pool(tmp_path, monkeypatch):
+    future = Mock(
+        result=Mock(
+            return_value=code_search.ImportResult(tmp_path / "code.py", {"typing"})
+        )
+    )
