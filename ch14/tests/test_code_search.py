@@ -177,3 +177,10 @@ class TestImportVisitor:
         visitor = code_search.ImportVisitor()
         visitor.visit(tree)
         assert visitor.imports == {"os", "sys", "json"}
+
+    def test_visitor_from_import(self):
+        """Test visitor with from-import statement."""
+        tree = ast.parse("from pathlib import Path")
+        visitor = code_search.ImportVisitor()
+        visitor.visit(tree)
+        assert visitor.imports == {"pathlib"}
