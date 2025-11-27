@@ -152,3 +152,14 @@ class TestImportResult:
         """Test that focus check is case-sensitive."""
         result = code_search.ImportResult(tmp_path, {"Typing", "TYPING"})
         assert not result.focus  # Should not match "typing"
+
+
+class TestImportVisitor:
+    """Comprehensive tests for ImportVisitor class."""
+
+    def test_visitor_empty_file(self):
+        """Test visitor with empty Python file."""
+        tree = ast.parse("")
+        visitor = code_search.ImportVisitor()
+        visitor.visit(tree)
+        assert visitor.imports == set()
