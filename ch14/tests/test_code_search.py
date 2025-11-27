@@ -201,3 +201,7 @@ class TestImportVisitor:
         from typing import List
         import json
         """
+        tree = ast.parse(code)
+        visitor = code_search.ImportVisitor()
+        visitor.visit(tree)
+        assert visitor.imports == {"os", "sys", "pathlib", "typing", "json"}
