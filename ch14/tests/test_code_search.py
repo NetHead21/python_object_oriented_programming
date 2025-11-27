@@ -191,3 +191,13 @@ class TestImportVisitor:
         visitor = code_search.ImportVisitor()
         visitor.visit(tree)
         assert visitor.imports == {"typing"}
+
+    def test_visitor_mixed_imports(self):
+        """Test visitor with both regular and from-imports."""
+        code = """
+        import os
+        import sys
+        from pathlib import Path
+        from typing import List
+        import json
+        """
