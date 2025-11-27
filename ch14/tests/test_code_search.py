@@ -346,3 +346,6 @@ class TestAllSource:
         subsubdir = subdir / "subsubdir"
         subsubdir.mkdir()
         (subsubdir / "file3.py").write_text("# file3")
+
+        files = list(code_search.all_source(tmp_path, "*.py"))
+        assert len(files) == 3
