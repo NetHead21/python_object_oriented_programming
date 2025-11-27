@@ -205,3 +205,10 @@ class TestImportVisitor:
         visitor = code_search.ImportVisitor()
         visitor.visit(tree)
         assert visitor.imports == {"os", "sys", "pathlib", "typing", "json"}
+
+    def test_visitor_relative_import_with_module(self):
+        """Test visitor with relative import that has module."""
+        tree = ast.parse("from .utils import helper")
+        visitor = code_search.ImportVisitor()
+        visitor.visit(tree)
+        assert visitor.imports == {"utils"}
