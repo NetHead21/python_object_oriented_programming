@@ -144,3 +144,6 @@ class TestImportResult:
         result1 = code_search.ImportResult(tmp_path / "a.py", {"os"})
         result2 = code_search.ImportResult(tmp_path / "b.py", {"sys"})
         result3 = code_search.ImportResult(tmp_path / "c.py", {"json"})
+
+        sorted_results = sorted([result3, result1, result2])
+        assert sorted_results == [result1, result2, result3]
