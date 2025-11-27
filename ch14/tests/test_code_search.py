@@ -184,3 +184,10 @@ class TestImportVisitor:
         visitor = code_search.ImportVisitor()
         visitor.visit(tree)
         assert visitor.imports == {"pathlib"}
+
+    def test_visitor_from_import_multiple(self):
+        """Test visitor with multiple from-imports."""
+        tree = ast.parse("from typing import List, Dict, Optional")
+        visitor = code_search.ImportVisitor()
+        visitor.visit(tree)
+        assert visitor.imports == {"typing"}
