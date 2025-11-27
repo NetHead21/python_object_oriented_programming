@@ -219,3 +219,10 @@ class TestImportVisitor:
         visitor = code_search.ImportVisitor()
         visitor.visit(tree)
         assert visitor.imports == set()
+
+    def test_visitor_import_as_alias(self):
+        """Test visitor with import aliases."""
+        tree = ast.parse("import numpy as np")
+        visitor = code_search.ImportVisitor()
+        visitor.visit(tree)
+        assert visitor.imports == {"numpy"}
