@@ -244,3 +244,22 @@ class TestImportVisitor:
         visitor = code_search.ImportVisitor()
         visitor.visit(tree)
         assert visitor.imports == {"os.path", "concurrent.futures"}
+
+
+class TestFindImports:
+    """Comprehensive tests for find_imports function."""
+
+    def test_find_imports_complex_file(self, tmp_path):
+        """Test finding imports in a complex Python file."""
+        source = tmp_path / "complex.py"
+        code = """
+        import os
+        import sys
+        from pathlib import Path, PurePath
+        from typing import List, Dict, Optional
+        import json
+        from collections import defaultdict
+
+        def main():
+            pass
+        """
