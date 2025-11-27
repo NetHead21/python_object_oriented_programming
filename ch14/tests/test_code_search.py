@@ -51,3 +51,8 @@ def mock_code_2(tmp_path):
 def test_no_typing(mock_code_1):
     actual = code_search.find_imports(mock_code_1)
     assert actual == code_search.ImportResult(mock_code_1, {"math"})
+
+
+def test_typing(mock_code_2):
+    actual = code_search.find_imports(mock_code_2)
+    assert actual == code_search.ImportResult(mock_code_2, {"math", "typing"})
