@@ -332,3 +332,7 @@ class TestAllSource:
         (tmp_path / "file1.py").write_text("# file1")
         (tmp_path / "file2.py").write_text("# file2")
         (tmp_path / "file3.py").write_text("# file3")
+
+        files = list(code_search.all_source(tmp_path, "*.py"))
+        assert len(files) == 3
+        assert all(f.suffix == ".py" for f in files)
