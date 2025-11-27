@@ -132,3 +132,9 @@ class TestImportResult:
         result = code_search.ImportResult(tmp_path, imports)
         assert result.imports == imports
         assert result.focus
+
+    def test_import_result_equality(self, tmp_path):
+        """Test equality of ImportResult instances."""
+        result1 = code_search.ImportResult(tmp_path, {"os", "sys"})
+        result2 = code_search.ImportResult(tmp_path, {"os", "sys"})
+        assert result1 == result2
