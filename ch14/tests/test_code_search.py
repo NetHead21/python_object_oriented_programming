@@ -163,3 +163,10 @@ class TestImportVisitor:
         visitor = code_search.ImportVisitor()
         visitor.visit(tree)
         assert visitor.imports == set()
+
+    def test_visitor_single_import(self):
+        """Test visitor with single import statement."""
+        tree = ast.parse("import os")
+        visitor = code_search.ImportVisitor()
+        visitor.visit(tree)
+        assert visitor.imports == {"os"}
