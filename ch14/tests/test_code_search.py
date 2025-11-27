@@ -87,3 +87,15 @@ def mock_time(monkeypatch):
     time = Mock(perf_counter=Mock(side_effect=[0.0, 0.42]))
     monkeypatch.setattr(code_search, "time", time)
     return time
+
+
+def test_main(
+    mock_all_source, mock_futures_pool, mock_time, tmp_path, capsys, monkeypatch
+):
+    monkeypatch.chdir(tmp_path)
+    code_search.main(tmp_path)
+    assert mock_futures_pool.mock_calls == [call(24)]
+    context = mock_futures_pool.return_value.__enter__.return_value
+    assert context.submit.mock_calls == [
+        call(code_search.find_imports, tmp_path / "file1.py")
+    ]
