@@ -304,3 +304,17 @@ class TestFindImports:
         result = code_search.find_imports(source)
 
         assert result.imports == {"os", "sys"}
+
+    def test_find_imports_conditional_imports(self, tmp_path):
+        """Test finding imports inside conditional blocks."""
+        source = tmp_path / "conditional.py"
+        code = """
+        import sys
+
+        if sys.platform == 'win32':
+            import msvcrt
+        else:
+            import termios
+        """
+        source.write_text(code)
+        result = code_search.find_imports(source)
