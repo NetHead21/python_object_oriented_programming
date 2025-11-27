@@ -322,3 +322,13 @@ class TestFindImports:
         assert "sys" in result.imports
         assert "msvcrt" in result.imports
         assert "termios" in result.imports
+
+
+class TestAllSource:
+    """Comprehensive tests for all_source function."""
+
+    def test_all_source_multiple_files(self, tmp_path):
+        """Test finding multiple Python files."""
+        (tmp_path / "file1.py").write_text("# file1")
+        (tmp_path / "file2.py").write_text("# file2")
+        (tmp_path / "file3.py").write_text("# file3")
