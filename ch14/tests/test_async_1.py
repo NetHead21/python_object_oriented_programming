@@ -156,3 +156,8 @@ class TestSleepersEdgeCases:
         out, err = capsys.readouterr()
         assert "Creating 5 tasks" in out
         assert "Waiting for 5 tasks" in out
+
+    def test_sleepers_creates_correct_number_of_tasks(self, mock_random_sleep):
+        """Test that sleepers creates exactly the right number of tasks."""
+        asyncio.run(async_1.sleepers(7))
+        assert mock_random_sleep.call_count == 7
