@@ -474,3 +474,8 @@ class TestMainEdgeCases:
         # This should raise SyntaxError when trying to parse
         with raises(SyntaxError):
             code_search.find_imports(bad_file)
+
+    def test_main_single_file_no_focus(self, tmp_path, capsys, monkeypatch):
+        """Test main with single file that doesn't have focus."""
+        py_file = tmp_path / "simple.py"
+        py_file.write_text("import os\nimport sys\n")
