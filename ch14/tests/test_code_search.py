@@ -510,3 +510,7 @@ class TestIntegration:
 
         # Analyze each file
         results = [code_search.find_imports(f) for f in files]
+
+        # Verify focus files (those with typing)
+        focused = [r for r in results if r.focus]
+        assert len(focused) == 2
