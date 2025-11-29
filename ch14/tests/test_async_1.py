@@ -123,3 +123,15 @@ class TestRandomSleepEdgeCases:
         mock_sleep.assert_called_once_with(0.005)
         out, err = capsys.readouterr()
         assert "5 sleeps for 0.01 seconds" in out
+
+
+class TestSleepersEdgeCases:
+    """Edge case tests for sleepers function."""
+
+    def test_sleepers_with_zero_tasks(self, mock_random_sleep, capsys):
+        """Test sleepers with 0 tasks."""
+        asyncio.run(async_1.sleepers(0))
+        out, err = capsys.readouterr()
+        assert out.splitlines() == ["Creating 0 tasks", "Waiting for 0 tasks"]
+        # No tasks should be created
+        assert mock_random_sleep.call_count == 0
