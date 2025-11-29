@@ -532,3 +532,12 @@ class TestIntegration:
         files = list(code_search.all_source(tmp_path, "*.py"))
         assert len(files) == 1
         assert files[0].name == "main.py"
+
+
+class TestPerformance:
+    """Performance-related tests."""
+
+    @mark.slow
+    def test_concurrent_processing_multiple_files(self, tmp_path):
+        """Test that concurrent processing handles multiple files."""
+        # Create multiple files
