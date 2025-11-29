@@ -391,3 +391,7 @@ class TestAllSource:
         py_files = list(code_search.all_source(tmp_path, "test_*.py"))
         assert len(py_files) == 1
         assert py_files[0].name == "test_file.py"
+
+    def test_all_source_no_matches(self, tmp_path):
+        """Test finding files when no matches exist."""
+        (tmp_path / "file.txt").write_text("# txt")
