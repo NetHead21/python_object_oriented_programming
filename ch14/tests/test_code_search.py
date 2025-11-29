@@ -402,3 +402,10 @@ class TestAllSource:
         """Test scanning empty directory."""
         files = list(code_search.all_source(tmp_path, "*.py"))
         assert len(files) == 0
+
+    def test_all_source_skips_node_modules(self, tmp_path):
+        """Test that node_modules directory is skipped."""
+        (tmp_path / "file1.py").write_text("# file1")
+        node_modules = tmp_path / "node_modules"
+        node_modules.mkdir()
+        (node_modules / "file2.py").write_text("# file2")
