@@ -452,3 +452,16 @@ class TestGetOptions:
         """Test parsing with relative path."""
         options = code_search.get_options(["./relative/path"])
         assert options.path[0] == Path("./relative/path")
+
+
+class TestMainEdgeCases:
+    """Edge case tests for main function."""
+
+    def test_main_empty_directory(self, tmp_path, capsys, monkeypatch):
+        """Test main with directory containing no Python files."""
+        monkeypatch.chdir(tmp_path)
+        code_search.main(tmp_path)
+        out, err = capsys.readouterr()
+
+        assert str(tmp_path) in out
+        assert "Searched 0 files" in out
