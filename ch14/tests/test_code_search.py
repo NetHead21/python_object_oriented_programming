@@ -397,3 +397,8 @@ class TestAllSource:
         (tmp_path / "file.txt").write_text("# txt")
         files = list(code_search.all_source(tmp_path, "*.py"))
         assert len(files) == 0
+
+    def test_all_source_empty_directory(self, tmp_path):
+        """Test scanning empty directory."""
+        files = list(code_search.all_source(tmp_path, "*.py"))
+        assert len(files) == 0
