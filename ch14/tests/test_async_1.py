@@ -111,3 +111,10 @@ class TestRandomSleepEdgeCases:
         mock_sleep.assert_called_once_with(5.0)
         out, err = capsys.readouterr()
         assert "20 sleeps for 5.00 seconds" in out
+
+    def test_random_sleep_with_minimum_positive_delay(
+        self, mock_sleep, capsys, monkeypatch
+    ):
+        """Test random_sleep with very small positive delay."""
+        random_mock = Mock(random=Mock(return_value=0.001))
+        monkeypatch.setattr(async_1, "random", random_mock)
