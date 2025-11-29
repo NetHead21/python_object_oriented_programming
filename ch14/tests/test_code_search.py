@@ -523,3 +523,7 @@ class TestIntegration:
         venv = tmp_path / ".venv"
         venv.mkdir()
         (venv / "lib.py").write_text("import sys\n")
+
+        pycache = tmp_path / "__pycache__"
+        pycache.mkdir()
+        (pycache / "cached.py").write_text("import json\n")
