@@ -425,3 +425,12 @@ class TestAllSource:
 
         files = list(code_search.all_source(tmp_path, "*.py"))
         assert len(files) == 1
+
+
+class TestGetOptions:
+    """Comprehensive tests for get_options function."""
+
+    def test_get_options_no_args(self):
+        """Test parsing with no arguments."""
+        options = code_search.get_options([])
+        assert options.path == []
