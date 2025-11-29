@@ -447,3 +447,8 @@ class TestGetOptions:
         options = code_search.get_options(paths)
         assert len(options.path) == 3
         assert options.path == [Path(p) for p in paths]
+
+    def test_get_options_relative_path(self):
+        """Test parsing with relative path."""
+        options = code_search.get_options(["./relative/path"])
+        assert options.path[0] == Path("./relative/path")
