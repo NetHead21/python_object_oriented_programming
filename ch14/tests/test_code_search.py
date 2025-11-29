@@ -387,3 +387,7 @@ class TestAllSource:
         (tmp_path / "test_file.py").write_text("# test")
         (tmp_path / "file.py").write_text("# file")
         (tmp_path / "readme.txt").write_text("# readme")
+
+        py_files = list(code_search.all_source(tmp_path, "test_*.py"))
+        assert len(py_files) == 1
+        assert py_files[0].name == "test_file.py"
