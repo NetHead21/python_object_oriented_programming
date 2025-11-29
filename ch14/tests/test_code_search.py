@@ -381,3 +381,9 @@ class TestAllSource:
         files = list(code_search.all_source(tmp_path, "*.py"))
         assert len(files) == 1
         assert files[0].name == "file1.py"
+
+    def test_all_source_different_pattern(self, tmp_path):
+        """Test finding files with different pattern."""
+        (tmp_path / "test_file.py").write_text("# test")
+        (tmp_path / "file.py").write_text("# file")
+        (tmp_path / "readme.txt").write_text("# readme")
