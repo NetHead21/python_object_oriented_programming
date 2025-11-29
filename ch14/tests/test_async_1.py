@@ -106,3 +106,8 @@ class TestRandomSleepEdgeCases:
         """Test random_sleep when random returns 1.0 (max delay)."""
         random_mock = Mock(random=Mock(return_value=1.0))
         monkeypatch.setattr(async_1, "random", random_mock)
+
+        asyncio.run(async_1.random_sleep(20))
+        mock_sleep.assert_called_once_with(5.0)
+        out, err = capsys.readouterr()
+        assert "20 sleeps for 5.00 seconds" in out
