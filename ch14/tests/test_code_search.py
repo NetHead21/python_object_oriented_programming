@@ -503,3 +503,7 @@ class TestIntegration:
         (src / "main.py").write_text("import os\nfrom typing import List\n")
         (src / "utils.py").write_text("import json\n")
         (tests / "test_main.py").write_text("import unittest\nfrom typing import Any\n")
+
+        # Find all source files
+        files = list(code_search.all_source(tmp_path, "*.py"))
+        assert len(files) == 3
