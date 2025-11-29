@@ -434,3 +434,16 @@ class TestGetOptions:
         """Test parsing with no arguments."""
         options = code_search.get_options([])
         assert options.path == []
+
+    def test_get_options_single_path(self):
+        """Test parsing with single path."""
+        options = code_search.get_options(["/some/path"])
+        assert len(options.path) == 1
+        assert options.path[0] == Path("/some/path")
+
+    def test_get_options_multiple_paths(self):
+        """Test parsing with multiple paths."""
+        paths = ["/path1", "/path2", "/path3"]
+        options = code_search.get_options(paths)
+        assert len(options.path) == 3
+        assert options.path == [Path(p) for p in paths]
