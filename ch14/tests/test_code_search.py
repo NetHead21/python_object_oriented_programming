@@ -395,3 +395,5 @@ class TestAllSource:
     def test_all_source_no_matches(self, tmp_path):
         """Test finding files when no matches exist."""
         (tmp_path / "file.txt").write_text("# txt")
+        files = list(code_search.all_source(tmp_path, "*.py"))
+        assert len(files) == 0
