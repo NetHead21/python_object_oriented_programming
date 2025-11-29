@@ -149,3 +149,10 @@ class TestSleepersEdgeCases:
         out, err = capsys.readouterr()
         assert "Creating 100 tasks" in out
         assert "Waiting for 100 tasks" in out
+
+    def test_sleepers_with_default_value(self, mock_random_sleep, capsys):
+        """Test sleepers with default parameter value."""
+        asyncio.run(async_1.sleepers())
+        out, err = capsys.readouterr()
+        assert "Creating 5 tasks" in out
+        assert "Waiting for 5 tasks" in out
