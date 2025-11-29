@@ -54,3 +54,10 @@ def test_sleepers(mock_random_sleep, capsys):
 
 class TestRandomSleepEdgeCases:
     """Edge case tests for random_sleep function."""
+
+    def test_random_sleep_with_zero_counter(self, mock_random, mock_sleep, capsys):
+        """Test random_sleep with counter value of 0."""
+        asyncio.run(async_1.random_sleep(0))
+        out, err = capsys.readouterr()
+        assert "0 sleeps for 2.50 seconds" in out
+        assert "0 awakens, refreshed" in out
