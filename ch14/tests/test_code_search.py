@@ -499,3 +499,7 @@ class TestIntegration:
         src.mkdir()
         tests = tmp_path / "tests"
         tests.mkdir()
+
+        (src / "main.py").write_text("import os\nfrom typing import List\n")
+        (src / "utils.py").write_text("import json\n")
+        (tests / "test_main.py").write_text("import unittest\nfrom typing import Any\n")
