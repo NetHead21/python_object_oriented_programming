@@ -142,3 +142,10 @@ class TestSleepersEdgeCases:
         out, err = capsys.readouterr()
         assert "Creating 1 tasks" in out
         assert "Waiting for 1 tasks" in out
+
+    def test_sleepers_with_large_number(self, mock_random_sleep, capsys):
+        """Test sleepers with large number of tasks."""
+        asyncio.run(async_1.sleepers(100))
+        out, err = capsys.readouterr()
+        assert "Creating 100 tasks" in out
+        assert "Waiting for 100 tasks" in out
