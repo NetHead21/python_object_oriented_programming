@@ -135,3 +135,10 @@ class TestSleepersEdgeCases:
         assert out.splitlines() == ["Creating 0 tasks", "Waiting for 0 tasks"]
         # No tasks should be created
         assert mock_random_sleep.call_count == 0
+
+    def test_sleepers_with_one_task(self, mock_random_sleep, capsys):
+        """Test sleepers with exactly 1 task."""
+        asyncio.run(async_1.sleepers(1))
+        out, err = capsys.readouterr()
+        assert "Creating 1 tasks" in out
+        assert "Waiting for 1 tasks" in out
