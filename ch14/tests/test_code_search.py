@@ -527,3 +527,8 @@ class TestIntegration:
         pycache = tmp_path / "__pycache__"
         pycache.mkdir()
         (pycache / "cached.py").write_text("import json\n")
+
+        # Should only find main.py
+        files = list(code_search.all_source(tmp_path, "*.py"))
+        assert len(files) == 1
+        assert files[0].name == "main.py"
