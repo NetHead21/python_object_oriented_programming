@@ -483,3 +483,7 @@ class TestMainEdgeCases:
         monkeypatch.chdir(tmp_path)
         code_search.main(tmp_path)
         out, err = capsys.readouterr()
+
+        assert "simple.py" in out
+        assert "->" not in out  # Should not be focused
+        assert "Searched 1 files" in out
