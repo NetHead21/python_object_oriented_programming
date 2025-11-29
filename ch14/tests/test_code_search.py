@@ -487,3 +487,15 @@ class TestMainEdgeCases:
         assert "simple.py" in out
         assert "->" not in out  # Should not be focused
         assert "Searched 1 files" in out
+
+
+class TestIntegration:
+    """Integration tests combining multiple components."""
+
+    def test_full_workflow_simple_project(self, tmp_path):
+        """Test complete workflow on a simple project structure."""
+        # Create project structure
+        src = tmp_path / "src"
+        src.mkdir()
+        tests = tmp_path / "tests"
+        tests.mkdir()
