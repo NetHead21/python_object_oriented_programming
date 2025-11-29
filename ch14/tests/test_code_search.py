@@ -514,3 +514,8 @@ class TestIntegration:
         # Verify focus files (those with typing)
         focused = [r for r in results if r.focus]
         assert len(focused) == 2
+
+    def test_full_workflow_with_excluded_dirs(self, tmp_path):
+        """Test workflow correctly excludes common directories."""
+        # Create project with excluded directories
+        (tmp_path / "main.py").write_text("import os\n")
