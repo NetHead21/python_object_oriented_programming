@@ -1,17 +1,23 @@
-from pytest import *
+import pytest
 from unittest.mock import AsyncMock, Mock, call
-import async_1
 import asyncio
+import sys
+from pathlib import Path
+
+# Add parent directory to path to import the module
+sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
+
+import async_1
 
 
-@fixture
+@pytest.fixture
 def mock_random(monkeypatch):
     random = Mock(random=Mock(return_value=0.5))
     monkeypatch.setattr(async_1, "random", random)
     return random
 
 
-@fixture
+@pytest.fixture
 def mock_sleep(monkeypatch):
     sleep = AsyncMock()
     monkeypatch.setattr(asyncio, "sleep", sleep)
@@ -27,7 +33,7 @@ def test_random_sleep(mock_random, mock_sleep, capsys):
     assert out.splitlines() == ["42 sleeps for 2.50 seconds", "42 awakens, refreshed"]
 
 
-@fixture
+@pytest.fixture
 def mock_random_sleep(monkeypatch):
     random_sleep = AsyncMock()
     monkeypatch.setattr(async_1, "random_sleep", random_sleep)
@@ -39,3 +45,12 @@ def test_sleepers(mock_random_sleep, capsys):
     mock_random_sleep.mock_calls == [call(0), call(1)]
     out, err = capsys.readouterr()
     assert out.splitlines() == ["Creating 2 tasks", "Waiting for 2 tasks"]
+
+
+# ============================================================================
+# EDGE CASES TESTS
+# ============================================================================
+
+
+class TestRandomSleepEdgeCases:
+    """Edge case tests for random_sleep function."""
