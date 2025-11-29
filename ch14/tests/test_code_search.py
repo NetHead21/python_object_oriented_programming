@@ -540,4 +540,11 @@ class TestPerformance:
     @mark.slow
     def test_concurrent_processing_multiple_files(self, tmp_path):
         """Test that concurrent processing handles multiple files."""
+
         # Create multiple files
+        for i in range(10):
+            py_file = tmp_path / f"file_{i}.py"
+            py_file.write_text(f"import os\nimport sys\n# File {i}\n")
+
+        files = list(code_search.all_source(tmp_path, "*.py"))
+        assert len(files) == 10
