@@ -161,3 +161,9 @@ class TestSleepersEdgeCases:
         """Test that sleepers creates exactly the right number of tasks."""
         asyncio.run(async_1.sleepers(7))
         assert mock_random_sleep.call_count == 7
+
+    def test_sleepers_tasks_receive_sequential_counters(self, mock_random_sleep):
+        """Test that tasks receive sequential counter values starting from 0."""
+        asyncio.run(async_1.sleepers(5))
+        expected_calls = [call(i) for i in range(5)]
+        assert mock_random_sleep.call_args_list == expected_calls
