@@ -507,3 +507,6 @@ class TestIntegration:
         # Find all source files
         files = list(code_search.all_source(tmp_path, "*.py"))
         assert len(files) == 3
+
+        # Analyze each file
+        results = [code_search.find_imports(f) for f in files]
