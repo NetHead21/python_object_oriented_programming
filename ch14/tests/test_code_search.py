@@ -465,3 +465,12 @@ class TestMainEdgeCases:
 
         assert str(tmp_path) in out
         assert "Searched 0 files" in out
+
+    def test_main_with_syntax_error_file(self, tmp_path, monkeypatch):
+        """Test main with a file containing syntax errors."""
+        bad_file = tmp_path / "bad.py"
+        bad_file.write_text("import os\nif True\n  print('error')")
+
+        # This should raise SyntaxError when trying to parse
+        with raises(SyntaxError):
+            code_search.find_imports(bad_file)
