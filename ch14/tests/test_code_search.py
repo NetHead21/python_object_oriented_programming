@@ -548,3 +548,8 @@ class TestPerformance:
 
         files = list(code_search.all_source(tmp_path, "*.py"))
         assert len(files) == 10
+
+        # All files should be processable
+        results = [code_search.find_imports(f) for f in files]
+        assert len(results) == 10
+        assert all("os" in r.imports for r in results)
