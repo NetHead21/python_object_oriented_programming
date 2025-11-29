@@ -519,3 +519,7 @@ class TestIntegration:
         """Test workflow correctly excludes common directories."""
         # Create project with excluded directories
         (tmp_path / "main.py").write_text("import os\n")
+
+        venv = tmp_path / ".venv"
+        venv.mkdir()
+        (venv / "lib.py").write_text("import sys\n")
