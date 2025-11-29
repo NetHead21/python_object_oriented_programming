@@ -479,3 +479,7 @@ class TestMainEdgeCases:
         """Test main with single file that doesn't have focus."""
         py_file = tmp_path / "simple.py"
         py_file.write_text("import os\nimport sys\n")
+
+        monkeypatch.chdir(tmp_path)
+        code_search.main(tmp_path)
+        out, err = capsys.readouterr()
