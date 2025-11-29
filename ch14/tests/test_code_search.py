@@ -417,3 +417,11 @@ class TestAllSource:
     def test_all_source_skips_ide_directories(self, tmp_path):
         """Test that IDE directories are skipped."""
         (tmp_path / "file1.py").write_text("# file1")
+
+        for ide_dir in [".idea", ".vscode"]:
+            ide_path = tmp_path / ide_dir
+            ide_path.mkdir()
+            (ide_path / "config.py").write_text("# config")
+
+        files = list(code_search.all_source(tmp_path, "*.py"))
+        assert len(files) == 1
