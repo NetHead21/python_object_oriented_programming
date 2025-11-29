@@ -68,3 +68,10 @@ class TestRandomSleepEdgeCases:
         out, err = capsys.readouterr()
         assert "-5 sleeps for 2.50 seconds" in out
         assert "-5 awakens, refreshed" in out
+
+    def test_random_sleep_with_float_counter(self, mock_random, mock_sleep, capsys):
+        """Test random_sleep with float counter value."""
+        asyncio.run(async_1.random_sleep(3.14159))
+        out, err = capsys.readouterr()
+        assert "3.14159 sleeps for 2.50 seconds" in out
+        assert "3.14159 awakens, refreshed" in out
