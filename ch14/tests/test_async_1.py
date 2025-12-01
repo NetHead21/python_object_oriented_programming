@@ -245,3 +245,7 @@ class TestConcurrencyBehavior:
     async def test_gather_waits_for_all_tasks(self, monkeypatch):
         """Test that gather waits for all tasks to complete."""
         call_order = []
+
+        async def tracking_random_sleep(counter):
+            await asyncio.sleep(0.1)
+            call_order.append(f"completed_{counter}")
