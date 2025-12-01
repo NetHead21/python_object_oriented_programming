@@ -240,3 +240,8 @@ class TestConcurrencyBehavior:
 
         # If sequential: 5 seconds, if concurrent: ~1 second
         assert elapsed < 2.0, "Tasks should run concurrently"
+
+    @pytest.mark.asyncio
+    async def test_gather_waits_for_all_tasks(self, monkeypatch):
+        """Test that gather waits for all tasks to complete."""
+        call_order = []
