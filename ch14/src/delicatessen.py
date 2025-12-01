@@ -279,3 +279,9 @@ class Owner(Thread):
         Args:
             *chefs (Chef): Variable number of Chef threads to coordinate.
         """
+
+        super().__init__()
+        self.flag = Lock()
+        self.chefs = chefs
+        self.next_chef = 0
+        self.move_tray()
