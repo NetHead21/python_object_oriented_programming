@@ -107,3 +107,11 @@ class Pickle(Food):
         >>> print(pickle)
         Crispy Dill Pickle
     """
+
+    def __repr__(self) -> str:
+        """Return string representation of the pickle.
+
+        Returns:
+            str: Always returns "Crispy Dill Pickle".
+        """
+        return "Crispy Dill Pickle"
