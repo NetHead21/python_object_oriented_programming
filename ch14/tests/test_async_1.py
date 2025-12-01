@@ -233,3 +233,7 @@ class TestConcurrencyBehavior:
         # Mock random to always return 0.2 (1 second delay each)
         random_mock = Mock(random=Mock(return_value=0.2))
         monkeypatch.setattr(async_1, "random", random_mock)
+
+        start = time.time()
+        await async_1.sleepers(5)
+        elapsed = time.time() - start
