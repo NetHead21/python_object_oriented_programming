@@ -259,3 +259,11 @@ class TestConcurrencyBehavior:
         assert "completed_0" in call_order
         assert "completed_1" in call_order
         assert "completed_2" in call_order
+
+
+class TestErrorHandling:
+    """Test error handling and edge cases."""
+
+    @pytest.mark.asyncio
+    async def test_sleepers_with_negative_number(self, mock_random_sleep, capsys):
+        """Test sleepers behavior with negative number (creates no tasks)."""
