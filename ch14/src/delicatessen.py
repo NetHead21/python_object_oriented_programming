@@ -115,3 +115,23 @@ class Pickle(Food):
             str: Always returns "Crispy Dill Pickle".
         """
         return "Crispy Dill Pickle"
+
+
+class Creation:
+    """Represents a completed order with chef signature.
+
+    A Creation is the final product combining one or more Food items along
+    with the chef's signature (name) who prepared it. This is what gets
+    placed on the Tray for delivery.
+
+    Attributes:
+        chef (str): Name of the chef who prepared this creation.
+        items (list[Food]): List of food items in this creation.
+
+    Example:
+        >>> sandwich = Sandwich("BLT")
+        >>> pickle = Pickle()
+        >>> creation = Creation("Michael", sandwich, pickle)
+        >>> print(creation)
+        BLT & Crispy Dill Pickle from Michael
+    """
