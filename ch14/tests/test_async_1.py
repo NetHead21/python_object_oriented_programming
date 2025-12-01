@@ -214,3 +214,9 @@ class TestSleepersRealBehavior:
         elapsed = time.time() - start
         # Should complete almost instantly
         assert elapsed < 0.1
+
+    @pytest.mark.asyncio
+    async def test_sleepers_returns_none(self):
+        """Test that sleepers returns None."""
+        result = await async_1.sleepers(2)
+        assert result is None
