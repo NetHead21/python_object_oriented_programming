@@ -155,3 +155,30 @@ class Creation:
             str: Formatted string showing all items and the chef.
         """
         return f"{' & '.join(repr(i) for i in self.items)} from {self.chef}"
+
+
+class Tray:
+    """Shared resource for order handoff between chefs and owner.
+
+    The Tray is a critical shared resource in the concurrency model. It serves
+    as the handoff point where chefs place completed orders and the owner picks
+    them up for delivery. Only one chef can use the tray at a time, determined
+    by the chef_station attribute.
+
+    Attributes:
+        content (Optional[Creation]): The current order on the tray, or None
+            if the tray is empty.
+        chef_station (Chef): The chef who currently has access to the tray.
+
+    Thread Safety:
+        Access to the tray is coordinated through the Owner's lock mechanism.
+        Chefs must wait until the tray is positioned at their station before
+        placing orders.
+
+    Example:
+        >>> tray = Tray()
+        >>> tray.ready_for_chef(some_chef)
+        >>> creation = Creation("Michael", Sandwich("BLT"))
+        >>> tray.prepare(creation)
+        >>> tray.present()  # Clears the tray
+    """
