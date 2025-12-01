@@ -182,3 +182,9 @@ class TestRandomSleepRealBehavior:
         elapsed = time.time() - start
         # Should sleep between 0 and 5 seconds
         assert 0 <= elapsed <= 6.0
+
+    @pytest.mark.asyncio
+    async def test_random_sleep_returns_none(self):
+        """Test that random_sleep returns None."""
+        result = await async_1.random_sleep(1)
+        assert result is None
