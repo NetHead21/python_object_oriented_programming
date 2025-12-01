@@ -182,3 +182,8 @@ class Tray:
         >>> tray.prepare(creation)
         >>> tray.present()  # Clears the tray
     """
+
+    def __init__(self) -> None:
+        """Initialize an empty tray with no chef station assigned."""
+        self.content: Optional[Creation] = None
+        self.chef_station: "Chef"
