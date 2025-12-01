@@ -223,3 +223,7 @@ class Tray:
         """
         # Handed off to the diner's table -- not implemented
         self.content = None
+
+
+# Global shared tray - the critical shared resource in this concurrency model
+THE_TRAY = Tray()
