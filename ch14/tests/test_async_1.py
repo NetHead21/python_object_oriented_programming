@@ -208,3 +208,9 @@ class TestSleepersRealBehavior:
     async def test_sleepers_with_zero_completes_immediately(self):
         """Test that sleepers with 0 tasks completes immediately."""
         import time
+
+        start = time.time()
+        await async_1.sleepers(0)
+        elapsed = time.time() - start
+        # Should complete almost instantly
+        assert elapsed < 0.1
