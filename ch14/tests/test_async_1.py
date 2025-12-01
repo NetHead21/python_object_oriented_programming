@@ -220,3 +220,12 @@ class TestSleepersRealBehavior:
         """Test that sleepers returns None."""
         result = await async_1.sleepers(2)
         assert result is None
+
+
+class TestConcurrencyBehavior:
+    """Test concurrent execution behavior."""
+
+    @pytest.mark.asyncio
+    async def test_tasks_run_concurrently_not_sequentially(self, monkeypatch):
+        """Test that multiple tasks run concurrently, not sequentially."""
+        import time
