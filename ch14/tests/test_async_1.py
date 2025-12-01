@@ -253,3 +253,9 @@ class TestConcurrencyBehavior:
         monkeypatch.setattr(async_1, "random_sleep", tracking_random_sleep)
 
         await async_1.sleepers(3)
+
+        # All tasks should complete
+        assert len(call_order) == 3
+        assert "completed_0" in call_order
+        assert "completed_1" in call_order
+        assert "completed_2" in call_order
