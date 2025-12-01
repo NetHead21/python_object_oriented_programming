@@ -187,3 +187,14 @@ class Tray:
         """Initialize an empty tray with no chef station assigned."""
         self.content: Optional[Creation] = None
         self.chef_station: "Chef"
+
+    def ready_for_chef(self, chef: "Chef") -> None:
+        """Assign the tray to a specific chef's station.
+
+        This method is called by the Owner to rotate the tray between chefs,
+        giving each chef a turn to place their completed orders.
+
+        Args:
+            chef (Chef): The chef who should now have access to the tray.
+        """
+        self.chef_station = chef
