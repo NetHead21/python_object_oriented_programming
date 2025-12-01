@@ -249,3 +249,7 @@ class TestConcurrencyBehavior:
         async def tracking_random_sleep(counter):
             await asyncio.sleep(0.1)
             call_order.append(f"completed_{counter}")
+
+        monkeypatch.setattr(async_1, "random_sleep", tracking_random_sleep)
+
+        await async_1.sleepers(3)
