@@ -281,3 +281,11 @@ class TestErrorHandling:
         await async_1.random_sleep(None)
         out, err = capsys.readouterr()
         assert "None sleeps for" in out
+
+    @pytest.mark.asyncio
+    async def test_multiple_concurrent_sleepers_calls(self):
+        """Test multiple concurrent calls to sleepers."""
+        results = await asyncio.gather(
+            async_1.sleepers(2), async_1.sleepers(2), async_1.sleepers(2)
+        )
+        # All should complete successfully
