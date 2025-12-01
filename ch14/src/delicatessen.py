@@ -269,3 +269,13 @@ class Owner(Thread):
         >>> owner = Owner(mo, constantine)
         >>> owner.start()  # Starts the owner's coordination loop
     """
+
+    def __init__(self, *chefs: "Chef") -> None:
+        """Initialize the Owner with a set of chefs to coordinate.
+
+        Sets up the lock mechanism, stores the chef references, and positions
+        the tray at the first chef's station.
+
+        Args:
+            *chefs (Chef): Variable number of Chef threads to coordinate.
+        """
