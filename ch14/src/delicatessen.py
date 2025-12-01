@@ -227,3 +227,16 @@ class Tray:
 
 # Global shared tray - the critical shared resource in this concurrency model
 THE_TRAY = Tray()
+
+# Global order queue - list of sandwich orders to be processed
+# Note: In production code, this should be a thread-safe queue (e.g., queue.Queue)
+THE_ORDERS = [
+    "Reuben",
+    "Ham and Cheese",
+    "Monte Cristo",
+    "Tuna Melt",
+    "Cuban",
+    "Grilled Cheese",
+    "French Dip",
+    "BLT",
+]
