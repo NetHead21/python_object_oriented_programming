@@ -167,3 +167,12 @@ class TestSleepersEdgeCases:
         asyncio.run(async_1.sleepers(5))
         expected_calls = [call(i) for i in range(5)]
         assert mock_random_sleep.call_args_list == expected_calls
+
+
+class TestRandomSleepRealBehavior:
+    """Test random_sleep without mocking to verify real behavior."""
+
+    @pytest.mark.asyncio
+    async def test_random_sleep_actually_sleeps(self):
+        """Test that random_sleep actually performs async sleep."""
+        import time
