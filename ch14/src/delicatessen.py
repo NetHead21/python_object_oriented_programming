@@ -78,3 +78,11 @@ class Sandwich(Food):
         >>> print(sandwich)
         Reuben
     """
+
+    def __init__(self, name: str) -> None:
+        """Initialize a Sandwich with a specific name.
+
+        Args:
+            name (str): The name of the sandwich type.
+        """
+        self.name = name
