@@ -278,3 +278,6 @@ class TestErrorHandling:
         self, mock_random, mock_sleep, capsys
     ):
         """Test random_sleep with None as counter."""
+        await async_1.random_sleep(None)
+        out, err = capsys.readouterr()
+        assert "None sleeps for" in out
