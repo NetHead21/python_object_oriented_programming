@@ -229,3 +229,7 @@ class TestConcurrencyBehavior:
     async def test_tasks_run_concurrently_not_sequentially(self, monkeypatch):
         """Test that multiple tasks run concurrently, not sequentially."""
         import time
+
+        # Mock random to always return 0.2 (1 second delay each)
+        random_mock = Mock(random=Mock(return_value=0.2))
+        monkeypatch.setattr(async_1, "random", random_mock)
