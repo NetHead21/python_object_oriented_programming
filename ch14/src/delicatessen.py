@@ -198,3 +198,14 @@ class Tray:
             chef (Chef): The chef who should now have access to the tray.
         """
         self.chef_station = chef
+
+    def prepare(self, creation: Creation) -> None:
+        """Place a completed creation on the tray.
+
+        Called by chefs when they finish preparing an order. The chef should
+        verify that the tray is at their station before calling this method.
+
+        Args:
+            creation (Creation): The completed order to place on the tray.
+        """
+        self.content = creation
