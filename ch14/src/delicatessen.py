@@ -135,3 +135,13 @@ class Creation:
         >>> print(creation)
         BLT & Crispy Dill Pickle from Michael
     """
+
+    def __init__(self, signature: str, *item: Food) -> None:
+        """Initialize a Creation with chef signature and food items.
+
+        Args:
+            signature (str): The name of the chef who prepared this order.
+            *item (Food): Variable number of Food items in this creation.
+        """
+        self.chef = signature
+        self.items = list(item)
