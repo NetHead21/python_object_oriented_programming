@@ -86,3 +86,11 @@ class Sandwich(Food):
             name (str): The name of the sandwich type.
         """
         self.name = name
+
+    def __repr__(self) -> str:
+        """Return string representation of the sandwich.
+
+        Returns:
+            str: The sandwich name.
+        """
+        return self.name
