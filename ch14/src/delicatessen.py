@@ -209,3 +209,17 @@ class Tray:
             creation (Creation): The completed order to place on the tray.
         """
         self.content = creation
+
+    def present(self) -> None:
+        """Clear the tray after delivering the order.
+
+        Called by the Owner after delivering an order to simulate handing
+        the food off to the diner's table. This clears the tray for the
+        next order.
+
+        Note:
+            The actual delivery to customer is not implemented - this just
+            clears the tray.
+        """
+        # Handed off to the diner's table -- not implemented
+        self.content = None
