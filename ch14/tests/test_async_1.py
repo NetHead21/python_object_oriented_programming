@@ -197,3 +197,9 @@ class TestSleepersRealBehavior:
     async def test_sleepers_completes_all_tasks(self):
         """Test that sleepers waits for all tasks to complete."""
         import time
+
+        start = time.time()
+        await async_1.sleepers(3)
+        elapsed = time.time() - start
+        # Should complete (tasks run concurrently, so not 3*5 seconds)
+        assert elapsed < 10.0
