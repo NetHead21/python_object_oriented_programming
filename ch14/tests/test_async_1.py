@@ -289,3 +289,5 @@ class TestErrorHandling:
             async_1.sleepers(2), async_1.sleepers(2), async_1.sleepers(2)
         )
         # All should complete successfully
+        assert len(results) == 3
+        assert all(r is None for r in results)
