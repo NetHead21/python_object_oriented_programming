@@ -42,3 +42,22 @@ Note:
 from threading import Thread, Lock
 import time
 from typing import Optional
+
+
+class Food:
+    """Base class for all food items in the delicatessen.
+
+    This abstract base class serves as the parent for all food items that
+    can be part of a Creation (order). It provides a common interface for
+    different food types like sandwiches, pickles, and other items.
+
+    Subclasses should implement __repr__ to provide a string representation
+    of the food item.
+
+    Example:
+        >>> class Sandwich(Food):
+        ...     def __repr__(self):
+        ...         return "BLT"
+    """
+
+    pass
