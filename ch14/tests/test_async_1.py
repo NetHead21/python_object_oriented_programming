@@ -237,3 +237,6 @@ class TestConcurrencyBehavior:
         start = time.time()
         await async_1.sleepers(5)
         elapsed = time.time() - start
+
+        # If sequential: 5 seconds, if concurrent: ~1 second
+        assert elapsed < 2.0, "Tasks should run concurrently"
