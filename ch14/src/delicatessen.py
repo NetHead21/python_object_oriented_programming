@@ -38,3 +38,7 @@ Note:
     order management system. It uses global state (THE_TRAY, THE_ORDERS) for
     simplicity.
 """
+
+from threading import Thread, Lock
+import time
+from typing import Optional
