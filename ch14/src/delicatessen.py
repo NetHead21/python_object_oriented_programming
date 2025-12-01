@@ -145,3 +145,13 @@ class Creation:
         """
         self.chef = signature
         self.items = list(item)
+
+    def __repr__(self) -> str:
+        """Return string representation of the creation.
+
+        Format: "item1 & item2 & ... from ChefName"
+
+        Returns:
+            str: Formatted string showing all items and the chef.
+        """
+        return f"{' & '.join(repr(i) for i in self.items)} from {self.chef}"
