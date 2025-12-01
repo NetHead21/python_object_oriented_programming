@@ -272,3 +272,9 @@ class TestErrorHandling:
         assert "Creating -1 tasks" in out
         # range(-1) produces empty sequence
         assert mock_random_sleep.call_count == 0
+
+    @pytest.mark.asyncio
+    async def test_random_sleep_with_none_counter(
+        self, mock_random, mock_sleep, capsys
+    ):
+        """Test random_sleep with None as counter."""
