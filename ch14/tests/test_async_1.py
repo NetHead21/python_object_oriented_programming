@@ -267,3 +267,8 @@ class TestErrorHandling:
     @pytest.mark.asyncio
     async def test_sleepers_with_negative_number(self, mock_random_sleep, capsys):
         """Test sleepers behavior with negative number (creates no tasks)."""
+        await async_1.sleepers(-1)
+        out, err = capsys.readouterr()
+        assert "Creating -1 tasks" in out
+        # range(-1) produces empty sequence
+        assert mock_random_sleep.call_count == 0
