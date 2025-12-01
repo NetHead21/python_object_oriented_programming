@@ -203,3 +203,8 @@ class TestSleepersRealBehavior:
         elapsed = time.time() - start
         # Should complete (tasks run concurrently, so not 3*5 seconds)
         assert elapsed < 10.0
+
+    @pytest.mark.asyncio
+    async def test_sleepers_with_zero_completes_immediately(self):
+        """Test that sleepers with 0 tasks completes immediately."""
+        import time
