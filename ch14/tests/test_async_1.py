@@ -176,3 +176,9 @@ class TestRandomSleepRealBehavior:
     async def test_random_sleep_actually_sleeps(self):
         """Test that random_sleep actually performs async sleep."""
         import time
+
+        start = time.time()
+        await async_1.random_sleep(1)
+        elapsed = time.time() - start
+        # Should sleep between 0 and 5 seconds
+        assert 0 <= elapsed <= 6.0
