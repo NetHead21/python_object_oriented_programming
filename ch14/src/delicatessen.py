@@ -94,3 +94,16 @@ class Sandwich(Food):
             str: The sandwich name.
         """
         return self.name
+
+
+class Pickle(Food):
+    """Represents a pickle side item.
+
+    A Pickle is a standard accompaniment to sandwich orders in the delicatessen.
+    All pickles are "Crispy Dill Pickle" variety - there's no customization.
+
+    Example:
+        >>> pickle = Pickle()
+        >>> print(pickle)
+        Crispy Dill Pickle
+    """
