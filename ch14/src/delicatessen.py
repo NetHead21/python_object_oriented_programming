@@ -240,3 +240,32 @@ THE_ORDERS = [
     "French Dip",
     "BLT",
 ]
+
+
+class Owner(Thread):
+    """Coordinator thread that manages tray rotation and order delivery.
+
+    The Owner is a Thread subclass that runs continuously, monitoring the
+    shared tray for completed orders. When a chef signals that an order is
+    ready (via order_up), the Owner delivers it, rotates the tray to the
+    next chef, and repeats.
+
+    The Owner uses a Lock (flag) to coordinate with chefs:
+    - When unlocked: Tray is available for a chef to place an order
+    - When locked: Owner should deliver the order and rotate the tray
+
+    Attributes:
+        flag (Lock): Thread synchronization lock for tray access coordination.
+        chefs (tuple[Chef, ...]): All chef threads being managed.
+        next_chef (int): Index of the next chef to receive the tray.
+
+    Thread Lifecycle:
+        The Owner thread runs until all chef threads have finished processing
+        their orders (when no chefs are alive).
+
+    Example:
+        >>> mo = Chef("Michael")
+        >>> constantine = Chef("Constantine")
+        >>> owner = Owner(mo, constantine)
+        >>> owner.start()  # Starts the owner's coordination loop
+    """
