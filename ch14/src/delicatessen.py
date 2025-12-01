@@ -61,3 +61,20 @@ class Food:
     """
 
     pass
+
+
+class Sandwich(Food):
+    """Represents a sandwich in the delicatessen.
+
+    A Sandwich is a specific type of Food that has a name identifying its
+    type (e.g., "Reuben", "BLT", "Cuban"). This is the main item in most
+    orders.
+
+    Attributes:
+        name (str): The name/type of the sandwich (e.g., "Grilled Cheese").
+
+    Example:
+        >>> sandwich = Sandwich("Reuben")
+        >>> print(sandwich)
+        Reuben
+    """
