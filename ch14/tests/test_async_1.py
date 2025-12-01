@@ -188,3 +188,12 @@ class TestRandomSleepRealBehavior:
         """Test that random_sleep returns None."""
         result = await async_1.random_sleep(1)
         assert result is None
+
+
+class TestSleepersRealBehavior:
+    """Test sleepers without mocking to verify real behavior."""
+
+    @pytest.mark.asyncio
+    async def test_sleepers_completes_all_tasks(self):
+        """Test that sleepers waits for all tasks to complete."""
+        import time
