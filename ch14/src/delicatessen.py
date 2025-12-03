@@ -442,3 +442,33 @@ Constantine = Chef("Constantine")
 
 # Initialize the owner/coordinator with both chefs
 OWNER = Owner(Mo, Constantine)
+
+if __name__ == "__main__":
+    """Main execution block - starts the delicatessen simulation.
+    
+    This demonstrates the concurrent execution model:
+    1. Start both chef threads (Mo and Constantine)
+    2. Start the owner/coordinator thread
+    3. All threads run concurrently:
+       - Chefs compete to process orders from THE_ORDERS
+       - Owner coordinates tray rotation and order delivery
+    4. Program continues until all orders are processed
+    
+    Expected Output:
+        Each completed order will be printed in the format:
+        "SandwichName & Crispy Dill Pickle from ChefName"
+        
+    Example Output:
+        Reuben & Crispy Dill Pickle from Michael
+        Ham and Cheese & Crispy Dill Pickle from Constantine
+        Monte Cristo & Crispy Dill Pickle from Michael
+        ...
+    
+    Note:
+        The order of output may vary between runs due to thread scheduling,
+        demonstrating non-deterministic concurrent execution.
+    """
+    # Start all threads - they begin executing their run() methods
+    Mo.start()
+    Constantine.start()
+    OWNER.start()
