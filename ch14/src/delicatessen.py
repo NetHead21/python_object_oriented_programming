@@ -410,3 +410,18 @@ class Chef(Thread):
             time.sleep(1)
         THE_TRAY.prepare(creation)
         OWNER.order_up()
+
+    def run(self) -> None:
+        """Main chef loop - runs in a separate thread.
+
+        Continuously processes orders until the queue is empty. For each order:
+        1. Retrieves the order (get_order)
+        2. Prepares it (prepare)
+
+        The loop terminates when get_order raises IndexError (empty queue),
+        which signals that all orders have been completed.
+
+        Exception Handling:
+            IndexError is caught and used as the normal termination condition.
+            This allows the chef thread to exit gracefully when work is done.
+        """
