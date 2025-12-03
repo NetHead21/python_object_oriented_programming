@@ -438,3 +438,7 @@ class Chef(Thread):
 # Michael (Mo) and Constantine are the two concurrent workers
 Mo = Chef("Michael")
 Constantine = Chef("Constantine")
+
+
+# Initialize the owner/coordinator with both chefs
+OWNER = Owner(Mo, Constantine)
