@@ -432,3 +432,9 @@ class Chef(Thread):
                 self.prepare()
             except IndexError:
                 break  # No more orders
+
+
+# Initialize chef instances
+# Michael (Mo) and Constantine are the two concurrent workers
+Mo = Chef("Michael")
+Constantine = Chef("Constantine")
