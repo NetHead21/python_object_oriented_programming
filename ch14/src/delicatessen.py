@@ -368,3 +368,15 @@ class Chef(Thread):
                 creations).
         """
         super().__init__(name=name)
+
+    def get_order(self) -> None:
+        """Get the next order from the shared order queue.
+
+        Pops the first order from THE_ORDERS list and stores it in self.order.
+        This is a thread-unsafe operation - in production code, this should
+        use a thread-safe queue.
+
+        Raises:
+            IndexError: When THE_ORDERS list is empty (no more orders).
+        """
+        self.order = THE_ORDERS.pop(0)
