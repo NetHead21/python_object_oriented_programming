@@ -380,3 +380,24 @@ class Chef(Thread):
             IndexError: When THE_ORDERS list is empty (no more orders).
         """
         self.order = THE_ORDERS.pop(0)
+
+    def prepare(self) -> None:
+        """Prepare the current order and place it on the tray.
+
+        This method:
+        1. Simulates preparation time (1 second sleep)
+        2. Creates the sandwich and pickle
+        3. Packages them into a Creation with chef's signature
+        4. Waits (busy-wait) until the tray is at this chef's station
+        5. Places the creation on the tray
+        6. Signals the owner that order is ready
+
+        Thread Coordination:
+            Uses busy-waiting (while loop with sleep) to wait for tray access.
+            This is not the most efficient approach but demonstrates the
+            coordination challenge in concurrent systems.
+
+        Note:
+            The 1-second sleep simulates real preparation time and also helps
+            demonstrate concurrent behavior.
+        """
