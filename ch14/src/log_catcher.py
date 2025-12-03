@@ -115,3 +115,37 @@ def serialize(bytes_payload: bytes) -> str:
     TARGET.write("\n")
 
     return text_message
+
+
+if sys.version_info >= (3, 9):
+
+    async def log_writer(bytes_payload: bytes) -> None:
+        """Async wrapper for log serialization (Python 3.9+).
+
+        Offloads the CPU-bound serialize() function to a thread pool to avoid
+        blocking the async event loop. Uses the modern asyncio.to_thread API
+        introduced in Python 3.9.
+
+        This function:
+        1. Increments the global line counter
+        2. Offloads serialization to a thread pool
+        3. Returns when serialization completes
+
+        Args:
+            bytes_payload (bytes): Pickled Python object to deserialize and log.
+
+        Returns:
+            None
+
+        Note:
+            Modifies global LINE_COUNT variable. In production code, consider
+            using a thread-safe counter or atomic operations.
+
+        Example:
+            >>> payload = pickle.dumps({"msg": "Hello"})
+            >>> await log_writer(payload)
+            # Writes JSON to TARGET file in background thread
+        """
+        global LINE_COUNT
+        LINE_COUNT += 1
+        result = await asyncio.to_thread(serialize, bytes_payload)
