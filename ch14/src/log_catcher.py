@@ -68,3 +68,38 @@ TARGET: TextIO
 # Global counter tracking total lines processed
 # Incremented by log_writer for each message received
 LINE_COUNT = 0
+
+
+def serialize(bytes_payload: bytes) -> str:
+    """Deserialize pickled bytes and write as JSON to log file.
+
+    This is a CPU-bound blocking operation that:
+    1. Deserializes the pickled Python object from bytes
+    2. Converts it to JSON format
+    3. Writes to the global TARGET file
+
+    The function is designed to be run in a thread pool (via asyncio.to_thread
+    or run_in_executor) to prevent blocking the async event loop.
+
+    Args:
+        bytes_payload (bytes): Pickled Python object as bytes.
+
+    Returns:
+        str: The JSON-formatted text message that was written.
+
+    Raises:
+        pickle.UnpicklingError: If bytes_payload is not valid pickle data.
+        TypeError: If the unpickled object cannot be JSON serialized.
+
+    Security Warning:
+        Uses pickle.loads() which can execute arbitrary code. Only use with
+        trusted data sources.
+
+    Example:
+        >>> import pickle
+        >>> data = {"level": "INFO", "msg": "Test"}
+        >>> payload = pickle.dumps(data)
+        >>> result = serialize(payload)
+        >>> print(result)
+        {"level": "INFO", "msg": "Test"}
+    """
