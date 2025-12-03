@@ -103,3 +103,6 @@ def serialize(bytes_payload: bytes) -> str:
         >>> print(result)
         {"level": "INFO", "msg": "Test"}
     """
+
+    # Deserialize pickled object (SECURITY RISK with untrusted data)
+    object_payload = pickle.loads(bytes_payload)
