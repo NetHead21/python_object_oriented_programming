@@ -109,3 +109,9 @@ def serialize(bytes_payload: bytes) -> str:
 
     # Convert to JSON string
     text_message = json.dumps(object_payload)
+
+    # Write to log file with newline
+    TARGET.write(text_message)
+    TARGET.write("\n")
+
+    return text_message
