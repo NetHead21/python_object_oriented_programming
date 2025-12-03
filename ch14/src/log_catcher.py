@@ -106,3 +106,6 @@ def serialize(bytes_payload: bytes) -> str:
 
     # Deserialize pickled object (SECURITY RISK with untrusted data)
     object_payload = pickle.loads(bytes_payload)
+
+    # Convert to JSON string
+    text_message = json.dumps(object_payload)
