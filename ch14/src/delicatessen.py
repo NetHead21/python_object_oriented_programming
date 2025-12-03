@@ -285,3 +285,16 @@ class Owner(Thread):
         self.chefs = chefs
         self.next_chef = 0
         self.move_tray()
+
+    def order_up(self) -> None:
+        """Signal from chef that an order is ready for delivery.
+
+        This method is called by chefs when they've placed a completed order
+        on the tray. It acquires the lock, signaling to the Owner thread that
+        there's an order to deliver.
+
+        Thread Safety:
+            Uses lock acquisition to ensure thread-safe communication between
+            chef and owner threads.
+        """
+        self.flag.acquire()
