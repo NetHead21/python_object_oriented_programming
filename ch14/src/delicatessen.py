@@ -319,3 +319,12 @@ class Owner(Thread):
             The final print statement handles any remaining order after all
             chefs have finished.
         """
+        while any(c.is_alive() for c in self.chefs):
+            if self.flag.locked():
+                print(THE_TRAY.content)
+                THE_TRAY.present()
+                self.move_tray()
+                self.flag.release()
+            # Is it sensible to move the tray here?
+            # What state is the chef in?
+        print(THE_TRAY.content)
