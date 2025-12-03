@@ -149,3 +149,30 @@ if sys.version_info >= (3, 9):
         global LINE_COUNT
         LINE_COUNT += 1
         result = await asyncio.to_thread(serialize, bytes_payload)
+
+else:
+
+    async def log_writer(bytes_payload: bytes) -> None:
+        """Async wrapper for log serialization (Python 3.8 compatibility).
+
+        Legacy version for Python 3.8 that uses loop.run_in_executor instead
+        of asyncio.to_thread (which was added in Python 3.9).
+
+        Offloads the CPU-bound serialize() function to the default thread pool
+        executor to avoid blocking the async event loop.
+
+        Args:
+            bytes_payload (bytes): Pickled Python object to deserialize and log.
+
+        Returns:
+            None
+
+        Note:
+            This is functionally equivalent to the Python 3.9+ version but uses
+            the older API. The None executor argument uses the default
+            ThreadPoolExecutor.
+        """
+        global LINE_COUNT
+        LINE_COUNT += 1
+        loop = asyncio.get_running_loop()
+        result = await loop.run_in_executor(None, serialize, bytes_payload)
