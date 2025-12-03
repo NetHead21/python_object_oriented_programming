@@ -298,3 +298,24 @@ class Owner(Thread):
             chef and owner threads.
         """
         self.flag.acquire()
+
+    def run(self) -> None:
+        """Main coordination loop - runs in a separate thread.
+
+        Continuously monitors for completed orders (locked flag) and delivers
+        them when ready. The loop continues until all chef threads have
+        finished their work.
+
+        Process:
+            1. Check if any chef is still working
+            2. If flag is locked (order ready):
+               a. Print/deliver the order
+               b. Clear the tray
+               c. Move tray to next chef
+               d. Release the lock
+            3. Repeat
+
+        Note:
+            The final print statement handles any remaining order after all
+            chefs have finished.
+        """
