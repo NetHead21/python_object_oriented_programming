@@ -425,3 +425,10 @@ class Chef(Thread):
             IndexError is caught and used as the normal termination condition.
             This allows the chef thread to exit gracefully when work is done.
         """
+
+        while True:
+            try:
+                self.get_order()
+                self.prepare()
+            except IndexError:
+                break  # No more orders
