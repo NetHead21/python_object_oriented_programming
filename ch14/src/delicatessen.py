@@ -359,3 +359,12 @@ class Chef(Thread):
         >>> chef.start()  # Starts processing orders in background
         >>> # Chef will continue until THE_ORDERS is empty
     """
+
+    def __init__(self, name: str) -> None:
+        """Initialize a Chef with a specific name.
+
+        Args:
+            name (str): The chef's name (used for identification and signing
+                creations).
+        """
+        super().__init__(name=name)
