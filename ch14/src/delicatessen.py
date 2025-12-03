@@ -328,3 +328,34 @@ class Owner(Thread):
             # Is it sensible to move the tray here?
             # What state is the chef in?
         print(THE_TRAY.content)
+
+
+class Chef(Thread):
+    """Worker thread that processes sandwich orders sequentially.
+
+    Each Chef is a Thread that continuously pulls orders from the shared
+    order queue (THE_ORDERS), prepares them, and places them on the shared
+    tray when it's their turn. Chefs work independently but must coordinate
+    access to the shared tray.
+
+    Attributes:
+        name (str): The chef's name, inherited from Thread.name.
+        order (str): The current order being prepared (set by get_order).
+
+    Workflow:
+        1. Get next order from queue (get_order)
+        2. Prepare the sandwich and sides (prepare)
+        3. Wait for tray to be at this chef's station
+        4. Place order on tray and signal owner
+        5. Repeat until no orders remain
+
+    Thread Safety:
+        - Uses busy-waiting to check for tray availability
+        - Coordinates with Owner through OWNER.order_up() signal
+        - Multiple chefs can run concurrently without conflicts
+
+    Example:
+        >>> chef = Chef("Michael")
+        >>> chef.start()  # Starts processing orders in background
+        >>> # Chef will continue until THE_ORDERS is empty
+    """
