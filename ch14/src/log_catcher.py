@@ -59,3 +59,12 @@ import pickle
 import signal
 import struct
 import sys
+
+
+# Global file handle for log output
+# Set to an open file in write mode before starting the server
+TARGET: TextIO
+
+# Global counter tracking total lines processed
+# Incremented by log_writer for each message received
+LINE_COUNT = 0
