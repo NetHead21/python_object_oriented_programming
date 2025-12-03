@@ -401,3 +401,12 @@ class Chef(Thread):
             The 1-second sleep simulates real preparation time and also helps
             demonstrate concurrent behavior.
         """
+
+        time.sleep(1)
+        sandwich = Sandwich(self.order)
+        pickle = Pickle()
+        creation = Creation(self.name, sandwich, pickle)
+        while THE_TRAY.chef_station is not self:
+            time.sleep(1)
+        THE_TRAY.prepare(creation)
+        OWNER.order_up()
