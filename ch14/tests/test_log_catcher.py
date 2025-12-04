@@ -99,3 +99,10 @@ class TestSerialize:
             payload = pickle.dumps(data)
             result = log_catcher.serialize(payload)
             assert result == json.dumps(data)
+
+    def test_serialize_boolean(self, mock_target):
+        """Test serializing boolean values."""
+        for data in [True, False]:
+            payload = pickle.dumps(data)
+            result = log_catcher.serialize(payload)
+            assert result == json.dumps(data)
