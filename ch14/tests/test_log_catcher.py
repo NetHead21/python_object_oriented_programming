@@ -112,3 +112,16 @@ class TestSerialize:
         payload = pickle.dumps(None)
         result = log_catcher.serialize(payload)
         assert result == "null"
+
+    def test_serialize_nested_structure(self, mock_target):
+        """Test serializing complex nested structure."""
+        data = {
+            "level": "ERROR",
+            "timestamp": "2025-12-05T10:30:00",
+            "details": {
+                "error_code": 500,
+                "message": "Internal error",
+                "stack": ["frame1", "frame2", "frame3"],
+            },
+            "tags": ["critical", "database"],
+        }
