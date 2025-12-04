@@ -185,3 +185,42 @@ SIZE_FORMAT = ">L"
 
 # Number of bytes in the size header (always 4 for unsigned long)
 SIZE_BYTES = struct.calcsize(SIZE_FORMAT)
+
+
+async def log_catcher(
+    reader: asyncio.StreamReader, writer: asyncio.StreamWriter
+) -> None:
+    """Handle incoming client connection and process log messages.
+
+    This is the main connection handler coroutine, spawned for each client
+    connection. It implements a custom binary protocol:
+
+    Protocol:
+        1. Read 4-byte size header (big-endian unsigned long)
+        2. Read N bytes of payload (pickled Python object)
+        3. Process payload via log_writer
+        4. Repeat until connection closes (empty size_header)
+
+    The function processes messages in a loop until the client disconnects
+    (indicated by an empty read), then prints a summary of messages received.
+
+    Args:
+        reader (asyncio.StreamReader): Async stream for reading from client.
+        writer (asyncio.StreamWriter): Async stream for writing to client
+            (not used in current implementation, but required by protocol).
+
+    Returns:
+        None
+
+    Side Effects:
+        - Writes log entries to global TARGET file
+        - Increments global LINE_COUNT
+        - Prints summary to stdout when connection closes
+
+    Example Output:
+        From ('127.0.0.1', 54321): 42 lines
+
+    Note:
+        Each client connection is handled independently in its own coroutine.
+        Multiple clients can connect simultaneously.
+    """
