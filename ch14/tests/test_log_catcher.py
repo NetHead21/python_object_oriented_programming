@@ -106,3 +106,9 @@ class TestSerialize:
             payload = pickle.dumps(data)
             result = log_catcher.serialize(payload)
             assert result == json.dumps(data)
+
+    def test_serialize_none(self, mock_target):
+        """Test serializing None value."""
+        payload = pickle.dumps(None)
+        result = log_catcher.serialize(payload)
+        assert result == "null"
