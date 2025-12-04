@@ -92,3 +92,10 @@ class TestSerialize:
 
         assert result == json.dumps(data)
         assert '"simple string message"' in result
+
+    def test_serialize_number(self, mock_target):
+        """Test serializing numeric values."""
+        for data in [42, 3.14, -100, 0]:
+            payload = pickle.dumps(data)
+            result = log_catcher.serialize(payload)
+            assert result == json.dumps(data)
