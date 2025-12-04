@@ -18,3 +18,9 @@ def mock_target(monkeypatch):
     open_file = Mock()
     log_catcher.TARGET = open_file
     return open_file
+
+
+def test_log_writer(mock_target, capsys):
+    payload = pickle.dumps("message")
+    asyncio.run(log_catcher.log_writer(payload))
+    assert mock_target.write.mock_calls == [call('"message"'), call("\n")]
