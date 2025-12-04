@@ -65,3 +65,10 @@ class TestSerialize:
         """Test serializing a simple dictionary."""
         data = {"level": "INFO", "message": "Test message"}
         payload = pickle.dumps(data)
+
+        result = log_catcher.serialize(payload)
+
+        assert result == json.dumps(data)
+        assert mock_target.write.call_count == 2
+        mock_target.write.assert_any_call(json.dumps(data))
+        mock_target.write.assert_any_call("\n")
