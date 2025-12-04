@@ -137,3 +137,9 @@ class TestSerialize:
         payload = pickle.dumps({})
         result = log_catcher.serialize(payload)
         assert result == "{}"
+
+    def test_serialize_empty_list(self, mock_target):
+        """Test serializing empty list."""
+        payload = pickle.dumps([])
+        result = log_catcher.serialize(payload)
+        assert result == "[]"
