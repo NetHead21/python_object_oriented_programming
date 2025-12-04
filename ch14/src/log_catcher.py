@@ -251,3 +251,8 @@ async def log_catcher(
 
     # Connection closed - print summary
     print(f"From {client_socket.getpeername()}: {count} lines")
+
+
+# Global server instance - needed for signal handlers to close the server
+# Set by main() when server is created
+server: asyncio.AbstractServer
