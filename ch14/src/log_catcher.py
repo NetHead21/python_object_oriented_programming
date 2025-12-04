@@ -176,3 +176,12 @@ else:
         LINE_COUNT += 1
         loop = asyncio.get_running_loop()
         result = await loop.run_in_executor(None, serialize, bytes_payload)
+
+
+# Binary protocol format constants
+# ">L" means: unsigned long (4 bytes), big-endian byte order
+# This ensures consistent cross-platform message framing
+SIZE_FORMAT = ">L"
+
+# Number of bytes in the size header (always 4 for unsigned long)
+SIZE_BYTES = struct.calcsize(SIZE_FORMAT)
