@@ -410,3 +410,9 @@ if __name__ == "__main__":
 
     # Server configuration - in production, use command-line args or env vars
     HOST, PORT = "localhost", 18842
+
+
+    # Open log file for writing - context manager ensures proper cleanup
+    with Path("one.log").open("w") as TARGET:
+        try:
+            # Platform-specific event loop handling
