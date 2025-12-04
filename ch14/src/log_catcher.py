@@ -305,3 +305,9 @@ async def main(host: str, port: int) -> None:
         host=host,
         port=port,
     )
+
+    # Register signal handler for graceful shutdown (Unix/Linux only)
+    # Windows uses different mechanism (see module-level signal.signal calls)
+    if sys.platform != "win32":
+        loop = asyncio.get_running_loop()
+        loop.add_signal_handler(signal.SIGTERM, server.close)
