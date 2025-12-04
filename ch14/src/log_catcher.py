@@ -351,3 +351,9 @@ if sys.platform == "win32":
         # Optional debug output (commented out)
         # print(f"Signal {signum}")
         server.close()
+
+    # Register handler for multiple Windows termination signals
+    signal.signal(signal.SIGINT, close_server)  # Ctrl+C
+    signal.signal(signal.SIGTERM, close_server)  # Termination request
+    signal.signal(signal.SIGABRT, close_server)  # Abort
+    signal.signal(signal.SIGBREAK, close_server)  # Ctrl+Break (Windows-specific)
