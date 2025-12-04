@@ -24,3 +24,10 @@ def test_log_writer(mock_target, capsys):
     payload = pickle.dumps("message")
     asyncio.run(log_catcher.log_writer(payload))
     assert mock_target.write.mock_calls == [call('"message"'), call("\n")]
+
+
+@fixture
+def mock_log_writer(monkeypatch):
+    log_writer = AsyncMock()
+    monkeypatch.setattr(log_catcher, "log_writer", log_writer)
+    return log_writer
