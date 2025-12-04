@@ -248,3 +248,6 @@ async def log_catcher(
 
         # Read next message size header
         size_header = await reader.read(SIZE_BYTES)
+
+    # Connection closed - print summary
+    print(f"From {client_socket.getpeername()}: {count} lines")
