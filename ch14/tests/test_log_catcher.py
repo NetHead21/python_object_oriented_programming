@@ -60,3 +60,8 @@ def test_log_catcher(mock_log_writer, mock_stream):
 
 class TestSerialize:
     """Test suite for serialize function."""
+
+    def test_serialize_simple_dict(self, mock_target):
+        """Test serializing a simple dictionary."""
+        data = {"level": "INFO", "message": "Test message"}
+        payload = pickle.dumps(data)
