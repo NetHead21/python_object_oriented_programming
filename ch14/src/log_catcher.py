@@ -296,3 +296,12 @@ async def main(host: str, port: int) -> None:
         - Exception raised
         - server.close() called
     """
+
+    global server
+
+    # Create the async TCP server
+    server = await asyncio.start_server(
+        log_catcher,  # Handler coroutine for each connection
+        host=host,
+        port=port,
+    )
