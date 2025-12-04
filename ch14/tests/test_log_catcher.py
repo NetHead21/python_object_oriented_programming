@@ -51,3 +51,12 @@ def test_log_catcher(mock_log_writer, mock_stream):
     # Depends on len(payload)
     assert stream.read.mock_calls == [call(4), call(22), call(4)]
     mock_log_writer.assert_awaited_with(payload)
+
+
+# ============================================================================
+# ADDITIONAL COMPREHENSIVE TESTS
+# ============================================================================
+
+
+class TestSerialize:
+    """Test suite for serialize function."""
