@@ -425,3 +425,7 @@ if __name__ == "__main__":
                 # Grace period for pending operations
                 loop.run_until_complete(asyncio.sleep(1))
                 loop.close()
+
+            else:
+                # Unix/Linux: Use high-level asyncio.run API
+                asyncio.run(main(HOST, PORT))
