@@ -357,3 +357,53 @@ if sys.platform == "win32":
     signal.signal(signal.SIGTERM, close_server)  # Termination request
     signal.signal(signal.SIGABRT, close_server)  # Abort
     signal.signal(signal.SIGBREAK, close_server)  # Ctrl+Break (Windows-specific)
+
+
+if __name__ == "__main__":
+    """Main entry point - start the log catcher server.
+    
+    Initializes the server with default settings and handles platform-specific
+    event loop management. The server listens on localhost:18842 and writes
+    all received log messages to 'one.log' in JSON format.
+    
+    Configuration:
+        HOST: 'localhost' - Only accepts local connections (for security)
+        PORT: 18842 - Default listening port
+        LOG_FILE: 'one.log' - Output file for collected logs
+    
+    Platform Differences:
+        Windows:
+            - Uses get_event_loop() and manual loop management
+            - Includes 1-second grace period before closing
+            - Workaround for Windows asyncio signal handling issues
+        
+        Unix/Linux:
+            - Uses asyncio.run() which handles loop lifecycle
+            - Cleaner signal handling via loop.add_signal_handler
+    
+    Shutdown:
+        On Ctrl+C or SIGTERM:
+        1. Server stops accepting connections
+        2. Existing connections complete
+        3. Summary written to log file with total line count
+        4. Clean exit
+    
+    Output:
+        Console:
+            Serving on ('127.0.0.1', 18842)
+            From ('127.0.0.1', 54321): 10 lines
+            From ('127.0.0.1', 54322): 5 lines
+            {'lines_collected': 15}
+        
+        one.log:
+            {"level": "INFO", "message": "First log"}
+            {"level": "ERROR", "message": "Error occurred"}
+            ...
+            {"lines_collected": 15}
+    
+    Note:
+        In production, HOST and PORT would typically come from:
+        - Command-line arguments (argparse)
+        - Environment variables
+        - Configuration files
+    """
