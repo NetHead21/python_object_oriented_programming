@@ -256,3 +256,43 @@ async def log_catcher(
 # Global server instance - needed for signal handlers to close the server
 # Set by main() when server is created
 server: asyncio.AbstractServer
+
+
+async def main(host: str, port: int) -> None:
+    """Initialize and run the async log catcher server.
+
+    This is the main server coroutine that:
+    1. Creates a TCP server bound to specified host/port
+    2. Registers signal handlers for graceful shutdown
+    3. Starts serving and accepts connections indefinitely
+
+    The server spawns a new log_catcher coroutine for each incoming
+    connection, allowing concurrent handling of multiple clients.
+
+    Args:
+        host (str): Hostname or IP address to bind to (e.g., 'localhost',
+            '0.0.0.0' for all interfaces).
+        port (int): Port number to listen on (e.g., 18842).
+
+    Returns:
+        None: Runs until interrupted by signal or exception.
+
+    Raises:
+        ValueError: If server creation fails (no sockets created).
+        OSError: If port is already in use or binding fails.
+
+    Signal Handling:
+        - Unix/Linux: Registers SIGTERM handler via loop.add_signal_handler
+        - Windows: Signal handlers registered separately (see module-level code)
+
+    Example:
+        >>> await main('localhost', 18842)
+        Serving on ('127.0.0.1', 18842)
+        # Server runs until interrupted
+
+    Note:
+        This function runs forever (serve_forever) until:
+        - Signal received (SIGTERM, SIGINT, etc.)
+        - Exception raised
+        - server.close() called
+    """
