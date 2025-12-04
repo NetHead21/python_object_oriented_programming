@@ -407,3 +407,6 @@ if __name__ == "__main__":
         - Environment variables
         - Configuration files
     """
+
+    # Server configuration - in production, use command-line args or env vars
+    HOST, PORT = "localhost", 18842
