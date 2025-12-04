@@ -311,3 +311,10 @@ async def main(host: str, port: int) -> None:
     if sys.platform != "win32":
         loop = asyncio.get_running_loop()
         loop.add_signal_handler(signal.SIGTERM, server.close)
+
+    # Verify server created successfully and print listening address
+    if server.sockets:
+        addr = server.sockets[0].getsockname()
+        print(f"Serving on {addr}")
+    else:
+        raise ValueError("Failed to create server")
