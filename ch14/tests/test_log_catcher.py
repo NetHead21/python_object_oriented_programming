@@ -82,3 +82,8 @@ class TestSerialize:
 
         assert result == json.dumps(data)
         mock_target.write.assert_called()
+
+    def test_serialize_string(self, mock_target):
+        """Test serializing a simple string."""
+        data = "simple string message"
+        payload = pickle.dumps(data)
