@@ -322,3 +322,10 @@ async def main(host: str, port: int) -> None:
     # Enter serving loop - accepts connections until closed
     async with server:
         await server.serve_forever()
+
+
+# Windows-specific signal handling
+# Unix/Linux can use loop.add_signal_handler, but Windows cannot due to
+# asyncio limitations. Instead, we use the standard signal.signal approach.
+if sys.platform == "win32":
+    from types import FrameType
