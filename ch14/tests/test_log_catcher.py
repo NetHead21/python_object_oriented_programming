@@ -11,3 +11,10 @@ from unittest.mock import AsyncMock, Mock, call, patch, MagicMock
 sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
 
 import log_catcher
+
+
+@fixture
+def mock_target(monkeypatch):
+    open_file = Mock()
+    log_catcher.TARGET = open_file
+    return open_file
