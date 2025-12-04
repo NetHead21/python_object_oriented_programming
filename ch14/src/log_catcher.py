@@ -416,3 +416,12 @@ if __name__ == "__main__":
     with Path("one.log").open("w") as TARGET:
         try:
             # Platform-specific event loop handling
+
+            if sys.platform == "win32":
+                # Windows: Manual loop management required
+                # See: https://github.com/encode/httpx/issues/914
+                loop = asyncio.get_event_loop()
+                loop.run_until_complete(main(HOST, PORT))
+                # Grace period for pending operations
+                loop.run_until_complete(asyncio.sleep(1))
+                loop.close()
