@@ -329,3 +329,25 @@ async def main(host: str, port: int) -> None:
 # asyncio limitations. Instead, we use the standard signal.signal approach.
 if sys.platform == "win32":
     from types import FrameType
+
+    def close_server(signum: int, frame: FrameType) -> None:
+        """Signal handler for Windows to close the server gracefully.
+
+        Called when the process receives termination signals (SIGINT, SIGTERM,
+        etc.). Closes the server, which will cause serve_forever to exit.
+
+        Args:
+            signum (int): The signal number received.
+            frame (FrameType): Current stack frame (unused).
+
+        Returns:
+            None
+
+        Note:
+            This is a synchronous function called from signal context.
+            We can't use async operations here, so we just call server.close()
+            which is thread-safe.
+        """
+        # Optional debug output (commented out)
+        # print(f"Signal {signum}")
+        server.close()
