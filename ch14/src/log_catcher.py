@@ -411,7 +411,6 @@ if __name__ == "__main__":
     # Server configuration - in production, use command-line args or env vars
     HOST, PORT = "localhost", 18842
 
-
     # Open log file for writing - context manager ensures proper cleanup
     with Path("one.log").open("w") as TARGET:
         try:
@@ -429,3 +428,9 @@ if __name__ == "__main__":
             else:
                 # Unix/Linux: Use high-level asyncio.run API
                 asyncio.run(main(HOST, PORT))
+
+        except (asyncio.exceptions.CancelledError, KeyboardInterrupt):
+            # Graceful shutdown - write summary to log
+            ending = {"lines_collected": LINE_COUNT}
+            print(ending)
+            TARGET.write(json.dumps(ending) + "\n")
