@@ -232,3 +232,19 @@ async def log_catcher(
 
     # Read first message size header
     size_header = await reader.read(SIZE_BYTES)
+
+    # Process messages until connection closes (empty read)
+    while size_header:
+        # Unpack size from header (returns tuple, take first element)
+        payload_size = struct.unpack(SIZE_FORMAT, size_header)
+
+        # Read the payload bytes
+        bytes_payload = await reader.read(payload_size[0])
+
+        # Process payload asynchronously (offloaded to thread pool)
+        await log_writer(bytes_payload)
+
+        count += 1
+
+        # Read next message size header
+        size_header = await reader.read(SIZE_BYTES)
