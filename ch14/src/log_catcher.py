@@ -224,3 +224,11 @@ async def log_catcher(
         Each client connection is handled independently in its own coroutine.
         Multiple clients can connect simultaneously.
     """
+
+    count = 0
+
+    # Get client socket info for logging
+    client_socket = writer.get_extra_info("socket")
+
+    # Read first message size header
+    size_header = await reader.read(SIZE_BYTES)
