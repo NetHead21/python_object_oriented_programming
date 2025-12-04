@@ -31,3 +31,15 @@ def mock_log_writer(monkeypatch):
     log_writer = AsyncMock()
     monkeypatch.setattr(log_catcher, "log_writer", log_writer)
     return log_writer
+
+
+@fixture
+def mock_stream():
+    mock_socket = Mock(getpeername=Mock(return_value=["127.0.0.1", 12342]))
+    payload = pickle.dumps("message")
+    size = struct.pack(">L", len(payload))
+    stream = Mock(
+        read=AsyncMock(side_effect=[size, payload, None]),
+        get_extra_info=Mock(return_value=mock_socket),
+    )
+    return payload, stream
