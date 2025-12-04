@@ -77,3 +77,8 @@ class TestSerialize:
         """Test serializing a list."""
         data = [1, 2, 3, "test", {"key": "value"}]
         payload = pickle.dumps(data)
+
+        result = log_catcher.serialize(payload)
+
+        assert result == json.dumps(data)
+        mock_target.write.assert_called()
