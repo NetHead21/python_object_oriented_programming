@@ -87,3 +87,8 @@ class TestSerialize:
         """Test serializing a simple string."""
         data = "simple string message"
         payload = pickle.dumps(data)
+
+        result = log_catcher.serialize(payload)
+
+        assert result == json.dumps(data)
+        assert '"simple string message"' in result
