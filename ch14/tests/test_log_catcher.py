@@ -72,3 +72,8 @@ class TestSerialize:
         assert mock_target.write.call_count == 2
         mock_target.write.assert_any_call(json.dumps(data))
         mock_target.write.assert_any_call("\n")
+
+    def test_serialize_list(self, mock_target):
+        """Test serializing a list."""
+        data = [1, 2, 3, "test", {"key": "value"}]
+        payload = pickle.dumps(data)
