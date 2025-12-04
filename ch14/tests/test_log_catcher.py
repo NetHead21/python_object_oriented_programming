@@ -43,3 +43,11 @@ def mock_stream():
         get_extra_info=Mock(return_value=mock_socket),
     )
     return payload, stream
+
+
+def test_log_catcher(mock_log_writer, mock_stream):
+    payload, stream = mock_stream
+    asyncio.run(log_catcher.log_catcher(stream, stream))
+    # Depends on len(payload)
+    assert stream.read.mock_calls == [call(4), call(22), call(4)]
+    mock_log_writer.assert_awaited_with(payload)
