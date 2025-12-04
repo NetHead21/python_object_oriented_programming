@@ -125,3 +125,9 @@ class TestSerialize:
             },
             "tags": ["critical", "database"],
         }
+
+        payload = pickle.dumps(data)
+
+        result = log_catcher.serialize(payload)
+
+        assert json.loads(result) == data
