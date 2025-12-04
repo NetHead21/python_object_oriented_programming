@@ -318,3 +318,7 @@ async def main(host: str, port: int) -> None:
         print(f"Serving on {addr}")
     else:
         raise ValueError("Failed to create server")
+
+    # Enter serving loop - accepts connections until closed
+    async with server:
+        await server.serve_forever()
