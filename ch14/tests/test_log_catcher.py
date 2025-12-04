@@ -131,3 +131,9 @@ class TestSerialize:
         result = log_catcher.serialize(payload)
 
         assert json.loads(result) == data
+
+    def test_serialize_empty_dict(self, mock_target):
+        """Test serializing empty dictionary."""
+        payload = pickle.dumps({})
+        result = log_catcher.serialize(payload)
+        assert result == "{}"
