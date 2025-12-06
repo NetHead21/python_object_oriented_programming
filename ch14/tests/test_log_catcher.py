@@ -224,3 +224,10 @@ class TestLogCatcher:
     def test_log_catcher_empty_stream(self, mock_log_writer, capsys):
         """Test log_catcher with immediate disconnect (no messages)."""
         mock_socket = Mock(getpeername=Mock(return_value=("127.0.0.1", 12342)))
+
+        stream = Mock(
+            read=AsyncMock(side_effect=[None]),  # Immediate disconnect
+            get_extra_info=Mock(return_value=mock_socket),
+        )
+
+        asyncio.run(log_catcher.log_catcher(stream, stream))
