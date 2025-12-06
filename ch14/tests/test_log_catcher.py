@@ -235,3 +235,7 @@ class TestLogCatcher:
         out, _ = capsys.readouterr()
         assert "0 lines" in out
         mock_log_writer.assert_not_awaited()
+
+    def test_log_catcher_single_large_message(self, mock_log_writer):
+        """Test log_catcher with single large message."""
+        mock_socket = Mock(getpeername=Mock(return_value=("127.0.0.1", 12342)))
