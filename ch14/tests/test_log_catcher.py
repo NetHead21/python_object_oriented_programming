@@ -168,3 +168,8 @@ class TestLogWriter:
 
         asyncio.run(write_all())
         assert log_catcher.LINE_COUNT == 5
+
+    def test_log_writer_concurrent_calls(self, mock_target):
+        """Test concurrent log_writer calls."""
+        log_catcher.LINE_COUNT = 0
+        payloads = [pickle.dumps(f"message {i}") for i in range(10)]
