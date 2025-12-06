@@ -248,3 +248,7 @@ class TestLogCatcher:
             read=AsyncMock(side_effect=[size, payload, None]),
             get_extra_info=Mock(return_value=mock_socket),
         )
+
+        asyncio.run(log_catcher.log_catcher(stream, stream))
+
+        mock_log_writer.assert_awaited_once()
