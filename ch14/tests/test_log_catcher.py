@@ -203,3 +203,9 @@ class TestLogCatcher:
         messages = [f"message {i}" for i in range(3)]
         payloads = [pickle.dumps(msg) for msg in messages]
         sizes = [struct.pack(">L", len(p)) for p in payloads]
+
+        # Create read side effects: size1, payload1, size2, payload2, size3, payload3, None
+        read_effects = []
+        for size, payload in zip(sizes, payloads):
+            read_effects.extend([size, payload])
+        read_effects.append(None)  # End of stream
