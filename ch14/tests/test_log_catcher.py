@@ -180,3 +180,8 @@ class TestLogWriter:
 
         asyncio.run(write_concurrent())
         assert log_catcher.LINE_COUNT == 10
+
+    def test_log_writer_with_large_payload(self, mock_target):
+        """Test log_writer with large data payload."""
+        large_data = {"data": "x" * 10000, "items": list(range(1000))}
+        payload = pickle.dumps(large_data)
