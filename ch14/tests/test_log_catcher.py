@@ -161,3 +161,7 @@ class TestLogWriter:
         """Test LINE_COUNT with multiple calls."""
         log_catcher.LINE_COUNT = 0
         payloads = [pickle.dumps(f"message {i}") for i in range(5)]
+
+        async def write_all():
+            for payload in payloads:
+                await log_catcher.log_writer(payload)
