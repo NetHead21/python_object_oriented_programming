@@ -190,3 +190,10 @@ class TestLogWriter:
 
         assert log_catcher.LINE_COUNT > 0
         assert mock_target.write.called
+
+
+class TestLogCatcher:
+    """Test suite for log_catcher function."""
+
+    def test_log_catcher_multiple_messages(self, mock_log_writer):
+        """Test log_catcher with multiple messages."""
