@@ -165,3 +165,6 @@ class TestLogWriter:
         async def write_all():
             for payload in payloads:
                 await log_catcher.log_writer(payload)
+
+        asyncio.run(write_all())
+        assert log_catcher.LINE_COUNT == 5
