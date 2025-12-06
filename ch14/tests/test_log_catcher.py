@@ -143,3 +143,10 @@ class TestSerialize:
         payload = pickle.dumps([])
         result = log_catcher.serialize(payload)
         assert result == "[]"
+
+
+class TestLogWriter:
+    """Test suite for log_writer function."""
+
+    def test_log_writer_increments_counter(self, mock_target):
+        """Test that log_writer increments LINE_COUNT."""
