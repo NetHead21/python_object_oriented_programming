@@ -239,3 +239,7 @@ class TestLogCatcher:
     def test_log_catcher_single_large_message(self, mock_log_writer):
         """Test log_catcher with single large message."""
         mock_socket = Mock(getpeername=Mock(return_value=("127.0.0.1", 12342)))
+
+        large_data = {"data": "x" * 50000}
+        payload = pickle.dumps(large_data)
+        size = struct.pack(">L", len(payload))
