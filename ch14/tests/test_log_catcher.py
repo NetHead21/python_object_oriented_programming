@@ -197,3 +197,9 @@ class TestLogCatcher:
 
     def test_log_catcher_multiple_messages(self, mock_log_writer):
         """Test log_catcher with multiple messages."""
+
+        mock_socket = Mock(getpeername=Mock(return_value=("127.0.0.1", 12342)))
+
+        messages = [f"message {i}" for i in range(3)]
+        payloads = [pickle.dumps(msg) for msg in messages]
+        sizes = [struct.pack(">L", len(p)) for p in payloads]
