@@ -150,7 +150,6 @@ class TestLogWriter:
 
     def test_log_writer_increments_counter(self, mock_target):
         """Test that log_writer increments LINE_COUNT."""
-
         initial_count = log_catcher.LINE_COUNT
         payload = pickle.dumps({"msg": "test"})
 
