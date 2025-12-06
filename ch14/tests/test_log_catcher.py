@@ -220,3 +220,7 @@ class TestLogCatcher:
         # Should have read: size, payload for each message, plus final None
         assert stream.read.call_count == 7  # 3 * (size + payload) + 1 (end)
         assert mock_log_writer.await_count == 3
+
+    def test_log_catcher_empty_stream(self, mock_log_writer, capsys):
+        """Test log_catcher with immediate disconnect (no messages)."""
+        mock_socket = Mock(getpeername=Mock(return_value=("127.0.0.1", 12342)))
