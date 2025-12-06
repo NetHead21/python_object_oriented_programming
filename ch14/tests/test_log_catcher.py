@@ -231,3 +231,7 @@ class TestLogCatcher:
         )
 
         asyncio.run(log_catcher.log_catcher(stream, stream))
+
+        out, _ = capsys.readouterr()
+        assert "0 lines" in out
+        mock_log_writer.assert_not_awaited()
