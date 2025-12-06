@@ -243,3 +243,8 @@ class TestLogCatcher:
         large_data = {"data": "x" * 50000}
         payload = pickle.dumps(large_data)
         size = struct.pack(">L", len(payload))
+
+        stream = Mock(
+            read=AsyncMock(side_effect=[size, payload, None]),
+            get_extra_info=Mock(return_value=mock_socket),
+        )
