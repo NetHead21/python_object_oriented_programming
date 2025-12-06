@@ -173,3 +173,7 @@ class TestLogWriter:
         """Test concurrent log_writer calls."""
         log_catcher.LINE_COUNT = 0
         payloads = [pickle.dumps(f"message {i}") for i in range(10)]
+
+        async def write_concurrent():
+            tasks = [log_catcher.log_writer(p) for p in payloads]
+            await asyncio.gather(*tasks)
