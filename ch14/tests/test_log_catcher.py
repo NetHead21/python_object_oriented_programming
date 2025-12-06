@@ -216,3 +216,7 @@ class TestLogCatcher:
         )
 
         asyncio.run(log_catcher.log_catcher(stream, stream))
+
+        # Should have read: size, payload for each message, plus final None
+        assert stream.read.call_count == 7  # 3 * (size + payload) + 1 (end)
+        assert mock_log_writer.await_count == 3
