@@ -185,3 +185,8 @@ class TestLogWriter:
         """Test log_writer with large data payload."""
         large_data = {"data": "x" * 10000, "items": list(range(1000))}
         payload = pickle.dumps(large_data)
+
+        asyncio.run(log_catcher.log_writer(payload))
+
+        assert log_catcher.LINE_COUNT > 0
+        assert mock_target.write.called
