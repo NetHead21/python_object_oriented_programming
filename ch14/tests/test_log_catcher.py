@@ -209,3 +209,10 @@ class TestLogCatcher:
         for size, payload in zip(sizes, payloads):
             read_effects.extend([size, payload])
         read_effects.append(None)  # End of stream
+
+        stream = Mock(
+            read=AsyncMock(side_effect=read_effects),
+            get_extra_info=Mock(return_value=mock_socket),
+        )
+
+        asyncio.run(log_catcher.log_catcher(stream, stream))
