@@ -333,3 +333,13 @@ class TestEdgeCases:
 
         # JSON should handle Unicode properly
         assert json.loads(result) == data
+
+    def test_serialize_with_special_json_characters(self, mock_target):
+        """Test serializing data with special JSON characters."""
+        data = {
+            "quotes": 'He said "Hello"',
+            "backslash": "path\\to\\file",
+            "newline": "line1\nline2",
+            "tab": "col1\tcol2",
+        }
+        payload = pickle.dumps(data)
