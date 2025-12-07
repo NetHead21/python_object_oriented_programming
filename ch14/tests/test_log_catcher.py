@@ -319,3 +319,7 @@ class TestProtocolConstants:
             unpacked = struct.unpack(log_catcher.SIZE_FORMAT, packed)
             assert unpacked[0] == size
             assert len(packed) == log_catcher.SIZE_BYTES
+
+
+class TestEdgeCases:
+    """Edge case tests for the log catcher."""
