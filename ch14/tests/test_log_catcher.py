@@ -297,3 +297,7 @@ class TestLogCatcher:
         assert "192.168.1.100" in out
         assert "54321" in out
         assert "1 lines" in out
+
+
+class TestProtocolConstants:
+    """Test suite for protocol constants."""
