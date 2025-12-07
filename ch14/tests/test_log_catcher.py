@@ -301,3 +301,7 @@ class TestLogCatcher:
 
 class TestProtocolConstants:
     """Test suite for protocol constants."""
+
+    def test_size_format_is_big_endian(self):
+        """Test that SIZE_FORMAT uses big-endian byte order."""
+        assert log_catcher.SIZE_FORMAT == ">L"
