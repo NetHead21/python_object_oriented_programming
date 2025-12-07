@@ -292,3 +292,8 @@ class TestLogCatcher:
         )
 
         asyncio.run(log_catcher.log_catcher(stream, stream))
+
+        out, _ = capsys.readouterr()
+        assert "192.168.1.100" in out
+        assert "54321" in out
+        assert "1 lines" in out
