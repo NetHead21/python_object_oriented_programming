@@ -269,3 +269,12 @@ class TestLogCatcher:
             size = struct.pack(">L", len(payload))
             read_effects.extend([size, payload])
         read_effects.append(None)
+
+        stream = Mock(
+            read=AsyncMock(side_effect=read_effects),
+            get_extra_info=Mock(return_value=mock_socket),
+        )
+
+        asyncio.run(log_catcher.log_catcher(stream, stream))
+
+        assert mock_log_writer.await_count == 3
