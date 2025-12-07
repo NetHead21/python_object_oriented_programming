@@ -328,3 +328,8 @@ class TestEdgeCases:
         """Test serializing data with Unicode characters."""
         data = {"message": "Hello 世界 🌍", "emoji": "😀🎉✨", "special": "àéîöü"}
         payload = pickle.dumps(data)
+
+        result = log_catcher.serialize(payload)
+
+        # JSON should handle Unicode properly
+        assert json.loads(result) == data
