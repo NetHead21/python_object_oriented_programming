@@ -349,3 +349,7 @@ class TestEdgeCases:
         # Should properly escape special characters
         parsed = json.loads(result)
         assert parsed == data
+
+    def test_log_catcher_with_zero_size_payload(self, mock_log_writer):
+        """Test handling of zero-size payload (edge case)."""
+        mock_socket = Mock(getpeername=Mock(return_value=("127.0.0.1", 12342)))
