@@ -278,3 +278,7 @@ class TestLogCatcher:
         asyncio.run(log_catcher.log_catcher(stream, stream))
 
         assert mock_log_writer.await_count == 3
+
+    def test_log_catcher_prints_client_info(self, mock_log_writer, capsys):
+        """Test that log_catcher prints client information."""
+        mock_socket = Mock(getpeername=Mock(return_value=("192.168.1.100", 54321)))
