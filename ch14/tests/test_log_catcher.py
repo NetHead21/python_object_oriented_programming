@@ -305,3 +305,7 @@ class TestProtocolConstants:
     def test_size_format_is_big_endian(self):
         """Test that SIZE_FORMAT uses big-endian byte order."""
         assert log_catcher.SIZE_FORMAT == ">L"
+
+    def test_size_bytes_is_four(self):
+        """Test that size header is 4 bytes (unsigned long)."""
+        assert log_catcher.SIZE_BYTES == 4
