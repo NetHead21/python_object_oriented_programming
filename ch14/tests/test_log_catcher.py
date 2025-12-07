@@ -263,3 +263,9 @@ class TestLogCatcher:
             pickle.dumps({"medium": "data" * 100}),
             pickle.dumps({"large": list(range(1000))}),
         ]
+
+        read_effects = []
+        for payload in payloads:
+            size = struct.pack(">L", len(payload))
+            read_effects.extend([size, payload])
+        read_effects.append(None)
