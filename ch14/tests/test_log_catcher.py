@@ -353,3 +353,17 @@ class TestEdgeCases:
     def test_log_catcher_with_zero_size_payload(self, mock_log_writer):
         """Test handling of zero-size payload (edge case)."""
         mock_socket = Mock(getpeername=Mock(return_value=("127.0.0.1", 12342)))
+
+        # Empty bytes payload
+        payload = b""
+        size = struct.pack(">L", 0)
+
+        stream = Mock(
+            read=AsyncMock(side_effect=[size, payload, None]),
+            get_extra_info=Mock(return_value=mock_socket),
+        )
+
+        asyncio.run(log_catcher.log_catcher(stream, stream))
+
+        # Should still process the message
+        mock_log_writer.assert_awaited_once()
