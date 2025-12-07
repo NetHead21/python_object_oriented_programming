@@ -367,3 +367,7 @@ class TestEdgeCases:
 
         # Should still process the message
         mock_log_writer.assert_awaited_once()
+
+    def test_log_catcher_rapid_messages(self, mock_log_writer):
+        """Test log_catcher with many rapid messages."""
+        mock_socket = Mock(getpeername=Mock(return_value=("127.0.0.1", 12342)))
