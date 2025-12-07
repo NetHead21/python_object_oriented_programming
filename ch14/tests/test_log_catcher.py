@@ -282,3 +282,13 @@ class TestLogCatcher:
     def test_log_catcher_prints_client_info(self, mock_log_writer, capsys):
         """Test that log_catcher prints client information."""
         mock_socket = Mock(getpeername=Mock(return_value=("192.168.1.100", 54321)))
+
+        payload = pickle.dumps("test")
+        size = struct.pack(">L", len(payload))
+
+        stream = Mock(
+            read=AsyncMock(side_effect=[size, payload, None]),
+            get_extra_info=Mock(return_value=mock_socket),
+        )
+
+        asyncio.run(log_catcher.log_catcher(stream, stream))
