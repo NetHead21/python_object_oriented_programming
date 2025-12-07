@@ -256,3 +256,10 @@ class TestLogCatcher:
     def test_log_catcher_different_payload_sizes(self, mock_log_writer):
         """Test log_catcher with varying payload sizes."""
         mock_socket = Mock(getpeername=Mock(return_value=("127.0.0.1", 12342)))
+
+        # Create payloads of different sizes
+        payloads = [
+            pickle.dumps("small"),
+            pickle.dumps({"medium": "data" * 100}),
+            pickle.dumps({"large": list(range(1000))}),
+        ]
