@@ -252,3 +252,7 @@ class TestLogCatcher:
         asyncio.run(log_catcher.log_catcher(stream, stream))
 
         mock_log_writer.assert_awaited_once()
+
+    def test_log_catcher_different_payload_sizes(self, mock_log_writer):
+        """Test log_catcher with varying payload sizes."""
+        mock_socket = Mock(getpeername=Mock(return_value=("127.0.0.1", 12342)))
