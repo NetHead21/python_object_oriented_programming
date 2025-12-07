@@ -323,3 +323,8 @@ class TestProtocolConstants:
 
 class TestEdgeCases:
     """Edge case tests for the log catcher."""
+
+    def test_serialize_with_unicode_characters(self, mock_target):
+        """Test serializing data with Unicode characters."""
+        data = {"message": "Hello 世界 🌍", "emoji": "😀🎉✨", "special": "àéîöü"}
+        payload = pickle.dumps(data)
