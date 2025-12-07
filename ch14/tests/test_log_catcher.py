@@ -385,3 +385,7 @@ class TestEdgeCases:
             read=AsyncMock(side_effect=read_effects),
             get_extra_info=Mock(return_value=mock_socket),
         )
+
+        asyncio.run(log_catcher.log_catcher(stream, stream))
+
+        assert mock_log_writer.await_count == 50
