@@ -309,3 +309,7 @@ class TestProtocolConstants:
     def test_size_bytes_is_four(self):
         """Test that size header is 4 bytes (unsigned long)."""
         assert log_catcher.SIZE_BYTES == 4
+
+    def test_struct_pack_unpack_consistency(self):
+        """Test that pack/unpack operations are consistent."""
+        test_sizes = [0, 1, 100, 65535, 1000000]
