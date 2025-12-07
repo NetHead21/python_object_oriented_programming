@@ -343,3 +343,9 @@ class TestEdgeCases:
             "tab": "col1\tcol2",
         }
         payload = pickle.dumps(data)
+
+        result = log_catcher.serialize(payload)
+
+        # Should properly escape special characters
+        parsed = json.loads(result)
+        assert parsed == data
