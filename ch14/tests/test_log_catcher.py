@@ -371,3 +371,17 @@ class TestEdgeCases:
     def test_log_catcher_rapid_messages(self, mock_log_writer):
         """Test log_catcher with many rapid messages."""
         mock_socket = Mock(getpeername=Mock(return_value=("127.0.0.1", 12342)))
+
+        # Create 50 small messages
+        payloads = [pickle.dumps({"id": i}) for i in range(50)]
+
+        read_effects = []
+        for payload in payloads:
+            size = struct.pack(">L", len(payload))
+            read_effects.extend([size, payload])
+        read_effects.append(None)
+
+        stream = Mock(
+            read=AsyncMock(side_effect=read_effects),
+            get_extra_info=Mock(return_value=mock_socket),
+        )
