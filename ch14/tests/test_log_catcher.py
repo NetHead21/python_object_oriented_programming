@@ -313,3 +313,9 @@ class TestProtocolConstants:
     def test_struct_pack_unpack_consistency(self):
         """Test that pack/unpack operations are consistent."""
         test_sizes = [0, 1, 100, 65535, 1000000]
+
+        for size in test_sizes:
+            packed = struct.pack(log_catcher.SIZE_FORMAT, size)
+            unpacked = struct.unpack(log_catcher.SIZE_FORMAT, packed)
+            assert unpacked[0] == size
+            assert len(packed) == log_catcher.SIZE_BYTES
