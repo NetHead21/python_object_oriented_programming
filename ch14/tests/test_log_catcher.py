@@ -460,3 +460,9 @@ class TestIntegration:
             for msg in messages:
                 payload = pickle.dumps(msg)
                 await log_catcher.log_writer(payload)
+
+        async def run_simulation():
+            # Simulate 3 connections with different message counts
+            conn1 = [{"conn": 1, "msg": i} for i in range(5)]
+            conn2 = [{"conn": 2, "msg": i} for i in range(3)]
+            conn3 = [{"conn": 3, "msg": i} for i in range(7)]
