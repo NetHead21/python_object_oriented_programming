@@ -472,3 +472,8 @@ class TestIntegration:
                 simulate_connection(conn2),
                 simulate_connection(conn3),
             )
+
+        asyncio.run(run_simulation())
+
+        # Total messages: 5 + 3 + 7 = 15
+        assert log_catcher.LINE_COUNT == 15
