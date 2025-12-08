@@ -450,3 +450,7 @@ class TestIntegration:
         assert mock_target.write.call_count == 2
         json_call = mock_target.write.call_args_list[0]
         assert json.loads(json_call[0][0]) == data
+
+    def test_multiple_concurrent_connections_simulation(self, mock_target):
+        """Simulate multiple concurrent connections writing logs."""
+        log_catcher.LINE_COUNT = 0
