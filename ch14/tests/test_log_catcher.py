@@ -489,3 +489,11 @@ class TestPerformance:
 
         # Create 100 small messages
         payloads = [pickle.dumps({"id": i, "data": "x"}) for i in range(100)]
+
+        read_effects = []
+
+        for payload in payloads:
+            size = struct.pack(">L", len(payload))
+            read_effects.extend([size, payload])
+
+        read_effects.append(None)
