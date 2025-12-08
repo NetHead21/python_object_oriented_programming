@@ -439,3 +439,6 @@ class TestIntegration:
         # Simulate sending a message
         data = {"level": "INFO", "msg": "Integration test", "timestamp": 1234567890}
         payload = pickle.dumps(data)
+
+        # Process through log_writer
+        asyncio.run(log_catcher.log_writer(payload))
