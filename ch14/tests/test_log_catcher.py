@@ -454,3 +454,9 @@ class TestIntegration:
     def test_multiple_concurrent_connections_simulation(self, mock_target):
         """Simulate multiple concurrent connections writing logs."""
         log_catcher.LINE_COUNT = 0
+
+        async def simulate_connection(messages):
+            """Simulate a connection sending multiple messages."""
+            for msg in messages:
+                payload = pickle.dumps(msg)
+                await log_catcher.log_writer(payload)
