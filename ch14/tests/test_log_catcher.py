@@ -411,3 +411,8 @@ class TestEdgeCases:
             -(2**31),  # Min 32-bit int
             2**63 - 1,  # Max 64-bit int
         ]
+
+        for value in values:
+            payload = pickle.dumps(value)
+            result = log_catcher.serialize(payload)
+            assert json.loads(result) == value
