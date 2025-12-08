@@ -477,3 +477,12 @@ class TestIntegration:
 
         # Total messages: 5 + 3 + 7 = 15
         assert log_catcher.LINE_COUNT == 15
+
+
+class TestPerformance:
+    """Performance-related tests."""
+
+    @mark.slow
+    def test_many_small_messages(self, mock_log_writer):
+        """Test handling many small messages efficiently."""
+        mock_socket = Mock(getpeername=Mock(return_value=("127.0.0.1", 12342)))
