@@ -445,3 +445,8 @@ class TestIntegration:
 
         # Verify LINE_COUNT updated
         assert log_catcher.LINE_COUNT == 1
+
+        # Verify write was called correctly
+        assert mock_target.write.call_count == 2
+        json_call = mock_target.write.call_args_list[0]
+        assert json.loads(json_call[0][0]) == data
