@@ -389,3 +389,7 @@ class TestEdgeCases:
         asyncio.run(log_catcher.log_catcher(stream, stream))
 
         assert mock_log_writer.await_count == 50
+
+    def test_line_count_persistence_across_connections(self, mock_target):
+        """Test that LINE_COUNT persists across multiple connections."""
+        initial = log_catcher.LINE_COUNT
