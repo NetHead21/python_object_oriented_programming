@@ -497,3 +497,8 @@ class TestPerformance:
             read_effects.extend([size, payload])
 
         read_effects.append(None)
+
+        stream = Mock(
+            read=AsyncMock(side_effect=read_effects),
+            get_extra_info=Mock(return_value=mock_socket),
+        )
