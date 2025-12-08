@@ -393,3 +393,10 @@ class TestEdgeCases:
     def test_line_count_persistence_across_connections(self, mock_target):
         """Test that LINE_COUNT persists across multiple connections."""
         initial = log_catcher.LINE_COUNT
+
+        # Simulate multiple log_writer calls
+        for i in range(3):
+            payload = pickle.dumps(f"msg {i}")
+            asyncio.run(log_catcher.log_writer(payload))
+
+        assert log_catcher.LINE_COUNT == initial + 3
