@@ -427,3 +427,11 @@ class TestEdgeCases:
             result = log_catcher.serialize(payload)
             parsed = json.loads(result)
             assert abs(parsed - value) < 1e-10 or (parsed == value)
+
+
+class TestIntegration:
+    """Integration tests combining multiple components."""
+
+    def test_full_message_pipeline(self, mock_target):
+        """Test complete pipeline from pickle to JSON output."""
+        log_catcher.LINE_COUNT = 0
