@@ -486,3 +486,6 @@ class TestPerformance:
     def test_many_small_messages(self, mock_log_writer):
         """Test handling many small messages efficiently."""
         mock_socket = Mock(getpeername=Mock(return_value=("127.0.0.1", 12342)))
+
+        # Create 100 small messages
+        payloads = [pickle.dumps({"id": i, "data": "x"}) for i in range(100)]
