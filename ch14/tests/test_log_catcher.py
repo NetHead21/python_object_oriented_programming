@@ -502,3 +502,9 @@ class TestPerformance:
             read=AsyncMock(side_effect=read_effects),
             get_extra_info=Mock(return_value=mock_socket),
         )
+
+        import time
+
+        start = time.time()
+        asyncio.run(log_catcher.log_catcher(stream, stream))
+        elapsed = time.time() - start
