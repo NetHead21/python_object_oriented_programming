@@ -508,3 +508,7 @@ class TestPerformance:
         start = time.time()
         asyncio.run(log_catcher.log_catcher(stream, stream))
         elapsed = time.time() - start
+
+        # Should process 100 messages quickly (async should be fast)
+        assert mock_log_writer.await_count == 100
+        assert elapsed < 2.0  # Should be much faster than 100 * 0.01 seconds
