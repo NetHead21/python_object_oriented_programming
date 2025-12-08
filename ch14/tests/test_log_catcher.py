@@ -466,3 +466,9 @@ class TestIntegration:
             conn1 = [{"conn": 1, "msg": i} for i in range(5)]
             conn2 = [{"conn": 2, "msg": i} for i in range(3)]
             conn3 = [{"conn": 3, "msg": i} for i in range(7)]
+
+            await asyncio.gather(
+                simulate_connection(conn1),
+                simulate_connection(conn2),
+                simulate_connection(conn3),
+            )
