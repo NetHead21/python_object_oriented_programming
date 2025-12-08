@@ -416,3 +416,8 @@ class TestEdgeCases:
             payload = pickle.dumps(value)
             result = log_catcher.serialize(payload)
             assert json.loads(result) == value
+
+    def test_serialize_float_special_values(self, mock_target):
+        """Test serializing special float values."""
+        # Note: NaN and Infinity are not valid JSON, but pickle can handle them
+        values = [0.0, -0.0, 1.0, -1.0, 3.14159, 1e308, 1e-308]
