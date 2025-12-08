@@ -442,3 +442,6 @@ class TestIntegration:
 
         # Process through log_writer
         asyncio.run(log_catcher.log_writer(payload))
+
+        # Verify LINE_COUNT updated
+        assert log_catcher.LINE_COUNT == 1
