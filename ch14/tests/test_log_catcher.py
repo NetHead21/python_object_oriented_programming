@@ -400,3 +400,14 @@ class TestEdgeCases:
             asyncio.run(log_catcher.log_writer(payload))
 
         assert log_catcher.LINE_COUNT == initial + 3
+
+    def test_serialize_max_integer_values(self, mock_target):
+        """Test serializing extreme integer values."""
+        values = [
+            0,
+            1,
+            -1,
+            2**31 - 1,  # Max 32-bit int
+            -(2**31),  # Min 32-bit int
+            2**63 - 1,  # Max 64-bit int
+        ]
