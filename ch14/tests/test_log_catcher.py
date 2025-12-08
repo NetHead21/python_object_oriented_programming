@@ -435,3 +435,7 @@ class TestIntegration:
     def test_full_message_pipeline(self, mock_target):
         """Test complete pipeline from pickle to JSON output."""
         log_catcher.LINE_COUNT = 0
+
+        # Simulate sending a message
+        data = {"level": "INFO", "msg": "Integration test", "timestamp": 1234567890}
+        payload = pickle.dumps(data)
