@@ -258,3 +258,45 @@ class DirectorySearch:
         # Start all worker processes
         for proc in self.search_workers:
             proc.start()
+
+    def teardown_search(self) -> None:
+        """Gracefully shutdown all worker processes.
+
+        Performs clean shutdown of the worker pool:
+        1. Sends termination signal (None) to each worker via its queue
+        2. Waits for each worker to finish and exit cleanly
+        3. Ensures all processes are joined before returning
+
+        This method ensures:
+        - Workers complete their current operations
+        - No zombie processes are left
+        - Resources (memory, file handles) are released
+        - Clean process termination without force-killing
+
+        Returns:
+            None
+
+        Side Effects:
+            - Sends None to all query queues (termination signal)
+            - Blocks until all workers exit (Process.join())
+            - Workers release their loaded file data
+
+        Example:
+            >>> ds = DirectorySearch()
+            >>> ds.setup_search(paths)
+            >>> # ... perform searches ...
+            >>> ds.teardown_search()  # Clean shutdown
+
+        Blocking Behavior:
+            This method blocks until all workers complete. If a worker
+            is processing a large query, teardown waits for completion.
+
+        Best Practices:
+            - Always call this method when done searching
+            - Call it in a try/finally block for exception safety
+            - Only call once per setup_search() call
+
+        Note:
+            After calling this method, the DirectorySearch instance cannot
+            be reused. Create a new instance for additional searches.
+        """
