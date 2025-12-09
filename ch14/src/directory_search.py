@@ -181,3 +181,6 @@ class DirectorySearch:
 
         Attributes are declared but not initialized until setup_search().
         """
+        self.query_queues: list[Query_Q]
+        self.results_queue: Result_Q
+        self.search_workers: list[Process]
