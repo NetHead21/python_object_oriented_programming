@@ -443,3 +443,6 @@ def all_source(path: Path, pattern: str) -> Iterator[Path]:
         for skip in {".tox", ".mypy_cache", "__pycache__", ".idea"}:
             if skip in dirs:
                 dirs.remove(skip)
+
+        # Yield matching files from current directory
+        yield from (Path(root) / f for f in files if fnmatch(f, pattern))
