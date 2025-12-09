@@ -514,3 +514,7 @@ if __name__ == "__main__":
 
     # Initialize search system
     ds = DirectorySearch()
+
+    # Find all Python files in parent directory
+    base = Path.cwd().parent
+    all_paths = list(all_source(base, "*.py"))
