@@ -540,3 +540,6 @@ if __name__ == "__main__":
             f"Found {count} {target!r} in {len(all_paths)} files "
             f"in {milliseconds:.3f}ms"
         )
+
+    # Clean shutdown of workers
+    ds.teardown_search()
