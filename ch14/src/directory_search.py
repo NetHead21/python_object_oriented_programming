@@ -373,3 +373,9 @@ class DirectorySearch:
         # Send query to all workers simultaneously
         for q in self.query_queues:
             q.put(target)
+
+        # Collect results from all workers
+        for i in range(len(self.query_queues)):
+            # Get results from one worker (blocks until available)
+            for match in self.results_queue.get():
+                yield match
