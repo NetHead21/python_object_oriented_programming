@@ -526,3 +526,8 @@ if __name__ == "__main__":
     for target in ("import", "class", "def"):
         start = time.perf_counter()
         count = 0
+
+        # Perform search and count results
+        for line in ds.search(target):
+            # print(line)  # Uncomment to see matching lines
+            count += 1
