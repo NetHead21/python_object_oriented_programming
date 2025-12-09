@@ -238,3 +238,7 @@ class DirectorySearch:
         # Determine number of workers (default to CPU count)
         if cpus is None:
             cpus = cpu_count()
+
+        # Distribute paths evenly across workers using round-robin
+        # worker_paths[i] contains every cpus-th file starting at index i
+        worker_paths = [paths[i::cpus] for i in range(cpus)]
