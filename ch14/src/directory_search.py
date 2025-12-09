@@ -113,3 +113,7 @@ def search(paths: list[Path], query_q: Query_Q, results_q: Result_Q) -> None:
 
         # Send results back to main process
         results_q.put(results)
+
+
+from fnmatch import fnmatch
+import os
