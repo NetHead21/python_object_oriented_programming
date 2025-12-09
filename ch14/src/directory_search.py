@@ -534,3 +534,9 @@ if __name__ == "__main__":
 
         # Calculate elapsed time in milliseconds
         milliseconds = 1000 * (time.perf_counter() - start)
+
+        # Report results
+        print(
+            f"Found {count} {target!r} in {len(all_paths)} files "
+            f"in {milliseconds:.3f}ms"
+        )
