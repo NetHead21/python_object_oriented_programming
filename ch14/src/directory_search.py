@@ -366,3 +366,6 @@ class DirectorySearch:
             - Each query is independent (stateless)
             - Simple substring matching (consider regex for complex patterns)
         """
+
+        # Debug output showing active query queues
+        print(f"search queues={self.query_queues}")
