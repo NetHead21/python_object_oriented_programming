@@ -110,3 +110,6 @@ def search(paths: list[Path], query_q: Query_Q, results_q: Result_Q) -> None:
 
         # Search for query in all loaded lines
         results = [l for l in lines if query_text in l]
+
+        # Send results back to main process
+        results_q.put(results)
