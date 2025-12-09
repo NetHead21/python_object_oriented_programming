@@ -511,3 +511,6 @@ if __name__ == "__main__":
         The example searches the parent directory of the script location.
         Modify base = Path.cwd().parent to search a different directory.
     """
+
+    # Initialize search system
+    ds = DirectorySearch()
