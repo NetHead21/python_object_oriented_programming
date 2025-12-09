@@ -234,3 +234,7 @@ class DirectorySearch:
             Must be called before search() and only once per instance.
             Call teardown_search() to clean up resources when done.
         """
+
+        # Determine number of workers (default to CPU count)
+        if cpus is None:
+            cpus = cpu_count()
