@@ -107,3 +107,6 @@ def search(paths: list[Path], query_q: Query_Q, results_q: Result_Q) -> None:
         # Get next query (blocks until available)
         if (query_text := query_q.get()) is None:
             break  # None signals shutdown
+
+        # Search for query in all loaded lines
+        results = [l for l in lines if query_text in l]
