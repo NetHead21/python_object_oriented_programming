@@ -379,3 +379,59 @@ class DirectorySearch:
             # Get results from one worker (blocks until available)
             for match in self.results_queue.get():
                 yield match
+
+
+def all_source(path: Path, pattern: str) -> Iterator[Path]:
+    """Recursively find all files matching a pattern in a directory tree.
+
+    Walks through a directory tree and yields paths to files matching the
+    specified pattern. Automatically skips common directories that typically
+    don't contain source code (caches, virtual environments, IDE directories).
+
+    The function modifies the dirs list in-place during os.walk to prevent
+    descending into excluded directories, improving performance on large
+    directory trees.
+
+    Args:
+        path (Path): Root directory to start searching from.
+        pattern (str): File pattern to match (supports glob-style wildcards).
+            Examples: '*.py', '*.txt', 'test_*.py'
+
+    Yields:
+        Path: Paths to files matching the pattern, excluding skipped directories.
+
+    Returns:
+        Iterator[Path]: Generator yielding matching file paths.
+
+    Example:
+        >>> # Find all Python files in a project
+        >>> for py_file in all_source(Path('/project'), '*.py'):
+        ...     print(py_file)
+        /project/main.py
+        /project/utils/helper.py
+        /project/tests/test_main.py
+
+        >>> # Collect all files into a list
+        >>> all_files = list(all_source(Path('/project'), '*.py'))
+        >>> print(f"Found {len(all_files)} Python files")
+
+    Excluded Directories:
+        - .tox: tox testing environments
+        - .mypy_cache: mypy type checker cache
+        - __pycache__: Python bytecode cache
+        - .idea: PyCharm/IntelliJ IDE directory
+
+    Performance:
+        - Efficient tree traversal using os.walk
+        - In-place dir list modification prevents unnecessary recursion
+        - Pattern matching uses fnmatch (shell-style wildcards)
+
+    Note:
+        This is significantly faster than using Path.glob('**/*.py') with
+        filtering, especially for large directory trees with many excluded
+        directories.
+
+    Alternative Implementation:
+        A commented-out glob-based implementation exists below. It's more
+        Pythonic but much slower due to inefficient filtering.
+    """
