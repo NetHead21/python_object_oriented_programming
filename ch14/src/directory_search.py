@@ -369,3 +369,7 @@ class DirectorySearch:
 
         # Debug output showing active query queues
         print(f"search queues={self.query_queues}")
+
+        # Send query to all workers simultaneously
+        for q in self.query_queues:
+            q.put(target)
