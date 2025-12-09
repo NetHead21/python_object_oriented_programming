@@ -304,3 +304,7 @@ class DirectorySearch:
         # Signal process termination to all workers
         for q in self.query_queues:
             q.put(None)  # None is the shutdown signal
+
+        # Wait for all workers to exit cleanly
+        for proc in self.search_workers:
+            proc.join()  # Blocks until process terminates
