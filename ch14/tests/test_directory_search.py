@@ -30,3 +30,13 @@ Fixtures:
     - mock_queue: Mocked Queue class for dependency injection
     - mock_process: Mocked Process class for testing setup/teardown
 """
+
+import sys
+from pathlib import Path
+
+# Add src directory to path for imports
+sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
+
+from pytest import *
+from unittest.mock import Mock, sentinel, call
+import directory_search
