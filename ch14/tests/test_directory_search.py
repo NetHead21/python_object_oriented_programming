@@ -40,3 +40,13 @@ sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
 from pytest import *
 from unittest.mock import Mock, sentinel, call
 import directory_search
+
+
+@fixture
+def mock_query_queue():
+    """Create mock query queue with test query and termination signal.
+
+    Returns:
+        Mock: Queue that returns 'xyzzy' then None to simulate search and shutdown.
+    """
+    return Mock(get=Mock(side_effect=["xyzzy", None]))
