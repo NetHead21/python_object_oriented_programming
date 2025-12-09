@@ -435,8 +435,11 @@ def all_source(path: Path, pattern: str) -> Iterator[Path]:
         A commented-out glob-based implementation exists below. It's more
         Pythonic but much slower due to inefficient filtering.
     """
-    
+
     # Walk through directory tree
     for root, dirs, files in os.walk(path):
         # Remove directories to skip from the dirs list in-place
         # This prevents os.walk from descending into them
+        for skip in {".tox", ".mypy_cache", "__pycache__", ".idea"}:
+            if skip in dirs:
+                dirs.remove(skip)
