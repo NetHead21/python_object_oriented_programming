@@ -44,3 +44,8 @@ Note:
 from __future__ import annotations
 from pathlib import Path
 from typing import List, Iterator, Optional, Union, TYPE_CHECKING
+
+
+if TYPE_CHECKING:
+    Query_Q = Queue[Union[str, None]]
+    Result_Q = Queue[List[str]]
