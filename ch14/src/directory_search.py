@@ -254,3 +254,7 @@ class DirectorySearch:
             Process(target=search, args=(paths, q, self.results_queue))
             for paths, q in zip(worker_paths, self.query_queues)
         ]
+
+        # Start all worker processes
+        for proc in self.search_workers:
+            proc.start()
