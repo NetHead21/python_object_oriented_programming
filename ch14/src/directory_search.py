@@ -172,3 +172,12 @@ class DirectorySearch:
         Each worker loads its assigned files into memory. For N workers
         and M total files, each worker uses ~M/N files worth of memory.
     """
+
+    def __init__(self) -> None:
+        """Initialize DirectorySearch instance.
+
+        Creates an empty search system. Call setup_search() to initialize
+        workers before performing searches.
+
+        Attributes are declared but not initialized until setup_search().
+        """
