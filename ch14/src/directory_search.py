@@ -101,3 +101,9 @@ def search(paths: list[Path], query_q: Query_Q, results_q: Result_Q) -> None:
     lines: list[str] = []
     for path in paths:
         lines.extend(l.rstrip() for l in path.read_text().splitlines())
+
+    # Process queries until termination signal
+    while True:
+        # Get next query (blocks until available)
+        if (query_text := query_q.get()) is None:
+            break  # None signals shutdown
