@@ -184,3 +184,53 @@ class DirectorySearch:
         self.query_queues: list[Query_Q]
         self.results_queue: Result_Q
         self.search_workers: list[Process]
+
+    def setup_search(self, paths: list[Path], cpus: Optional[int] = None) -> None:
+        """Initialize worker processes for parallel searching.
+
+        Creates and starts a pool of worker processes, distributing files
+        evenly among them. Each worker:
+        1. Receives a subset of files to load
+        2. Loads all assigned files into memory
+        3. Waits for queries via its dedicated queue
+
+        The file distribution uses round-robin assignment to ensure even
+        workload across workers. For example, with 3 workers and 10 files:
+        - Worker 0: files [0, 3, 6, 9]
+        - Worker 1: files [1, 4, 7]
+        - Worker 2: files [2, 5, 8]
+
+        Args:
+            paths (list[Path]): All file paths to be searched.
+            cpus (Optional[int], optional): Number of worker processes to create.
+                If None, uses cpu_count() to match CPU core count.
+                Defaults to None.
+
+        Returns:
+            None
+
+        Side Effects:
+            - Creates and starts worker processes
+            - Creates inter-process communication queues
+            - Each worker loads its files (blocking operation)
+
+        Raises:
+            OSError: If process creation fails.
+            FileNotFoundError: If any path doesn't exist (raised in worker).
+
+        Example:
+            >>> ds = DirectorySearch()
+            >>> paths = [Path('file1.py'), Path('file2.py')]
+            >>> ds.setup_search(paths, cpus=2)
+            PID: 12345, paths 1
+            PID: 12346, paths 1
+
+        Performance:
+            - Setup time: O(N/P) where N=files, P=processes
+            - Memory per worker: ~(total_file_size / cpu_count)
+            - Each worker prints its PID and file count
+
+        Note:
+            Must be called before search() and only once per instance.
+            Call teardown_search() to clean up resources when done.
+        """
