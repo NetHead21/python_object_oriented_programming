@@ -521,3 +521,8 @@ if __name__ == "__main__":
 
     # Setup workers with files (prints worker PIDs)
     ds.setup_search(all_paths)
+
+    # Search for common Python keywords and measure performance
+    for target in ("import", "class", "def"):
+        start = time.perf_counter()
+        count = 0
