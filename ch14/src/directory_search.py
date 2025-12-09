@@ -248,3 +248,9 @@ class DirectorySearch:
 
         # Create shared results queue for all workers to return results
         self.results_queue = Queue()
+
+        # Create and configure worker processes
+        self.search_workers = [
+            Process(target=search, args=(paths, q, self.results_queue))
+            for paths, q in zip(worker_paths, self.query_queues)
+        ]
