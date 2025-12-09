@@ -96,3 +96,8 @@ def search(paths: list[Path], query_q: Query_Q, results_q: Result_Q) -> None:
 
     # Print worker identification for monitoring
     print(f"PID: {os.getpid()}, paths {len(paths)}")
+
+    # Load all assigned files into memory
+    lines: list[str] = []
+    for path in paths:
+        lines.extend(l.rstrip() for l in path.read_text().splitlines())
