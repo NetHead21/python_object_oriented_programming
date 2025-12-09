@@ -518,3 +518,6 @@ if __name__ == "__main__":
     # Find all Python files in parent directory
     base = Path.cwd().parent
     all_paths = list(all_source(base, "*.py"))
+
+    # Setup workers with files (prints worker PIDs)
+    ds.setup_search(all_paths)
