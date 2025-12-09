@@ -245,3 +245,6 @@ class DirectorySearch:
 
         # Create one query queue per worker for sending queries
         self.query_queues = [Queue() for p in range(cpus)]
+
+        # Create shared results queue for all workers to return results
+        self.results_queue = Queue()
