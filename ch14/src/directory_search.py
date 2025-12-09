@@ -531,3 +531,6 @@ if __name__ == "__main__":
         for line in ds.search(target):
             # print(line)  # Uncomment to see matching lines
             count += 1
+
+        # Calculate elapsed time in milliseconds
+        milliseconds = 1000 * (time.perf_counter() - start)
