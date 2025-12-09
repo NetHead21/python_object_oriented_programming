@@ -300,3 +300,7 @@ class DirectorySearch:
             After calling this method, the DirectorySearch instance cannot
             be reused. Create a new instance for additional searches.
         """
+
+        # Signal process termination to all workers
+        for q in self.query_queues:
+            q.put(None)  # None is the shutdown signal
