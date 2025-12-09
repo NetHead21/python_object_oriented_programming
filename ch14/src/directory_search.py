@@ -93,3 +93,6 @@ def search(paths: list[Path], query_q: Query_Q, results_q: Result_Q) -> None:
         - Simple substring matching used (not regex)
         - Trailing whitespace stripped from lines
     """
+
+    # Print worker identification for monitoring
+    print(f"PID: {os.getpid()}, paths {len(paths)}")
