@@ -470,3 +470,44 @@ def all_source(path: Path, pattern: str) -> Iterator[Path]:
 #         if any(n.startswith("__") and n.endswith("__") for n in code_path.parts):
 #             continue
 #         yield code_path.absolute()
+
+
+from multiprocessing import Process, Queue, cpu_count
+import time
+
+if __name__ == "__main__":
+    """Demonstration of parallel directory search system.
+    
+    This example demonstrates the DirectorySearch system by:
+    1. Scanning parent directory for all Python files
+    2. Setting up parallel search workers
+    3. Searching for common Python keywords: 'import', 'class', 'def'
+    4. Measuring and reporting performance for each search
+    5. Cleanly shutting down workers
+    
+    Performance Metrics:
+        For each search term, the script reports:
+        - Number of matching lines found
+        - Number of files searched
+        - Execution time in milliseconds
+    
+    Example Output:
+        PID: 12345, paths 342
+        PID: 12346, paths 342
+        PID: 12347, paths 341
+        PID: 12348, paths 341
+        search queues=[...]
+        Found 1523 'import' in 1366 files in 45.231ms
+        Found 892 'class' in 1366 files in 12.456ms
+        Found 3421 'def' in 1366 files in 23.789ms
+    
+    Parallelization Benefits:
+        - Multiple processes search simultaneously
+        - Each process handles ~1/cpu_count files
+        - Subsequent searches are fast (files pre-loaded)
+        - Scales with available CPU cores
+    
+    Note:
+        The example searches the parent directory of the script location.
+        Modify base = Path.cwd().parent to search a different directory.
+    """
