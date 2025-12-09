@@ -242,3 +242,6 @@ class DirectorySearch:
         # Distribute paths evenly across workers using round-robin
         # worker_paths[i] contains every cpus-th file starting at index i
         worker_paths = [paths[i::cpus] for i in range(cpus)]
+
+        # Create one query queue per worker for sending queries
+        self.query_queues = [Queue() for p in range(cpus)]
