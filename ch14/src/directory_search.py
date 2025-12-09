@@ -40,3 +40,7 @@ Note:
     This implementation loads all file contents into memory for each worker.
     For very large codebases, consider memory-mapped files or chunked reading.
 """
+
+from __future__ import annotations
+from pathlib import Path
+from typing import List, Iterator, Optional, Union, TYPE_CHECKING
