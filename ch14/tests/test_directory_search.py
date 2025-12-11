@@ -60,3 +60,15 @@ def mock_result_queue():
         Mock: Queue with put() method for result submission.
     """
     return Mock(put=Mock())
+
+
+@fixture
+def mock_paths(tmp_path):
+    """Create temporary test files for search operations.
+
+    Args:
+        tmp_path: pytest fixture providing temporary directory.
+
+    Returns:
+        list[Path]: Two test files, one with 'xyzzy' match, one without.
+    """
