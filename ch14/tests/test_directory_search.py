@@ -119,3 +119,6 @@ def test_all_source(mock_directory):
 
     Verifies that .tox directory and its contents are excluded from results.
     """
+
+    files = list(directory_search.all_source(mock_directory, "*.py"))
+    assert files == [mock_directory / "file1.py"]
