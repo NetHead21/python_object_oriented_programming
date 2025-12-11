@@ -88,3 +88,7 @@ def test_search(mock_paths, mock_query_queue, mock_result_queue):
     - Returns matching lines via result queue
     - Terminates on None signal
     """
+
+    directory_search.search(mock_paths, mock_query_queue, mock_result_queue)
+    assert mock_query_queue.get.mock_calls == [call(), call()]
+    assert mock_result_queue.put.mock_calls == [call(["file2 contains xyzzy"])]
