@@ -153,3 +153,8 @@ def mock_process(monkeypatch):
     Returns:
         Mock: Mocked Process class with start() and join() methods.
     """
+
+    mock_instance = Mock(name="mock Process", start=Mock(), join=Mock())
+    mock_process_class = Mock(return_value=mock_instance)
+    monkeypatch.setattr(directory_search, "Process", mock_process_class)
+    return mock_process_class
