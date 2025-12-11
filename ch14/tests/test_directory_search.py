@@ -173,3 +173,25 @@ def test_directory_search(mock_queue, mock_process, mock_paths):
 
     ds_instance = directory_search.DirectorySearch()
     ds_instance.setup_search(mock_paths, cpus=2)
+
+    assert mock_queue.mock_calls == [call(), call(), call()]
+    assert mock_process.mock_calls == [
+        call(
+            target=directory_search.search,
+            args=(mock_paths[0::2], mock_queue.return_value, mock_queue.return_value),
+        ),
+        call(
+            target=directory_search.search,
+            args=(mock_paths[1::2], mock_queue.return_value, mock_queue.return_value),
+        ),
+    ]
+    assert mock_process.return_value.start.mock_calls == [call(), call()]
+    assert ds_instance.query_queues == [
+        mock_queue.return_value,
+        mock_queue.return_value,
+    ]
+    assert ds_instance.results_queue == mock_queue.return_value
+    assert ds_instance.search_workers == [
+        mock_process.return_value,
+        mock_process.return_value,
+    ]
