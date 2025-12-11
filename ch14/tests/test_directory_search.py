@@ -78,3 +78,13 @@ def mock_paths(tmp_path):
     f2 = tmp_path / "file2"
     f2.write_text("file2 contains xyzzy\n")
     return [f1, f2]
+
+
+def test_search(mock_paths, mock_query_queue, mock_result_queue):
+    """Test basic search worker function with file matching.
+
+    Verifies that the search() worker:
+    - Loads files and searches for query strings
+    - Returns matching lines via result queue
+    - Terminates on None signal
+    """
