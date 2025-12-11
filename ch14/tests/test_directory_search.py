@@ -72,3 +72,9 @@ def mock_paths(tmp_path):
     Returns:
         list[Path]: Two test files, one with 'xyzzy' match, one without.
     """
+
+    f1 = tmp_path / "file1"
+    f1.write_text("not in file1\n")
+    f2 = tmp_path / "file2"
+    f2.write_text("file2 contains xyzzy\n")
+    return [f1, f2]
