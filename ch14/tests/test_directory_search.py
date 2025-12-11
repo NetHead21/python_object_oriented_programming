@@ -134,3 +134,10 @@ def mock_queue(monkeypatch):
     Returns:
         Mock: Mocked Queue class returning configured queue instances.
     """
+
+    mock_instance = Mock(
+        name="mock Queue", put=Mock(), get=Mock(return_value=["line with text"])
+    )
+    mock_queue_class = Mock(return_value=mock_instance)
+    monkeypatch.setattr(directory_search, "Queue", mock_queue_class)
+    return mock_queue_class
