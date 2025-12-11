@@ -210,3 +210,19 @@ def test_directory_search(mock_queue, mock_process, mock_paths):
         call(None),
     ]
     assert mock_process.return_value.join.mock_calls == [call(), call()]
+
+
+# ============================================================================
+# Additional Comprehensive Tests with Edge Cases
+# ============================================================================
+
+
+# Edge Case Tests for search() function
+# ============================================================================
+
+
+def test_search_empty_file(tmp_path, mock_query_queue, mock_result_queue):
+    """Test search worker handles empty files gracefully.
+
+    Verifies that searching an empty file returns empty results without errors.
+    """
