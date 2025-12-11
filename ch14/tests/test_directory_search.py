@@ -141,3 +141,15 @@ def mock_queue(monkeypatch):
     mock_queue_class = Mock(return_value=mock_instance)
     monkeypatch.setattr(directory_search, "Queue", mock_queue_class)
     return mock_queue_class
+
+
+@fixture
+def mock_process(monkeypatch):
+    """Mock the Process class for testing DirectorySearch worker management.
+
+    Args:
+        monkeypatch: pytest fixture for patching imports.
+
+    Returns:
+        Mock: Mocked Process class with start() and join() methods.
+    """
