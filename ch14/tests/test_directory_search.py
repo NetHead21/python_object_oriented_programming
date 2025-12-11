@@ -233,3 +233,10 @@ def test_search_empty_file(tmp_path, mock_query_queue, mock_result_queue):
     directory_search.search([empty_file], mock_query_queue, mock_result_queue)
 
     assert mock_result_queue.put.mock_calls == [call([])]
+
+
+def test_search_no_matches(tmp_path, mock_result_queue):
+    """Test search returns empty list when no lines match the query.
+
+    Verifies correct behavior when search pattern not found in any lines.
+    """
