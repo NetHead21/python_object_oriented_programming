@@ -226,3 +226,10 @@ def test_search_empty_file(tmp_path, mock_query_queue, mock_result_queue):
 
     Verifies that searching an empty file returns empty results without errors.
     """
+
+    empty_file = tmp_path / "empty.txt"
+    empty_file.write_text("")
+
+    directory_search.search([empty_file], mock_query_queue, mock_result_queue)
+
+    assert mock_result_queue.put.mock_calls == [call([])]
