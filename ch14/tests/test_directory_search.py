@@ -92,3 +92,15 @@ def test_search(mock_paths, mock_query_queue, mock_result_queue):
     directory_search.search(mock_paths, mock_query_queue, mock_result_queue)
     assert mock_query_queue.get.mock_calls == [call(), call()]
     assert mock_result_queue.put.mock_calls == [call(["file2 contains xyzzy"])]
+
+
+@fixture
+def mock_directory(tmp_path):
+    """Create temporary directory with skip directory (.tox) for testing.
+
+    Args:
+        tmp_path: pytest fixture providing temporary directory.
+
+    Returns:
+        Path: Directory containing file1.py and .tox/file2.py.
+    """
