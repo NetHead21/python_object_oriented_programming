@@ -122,3 +122,15 @@ def test_all_source(mock_directory):
 
     files = list(directory_search.all_source(mock_directory, "*.py"))
     assert files == [mock_directory / "file1.py"]
+
+
+@fixture
+def mock_queue(monkeypatch):
+    """Mock the Queue class for testing DirectorySearch setup.
+
+    Args:
+        monkeypatch: pytest fixture for patching imports.
+
+    Returns:
+        Mock: Mocked Queue class returning configured queue instances.
+    """
