@@ -170,3 +170,6 @@ def test_directory_search(mock_queue, mock_process, mock_paths):
     - Result collection from workers
     - Clean shutdown with termination signals
     """
+
+    ds_instance = directory_search.DirectorySearch()
+    ds_instance.setup_search(mock_paths, cpus=2)
