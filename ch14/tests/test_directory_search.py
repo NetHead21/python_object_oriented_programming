@@ -240,3 +240,11 @@ def test_search_no_matches(tmp_path, mock_result_queue):
 
     Verifies correct behavior when search pattern not found in any lines.
     """
+
+    file1 = tmp_path / "file1.txt"
+    file1.write_text("hello\nworld\n")
+
+    mock_queue = Mock(get=Mock(side_effect=["xyz", None]))
+    directory_search.search([file1], mock_queue, mock_result_queue)
+
+    assert mock_result_queue.put.mock_calls == [call([])]
