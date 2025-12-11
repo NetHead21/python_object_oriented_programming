@@ -50,3 +50,13 @@ def mock_query_queue():
         Mock: Queue that returns 'xyzzy' then None to simulate search and shutdown.
     """
     return Mock(get=Mock(side_effect=["xyzzy", None]))
+
+
+@fixture
+def mock_result_queue():
+    """Create mock result queue for collecting search results.
+
+    Returns:
+        Mock: Queue with put() method for result submission.
+    """
+    return Mock(put=Mock())
