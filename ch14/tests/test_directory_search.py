@@ -158,3 +158,15 @@ def mock_process(monkeypatch):
     mock_process_class = Mock(return_value=mock_instance)
     monkeypatch.setattr(directory_search, "Process", mock_process_class)
     return mock_process_class
+
+
+def test_directory_search(mock_queue, mock_process, mock_paths):
+    """Test DirectorySearch class with full lifecycle: setup, search, teardown.
+
+    Verifies:
+    - Proper initialization of queues and workers
+    - Correct file distribution across workers (round-robin)
+    - Query distribution to all workers
+    - Result collection from workers
+    - Clean shutdown with termination signals
+    """
