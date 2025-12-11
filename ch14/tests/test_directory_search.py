@@ -201,3 +201,12 @@ def test_directory_search(mock_queue, mock_process, mock_paths):
     assert result == ["line with text", "line with text"]
     assert mock_queue.return_value.put.mock_calls == [call("text"), call("text")]
     assert mock_queue.return_value.get.mock_calls == [call(), call()]
+
+    ds_instance.teardown_search()
+    assert mock_queue.return_value.put.mock_calls == [
+        call("text"),
+        call("text"),
+        call(None),
+        call(None),
+    ]
+    assert mock_process.return_value.join.mock_calls == [call(), call()]
