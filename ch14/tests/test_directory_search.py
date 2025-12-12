@@ -292,3 +292,6 @@ def test_search_case_sensitive(tmp_path, mock_result_queue):
 
     Verifies 'import' only matches lowercase 'import', not 'Import' or 'IMPORT'.
     """
+
+    file1 = tmp_path / "file1.txt"
+    file1.write_text("Import os\nimport sys\nIMPORT json\n")
