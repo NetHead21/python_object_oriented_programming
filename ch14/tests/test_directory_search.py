@@ -417,3 +417,6 @@ def test_search_partial_match(tmp_path, mock_result_queue):
 
     file1 = tmp_path / "file1.txt"
     file1.write_text("import os\nfrom import_helper import x\nimportant note\n")
+
+    mock_queue = Mock(get=Mock(side_effect=["import", None]))
+    directory_search.search([file1], mock_queue, mock_result_queue)
