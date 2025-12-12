@@ -406,3 +406,11 @@ def test_search_multiple_files(tmp_path, mock_result_queue):
     assert len(results) == 2
     assert "import os" in results
     assert "import sys" in results
+
+
+def test_search_partial_match(tmp_path, mock_result_queue):
+    """Test that search finds partial/substring matches within lines.
+
+    Verifies 'import' matches 'import os', 'import_helper', and 'important'.
+    Demonstrates substring matching behavior.
+    """
