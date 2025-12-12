@@ -336,3 +336,9 @@ def test_search_special_characters(tmp_path, mock_result_queue):
 
     mock_queue = Mock(get=Mock(side_effect=["$variable", "[bracket]", ".*regex", None]))
     directory_search.search([file1], mock_queue, mock_result_queue)
+
+    assert mock_result_queue.put.mock_calls == [
+        call(["$variable = 10"]),
+        call(["[bracket]"]),
+        call([".*regex.*"]),
+    ]
