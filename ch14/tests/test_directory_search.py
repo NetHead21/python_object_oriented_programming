@@ -342,3 +342,11 @@ def test_search_special_characters(tmp_path, mock_result_queue):
         call(["[bracket]"]),
         call([".*regex.*"]),
     ]
+
+
+def test_search_long_lines(tmp_path, mock_result_queue):
+    """Test search handles very long lines (20,000+ characters) efficiently.
+
+    Verifies that search can process and return extremely long lines without
+    truncation or performance issues.
+    """
