@@ -466,3 +466,8 @@ def test_all_source_nested_directories(tmp_path):
     (tmp_path / "level1").mkdir()
     (tmp_path / "level1" / "level2").mkdir()
     (tmp_path / "level1" / "level2" / "level3").mkdir()
+
+    (tmp_path / "root.py").write_text("# root")
+    (tmp_path / "level1" / "l1.py").write_text("# l1")
+    (tmp_path / "level1" / "level2" / "l2.py").write_text("# l2")
+    (tmp_path / "level1" / "level2" / "level3" / "l3.py").write_text("# l3")
