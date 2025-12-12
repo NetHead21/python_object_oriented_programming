@@ -261,3 +261,7 @@ def test_search_all_lines_match(tmp_path, mock_result_queue):
 
     mock_queue = Mock(get=Mock(side_effect=["test", None]))
     directory_search.search([file1], mock_queue, mock_result_queue)
+
+    assert mock_result_queue.put.mock_calls == [
+        call(["test line 1", "test line 2", "test line 3"])
+    ]
