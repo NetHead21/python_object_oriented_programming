@@ -471,3 +471,10 @@ def test_all_source_nested_directories(tmp_path):
     (tmp_path / "level1" / "l1.py").write_text("# l1")
     (tmp_path / "level1" / "level2" / "l2.py").write_text("# l2")
     (tmp_path / "level1" / "level2" / "level3" / "l3.py").write_text("# l3")
+
+    files = list(directory_search.all_source(tmp_path, "*.py"))
+    assert len(files) == 4
+    assert tmp_path / "root.py" in files
+    assert tmp_path / "level1" / "l1.py" in files
+    assert tmp_path / "level1" / "level2" / "l2.py" in files
+    assert tmp_path / "level1" / "level2" / "level3" / "l3.py" in files
