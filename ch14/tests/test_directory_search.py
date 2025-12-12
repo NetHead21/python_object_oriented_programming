@@ -440,3 +440,11 @@ def test_all_source_empty_directory(tmp_path):
 
     files = list(directory_search.all_source(tmp_path, "*.py"))
     assert files == []
+
+
+def test_all_source_no_matching_files(tmp_path):
+    """Test all_source returns empty list when no files match the pattern.
+
+    Verifies pattern filtering works correctly when files exist but don't
+    match the specified pattern.
+    """
