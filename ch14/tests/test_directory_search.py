@@ -350,3 +350,7 @@ def test_search_long_lines(tmp_path, mock_result_queue):
     Verifies that search can process and return extremely long lines without
     truncation or performance issues.
     """
+
+    file1 = tmp_path / "file1.txt"
+    long_line = "x" * 10000 + " target " + "y" * 10000
+    file1.write_text(f"{long_line}\nshort line\n")
