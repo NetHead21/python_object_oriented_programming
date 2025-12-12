@@ -370,3 +370,6 @@ def test_search_whitespace_handling(tmp_path, mock_result_queue):
     Verifies rstrip() behavior removes trailing whitespace while preserving
     leading whitespace and mid-line spacing.
     """
+
+    file1 = tmp_path / "file1.txt"
+    file1.write_text("line with spaces   \nline with tabs\t\t\nline with both  \t  \n")
