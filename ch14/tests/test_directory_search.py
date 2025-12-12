@@ -491,3 +491,6 @@ def test_all_source_skip_tox_directory(tmp_path):
     (tmp_path / "normal.py").write_text("# normal")
     (tmp_path / ".tox" / "skip.py").write_text("# skip")
     (tmp_path / ".tox" / "env" / "skip2.py").write_text("# skip2")
+
+    files = list(directory_search.all_source(tmp_path, "*.py"))
+    assert files == [tmp_path / "normal.py"]
