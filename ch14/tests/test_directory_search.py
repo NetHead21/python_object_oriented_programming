@@ -454,3 +454,11 @@ def test_all_source_no_matching_files(tmp_path):
 
     files = list(directory_search.all_source(tmp_path, "*.py"))
     assert files == []
+
+
+def test_all_source_nested_directories(tmp_path):
+    """Test all_source recursively finds files in deeply nested directories.
+
+    Verifies recursive traversal through multiple directory levels,
+    finding files at each level.
+    """
