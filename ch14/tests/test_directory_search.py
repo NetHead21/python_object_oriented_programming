@@ -258,3 +258,6 @@ def test_search_all_lines_match(tmp_path, mock_result_queue):
 
     file1 = tmp_path / "file1.txt"
     file1.write_text("test line 1\ntest line 2\ntest line 3\n")
+
+    mock_queue = Mock(get=Mock(side_effect=["test", None]))
+    directory_search.search([file1], mock_queue, mock_result_queue)
