@@ -414,3 +414,6 @@ def test_search_partial_match(tmp_path, mock_result_queue):
     Verifies 'import' matches 'import os', 'import_helper', and 'important'.
     Demonstrates substring matching behavior.
     """
+
+    file1 = tmp_path / "file1.txt"
+    file1.write_text("import os\nfrom import_helper import x\nimportant note\n")
