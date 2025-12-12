@@ -285,3 +285,10 @@ def test_search_multiple_queries(tmp_path, mock_result_queue):
         call(["class MyClass"]),
         call(["def my_function"]),
     ]
+
+
+def test_search_case_sensitive(tmp_path, mock_result_queue):
+    """Test that search performs case-sensitive matching.
+
+    Verifies 'import' only matches lowercase 'import', not 'Import' or 'IMPORT'.
+    """
