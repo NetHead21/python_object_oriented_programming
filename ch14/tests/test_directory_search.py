@@ -255,3 +255,6 @@ def test_search_all_lines_match(tmp_path, mock_result_queue):
 
     Verifies that search correctly identifies when all lines contain the pattern.
     """
+
+    file1 = tmp_path / "file1.txt"
+    file1.write_text("test line 1\ntest line 2\ntest line 3\n")
