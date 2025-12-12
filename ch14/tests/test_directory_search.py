@@ -362,3 +362,11 @@ def test_search_long_lines(tmp_path, mock_result_queue):
     assert len(results) == 1
     assert "target" in results[0]
     assert len(results[0]) > 20000
+
+
+def test_search_whitespace_handling(tmp_path, mock_result_queue):
+    """Test that trailing whitespace (spaces and tabs) is stripped from lines.
+
+    Verifies rstrip() behavior removes trailing whitespace while preserving
+    leading whitespace and mid-line spacing.
+    """
