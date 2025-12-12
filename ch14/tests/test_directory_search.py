@@ -462,3 +462,7 @@ def test_all_source_nested_directories(tmp_path):
     Verifies recursive traversal through multiple directory levels,
     finding files at each level.
     """
+
+    (tmp_path / "level1").mkdir()
+    (tmp_path / "level1" / "level2").mkdir()
+    (tmp_path / "level1" / "level2" / "level3").mkdir()
