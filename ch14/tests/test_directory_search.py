@@ -373,3 +373,6 @@ def test_search_whitespace_handling(tmp_path, mock_result_queue):
 
     file1 = tmp_path / "file1.txt"
     file1.write_text("line with spaces   \nline with tabs\t\t\nline with both  \t  \n")
+
+    mock_queue = Mock(get=Mock(side_effect=["line", None]))
+    directory_search.search([file1], mock_queue, mock_result_queue)
