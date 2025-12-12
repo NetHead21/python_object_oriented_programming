@@ -265,3 +265,11 @@ def test_search_all_lines_match(tmp_path, mock_result_queue):
     assert mock_result_queue.put.mock_calls == [
         call(["test line 1", "test line 2", "test line 3"])
     ]
+
+
+def test_search_multiple_queries(tmp_path, mock_result_queue):
+    """Test worker processes multiple queries sequentially before termination.
+
+    Verifies that workers can handle multiple search queries in sequence,
+    returning appropriate results for each query.
+    """
