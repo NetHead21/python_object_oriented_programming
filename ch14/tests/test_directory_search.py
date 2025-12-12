@@ -279,3 +279,9 @@ def test_search_multiple_queries(tmp_path, mock_result_queue):
 
     mock_queue = Mock(get=Mock(side_effect=["import", "class", "def", None]))
     directory_search.search([file1], mock_queue, mock_result_queue)
+
+    assert mock_result_queue.put.mock_calls == [
+        call(["import os"]),
+        call(["class MyClass"]),
+        call(["def my_function"]),
+    ]
