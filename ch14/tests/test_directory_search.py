@@ -248,3 +248,10 @@ def test_search_no_matches(tmp_path, mock_result_queue):
     directory_search.search([file1], mock_queue, mock_result_queue)
 
     assert mock_result_queue.put.mock_calls == [call([])]
+
+
+def test_search_all_lines_match(tmp_path, mock_result_queue):
+    """Test search returns all lines when every line matches the query.
+
+    Verifies that search correctly identifies when all lines contain the pattern.
+    """
