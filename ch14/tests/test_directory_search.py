@@ -420,3 +420,9 @@ def test_search_partial_match(tmp_path, mock_result_queue):
 
     mock_queue = Mock(get=Mock(side_effect=["import", None]))
     directory_search.search([file1], mock_queue, mock_result_queue)
+
+    results = mock_result_queue.put.mock_calls[0][1][0]
+    assert len(results) == 3
+    assert "import os" in results
+    assert "from import_helper import x" in results
+    assert "important note" in results
