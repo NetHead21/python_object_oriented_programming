@@ -295,3 +295,6 @@ def test_search_case_sensitive(tmp_path, mock_result_queue):
 
     file1 = tmp_path / "file1.txt"
     file1.write_text("Import os\nimport sys\nIMPORT json\n")
+
+    mock_queue = Mock(get=Mock(side_effect=["import", None]))
+    directory_search.search([file1], mock_queue, mock_result_queue)
