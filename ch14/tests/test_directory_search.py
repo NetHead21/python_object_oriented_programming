@@ -313,3 +313,6 @@ def test_search_unicode_content(tmp_path, mock_result_queue):
 
     file1 = tmp_path / "file1.txt"
     file1.write_text("Hello 世界\nПривет мир\n日本語\némojis 🎉🎊\n")
+
+    mock_queue = Mock(get=Mock(side_effect=["世界", "мир", "🎉", None]))
+    directory_search.search([file1], mock_queue, mock_result_queue)
