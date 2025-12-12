@@ -357,3 +357,8 @@ def test_search_long_lines(tmp_path, mock_result_queue):
 
     mock_queue = Mock(get=Mock(side_effect=["target", None]))
     directory_search.search([file1], mock_queue, mock_result_queue)
+
+    results = mock_result_queue.put.mock_calls[0][1][0]
+    assert len(results) == 1
+    assert "target" in results[0]
+    assert len(results[0]) > 20000
