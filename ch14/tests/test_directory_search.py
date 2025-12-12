@@ -273,3 +273,6 @@ def test_search_multiple_queries(tmp_path, mock_result_queue):
     Verifies that workers can handle multiple search queries in sequence,
     returning appropriate results for each query.
     """
+
+    file1 = tmp_path / "file1.txt"
+    file1.write_text("import os\nclass MyClass\ndef my_function\n")
