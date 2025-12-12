@@ -330,3 +330,6 @@ def test_search_special_characters(tmp_path, mock_result_queue):
     Verifies literal matching for $, [], (), .* and other regex metacharacters.
     Search uses substring matching, not regular expressions.
     """
+
+    file1 = tmp_path / "file1.txt"
+    file1.write_text("$variable = 10\n[bracket]\n(parenthesis)\n.*regex.*\n")
