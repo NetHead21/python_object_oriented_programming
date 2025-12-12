@@ -448,3 +448,9 @@ def test_all_source_no_matching_files(tmp_path):
     Verifies pattern filtering works correctly when files exist but don't
     match the specified pattern.
     """
+
+    (tmp_path / "file.txt").write_text("content")
+    (tmp_path / "file.md").write_text("content")
+
+    files = list(directory_search.all_source(tmp_path, "*.py"))
+    assert files == []
