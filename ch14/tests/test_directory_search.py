@@ -310,3 +310,6 @@ def test_search_unicode_content(tmp_path, mock_result_queue):
     - Cyrillic characters (мир)
     - Emoji (🎉)
     """
+
+    file1 = tmp_path / "file1.txt"
+    file1.write_text("Hello 世界\nПривет мир\n日本語\némojis 🎉🎊\n")
