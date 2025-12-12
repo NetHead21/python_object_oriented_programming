@@ -354,3 +354,6 @@ def test_search_long_lines(tmp_path, mock_result_queue):
     file1 = tmp_path / "file1.txt"
     long_line = "x" * 10000 + " target " + "y" * 10000
     file1.write_text(f"{long_line}\nshort line\n")
+
+    mock_queue = Mock(get=Mock(side_effect=["target", None]))
+    directory_search.search([file1], mock_queue, mock_result_queue)
