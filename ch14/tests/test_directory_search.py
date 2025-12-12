@@ -322,3 +322,11 @@ def test_search_unicode_content(tmp_path, mock_result_queue):
         call(["Привет мир"]),
         call(["émojis 🎉🎊"]),
     ]
+
+
+def test_search_special_characters(tmp_path, mock_result_queue):
+    """Test search treats special characters as literals, not regex patterns.
+
+    Verifies literal matching for $, [], (), .* and other regex metacharacters.
+    Search uses substring matching, not regular expressions.
+    """
