@@ -437,3 +437,6 @@ def test_all_source_empty_directory(tmp_path):
 
     Verifies graceful handling when no files exist in target directory.
     """
+
+    files = list(directory_search.all_source(tmp_path, "*.py"))
+    assert files == []
