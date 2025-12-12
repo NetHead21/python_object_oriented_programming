@@ -383,3 +383,11 @@ def test_search_whitespace_handling(tmp_path, mock_result_queue):
         "line with tabs",
         "line with both",
     ]
+
+
+def test_search_multiple_files(tmp_path, mock_result_queue):
+    """Test worker searches across multiple assigned files and aggregates results.
+
+    Verifies that workers load and search all assigned files, combining
+    matches from all sources.
+    """
