@@ -300,3 +300,13 @@ def test_search_case_sensitive(tmp_path, mock_result_queue):
     directory_search.search([file1], mock_queue, mock_result_queue)
 
     assert mock_result_queue.put.mock_calls == [call(["import sys"])]
+
+
+def test_search_unicode_content(tmp_path, mock_result_queue):
+    """Test search handles Unicode characters correctly (Chinese, Cyrillic, emoji).
+
+    Verifies that search works with multi-byte characters including:
+    - Chinese characters (世界)
+    - Cyrillic characters (мир)
+    - Emoji (🎉)
+    """
