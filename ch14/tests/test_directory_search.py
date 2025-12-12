@@ -398,3 +398,6 @@ def test_search_multiple_files(tmp_path, mock_result_queue):
     file2.write_text("import sys\n")
     file3 = tmp_path / "file3.txt"
     file3.write_text("no match\n")
+
+    mock_queue = Mock(get=Mock(side_effect=["import", None]))
+    directory_search.search([file1, file2, file3], mock_queue, mock_result_queue)
