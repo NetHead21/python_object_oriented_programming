@@ -401,3 +401,8 @@ def test_search_multiple_files(tmp_path, mock_result_queue):
 
     mock_queue = Mock(get=Mock(side_effect=["import", None]))
     directory_search.search([file1, file2, file3], mock_queue, mock_result_queue)
+
+    results = mock_result_queue.put.mock_calls[0][1][0]
+    assert len(results) == 2
+    assert "import os" in results
+    assert "import sys" in results
