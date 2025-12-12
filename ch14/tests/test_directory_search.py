@@ -426,3 +426,14 @@ def test_search_partial_match(tmp_path, mock_result_queue):
     assert "import os" in results
     assert "from import_helper import x" in results
     assert "important note" in results
+
+
+# Edge Case Tests for all_source() function
+# ============================================================================
+
+
+def test_all_source_empty_directory(tmp_path):
+    """Test all_source returns empty list for empty directory.
+
+    Verifies graceful handling when no files exist in target directory.
+    """
