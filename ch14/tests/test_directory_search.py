@@ -391,3 +391,10 @@ def test_search_multiple_files(tmp_path, mock_result_queue):
     Verifies that workers load and search all assigned files, combining
     matches from all sources.
     """
+
+    file1 = tmp_path / "file1.txt"
+    file1.write_text("import os\n")
+    file2 = tmp_path / "file2.txt"
+    file2.write_text("import sys\n")
+    file3 = tmp_path / "file3.txt"
+    file3.write_text("no match\n")
