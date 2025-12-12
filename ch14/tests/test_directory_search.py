@@ -485,3 +485,9 @@ def test_all_source_skip_tox_directory(tmp_path):
 
     Verifies .tox exclusion prevents descending into tox virtual environments.
     """
+
+    (tmp_path / ".tox").mkdir()
+    (tmp_path / ".tox" / "env").mkdir()
+    (tmp_path / "normal.py").write_text("# normal")
+    (tmp_path / ".tox" / "skip.py").write_text("# skip")
+    (tmp_path / ".tox" / "env" / "skip2.py").write_text("# skip2")
