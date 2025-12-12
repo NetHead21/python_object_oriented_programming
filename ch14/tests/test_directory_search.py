@@ -478,3 +478,10 @@ def test_all_source_nested_directories(tmp_path):
     assert tmp_path / "level1" / "l1.py" in files
     assert tmp_path / "level1" / "level2" / "l2.py" in files
     assert tmp_path / "level1" / "level2" / "level3" / "l3.py" in files
+
+
+def test_all_source_skip_tox_directory(tmp_path):
+    """Test that .tox directory and all subdirectories are excluded.
+
+    Verifies .tox exclusion prevents descending into tox virtual environments.
+    """
