@@ -582,3 +582,10 @@ def test_all_source_different_patterns(tmp_path):
     assert len(py_files) == 2
     assert len(txt_files) == 1
     assert len(test_files) == 1
+
+
+def test_all_source_no_extension(tmp_path):
+    """Test all_source can match files without extensions (Makefile, README).
+
+    Verifies that exact filename matching works for extensionless files.
+    """
