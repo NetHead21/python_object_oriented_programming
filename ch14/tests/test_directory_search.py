@@ -507,3 +507,10 @@ def test_all_source_skip_mypy_cache_directory(tmp_path):
 
     files = list(directory_search.all_source(tmp_path, "*.py"))
     assert files == [tmp_path / "normal.py"]
+
+
+def test_all_source_skip_pycache_directory(tmp_path):
+    """Test that __pycache__ directory is excluded from search.
+
+    Verifies exclusion of Python bytecode cache directories.
+    """
