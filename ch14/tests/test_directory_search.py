@@ -532,3 +532,6 @@ def test_all_source_skip_idea_directory(tmp_path):
     (tmp_path / ".idea").mkdir()
     (tmp_path / "normal.py").write_text("# normal")
     (tmp_path / ".idea" / "workspace.xml").write_text("# skip")
+
+    files = list(directory_search.all_source(tmp_path, "*.py"))
+    assert files == [tmp_path / "normal.py"]
