@@ -589,3 +589,7 @@ def test_all_source_no_extension(tmp_path):
 
     Verifies that exact filename matching works for extensionless files.
     """
+
+    (tmp_path / "Makefile").write_text("# makefile")
+    (tmp_path / "README").write_text("# readme")
+    (tmp_path / "file.py").write_text("# py")
