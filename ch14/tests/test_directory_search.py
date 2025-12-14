@@ -593,3 +593,7 @@ def test_all_source_no_extension(tmp_path):
     (tmp_path / "Makefile").write_text("# makefile")
     (tmp_path / "README").write_text("# readme")
     (tmp_path / "file.py").write_text("# py")
+
+    files = list(directory_search.all_source(tmp_path, "Makefile"))
+    assert len(files) == 1
+    assert tmp_path / "Makefile" in files
