@@ -578,3 +578,7 @@ def test_all_source_different_patterns(tmp_path):
     py_files = list(directory_search.all_source(tmp_path, "*.py"))
     txt_files = list(directory_search.all_source(tmp_path, "*.txt"))
     test_files = list(directory_search.all_source(tmp_path, "test_*.py"))
+
+    assert len(py_files) == 2
+    assert len(txt_files) == 1
+    assert len(test_files) == 1
