@@ -482,7 +482,6 @@ def test_all_source_nested_directories(tmp_path):
 
 def test_all_source_skip_tox_directory(tmp_path):
     """Test that .tox directory and all subdirectories are excluded.
-
     Verifies .tox exclusion prevents descending into tox virtual environments.
     """
 
@@ -494,3 +493,10 @@ def test_all_source_skip_tox_directory(tmp_path):
 
     files = list(directory_search.all_source(tmp_path, "*.py"))
     assert files == [tmp_path / "normal.py"]
+
+
+def test_all_source_skip_mypy_cache_directory(tmp_path):
+    """Test that .mypy_cache directory is excluded from search.
+
+    Verifies exclusion of mypy type checker cache directories.
+    """
