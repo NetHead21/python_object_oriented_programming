@@ -500,3 +500,7 @@ def test_all_source_skip_mypy_cache_directory(tmp_path):
 
     Verifies exclusion of mypy type checker cache directories.
     """
+
+    (tmp_path / ".mypy_cache").mkdir()
+    (tmp_path / "normal.py").write_text("# normal")
+    (tmp_path / ".mypy_cache" / "skip.py").write_text("# skip")
