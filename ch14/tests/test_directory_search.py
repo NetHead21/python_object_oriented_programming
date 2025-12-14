@@ -556,3 +556,8 @@ def test_all_source_multiple_skip_directories(tmp_path):
     (tmp_path / ".mypy_cache" / "skip2.py").write_text("# skip2")
     (tmp_path / "__pycache__" / "skip3.py").write_text("# skip3")
     (tmp_path / ".idea" / "skip4.py").write_text("# skip4")
+
+    files = list(directory_search.all_source(tmp_path, "*.py"))
+    assert len(files) == 2
+    assert tmp_path / "normal.py" in files
+    assert tmp_path / "src" / "app.py" in files
