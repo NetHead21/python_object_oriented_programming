@@ -543,3 +543,9 @@ def test_all_source_multiple_skip_directories(tmp_path):
     Verifies that .tox, .mypy_cache, __pycache__, and .idea are all
     excluded while normal directories are included.
     """
+
+    (tmp_path / ".tox").mkdir()
+    (tmp_path / ".mypy_cache").mkdir()
+    (tmp_path / "__pycache__").mkdir()
+    (tmp_path / ".idea").mkdir()
+    (tmp_path / "src").mkdir()
