@@ -528,3 +528,7 @@ def test_all_source_skip_idea_directory(tmp_path):
 
     Verifies exclusion of PyCharm/IntelliJ IDE configuration directories.
     """
+
+    (tmp_path / ".idea").mkdir()
+    (tmp_path / "normal.py").write_text("# normal")
+    (tmp_path / ".idea" / "workspace.xml").write_text("# skip")
