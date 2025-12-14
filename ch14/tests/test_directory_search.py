@@ -504,3 +504,6 @@ def test_all_source_skip_mypy_cache_directory(tmp_path):
     (tmp_path / ".mypy_cache").mkdir()
     (tmp_path / "normal.py").write_text("# normal")
     (tmp_path / ".mypy_cache" / "skip.py").write_text("# skip")
+
+    files = list(directory_search.all_source(tmp_path, "*.py"))
+    assert files == [tmp_path / "normal.py"]
