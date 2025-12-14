@@ -521,3 +521,10 @@ def test_all_source_skip_pycache_directory(tmp_path):
 
     files = list(directory_search.all_source(tmp_path, "*.py"))
     assert files == [tmp_path / "normal.py"]
+
+
+def test_all_source_skip_idea_directory(tmp_path):
+    """Test that .idea directory is excluded from search.
+
+    Verifies exclusion of PyCharm/IntelliJ IDE configuration directories.
+    """
