@@ -514,3 +514,7 @@ def test_all_source_skip_pycache_directory(tmp_path):
 
     Verifies exclusion of Python bytecode cache directories.
     """
+
+    (tmp_path / "__pycache__").mkdir()
+    (tmp_path / "normal.py").write_text("# normal")
+    (tmp_path / "__pycache__" / "skip.pyc").write_text("# skip")
