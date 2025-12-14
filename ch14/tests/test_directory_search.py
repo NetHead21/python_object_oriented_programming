@@ -561,3 +561,11 @@ def test_all_source_multiple_skip_directories(tmp_path):
     assert len(files) == 2
     assert tmp_path / "normal.py" in files
     assert tmp_path / "src" / "app.py" in files
+
+
+def test_all_source_different_patterns(tmp_path):
+    """Test all_source with various glob patterns (*.py, *.txt, test_*.py).
+
+    Verifies pattern matching works correctly for different file extensions
+    and filename patterns.
+    """
