@@ -569,3 +569,8 @@ def test_all_source_different_patterns(tmp_path):
     Verifies pattern matching works correctly for different file extensions
     and filename patterns.
     """
+
+    (tmp_path / "file.py").write_text("# py")
+    (tmp_path / "file.txt").write_text("# txt")
+    (tmp_path / "file.md").write_text("# md")
+    (tmp_path / "test_file.py").write_text("# test")
