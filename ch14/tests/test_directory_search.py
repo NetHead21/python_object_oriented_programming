@@ -574,3 +574,7 @@ def test_all_source_different_patterns(tmp_path):
     (tmp_path / "file.txt").write_text("# txt")
     (tmp_path / "file.md").write_text("# md")
     (tmp_path / "test_file.py").write_text("# test")
+
+    py_files = list(directory_search.all_source(tmp_path, "*.py"))
+    txt_files = list(directory_search.all_source(tmp_path, "*.txt"))
+    test_files = list(directory_search.all_source(tmp_path, "test_*.py"))
