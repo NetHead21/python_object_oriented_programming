@@ -535,3 +535,11 @@ def test_all_source_skip_idea_directory(tmp_path):
 
     files = list(directory_search.all_source(tmp_path, "*.py"))
     assert files == [tmp_path / "normal.py"]
+
+
+def test_all_source_multiple_skip_directories(tmp_path):
+    """Test that all configured skip directories are excluded simultaneously.
+
+    Verifies that .tox, .mypy_cache, __pycache__, and .idea are all
+    excluded while normal directories are included.
+    """
