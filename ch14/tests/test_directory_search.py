@@ -549,3 +549,10 @@ def test_all_source_multiple_skip_directories(tmp_path):
     (tmp_path / "__pycache__").mkdir()
     (tmp_path / ".idea").mkdir()
     (tmp_path / "src").mkdir()
+
+    (tmp_path / "normal.py").write_text("# normal")
+    (tmp_path / "src" / "app.py").write_text("# app")
+    (tmp_path / ".tox" / "skip1.py").write_text("# skip1")
+    (tmp_path / ".mypy_cache" / "skip2.py").write_text("# skip2")
+    (tmp_path / "__pycache__" / "skip3.py").write_text("# skip3")
+    (tmp_path / ".idea" / "skip4.py").write_text("# skip4")
