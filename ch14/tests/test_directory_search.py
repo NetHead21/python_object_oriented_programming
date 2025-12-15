@@ -666,3 +666,9 @@ def test_directory_search_no_results(mock_queue, mock_process, mock_paths):
 
     Verifies correct behavior when search pattern doesn't match any content.
     """
+
+    mock_queue_instance = Mock(
+        put=Mock(),
+        get=Mock(return_value=[]),  # Empty results
+    )
+    mock_queue.return_value = mock_queue_instance
