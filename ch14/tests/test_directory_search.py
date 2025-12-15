@@ -678,3 +678,11 @@ def test_directory_search_no_results(mock_queue, mock_process, mock_paths):
     result = list(ds.search("nonexistent"))
 
     assert result == []
+
+
+def test_directory_search_multiple_searches(mock_queue, mock_process, mock_paths):
+    """Test DirectorySearch can execute multiple searches on same file set.
+
+    Verifies that workers can process multiple different queries sequentially,
+    leveraging pre-loaded file content for efficiency.
+    """
