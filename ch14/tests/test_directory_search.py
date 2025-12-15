@@ -697,3 +697,6 @@ def test_directory_search_multiple_searches(mock_queue, mock_process, mock_paths
             return ["result2"]
         else:
             return ["result3"]
+
+    mock_queue_instance = Mock(put=Mock(), get=Mock(side_effect=get_side_effect))
+    mock_queue.return_value = mock_queue_instance
