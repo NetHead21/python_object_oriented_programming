@@ -625,3 +625,7 @@ def test_directory_search_many_cpus(mock_queue, mock_process, mock_paths):
 
     ds = directory_search.DirectorySearch()
     ds.setup_search(mock_paths, cpus=10)
+
+    # Should create 10 workers even with only 2 files
+    assert len(ds.query_queues) == 10
+    assert len(ds.search_workers) == 10
