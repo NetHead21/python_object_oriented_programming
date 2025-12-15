@@ -629,3 +629,12 @@ def test_directory_search_many_cpus(mock_queue, mock_process, mock_paths):
     # Should create 10 workers even with only 2 files
     assert len(ds.query_queues) == 10
     assert len(ds.search_workers) == 10
+
+
+def test_directory_search_default_cpus(
+    mock_queue, mock_process, mock_paths, monkeypatch
+):
+    """Test DirectorySearch uses cpu_count when cpus=None."""
+
+    mock_cpu_count = Mock(return_value=8)
+    monkeypatch.setattr(directory_search, "cpu_count", mock_cpu_count)
