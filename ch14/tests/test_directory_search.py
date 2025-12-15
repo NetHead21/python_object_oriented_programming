@@ -659,3 +659,10 @@ def test_directory_search_empty_file_list(mock_queue, mock_process):
     # Should still create workers, they just have no files
     assert len(ds.query_queues) == 2
     assert len(ds.search_workers) == 2
+
+
+def test_directory_search_no_results(mock_queue, mock_process, mock_paths):
+    """Test search returns empty iterator when no matches found.
+
+    Verifies correct behavior when search pattern doesn't match any content.
+    """
