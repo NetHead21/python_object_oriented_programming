@@ -686,3 +686,14 @@ def test_directory_search_multiple_searches(mock_queue, mock_process, mock_paths
     Verifies that workers can process multiple different queries sequentially,
     leveraging pre-loaded file content for efficiency.
     """
+
+    call_count = [0]
+
+    def get_side_effect():
+        call_count[0] += 1
+        if call_count[0] <= 2:
+            return ["result1"]
+        elif call_count[0] <= 4:
+            return ["result2"]
+        else:
+            return ["result3"]
