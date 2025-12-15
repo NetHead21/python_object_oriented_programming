@@ -641,3 +641,6 @@ def test_directory_search_default_cpus(
 
     ds = directory_search.DirectorySearch()
     ds.setup_search(mock_paths, cpus=None)
+
+    mock_cpu_count.assert_called_once()
+    assert len(ds.query_queues) == 8
