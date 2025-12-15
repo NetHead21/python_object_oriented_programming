@@ -652,3 +652,6 @@ def test_directory_search_empty_file_list(mock_queue, mock_process):
     Verifies that workers are created even with no files (they simply wait
     for queries with no content to search).
     """
+
+    ds = directory_search.DirectorySearch()
+    ds.setup_search([], cpus=2)
