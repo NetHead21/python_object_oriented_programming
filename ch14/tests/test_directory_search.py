@@ -703,3 +703,7 @@ def test_directory_search_multiple_searches(mock_queue, mock_process, mock_paths
 
     ds = directory_search.DirectorySearch()
     ds.setup_search(mock_paths, cpus=2)
+
+    result1 = list(ds.search("query1"))
+    result2 = list(ds.search("query2"))
+    result3 = list(ds.search("query3"))
