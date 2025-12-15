@@ -608,3 +608,6 @@ def test_directory_search_single_cpu(mock_queue, mock_process, mock_paths):
 
     Verifies that single-CPU configuration works correctly.
     """
+
+    ds = directory_search.DirectorySearch()
+    ds.setup_search(mock_paths, cpus=1)
