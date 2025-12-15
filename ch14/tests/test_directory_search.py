@@ -611,3 +611,6 @@ def test_directory_search_single_cpu(mock_queue, mock_process, mock_paths):
 
     ds = directory_search.DirectorySearch()
     ds.setup_search(mock_paths, cpus=1)
+
+    assert len(ds.query_queues) == 1
+    assert len(ds.search_workers) == 1
