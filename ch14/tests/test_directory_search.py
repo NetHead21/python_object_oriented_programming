@@ -597,3 +597,14 @@ def test_all_source_no_extension(tmp_path):
     files = list(directory_search.all_source(tmp_path, "Makefile"))
     assert len(files) == 1
     assert tmp_path / "Makefile" in files
+
+
+# Edge Case Tests for DirectorySearch class
+# ============================================================================
+
+
+def test_directory_search_single_cpu(mock_queue, mock_process, mock_paths):
+    """Test DirectorySearch with cpus=1 creates single worker.
+
+    Verifies that single-CPU configuration works correctly.
+    """
