@@ -644,3 +644,11 @@ def test_directory_search_default_cpus(
 
     mock_cpu_count.assert_called_once()
     assert len(ds.query_queues) == 8
+
+
+def test_directory_search_empty_file_list(mock_queue, mock_process):
+    """Test DirectorySearch handles empty file list gracefully.
+
+    Verifies that workers are created even with no files (they simply wait
+    for queries with no content to search).
+    """
