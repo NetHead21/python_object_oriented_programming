@@ -655,3 +655,7 @@ def test_directory_search_empty_file_list(mock_queue, mock_process):
 
     ds = directory_search.DirectorySearch()
     ds.setup_search([], cpus=2)
+
+    # Should still create workers, they just have no files
+    assert len(ds.query_queues) == 2
+    assert len(ds.search_workers) == 2
