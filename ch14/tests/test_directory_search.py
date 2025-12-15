@@ -614,3 +614,11 @@ def test_directory_search_single_cpu(mock_queue, mock_process, mock_paths):
 
     assert len(ds.query_queues) == 1
     assert len(ds.search_workers) == 1
+
+
+def test_directory_search_many_cpus(mock_queue, mock_process, mock_paths):
+    """Test DirectorySearch creates workers even when CPUs exceed file count.
+
+    Verifies that requesting 10 workers with only 2 files creates all 10 workers
+    (some will have no files to search).
+    """
