@@ -622,3 +622,6 @@ def test_directory_search_many_cpus(mock_queue, mock_process, mock_paths):
     Verifies that requesting 10 workers with only 2 files creates all 10 workers
     (some will have no files to search).
     """
+
+    ds = directory_search.DirectorySearch()
+    ds.setup_search(mock_paths, cpus=10)
