@@ -707,3 +707,7 @@ def test_directory_search_multiple_searches(mock_queue, mock_process, mock_paths
     result1 = list(ds.search("query1"))
     result2 = list(ds.search("query2"))
     result3 = list(ds.search("query3"))
+
+    assert result1 == ["result1", "result1"]
+    assert result2 == ["result2", "result2"]
+    assert result3 == ["result3", "result3"]
