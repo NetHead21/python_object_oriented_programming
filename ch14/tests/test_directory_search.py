@@ -672,3 +672,9 @@ def test_directory_search_no_results(mock_queue, mock_process, mock_paths):
         get=Mock(return_value=[]),  # Empty results
     )
     mock_queue.return_value = mock_queue_instance
+
+    ds = directory_search.DirectorySearch()
+    ds.setup_search(mock_paths, cpus=2)
+    result = list(ds.search("nonexistent"))
+
+    assert result == []
