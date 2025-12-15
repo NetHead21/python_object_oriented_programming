@@ -638,3 +638,6 @@ def test_directory_search_default_cpus(
 
     mock_cpu_count = Mock(return_value=8)
     monkeypatch.setattr(directory_search, "cpu_count", mock_cpu_count)
+
+    ds = directory_search.DirectorySearch()
+    ds.setup_search(mock_paths, cpus=None)
