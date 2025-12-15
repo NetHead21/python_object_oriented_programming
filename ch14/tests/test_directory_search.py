@@ -700,3 +700,6 @@ def test_directory_search_multiple_searches(mock_queue, mock_process, mock_paths
 
     mock_queue_instance = Mock(put=Mock(), get=Mock(side_effect=get_side_effect))
     mock_queue.return_value = mock_queue_instance
+
+    ds = directory_search.DirectorySearch()
+    ds.setup_search(mock_paths, cpus=2)
