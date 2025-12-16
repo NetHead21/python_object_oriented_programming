@@ -741,3 +741,8 @@ def test_directory_search_work_distribution(mock_queue, mock_process):
     Worker 1: 3 files (indices 1,4,7)
     Worker 2: 3 files (indices 2,5,8)
     """
+
+    files = [Mock() for _ in range(10)]
+
+    ds = directory_search.DirectorySearch()
+    ds.setup_search(files, cpus=3)
