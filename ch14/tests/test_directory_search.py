@@ -889,3 +889,11 @@ def test_integration_large_file(tmp_path):
     assert len(results) == 5000
 
     ds.teardown_search()
+
+
+def test_integration_empty_query(tmp_path):
+    """Integration test with empty query string matches all lines.
+
+    Verifies that searching for "" returns all lines (empty string is
+    substring of everything).
+    """
