@@ -818,3 +818,8 @@ def test_full_integration_real_files(tmp_path):
     (tmp_path / "src").mkdir()
     (tmp_path / "tests").mkdir()
     (tmp_path / "__pycache__").mkdir()
+
+    (tmp_path / "main.py").write_text("import main_module\n")
+    (tmp_path / "src" / "app.py").write_text("import app_module\n")
+    (tmp_path / "tests" / "test_app.py").write_text("import unittest\n")
+    (tmp_path / "__pycache__" / "cache.py").write_text("import cache\n")
