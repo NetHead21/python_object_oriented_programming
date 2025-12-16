@@ -899,3 +899,7 @@ def test_integration_empty_query(tmp_path):
     """
 
     (tmp_path / "file.py").write_text("line1\nline2\nline3\n")
+
+    paths = list(directory_search.all_source(tmp_path, "*.py"))
+    ds = directory_search.DirectorySearch()
+    ds.setup_search(paths, cpus=1)
