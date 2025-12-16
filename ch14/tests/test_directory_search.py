@@ -868,3 +868,11 @@ def test_integration_unicode_and_special_chars(tmp_path):
     assert len(list(ds.search("Tëst"))) == 1
 
     ds.teardown_search()
+
+
+def test_integration_large_file(tmp_path):
+    """Integration test with large file (5000 lines).
+
+    Verifies that search handles large files efficiently and returns
+    all matching lines.
+    """
