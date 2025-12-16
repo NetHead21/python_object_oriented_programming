@@ -790,3 +790,6 @@ def test_full_integration_real_files(tmp_path):
     (tmp_path / "file1.py").write_text("import os\nclass MyClass:\n    pass\n")
     (tmp_path / "file2.py").write_text("def my_function():\n    import sys\n")
     (tmp_path / "file3.py").write_text("# Just a comment\n")
+
+    paths = list(directory_search.all_source(tmp_path, "*.py"))
+    assert len(paths) == 3
