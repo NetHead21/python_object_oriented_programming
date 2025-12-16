@@ -969,3 +969,7 @@ def test_stress_many_workers(tmp_path):
 
     for i in range(20):
         (tmp_path / f"file{i}.py").write_text(f"target_{i}\n")
+
+    paths = list(directory_search.all_source(tmp_path, "*.py"))
+    ds = directory_search.DirectorySearch()
+    ds.setup_search(paths, cpus=20)  # More workers than files
