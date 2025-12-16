@@ -719,3 +719,7 @@ def test_directory_search_large_result_set(mock_queue, mock_process, mock_paths)
     Verifies that large numbers of matching lines are collected and yielded
     correctly without truncation or memory issues.
     """
+
+    large_results = [f"line {i}" for i in range(1000)]
+    mock_queue_instance = Mock(put=Mock(), get=Mock(return_value=large_results))
+    mock_queue.return_value = mock_queue_instance
