@@ -880,3 +880,7 @@ def test_integration_large_file(tmp_path):
     lines = [f"line {i} with target keyword\n" for i in range(5000)]
     large_content = "".join(lines)
     (tmp_path / "large.py").write_text(large_content)
+
+    paths = list(directory_search.all_source(tmp_path, "*.py"))
+    ds = directory_search.DirectorySearch()
+    ds.setup_search(paths, cpus=2)
