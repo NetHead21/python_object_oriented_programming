@@ -966,3 +966,6 @@ def test_stress_many_workers(tmp_path):
     - Queue communication works with many workers
     - All results are collected correctly
     """
+
+    for i in range(20):
+        (tmp_path / f"file{i}.py").write_text(f"target_{i}\n")
