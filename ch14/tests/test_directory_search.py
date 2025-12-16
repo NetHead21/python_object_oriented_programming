@@ -922,3 +922,7 @@ def test_integration_single_character_query(tmp_path):
     paths = list(directory_search.all_source(tmp_path, "*.py"))
     ds = directory_search.DirectorySearch()
     ds.setup_search(paths, cpus=1)
+
+    results = list(ds.search("a"))
+    assert len(results) == 1
+    assert "a = 1" in results
