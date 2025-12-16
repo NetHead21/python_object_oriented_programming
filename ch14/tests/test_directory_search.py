@@ -759,3 +759,6 @@ def test_directory_search_teardown_idempotent(mock_queue, mock_process, mock_pat
     Verifies that calling teardown multiple times doesn't raise errors
     (though it may send extra termination signals).
     """
+
+    ds = directory_search.DirectorySearch()
+    ds.setup_search(mock_paths, cpus=2)
