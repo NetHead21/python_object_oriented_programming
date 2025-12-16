@@ -903,3 +903,7 @@ def test_integration_empty_query(tmp_path):
     paths = list(directory_search.all_source(tmp_path, "*.py"))
     ds = directory_search.DirectorySearch()
     ds.setup_search(paths, cpus=1)
+
+    # Empty string matches everything
+    results = list(ds.search(""))
+    assert len(results) == 3
