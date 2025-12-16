@@ -942,3 +942,6 @@ def test_stress_many_small_files(tmp_path):
     - Search completes successfully
     - All results are returned
     """
+
+    for i in range(100):
+        (tmp_path / f"file{i}.py").write_text(f"# File {i}\nimport module_{i}\n")
