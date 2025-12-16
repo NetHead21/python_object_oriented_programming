@@ -887,3 +887,5 @@ def test_integration_large_file(tmp_path):
 
     results = list(ds.search("target"))
     assert len(results) == 5000
+
+    ds.teardown_search()
