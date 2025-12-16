@@ -897,3 +897,5 @@ def test_integration_empty_query(tmp_path):
     Verifies that searching for "" returns all lines (empty string is
     substring of everything).
     """
+
+    (tmp_path / "file.py").write_text("line1\nline2\nline3\n")
