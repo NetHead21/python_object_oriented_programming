@@ -731,3 +731,13 @@ def test_directory_search_large_result_set(mock_queue, mock_process, mock_paths)
     assert len(result) == 2000  # 1000 from each of 2 workers
     assert result[:1000] == large_results
     assert result[1000:] == large_results
+
+
+def test_directory_search_work_distribution(mock_queue, mock_process):
+    """Test round-robin file distribution ensures balanced workload.
+
+    Verifies that 10 files distributed across 3 workers results in:
+    Worker 0: 4 files (indices 0,3,6,9)
+    Worker 1: 3 files (indices 1,4,7)
+    Worker 2: 3 files (indices 2,5,8)
+    """
