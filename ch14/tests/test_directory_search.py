@@ -802,3 +802,8 @@ def test_full_integration_real_files(tmp_path):
     assert len(import_results) == 2
     assert any("import os" in r for r in import_results)
     assert any("import sys" in r for r in import_results)
+
+    # Search for 'class'
+    class_results = list(ds.search("class"))
+    assert len(class_results) == 1
+    assert "class MyClass:" in class_results[0]
