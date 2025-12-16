@@ -948,3 +948,6 @@ def test_stress_many_small_files(tmp_path):
 
     paths = list(directory_search.all_source(tmp_path, "*.py"))
     assert len(paths) == 100
+
+    ds = directory_search.DirectorySearch()
+    ds.setup_search(paths, cpus=4)
