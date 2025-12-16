@@ -793,3 +793,6 @@ def test_full_integration_real_files(tmp_path):
 
     paths = list(directory_search.all_source(tmp_path, "*.py"))
     assert len(paths) == 3
+
+    ds = directory_search.DirectorySearch()
+    ds.setup_search(paths, cpus=2)
