@@ -768,3 +768,20 @@ def test_directory_search_teardown_idempotent(mock_queue, mock_process, mock_pat
 
     # Should have sent None twice per worker
     assert mock_queue.return_value.put.mock_calls.count(call(None)) == 4
+
+
+# Integration Tests
+# ============================================================================
+
+
+def test_full_integration_real_files(tmp_path):
+    """Full integration test with real processes, queues, and file I/O.
+
+    Tests complete workflow:
+    1. Create real Python files with various content
+    2. Use all_source to find files
+    3. Setup real worker processes
+    4. Execute multiple searches
+    5. Verify results match expected patterns
+    6. Clean shutdown
+    """
