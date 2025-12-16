@@ -951,3 +951,6 @@ def test_stress_many_small_files(tmp_path):
 
     ds = directory_search.DirectorySearch()
     ds.setup_search(paths, cpus=4)
+
+    results = list(ds.search("import"))
+    assert len(results) == 100
