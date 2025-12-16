@@ -916,3 +916,5 @@ def test_integration_single_character_query(tmp_path):
 
     Verifies that single-character queries work correctly.
     """
+
+    (tmp_path / "file.py").write_text("a = 1\nb = 2\nc = 3\n")
