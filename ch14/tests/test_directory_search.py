@@ -976,3 +976,5 @@ def test_stress_many_workers(tmp_path):
 
     results = list(ds.search("target"))
     assert len(results) == 20
+
+    ds.teardown_search()
