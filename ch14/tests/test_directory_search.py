@@ -765,3 +765,6 @@ def test_directory_search_teardown_idempotent(mock_queue, mock_process, mock_pat
 
     ds.teardown_search()
     ds.teardown_search()  # Should not raise error
+
+    # Should have sent None twice per worker
+    assert mock_queue.return_value.put.mock_calls.count(call(None)) == 4
