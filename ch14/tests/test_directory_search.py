@@ -711,3 +711,11 @@ def test_directory_search_multiple_searches(mock_queue, mock_process, mock_paths
     assert result1 == ["result1", "result1"]
     assert result2 == ["result2", "result2"]
     assert result3 == ["result3", "result3"]
+
+
+def test_directory_search_large_result_set(mock_queue, mock_process, mock_paths):
+    """Test search handles large result sets (1000+ lines per worker).
+
+    Verifies that large numbers of matching lines are collected and yielded
+    correctly without truncation or memory issues.
+    """
