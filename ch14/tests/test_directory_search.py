@@ -909,3 +909,10 @@ def test_integration_empty_query(tmp_path):
     assert len(results) == 3
 
     ds.teardown_search()
+
+
+def test_integration_single_character_query(tmp_path):
+    """Integration test searching for single character.
+
+    Verifies that single-character queries work correctly.
+    """
