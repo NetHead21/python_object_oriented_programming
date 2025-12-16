@@ -956,3 +956,13 @@ def test_stress_many_small_files(tmp_path):
     assert len(results) == 100
 
     ds.teardown_search()
+
+
+def test_stress_many_workers(tmp_path):
+    """Stress test with 20 workers searching 20 files.
+
+    Tests scalability with many parallel workers, verifying that:
+    - Many processes can be created and managed
+    - Queue communication works with many workers
+    - All results are collected correctly
+    """
