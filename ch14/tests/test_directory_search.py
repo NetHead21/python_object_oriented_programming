@@ -807,3 +807,10 @@ def test_full_integration_real_files(tmp_path):
     class_results = list(ds.search("class"))
     assert len(class_results) == 1
     assert "class MyClass:" in class_results[0]
+
+    # Search for 'def'
+    def_results = list(ds.search("def"))
+    assert len(def_results) == 1
+    assert "def my_function():" in def_results[0]
+
+    ds.teardown_search()
