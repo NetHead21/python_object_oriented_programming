@@ -866,3 +866,5 @@ def test_integration_unicode_and_special_chars(tmp_path):
     assert len(list(ds.search("🎉"))) == 1
     assert len(list(ds.search("Привет"))) == 1
     assert len(list(ds.search("Tëst"))) == 1
+
+    ds.teardown_search()
