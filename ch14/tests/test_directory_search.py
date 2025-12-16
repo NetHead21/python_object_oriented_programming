@@ -954,3 +954,5 @@ def test_stress_many_small_files(tmp_path):
 
     results = list(ds.search("import"))
     assert len(results) == 100
+
+    ds.teardown_search()
