@@ -796,3 +796,9 @@ def test_full_integration_real_files(tmp_path):
 
     ds = directory_search.DirectorySearch()
     ds.setup_search(paths, cpus=2)
+
+    # Search for 'import'
+    import_results = list(ds.search("import"))
+    assert len(import_results) == 2
+    assert any("import os" in r for r in import_results)
+    assert any("import sys" in r for r in import_results)
