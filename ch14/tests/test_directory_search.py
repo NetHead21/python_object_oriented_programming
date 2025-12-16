@@ -823,3 +823,6 @@ def test_full_integration_real_files(tmp_path):
     (tmp_path / "src" / "app.py").write_text("import app_module\n")
     (tmp_path / "tests" / "test_app.py").write_text("import unittest\n")
     (tmp_path / "__pycache__" / "cache.py").write_text("import cache\n")
+
+    paths = list(directory_search.all_source(tmp_path, "*.py"))
+    assert len(paths) == 3  # Excludes __pycache__
