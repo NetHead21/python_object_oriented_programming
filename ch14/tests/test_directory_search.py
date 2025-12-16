@@ -918,3 +918,7 @@ def test_integration_single_character_query(tmp_path):
     """
 
     (tmp_path / "file.py").write_text("a = 1\nb = 2\nc = 3\n")
+
+    paths = list(directory_search.all_source(tmp_path, "*.py"))
+    ds = directory_search.DirectorySearch()
+    ds.setup_search(paths, cpus=1)
