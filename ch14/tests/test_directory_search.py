@@ -762,3 +762,6 @@ def test_directory_search_teardown_idempotent(mock_queue, mock_process, mock_pat
 
     ds = directory_search.DirectorySearch()
     ds.setup_search(mock_paths, cpus=2)
+
+    ds.teardown_search()
+    ds.teardown_search()  # Should not raise error
