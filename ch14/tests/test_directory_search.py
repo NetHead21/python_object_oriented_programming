@@ -814,3 +814,7 @@ def test_full_integration_real_files(tmp_path):
     assert "def my_function():" in def_results[0]
 
     ds.teardown_search()
+
+    (tmp_path / "src").mkdir()
+    (tmp_path / "tests").mkdir()
+    (tmp_path / "__pycache__").mkdir()
