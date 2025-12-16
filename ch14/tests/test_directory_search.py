@@ -751,3 +751,11 @@ def test_directory_search_work_distribution(mock_queue, mock_process):
     assert len(worker_0_files) == 4  # indices 0, 3, 6, 9
     assert len(worker_1_files) == 3  # indices 1, 4, 7
     assert len(worker_2_files) == 3  # indices 2, 5, 8
+
+
+def test_directory_search_teardown_idempotent(mock_queue, mock_process, mock_paths):
+    """Test teardown_search is idempotent and safe to call multiple times.
+
+    Verifies that calling teardown multiple times doesn't raise errors
+    (though it may send extra termination signals).
+    """
