@@ -856,3 +856,7 @@ def test_integration_unicode_and_special_chars(tmp_path):
     """
 
     (tmp_path / "unicode.py").write_text(content)
+
+    paths = list(directory_search.all_source(tmp_path, "*.py"))
+    ds = directory_search.DirectorySearch()
+    ds.setup_search(paths, cpus=1)
