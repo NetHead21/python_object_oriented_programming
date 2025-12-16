@@ -907,3 +907,5 @@ def test_integration_empty_query(tmp_path):
     # Empty string matches everything
     results = list(ds.search(""))
     assert len(results) == 3
+
+    ds.teardown_search()
