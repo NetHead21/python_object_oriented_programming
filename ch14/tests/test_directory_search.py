@@ -876,3 +876,7 @@ def test_integration_large_file(tmp_path):
     Verifies that search handles large files efficiently and returns
     all matching lines.
     """
+
+    lines = [f"line {i} with target keyword\n" for i in range(5000)]
+    large_content = "".join(lines)
+    (tmp_path / "large.py").write_text(large_content)
