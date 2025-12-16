@@ -945,3 +945,6 @@ def test_stress_many_small_files(tmp_path):
 
     for i in range(100):
         (tmp_path / f"file{i}.py").write_text(f"# File {i}\nimport module_{i}\n")
+
+    paths = list(directory_search.all_source(tmp_path, "*.py"))
+    assert len(paths) == 100
