@@ -854,3 +854,5 @@ def test_integration_unicode_and_special_chars(tmp_path):
         def __init__(self):
             self.data = "Привет мир"
     """
+
+    (tmp_path / "unicode.py").write_text(content)
