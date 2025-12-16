@@ -845,3 +845,12 @@ def test_integration_unicode_and_special_chars(tmp_path):
     - Cyrillic (Привет мир)
     - Accented characters (Tëst)
     """
+
+    content = """# -*- coding: utf-8 -*-
+    import os
+    # Comment with 中文字符
+    class Tëst:
+        '''Docstring with émojis 🎉'''
+        def __init__(self):
+            self.data = "Привет мир"
+    """
