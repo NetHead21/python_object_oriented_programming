@@ -746,3 +746,8 @@ def test_directory_search_work_distribution(mock_queue, mock_process):
 
     ds = directory_search.DirectorySearch()
     ds.setup_search(files, cpus=3)
+
+    # Round-robin: [0,3,6,9], [1,4,7], [2,5,8]
+    assert len(worker_0_files) == 4  # indices 0, 3, 6, 9
+    assert len(worker_1_files) == 3  # indices 1, 4, 7
+    assert len(worker_2_files) == 3  # indices 2, 5, 8
