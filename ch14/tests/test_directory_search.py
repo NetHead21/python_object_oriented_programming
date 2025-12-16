@@ -727,3 +727,7 @@ def test_directory_search_large_result_set(mock_queue, mock_process, mock_paths)
     ds = directory_search.DirectorySearch()
     ds.setup_search(mock_paths, cpus=2)
     result = list(ds.search("target"))
+
+    assert len(result) == 2000  # 1000 from each of 2 workers
+    assert result[:1000] == large_results
+    assert result[1000:] == large_results
