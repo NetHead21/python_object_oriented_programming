@@ -926,3 +926,5 @@ def test_integration_single_character_query(tmp_path):
     results = list(ds.search("a"))
     assert len(results) == 1
     assert "a = 1" in results
+
+    ds.teardown_search()
