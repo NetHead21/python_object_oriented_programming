@@ -860,3 +860,9 @@ def test_integration_unicode_and_special_chars(tmp_path):
     paths = list(directory_search.all_source(tmp_path, "*.py"))
     ds = directory_search.DirectorySearch()
     ds.setup_search(paths, cpus=1)
+
+    # Search for various patterns
+    assert len(list(ds.search("中文"))) == 1
+    assert len(list(ds.search("🎉"))) == 1
+    assert len(list(ds.search("Привет"))) == 1
+    assert len(list(ds.search("Tëst"))) == 1
