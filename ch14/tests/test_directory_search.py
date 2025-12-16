@@ -884,3 +884,6 @@ def test_integration_large_file(tmp_path):
     paths = list(directory_search.all_source(tmp_path, "*.py"))
     ds = directory_search.DirectorySearch()
     ds.setup_search(paths, cpus=2)
+
+    results = list(ds.search("target"))
+    assert len(results) == 5000
