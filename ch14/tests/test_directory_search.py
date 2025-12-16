@@ -834,3 +834,14 @@ def test_full_integration_real_files(tmp_path):
     assert len(results) == 3
 
     ds.teardown_search()
+
+
+def test_integration_unicode_and_special_chars(tmp_path):
+    """Integration test with real Unicode content in files.
+
+    Tests end-to-end search with:
+    - Chinese characters (中文字符)
+    - Emoji (🎉)
+    - Cyrillic (Привет мир)
+    - Accented characters (Tëst)
+    """
