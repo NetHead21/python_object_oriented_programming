@@ -928,3 +928,17 @@ def test_integration_single_character_query(tmp_path):
     assert "a = 1" in results
 
     ds.teardown_search()
+
+
+# Performance and Stress Tests
+# ============================================================================
+
+
+def test_stress_many_small_files(tmp_path):
+    """Stress test with 100 small files distributed across 4 workers.
+
+    Tests scalability with many files, verifying:
+    - All files are found and loaded
+    - Search completes successfully
+    - All results are returned
+    """
