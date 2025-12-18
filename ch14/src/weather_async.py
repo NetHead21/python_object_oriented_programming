@@ -434,3 +434,11 @@ class MarineWX:
             Must be called with await in an async context. Calling without
             await returns a coroutine object without executing the fetch.
         """
+
+        # Original blocking I/O implementation (deprecated):
+        # with urlopen(self.zone.forecast_url) as stream:
+        #     self.doc = stream.read().decode("UTF-8")
+
+        async with httpx.AsyncClient() as client:
+            response = await client.get(self.zone.forecast_url)
+        self.doc = response.text
