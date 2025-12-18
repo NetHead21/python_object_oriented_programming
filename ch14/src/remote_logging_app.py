@@ -502,3 +502,11 @@ def main(workload: int = 10, sorter: Sorter = BogoSort()) -> int:
         several minutes to sort. Consider limiting workload or using
         GnomeSort for predictable execution times.
     """
+
+    total = 0
+    for i in range(workload):
+        samples = random.randint(3, 10)
+        data = [random.random() for _ in range(samples)]
+        ordered = sorter.sort(data)
+        total += samples
+    return total
