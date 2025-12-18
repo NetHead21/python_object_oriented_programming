@@ -68,3 +68,45 @@ import sys
 from typing import Iterable
 
 logger = logging.getLogger(f"app_{os.getpid()}")
+
+
+class Sorter(abc.ABC):
+    """Abstract base class for sorting algorithms with integrated logging.
+
+    This ABC defines the interface for sorting implementations and provides
+    automatic logger configuration for each sorter instance. The logger name
+    follows a hierarchical pattern: "app_{pid}.{ClassName}" enabling:
+    - Process identification via PID
+    - Algorithm identification via class name
+    - Hierarchical log filtering and routing
+
+    Subclasses must implement the sort() method to provide specific sorting
+    algorithms. All implementations should log:
+    - Start of sorting operation (with data size)
+    - End of sorting operation (with timing information)
+    - Any significant intermediate steps or decisions
+
+    Attributes:
+        logger (logging.Logger): Process and class-specific logger instance.
+
+    Design Pattern:
+        Template Method - sort() defines the interface, subclasses implement
+        the algorithm while inheriting logging infrastructure.
+
+    Example Subclass:
+        >>> class BubbleSort(Sorter):
+        ...     def sort(self, data: list[float]) -> list[float]:
+        ...         self.logger.info("Sorting %d items", len(data))
+        ...         # ... sorting implementation ...
+        ...         self.logger.info("Sorted in %.3f ms", duration)
+        ...         return sorted_data
+
+    Logger Hierarchy:
+        app_{pid}                    # Root application logger
+        └── app_{pid}.BogoSort      # BogoSort instance logger
+        └── app_{pid}.GnomeSort     # GnomeSort instance logger
+
+    Note:
+        The logger is created per instance, so multiple sorter instances
+        in the same process share the same logger name.
+    """
