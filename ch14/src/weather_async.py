@@ -140,3 +140,44 @@ class Zone(NamedTuple):
     zone_name: str
     zone_code: str
     same_code: str  # Special Area Messaging Encoder
+
+    @property
+    def forecast_url(self) -> str:
+        """Generate the NWS forecast URL for this zone.
+
+        Constructs the URL to fetch the plain text marine forecast from
+        NOAA's FTP server. The URL follows NWS conventions:
+        - Base: https://tgftp.nws.noaa.gov/data/forecasts/marine/coastal/
+        - Region: an/ (Atlantic Northeast)
+        - File: {zone_code}.txt (lowercase zone code)
+
+        Returns:
+            str: Complete HTTPS URL to the zone's forecast text file.
+
+        URL Structure:
+            https://tgftp.nws.noaa.gov/
+                data/forecasts/marine/coastal/  # Forecast type
+                an/                              # Region code
+                anz531.txt                       # Zone file (lowercase)
+
+        Example:
+            >>> zone = Zone("Test Zone", "ANZ531", "073531")
+            >>> zone.forecast_url
+            'https://tgftp.nws.noaa.gov/data/forecasts/marine/coastal/an/anz531.txt'
+
+        Region Codes:
+            - an: Atlantic Northeast (includes Chesapeake Bay)
+            - am: Atlantic Mid-Atlantic
+            - as: Atlantic Southeast
+            - gm: Gulf of Mexico
+            - etc.
+
+        Note:
+            The zone_code is converted to lowercase as NWS URLs are
+            case-sensitive and use lowercase filenames.
+
+        Access:
+            - Protocol: HTTPS (secure)
+            - Authentication: None required (public data)
+            - Format: Plain text with structured sections
+        """
