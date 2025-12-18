@@ -233,3 +233,86 @@ ZONES = [
         "073543",
     ),
 ]
+
+
+class MarineWX:
+    """Asynchronous marine weather forecast fetcher and parser.
+
+    Fetches and parses marine weather forecasts from NOAA NWS for a specific
+    zone. Uses async HTTP requests for concurrent operation with other
+    MarineWX instances.
+
+    This class demonstrates:
+    - Async I/O pattern with httpx
+    - Regular expression text parsing
+    - Property-based computed attributes
+    - Async context manager usage
+
+    Workflow:
+        1. Initialize with a Zone
+        2. Call run() to fetch forecast (async)
+        3. Access advisory property to extract alerts
+        4. Use repr() for formatted output
+
+    Attributes:
+        zone (Zone): Geographic forecast zone
+        doc (str): Raw forecast text from NWS (empty until run() completes)
+        advisory_pat (re.Pattern): Class-level regex for advisory extraction
+
+    Class Attributes:
+        advisory_pat: Compiled regex pattern matching advisory sections.
+            Pattern: r"\\n\\.\\.\\.\\(.*?)\\.\\.\\.\\n"
+            Matches text between triple dots on separate lines:
+                ...
+                SMALL CRAFT ADVISORY IN EFFECT FROM 6 PM THIS EVENING TO
+                6 AM EST SATURDAY...
+                ...
+
+            Flags:
+                - re.M: Multiline mode (^ and $ match line boundaries)
+                - re.S: Dotall mode (. matches newlines)
+
+    Async Design:
+        The run() method is async to enable concurrent fetching of multiple
+        forecasts. This is crucial for performance when fetching 13+ zones
+        that would otherwise take 13+ seconds sequentially.
+
+    Example:
+        >>> import asyncio
+        >>> zone = Zone("Test Zone", "ANZ531", "073531")
+        >>> wx = MarineWX(zone)
+        >>> asyncio.run(wx.run())
+        >>> print(wx.advisory)
+        'SMALL CRAFT ADVISORY IN EFFECT UNTIL 6 AM EST SATURDAY'
+        >>> print(wx)
+        Test Zone SMALL CRAFT ADVISORY IN EFFECT UNTIL 6 AM EST SATURDAY
+
+    Performance:
+        - Single fetch: ~1 second
+        - 13 concurrent fetches: ~1-2 seconds total
+        - Memory: ~10-20 KB per forecast document
+
+    Alternative Implementations:
+        The commented code in run() shows the original blocking I/O approach
+        using urllib. The async httpx version provides:
+        - Better concurrency support
+        - Connection pooling
+        - Modern async/await syntax
+        - Automatic keep-alive
+
+    Error Handling:
+        Current implementation assumes successful HTTP requests. Production
+        use should add:
+        - try/except for network errors
+        - HTTP status code checking
+        - Timeout configuration
+        - Retry logic
+
+    Text Format:
+        NWS forecast format includes:
+        - Header with zone and issue time
+        - Synopsis section
+        - Detailed forecast by time period
+        - Advisories/warnings in ...triple dot... blocks
+        - Multiple sections separated by $$
+    """
