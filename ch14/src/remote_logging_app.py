@@ -511,6 +511,7 @@ def main(workload: int = 10, sorter: Sorter = BogoSort()) -> int:
         total += samples
     return total
 
+
 if __name__ == "__main__":
     """Main execution block demonstrating remote logging with sorting algorithms.
     
@@ -546,3 +547,50 @@ if __name__ == "__main__":
         4. Execute sorting workload (10 collections with GnomeSort)
         5. Log workload completion with timing
         6. Shutdown logging gracefully
+
+    Expected Output (stderr):
+        INFO:app_12345:sorting 10 collections
+        INFO:app_12345.GnomeSort:Sorting 7
+        INFO:app_12345.GnomeSort:Sorted 7 items, 0.023 ms
+        ...
+        INFO:app_12345:produced 22 entries, taking 0.045000 s
+    
+    Remote Server:
+        Ensure log server is running before execution:
+        $ python log_catcher.py &
+        $ python remote_logging_app.py
+    
+    Log Record Count:
+        workload * 2 + 2 entries:
+        - 1 entry: "sorting N collections" (start)
+        - workload entries: "Sorting N" (per collection)
+        - workload entries: "Sorted N items..." (per collection)
+        - 1 entry: "produced N entries..." (completion)
+    
+    Performance Monitoring:
+        Uses time.perf_counter() for high-resolution timing:
+        - Start: Before logging begins
+        - End: After workload completion
+        - Reports total execution time in seconds
+    
+    Resource Cleanup:
+        logging.shutdown() ensures:
+        - All handlers flush buffered records
+        - Socket connections close properly
+        - File handles release
+        - Threads terminate gracefully
+    
+    Network Behavior:
+        If log server unavailable:
+        - SocketHandler connection fails silently
+        - Local stderr still shows output
+        - Application continues normally
+        - Subsequent logs attempt reconnection
+    
+    Customization:
+        Modify these values to experiment:
+        - LOG_HOST: 'remote.example.com' for remote server
+        - LOG_PORT: 9999 for different port
+        - workload: 100 for more collections
+        - sorter: BogoSort() for comparison (slow!)
+    """
