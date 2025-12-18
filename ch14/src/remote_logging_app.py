@@ -601,8 +601,11 @@ if __name__ == "__main__":
     logging.basicConfig(handlers=[socket_handler, stream_handler], level=logging.INFO)
 
     start = time.perf_counter()
+
     workload = 10
     logger.info("sorting %d collections", workload)
     samples = main(workload, GnomeSort())
     end = time.perf_counter()
     logger.info("produced %d entries, taking %f s", workload * 2 + 2, end - start)
+
+    logging.shutdown()
