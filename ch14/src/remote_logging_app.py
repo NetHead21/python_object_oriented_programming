@@ -110,3 +110,16 @@ class Sorter(abc.ABC):
         The logger is created per instance, so multiple sorter instances
         in the same process share the same logger name.
     """
+
+    def __init__(self) -> None:
+        """Initialize sorter with process and class-specific logger.
+
+        Creates a hierarchical logger using the pattern "app_{pid}.{ClassName}"
+        where PID identifies the process and ClassName identifies the algorithm.
+
+        The logger inherits handlers and level from parent "app_{pid}" logger,
+        enabling centralized logging configuration.
+
+        Side Effects:
+            Creates a logger in the logging module's namespace.
+        """
