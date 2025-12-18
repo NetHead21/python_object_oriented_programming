@@ -426,3 +426,7 @@ class GnomeSort(Sorter):
                 data[index - 1], data[index] = data[index], data[index - 1]
                 if index > 1:
                     index -= 1
+
+        duration = 1000 * (time.perf_counter() - start)
+        self.logger.info("Sorted %d items, %.3f ms", len(data), duration)
+        return data
