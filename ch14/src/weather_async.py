@@ -318,3 +318,27 @@ class MarineWX:
     """
 
     advisory_pat = re.compile(r"\n\.\.\.(.*?)\.\.\n", re.M | re.S)
+
+    def __init__(self, zone: Zone) -> None:
+        """Initialize marine weather fetcher for a specific zone.
+
+        Args:
+            zone (Zone): Geographic forecast zone to fetch and parse.
+
+        Attributes Set:
+            self.zone: Stores the zone for later reference
+            self.doc: Initialized to empty string (populated by run())
+
+        Example:
+            >>> zone = Zone("Test", "ANZ531", "073531")
+            >>> wx = MarineWX(zone)
+            >>> wx.doc
+            ''
+            >>> wx.zone.zone_code
+            'ANZ531'
+
+        Note:
+            The super().__init__() call is defensive programming for
+            potential future inheritance, though not strictly necessary
+            for a non-inheriting class.
+        """
