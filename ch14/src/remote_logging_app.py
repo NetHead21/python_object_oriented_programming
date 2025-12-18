@@ -538,4 +538,11 @@ if __name__ == "__main__":
         3. basicConfig: Sets both handlers at INFO level
            - Root logger captures all app_* loggers
            - INFO level filters out DEBUG messages
-    
+
+    Workflow:
+        1. Configure logging with dual handlers
+        2. Start performance timer
+        3. Log workload start
+        4. Execute sorting workload (10 collections with GnomeSort)
+        5. Log workload completion with timing
+        6. Shutdown logging gracefully
