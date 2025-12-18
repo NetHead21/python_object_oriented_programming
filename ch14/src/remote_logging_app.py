@@ -287,3 +287,10 @@ class BogoSort(Sorter):
 
         self.logger.info("Sorting %d", len(data))
         start = time.perf_counter()
+
+        ordering: tuple[float, ...] = tuple(data[:])
+        permute_iter = permutations(data)
+        steps = 0
+        while not BogoSort.is_ordered(ordering):
+            ordering = next(permute_iter)
+            steps += 1
