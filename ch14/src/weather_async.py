@@ -571,3 +571,4 @@ class MarineWX:
                 return f"{self.zone.zone_name} [{severity}] {advisory}"
             ```
         """
+        return f"{self.zone.zone_name} {self.advisory}"
