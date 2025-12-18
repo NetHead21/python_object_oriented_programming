@@ -510,3 +510,14 @@ def main(workload: int = 10, sorter: Sorter = BogoSort()) -> int:
         ordered = sorter.sort(data)
         total += samples
     return total
+
+if __name__ == "__main__":
+    """Main execution block demonstrating remote logging with sorting algorithms.
+    
+    This block configures dual logging (remote socket + local stderr) and
+    executes a sorting workload to demonstrate:
+    - Remote logging via TCP socket to log server
+    - Local logging to stderr for immediate feedback
+    - Performance measurement and reporting
+    - Proper logging shutdown and resource cleanup
+    
