@@ -414,3 +414,6 @@ class GnomeSort(Sorter):
             Unlike BogoSort.sort(), this method modifies the input list
             in-place and returns the same list object.
         """
+
+        self.logger.info("Sorting %d", len(data))
+        start = time.perf_counter()
