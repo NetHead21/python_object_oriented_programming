@@ -521,3 +521,6 @@ if __name__ == "__main__":
     - Performance measurement and reporting
     - Proper logging shutdown and resource cleanup
     
+    Configuration:
+        LOG_HOST: 'localhost' - Log server hostname
+        LOG_PORT: 18842 - Log server port (must match server)
