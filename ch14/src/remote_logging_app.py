@@ -300,3 +300,64 @@ class BogoSort(Sorter):
             "Sorted %d items in %d steps, %.3f ms", len(data), steps, duration
         )
         return list(ordering)
+
+
+class GnomeSort(Sorter):
+    """Simple comparison-based sorting algorithm similar to insertion sort.
+
+    GnomeSort (also called "Stupid Sort") works like a garden gnome sorting
+    flower pots: move forward if in order, swap and move back if not. It's
+    conceptually simple but less efficient than optimized algorithms.
+
+    Algorithm:
+        1. Start at index 1
+        2. If current element ≥ previous: move forward
+        3. If current element < previous: swap and move backward
+        4. Continue until reaching the end
+
+    Complexity:
+        - Time: O(n²) worst case, O(n) best case (already sorted)
+        - Space: O(1) - sorts in-place
+        - Stable: Yes - preserves relative order of equal elements
+        - Adaptive: Yes - faster on nearly sorted data
+
+    Comparison with Similar Algorithms:
+        - vs Insertion Sort: Similar performance, simpler to understand
+        - vs Bubble Sort: Typically faster due to less redundant comparisons
+        - vs Quick Sort: Much slower (O(n²) vs O(n log n))
+        - vs Selection Sort: Similar O(n²) but adaptive
+
+    Performance Characteristics:
+        - Best case: O(n) for already sorted data
+        - Average case: O(n²) requiring ~n²/4 comparisons
+        - Worst case: O(n²) for reverse sorted data
+        - In-place: Modifies input list directly (O(1) extra space)
+        - Stable: Equal elements maintain relative order
+
+    Practical Use Cases:
+        - Small datasets (n < 100)
+        - Nearly sorted data
+        - Educational purposes
+        - Embedded systems with memory constraints
+
+    Example:
+        >>> sorter = GnomeSort()
+        >>> data = [64.0, 34.0, 25.0, 12.0, 22.0, 11.0, 90.0]
+        >>> result = sorter.sort(data)
+        INFO:app_12345.GnomeSort:Sorting 7
+        INFO:app_12345.GnomeSort:Sorted 7 items, 0.045 ms
+        >>> print(result)
+        [11.0, 12.0, 22.0, 25.0, 34.0, 64.0, 90.0]
+
+    Visual Example:
+        [3, 1, 2]  index=1, 3>1, swap → [1, 3, 2]
+        [1, 3, 2]  index=0, restart → [1, 3, 2]
+        [1, 3, 2]  index=1, 1<3, forward → [1, 3, 2]
+        [1, 3, 2]  index=2, 3>2, swap → [1, 2, 3]
+        [1, 2, 3]  index=1, 1<2, forward → [1, 2, 3]
+        [1, 2, 3]  index=2, 2<3, forward → Done
+
+    Note:
+        The algorithm modifies the input list in-place, so the returned
+        list is the same object as the input.
+    """
