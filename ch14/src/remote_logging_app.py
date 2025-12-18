@@ -524,3 +524,18 @@ if __name__ == "__main__":
     Configuration:
         LOG_HOST: 'localhost' - Log server hostname
         LOG_PORT: 18842 - Log server port (must match server)
+
+    Logging Setup:
+        1. SocketHandler: Sends LogRecords to remote server via TCP
+           - Pickles LogRecord objects automatically
+           - Handles connection failures gracefully
+           - Reconnects automatically on subsequent logs
+        
+        2. StreamHandler: Outputs to stderr for local visibility
+           - Immediate feedback during execution
+           - Useful for debugging if server unavailable
+        
+        3. basicConfig: Sets both handlers at INFO level
+           - Root logger captures all app_* loggers
+           - INFO level filters out DEBUG messages
+    
