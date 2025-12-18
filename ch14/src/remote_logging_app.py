@@ -599,3 +599,10 @@ if __name__ == "__main__":
     socket_handler = logging.handlers.SocketHandler(LOG_HOST, LOG_PORT)
     stream_handler = logging.StreamHandler(sys.stderr)
     logging.basicConfig(handlers=[socket_handler, stream_handler], level=logging.INFO)
+
+    start = time.perf_counter()
+    workload = 10
+    logger.info("sorting %d collections", workload)
+    samples = main(workload, GnomeSort())
+    end = time.perf_counter()
+    logger.info("produced %d entries, taking %f s", workload * 2 + 2, end - start)
