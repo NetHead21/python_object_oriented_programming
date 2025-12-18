@@ -521,3 +521,7 @@ class MarineWX:
             Returns empty string (not None) when no advisory found,
             simplifying string operations and display logic.
         """
+
+        if match := self.advisory_pat.search(self.doc):
+            return match.group(1).replace("\n", " ")
+        return ""
