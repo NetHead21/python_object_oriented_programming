@@ -346,3 +346,91 @@ class MarineWX:
         super().__init__()
         self.zone = zone
         self.doc = ""
+
+    async def run(self) -> None:
+        """Asynchronously fetch forecast text from NWS server.
+
+        Performs async HTTP GET request to retrieve the plain text marine
+        forecast for this zone. Updates self.doc with the response text.
+
+        This method is async to enable concurrent fetching of multiple
+        forecasts without blocking. It uses httpx.AsyncClient for:
+        - Non-blocking I/O operations
+        - Automatic connection pooling
+        - HTTP/2 support
+        - Keep-alive connections
+
+        Returns:
+            None: Updates self.doc as a side effect.
+
+        Side Effects:
+            Sets self.doc to the forecast text (typically 2-5 KB)
+
+        Network Request:
+            - Method: GET
+            - URL: self.zone.forecast_url
+            - Protocol: HTTPS
+            - Timeout: Default httpx timeout (~5 seconds)
+
+        Async Pattern:
+            Uses async context manager for proper resource cleanup:
+            1. AsyncClient acquires connection from pool
+            2. GET request sent asynchronously
+            3. Response awaited without blocking event loop
+            4. Connection returned to pool on exit
+
+        Example:
+            >>> import asyncio
+            >>> zone = Zone("Test", "ANZ531", "073531")
+            >>> wx = MarineWX(zone)
+            >>> await wx.run()  # In async context
+            >>> len(wx.doc)
+            2345
+            >>> 'MARINE WEATHER' in wx.doc
+            True
+
+        Concurrent Usage:
+            >>> zones = [Zone(f"Z{i}", f"ANZ{i}", f"073{i}") for i in range(3)]
+            >>> forecasts = [MarineWX(z) for z in zones]
+            >>> await asyncio.gather(*(f.run() for f in forecasts))
+            # All 3 forecasts fetched concurrently
+
+        Alternative Implementation:
+            The commented code shows the original synchronous approach:
+            ```python
+            with urlopen(self.zone.forecast_url) as stream:
+                self.doc = stream.read().decode("UTF-8")
+            ```
+            This blocks the thread during I/O, preventing concurrency.
+
+        Performance:
+            - Single request: ~500ms - 1.5 seconds
+            - Concurrent requests: Still ~1-2 seconds total
+            - Network latency dominates execution time
+
+        Error Handling:
+            Current implementation doesn't handle:
+            - Network errors (httpx.NetworkError)
+            - HTTP errors (4xx, 5xx responses)
+            - Timeouts (httpx.TimeoutException)
+            - Invalid response encoding
+
+            Production should add:
+            ```python
+            try:
+                async with httpx.AsyncClient() as client:
+                    response = await client.get(
+                        self.zone.forecast_url,
+                        timeout=10.0
+                    )
+                    response.raise_for_status()
+                    self.doc = response.text
+            except httpx.HTTPError as e:
+                logger.error(f"HTTP error for {self.zone.zone_code}: {e}")
+                self.doc = ""  # Or retry logic
+            ```
+
+        Note:
+            Must be called with await in an async context. Calling without
+            await returns a coroutine object without executing the fetch.
+        """
