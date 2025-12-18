@@ -294,3 +294,9 @@ class BogoSort(Sorter):
         while not BogoSort.is_ordered(ordering):
             ordering = next(permute_iter)
             steps += 1
+
+        duration = 1000 * (time.perf_counter() - start)
+        self.logger.info(
+            "Sorted %d items in %d steps, %.3f ms", len(data), steps, duration
+        )
+        return list(ordering)
