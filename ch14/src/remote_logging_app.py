@@ -123,3 +123,6 @@ class Sorter(abc.ABC):
         Side Effects:
             Creates a logger in the logging module's namespace.
         """
+
+        id = os.getpid()
+        self.logger = logging.getLogger(f"app_{id}.{self.__class__.__name__}")
