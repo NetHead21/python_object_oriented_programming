@@ -136,3 +136,7 @@ class Zone(NamedTuple):
         Zone codes and SAME codes are standardized by NOAA and don't change
         frequently, making them reliable identifiers for automated systems.
     """
+
+    zone_name: str
+    zone_code: str
+    same_code: str  # Special Area Messaging Encoder
