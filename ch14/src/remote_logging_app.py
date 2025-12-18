@@ -243,3 +243,44 @@ class BogoSort(Sorter):
 
         pairs: Iterable[tuple[float, float]] = zip(data, data[1:])
         return all(a <= b for a, b in pairs)
+
+    def sort(self, data: list[float]) -> list[float]:
+        """Sort data using brute-force permutation enumeration.
+
+        Generates permutations in lexicographic order until finding a sorted
+        one. Logs the start, number of steps tried, and completion time.
+
+        Args:
+            data (list[float]): Unsorted list of numbers.
+
+        Returns:
+            list[float]: Sorted list in ascending order.
+
+        Side Effects:
+            - Logs "Sorting {n}" at start
+            - Logs "Sorted {n} items in {steps} steps, {time} ms" at end
+
+        Performance:
+            For n items, may need to try up to n! permutations. Each
+            permutation check takes O(n) time.
+
+            Typical steps for random data:
+            - n=3: ~3 steps
+            - n=4: ~12 steps
+            - n=5: ~60 steps
+            - n=8: ~20,000 steps
+            - n=10: ~1,800,000 steps (impractical)
+
+        Example:
+            >>> sorter = BogoSort()
+            >>> result = sorter.sort([5.0, 2.0, 8.0, 1.0])
+            INFO:app_12345.BogoSort:Sorting 4
+            INFO:app_12345.BogoSort:Sorted 4 items in 15 steps, 0.234 ms
+
+        Raises:
+            StopIteration: Should never occur as permutations() generates
+                all n! permutations, guaranteeing a sorted one exists.
+
+        Warning:
+            Execution time grows factorially. Avoid using with n > 10.
+        """
