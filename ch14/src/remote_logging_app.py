@@ -126,3 +126,35 @@ class Sorter(abc.ABC):
 
         id = os.getpid()
         self.logger = logging.getLogger(f"app_{id}.{self.__class__.__name__}")
+
+    @abc.abstractmethod
+    def sort(self, data: list[float]) -> list[float]:
+        """Sort data and return ordered list.
+
+        Abstract method that subclasses must implement to provide sorting
+        functionality. Implementations should:
+        1. Log the start of sorting with data size
+        2. Perform the sorting algorithm
+        3. Log completion with timing information
+        4. Return the sorted data
+
+        Args:
+            data (list[float]): Unsorted list of floating-point numbers.
+
+        Returns:
+            list[float]: Sorted list in ascending order.
+
+        Raises:
+            NotImplementedError: If subclass doesn't implement this method.
+
+        Performance:
+            Implementation-dependent. See subclass documentation for
+            time and space complexity details.
+
+        Example:
+            >>> sorter = GnomeSort()
+            >>> result = sorter.sort([3.1, 1.4, 2.7])
+            >>> print(result)
+            [1.4, 2.7, 3.1]
+        """
+        ...
