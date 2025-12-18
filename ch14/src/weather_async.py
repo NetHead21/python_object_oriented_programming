@@ -76,3 +76,63 @@ import re
 import time
 from urllib.request import urlopen
 from typing import Optional, NamedTuple
+
+
+class Zone(NamedTuple):
+    """Marine forecast zone with NWS identification codes.
+
+    Represents a geographic zone for which NOAA NWS issues marine weather
+    forecasts. Each zone has a human-readable name and standardized codes
+    for identification in various systems.
+
+    This NamedTuple provides:
+    - Immutable zone data (thread-safe)
+    - Tuple unpacking support
+    - Hash-ability (can be used in sets/dicts)
+    - Low memory footprint compared to classes
+    - Automatic __repr__, __eq__, etc.
+
+    Attributes:
+        zone_name (str): Human-readable zone description.
+            Example: "Chesapeake Bay from Pooles Island to Sandy Point, MD"
+        zone_code (str): NWS alphanumeric zone identifier.
+            Format: ANZnnn where nnn is a 3-digit number
+            Example: "ANZ531" (AN=Coastal/Marine, Z=Zone, 531=specific area)
+        same_code (str): Special Area Messaging Encoder (SAME) code.
+            Format: 6-digit code used in emergency alert systems
+            Example: "073531" (07=Maryland, 3531=specific zone)
+
+    Code Systems:
+        - Zone Code (ANZ): Used in URLs and forecast headers
+        - SAME Code: Used in NOAA Weather Radio and EAS broadcasts
+        - Both uniquely identify the geographic forecast area
+
+    Properties:
+        forecast_url: Dynamically generates the NWS forecast URL for this zone
+
+    Example:
+        >>> zone = Zone(
+        ...     zone_name="Chesapeake Bay from Pooles Island to Sandy Point, MD",
+        ...     zone_code="ANZ531",
+        ...     same_code="073531"
+        ... )
+        >>> print(zone.zone_name)
+        Chesapeake Bay from Pooles Island to Sandy Point, MD
+        >>> print(zone.forecast_url)
+        https://tgftp.nws.noaa.gov/data/forecasts/marine/coastal/an/anz531.txt
+
+    Immutability:
+        >>> zone.zone_code = "ANZ999"  # Raises AttributeError
+        AttributeError: can't set attribute
+
+    Tuple Operations:
+        >>> name, code, same = zone  # Unpacking
+        >>> zone[0]  # Index access
+        'Chesapeake Bay from Pooles Island to Sandy Point, MD'
+        >>> len(zone)  # Length
+        3
+
+    Note:
+        Zone codes and SAME codes are standardized by NOAA and don't change
+        frequently, making them reliable identifiers for automated systems.
+    """
