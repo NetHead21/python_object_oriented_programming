@@ -594,3 +594,8 @@ if __name__ == "__main__":
         - workload: 100 for more collections
         - sorter: BogoSort() for comparison (slow!)
     """
+
+    LOG_HOST, LOG_PORT = "localhost", 18842
+    socket_handler = logging.handlers.SocketHandler(LOG_HOST, LOG_PORT)
+    stream_handler = logging.StreamHandler(sys.stderr)
+    logging.basicConfig(handlers=[socket_handler, stream_handler], level=logging.INFO)
