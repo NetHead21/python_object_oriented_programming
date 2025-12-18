@@ -208,3 +208,35 @@ class BogoSort(Sorter):
         Do not use with n > 10. The algorithm becomes prohibitively slow
         due to factorial time complexity.
     """
+
+    @staticmethod
+    def is_ordered(data: tuple[float, ...]) -> bool:
+        """Check if data tuple is sorted in ascending order.
+
+        Verifies ordering by checking all adjacent pairs to ensure each
+        element is less than or equal to the next element.
+
+        Args:
+            data (tuple[float, ...]): Tuple to check for sorted order.
+
+        Returns:
+            bool: True if sorted in ascending order, False otherwise.
+
+        Algorithm:
+            Uses zip(data, data[1:]) to create pairs of adjacent elements,
+            then checks all pairs satisfy a ≤ b condition.
+
+        Time Complexity:
+            O(n) - must check all adjacent pairs.
+
+        Example:
+            >>> BogoSort.is_ordered((1.0, 2.0, 3.0))
+            True
+            >>> BogoSort.is_ordered((3.0, 1.0, 2.0))
+            False
+            >>> BogoSort.is_ordered((1.0, 2.0, 2.0, 3.0))  # Handles duplicates
+            True
+
+        Note:
+            Uses ≤ (less than or equal) to correctly handle duplicate values.
+        """
