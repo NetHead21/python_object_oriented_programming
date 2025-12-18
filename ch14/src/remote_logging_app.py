@@ -158,3 +158,53 @@ class Sorter(abc.ABC):
             [1.4, 2.7, 3.1]
         """
         ...
+
+
+class BogoSort(Sorter):
+    """Brute-force sorting algorithm using permutation enumeration.
+
+    BogoSort (also called "stupid sort" or "permutation sort") generates all
+    possible permutations of the input data in lexicographic order until it
+    finds one that is sorted. This is purely for educational/demonstration
+    purposes and should never be used in production.
+
+    Algorithm:
+        1. Generate permutations in lexicographic order
+        2. Check if current permutation is sorted
+        3. If sorted, return; otherwise try next permutation
+        4. Repeat until sorted permutation found
+
+    Complexity:
+        - Time: O(n × n!) average case (n! permutations, each checked in O(n))
+        - Space: O(n) for storing current permutation
+        - Worst case: Must try all n! permutations
+
+    Practical Limits:
+        - n ≤ 8: Usually completes in reasonable time (< 1 second)
+        - n = 9: May take several seconds
+        - n = 10: May take minutes
+        - n > 10: Impractical (10! = 3,628,800 permutations)
+
+    Performance Characteristics:
+        - Deterministic: Uses lexicographic permutation order (not random)
+        - Not in-place: Creates new tuples for each permutation
+        - Comparison-based: Uses pairwise comparisons to verify order
+        - Educational value: Demonstrates factorial complexity growth
+
+    Example:
+        >>> sorter = BogoSort()
+        >>> result = sorter.sort([3.0, 1.0, 2.0])
+        INFO:app_12345.BogoSort:Sorting 3
+        INFO:app_12345.BogoSort:Sorted 3 items in 4 steps, 0.123 ms
+        >>> print(result)
+        [1.0, 2.0, 3.0]
+
+    Note:
+        This implementation uses itertools.permutations which generates
+        permutations in lexicographic order, making it deterministic but
+        still impractical for large inputs.
+
+    Warning:
+        Do not use with n > 10. The algorithm becomes prohibitively slow
+        due to factorial time complexity.
+    """
