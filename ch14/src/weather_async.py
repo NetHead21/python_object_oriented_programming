@@ -186,3 +186,50 @@ class Zone(NamedTuple):
             f"https://tgftp.nws.noaa.gov/data/forecasts"
             f"/marine/coastal/an/{self.zone_code.lower()}.txt"
         )
+
+
+ZONES = [
+    # Chesapeake Bay and Tidal Potomac Marine Forecast Zones
+    # Source: NOAA National Weather Service
+    # Coverage: Maryland and Virginia coastal waters
+    # Total: 13 zones covering the Chesapeake Bay region
+    #
+    # Zone Structure:
+    # - Chesapeake Bay: Main body (ANZ531-534)
+    # - Tidal Potomac: Potomac River tidal sections (ANZ535-537)
+    # - Rivers/Harbors: Tributary rivers and harbors (ANZ538-539)
+    # - Bays/Sounds: Eastern tributaries and sounds (ANZ540-543)
+    #
+    # Geographic Coverage:
+    # North to South: Pooles Island (north) to Smith Point (south)
+    # West to East: Key Bridge (west) to Eastern Bay (east)
+    #
+    # Each zone receives:
+    # - Forecast updates multiple times daily
+    # - Wind speed and direction
+    # - Wave height and period
+    # - Weather conditions
+    # - Special marine advisories and warnings
+    Zone("Chesapeake Bay from Pooles Island to Sandy Point, MD", "ANZ531", "073531"),
+    # Remaining zones continue south along Chesapeake Bay
+    Zone("Chesapeake Bay from Sandy Point to North Beach, MD", "ANZ532", "073532"),
+    Zone("Chesapeake Bay from North Beach to Drum Point, MD", "ANZ533", "073533"),
+    Zone("Chesapeake Bay from Drum Point to Smith Point, VA", "ANZ534", "073534"),
+    Zone("Tidal Potomac from Key Bridge to Indian Head, MD", "ANZ535", "073535"),
+    Zone("Tidal Potomac from Indian Head to Cobb Island, MD", "ANZ536", "073536"),
+    Zone("Tidal Potomac from Cobb Island, MD to Smith Point, VA", "ANZ537", "073537"),
+    Zone("Patapsco River including Baltimore Harbor", "ANZ538", "073538"),
+    Zone("Chester River to Queenstown MD", "ANZ539", "073539"),
+    Zone("Eastern Bay", "ANZ540", "073540"),
+    Zone(
+        "Choptank River to Cambridge MD and the Little Choptank River",
+        "ANZ541",
+        "073541",
+    ),
+    Zone("Patuxent River to Broome’s Island MD", "ANZ542", "073542"),
+    Zone(
+        "Tangier Sound and the Inland Waters surrounding Bloodsworth Island",
+        "ANZ543",
+        "073543",
+    ),
+]
