@@ -240,3 +240,6 @@ class BogoSort(Sorter):
         Note:
             Uses ≤ (less than or equal) to correctly handle duplicate values.
         """
+
+        pairs: Iterable[tuple[float, float]] = zip(data, data[1:])
+        return all(a <= b for a, b in pairs)
