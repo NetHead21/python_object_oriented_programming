@@ -284,3 +284,6 @@ class BogoSort(Sorter):
         Warning:
             Execution time grows factorially. Avoid using with n > 10.
         """
+
+        self.logger.info("Sorting %d", len(data))
+        start = time.perf_counter()
