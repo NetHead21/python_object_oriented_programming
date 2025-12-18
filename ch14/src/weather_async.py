@@ -181,3 +181,8 @@ class Zone(NamedTuple):
             - Authentication: None required (public data)
             - Format: Plain text with structured sections
         """
+
+        return (
+            f"https://tgftp.nws.noaa.gov/data/forecasts"
+            f"/marine/coastal/an/{self.zone_code.lower()}.txt"
+        )
