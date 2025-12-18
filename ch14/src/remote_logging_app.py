@@ -417,3 +417,12 @@ class GnomeSort(Sorter):
 
         self.logger.info("Sorting %d", len(data))
         start = time.perf_counter()
+
+        index = 1
+        while index != len(data):
+            if data[index - 1] < data[index]:
+                index += 1
+            else:
+                data[index - 1], data[index] = data[index], data[index - 1]
+                if index > 1:
+                    index -= 1
