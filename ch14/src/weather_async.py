@@ -316,3 +316,5 @@ class MarineWX:
         - Advisories/warnings in ...triple dot... blocks
         - Multiple sections separated by $$
     """
+
+    advisory_pat = re.compile(r"\n\.\.\.(.*?)\.\.\n", re.M | re.S)
