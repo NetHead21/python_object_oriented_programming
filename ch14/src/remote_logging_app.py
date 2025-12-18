@@ -430,3 +430,75 @@ class GnomeSort(Sorter):
         duration = 1000 * (time.perf_counter() - start)
         self.logger.info("Sorted %d items, %.3f ms", len(data), duration)
         return data
+
+
+def main(workload: int = 10, sorter: Sorter = BogoSort()) -> int:
+    """Execute sorting workload with random data and specified sorter.
+
+    Generates and sorts multiple collections of random data, using the
+    specified sorting algorithm. Each collection has a random size between
+    3 and 10 elements, filled with random floats in [0, 1).
+
+    This function serves as:
+    - Performance testing harness for sorting algorithms
+    - Workload generator for logging demonstrations
+    - Benchmark utility for comparing algorithm efficiency
+
+    Args:
+        workload (int, optional): Number of collections to sort.
+            Defaults to 10.
+        sorter (Sorter, optional): Sorting algorithm instance to use.
+            Defaults to BogoSort().
+
+    Returns:
+        int: Total number of elements sorted across all collections.
+
+    Side Effects:
+        - Calls sorter.sort() for each collection (generates logs)
+        - Uses random.random() and random.randint() (affects RNG state)
+
+    Performance:
+        Execution time depends on:
+        - Workload size (number of collections)
+        - Sorting algorithm complexity
+        - Random collection sizes (3-10 elements each)
+
+        Typical times:
+        - GnomeSort, workload=10: < 1 ms total
+        - BogoSort, workload=10: 10-100 ms total (highly variable)
+
+    Example:
+        >>> from remote_logging_app import main, GnomeSort
+        >>> sorter = GnomeSort()
+        >>> total = main(workload=5, sorter=sorter)
+        INFO:app_12345.GnomeSort:Sorting 7
+        INFO:app_12345.GnomeSort:Sorted 7 items, 0.023 ms
+        ...
+        >>> print(f"Sorted {total} elements total")
+        Sorted 32 elements total
+
+    Testing:
+        >>> # Test with minimal workload
+        >>> total = main(workload=1, sorter=GnomeSort())
+        >>> assert 3 <= total <= 10  # One collection of 3-10 elements
+
+        >>> # Test total calculation
+        >>> random.seed(42)  # For reproducible results
+        >>> total = main(workload=3, sorter=GnomeSort())
+        >>> # total is sum of 3 random integers in [3, 10]
+
+    Data Generation:
+        Each collection:
+        - Size: random.randint(3, 10) → [3, 4, 5, 6, 7, 8, 9, or 10]
+        - Values: [random.random() for _ in range(samples)] → floats in [0, 1)
+        - Independent: Each collection generated separately
+
+    Note:
+        The default BogoSort() is extremely slow. For production use or
+        large workloads, use GnomeSort() or other efficient algorithms.
+
+    Warning:
+        With BogoSort and unlucky RNG, collections of size 9-10 may take
+        several minutes to sort. Consider limiting workload or using
+        GnomeSort for predictable execution times.
+    """
