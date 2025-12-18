@@ -525,3 +525,49 @@ class MarineWX:
         if match := self.advisory_pat.search(self.doc):
             return match.group(1).replace("\n", " ")
         return ""
+
+    def __repr__(self) -> str:
+        """Return formatted string representation of forecast.
+
+        Combines zone name and advisory text for display. Used by print()
+        and str() to produce human-readable output.
+
+        Returns:
+            str: "{zone_name} {advisory_text}"
+
+        Format:
+            If advisory exists:
+                "Chesapeake Bay from Pooles Island to Sandy Point, MD SMALL CRAFT ADVISORY"
+
+            If no advisory:
+                "Chesapeake Bay from Pooles Island to Sandy Point, MD "
+                (note trailing space)
+
+        Example:
+            >>> zone = Zone("Test Zone", "ANZ531", "073531")
+            >>> wx = MarineWX(zone)
+            >>> wx.doc = "...SMALL CRAFT ADVISORY..."
+            >>> repr(wx)
+            'Test Zone SMALL CRAFT ADVISORY'
+            >>> print(wx)  # Uses __repr__
+            Test Zone SMALL CRAFT ADVISORY
+
+        Usage:
+            >>> forecasts = [MarineWX(z) for z in ZONES]
+            >>> await asyncio.gather(*(f.run() for f in forecasts))
+            >>> for f in forecasts:
+            ...     print(f)  # Calls __repr__
+            Chesapeake Bay from Pooles Island... SMALL CRAFT ADVISORY
+            Chesapeake Bay from Sandy Point... GALE WARNING
+            ...
+
+        Note:
+            Could be enhanced to format advisory text with color codes,
+            severity indicators, or truncation for very long advisories:
+            ```python
+            def __repr__(self) -> str:
+                advisory = self.advisory[:100]  # Truncate long advisories
+                severity = "WARNING" if "WARNING" in advisory else "ADVISORY"
+                return f"{self.zone.zone_name} [{severity}] {advisory}"
+            ```
+        """
