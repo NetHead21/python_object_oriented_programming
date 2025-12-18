@@ -442,3 +442,82 @@ class MarineWX:
         async with httpx.AsyncClient() as client:
             response = await client.get(self.zone.forecast_url)
         self.doc = response.text
+
+    @property
+    def advisory(self) -> str:
+        """Extract marine advisory text from forecast document.
+
+        Searches the forecast text for advisory/warning sections marked by
+        triple dots (...text...) and returns the extracted text with newlines
+        replaced by spaces for single-line display.
+
+        Advisory Format in Source:
+            ...
+            SMALL CRAFT ADVISORY IN EFFECT FROM 6 PM THIS EVENING TO
+            6 AM EST SATURDAY...
+            ...
+
+        Returns:
+            str: Advisory text with newlines replaced by spaces, or empty
+                string if no advisory found.
+
+        Regex Pattern:
+            r"\\n\\.\\.\\."     # Newline followed by three literal dots
+            (.*?)              # Capture group: any characters (non-greedy)
+            r"\\.\\.\\.\\n"    # Three literal dots followed by newline
+
+        Processing:
+            1. Search doc with regex pattern
+            2. If match found, extract group(1) (captured text)
+            3. Replace all newlines with spaces
+            4. Return processed text
+            5. If no match, return empty string
+
+        Example:
+            >>> wx = MarineWX(zone)
+            >>> wx.doc = "Forecast\\n...SMALL CRAFT ADVISORY...\\nDetails"
+            >>> wx.advisory
+            'SMALL CRAFT ADVISORY'
+
+            >>> wx.doc = "Forecast\\n...GALE WARNING IN EFFECT\\nUNTIL MIDNIGHT...\\nDetails"
+            >>> wx.advisory
+            'GALE WARNING IN EFFECT UNTIL MIDNIGHT'
+
+        Advisory Types:
+            Common advisories found in marine forecasts:
+            - SMALL CRAFT ADVISORY: Winds 20-33 knots
+            - GALE WARNING: Winds 34-47 knots
+            - STORM WARNING: Winds 48-63 knots
+            - HURRICANE WARNING: Winds 64+ knots
+            - DENSE FOG ADVISORY: Visibility < 1 nautical mile
+            - SPECIAL MARINE WARNING: Severe weather < 2 hours
+
+        Computed Property:
+            This property is computed on-demand from self.doc. It doesn't
+            cache results, so each access re-parses the document. For
+            frequent access, consider caching:
+            ```python
+            @cached_property
+            def advisory(self) -> str:
+                # Same implementation
+            ```
+
+        Walrus Operator:
+            Uses assignment expression (match := ...) to:
+            1. Perform regex search
+            2. Assign result to 'match'
+            3. Check if match is truthy (not None)
+            4. All in one conditional expression
+
+            Equivalent verbose version:
+            ```python
+            match = self.advisory_pat.search(self.doc)
+            if match:
+                return match.group(1).replace("\n", " ")
+            return ""
+            ```
+
+        Note:
+            Returns empty string (not None) when no advisory found,
+            simplifying string operations and display logic.
+        """
