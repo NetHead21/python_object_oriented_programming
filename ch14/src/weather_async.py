@@ -342,3 +342,7 @@ class MarineWX:
             potential future inheritance, though not strictly necessary
             for a non-inheriting class.
         """
+
+        super().__init__()
+        self.zone = zone
+        self.doc = ""
