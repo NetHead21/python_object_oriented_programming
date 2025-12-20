@@ -803,5 +803,9 @@ def main() -> None:
 
     threads = [TempGetter(c) for c in CITIES]
     start = time.time()
+
     for thread in threads:
         thread.start()
+
+    for thread in threads:
+        thread.join()
