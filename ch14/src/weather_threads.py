@@ -179,3 +179,37 @@ class Station(NamedTuple):
     province: str
     code: str
     language: str = "e"  # "f" for French
+
+    @property
+    def path(self) -> str:
+        """Generate the relative path component for the weather XML URL.
+
+        Constructs the path following Environment Canada's URL structure:
+        /{province}/{code}_{language}.xml
+
+        Returns:
+            str: Relative path starting with / for the weather data XML.
+
+        Format:
+            /{province}/     # Two-letter province/territory code
+            {code}_          # Seven-digit station identifier
+            {language}.xml   # Language code and file extension
+
+        Example:
+            >>> station = Station("ON", "s0000458", "e")
+            >>> station.path
+            '/ON/s0000458_e.xml'
+
+            >>> station_french = Station("QC", "s0000620", "f")
+            >>> station_french.path
+            '/QC/s0000620_f.xml'
+
+        Usage:
+            This path is combined with the base URL to create the complete
+            endpoint for fetching weather data. It's separated as a property
+            to enable alternative base URLs (e.g., local mirrors, testing).
+
+        Note:
+            The path always starts with / to be used as an absolute path
+            component in URL construction.
+        """
