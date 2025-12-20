@@ -213,3 +213,5 @@ class Station(NamedTuple):
             The path always starts with / to be used as an absolute path
             component in URL construction.
         """
+
+        return f"/{self.province}/{self.code}_{self.language}.xml"
