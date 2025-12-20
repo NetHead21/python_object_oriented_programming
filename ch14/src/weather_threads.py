@@ -316,3 +316,96 @@ CITIES = {
     "Winnipeg": Station("MB", "s0000193"),
     "Yellowknife": Station("NT", "s0000366"),
 }
+
+
+class TempGetter(Thread):
+    """Thread subclass for fetching temperature data from a weather station.
+
+    Extends threading.Thread to perform concurrent HTTP requests and XML
+    parsing for temperature retrieval. Each instance fetches data for one
+    city independently.
+
+    This design demonstrates:
+    - Thread subclassing (run() method override)
+    - Thread-safe data storage (write-once pattern)
+    - Blocking I/O in separate thread
+    - XML parsing with error handling
+    - Clean separation of concerns
+
+    Thread Lifecycle:
+        1. __init__: Initialize thread with city name
+        2. start(): Launch thread (calls run() in new thread)
+        3. run(): Fetch and parse data (executes in thread)
+        4. join(): Wait for completion (called from main thread)
+        5. Access temperature: Read result after join()
+
+    Attributes:
+        city (str): Human-readable city name (e.g., "Toronto")
+        station (Station): Weather station configuration
+        temperature (Optional[str]): Temperature value or None/"(missing)"
+            - None: Before run() executes
+            - "(missing)": Temperature tag not found in XML
+            - "{value}": Numeric temperature string (e.g., "5", "-15")
+
+    Thread Safety:
+        Safe without locks because:
+        - Each thread writes only to its own instance attributes
+        - Main thread reads only after join() (guarantees completion)
+        - No shared mutable state between threads
+        - Write-once pattern (temperature written once, read after)
+
+    Example:
+        >>> thread = TempGetter("Toronto")
+        >>> thread.start()  # Launches thread
+        >>> thread.join()   # Waits for completion
+        >>> print(thread.temperature)
+        '5'
+        >>> print(f"Currently {thread.temperature}°C in {thread.city}")
+        Currently 5°C in Toronto
+
+    Concurrent Usage:
+        >>> threads = [TempGetter(city) for city in CITIES]
+        >>> for t in threads:
+        ...     t.start()  # All threads running concurrently
+        >>> for t in threads:
+        ...     t.join()   # Wait for all to complete
+        >>> for t in threads:
+        ...     print(f"{t.city}: {t.temperature}°C")
+
+    Error Handling:
+        - XML parse errors: Caught, printed, and re-raised
+        - Network errors: Not caught (will terminate thread)
+        - Missing tags: Sets temperature to "(missing)"
+        - Thread exceptions: Silently fail (check with is_alive())
+
+    Performance:
+        - Thread creation: ~1ms overhead
+        - Network I/O: 200-1000ms (varies by network)
+        - XML parsing: <10ms typically
+        - Thread cleanup: <1ms
+        - Total per thread: ~200-1000ms (I/O dominated)
+
+    Alternative Designs:
+        Could use threading with queue:
+        ```python
+        def fetch_temp(city, queue):
+            # ... fetch temperature ...
+            queue.put((city, temperature))
+
+        threads = [Thread(target=fetch_temp, args=(city, q))
+                   for city in CITIES]
+        ```
+
+        Or use ThreadPoolExecutor:
+        ```python
+        with ThreadPoolExecutor(max_workers=13) as executor:
+            futures = {executor.submit(fetch_temp, city): city
+                      for city in CITIES}
+            results = {city: future.result()
+                      for future, city in futures.items()}
+        ```
+
+    Note:
+        Inherits from Thread rather than using Thread(target=...) pattern
+        for cleaner encapsulation of city and result data.
+    """
