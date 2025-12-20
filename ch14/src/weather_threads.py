@@ -273,3 +273,5 @@ class Station(NamedTuple):
                 fetch_data(url)  # Reuse cached URL
             ```
         """
+
+        return f"https://dd.weather.gc.ca/citypage_weather/xml{self.path}"
