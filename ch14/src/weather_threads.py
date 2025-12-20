@@ -800,3 +800,8 @@ def main() -> None:
         but results are printed in CITIES dictionary order (which is
         insertion order in Python 3.7+).
     """
+
+    threads = [TempGetter(c) for c in CITIES]
+    start = time.time()
+    for thread in threads:
+        thread.start()
