@@ -175,3 +175,7 @@ class Station(NamedTuple):
         if monitoring stations are relocated or decommissioned. Check
         Environment Canada's documentation for current codes.
     """
+
+    province: str
+    code: str
+    language: str = "e"  # "f" for French
