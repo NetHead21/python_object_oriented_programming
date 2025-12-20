@@ -108,3 +108,70 @@ import time
 from urllib.request import urlopen
 from xml.etree import ElementTree
 from typing import Optional, NamedTuple
+
+
+class Station(NamedTuple):
+    """Weather station identifier for Environment Canada's API.
+
+    Represents a weather monitoring station with its location code and
+    language preference for data retrieval. This immutable data structure
+    provides URL generation for fetching weather data.
+
+    NamedTuple Benefits:
+    - Immutable: Thread-safe without synchronization
+    - Lightweight: Lower memory footprint than classes
+    - Tuple operations: Unpacking, indexing, iteration
+    - Built-in methods: __repr__, __eq__, __hash__
+    - Type hints: Static type checking support
+
+    Attributes:
+        province (str): Two-letter province/territory code.
+            Examples: "ON" (Ontario), "BC" (British Columbia), "QC" (Quebec)
+            Full list: AB, BC, MB, NB, NL, NS, NT, NU, ON, PE, QC, SK, YT
+        code (str): Station identifier assigned by Environment Canada.
+            Format: s followed by 7 digits (e.g., "s0000458")
+            Unique identifier for each monitoring station
+        language (str, optional): Language code for data format.
+            "e" - English (default)
+            "f" - French (français)
+            Affects text descriptions, not numerical data
+
+    Properties:
+        path: Relative path component for API URL
+        url: Complete HTTPS URL for fetching XML weather data
+
+    Example:
+        >>> station = Station(province="ON", code="s0000458", language="e")
+        >>> station.province
+        'ON'
+        >>> station.url
+        'https://dd.weather.gc.ca/citypage_weather/xml/ON/s0000458_e.xml'
+
+        >>> # French version
+        >>> station_fr = Station("QC", "s0000620", "f")
+        >>> station_fr.url
+        'https://dd.weather.gc.ca/citypage_weather/xml/QC/s0000620_f.xml'
+
+    Tuple Operations:
+        >>> province, code, lang = station  # Unpacking
+        >>> station[0]  # Index access
+        'ON'
+        >>> len(station)
+        3
+
+    Thread Safety:
+        Fully thread-safe due to immutability. Multiple threads can safely
+        access the same Station instance without synchronization.
+
+    API Structure:
+        Environment Canada organizes data by:
+        1. Province/Territory (2-letter code)
+        2. Station code (7-digit identifier)
+        3. Language (e or f)
+        4. Format (XML in this case)
+
+    Note:
+        Station codes are stable identifiers but may occasionally change
+        if monitoring stations are relocated or decommissioned. Check
+        Environment Canada's documentation for current codes.
+    """
