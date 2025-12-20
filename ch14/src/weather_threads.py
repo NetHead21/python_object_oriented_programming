@@ -447,3 +447,8 @@ class TempGetter(Thread):
             Must call super().__init__() to properly initialize the
             Thread base class before the thread can be started.
         """
+
+        super().__init__()
+        self.city = city
+        self.station = CITIES[self.city]
+        self.temperature: Optional[str] = None
