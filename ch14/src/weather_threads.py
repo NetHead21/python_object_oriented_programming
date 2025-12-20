@@ -584,3 +584,18 @@ class TempGetter(Thread):
             Do not call this method directly. Use start() to launch the
             thread, which will invoke run() in the new thread.
         """
+
+        with urlopen(self.station.url) as stream:
+            try:
+                # xml = ElementTree.parse(stream)
+                doc = stream.read()
+                xml = ElementTree.fromstring(doc)
+                temperature_tag = xml.find("currentConditions/temperature")
+                if temperature_tag is not None:
+                    self.temperature = temperature_tag.text
+                else:
+                    self.temperature = "(missing)"
+            except ElementTree.ParseError as ex:
+                print(ex)
+                print(doc)
+                raise
