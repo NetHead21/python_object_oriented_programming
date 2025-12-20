@@ -832,3 +832,4 @@ if __name__ == "__main__":
         asyncio.run() handles all the complexity of event loop
         management automatically.
     """
+    asyncio.run(task_main())
