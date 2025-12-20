@@ -700,3 +700,5 @@ async def task_main() -> None:
 
     start = time.perf_counter()
     forecasts = [MarineWX(z) for z in ZONES]
+
+    await asyncio.gather(*(asyncio.create_task(f.run()) for f in forecasts))
