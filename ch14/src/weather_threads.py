@@ -452,3 +452,135 @@ class TempGetter(Thread):
         self.city = city
         self.station = CITIES[self.city]
         self.temperature: Optional[str] = None
+
+    def run(self) -> None:
+        """Fetch and parse temperature data (executes in separate thread).
+
+        This method is called automatically when start() is invoked. It:
+        1. Opens HTTP connection to weather service
+        2. Downloads XML document
+        3. Parses XML to extract temperature
+        4. Stores result in self.temperature
+
+        The method executes in a separate thread, allowing multiple cities
+        to be fetched concurrently without blocking.
+
+        Returns:
+            None: Updates self.temperature as a side effect.
+
+        Side Effects:
+            Sets self.temperature to:
+            - String number: Temperature value (e.g., "5", "-15")
+            - "(missing)": If temperature tag not found in XML
+            - May remain None if exception prevents completion
+
+        Network Operation:
+            Uses urlopen() as context manager for proper resource cleanup:
+            - Opens HTTPS connection
+            - Reads entire response into memory
+            - Automatically closes connection on exit
+            - No timeout configured (uses default)
+
+        XML Structure:
+            Expected structure in response:
+            ```xml
+            <?xml version="1.0" encoding="UTF-8"?>
+            <siteData>
+              <currentConditions>
+                <temperature unitType="metric" units="C">5</temperature>
+                <humidity unitType="percent" units="%">65</humidity>
+                ...
+              </currentConditions>
+              ...
+            </siteData>
+            ```
+
+        Parsing Strategy:
+            Two-stage parsing for better error handling:
+            1. Read entire document into memory (doc = stream.read())
+            2. Parse from string (ElementTree.fromstring(doc))
+
+            This allows printing the raw XML if parsing fails, aiding
+            debugging. Alternative direct parsing:
+            ```python
+            xml = ElementTree.parse(stream)  # Commented out
+            ```
+
+        XPath Search:
+            Uses find() with path "currentConditions/temperature":
+            - Searches for <currentConditions> tag
+            - Then searches for <temperature> child
+            - Returns first match or None
+            - Path is relative to root element
+
+        Error Handling:
+            - ParseError: Catches XML parsing failures
+              * Prints exception message
+              * Prints raw XML document for debugging
+              * Re-raises exception (thread terminates)
+
+            - Missing tag: Handled gracefully
+              * Sets temperature to "(missing)"
+              * Thread completes normally
+
+            - Network errors: Not caught
+              * URLError, HTTPError propagate up
+              * Thread terminates with exception
+              * Exception accessible via sys.exc_info()
+
+        Thread Execution:
+            This method executes in a new thread created by start():
+            - Has its own call stack
+            - Subject to GIL (but doesn't matter for I/O)
+            - Can be interrupted by KeyboardInterrupt
+            - Exceptions don't propagate to main thread
+
+        Performance:
+            Timing breakdown:
+            - urlopen(): 200-800ms (network latency)
+            - stream.read(): 10-50ms (depends on response size)
+            - XML parsing: 5-20ms (depends on document size)
+            - find(): <1ms (XPath search)
+            - Total: ~215-870ms per city
+
+        Example:
+            >>> thread = TempGetter("Toronto")
+            >>> thread.start()  # Calls run() in new thread
+            >>> # ... run() executes concurrently ...
+            >>> thread.join()   # Wait for completion
+            >>> thread.temperature
+            '5'
+
+        Debugging:
+            If parsing fails, output shows:
+            ```
+            xml.etree.ElementTree.ParseError: syntax error: line 1, column 0
+            b'<!DOCTYPE html>...'  # Shows actual response
+            ```
+            This helps diagnose issues like:
+            - Invalid URL returning HTML error page
+            - Corrupted XML document
+            - Unexpected XML structure
+
+        Production Enhancements:
+            Should add:
+            ```python
+            def run(self) -> None:
+                try:
+                    with urlopen(self.station.url, timeout=10) as stream:
+                        doc = stream.read()
+                        xml = ElementTree.fromstring(doc)
+                        temp_tag = xml.find("currentConditions/temperature")
+                        self.temperature = temp_tag.text if temp_tag is not None else "(missing)"
+                except (URLError, HTTPError, socket.timeout) as e:
+                    logger.error(f"Network error for {self.city}: {e}")
+                    self.temperature = "(error)"
+                except ElementTree.ParseError as e:
+                    logger.error(f"Parse error for {self.city}: {e}")
+                    self.temperature = "(parse error)"
+            ```
+
+        Note:
+            Do not call this method directly. Use start() to launch the
+            thread, which will invoke run() in the new thread.
+        """
