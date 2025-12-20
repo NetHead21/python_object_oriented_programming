@@ -697,3 +697,6 @@ async def task_main() -> None:
         existing event loop. It cannot be called directly as a regular
         function.
     """
+
+    start = time.perf_counter()
+    forecasts = [MarineWX(z) for z in ZONES]
