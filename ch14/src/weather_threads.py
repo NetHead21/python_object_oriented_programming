@@ -409,3 +409,41 @@ class TempGetter(Thread):
         Inherits from Thread rather than using Thread(target=...) pattern
         for cleaner encapsulation of city and result data.
     """
+
+    def __init__(self, city: str) -> None:
+        """Initialize temperature fetcher thread for a specific city.
+
+        Args:
+            city (str): City name, must exist in CITIES dictionary.
+
+        Raises:
+            KeyError: If city not found in CITIES dictionary.
+
+        Side Effects:
+            - Calls Thread.__init__() to initialize threading machinery
+            - Stores city name and station configuration
+            - Initializes temperature to None
+
+        Example:
+            >>> thread = TempGetter("Toronto")
+            >>> thread.city
+            'Toronto'
+            >>> thread.station.province
+            'ON'
+            >>> thread.temperature  # Not yet fetched
+            None
+
+            >>> # Invalid city raises KeyError
+            >>> thread = TempGetter("InvalidCity")
+            KeyError: 'InvalidCity'
+
+        Thread State:
+            After initialization, thread is in "new" state:
+            - Not yet started
+            - No system resources allocated
+            - Can be started with start() method
+
+        Note:
+            Must call super().__init__() to properly initialize the
+            Thread base class before the thread can be started.
+        """
