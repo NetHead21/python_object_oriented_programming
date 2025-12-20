@@ -275,3 +275,44 @@ class Station(NamedTuple):
         """
 
         return f"https://dd.weather.gc.ca/citypage_weather/xml{self.path}"
+
+
+# Major Canadian cities with their weather station identifiers
+# Source: Environment and Climate Change Canada (ECCC)
+# One city per province/territory (13 total)
+#
+# Geographic Coverage:
+# - All 10 provinces: AB, BC, MB, NB, NL, NS, ON, PE, QC, SK
+# - All 3 territories: NT, NU, YT
+#
+# Selection Criteria:
+# - Capital or largest city in each region
+# - Active weather monitoring stations
+# - Reliable data availability
+# - Representative climate for the region
+#
+# Station Codes:
+# Format: s{7-digit number}
+# Assigned by Environment Canada
+# Stable but may change if stations relocate
+#
+# Usage:
+#     station = CITIES["Toronto"]
+#     url = station.url  # Get weather data URL
+#
+
+CITIES = {
+    "Charlottetown": Station("PE", "s0000583"),  # Prince Edward Island capital
+    "Edmonton": Station("AB", "s0000045"),  # Alberta capital
+    "Fredericton": Station("NB", "s0000250"),
+    "Halifax": Station("NS", "s0000318"),
+    "Iqaluit": Station("NU", "s0000394"),
+    "Québec City": Station("QC", "s0000620"),
+    "Regina": Station("SK", "s0000788"),
+    "St. John's": Station("NL", "s0000280"),
+    "Toronto": Station("ON", "s0000458"),
+    "Victoria": Station("BC", "s0000775"),
+    "Whitehorse": Station("YT", "s0000825"),
+    "Winnipeg": Station("MB", "s0000193"),
+    "Yellowknife": Station("NT", "s0000366"),
+}
