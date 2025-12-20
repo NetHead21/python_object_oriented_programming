@@ -102,3 +102,9 @@ Comparison with weather_async.py:
     Performance is similar for 13 requests, but async scales better
     for 100+ concurrent operations.
 """
+
+from threading import Thread
+import time
+from urllib.request import urlopen
+from xml.etree import ElementTree
+from typing import Optional, NamedTuple
