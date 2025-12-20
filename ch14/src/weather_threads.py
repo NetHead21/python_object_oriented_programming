@@ -215,3 +215,61 @@ class Station(NamedTuple):
         """
 
         return f"/{self.province}/{self.code}_{self.language}.xml"
+
+    @property
+    def url(self) -> str:
+        """Generate the complete HTTPS URL for fetching weather XML data.
+
+        Constructs the full URL to Environment Canada's CityPage Weather
+        service by combining the base URL with the station's path.
+
+        Returns:
+            str: Complete HTTPS URL to the weather data XML document.
+
+        URL Structure:
+            https://dd.weather.gc.ca/       # Base URL (DataMart)
+            citypage_weather/xml            # Service path
+            /{province}/{code}_{lang}.xml   # Station-specific path
+
+        Example:
+            >>> station = Station("ON", "s0000458", "e")
+            >>> station.url
+            'https://dd.weather.gc.ca/citypage_weather/xml/ON/s0000458_e.xml'
+
+        DataMart Service:
+            dd.weather.gc.ca is Environment Canada's DataMart service:
+            - Public access (no authentication)
+            - HTTPS protocol (secure)
+            - High availability
+            - Updated frequently (typically hourly)
+            - Free for non-commercial and commercial use
+
+        Response Format:
+            The URL returns an XML document containing:
+            - Current conditions (temperature, humidity, wind, etc.)
+            - Forecast data (short-term and long-term)
+            - Weather warnings and watches
+            - Station metadata (location, elevation, etc.)
+            - Observation timestamp
+
+        Network Access:
+            - Protocol: HTTPS (port 443)
+            - Method: GET (via urlopen)
+            - No authentication required
+            - Typical response time: 200-800ms
+            - Response size: 50-200 KB
+
+        Alternative Base URLs:
+            For testing or redundancy, you might use:
+            - Local mirror: http://localhost/weather/xml{self.path}
+            - Alternative server: https://backup.example.com{self.path}
+
+        Note:
+            This property computes the URL on each access. For repeated
+            use, consider caching the result:
+            ```python
+            url = station.url  # Cache it
+            for _ in range(10):
+                fetch_data(url)  # Reuse cached URL
+            ```
+        """
