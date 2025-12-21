@@ -18,3 +18,6 @@ import weather_async
 
 class TestZone:
     """Comprehensive tests for the Zone class."""
+
+    def test_zone_basic_creation(self):
+        """Test basic Zone creation with valid data."""
