@@ -85,3 +85,6 @@ class TestZone:
         assert len(zone_set) == 2
         zone_dict = {zone1: "value1", zone2: "value2"}
         assert zone_dict[zone1] == "value1"
+
+    def test_zone_with_special_characters(self):
+        """Test Zone with special characters in name."""
