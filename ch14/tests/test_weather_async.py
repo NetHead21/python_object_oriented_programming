@@ -88,3 +88,6 @@ class TestZone:
 
     def test_zone_with_special_characters(self):
         """Test Zone with special characters in name."""
+
+        zone = weather_async.Zone("Chesapeake Bay - North, MD/VA", "ANZ123", "073123")
+        assert zone.zone_name == "Chesapeake Bay - North, MD/VA"
