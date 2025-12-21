@@ -29,3 +29,9 @@ class TestZone:
 
     def test_zone_forecast_url_generation(self):
         """Test forecast URL generation with proper formatting."""
+
+        zone = weather_async.Zone("Eastern Bay", "ANZ540", "073540")
+        expected_url = (
+            "https://tgftp.nws.noaa.gov/data/forecasts/marine/coastal/an/anz540.txt"
+        )
+        assert zone.forecast_url == expected_url
