@@ -42,3 +42,6 @@ class TestZone:
         zone = weather_async.Zone("Test Zone", "ANZ123", "073123")
         assert "anz123.txt" in zone.forecast_url
         assert "ANZ123" not in zone.forecast_url
+
+    def test_zone_immutability(self):
+        """Test that Zone is immutable (NamedTuple behavior)."""
