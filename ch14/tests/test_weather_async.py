@@ -58,3 +58,6 @@ class TestZone:
         assert name == "Test Zone"
         assert code == "ANZ123"
         assert same == "073123"
+
+    def test_zone_indexing(self):
+        """Test Zone supports index access."""
