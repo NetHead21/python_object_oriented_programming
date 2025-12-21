@@ -78,3 +78,10 @@ class TestZone:
 
     def test_zone_hashable(self):
         """Test Zone can be used in sets and as dict keys."""
+
+        zone1 = weather_async.Zone("Test1", "ANZ123", "073123")
+        zone2 = weather_async.Zone("Test2", "ANZ456", "073456")
+        zone_set = {zone1, zone2}
+        assert len(zone_set) == 2
+        zone_dict = {zone1: "value1", zone2: "value2"}
+        assert zone_dict[zone1] == "value1"
