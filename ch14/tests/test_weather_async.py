@@ -26,3 +26,6 @@ class TestZone:
         assert zone.zone_name == "Eastern Bay"
         assert zone.zone_code == "ANZ540"
         assert zone.same_code == "073540"
+
+    def test_zone_forecast_url_generation(self):
+        """Test forecast URL generation with proper formatting."""
