@@ -21,3 +21,8 @@ class TestZone:
 
     def test_zone_basic_creation(self):
         """Test basic Zone creation with valid data."""
+
+        zone = weather_async.Zone("Eastern Bay", "ANZ540", "073540")
+        assert zone.zone_name == "Eastern Bay"
+        assert zone.zone_code == "ANZ540"
+        assert zone.same_code == "073540"
