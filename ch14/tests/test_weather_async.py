@@ -45,3 +45,7 @@ class TestZone:
 
     def test_zone_immutability(self):
         """Test that Zone is immutable (NamedTuple behavior)."""
+
+        zone = weather_async.Zone("Test", "ANZ123", "073123")
+        with pytest.raises(AttributeError):
+            zone.zone_name = "Modified"
