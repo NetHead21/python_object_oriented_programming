@@ -10,3 +10,11 @@ from pytest_httpx import HTTPXMock
 sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
 
 import weather_async
+
+# ============================================================================
+# Zone Tests
+# ============================================================================
+
+
+class TestZone:
+    """Comprehensive tests for the Zone class."""
