@@ -35,3 +35,6 @@ class TestZone:
             "https://tgftp.nws.noaa.gov/data/forecasts/marine/coastal/an/anz540.txt"
         )
         assert zone.forecast_url == expected_url
+
+    def test_zone_forecast_url_lowercase_conversion(self):
+        """Test that zone code is properly lowercased in URL."""
