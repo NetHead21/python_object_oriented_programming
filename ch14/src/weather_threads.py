@@ -809,3 +809,119 @@ def main() -> None:
 
     for thread in threads:
         thread.join()
+
+
+if __name__ == "__main__":
+    """Entry point for running the weather temperature fetcher.
+    
+    Executes the main() function when the script is run directly from
+    the command line. This is the standard Python idiom for creating
+    executable scripts that can also be imported as modules.
+    
+    Execution Flow:
+        1. Python interpreter starts
+        2. Module imports completed (threading, urllib, xml, time)
+        3. CITIES dictionary initialized
+        4. Classes defined (Station, TempGetter)
+        5. main() function defined
+        6. __name__ == "__main__" evaluates to True
+        7. main() executes
+        8. Program exits when main() completes
+    
+    Command Line Usage:
+        $ python weather_threads.py
+        Currently 5°C in Charlottetown
+        Currently -15°C in Edmonton
+        ...
+        Got 13 temps in 1.234 seconds
+    
+    Exit Codes:
+        - 0: Success (normal completion)
+        - 1: Unhandled exception (network error, parse error, etc.)
+        - 130: Keyboard interrupt (Ctrl+C)
+    
+    Module Import:
+        When imported (not run directly), this block doesn't execute:
+        ```python
+        from weather_threads import TempGetter, CITIES
+        
+        # Use classes without running main()
+        thread = TempGetter("Toronto")
+        thread.start()
+        thread.join()
+        print(thread.temperature)
+        ```
+    
+    Error Handling:
+        Unhandled exceptions propagate to the top level:
+        - Thread exceptions: Silent (don't crash main thread)
+        - Main thread exceptions: Crash with traceback
+        - KeyboardInterrupt: Can interrupt during I/O
+        
+        Production enhancement:
+        ```python
+        if __name__ == "__main__":
+            try:
+                main()
+            except KeyboardInterrupt:
+                print("\nInterrupted by user")
+                sys.exit(130)
+            except Exception as e:
+                print(f"Error: {e}", file=sys.stderr)
+                traceback.print_exc()
+                sys.exit(1)
+        ```
+    
+    Performance:
+        Total execution time:
+        - Module import: ~50ms (stdlib imports are fast)
+        - CITIES initialization: <1ms
+        - main() execution: ~1-2 seconds
+        - Total: ~1.05-2.05 seconds
+    
+    Thread Cleanup:
+        Python automatically cleans up threads on exit:
+        - Daemon threads: Terminated immediately
+        - Non-daemon threads: Waited for completion
+        - Resource cleanup: Automatic (with-statements help)
+    
+    Debugging:
+        Run with Python's thread debugging:
+        ```bash
+        python -X dev weather_threads.py  # Enable dev mode
+        python -m trace --trace weather_threads.py  # Trace execution
+        python -m cProfile weather_threads.py  # Profile performance
+        ```
+    
+    Testing:
+        For unit testing, import and call functions directly:
+        ```python
+        import unittest
+        from weather_threads import TempGetter, Station
+        
+        class TestWeather(unittest.TestCase):
+            def test_station_url(self):
+                station = Station("ON", "s0000458")
+                self.assertIn("dd.weather.gc.ca", station.url)
+        ```
+    
+    Integration with Other Code:
+        Can be used as part of larger applications:
+        ```python
+        # In your application
+        from weather_threads import main as fetch_weather
+        
+        def my_app():
+            print("Fetching weather data...")
+            fetch_weather()  # Uses threading internally
+            print("Weather data fetched!")
+        ```
+    
+    Note:
+        This pattern allows the module to serve dual purposes:
+        1. Executable script (when run directly)
+        2. Importable library (when imported)
+        
+        This is a fundamental Python best practice.
+    """
+    main()
