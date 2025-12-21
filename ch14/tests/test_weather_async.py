@@ -75,3 +75,6 @@ class TestZone:
         zone3 = weather_async.Zone("Test", "ANZ456", "073456")
         assert zone1 == zone2
         assert zone1 != zone3
+
+    def test_zone_hashable(self):
+        """Test Zone can be used in sets and as dict keys."""
