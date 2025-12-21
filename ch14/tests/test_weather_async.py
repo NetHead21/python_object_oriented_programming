@@ -38,3 +38,7 @@ class TestZone:
 
     def test_zone_forecast_url_lowercase_conversion(self):
         """Test that zone code is properly lowercased in URL."""
+
+        zone = weather_async.Zone("Test Zone", "ANZ123", "073123")
+        assert "anz123.txt" in zone.forecast_url
+        assert "ANZ123" not in zone.forecast_url
