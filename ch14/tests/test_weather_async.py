@@ -49,3 +49,6 @@ class TestZone:
         zone = weather_async.Zone("Test", "ANZ123", "073123")
         with pytest.raises(AttributeError):
             zone.zone_name = "Modified"
+
+    def test_zone_tuple_unpacking(self):
+        """Test Zone can be unpacked like a tuple."""
