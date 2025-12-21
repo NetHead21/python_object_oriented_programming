@@ -61,3 +61,8 @@ class TestZone:
 
     def test_zone_indexing(self):
         """Test Zone supports index access."""
+
+        zone = weather_async.Zone("Test Zone", "ANZ123", "073123")
+        assert zone[0] == "Test Zone"
+        assert zone[1] == "ANZ123"
+        assert zone[2] == "073123"
