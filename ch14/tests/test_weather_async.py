@@ -52,3 +52,9 @@ class TestZone:
 
     def test_zone_tuple_unpacking(self):
         """Test Zone can be unpacked like a tuple."""
+
+        zone = weather_async.Zone("Test Zone", "ANZ123", "073123")
+        name, code, same = zone
+        assert name == "Test Zone"
+        assert code == "ANZ123"
+        assert same == "073123"
