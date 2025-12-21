@@ -66,3 +66,6 @@ class TestZone:
         assert zone[0] == "Test Zone"
         assert zone[1] == "ANZ123"
         assert zone[2] == "073123"
+
+    def test_zone_equality(self):
+        """Test Zone equality comparison."""
