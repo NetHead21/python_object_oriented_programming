@@ -69,3 +69,9 @@ class TestZone:
 
     def test_zone_equality(self):
         """Test Zone equality comparison."""
+
+        zone1 = weather_async.Zone("Test", "ANZ123", "073123")
+        zone2 = weather_async.Zone("Test", "ANZ123", "073123")
+        zone3 = weather_async.Zone("Test", "ANZ456", "073456")
+        assert zone1 == zone2
+        assert zone1 != zone3
