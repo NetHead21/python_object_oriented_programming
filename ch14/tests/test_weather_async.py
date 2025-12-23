@@ -125,5 +125,11 @@ class TestMarineWX:
 
     def test_marinewx_advisory_pattern(self):
         """Test the advisory regex pattern."""
+
         pattern = weather_async.MarineWX.advisory_pat
         assert isinstance(pattern, re.Pattern)
+
+        # Test pattern matches advisory format
+        text = "\n...SMALL CRAFT ADVISORY...\n"
+        match = pattern.search(text)
+        assert match is not None
