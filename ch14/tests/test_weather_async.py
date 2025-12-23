@@ -183,3 +183,11 @@ class TestMarineWX:
         """Test advisory extraction with empty doc."""
         marine_wx.doc = ""
         assert marine_wx.advisory == ""
+
+    def test_marinewx_advisory_multiple_advisories(self, marine_wx):
+        """Test advisory extraction with multiple advisories (returns first)."""
+        marine_wx.doc = (
+            "Forecast\n...SMALL CRAFT ADVISORY...\nMiddle\n...GALE WARNING...\nEnd"
+        )
+        # Should return first match
+        assert marine_wx.advisory == "SMALL CRAFT ADVISORY."
