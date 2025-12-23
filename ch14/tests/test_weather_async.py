@@ -178,3 +178,8 @@ class TestMarineWX:
         """Test advisory extraction when no advisory present."""
         marine_wx.doc = "Forecast with no advisory section"
         assert marine_wx.advisory == ""
+
+    def test_marinewx_advisory_empty_doc(self, marine_wx):
+        """Test advisory extraction with empty doc."""
+        marine_wx.doc = ""
+        assert marine_wx.advisory == ""
