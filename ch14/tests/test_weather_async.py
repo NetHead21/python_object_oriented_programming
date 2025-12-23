@@ -202,3 +202,8 @@ class TestMarineWX:
         marine_wx.doc = "Forecast\n...SMALL CRAFT ADVISORY...\nDetails"
         expected = "Eastern Bay SMALL CRAFT ADVISORY."
         assert repr(marine_wx) == expected
+
+    def test_marinewx_repr_without_advisory(self, marine_wx):
+        """Test __repr__ without advisory present."""
+        marine_wx.doc = "Forecast with no advisory"
+        assert repr(marine_wx) == "Eastern Bay "
