@@ -224,3 +224,6 @@ class TestMarineWX:
                 url=wx.zone.forecast_url,
                 text=f"Forecast {i}\n...ADVISORY {i}...\n",
             )
+
+        # Run all concurrently
+        await asyncio.gather(*(f.run() for f in forecasts))
