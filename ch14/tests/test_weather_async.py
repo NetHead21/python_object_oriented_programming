@@ -216,3 +216,11 @@ class TestMarineWX:
             for i in range(5)
         ]
         forecasts = [weather_async.MarineWX(z) for z in zones]
+
+        # Mock all responses
+        for i, wx in enumerate(forecasts):
+            httpx_mock.add_response(
+                method="GET",
+                url=wx.zone.forecast_url,
+                text=f"Forecast {i}\n...ADVISORY {i}...\n",
+            )
