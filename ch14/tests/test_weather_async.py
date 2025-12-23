@@ -91,3 +91,9 @@ class TestZone:
 
         zone = weather_async.Zone("Chesapeake Bay - North, MD/VA", "ANZ123", "073123")
         assert zone.zone_name == "Chesapeake Bay - North, MD/VA"
+
+    def test_zone_with_empty_name(self):
+        """Test Zone with empty name (edge case)."""
+        zone = weather_async.Zone("", "ANZ123", "073123")
+        assert zone.zone_name == ""
+        assert zone.forecast_url.endswith("anz123.txt")
