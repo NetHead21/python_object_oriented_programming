@@ -122,3 +122,8 @@ class TestMarineWX:
         wx = weather_async.MarineWX(sample_zone)
         assert wx.zone == sample_zone
         assert wx.doc == ""
+
+    def test_marinewx_advisory_pattern(self):
+        """Test the advisory regex pattern."""
+        pattern = weather_async.MarineWX.advisory_pat
+        assert isinstance(pattern, re.Pattern)
