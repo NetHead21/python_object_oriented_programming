@@ -116,3 +116,9 @@ class TestMarineWX:
     def marine_wx(self, sample_zone):
         """Provide a MarineWX instance for testing."""
         return weather_async.MarineWX(sample_zone)
+
+    def test_marinewx_initialization(self, sample_zone):
+        """Test MarineWX initialization."""
+        wx = weather_async.MarineWX(sample_zone)
+        assert wx.zone == sample_zone
+        assert wx.doc == ""
