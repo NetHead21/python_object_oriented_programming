@@ -159,3 +159,8 @@ class TestMarineWX:
         assert marine_wx.doc == ""
         await marine_wx.run()
         assert marine_wx.doc == forecast_text
+
+    def test_marinewx_advisory_extraction_simple(self, marine_wx):
+        """Test advisory extraction with simple advisory."""
+        marine_wx.doc = "Forecast\n...SMALL CRAFT ADVISORY...\nDetails"
+        assert marine_wx.advisory == "SMALL CRAFT ADVISORY."
