@@ -173,3 +173,8 @@ class TestMarineWX:
         )
         expected = "SMALL CRAFT ADVISORY IN EFFECT FROM 6 PM THIS EVENING TO 6 AM EST SATURDAY."
         assert marine_wx.advisory == expected
+
+    def test_marinewx_advisory_no_advisory(self, marine_wx):
+        """Test advisory extraction when no advisory present."""
+        marine_wx.doc = "Forecast with no advisory section"
+        assert marine_wx.advisory == ""
