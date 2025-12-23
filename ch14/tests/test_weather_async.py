@@ -148,3 +148,14 @@ class TestMarineWX:
         await marine_wx.run()
         assert marine_wx.doc == "Heading\n...SMALL CRAFT ADVISORY...\n.DAY...details.\n"
         assert marine_wx.advisory == "SMALL CRAFT ADVISORY."
+
+    @pytest.mark.asyncio
+    async def test_marinewx_run_updates_doc(self, marine_wx, httpx_mock: HTTPXMock):
+        """Test that run() updates the doc attribute."""
+        forecast_text = "Test forecast document"
+        httpx_mock.add_response(
+            method="GET", url=marine_wx.zone.forecast_url, text=forecast_text
+        )
+        assert marine_wx.doc == ""
+        await marine_wx.run()
+        assert marine_wx.doc == forecast_text
