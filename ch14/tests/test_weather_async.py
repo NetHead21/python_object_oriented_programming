@@ -106,3 +106,8 @@ class TestZone:
 
 class TestMarineWX:
     """Comprehensive tests for the MarineWX class."""
+
+    @pytest.fixture
+    def sample_zone(self):
+        """Provide a sample zone for testing."""
+        return weather_async.Zone("Eastern Bay", "ANZ540", "073540")
