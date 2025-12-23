@@ -227,3 +227,8 @@ class TestMarineWX:
 
         # Run all concurrently
         await asyncio.gather(*(f.run() for f in forecasts))
+
+        # Verify all completed
+        for i, wx in enumerate(forecasts):
+            assert f"Forecast {i}" in wx.doc
+            assert wx.advisory == f"ADVISORY {i}."
