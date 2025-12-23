@@ -164,3 +164,12 @@ class TestMarineWX:
         """Test advisory extraction with simple advisory."""
         marine_wx.doc = "Forecast\n...SMALL CRAFT ADVISORY...\nDetails"
         assert marine_wx.advisory == "SMALL CRAFT ADVISORY."
+
+    def test_marinewx_advisory_extraction_multiline(self, marine_wx):
+        """Test advisory extraction with multiline advisory."""
+        marine_wx.doc = (
+            "Forecast\n...SMALL CRAFT ADVISORY IN EFFECT\n"
+            "FROM 6 PM THIS EVENING TO 6 AM EST SATURDAY...\nDetails"
+        )
+        expected = "SMALL CRAFT ADVISORY IN EFFECT FROM 6 PM THIS EVENING TO 6 AM EST SATURDAY."
+        assert marine_wx.advisory == expected
