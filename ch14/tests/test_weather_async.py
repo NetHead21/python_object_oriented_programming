@@ -207,3 +207,12 @@ class TestMarineWX:
         """Test __repr__ without advisory present."""
         marine_wx.doc = "Forecast with no advisory"
         assert repr(marine_wx) == "Eastern Bay "
+
+    @pytest.mark.asyncio
+    async def test_marinewx_concurrent_runs(self, sample_zone, httpx_mock: HTTPXMock):
+        """Test multiple concurrent MarineWX runs."""
+        zones = [
+            weather_async.Zone(f"Zone {i}", f"ANZ{i:03d}", f"073{i:03d}")
+            for i in range(5)
+        ]
+        forecasts = [weather_async.MarineWX(z) for z in zones]
