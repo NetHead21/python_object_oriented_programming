@@ -97,3 +97,12 @@ class TestZone:
         zone = weather_async.Zone("", "ANZ123", "073123")
         assert zone.zone_name == ""
         assert zone.forecast_url.endswith("anz123.txt")
+
+
+# ============================================================================
+# MarineWX Tests
+# ============================================================================
+
+
+class TestMarineWX:
+    """Comprehensive tests for the MarineWX class."""
