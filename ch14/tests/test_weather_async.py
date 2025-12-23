@@ -191,3 +191,8 @@ class TestMarineWX:
         )
         # Should return first match
         assert marine_wx.advisory == "SMALL CRAFT ADVISORY."
+
+    def test_marinewx_advisory_with_dots_inside(self, marine_wx):
+        """Test advisory with dots inside the text."""
+        marine_wx.doc = "Forecast\n...ADVISORY...DETAILS...CONTINUE...\nEnd"
+        assert "ADVISORY...DETAILS...CONTINUE" in marine_wx.advisory
