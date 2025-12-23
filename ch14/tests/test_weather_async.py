@@ -111,3 +111,8 @@ class TestMarineWX:
     def sample_zone(self):
         """Provide a sample zone for testing."""
         return weather_async.Zone("Eastern Bay", "ANZ540", "073540")
+
+    @pytest.fixture
+    def marine_wx(self, sample_zone):
+        """Provide a MarineWX instance for testing."""
+        return weather_async.MarineWX(sample_zone)
