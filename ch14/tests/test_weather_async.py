@@ -136,3 +136,15 @@ class TestMarineWX:
 
         # Pattern captures content up to (but not including) final ..
         assert match.group(1) == "SMALL CRAFT ADVISORY."
+
+    @pytest.mark.asyncio
+    async def test_marinewx_run_success(self, marine_wx, httpx_mock: HTTPXMock):
+        """Test successful forecast fetch."""
+        httpx_mock.add_response(
+            method="GET",
+            url=marine_wx.zone.forecast_url,
+            text="Heading\n...SMALL CRAFT ADVISORY...\n.DAY...details.\n",
+        )
+        await marine_wx.run()
+        assert marine_wx.doc == "Heading\n...SMALL CRAFT ADVISORY...\n.DAY...details.\n"
+        assert marine_wx.advisory == "SMALL CRAFT ADVISORY."
