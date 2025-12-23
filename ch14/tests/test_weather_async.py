@@ -133,3 +133,6 @@ class TestMarineWX:
         text = "\n...SMALL CRAFT ADVISORY...\n"
         match = pattern.search(text)
         assert match is not None
+
+        # Pattern captures content up to (but not including) final ..
+        assert match.group(1) == "SMALL CRAFT ADVISORY."
