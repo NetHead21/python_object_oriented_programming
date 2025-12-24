@@ -299,3 +299,9 @@ class TestEdgeCases:
         wx = weather_async.MarineWX(weather_async.Zone("Test", "ANZ123", "073123"))
         wx.doc = "Forecast\n...\nDetails"
         assert wx.advisory == ""
+
+    def test_zone_list_exists(self):
+        """Test that ZONES list is properly defined."""
+        assert hasattr(weather_async, "ZONES")
+        assert isinstance(weather_async.ZONES, list)
+        assert len(weather_async.ZONES) > 0
