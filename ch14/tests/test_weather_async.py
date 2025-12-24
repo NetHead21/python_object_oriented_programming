@@ -366,3 +366,11 @@ class TestIntegration:
 
         # Run fetch
         await wx.run()
+
+        # Verify results
+        assert wx.doc == forecast
+        assert "SMALL CRAFT ADVISORY" in wx.advisory
+        assert "6 PM THIS EVENING TO 6 AM EST SATURDAY" in wx.advisory
+        result = repr(wx)
+        assert "Test Zone" in result
+        assert "SMALL CRAFT ADVISORY" in result
