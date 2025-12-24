@@ -343,3 +343,9 @@ class TestEdgeCases:
 
 class TestIntegration:
     """Integration tests for the complete workflow."""
+
+    @pytest.mark.asyncio
+    async def test_complete_workflow(self, httpx_mock: HTTPXMock):
+        """Test complete workflow from zone creation to result."""
+        # Create zone
+        zone = weather_async.Zone("Test Zone", "ANZ123", "073123")
