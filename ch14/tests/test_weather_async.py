@@ -391,3 +391,6 @@ class TestIntegration:
                 url=wx.zone.forecast_url,
                 text=f"Forecast {i}\n...ADVISORY {i}...\n",
             )
+
+        # Gather using asyncio
+        await asyncio.gather(*(f.run() for f in forecasts))
