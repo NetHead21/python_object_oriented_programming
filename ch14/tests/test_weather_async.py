@@ -327,3 +327,10 @@ class TestEdgeCases:
         )
         await wx.run()
         assert wx.doc == "First forecast"
+
+        # Second call
+        httpx_mock.add_response(
+            method="GET", url=zone.forecast_url, text="Second forecast"
+        )
+        await wx.run()
+        assert wx.doc == "Second forecast"
