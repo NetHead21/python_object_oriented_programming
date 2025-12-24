@@ -355,3 +355,9 @@ class TestIntegration:
 
         # Mock response
         forecast = """
+        FZUS51 KLWX 221234
+        MARINE WEATHER STATEMENT
+        ...SMALL CRAFT ADVISORY IN EFFECT FROM 6 PM THIS EVENING TO 6 AM EST SATURDAY...
+        .TONIGHT...Southwest winds 15 to 20 kt.
+        $$
+        """
