@@ -320,3 +320,10 @@ class TestEdgeCases:
         """Test calling run() multiple times updates doc."""
         zone = weather_async.Zone("Test", "ANZ123", "073123")
         wx = weather_async.MarineWX(zone)
+
+        # First call
+        httpx_mock.add_response(
+            method="GET", url=zone.forecast_url, text="First forecast"
+        )
+        await wx.run()
+        assert wx.doc == "First forecast"
