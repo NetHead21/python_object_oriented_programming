@@ -349,3 +349,9 @@ class TestIntegration:
         """Test complete workflow from zone creation to result."""
         # Create zone
         zone = weather_async.Zone("Test Zone", "ANZ123", "073123")
+
+        # Create MarineWX
+        wx = weather_async.MarineWX(zone)
+
+        # Mock response
+        forecast = """
