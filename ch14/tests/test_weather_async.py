@@ -374,3 +374,12 @@ class TestIntegration:
         result = repr(wx)
         assert "Test Zone" in result
         assert "SMALL CRAFT ADVISORY" in result
+
+    @pytest.mark.asyncio
+    async def test_gather_multiple_forecasts(self, httpx_mock: HTTPXMock):
+        """Test gathering multiple forecasts concurrently."""
+        zones = [
+            weather_async.Zone(f"Zone {i}", f"ANZ{i:03d}", f"073{i:03d}")
+            for i in range(3)
+        ]
+        forecasts = [weather_async.MarineWX(z) for z in zones]
