@@ -394,3 +394,7 @@ class TestIntegration:
 
         # Gather using asyncio
         await asyncio.gather(*(f.run() for f in forecasts))
+
+        # Verify all completed
+        for i, wx in enumerate(forecasts):
+            assert wx.advisory == f"ADVISORY {i}."
