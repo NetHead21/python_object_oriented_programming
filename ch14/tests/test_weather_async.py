@@ -261,3 +261,13 @@ class TestEdgeCases:
         httpx_mock.add_response(method="GET", url=zone.forecast_url, text=large_text)
         await wx.run()
         assert len(wx.doc) == 1000000
+
+    @pytest.mark.asyncio
+    async def test_special_characters_in_response(self, httpx_mock: HTTPXMock):
+        """Test handling of special characters in response."""
+        zone = weather_async.Zone("Test", "ANZ123", "073123")
+        wx = weather_async.MarineWX(zone)
+        special_text = "Forecast\n...ADVISORY™ ©® €¥£...\n"
+        httpx_mock.add_response(method="GET", url=zone.forecast_url, text=special_text)
+        await wx.run()
+        assert "™ ©® €¥£" in wx.advisory
