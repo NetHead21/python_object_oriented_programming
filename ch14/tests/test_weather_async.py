@@ -288,3 +288,8 @@ class TestEdgeCases:
         # Unix newlines
         wx.doc = "Forecast\n...ADVISORY...\nDetails"
         assert wx.advisory == "ADVISORY."
+
+        # Windows newlines - pattern requires Unix-style \n, so won't match
+        wx.doc = "Forecast\r\n...ADVISORY...\r\nDetails"
+        # Pattern uses \n not \r\n, so no match with pure Windows newlines
+        assert wx.advisory == ""
