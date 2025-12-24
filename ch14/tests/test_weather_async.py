@@ -334,3 +334,12 @@ class TestEdgeCases:
         )
         await wx.run()
         assert wx.doc == "Second forecast"
+
+
+# ============================================================================
+# Integration Tests
+# ============================================================================
+
+
+class TestIntegration:
+    """Integration tests for the complete workflow."""
