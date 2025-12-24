@@ -251,3 +251,13 @@ class TestEdgeCases:
         await wx.run()
         assert wx.doc == ""
         assert wx.advisory == ""
+
+    @pytest.mark.asyncio
+    async def test_very_large_response(self, httpx_mock: HTTPXMock):
+        """Test handling of very large response."""
+        zone = weather_async.Zone("Test", "ANZ123", "073123")
+        wx = weather_async.MarineWX(zone)
+        large_text = "X" * 1000000  # 1MB of data
+        httpx_mock.add_response(method="GET", url=zone.forecast_url, text=large_text)
+        await wx.run()
+        assert len(wx.doc) == 1000000
