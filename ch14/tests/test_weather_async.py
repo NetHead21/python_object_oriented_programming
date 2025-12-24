@@ -232,3 +232,12 @@ class TestMarineWX:
         for i, wx in enumerate(forecasts):
             assert f"Forecast {i}" in wx.doc
             assert wx.advisory == f"ADVISORY {i}."
+
+
+# ============================================================================
+# Edge Case Tests
+# ============================================================================
+
+
+class TestEdgeCases:
+    """Test edge cases and error conditions."""
