@@ -271,3 +271,13 @@ class TestEdgeCases:
         httpx_mock.add_response(method="GET", url=zone.forecast_url, text=special_text)
         await wx.run()
         assert "™ ©® €¥£" in wx.advisory
+
+    @pytest.mark.asyncio
+    async def test_unicode_in_response(self, httpx_mock: HTTPXMock):
+        """Test handling of Unicode characters in response."""
+        zone = weather_async.Zone("Test", "ANZ123", "073123")
+        wx = weather_async.MarineWX(zone)
+        unicode_text = "Forecast\n...ADVISORY 中文 日本語 한글...\n"
+        httpx_mock.add_response(method="GET", url=zone.forecast_url, text=unicode_text)
+        await wx.run()
+        assert "中文 日本語 한글" in wx.advisory
