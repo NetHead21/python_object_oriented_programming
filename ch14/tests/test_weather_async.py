@@ -293,3 +293,9 @@ class TestEdgeCases:
         wx.doc = "Forecast\r\n...ADVISORY...\r\nDetails"
         # Pattern uses \n not \r\n, so no match with pure Windows newlines
         assert wx.advisory == ""
+
+    def test_advisory_with_only_dots(self):
+        """Test advisory pattern doesn't match just dots."""
+        wx = weather_async.MarineWX(weather_async.Zone("Test", "ANZ123", "073123"))
+        wx.doc = "Forecast\n...\nDetails"
+        assert wx.advisory == ""
