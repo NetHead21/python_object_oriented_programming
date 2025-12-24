@@ -361,3 +361,8 @@ class TestIntegration:
         .TONIGHT...Southwest winds 15 to 20 kt.
         $$
         """
+
+        httpx_mock.add_response(method="GET", url=zone.forecast_url, text=forecast)
+
+        # Run fetch
+        await wx.run()
