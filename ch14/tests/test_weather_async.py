@@ -281,3 +281,10 @@ class TestEdgeCases:
         httpx_mock.add_response(method="GET", url=zone.forecast_url, text=unicode_text)
         await wx.run()
         assert "中文 日本語 한글" in wx.advisory
+
+    def test_advisory_pattern_with_newlines(self):
+        """Test advisory pattern handles various newline formats."""
+        wx = weather_async.MarineWX(weather_async.Zone("Test", "ANZ123", "073123"))
+        # Unix newlines
+        wx.doc = "Forecast\n...ADVISORY...\nDetails"
+        assert wx.advisory == "ADVISORY."
