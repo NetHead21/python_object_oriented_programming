@@ -241,3 +241,13 @@ class TestMarineWX:
 
 class TestEdgeCases:
     """Test edge cases and error conditions."""
+
+    @pytest.mark.asyncio
+    async def test_empty_response(self, httpx_mock: HTTPXMock):
+        """Test handling of empty response."""
+        zone = weather_async.Zone("Test", "ANZ123", "073123")
+        wx = weather_async.MarineWX(zone)
+        httpx_mock.add_response(method="GET", url=zone.forecast_url, text="")
+        await wx.run()
+        assert wx.doc == ""
+        assert wx.advisory == ""
