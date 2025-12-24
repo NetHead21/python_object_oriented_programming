@@ -314,3 +314,9 @@ class TestEdgeCases:
             assert zone.zone_code
             assert zone.same_code
             assert zone.forecast_url.startswith("https://")
+
+    @pytest.mark.asyncio
+    async def test_marinewx_multiple_calls_to_run(self, httpx_mock: HTTPXMock):
+        """Test calling run() multiple times updates doc."""
+        zone = weather_async.Zone("Test", "ANZ123", "073123")
+        wx = weather_async.MarineWX(zone)
