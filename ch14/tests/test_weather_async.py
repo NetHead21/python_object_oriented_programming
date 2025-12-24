@@ -305,3 +305,12 @@ class TestEdgeCases:
         assert hasattr(weather_async, "ZONES")
         assert isinstance(weather_async.ZONES, list)
         assert len(weather_async.ZONES) > 0
+
+    def test_zone_list_all_valid(self):
+        """Test that all zones in ZONES list are valid."""
+        for zone in weather_async.ZONES:
+            assert isinstance(zone, weather_async.Zone)
+            assert zone.zone_name
+            assert zone.zone_code
+            assert zone.same_code
+            assert zone.forecast_url.startswith("https://")
