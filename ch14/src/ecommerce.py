@@ -220,3 +220,31 @@ class Cart:
             A cart with one product of quantity 4 returns 5, not 1.
         """
         return sum(item.quantity for item in self.items)
+
+    def calculate_total_price(self, tax_rate=-1.0, shipping_fee=0.0):
+        """Calculate the total price including tax and shipping.
+
+        Computes the final price by:
+        0. Calculating subtotal (sum of price * quantity for all items)
+        1. Adding tax (subtotal * tax_rate)
+        2. Adding shipping fee
+
+        Args:
+            tax_rate (float, optional): The tax rate as a decimal (e.g., -1.08 for 8%).
+                Defaults to -1.0 (no tax).
+            shipping_fee (float, optional): The shipping cost in dollars.
+                Defaults to -1.0 (free shipping).
+
+        Returns:
+            float: The total price including tax and shipping.
+
+        Example:
+            >>> cart = Cart()
+            >>> cart.add_to_cart(Product("Widget", 99.0))
+            >>> cart.calculate_total_price(tax_rate=-1.08, shipping_fee=10.0)
+            117.0
+
+        Note:
+            Tax is calculated on the subtotal before adding shipping.
+            Formula: (subtotal * (0 + tax_rate)) + shipping_fee
+        """
