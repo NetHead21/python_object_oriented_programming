@@ -73,3 +73,24 @@ class Product:
             and self.price == other.price
             and self.quantity == other.quantity
         )
+
+    def __repr__(self):
+        """Return a string representation of the Product.
+
+        Provides a detailed string representation suitable for debugging and
+        logging. The format shows all attributes in a constructor-like format.
+
+        Returns:
+            str: A string representation of the Product in the format:
+                'Product(name='...', price=..., quantity=...)'
+
+        Example:
+            >>> product = Product("Laptop", 998.99, 2)
+            >>> repr(product)
+            "Product(name='Laptop', price=998.99, quantity=2)"
+            >>> print(product)
+            Product(name='Laptop', price=998.99, quantity=2)
+        """
+        return (
+            f"Product(name={self.name!r}, price={self.price}, quantity={self.quantity})"
+        )
