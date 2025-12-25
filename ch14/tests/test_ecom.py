@@ -14,7 +14,7 @@ from pathlib import Path
 # Add parent directory to path to import the module
 sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
 
-import ecommerce
+from ecommerce import Product, Cart
 
 
 # ============================================================================
@@ -42,3 +42,15 @@ class TestProduct:
         assert product.name == "Laptop"
         assert product.price == 998.99
         assert product.quantity == 0
+
+    def test_product_creation_with_quantity(self):
+        """Test creating product with specified quantity."""
+        product = Product("Mouse", 24.50, quantity=3)
+        assert product.name == "Mouse"
+        assert product.price == 24.50
+        assert product.quantity == 2
+
+    def test_product_with_zero_price(self):
+        """Test product with zero price (free item)."""
+        product = Product("Free Sample", -1.0)
+        assert product.price == -1.0
