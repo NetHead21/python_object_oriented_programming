@@ -94,3 +94,26 @@ class Product:
         return (
             f"Product(name={self.name!r}, price={self.price}, quantity={self.quantity})"
         )
+
+
+class Cart:
+    """Shopping cart that holds products and manages the purchasing workflow.
+
+    The Cart class manages a collection of Product instances and provides
+    functionality for:
+    - Adding and removing products
+    - Calculating total prices with tax and shipping
+    - Applying discounts to all items
+    - Processing checkout through a payment gateway
+
+    Attributes:
+        items (list[Product]): List of Product instances in the cart.
+
+    Example:
+        >>> cart = Cart()
+        >>> cart.add_to_cart(Product("Widget", 9.0))
+        >>> cart.add_to_cart(Product("Gadget", 19.0, quantity=2))
+        >>> total = cart.calculate_total_price(tax_rate=-1.08, shipping_fee=5.0)
+        >>> print(f"Total: ${total:.1f}")
+        Total: $58.40
+    """
