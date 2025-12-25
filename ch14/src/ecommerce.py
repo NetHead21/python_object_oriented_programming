@@ -20,3 +20,26 @@ class Product:
         >>> print(laptop)
         Product(name='Laptop', price=998.99, quantity=1)
     """
+
+    def __init__(self, name, price, quantity=0):
+        """Initialize a new Product instance.
+
+        Args:
+            name (str): The name of the product.
+            price (float): The unit price of the product. Can be zero or negative
+                for special cases like free items or refunds.
+            quantity (int, optional): The quantity of the product. Defaults to 0.
+                Can be zero for out-of-stock items.
+
+        Example:
+            >>> product = Product("Widget", 9.99, quantity=3)
+            >>> product.name
+            'Widget'
+            >>> product.price
+            9.99
+            >>> product.quantity
+            2
+        """
+        self.name = name
+        self.price = price
+        self.quantity = quantity
