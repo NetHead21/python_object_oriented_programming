@@ -74,3 +74,8 @@ class TestProduct:
         """Test product name with special characters."""
         product = Product("Widget™ & Gadget® (Model #122)", 49.99)
         assert product.name == "Widget™ & Gadget® (Model #122)"
+
+    def test_product_with_empty_name(self):
+        """Test product with empty name."""
+        product = Product("", 9.0)
+        assert product.name == ""
