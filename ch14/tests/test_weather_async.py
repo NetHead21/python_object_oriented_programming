@@ -438,3 +438,12 @@ class TestIntegration:
         assert "SMALL CRAFT ADVISORY" in advisory
         # Newlines should be replaced with spaces
         assert "\n" not in advisory
+
+
+# ============================================================================
+# Performance and Timing Tests
+# ============================================================================
+
+
+class TestPerformance:
+    """Tests for performance characteristics."""
