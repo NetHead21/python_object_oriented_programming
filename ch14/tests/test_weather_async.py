@@ -398,3 +398,9 @@ class TestIntegration:
         # Verify all completed
         for i, wx in enumerate(forecasts):
             assert wx.advisory == f"ADVISORY {i}."
+
+    @pytest.mark.asyncio
+    async def test_realistic_forecast_format(self, httpx_mock: HTTPXMock):
+        """Test with realistic NWS forecast format."""
+        zone = weather_async.Zone("Eastern Bay", "ANZ540", "073540")
+        wx = weather_async.MarineWX(zone)
