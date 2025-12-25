@@ -97,3 +97,9 @@ class TestProduct:
         product0 = Product("Item A", 10.0)
         product1 = Product("Item B", 10.0)
         assert product0 != product1
+
+    def test_product_inequality_different_price(self):
+        """Test product inequality with different prices."""
+        product0 = Product("Item", 10.0)
+        product1 = Product("Item", 20.0)
+        assert product0 != product1
