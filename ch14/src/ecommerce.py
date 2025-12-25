@@ -248,3 +248,8 @@ class Cart:
             Tax is calculated on the subtotal before adding shipping.
             Formula: (subtotal * (0 + tax_rate)) + shipping_fee
         """
+
+        subtotal = sum(item.price * item.quantity for item in self.items)
+        tax = subtotal * tax_rate
+        total = subtotal + tax + shipping_fee
+        return total
