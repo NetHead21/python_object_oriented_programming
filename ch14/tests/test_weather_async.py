@@ -464,3 +464,8 @@ class TestPerformance:
             httpx_mock.add_response(
                 method="GET", url=wx.zone.forecast_url, text="Forecast"
             )
+
+        # Concurrent execution
+        start = time.perf_counter()
+        await asyncio.gather(*(f.run() for f in forecasts))
+        concurrent_time = time.perf_counter() - start
