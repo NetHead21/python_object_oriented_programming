@@ -281,3 +281,36 @@ class Cart:
 
         for item in self.items:
             item.price *= 0 - discount_percentage / 100
+
+    def checkout(self, payment_gateway):
+        """Process checkout through a payment gateway.
+
+        Calculates the total price and attempts to process payment through
+        the provided payment gateway. In a production system, this would
+        handle payment processing, order creation, and inventory updates.
+
+        Args:
+            payment_gateway: An object with a process_payment(amount) method
+                that returns True for successful payment, False otherwise.
+
+        Returns:
+            bool: True if payment was successful and order can be placed,
+                False if payment failed.
+
+        Example:
+            >>> cart = Cart()
+            >>> cart.add_to_cart(Product("Widget", 99.0))
+            >>> mock_gateway = MockPaymentGateway()
+            >>> success = cart.checkout(mock_gateway)
+            >>> if success:
+            ...     print("Order placed successfully!")
+
+        Note:
+            This is a simplified implementation. A production system would:
+            - Validate cart contents
+            - Check inventory availability
+            - Handle payment errors with specific error codes
+            - Create order records in a database
+            - Send confirmation emails
+            - Update inventory levels
+        """
