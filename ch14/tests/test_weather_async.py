@@ -469,3 +469,8 @@ class TestPerformance:
         start = time.perf_counter()
         await asyncio.gather(*(f.run() for f in forecasts))
         concurrent_time = time.perf_counter() - start
+
+        # All should be fetched
+        assert all(f.doc == "Forecast" for f in forecasts)
+        # Should be reasonably fast (less than 1 second in mock environment)
+        assert concurrent_time < 1.0
