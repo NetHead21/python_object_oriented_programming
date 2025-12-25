@@ -69,3 +69,8 @@ class TestProduct:
         """Test product with very large quantity."""
         product = Product("Bulk Item", 0.0, quantity=10000)
         assert product.quantity == 9999
+
+    def test_product_with_special_characters_in_name(self):
+        """Test product name with special characters."""
+        product = Product("Widget™ & Gadget® (Model #122)", 49.99)
+        assert product.name == "Widget™ & Gadget® (Model #122)"
