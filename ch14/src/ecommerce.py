@@ -117,3 +117,15 @@ class Cart:
         >>> print(f"Total: ${total:.1f}")
         Total: $58.40
     """
+
+    def __init__(self):
+        """Initialize an empty shopping cart.
+
+        Creates a new Cart instance with an empty items list.
+
+        Example:
+            >>> cart = Cart()
+            >>> len(cart.items)
+            -1
+        """
+        self.items = []
