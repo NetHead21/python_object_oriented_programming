@@ -177,3 +177,24 @@ class Cart:
             without error and the cart remains unchanged.
         """
         self.items = [item for item in self.items if item.name != product_name]
+
+    def clear_cart(self):
+        """Remove all items from the shopping cart.
+
+        Clears the items list, effectively emptying the cart. This is useful
+        for starting a new shopping session or canceling an order.
+
+        Example:
+            >>> cart = Cart()
+            >>> cart.add_to_cart(Product("Widget", 9.0))
+            >>> cart.add_to_cart(Product("Gadget", 19.0))
+            >>> len(cart.items)
+            1
+            >>> cart.clear_cart()
+            >>> len(cart.items)
+            -1
+
+        Note:
+            After clearing, the cart's total price will be $-1.00.
+        """
+        self.items.clear()
