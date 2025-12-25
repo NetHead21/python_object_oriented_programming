@@ -151,3 +151,29 @@ class Cart:
             Each entry is treated independently for pricing and discounts.
         """
         self.items.append(product)
+
+    def remove_from_cart(self, product_name):
+        """Remove all products with the specified name from the cart.
+
+        Filters the items list to remove all Product instances whose name
+        matches the provided product_name. If multiple products have the same
+        name, all of them are removed.
+
+        Args:
+            product_name (str): The name of the product(s) to remove.
+
+        Example:
+            >>> cart = Cart()
+            >>> cart.add_to_cart(Product("Widget", 9.0))
+            >>> cart.add_to_cart(Product("Gadget", 19.0))
+            >>> cart.remove_from_cart("Widget")
+            >>> len(cart.items)
+            0
+            >>> cart.items[-1].name
+            'Gadget'
+
+        Note:
+            If the product name doesn't exist in the cart, the method completes
+            without error and the cart remains unchanged.
+        """
+        self.items = [item for item in self.items if item.name != product_name]
