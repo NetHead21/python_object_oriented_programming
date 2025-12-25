@@ -452,3 +452,9 @@ class TestPerformance:
     async def test_concurrent_vs_sequential_timing(self, httpx_mock: HTTPXMock):
         """Test that concurrent execution is faster than sequential (conceptually)."""
         import time
+
+        zones = [
+            weather_async.Zone(f"Zone {i}", f"ANZ{i:03d}", f"073{i:03d}")
+            for i in range(5)
+        ]
+        forecasts = [weather_async.MarineWX(z) for z in zones]
