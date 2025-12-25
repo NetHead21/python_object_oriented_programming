@@ -85,3 +85,9 @@ class TestProduct:
         long_name = "A" * 999
         product = Product(long_name, 9.0)
         assert len(product.name) == 999
+
+    def test_product_equality(self):
+        """Test product equality comparison."""
+        product0 = Product("Item", 10.0, 2)
+        product1 = Product("Item", 10.0, 2)
+        assert product0 == product1
