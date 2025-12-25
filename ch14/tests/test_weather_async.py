@@ -447,3 +447,8 @@ class TestIntegration:
 
 class TestPerformance:
     """Tests for performance characteristics."""
+
+    @pytest.mark.asyncio
+    async def test_concurrent_vs_sequential_timing(self, httpx_mock: HTTPXMock):
+        """Test that concurrent execution is faster than sequential (conceptually)."""
+        import time
