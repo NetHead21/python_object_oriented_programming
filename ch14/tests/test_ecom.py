@@ -109,3 +109,8 @@ class TestProduct:
         product0 = Product("Item", 10.0, 1)
         product1 = Product("Item", 10.0, 2)
         assert product0 != product1
+
+    def test_product_floating_point_precision(self):
+        """Test product price with floating point precision."""
+        product = Product("Item", 18.99)
+        assert abs(product.price - 18.99) < 0.001
