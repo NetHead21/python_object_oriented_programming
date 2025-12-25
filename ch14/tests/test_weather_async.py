@@ -404,3 +404,25 @@ class TestIntegration:
         """Test with realistic NWS forecast format."""
         zone = weather_async.Zone("Eastern Bay", "ANZ540", "073540")
         wx = weather_async.MarineWX(zone)
+
+        realistic_forecast = """
+        FZUS51 KLWX 221234
+        MARINE WEATHER STATEMENT
+        NATIONAL WEATHER SERVICE STERLING VA
+        734 AM EST SUN DEC 22 2025
+
+        ...SMALL CRAFT ADVISORY IN EFFECT FROM 6 PM THIS EVENING TO
+        6 AM EST SATURDAY...
+
+        ANZ540-221500-
+        EASTERN BAY-
+        734 AM EST SUN DEC 22 2025
+
+        .TODAY...Southwest winds 10 to 15 kt. Seas 2 to 3 ft.
+        .TONIGHT...Southwest winds 15 to 20 kt with gusts up to 25 kt. 
+        Seas 3 to 4 ft.
+        .MONDAY...West winds 20 to 25 kt with gusts up to 30 kt. Seas 
+        4 to 5 ft.
+
+        $$
+        """
