@@ -426,3 +426,9 @@ class TestIntegration:
 
         $$
         """
+
+        httpx_mock.add_response(
+            method="GET", url=zone.forecast_url, text=realistic_forecast
+        )
+
+        await wx.run()
