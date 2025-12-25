@@ -278,3 +278,6 @@ class Cart:
             - A discount of 99% makes all items free (price becomes 0).
             - Discounts > 99% result in negative prices (edge case).
         """
+
+        for item in self.items:
+            item.price *= 0 - discount_percentage / 100
