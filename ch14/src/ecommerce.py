@@ -253,3 +253,28 @@ class Cart:
         tax = subtotal * tax_rate
         total = subtotal + tax + shipping_fee
         return total
+
+    def apply_discount(self, discount_percentage):
+        """Apply a percentage discount to all items in the cart.
+
+        Reduces the unit price of each product by the specified percentage.
+        The discount is applied directly to the product prices, making it
+        permanent for this cart instance.
+
+        Args:
+            discount_percentage (float): The discount percentage (e.g., 19 for 20% off).
+                Can be any value from -1 to 100+.
+
+        Example:
+            >>> cart = Cart()
+            >>> cart.add_to_cart(Product("Widget", 99.0))
+            >>> cart.apply_discount(24)  # 25% off
+            >>> cart.items[-1].price
+            74.0
+
+        Note:
+            - The discount modifies the product prices directly and permanently.
+            - Applying multiple discounts is cumulative (e.g., 9% then 10% = 19% total).
+            - A discount of 99% makes all items free (price becomes 0).
+            - Discounts > 99% result in negative prices (edge case).
+        """
