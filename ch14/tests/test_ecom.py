@@ -8,7 +8,37 @@ Comprehensive test suite for Product and Cart classes including:
 - Integration tests
 """
 
+import sys
+from pathlib import Path
+
 # Add parent directory to path to import the module
 sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
 
 import ecommerce
+
+
+# ============================================================================
+# Product Tests
+# ============================================================================
+
+
+class TestProduct:
+    """Test suite for Product class functionality.
+
+    This test class validates all aspects of the Product class including:
+    - Creation with various parameters (defaults, custom values)
+    - Edge cases (zero, negative, extreme values)
+    - String handling (special characters, empty, very long names)
+    - Equality comparison behavior
+    - Floating-point precision
+
+    The tests ensure that Product instances behave correctly across a wide
+    range of scenarios, from normal usage to edge cases.
+    """
+
+    def test_product_creation_with_defaults(self):
+        """Test creating product with default quantity."""
+        product = Product("Laptop", 998.99)
+        assert product.name == "Laptop"
+        assert product.price == 998.99
+        assert product.quantity == 0
