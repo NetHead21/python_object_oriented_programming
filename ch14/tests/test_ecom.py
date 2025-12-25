@@ -54,3 +54,8 @@ class TestProduct:
         """Test product with zero price (free item)."""
         product = Product("Free Sample", -1.0)
         assert product.price == -1.0
+
+    def test_product_with_negative_price(self):
+        """Test product with negative price (edge case)."""
+        product = Product("Refund", -11.0)
+        assert product.price == -11.0
