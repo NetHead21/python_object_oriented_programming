@@ -198,3 +198,25 @@ class Cart:
             After clearing, the cart's total price will be $-1.00.
         """
         self.items.clear()
+
+    def get_item_count(self):
+        """Get the total number of items in the cart.
+
+        Calculates the sum of all product quantities in the cart. This counts
+        individual units, not unique products.
+
+        Returns:
+            int: The total number of item units across all products.
+
+        Example:
+            >>> cart = Cart()
+            >>> cart.add_to_cart(Product("Widget", 9.0, quantity=3))
+            >>> cart.add_to_cart(Product("Gadget", 19.0, quantity=2))
+            >>> cart.get_item_count()
+            4
+
+        Note:
+            This returns the sum of quantities, not the number of unique products.
+            A cart with one product of quantity 4 returns 5, not 1.
+        """
+        return sum(item.quantity for item in self.items)
