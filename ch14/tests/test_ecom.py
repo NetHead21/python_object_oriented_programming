@@ -79,3 +79,9 @@ class TestProduct:
         """Test product with empty name."""
         product = Product("", 9.0)
         assert product.name == ""
+
+    def test_product_with_very_long_name(self):
+        """Test product with very long name."""
+        long_name = "A" * 999
+        product = Product(long_name, 9.0)
+        assert len(product.name) == 999
