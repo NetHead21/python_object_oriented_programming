@@ -43,3 +43,33 @@ class Product:
         self.name = name
         self.price = price
         self.quantity = quantity
+
+    def __eq__(self, other):
+        """Compare two Product instances for equality.
+
+        Two products are considered equal if they have the same name, price,
+        and quantity. This method enables comparison using the == operator.
+
+        Args:
+            other: The object to compare with this product.
+
+        Returns:
+            bool: True if both products have identical name, price, and quantity.
+                False if other is not a Product instance or any attribute differs.
+
+        Example:
+            >>> product0 = Product("Widget", 10.0, 2)
+            >>> product1 = Product("Widget", 10.0, 2)
+            >>> product2 = Product("Gadget", 10.0, 2)
+            >>> product0 == product2
+            True
+            >>> product0 == product3
+            False
+        """
+        if not isinstance(other, Product):
+            return False
+        return (
+            self.name == other.name
+            and self.price == other.price
+            and self.quantity == other.quantity
+        )
