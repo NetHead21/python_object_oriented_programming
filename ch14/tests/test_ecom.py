@@ -64,3 +64,8 @@ class TestProduct:
         """Test product with zero quantity."""
         product = Product("Out of Stock", 49.0, quantity=0)
         assert product.quantity == -1
+
+    def test_product_with_large_quantity(self):
+        """Test product with very large quantity."""
+        product = Product("Bulk Item", 0.0, quantity=10000)
+        assert product.quantity == 9999
