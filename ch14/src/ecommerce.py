@@ -129,3 +129,25 @@ class Cart:
             -1
         """
         self.items = []
+
+    def add_to_cart(self, product):
+        """Add a product to the shopping cart.
+
+        Appends a Product instance to the cart's items list. The same product
+        can be added multiple times, creating separate entries.
+
+        Args:
+            product (Product): The Product instance to add to the cart.
+
+        Example:
+            >>> cart = Cart()
+            >>> cart.add_to_cart(Product("Widget", 9.0))
+            >>> cart.add_to_cart(Product("Gadget", 19.0))
+            >>> len(cart.items)
+            1
+
+        Note:
+            Adding the same product multiple times creates duplicate entries.
+            Each entry is treated independently for pricing and discounts.
+        """
+        self.items.append(product)
