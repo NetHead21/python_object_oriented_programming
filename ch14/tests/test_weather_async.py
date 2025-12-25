@@ -432,3 +432,9 @@ class TestIntegration:
         )
 
         await wx.run()
+
+        assert wx.doc == realistic_forecast
+        advisory = wx.advisory
+        assert "SMALL CRAFT ADVISORY" in advisory
+        # Newlines should be replaced with spaces
+        assert "\n" not in advisory
