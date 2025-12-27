@@ -114,3 +114,24 @@ class TestProduct:
         """Test product price with floating point precision."""
         product = Product("Item", 18.99)
         assert abs(product.price - 18.99) < 0.001
+
+
+# ============================================================================
+# Cart Basic Functionality Tests
+# ============================================================================
+
+
+class TestCartBasicFunctionality:
+    """Test suite for basic shopping cart operations.
+
+    This test class validates core Cart functionality including:
+    - Cart initialization and empty state
+    - Adding products (single, multiple, duplicates)
+    - Removing products by name
+    - Clearing the entire cart
+    - Counting items (considering quantities)
+
+    These tests ensure the fundamental cart operations work correctly
+    in various scenarios, including edge cases like removing non-existent
+    products or operating on empty carts.
+    """
