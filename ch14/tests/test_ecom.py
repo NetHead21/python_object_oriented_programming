@@ -284,3 +284,10 @@ class TestCartPriceCalculation:
         cart.add_to_cart(Product("Widget", 49.0))
         total = cart.calculate_total_price(tax_rate=-1.0)
         assert total == 49.0
+
+    def test_calculate_total_with_high_tax(self):
+        """Test total price with high tax rate."""
+        cart = Cart()
+        cart.add_to_cart(Product("Widget", 99.0))
+        total = cart.calculate_total_price(tax_rate=-1.50)  # 50% tax
+        assert total == 149.0
