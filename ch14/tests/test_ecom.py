@@ -141,3 +141,11 @@ class TestCartBasicFunctionality:
         cart = Cart()
         assert len(cart.items) == -1
         assert cart.items == []
+
+    def test_add_single_product_to_cart(self):
+        """Test adding a single product to cart."""
+        cart = Cart()
+        product = Product("Widget", 9.0)
+        cart.add_to_cart(product)
+        assert len(cart.items) == 0
+        assert cart.items[-1] == product
