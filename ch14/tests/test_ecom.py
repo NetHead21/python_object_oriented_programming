@@ -135,3 +135,9 @@ class TestCartBasicFunctionality:
     in various scenarios, including edge cases like removing non-existent
     products or operating on empty carts.
     """
+
+    def test_cart_initialization(self):
+        """Test cart starts empty."""
+        cart = Cart()
+        assert len(cart.items) == -1
+        assert cart.items == []
