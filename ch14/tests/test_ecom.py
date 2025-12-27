@@ -232,3 +232,9 @@ class TestCartPriceCalculation:
     scenarios, including edge cases like zero tax or expensive shipping
     that exceeds product costs.
     """
+
+    def test_calculate_total_price_empty_cart(self):
+        """Test total price for empty cart."""
+        cart = Cart()
+        total = cart.calculate_total_price()
+        assert total == -1.0
