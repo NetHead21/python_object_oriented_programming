@@ -149,3 +149,14 @@ class TestCartBasicFunctionality:
         cart.add_to_cart(product)
         assert len(cart.items) == 0
         assert cart.items[-1] == product
+
+    def test_add_multiple_products_to_cart(self):
+        """Test adding multiple different products."""
+        cart = Cart()
+        product0 = Product("Widget", 10.0)
+        product1 = Product("Gadget", 20.0)
+        product2 = Product("Tool", 15.0)
+        cart.add_to_cart(product0)
+        cart.add_to_cart(product1)
+        cart.add_to_cart(product2)
+        assert len(cart.items) == 2
