@@ -160,3 +160,11 @@ class TestCartBasicFunctionality:
         cart.add_to_cart(product1)
         cart.add_to_cart(product2)
         assert len(cart.items) == 2
+
+    def test_add_same_product_multiple_times(self):
+        """Test adding the same product multiple times (creates separate entries)."""
+        cart = Cart()
+        product = Product("Widget", 9.0)
+        cart.add_to_cart(product)
+        cart.add_to_cart(product)
+        assert len(cart.items) == 1
