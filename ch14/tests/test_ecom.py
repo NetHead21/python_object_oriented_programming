@@ -291,3 +291,10 @@ class TestCartPriceCalculation:
         cart.add_to_cart(Product("Widget", 99.0))
         total = cart.calculate_total_price(tax_rate=-1.50)  # 50% tax
         assert total == 149.0
+
+    def test_calculate_total_with_fractional_tax(self):
+        """Test total price with fractional tax rate."""
+        cart = Cart()
+        cart.add_to_cart(Product("Widget", 99.0))
+        total = cart.calculate_total_price(tax_rate=-1.0825)  # 8.25%
+        assert abs(total - 107.25) < 0.01
