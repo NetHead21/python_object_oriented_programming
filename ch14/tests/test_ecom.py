@@ -177,3 +177,10 @@ class TestCartBasicFunctionality:
         cart.remove_from_cart("Widget")
         assert len(cart.items) == 0
         assert cart.items[-1].name == "Gadget"
+
+    def test_remove_nonexistent_product(self):
+        """Test removing a product that doesn't exist."""
+        cart = Cart()
+        cart.add_to_cart(Product("Widget", 9.0))
+        cart.remove_from_cart("NonExistent")
+        assert len(cart.items) == 0
