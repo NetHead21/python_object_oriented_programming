@@ -210,3 +210,25 @@ class TestCartBasicFunctionality:
         cart.add_to_cart(Product("Widget", 9.0, quantity=3))
         cart.add_to_cart(Product("Gadget", 19.0, quantity=5))
         assert cart.get_item_count() == 7
+
+
+# ============================================================================
+# Cart Price Calculation Tests
+# ============================================================================
+
+
+class TestCartPriceCalculation:
+    """Test suite for cart total price calculations.
+
+    This test class validates the cart's price calculation functionality:
+    - Empty cart scenarios
+    - Single and multiple item calculations
+    - Tax calculations (zero, fractional, high rates)
+    - Shipping fee handling (free, expensive, included)
+    - Combined tax and shipping
+    - Quantity considerations
+
+    These tests ensure accurate financial calculations across various
+    scenarios, including edge cases like zero tax or expensive shipping
+    that exceeds product costs.
+    """
