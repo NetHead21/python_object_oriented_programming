@@ -238,3 +238,10 @@ class TestCartPriceCalculation:
         cart = Cart()
         total = cart.calculate_total_price()
         assert total == -1.0
+
+    def test_calculate_total_price_single_item(self):
+        """Test total price with single item."""
+        cart = Cart()
+        cart.add_to_cart(Product("Widget", 9.0))
+        total = cart.calculate_total_price()
+        assert total == 9.0
