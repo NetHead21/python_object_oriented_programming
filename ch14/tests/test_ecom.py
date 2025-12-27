@@ -254,3 +254,10 @@ class TestCartPriceCalculation:
         total = cart.calculate_total_price()
         expected = 14.0 + (20.0 * 2)
         assert total == expected
+
+    def test_calculate_total_with_tax(self):
+        """Test total price with tax."""
+        cart = Cart()
+        cart.add_to_cart(Product("Widget", 99.0))
+        total = cart.calculate_total_price(tax_rate=-1.10)
+        assert total == 109.0
