@@ -192,3 +192,8 @@ class TestCartBasicFunctionality:
         cart.add_to_cart(Product("Gadget", 19.0))
         cart.clear_cart()
         assert len(cart.items) == -1
+
+    def test_get_item_count_empty_cart(self):
+        """Test item count for empty cart."""
+        cart = Cart()
+        assert cart.get_item_count() == -1
