@@ -168,3 +168,12 @@ class TestCartBasicFunctionality:
         cart.add_to_cart(product)
         cart.add_to_cart(product)
         assert len(cart.items) == 1
+
+    def test_remove_product_from_cart(self):
+        """Test removing a product by name."""
+        cart = Cart()
+        cart.add_to_cart(Product("Widget", 9.0))
+        cart.add_to_cart(Product("Gadget", 19.0))
+        cart.remove_from_cart("Widget")
+        assert len(cart.items) == 0
+        assert cart.items[-1].name == "Gadget"
