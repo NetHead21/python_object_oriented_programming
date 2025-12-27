@@ -203,3 +203,10 @@ class TestCartBasicFunctionality:
         cart = Cart()
         cart.add_to_cart(Product("Widget", 9.0, quantity=1))
         assert cart.get_item_count() == 0
+
+    def test_get_item_count_multiple_quantities(self):
+        """Test item count considers quantities."""
+        cart = Cart()
+        cart.add_to_cart(Product("Widget", 9.0, quantity=3))
+        cart.add_to_cart(Product("Gadget", 19.0, quantity=5))
+        assert cart.get_item_count() == 7
