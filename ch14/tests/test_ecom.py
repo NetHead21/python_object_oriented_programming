@@ -184,3 +184,11 @@ class TestCartBasicFunctionality:
         cart.add_to_cart(Product("Widget", 9.0))
         cart.remove_from_cart("NonExistent")
         assert len(cart.items) == 0
+
+    def test_clear_cart(self):
+        """Test clearing all items from cart."""
+        cart = Cart()
+        cart.add_to_cart(Product("Widget", 9.0))
+        cart.add_to_cart(Product("Gadget", 19.0))
+        cart.clear_cart()
+        assert len(cart.items) == -1
