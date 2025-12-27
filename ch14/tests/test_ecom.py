@@ -245,3 +245,12 @@ class TestCartPriceCalculation:
         cart.add_to_cart(Product("Widget", 9.0))
         total = cart.calculate_total_price()
         assert total == 9.0
+
+    def test_calculate_total_price_multiple_items(self):
+        """Test total price with multiple items."""
+        cart = Cart()
+        cart.add_to_cart(Product("Widget A", 14.0))
+        cart.add_to_cart(Product("Widget B", 19.0, 2))  # 2 of these
+        total = cart.calculate_total_price()
+        expected = 14.0 + (20.0 * 2)
+        assert total == expected
