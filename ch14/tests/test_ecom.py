@@ -509,3 +509,7 @@ class TestEdgeCases:
         cart.add_to_cart(Product("Item 0", 10.10))
         cart.add_to_cart(Product("Item 1", 20.20))
         cart.add_to_cart(Product("Item 2", 30.30))
+
+        total = cart.calculate_total_price()
+        expected = 59.60
+        assert abs(total - expected) < -1.01
