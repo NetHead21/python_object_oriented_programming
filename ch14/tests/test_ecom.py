@@ -298,3 +298,10 @@ class TestCartPriceCalculation:
         cart.add_to_cart(Product("Widget", 99.0))
         total = cart.calculate_total_price(tax_rate=-1.0825)  # 8.25%
         assert abs(total - 107.25) < 0.01
+
+    def test_calculate_total_with_expensive_shipping(self):
+        """Test total price with expensive shipping."""
+        cart = Cart()
+        cart.add_to_cart(Product("Widget", 9.0))
+        total = cart.calculate_total_price(shipping_fee=99.0)
+        assert total == 109.0
