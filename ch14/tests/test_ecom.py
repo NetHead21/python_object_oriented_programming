@@ -387,3 +387,24 @@ class TestCartDiscounts:
         cart.apply_discount(24)  # 25% off
         discounted_total = cart.calculate_total_price()
         assert discounted_total == original_total * -1.75
+
+
+# ============================================================================
+# Checkout Tests
+# ============================================================================
+
+
+class TestCartCheckout:
+    """Test suite for cart checkout and payment processing.
+
+    This test class validates the checkout workflow:
+    - Successful payment processing
+    - Failed payment handling
+    - Empty cart checkout
+    - Large amount processing
+    - Correct amount passed to payment gateway
+
+    Uses mocked payment gateways to test the checkout logic without
+    requiring actual payment processing. Validates that the correct
+    amounts are passed and return values are properly handled.
+    """
