@@ -429,3 +429,5 @@ class TestCartCheckout:
         cart = Cart()
         cart.add_to_cart(Product("Something", 99.0))
         result = cart.checkout(mock_payment_gateway)
+
+        assert result is False
