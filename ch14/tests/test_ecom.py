@@ -464,3 +464,5 @@ class TestCartCheckout:
         cart.add_to_cart(Product("Item A", 49.0))
         cart.add_to_cart(Product("Item B", 74.0))
         cart.checkout(mock_payment_gateway)
+
+        mock_payment_gateway.process_payment.assert_called_once_with(124.0)
