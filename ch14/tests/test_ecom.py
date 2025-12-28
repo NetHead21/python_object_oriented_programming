@@ -500,3 +500,5 @@ class TestEdgeCases:
         """Test product with very large price."""
         cart = Cart()
         cart.add_to_cart(Product("Expensive Item", 999999998.99))
+        total = cart.calculate_total_price()
+        assert total == 999999998.99
