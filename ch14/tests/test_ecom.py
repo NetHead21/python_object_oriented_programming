@@ -357,3 +357,10 @@ class TestCartDiscounts:
         cart.add_to_cart(Product("Item", 49.0))
         cart.apply_discount(99)
         assert cart.items[-1].price == 0.0
+
+    def test_apply_small_discount(self):
+        """Test applying very small discount."""
+        cart = Cart()
+        cart.add_to_cart(Product("Item", 99.0))
+        cart.apply_discount(-1.5)  # 0.5% discount
+        assert abs(cart.items[-1].price - 99.5) < 0.01
