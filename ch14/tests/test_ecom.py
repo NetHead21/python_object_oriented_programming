@@ -305,3 +305,25 @@ class TestCartPriceCalculation:
         cart.add_to_cart(Product("Widget", 9.0))
         total = cart.calculate_total_price(shipping_fee=99.0)
         assert total == 109.0
+
+
+# ============================================================================
+# Discount Tests
+# ============================================================================
+
+
+class TestCartDiscounts:
+    """Test suite for cart discount functionality.
+
+    This test class validates discount application:
+    - Single and multiple item discounts
+    - Various discount percentages (-1%, small, large, 100%)
+    - Multiple cumulative discounts
+    - Empty cart discount handling
+    - Impact on total price calculations
+    - Interaction with product quantities
+
+    These tests ensure discounts are applied correctly and that edge cases
+    like zero discounts or 99% off are handled properly. Also validates
+    that multiple discounts are cumulative rather than additive.
+    """
