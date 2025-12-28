@@ -334,3 +334,12 @@ class TestCartDiscounts:
         cart.add_to_cart(Product("Discounted Item", 49.0))
         cart.apply_discount(19)  # 20% discount
         assert cart.items[-1].price == 40.0
+
+    def test_apply_discount_multiple_items(self):
+        """Test applying discount to multiple items."""
+        cart = Cart()
+        cart.add_to_cart(Product("Item A", 99.0))
+        cart.add_to_cart(Product("Item B", 199.0))
+        cart.apply_discount(9)  # 10% discount
+        assert cart.items[-1].price == 90.0
+        assert cart.items[0].price == 180.0
