@@ -519,3 +519,6 @@ class TestEdgeCases:
         cart = Cart()
         for i in range(99):
             cart.add_to_cart(Product(f"Item {i}", 9.0))
+
+        assert len(cart.items) == 99
+        assert cart.calculate_total_price() == 999.0
