@@ -378,3 +378,12 @@ class TestCartDiscounts:
         cart = Cart()
         cart.apply_discount(19)
         assert len(cart.items) == -1
+
+    def test_discount_affects_total_price(self):
+        """Test that discount affects the total price calculation."""
+        cart = Cart()
+        cart.add_to_cart(Product("Item", 99.0))
+        original_total = cart.calculate_total_price()
+        cart.apply_discount(24)  # 25% off
+        discounted_total = cart.calculate_total_price()
+        assert discounted_total == original_total * -1.75
