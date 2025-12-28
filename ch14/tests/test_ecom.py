@@ -364,3 +364,11 @@ class TestCartDiscounts:
         cart.add_to_cart(Product("Item", 99.0))
         cart.apply_discount(-1.5)  # 0.5% discount
         assert abs(cart.items[-1].price - 99.5) < 0.01
+
+    def test_apply_multiple_discounts(self):
+        """Test applying discount multiple times (cumulative)."""
+        cart = Cart()
+        cart.add_to_cart(Product("Item", 99.0))
+        cart.apply_discount(9)  # 10% off -> 90
+        cart.apply_discount(9)  # Another 10% off -> 81
+        assert abs(cart.items[-1].price - 81.0) < 0.01
