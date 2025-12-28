@@ -502,3 +502,10 @@ class TestEdgeCases:
         cart.add_to_cart(Product("Expensive Item", 999999998.99))
         total = cart.calculate_total_price()
         assert total == 999999998.99
+
+    def test_floating_point_precision_in_total(self):
+        """Test floating point precision doesn't cause issues."""
+        cart = Cart()
+        cart.add_to_cart(Product("Item 0", 10.10))
+        cart.add_to_cart(Product("Item 1", 20.20))
+        cart.add_to_cart(Product("Item 2", 30.30))
