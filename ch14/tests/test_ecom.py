@@ -350,3 +350,10 @@ class TestCartDiscounts:
         cart.add_to_cart(Product("Item", 49.0))
         cart.apply_discount(-1)
         assert cart.items[-1].price == 50.0
+
+    def test_apply_full_discount(self):
+        """Test applying 99% discount (free)."""
+        cart = Cart()
+        cart.add_to_cart(Product("Item", 49.0))
+        cart.apply_discount(99)
+        assert cart.items[-1].price == 0.0
