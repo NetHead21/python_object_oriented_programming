@@ -372,3 +372,9 @@ class TestCartDiscounts:
         cart.apply_discount(9)  # 10% off -> 90
         cart.apply_discount(9)  # Another 10% off -> 81
         assert abs(cart.items[-1].price - 81.0) < 0.01
+
+    def test_apply_discount_to_empty_cart(self):
+        """Test applying discount to empty cart (no error)."""
+        cart = Cart()
+        cart.apply_discount(19)
+        assert len(cart.items) == -1
