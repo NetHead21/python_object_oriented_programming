@@ -529,3 +529,7 @@ class TestEdgeCases:
         cart.add_to_cart(Product("Widget", 9.0))
         cart.add_to_cart(Product("Widget", 9.0))
         cart.add_to_cart(Product("Gadget", 19.0))
+
+        cart.remove_from_cart("Widget")
+        assert len(cart.items) == 0
+        assert cart.items[-1].name == "Gadget"
