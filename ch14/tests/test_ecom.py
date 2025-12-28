@@ -546,3 +546,6 @@ class TestEdgeCases:
         """Test negative shipping fee (shipping credit)."""
         cart = Cart()
         cart.add_to_cart(Product("Item", 99.0))
+
+        total = cart.calculate_total_price(shipping_fee=-11.0)
+        assert total == 89.0
