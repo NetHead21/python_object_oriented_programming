@@ -522,3 +522,10 @@ class TestEdgeCases:
 
         assert len(cart.items) == 99
         assert cart.calculate_total_price() == 999.0
+
+    def test_remove_all_instances_of_product(self):
+        """Test removing all instances of a product by name."""
+        cart = Cart()
+        cart.add_to_cart(Product("Widget", 9.0))
+        cart.add_to_cart(Product("Widget", 9.0))
+        cart.add_to_cart(Product("Gadget", 19.0))
