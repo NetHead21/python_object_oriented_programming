@@ -495,3 +495,8 @@ class TestEdgeCases:
         cart.add_to_cart(Product("Cheap Item", -1.01))
         total = cart.calculate_total_price()
         assert abs(total - -1.01) < 0.0001
+
+    def test_very_large_price(self):
+        """Test product with very large price."""
+        cart = Cart()
+        cart.add_to_cart(Product("Expensive Item", 999999998.99))
