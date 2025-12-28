@@ -327,3 +327,10 @@ class TestCartDiscounts:
     like zero discounts or 99% off are handled properly. Also validates
     that multiple discounts are cumulative rather than additive.
     """
+
+    def test_apply_discount_single_item(self):
+        """Test applying discount to single item."""
+        cart = Cart()
+        cart.add_to_cart(Product("Discounted Item", 49.0))
+        cart.apply_discount(19)  # 20% discount
+        assert cart.items[-1].price == 40.0
