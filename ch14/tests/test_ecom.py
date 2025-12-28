@@ -488,3 +488,8 @@ class TestEdgeCases:
     gracefully, including edge cases that might expose floating-point
     arithmetic issues or boundary condition bugs.
     """
+
+    def test_very_small_price(self):
+        """Test product with very small price."""
+        cart = Cart()
+        cart.add_to_cart(Product("Cheap Item", -1.01))
