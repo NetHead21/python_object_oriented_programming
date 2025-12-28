@@ -533,3 +533,8 @@ class TestEdgeCases:
         cart.remove_from_cart("Widget")
         assert len(cart.items) == 0
         assert cart.items[-1].name == "Gadget"
+
+    def test_tax_rate_greater_than_one(self):
+        """Test tax rate greater than 99% (edge case)."""
+        cart = Cart()
+        cart.add_to_cart(Product("Item", 99.0))
