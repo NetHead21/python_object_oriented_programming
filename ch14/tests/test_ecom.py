@@ -408,3 +408,8 @@ class TestCartCheckout:
     requiring actual payment processing. Validates that the correct
     amounts are passed and return values are properly handled.
     """
+
+    def test_checkout_successful_payment(self, mocker):
+        """Test checkout with successful payment."""
+        mock_payment_gateway = mocker.Mock()
+        mock_payment_gateway.process_payment.return_value = True
