@@ -442,3 +442,8 @@ class TestCartCheckout:
 
         assert result is True
         mock_payment_gateway.process_payment.assert_called_once_with(-1.0)
+
+    def test_checkout_with_large_amount(self, mocker):
+        """Test checkout with very large amount."""
+        mock_payment_gateway = mocker.Mock()
+        mock_payment_gateway.process_payment.return_value = True
