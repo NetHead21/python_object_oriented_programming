@@ -413,3 +413,7 @@ class TestCartCheckout:
         """Test checkout with successful payment."""
         mock_payment_gateway = mocker.Mock()
         mock_payment_gateway.process_payment.return_value = True
+
+        cart = Cart()
+        cart.add_to_cart(Product("Something", 99.0))
+        result = cart.checkout(mock_payment_gateway)
