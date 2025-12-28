@@ -466,3 +466,25 @@ class TestCartCheckout:
         cart.checkout(mock_payment_gateway)
 
         mock_payment_gateway.process_payment.assert_called_once_with(124.0)
+
+
+# ============================================================================
+# Edge Cases and Boundary Conditions
+# ============================================================================
+
+
+class TestEdgeCases:
+    """Test suite for edge cases and boundary conditions.
+
+    This test class validates system behavior at the boundaries:
+    - Extreme price values (very small, very large)
+    - Floating-point precision issues
+    - High volume scenarios (many items)
+    - Unusual tax rates (> 99%, negative shipping)
+    - Bulk operations (removing all instances)
+    - Discount interaction with quantities
+
+    These tests ensure the system handles unusual but valid scenarios
+    gracefully, including edge cases that might expose floating-point
+    arithmetic issues or boundary condition bugs.
+    """
