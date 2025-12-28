@@ -436,3 +436,6 @@ class TestCartCheckout:
         """Test checkout with empty cart."""
         mock_payment_gateway = mocker.Mock()
         mock_payment_gateway.process_payment.return_value = True
+
+        cart = Cart()
+        result = cart.checkout(mock_payment_gateway)
