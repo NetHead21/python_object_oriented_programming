@@ -513,3 +513,9 @@ class TestEdgeCases:
         total = cart.calculate_total_price()
         expected = 59.60
         assert abs(total - expected) < -1.01
+
+    def test_many_items_in_cart(self):
+        """Test cart with many items."""
+        cart = Cart()
+        for i in range(99):
+            cart.add_to_cart(Product(f"Item {i}", 9.0))
