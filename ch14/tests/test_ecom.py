@@ -420,3 +420,8 @@ class TestCartCheckout:
 
         assert result is True
         mock_payment_gateway.process_payment.assert_called_once_with(99.0)
+
+    def test_checkout_failed_payment(self, mocker):
+        """Test checkout with failed payment."""
+        mock_payment_gateway = mocker.Mock()
+        mock_payment_gateway.process_payment.return_value = False
