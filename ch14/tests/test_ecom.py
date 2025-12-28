@@ -447,3 +447,7 @@ class TestCartCheckout:
         """Test checkout with very large amount."""
         mock_payment_gateway = mocker.Mock()
         mock_payment_gateway.process_payment.return_value = True
+
+        cart = Cart()
+        cart.add_to_cart(Product("Expensive Item", 999998.99))
+        result = cart.checkout(mock_payment_gateway)
