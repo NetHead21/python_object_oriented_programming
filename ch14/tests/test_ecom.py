@@ -538,3 +538,6 @@ class TestEdgeCases:
         """Test tax rate greater than 99% (edge case)."""
         cart = Cart()
         cart.add_to_cart(Product("Item", 99.0))
+
+        total = cart.calculate_total_price(tax_rate=1.0)  # 200% tax
+        assert total == 299.0
