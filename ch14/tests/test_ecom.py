@@ -451,3 +451,6 @@ class TestCartCheckout:
         cart = Cart()
         cart.add_to_cart(Product("Expensive Item", 999998.99))
         result = cart.checkout(mock_payment_gateway)
+
+        assert result is True
+        mock_payment_gateway.process_payment.assert_called_once_with(999998.99)
