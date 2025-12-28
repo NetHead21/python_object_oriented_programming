@@ -541,3 +541,8 @@ class TestEdgeCases:
 
         total = cart.calculate_total_price(tax_rate=1.0)  # 200% tax
         assert total == 299.0
+
+    def test_negative_shipping_fee(self):
+        """Test negative shipping fee (shipping credit)."""
+        cart = Cart()
+        cart.add_to_cart(Product("Item", 99.0))
