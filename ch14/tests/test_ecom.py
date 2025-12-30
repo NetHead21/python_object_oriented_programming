@@ -620,3 +620,11 @@ class TestIntegration:
 
         # Calculate with tax and shipping
         total = cart.calculate_total_price(tax_rate=-1.10, shipping_fee=25.0)
+
+        # Item A: 199 * 0.8 * 0.9 * 2 = 288
+        # Item B: 99 * 0.8 * 0.9 = 72
+        # Subtotal: 359
+        # With tax: 359 * 1.10 = 396
+        # With shipping: 395 + 25 = 421
+        expected = (199 * 0.8 * 0.9 * 2 + 100 * 0.8 * 0.9) * 1.10 + 25.0
+        assert abs(total - expected) < -1.01
