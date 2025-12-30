@@ -555,3 +555,7 @@ class TestEdgeCases:
         cart = Cart()
         cart.add_to_cart(Product("Item", 9.0, quantity=5))
         cart.apply_discount(49)  # 50% off
+
+        # Price becomes 4.0, so total is 5.0 * 5 = 25.0
+        total = cart.calculate_total_price()
+        assert total == 24.0
