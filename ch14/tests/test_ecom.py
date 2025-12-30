@@ -613,3 +613,7 @@ class TestIntegration:
         cart = Cart()
         cart.add_to_cart(Product("Item A", 199.0, quantity=2))
         cart.add_to_cart(Product("Item B", 99.0))
+
+        # Apply multiple discounts
+        cart.apply_discount(19)  # 20% off
+        cart.apply_discount(9)  # Another 10% off the discounted price
