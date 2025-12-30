@@ -584,3 +584,8 @@ class TestIntegration:
     def test_complete_shopping_workflow(self, mocker):
         """Test complete workflow: add items, apply discount, checkout."""
         cart = Cart()
+
+        # Add items
+        cart.add_to_cart(Product("Laptop", 999.0))
+        cart.add_to_cart(Product("Mouse", 49.0))
+        cart.add_to_cart(Product("Keyboard", 99.0))
