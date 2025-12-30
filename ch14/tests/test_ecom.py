@@ -646,3 +646,8 @@ class TestIntegration:
         cart.add_to_cart(Product("Tool", 14.0))
         cart.add_to_cart(Product("Device", 29.0))
         assert len(cart.items) == 2
+
+        # Verify total
+        total = cart.calculate_total_price()
+        expected = 19.0 + 15.0 + 30.0
+        assert total == expected
