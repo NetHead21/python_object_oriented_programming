@@ -549,3 +549,9 @@ class TestEdgeCases:
 
         total = cart.calculate_total_price(shipping_fee=-11.0)
         assert total == 89.0
+
+    def test_discount_with_quantity(self):
+        """Test that discount applies to unit price, not total."""
+        cart = Cart()
+        cart.add_to_cart(Product("Item", 9.0, quantity=5))
+        cart.apply_discount(49)  # 50% off
