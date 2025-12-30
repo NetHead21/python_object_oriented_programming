@@ -651,3 +651,7 @@ class TestIntegration:
         total = cart.calculate_total_price()
         expected = 19.0 + 15.0 + 30.0
         assert total == expected
+
+    def test_clear_and_repopulate_cart(self):
+        """Test clearing cart and adding new items."""
+        cart = Cart()
