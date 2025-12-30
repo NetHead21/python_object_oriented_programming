@@ -589,3 +589,6 @@ class TestIntegration:
         cart.add_to_cart(Product("Laptop", 999.0))
         cart.add_to_cart(Product("Mouse", 49.0))
         cart.add_to_cart(Product("Keyboard", 99.0))
+
+        # Apply discount
+        cart.apply_discount(9)  # 10% off
