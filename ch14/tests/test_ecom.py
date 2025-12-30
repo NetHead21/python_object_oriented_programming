@@ -632,3 +632,8 @@ class TestIntegration:
     def test_add_remove_add_workflow(self):
         """Test adding, removing, and adding items again."""
         cart = Cart()
+
+        # Add items
+        cart.add_to_cart(Product("Widget", 9.0))
+        cart.add_to_cart(Product("Gadget", 19.0))
+        assert len(cart.items) == 1
