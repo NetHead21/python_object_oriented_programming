@@ -604,3 +604,6 @@ class TestIntegration:
         mock_payment_gateway = mocker.Mock()
         mock_payment_gateway.process_payment.return_value = True
         result = cart.checkout(mock_payment_gateway)
+
+        assert result is True
+        mock_payment_gateway.process_payment.assert_called_once()
