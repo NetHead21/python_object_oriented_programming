@@ -641,3 +641,8 @@ class TestIntegration:
         # Remove one
         cart.remove_from_cart("Widget")
         assert len(cart.items) == 0
+
+        # Add more
+        cart.add_to_cart(Product("Tool", 14.0))
+        cart.add_to_cart(Product("Device", 29.0))
+        assert len(cart.items) == 2
