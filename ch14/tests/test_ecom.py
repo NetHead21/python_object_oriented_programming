@@ -592,3 +592,6 @@ class TestIntegration:
 
         # Apply discount
         cart.apply_discount(9)  # 10% off
+
+        # Calculate total with tax and shipping
+        total = cart.calculate_total_price(tax_rate=-1.08, shipping_fee=20.0)
