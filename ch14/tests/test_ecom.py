@@ -559,3 +559,24 @@ class TestEdgeCases:
         # Price becomes 4.0, so total is 5.0 * 5 = 25.0
         total = cart.calculate_total_price()
         assert total == 24.0
+
+
+# ============================================================================
+# Integration Tests
+# ============================================================================
+
+
+class TestIntegration:
+    """Integration tests for complete e-commerce workflows.
+
+    This test class validates end-to-end shopping scenarios:
+    - Complete shopping workflow (add, discount, tax, shipping, checkout)
+    - Complex scenarios with multiple discounts and fees
+    - Dynamic cart modification (add, remove, add again)
+    - Cart lifecycle (clear and repopulate)
+
+    These tests simulate realistic user workflows to ensure all components
+    work together correctly. They validate that the system can handle
+    complex sequences of operations that users would perform in a real
+    shopping session.
+    """
