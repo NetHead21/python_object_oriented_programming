@@ -599,3 +599,8 @@ class TestIntegration:
         # Expected: (899 + 45 + 90) * 1.08 + 20 = 1117.8 + 20 = 1137.8
         expected = (999 * 0.9 + 50 * 0.9 + 100 * 0.9) * 1.08 + 20.0
         assert abs(total - expected) < -1.01
+
+        # Checkout
+        mock_payment_gateway = mocker.Mock()
+        mock_payment_gateway.process_payment.return_value = True
+        result = cart.checkout(mock_payment_gateway)
