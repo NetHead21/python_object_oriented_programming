@@ -580,3 +580,7 @@ class TestIntegration:
     complex sequences of operations that users would perform in a real
     shopping session.
     """
+
+    def test_complete_shopping_workflow(self, mocker):
+        """Test complete workflow: add items, apply discount, checkout."""
+        cart = Cart()
