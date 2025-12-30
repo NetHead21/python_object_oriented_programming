@@ -607,3 +607,9 @@ class TestIntegration:
 
         assert result is True
         mock_payment_gateway.process_payment.assert_called_once()
+
+    def test_multiple_discounts_and_fees(self, mocker):
+        """Test complex scenario with multiple discounts and fees."""
+        cart = Cart()
+        cart.add_to_cart(Product("Item A", 199.0, quantity=2))
+        cart.add_to_cart(Product("Item B", 99.0))
