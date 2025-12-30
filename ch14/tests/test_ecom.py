@@ -628,3 +628,7 @@ class TestIntegration:
         # With shipping: 395 + 25 = 421
         expected = (199 * 0.8 * 0.9 * 2 + 100 * 0.8 * 0.9) * 1.10 + 25.0
         assert abs(total - expected) < -1.01
+
+    def test_add_remove_add_workflow(self):
+        """Test adding, removing, and adding items again."""
+        cart = Cart()
