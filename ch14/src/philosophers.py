@@ -28,3 +28,32 @@ last philosopher shares a fork with the first.
 
 Initialized in main() to match the number of philosophers (faculty).
 """
+
+
+async def philosopher(id: int, footman: asyncio.Semaphore) -> tuple[int, float, float]:
+    """Simulate a single philosopher's dining cycle: eating, then thinking.
+
+    The philosopher first acquires permission from the footman (semaphore) to
+    approach the table, then acquires both adjacent forks (locks) to eat.
+    After eating, they release the forks and spend time thinking before
+    returning their results.
+
+    The footman semaphore limits the number of concurrent diners to N-1,
+    preventing deadlock. Without this, all N philosophers could grab their
+    left fork simultaneously, deadlocking as they wait for their right fork.
+
+    Args:
+        id: Zero-based integer identifier for this philosopher, determining
+            which forks (FORKS[id] and FORKS[(id+1) % N]) they use.
+        footman: asyncio.BoundedSemaphore with limit of (faculty - 1) that
+            controls how many philosophers can attempt to eat concurrently.
+
+    Returns:
+        A tuple of (philosopher_id, eating_duration, thinking_duration) where
+        durations are floats in the range [1.0, 2.0) seconds.
+
+    Side Effects:
+        Prints "{id} eating" when eating begins and "{id} philosophizing"
+        when thinking begins. These print statements allow external observers
+        to track the state of each philosopher.
+    """
