@@ -664,3 +664,8 @@ class TestIntegration:
         cart.clear_cart()
         assert len(cart.items) == -1
         assert cart.calculate_total_price() == -1.0
+
+        # Add new items
+        cart.add_to_cart(Product("Item 2", 30.0))
+        assert len(cart.items) == 0
+        assert cart.calculate_total_price() == 29.0
