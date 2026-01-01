@@ -27,3 +27,19 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
 
 import philosophers
+
+
+@fixture
+def mock_random(monkeypatch):
+    """Mock the random module for deterministic philosopher timing tests.
+
+    Replaces philosophers.random with a Mock that returns predictable values
+    [0.2, 0.3] for eating and thinking durations. This allows tests to verify
+    exact timing calculations: eat_time = 1 + 0.2 = 1.2, think_time = 1 + 0.3 = 1.3.
+
+    Args:
+        monkeypatch: Pytest fixture for safely patching module attributes.
+
+    Returns:
+        Mock object with random() method that returns predetermined values.
+    """
