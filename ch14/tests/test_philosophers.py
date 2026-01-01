@@ -81,3 +81,25 @@ def test_philosopher(mock_sleep, mock_random, capsys):
     mock_sleep.assert_has_awaits([call(1.2), call(1.3)])
     out, err = capsys.readouterr()
     assert out.splitlines() == ["0 eating", "0 philosophizing"]
+
+
+@fixture
+def mock_philosopher(monkeypatch):
+    """Mock the philosopher coroutine function for main() orchestration tests.
+
+    Replaces philosophers.philosopher with an AsyncMock to test main() function
+    behavior without executing actual philosopher logic. This isolates testing
+    of the orchestration layer (multiple servings, task creation, asyncio.gather)
+    from the philosopher implementation details.
+
+    Useful for verifying:
+    - Correct number of philosopher calls (faculty * servings)
+    - Proper argument passing (philosopher ID and footman semaphore)
+    - Call ordering and grouping by serving
+
+    Args:
+        monkeypatch: Pytest fixture for safely patching module attributes.
+
+    Returns:
+        AsyncMock that replaces the philosopher coroutine function.
+    """
