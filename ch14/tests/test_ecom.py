@@ -655,3 +655,7 @@ class TestIntegration:
     def test_clear_and_repopulate_cart(self):
         """Test clearing cart and adding new items."""
         cart = Cart()
+
+        # Add items
+        cart.add_to_cart(Product("Item 0", 10.0))
+        cart.add_to_cart(Product("Item 1", 20.0))
