@@ -66,3 +66,39 @@ async def philosopher(id: int, footman: asyncio.Semaphore) -> tuple[int, float, 
         print(f"{id} philosophizing")
         await asyncio.sleep(think_time)
     return id, eat_time, think_time
+
+
+async def main(faculty: int = 5, servings: int = 5) -> None:
+    """Run the dining philosophers simulation for multiple rounds.
+
+    Sets up the table with forks (asyncio.Lock objects) and a footman
+    (asyncio.BoundedSemaphore) to prevent deadlock, then runs multiple
+    "servings" where all philosophers eat and think concurrently.
+
+    Each serving represents one complete round where every philosopher
+    gets one turn to eat and think. The asyncio.gather() call ensures
+    all philosophers in a serving complete before the next serving begins.
+
+    Args:
+        faculty: Number of philosophers (and forks) at the table. Default is 5.
+            Must be at least 2 for the problem to be meaningful.
+        servings: Number of rounds (eat/think cycles) each philosopher will
+            complete. Default is 5.
+
+    Side Effects:
+        - Initializes the global FORKS list with asyncio.Lock objects
+        - Prints philosopher state changes ("{id} eating", "{id} philosophizing")
+        - Prints the results list after each serving, showing tuples of
+          (philosopher_id, eat_time, think_time) for all philosophers
+
+    Example Output:
+        0 eating
+        1 eating
+        2 eating
+        3 eating
+        0 philosophizing
+        4 eating
+        1 philosophizing
+        ...
+        [(0, 1.23, 1.45), (1, 1.67, 1.89), ...]
+    """
