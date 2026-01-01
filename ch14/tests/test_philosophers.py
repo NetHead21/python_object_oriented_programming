@@ -16,3 +16,14 @@ dining philosophers problem implementation. Tests cover:
 The test suite uses pytest fixtures to mock random number generation,
 asyncio.sleep, and philosopher/semaphore creation for deterministic testing.
 """
+
+import asyncio
+from pytest import *
+from unittest.mock import AsyncMock, Mock, call, sentinel
+import sys
+from pathlib import Path
+
+# Add parent directory to path to import the module
+sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
+
+import philosophers
