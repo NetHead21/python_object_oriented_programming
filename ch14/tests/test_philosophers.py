@@ -43,3 +43,7 @@ def mock_random(monkeypatch):
     Returns:
         Mock object with random() method that returns predetermined values.
     """
+
+    random = Mock(random=Mock(side_effect=[0.2, 0.3]))
+    monkeypatch.setattr(philosophers, "random", random)
+    return random
