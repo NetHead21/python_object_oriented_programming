@@ -64,3 +64,7 @@ def mock_sleep(monkeypatch):
     Returns:
         AsyncMock that tracks asyncio.sleep calls without actual delays.
     """
+
+    sleep = AsyncMock()
+    monkeypatch.setattr(asyncio, "sleep", sleep)
+    return sleep
