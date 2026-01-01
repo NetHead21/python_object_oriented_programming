@@ -75,3 +75,9 @@ def test_philosopher(mock_sleep, mock_random, capsys):
         philosophers.FORKS = [asyncio.Lock() for i in range(2)]
         footman = asyncio.BoundedSemaphore(1)
         return await philosophers.philosopher(0, footman)
+
+    result_0 = asyncio.run(when())
+    assert result_0 == (0, 1.2, 1.3)
+    mock_sleep.assert_has_awaits([call(1.2), call(1.3)])
+    out, err = capsys.readouterr()
+    assert out.splitlines() == ["0 eating", "0 philosophizing"]
