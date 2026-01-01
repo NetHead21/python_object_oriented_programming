@@ -58,6 +58,10 @@ async def philosopher(id: int, footman: asyncio.Semaphore) -> tuple[int, float, 
         to track the state of each philosopher.
     """
     async with footman:
+        async with FORKS[id], FORKS[(id + 1) % len(FORKS)]:
+            eat_time = 1 + random.random()
+            print(f"{id} eating")
+            await asyncio.sleep(eat_time)
         think_time = 1 + random.random()
         print(f"{id} philosophizing")
         await asyncio.sleep(think_time)
