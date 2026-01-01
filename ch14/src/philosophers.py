@@ -110,3 +110,7 @@ async def main(faculty: int = 5, servings: int = 5) -> None:
         department = (philosopher(p, footman) for p in range(faculty))
         results = await asyncio.gather(*department)
         print(results)
+
+
+if __name__ == "__main__":
+    asyncio.run(main())
