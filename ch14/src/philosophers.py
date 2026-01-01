@@ -13,3 +13,18 @@ The implementation uses:
 Each philosopher cycles through eating and thinking phases, with randomized
 durations to simulate non-deterministic behavior.
 """
+
+from __future__ import annotations
+import asyncio
+import random
+from typing import List
+
+FORKS: List[asyncio.Lock]
+"""Global list of asyncio.Lock objects representing forks at the table.
+
+Each fork is shared between two adjacent philosophers. Philosopher i uses
+FORKS[i] and FORKS[(i+1) % len(FORKS)] to eat. This wraps around so the
+last philosopher shares a fork with the first.
+
+Initialized in main() to match the number of philosophers (faculty).
+"""
