@@ -47,3 +47,20 @@ def mock_random(monkeypatch):
     random = Mock(random=Mock(side_effect=[0.2, 0.3]))
     monkeypatch.setattr(philosophers, "random", random)
     return random
+
+
+@fixture
+def mock_sleep(monkeypatch):
+    """Mock asyncio.sleep to eliminate actual waiting in tests.
+
+    Replaces asyncio.sleep with an AsyncMock that completes immediately without
+    blocking. This speeds up tests that would otherwise wait for philosopher
+    eating and thinking durations (1-2 seconds each). The mock records all
+    calls, allowing verification of sleep durations.
+
+    Args:
+        monkeypatch: Pytest fixture for safely patching module attributes.
+
+    Returns:
+        AsyncMock that tracks asyncio.sleep calls without actual delays.
+    """
