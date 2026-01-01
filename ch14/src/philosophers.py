@@ -102,3 +102,11 @@ async def main(faculty: int = 5, servings: int = 5) -> None:
         ...
         [(0, 1.23, 1.45), (1, 1.67, 1.89), ...]
     """
+
+    global FORKS
+    FORKS = [asyncio.Lock() for i in range(faculty)]
+    footman = asyncio.BoundedSemaphore(faculty - 1)
+    for serving in range(servings):
+        department = (philosopher(p, footman) for p in range(faculty))
+        results = await asyncio.gather(*department)
+        print(results)
