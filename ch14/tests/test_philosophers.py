@@ -103,3 +103,7 @@ def mock_philosopher(monkeypatch):
     Returns:
         AsyncMock that replaces the philosopher coroutine function.
     """
+
+    philosopher = AsyncMock()
+    monkeypatch.setattr(philosophers, "philosopher", philosopher)
+    return philosopher
