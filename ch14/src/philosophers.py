@@ -57,3 +57,8 @@ async def philosopher(id: int, footman: asyncio.Semaphore) -> tuple[int, float, 
         when thinking begins. These print statements allow external observers
         to track the state of each philosopher.
     """
+    async with footman:
+        think_time = 1 + random.random()
+        print(f"{id} philosophizing")
+        await asyncio.sleep(think_time)
+    return id, eat_time, think_time
