@@ -68,3 +68,10 @@ def mock_sleep(monkeypatch):
     sleep = AsyncMock()
     monkeypatch.setattr(asyncio, "sleep", sleep)
     return sleep
+
+
+def test_philosopher(mock_sleep, mock_random, capsys):
+    async def when():
+        philosophers.FORKS = [asyncio.Lock() for i in range(2)]
+        footman = asyncio.BoundedSemaphore(1)
+        return await philosophers.philosopher(0, footman)
