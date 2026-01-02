@@ -151,3 +151,8 @@ def test_main(mock_philosopher, mock_bounded_semaphore):
 
 def test_main_multiple_servings(mock_philosopher, mock_bounded_semaphore):
     """Test that multiple servings call philosophers the correct number of times."""
+
+    asyncio.run(philosophers.main(3, 2))
+    # Should be called 3 philosophers * 2 servings = 6 times
+    assert mock_philosopher.await_count == 6
+    mock_bounded_semaphore.assert_called_once_with(2)
