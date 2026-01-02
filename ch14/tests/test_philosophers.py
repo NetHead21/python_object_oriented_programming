@@ -171,3 +171,7 @@ def test_main_creates_correct_semaphore_size(mock_philosopher, mock_bounded_sema
 
     asyncio.run(philosophers.main(10, 1))
     mock_bounded_semaphore.assert_called_once_with(9)
+
+
+def test_philosopher_concurrent_execution(mock_sleep):
+    """Test multiple philosophers running concurrently without deadlock."""
