@@ -181,3 +181,7 @@ def test_philosopher_concurrent_execution(mock_sleep):
         footman = asyncio.BoundedSemaphore(4)
         tasks = [philosophers.philosopher(i, footman) for i in range(5)]
         return await asyncio.gather(*tasks)
+
+    results = asyncio.run(when())
+    assert len(results) == 5
+    # Each result should be a tuple of (id, eat_time, think_time)
