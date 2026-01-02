@@ -190,3 +190,7 @@ def test_philosopher_concurrent_execution(mock_sleep):
         assert phil_id == i
         assert 1.0 <= eat_time < 2.0
         assert 1.0 <= think_time < 2.0
+
+
+def test_philosopher_uses_correct_forks(mock_sleep):
+    """Test that philosopher uses the correct pair of adjacent forks."""
