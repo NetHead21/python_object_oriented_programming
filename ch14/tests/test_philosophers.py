@@ -160,3 +160,7 @@ def test_main_multiple_servings(mock_philosopher, mock_bounded_semaphore):
 
 def test_main_initializes_forks():
     """Test that main() properly initializes the global FORKS list."""
+
+    asyncio.run(philosophers.main(5, 1))
+    assert len(philosophers.FORKS) == 5
+    assert all(isinstance(fork, asyncio.Lock) for fork in philosophers.FORKS)
