@@ -194,3 +194,7 @@ def test_philosopher_concurrent_execution(mock_sleep):
 
 def test_philosopher_uses_correct_forks(mock_sleep):
     """Test that philosopher uses the correct pair of adjacent forks."""
+
+    async def when():
+        philosophers.FORKS = [asyncio.Lock() for i in range(5)]
+        footman = asyncio.BoundedSemaphore(4)
