@@ -156,3 +156,7 @@ def test_main_multiple_servings(mock_philosopher, mock_bounded_semaphore):
     # Should be called 3 philosophers * 2 servings = 6 times
     assert mock_philosopher.await_count == 6
     mock_bounded_semaphore.assert_called_once_with(2)
+
+
+def test_main_initializes_forks():
+    """Test that main() properly initializes the global FORKS list."""
