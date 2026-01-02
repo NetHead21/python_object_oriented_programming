@@ -145,3 +145,5 @@ def test_main(mock_philosopher, mock_bounded_semaphore):
             call(4, sentinel.mock_bounded_semaphore),
         ]
     )
+
+    mock_bounded_semaphore.assert_called_once_with(4)
