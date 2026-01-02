@@ -175,3 +175,9 @@ def test_main_creates_correct_semaphore_size(mock_philosopher, mock_bounded_sema
 
 def test_philosopher_concurrent_execution(mock_sleep):
     """Test multiple philosophers running concurrently without deadlock."""
+
+    async def when():
+        philosophers.FORKS = [asyncio.Lock() for i in range(5)]
+        footman = asyncio.BoundedSemaphore(4)
+        tasks = [philosophers.philosopher(i, footman) for i in range(5)]
+        return await asyncio.gather(*tasks)
