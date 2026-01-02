@@ -164,3 +164,7 @@ def test_main_initializes_forks():
     asyncio.run(philosophers.main(5, 1))
     assert len(philosophers.FORKS) == 5
     assert all(isinstance(fork, asyncio.Lock) for fork in philosophers.FORKS)
+
+
+def test_main_creates_correct_semaphore_size(mock_philosopher, mock_bounded_semaphore):
+    """Test that footman semaphore is created with faculty-1 capacity."""
