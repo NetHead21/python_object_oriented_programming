@@ -185,3 +185,8 @@ def test_philosopher_concurrent_execution(mock_sleep):
     results = asyncio.run(when())
     assert len(results) == 5
     # Each result should be a tuple of (id, eat_time, think_time)
+
+    for i, (phil_id, eat_time, think_time) in enumerate(results):
+        assert phil_id == i
+        assert 1.0 <= eat_time < 2.0
+        assert 1.0 <= think_time < 2.0
