@@ -206,3 +206,8 @@ def test_philosopher_uses_correct_forks(mock_sleep):
             await asyncio.sleep(0.1)
             assert not task.done()
             task.cancel()
+
+        return True
+
+    result = asyncio.run(when())
+    assert result
