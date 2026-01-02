@@ -211,3 +211,7 @@ def test_philosopher_uses_correct_forks(mock_sleep):
 
     result = asyncio.run(when())
     assert result
+
+
+def test_philosopher_returns_correct_format(mock_sleep, mock_random):
+    """Test that philosopher returns a properly formatted tuple."""
