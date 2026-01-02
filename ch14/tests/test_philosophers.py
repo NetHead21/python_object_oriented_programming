@@ -107,3 +107,24 @@ def mock_philosopher(monkeypatch):
     philosopher = AsyncMock()
     monkeypatch.setattr(philosophers, "philosopher", philosopher)
     return philosopher
+
+
+@fixture
+def mock_bounded_semaphore(monkeypatch):
+    """Mock asyncio.BoundedSemaphore class for footman creation tests.
+
+    Replaces asyncio.BoundedSemaphore with a Mock class that returns a sentinel
+    object instead of a real semaphore. This allows testing that main() creates
+    the footman semaphore with the correct capacity (faculty - 1) without
+    needing actual semaphore functionality.
+
+    The sentinel return value can be tracked through mock_philosopher calls to
+    verify each philosopher receives the same footman instance.
+
+    Args:
+        monkeypatch: Pytest fixture for safely patching module attributes.
+
+    Returns:
+        Mock class that records BoundedSemaphore instantiation calls and
+        returns sentinel.mock_bounded_semaphore.
+    """
