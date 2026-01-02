@@ -198,3 +198,11 @@ def test_philosopher_uses_correct_forks(mock_sleep):
     async def when():
         philosophers.FORKS = [asyncio.Lock() for i in range(5)]
         footman = asyncio.BoundedSemaphore(4)
+
+        # Try to acquire philosopher 0's forks manually
+        async with philosophers.FORKS[0]:
+            # Philosopher 0 should be blocked because we hold fork 0
+            task = asyncio.create_task(philosophers.philosopher(0, footman))
+            await asyncio.sleep(0.1)
+            assert not task.done()
+            task.cancel()
