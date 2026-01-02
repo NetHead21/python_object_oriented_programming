@@ -132,3 +132,16 @@ def mock_bounded_semaphore(monkeypatch):
     mock_class = Mock(return_value=sentinel.mock_bounded_semaphore)
     monkeypatch.setattr(asyncio, "BoundedSemaphore", mock_class)
     return mock_class
+
+
+def test_main(mock_philosopher, mock_bounded_semaphore):
+    asyncio.run(philosophers.main(5, 1))
+    mock_philosopher.assert_has_awaits(
+        [
+            call(0, sentinel.mock_bounded_semaphore),
+            call(1, sentinel.mock_bounded_semaphore),
+            call(2, sentinel.mock_bounded_semaphore),
+            call(3, sentinel.mock_bounded_semaphore),
+            call(4, sentinel.mock_bounded_semaphore),
+        ]
+    )
