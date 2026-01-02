@@ -128,3 +128,7 @@ def mock_bounded_semaphore(monkeypatch):
         Mock class that records BoundedSemaphore instantiation calls and
         returns sentinel.mock_bounded_semaphore.
     """
+
+    mock_class = Mock(return_value=sentinel.mock_bounded_semaphore)
+    monkeypatch.setattr(asyncio, "BoundedSemaphore", mock_class)
+    return mock_class
