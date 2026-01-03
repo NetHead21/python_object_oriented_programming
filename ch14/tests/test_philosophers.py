@@ -300,3 +300,7 @@ def test_edge_case_large_faculty(mock_sleep):
     # Verify all philosophers completed
     philosopher_ids = {result[0] for result in results}
     assert philosopher_ids == set(range(50))
+
+
+def test_edge_case_zero_servings(mock_philosopher):
+    """Edge case: zero servings should not call philosopher at all."""
