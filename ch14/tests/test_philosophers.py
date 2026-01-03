@@ -229,3 +229,7 @@ def test_philosopher_returns_correct_format(mock_sleep, mock_random):
     assert result[0] == 1
     assert result[1] == 1.5
     assert result[2] == 1.7
+
+
+def test_philosopher_output_format(mock_sleep, mock_random, capsys):
+    """Test that philosopher prints correct messages in correct order."""
