@@ -287,3 +287,9 @@ def test_edge_case_single_philosopher(mock_sleep):
 
 def test_edge_case_large_faculty(mock_sleep):
     """Edge case: large number of philosophers (50)."""
+
+    async def when():
+        philosophers.FORKS = [asyncio.Lock() for i in range(50)]
+        footman = asyncio.BoundedSemaphore(49)
+        tasks = [philosophers.philosopher(i, footman) for i in range(50)]
+        return await asyncio.gather(*tasks)
