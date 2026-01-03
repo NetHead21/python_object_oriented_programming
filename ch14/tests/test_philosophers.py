@@ -323,3 +323,8 @@ def test_edge_case_fork_wraparound(mock_sleep):
             await asyncio.sleep(0.1)
             assert not task.done()
             task.cancel()
+
+        return True
+
+    result = asyncio.run(when())
+    assert result
