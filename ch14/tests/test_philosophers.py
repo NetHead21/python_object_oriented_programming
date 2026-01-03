@@ -233,3 +233,5 @@ def test_philosopher_returns_correct_format(mock_sleep, mock_random):
 
 def test_philosopher_output_format(mock_sleep, mock_random, capsys):
     """Test that philosopher prints correct messages in correct order."""
+
+    mock_random.random.side_effect = [0.1, 0.2]
