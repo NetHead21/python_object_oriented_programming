@@ -267,3 +267,9 @@ def test_edge_case_two_philosophers(mock_sleep):
 
 def test_edge_case_single_philosopher(mock_sleep):
     """Edge case: single philosopher (degenerate case, but should work)."""
+
+    async def when():
+        philosophers.FORKS = [asyncio.Lock() for i in range(1)]
+        footman = asyncio.BoundedSemaphore(0)  # faculty - 1 = 0
+        # Single philosopher will wait forever on semaphore with limit 0
+        # So we need to use a timeout
