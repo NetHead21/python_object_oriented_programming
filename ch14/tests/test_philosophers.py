@@ -252,3 +252,9 @@ def test_philosopher_output_format(mock_sleep, mock_random, capsys):
 
 def test_edge_case_two_philosophers(mock_sleep):
     """Edge case: minimum meaningful scenario with 2 philosophers."""
+
+    async def when():
+        philosophers.FORKS = [asyncio.Lock() for i in range(2)]
+        footman = asyncio.BoundedSemaphore(1)  # Only 1 can eat at a time
+        tasks = [philosophers.philosopher(i, footman) for i in range(2)]
+        return await asyncio.gather(*tasks)
