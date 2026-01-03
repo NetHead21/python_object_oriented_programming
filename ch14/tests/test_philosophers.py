@@ -245,3 +245,10 @@ def test_philosopher_output_format(mock_sleep, mock_random, capsys):
     out, err = capsys.readouterr()
     lines = out.splitlines()
     assert lines == ["2 eating", "2 philosophizing"]
+
+
+# Edge Case Tests
+
+
+def test_edge_case_two_philosophers(mock_sleep):
+    """Edge case: minimum meaningful scenario with 2 philosophers."""
