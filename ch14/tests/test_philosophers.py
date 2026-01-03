@@ -311,3 +311,7 @@ def test_edge_case_zero_servings(mock_philosopher):
 
 def test_edge_case_fork_wraparound(mock_sleep):
     """Test that last philosopher correctly uses fork[0] (wraparound)."""
+
+    async def when():
+        philosophers.FORKS = [asyncio.Lock() for i in range(5)]
+        footman = asyncio.BoundedSemaphore(4)
