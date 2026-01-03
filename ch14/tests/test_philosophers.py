@@ -258,3 +258,8 @@ def test_edge_case_two_philosophers(mock_sleep):
         footman = asyncio.BoundedSemaphore(1)  # Only 1 can eat at a time
         tasks = [philosophers.philosopher(i, footman) for i in range(2)]
         return await asyncio.gather(*tasks)
+
+    results = asyncio.run(when())
+    assert len(results) == 2
+    assert results[0][0] == 0
+    assert results[1][0] == 1
