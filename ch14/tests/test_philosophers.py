@@ -283,3 +283,7 @@ def test_edge_case_single_philosopher(mock_sleep):
     result = asyncio.run(when())
     # With semaphore(0), the philosopher will be blocked
     assert result == "timeout"
+
+
+def test_edge_case_large_faculty(mock_sleep):
+    """Edge case: large number of philosophers (50)."""
