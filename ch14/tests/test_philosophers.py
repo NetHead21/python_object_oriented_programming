@@ -315,3 +315,11 @@ def test_edge_case_fork_wraparound(mock_sleep):
     async def when():
         philosophers.FORKS = [asyncio.Lock() for i in range(5)]
         footman = asyncio.BoundedSemaphore(4)
+
+        # Last philosopher (id=4) should use forks 4 and 0
+        # Lock fork 0 to verify philosopher 4 needs it
+        async with philosophers.FORKS[0]:
+            task = asyncio.create_task(philosophers.philosopher(4, footman))
+            await asyncio.sleep(0.1)
+            assert not task.done()
+            task.cancel()
