@@ -240,3 +240,8 @@ def test_philosopher_output_format(mock_sleep, mock_random, capsys):
         philosophers.FORKS = [asyncio.Lock() for i in range(3)]
         footman = asyncio.BoundedSemaphore(2)
         await philosophers.philosopher(2, footman)
+
+    asyncio.run(when())
+    out, err = capsys.readouterr()
+    lines = out.splitlines()
+    assert lines == ["2 eating", "2 philosophizing"]
