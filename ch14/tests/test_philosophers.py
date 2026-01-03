@@ -235,3 +235,8 @@ def test_philosopher_output_format(mock_sleep, mock_random, capsys):
     """Test that philosopher prints correct messages in correct order."""
 
     mock_random.random.side_effect = [0.1, 0.2]
+
+    async def when():
+        philosophers.FORKS = [asyncio.Lock() for i in range(3)]
+        footman = asyncio.BoundedSemaphore(2)
+        await philosophers.philosopher(2, footman)
