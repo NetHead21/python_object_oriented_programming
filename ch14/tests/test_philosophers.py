@@ -273,3 +273,9 @@ def test_edge_case_single_philosopher(mock_sleep):
         footman = asyncio.BoundedSemaphore(0)  # faculty - 1 = 0
         # Single philosopher will wait forever on semaphore with limit 0
         # So we need to use a timeout
+
+        try:
+            task = asyncio.wait_for(philosophers.philosopher(0, footman), timeout=0.1)
+            return await task
+        except asyncio.TimeoutError:
+            return "timeout"
