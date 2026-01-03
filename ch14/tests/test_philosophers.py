@@ -307,3 +307,7 @@ def test_edge_case_zero_servings(mock_philosopher):
 
     asyncio.run(philosophers.main(5, 0))
     mock_philosopher.assert_not_awaited()
+
+
+def test_edge_case_fork_wraparound(mock_sleep):
+    """Test that last philosopher correctly uses fork[0] (wraparound)."""
