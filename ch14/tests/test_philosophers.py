@@ -304,3 +304,6 @@ def test_edge_case_large_faculty(mock_sleep):
 
 def test_edge_case_zero_servings(mock_philosopher):
     """Edge case: zero servings should not call philosopher at all."""
+
+    asyncio.run(philosophers.main(5, 0))
+    mock_philosopher.assert_not_awaited()
