@@ -293,3 +293,6 @@ def test_edge_case_large_faculty(mock_sleep):
         footman = asyncio.BoundedSemaphore(49)
         tasks = [philosophers.philosopher(i, footman) for i in range(50)]
         return await asyncio.gather(*tasks)
+
+    results = asyncio.run(when())
+    assert len(results) == 50
