@@ -279,3 +279,7 @@ def test_edge_case_single_philosopher(mock_sleep):
             return await task
         except asyncio.TimeoutError:
             return "timeout"
+
+    result = asyncio.run(when())
+    # With semaphore(0), the philosopher will be blocked
+    assert result == "timeout"
