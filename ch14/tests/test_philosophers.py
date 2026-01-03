@@ -217,3 +217,15 @@ def test_philosopher_returns_correct_format(mock_sleep, mock_random):
     """Test that philosopher returns a properly formatted tuple."""
 
     mock_random.random.side_effect = [0.5, 0.7]
+
+    async def when():
+        philosophers.FORKS = [asyncio.Lock() for i in range(3)]
+        footman = asyncio.BoundedSemaphore(2)
+        return await philosophers.philosopher(1, footman)
+
+    result = asyncio.run(when())
+    assert isinstance(result, tuple)
+    assert len(result) == 3
+    assert result[0] == 1
+    assert result[1] == 1.5
+    assert result[2] == 1.7
