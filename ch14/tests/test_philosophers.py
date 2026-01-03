@@ -263,3 +263,7 @@ def test_edge_case_two_philosophers(mock_sleep):
     assert len(results) == 2
     assert results[0][0] == 0
     assert results[1][0] == 1
+
+
+def test_edge_case_single_philosopher(mock_sleep):
+    """Edge case: single philosopher (degenerate case, but should work)."""
