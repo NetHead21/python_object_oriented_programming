@@ -345,3 +345,7 @@ def test_deadlock_prevention_with_full_faculty():
 
         results = await asyncio.wait_for(asyncio.gather(*tasks), timeout=10.0)
         return results
+
+    results = asyncio.run(when())
+    assert len(results) == 5
+    # All philosophers should complete successfully
