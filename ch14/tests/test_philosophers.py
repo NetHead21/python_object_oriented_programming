@@ -353,3 +353,7 @@ def test_deadlock_prevention_with_full_faculty():
 
 def test_main_with_single_serving_output(capsys):
     """Test main output format with real execution (single serving)."""
+
+    asyncio.run(philosophers.main(3, 1))
+    out, err = capsys.readouterr()
+    lines = out.splitlines()
