@@ -403,3 +403,7 @@ def test_concurrent_fork_access_safety():
                     old_value = counter["value"]
                     await asyncio.sleep(0.01)  # Simulate work
                     counter["value"] = old_value + 1
+
+        tasks = [check_philosopher(i) for i in range(3)]
+        await asyncio.gather(*tasks)
+        return counter["value"]
