@@ -370,3 +370,5 @@ def test_main_with_single_serving_output(capsys):
 
 def test_philosopher_timing_ranges(mock_random, mock_sleep):
     """Test that eating and thinking times are in expected range [1.0, 2.0)."""
+
+    mock_random.random.side_effect = [0.0, 0.999999]
