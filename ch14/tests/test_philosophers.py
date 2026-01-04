@@ -357,3 +357,8 @@ def test_main_with_single_serving_output(capsys):
     asyncio.run(philosophers.main(3, 1))
     out, err = capsys.readouterr()
     lines = out.splitlines()
+
+    # Should have eating/philosophizing messages plus results list
+    eating_lines = [line for line in lines if "eating" in line]
+    philosophizing_lines = [line for line in lines if "philosophizing" in line]
+    result_lines = [line for line in lines if line.startswith("[")]
