@@ -407,3 +407,7 @@ def test_concurrent_fork_access_safety():
         tasks = [check_philosopher(i) for i in range(3)]
         await asyncio.gather(*tasks)
         return counter["value"]
+
+    result = asyncio.run(when())
+    # If locks work correctly, counter should be 3
+    assert result == 3
