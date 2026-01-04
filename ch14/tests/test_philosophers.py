@@ -384,3 +384,7 @@ def test_philosopher_timing_ranges(mock_random, mock_sleep):
     assert abs(think_time - 1.999999) < 0.000001
     assert 1.0 <= eat_time < 2.0
     assert 1.0 <= think_time < 2.0
+
+
+def test_concurrent_fork_access_safety():
+    """Test that forks (locks) properly prevent concurrent access."""
