@@ -395,3 +395,7 @@ def test_concurrent_fork_access_safety():
 
         # Create a shared counter to verify mutual exclusion
         counter = {"value": 0}
+
+
+        async def check_philosopher(id: int):
+            async with footman:
