@@ -372,3 +372,8 @@ def test_philosopher_timing_ranges(mock_random, mock_sleep):
     """Test that eating and thinking times are in expected range [1.0, 2.0)."""
 
     mock_random.random.side_effect = [0.0, 0.999999]
+
+    async def when():
+        philosophers.FORKS = [asyncio.Lock() for i in range(2)]
+        footman = asyncio.BoundedSemaphore(1)
+        return await philosophers.philosopher(0, footman)
