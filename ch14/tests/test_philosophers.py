@@ -349,3 +349,7 @@ def test_deadlock_prevention_with_full_faculty():
     results = asyncio.run(when())
     assert len(results) == 5
     # All philosophers should complete successfully
+
+
+def test_main_with_single_serving_output(capsys):
+    """Test main output format with real execution (single serving)."""
