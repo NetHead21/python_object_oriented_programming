@@ -388,3 +388,7 @@ def test_philosopher_timing_ranges(mock_random, mock_sleep):
 
 def test_concurrent_fork_access_safety():
     """Test that forks (locks) properly prevent concurrent access."""
+
+    async def when():
+        philosophers.FORKS = [asyncio.Lock() for i in range(3)]
+        footman = asyncio.BoundedSemaphore(2)
