@@ -377,3 +377,10 @@ def test_philosopher_timing_ranges(mock_random, mock_sleep):
         philosophers.FORKS = [asyncio.Lock() for i in range(2)]
         footman = asyncio.BoundedSemaphore(1)
         return await philosophers.philosopher(0, footman)
+
+    result = asyncio.run(when())
+    _, eat_time, think_time = result
+    assert eat_time == 1.0
+    assert abs(think_time - 1.999999) < 0.000001
+    assert 1.0 <= eat_time < 2.0
+    assert 1.0 <= think_time < 2.0
