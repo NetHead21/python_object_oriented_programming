@@ -328,3 +328,7 @@ def test_edge_case_fork_wraparound(mock_sleep):
 
     result = asyncio.run(when())
     assert result
+
+
+def test_deadlock_prevention_with_full_faculty():
+    """Test that footman semaphore prevents deadlock with all philosophers."""
