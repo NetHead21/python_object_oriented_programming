@@ -392,3 +392,6 @@ def test_concurrent_fork_access_safety():
     async def when():
         philosophers.FORKS = [asyncio.Lock() for i in range(3)]
         footman = asyncio.BoundedSemaphore(2)
+
+        # Create a shared counter to verify mutual exclusion
+        counter = {"value": 0}
