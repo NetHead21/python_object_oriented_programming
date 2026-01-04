@@ -396,6 +396,10 @@ def test_concurrent_fork_access_safety():
         # Create a shared counter to verify mutual exclusion
         counter = {"value": 0}
 
-
         async def check_philosopher(id: int):
             async with footman:
+                async with philosophers.FORKS[id], philosophers.FORKS[(id + 1) % 3]:
+                    # Critical section - increment counter
+                    old_value = counter["value"]
+                    await asyncio.sleep(0.01)  # Simulate work
+                    counter["value"] = old_value + 1
