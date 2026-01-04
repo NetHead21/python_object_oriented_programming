@@ -339,3 +339,6 @@ def test_deadlock_prevention_with_full_faculty():
         # If we didn't have the footman, all 5 could deadlock
         # With footman set to 4, at least one can't start, preventing deadlock
         footman = asyncio.BoundedSemaphore(4)
+
+        tasks = [philosophers.philosopher(i, footman) for i in range(5)]
+        # This should complete without deadlock
