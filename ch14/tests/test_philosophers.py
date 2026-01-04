@@ -342,3 +342,6 @@ def test_deadlock_prevention_with_full_faculty():
 
         tasks = [philosophers.philosopher(i, footman) for i in range(5)]
         # This should complete without deadlock
+
+        results = await asyncio.wait_for(asyncio.gather(*tasks), timeout=10.0)
+        return results
