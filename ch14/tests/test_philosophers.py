@@ -362,3 +362,7 @@ def test_main_with_single_serving_output(capsys):
     eating_lines = [line for line in lines if "eating" in line]
     philosophizing_lines = [line for line in lines if "philosophizing" in line]
     result_lines = [line for line in lines if line.startswith("[")]
+
+    assert len(eating_lines) == 3
+    assert len(philosophizing_lines) == 3
+    assert len(result_lines) == 1
