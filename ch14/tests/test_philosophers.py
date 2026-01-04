@@ -366,3 +366,7 @@ def test_main_with_single_serving_output(capsys):
     assert len(eating_lines) == 3
     assert len(philosophizing_lines) == 3
     assert len(result_lines) == 1
+
+
+def test_philosopher_timing_ranges(mock_random, mock_sleep):
+    """Test that eating and thinking times are in expected range [1.0, 2.0)."""
