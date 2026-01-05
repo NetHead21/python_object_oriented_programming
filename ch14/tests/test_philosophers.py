@@ -421,3 +421,8 @@ def test_main_forks_reset_between_runs():
 
     asyncio.run(philosophers.main(5, 1))
     forks_second = philosophers.FORKS
+
+    # Different runs should create different fork objects
+    assert len(forks_first) == 3
+    assert len(forks_second) == 5
+    assert forks_first is not forks_second
