@@ -418,3 +418,6 @@ def test_main_forks_reset_between_runs():
 
     asyncio.run(philosophers.main(3, 1))
     forks_first = philosophers.FORKS
+
+    asyncio.run(philosophers.main(5, 1))
+    forks_second = philosophers.FORKS
