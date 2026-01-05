@@ -415,3 +415,6 @@ def test_concurrent_fork_access_safety():
 
 def test_main_forks_reset_between_runs():
     """Test that FORKS are properly reinitialized on each main() call."""
+
+    asyncio.run(philosophers.main(3, 1))
+    forks_first = philosophers.FORKS
