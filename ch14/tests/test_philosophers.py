@@ -411,3 +411,7 @@ def test_concurrent_fork_access_safety():
     result = asyncio.run(when())
     # If locks work correctly, counter should be 3
     assert result == 3
+
+
+def test_main_forks_reset_between_runs():
+    """Test that FORKS are properly reinitialized on each main() call."""
