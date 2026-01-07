@@ -1,6 +1,6 @@
 # Python Object-Oriented Programming - Comprehensive Implementation Guide
 
-[![Python Version](https://img.shields.io/badge/python-3.8%2B-blue.svg)](https://python.org)
+[![Python Version](https://img.shields.io/badge/python-3.14%2B-blue.svg)](https://python.org)
 [![Code Style](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
@@ -77,6 +77,39 @@ python_oop/
 │   ├── gps_message_slots.py          # Memory-efficient GPS parser with slots
 │   ├── magic_methods_comprehensive_guide.py # Advanced magic methods
 │   └── test_gps_message_slots.py     # Comprehensive test suite
+├── ch13/                              # Testing & Test-Driven Development
+│   ├── src/
+│   │   ├── flight_status_redis.py    # Redis-backed flight tracking system
+│   │   ├── stats.py                  # Statistical analysis with None handling
+│   │   ├── vigenere_cipher.py        # Cipher implementation for TDD
+│   │   ├── checksum_writer.py        # File integrity verification
+│   │   ├── remote_logging_app.py     # Remote logging application
+│   │   └── log_catcher.py            # Async log receiver server
+│   └── tests/
+│       ├── test_flight_status_tracker.py
+│       ├── test_stats.py
+│       ├── test_vigenere_cipher.py
+│       └── test_checksum_writer.py
+├── ch14/                              # Concurrency & Parallelism
+│   ├── src/
+│   │   ├── async_1.py                # Basic asyncio introduction
+│   │   ├── code_search.py            # Concurrent code analysis with threading
+│   │   ├── concurrency_comprehensive_guide.py # Complete concurrency guide
+│   │   ├── directory_search.py       # Multiprocessing directory scanner
+│   │   ├── ecommerce.py              # E-commerce system example
+│   │   ├── delicatessen.py           # Producer-consumer pattern
+│   │   ├── philosophers.py           # Dining philosophers problem
+│   │   ├── weather_async.py          # Async weather API client
+│   │   ├── weather_threads.py        # Threaded weather API client
+│   │   ├── log_catcher.py            # Async network server
+│   │   ├── remote_logging_app.py     # Sorting algorithms with logging
+│   │   └── practical_concurrency_examples.py # Real-world patterns
+│   └── tests/
+│       ├── test_async_1.py
+│       ├── test_code_search.py
+│       ├── test_concurrency_comprehensive_guide.py
+│       ├── test_directory_search.py
+│       └── test_practical_concurrency_examples.py
 ├── exceptions/                        # Exception Handling Examples
 │   └── even_only.py                  # Custom exception implementations
 └── Core OOP Examples/                 # Fundamental OOP concepts
@@ -203,12 +236,45 @@ python_oop/
 - `flyweight_pattern_examples.py` - Memory optimization patterns
 - `magic_methods_comprehensive_guide.py` - Advanced magic method usage
 
+### Chapter 13: Testing & Test-Driven Development
+**Focus**: Testing strategies, TDD practices, and quality assurance
+- Test-driven development methodology
+- Unit testing with pytest
+- Integration with external services (Redis)
+- Statistical analysis with robust error handling
+- File integrity and checksum verification
+
+**Key Files**:
+- `stats.py` - Statistical list with None-value handling
+- `flight_status_redis.py` - Redis-backed flight status tracking
+- `vigenere_cipher.py` - Classic cipher with comprehensive tests
+- `checksum_writer.py` - File integrity verification utilities
+- `test_*.py` - Comprehensive test suites demonstrating TDD
+
+### Chapter 14: Concurrency & Parallelism
+**Focus**: Concurrent and parallel programming techniques
+- Threading for I/O-bound operations
+- Multiprocessing for CPU-bound tasks
+- Asyncio for asynchronous programming
+- ThreadPoolExecutor and ProcessPoolExecutor
+- Producer-consumer patterns
+- Classic concurrency problems (dining philosophers)
+
+**Key Files**:
+- `concurrency_comprehensive_guide.py` - Complete concurrency reference
+- `async_1.py` - Asyncio fundamentals with tasks and gather
+- `code_search.py` - Concurrent AST-based code analysis
+- `directory_search.py` - Multiprocessing file system scanner
+- `philosophers.py` - Dining philosophers with deadlock prevention
+- `weather_async.py` & `weather_threads.py` - Comparing async vs threads
+- `log_catcher.py` - Production-ready async network server
+
 ## 🛠️ Installation & Setup
 
 ### Prerequisites
 ```bash
-# Python 3.8 or higher required
-python --version  # Should be 3.8+
+# Python 3.14 or higher required
+python --version  # Should be 3.14+
 
 # Optional: Virtual environment (recommended)
 python -m venv venv
@@ -225,8 +291,11 @@ cd python_object_oriented_programming
 
 ### Install Dependencies
 ```bash
+# Install core dependencies
+pip install pytest redis
+
 # Install development dependencies (optional)
-pip install pytest black ruff mypy
+pip install black ruff mypy
 
 # For specific examples that require external libraries
 pip install requests beautifulsoup4  # For web scraping examples
@@ -323,6 +392,80 @@ from ch11.strategy_fn import sort_with_strategy, quick_sort
 sorted_data = sort_with_strategy([3, 1, 4, 1, 5, 9], quick_sort)
 ```
 
+#### Statistical Analysis with None Handling
+```python
+from ch13.src.stats import StatsList
+
+# Create statistical list with missing values
+data = StatsList([1.5, 2.0, None, 3.5, 4.0, None, 5.5])
+
+# Compute statistics (None values filtered automatically)
+average = data.mean()      # 3.3
+median = data.median()      # 3.5
+stddev = data.stddev()      # 1.52
+
+print(f"Mean: {average:.2f}, Median: {median}, StdDev: {stddev:.2f}")
+```
+
+#### Redis-Backed Flight Tracking
+```python
+from ch13.src.flight_status_redis import FlightStatusTracker, Status
+
+# Requires Redis server running on localhost:6379
+tracker = FlightStatusTracker()
+
+# Track flight status changes
+tracker.change_status("AA123", Status.ON_TIME)
+tracker.change_status("DL456", Status.DELAYED)
+
+# Retrieve status with timestamp
+timestamp, status = tracker.get_status("AA123")
+print(f"Flight AA123: {status} (updated: {timestamp})")
+```
+
+#### Concurrent Code Analysis
+```python
+from pathlib import Path
+from ch14.src.code_search import main
+
+# Analyze Python imports across a codebase using threading
+# Scans all .py files, parses AST, extracts imports
+main(Path("/path/to/project"))
+
+# Output shows:
+# - All Python files found
+# - Imported modules per file
+# - Highlights files using 'typing' module
+# - Performance metrics (time taken)
+```
+
+#### Asyncio Fundamentals
+```python
+import asyncio
+from ch14.src.async_1 import sleepers
+
+# Create and run concurrent async tasks
+asyncio.run(sleepers(5))
+
+# Creates 5 tasks that sleep for random durations
+# Demonstrates asyncio.create_task() and asyncio.gather()
+```
+
+#### Multiprocessing Directory Search
+```python
+from ch14.src.directory_search import search_directories
+from pathlib import Path
+
+# Search large directory trees using multiple processes
+roots = [Path("/usr/src"), Path("/home/user/projects")]
+pattern = "*.py"
+
+for result in search_directories(roots, pattern):
+    print(f"Found: {result}")
+
+# Uses multiprocessing with queues for efficient scanning
+```
+
 ## 📚 Educational Resources
 
 ### Comprehensive Guides
@@ -355,8 +498,10 @@ Every module includes:
 #### Advanced Path  
 1. Master complex patterns (`ch12/` structural patterns)
 2. Optimize for memory and performance
-3. Implement metaclasses and descriptors
-4. Create custom frameworks using template method
+3. Practice test-driven development (`ch13/` TDD examples)
+4. Learn concurrent programming (`ch14/` threading, asyncio, multiprocessing)
+5. Implement metaclasses and descriptors
+6. Create custom frameworks using template method
 
 ## 🧪 Testing
 
@@ -365,11 +510,19 @@ Every module includes:
 # Run all tests
 pytest -v
 
-# Run specific test file
+# Run specific chapter tests
 pytest ch12/test_gps_message_slots.py -v
+pytest ch13/tests/ -v
+pytest ch14/tests/ -v
 
 # Run with coverage
-pytest --cov=ch12 --cov-report=html
+pytest --cov=ch12 --cov=ch13 --cov=ch14 --cov-report=html
+
+# Run async tests specifically
+pytest -m asyncio -v
+
+# Skip slow tests
+pytest -m "not slow" -v
 ```
 
 ### Test Categories
@@ -393,6 +546,7 @@ ch12/test_gps_message_slots.py::TestGPSParser::test_performance_benchmarks ✓
 - **Flyweight Pattern**: Shared object optimization  
 - **Lazy Loading**: Deferred computation strategies
 - **Caching**: Memoization and LRU cache usage
+- **Concurrent Processing**: Thread pools and async execution
 
 ### Architecture Patterns
 - **Template Method**: Framework design principles
@@ -405,6 +559,23 @@ ch12/test_gps_message_slots.py::TestGPSParser::test_performance_benchmarks ✓
 - **Context Managers**: Automatic resource cleanup
 - **Generator Functions**: Memory-efficient iteration
 - **Slots**: Attribute storage optimization
+
+### Concurrency & Parallelism
+- **Threading**: I/O-bound concurrent execution with GIL awareness
+- **Multiprocessing**: CPU-bound parallel execution with process pools
+- **Asyncio**: Cooperative multitasking for async I/O operations
+- **ThreadPoolExecutor**: High-level threading interface
+- **ProcessPoolExecutor**: High-level multiprocessing interface
+- **Synchronization**: Locks, semaphores, events, and queues
+- **Classic Problems**: Dining philosophers, producer-consumer patterns
+
+### Testing & Quality Assurance
+- **Test-Driven Development**: Red-green-refactor cycle
+- **Unit Testing**: Isolated component testing with pytest
+- **Integration Testing**: External service testing (Redis, APIs)
+- **Mocking & Patching**: Isolating dependencies in tests
+- **Test Markers**: Organizing slow tests and async tests
+- **Coverage Analysis**: Ensuring comprehensive test coverage
 
 ## 📊 Performance Benchmarks
 
@@ -497,7 +668,35 @@ python gps_message_slots.py
 python flyweight_pattern_examples.py
 ```
 
-### 4. Advanced Topics (3+ hours)
+### 4. Testing & Quality (2 hours)
+```bash
+# Test-driven development
+cd ch13
+pytest tests/test_stats.py -v
+pytest tests/test_vigenere_cipher.py -v
+
+# Run with coverage
+pytest tests/ --cov=src --cov-report=term-missing
+```
+
+### 5. Concurrency & Parallelism (3 hours)
+```bash
+cd ch14/src
+
+# Start with asyncio basics
+python async_1.py
+
+# Try concurrent code analysis
+python code_search.py ../../ch11
+
+# Explore multiprocessing
+python directory_search.py ../.. "*.py"
+
+# Study the comprehensive guide
+python concurrency_comprehensive_guide.py
+```
+
+### 6. Advanced Topics (3+ hours)
 ```bash
 # Magic methods deep dive
 python magic_methods_comprehensive_guide.py
@@ -538,10 +737,16 @@ ruff check .
 ## ❓ Frequently Asked Questions
 
 ### **Q: Which Python version is required?**
-A: Python 3.8+ is required. Some features like positional-only parameters and assignment expressions are used.
+A: Python 3.14 is required as specified in pyproject.toml. The code uses modern Python features and syntax optimizations available in 3.14.
 
 ### **Q: Are these implementations production-ready?**
-A: Yes! The code follows enterprise standards with proper error handling, logging, and comprehensive testing.
+A: Yes! The code follows enterprise standards with proper error handling, comprehensive testing, and includes real-world examples like async servers and Redis integration.
+
+### **Q: Do I need Redis installed?**
+A: Redis is only required for Chapter 13's flight tracking examples. All other examples work without external dependencies (besides pytest).
+
+### **Q: How do I run async examples?**
+A: Async examples use `asyncio.run()` and can be executed directly with `python filename.py`. Tests use pytest's asyncio plugin with the `@pytest.mark.asyncio` decorator.
 
 ### **Q: How do I choose the right design pattern?**
 A: Start with the problem you're solving:
