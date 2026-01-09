@@ -99,3 +99,20 @@ class Field:
 
 class StringField(Field):
     """String field with max_length validation."""
+
+    def __init__(
+        self,
+        max_length: int = 255,
+        primary_key: bool = False,
+        required: bool = False,
+        default: Optional[str] = None,
+        unique: bool = False,
+    ):
+        super().__init__(
+            column_type=f"VARCHAR({max_length})",
+            primary_key=primary_key,
+            required=required,
+            default=default,
+            unique=unique,
+        )
+        self.max_length = max_length
