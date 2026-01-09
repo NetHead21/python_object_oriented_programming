@@ -72,3 +72,9 @@ class Field:
     def __set_name__(self, owner: type, name: str) -> None:
         """Called when the field is assigned to a class attribute."""
         self.name = name
+
+    def __get__(self, instance: Any, owner: type) -> Any:
+        """Get the field value from the instance."""
+        if instance is None:
+            return self
+        return instance.__dict__.get(self.name)
