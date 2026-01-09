@@ -116,3 +116,11 @@ class StringField(Field):
             unique=unique,
         )
         self.max_length = max_length
+
+    def __set__(self, instance: Any, value: Any) -> None:
+        """Validate string length before setting."""
+        if value is not None and not isinstance(value, str):
+            raise TypeError(f"{self.name} must be a string")
+        if value is not None and len(value) > self.max_length:
+            raise ValueError(f"{self.name} exceeds max length of {self.max_length}")
+        super().__set__(instance, value)
