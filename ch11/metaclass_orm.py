@@ -68,3 +68,7 @@ class Field:
         self.default = default
         self.unique = unique
         self.name: Optional[str] = None  # Set by metaclass
+
+    def __set_name__(self, owner: type, name: str) -> None:
+        """Called when the field is assigned to a class attribute."""
+        self.name = name
