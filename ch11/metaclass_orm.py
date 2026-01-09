@@ -53,3 +53,18 @@ class Field:
         default: Default value if none provided
         unique: Whether values must be unique across rows
     """
+
+    def __init__(
+        self,
+        column_type: str,
+        primary_key: bool = False,
+        required: bool = False,
+        default: Any = None,
+        unique: bool = False,
+    ):
+        self.column_type = column_type
+        self.primary_key = primary_key
+        self.required = required
+        self.default = default
+        self.unique = unique
+        self.name: Optional[str] = None  # Set by metaclass
