@@ -78,3 +78,9 @@ class Field:
         if instance is None:
             return self
         return instance.__dict__.get(self.name)
+
+    def __set__(self, instance: Any, value: Any) -> None:
+        """Set the field value on the instance with validation."""
+        if value is None and self.required:
+            raise ValueError(f"{self.name} is required")
+        instance.__dict__[self.name] = value
