@@ -95,3 +95,7 @@ class Field:
             flags.append("unique")
         flag_str = f" [{', '.join(flags)}]" if flags else ""
         return f"{self.__class__.__name__}({self.column_type}{flag_str})"
+
+
+class StringField(Field):
+    """String field with max_length validation."""
