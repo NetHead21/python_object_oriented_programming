@@ -202,3 +202,11 @@ class ForeignKeyField(Field):
         if value is not None and not isinstance(value, int):
             raise TypeError(f"{self.name} must be an integer (foreign key ID)")
         super().__set__(instance, value)
+
+    def __repr__(self) -> str:
+        """String representation showing the referenced model."""
+        flags = []
+        if self.required:
+            flags.append("required")
+        flag_str = f" [{', '.join(flags)}]" if flags else ""
+        return f"ForeignKeyField({self.to_model}, {self.on_delete}{flag_str})"
