@@ -128,3 +128,18 @@ class StringField(Field):
 
 class IntegerField(Field):
     """Integer field with type validation."""
+
+    def __init__(
+        self,
+        primary_key: bool = False,
+        required: bool = False,
+        default: Optional[int] = None,
+        unique: bool = False,
+    ):
+        super().__init__(
+            column_type="INTEGER",
+            primary_key=primary_key,
+            required=required,
+            default=default,
+            unique=unique,
+        )
