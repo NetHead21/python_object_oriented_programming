@@ -124,3 +124,7 @@ class StringField(Field):
         if value is not None and len(value) > self.max_length:
             raise ValueError(f"{self.name} exceeds max length of {self.max_length}")
         super().__set__(instance, value)
+
+
+class IntegerField(Field):
+    """Integer field with type validation."""
