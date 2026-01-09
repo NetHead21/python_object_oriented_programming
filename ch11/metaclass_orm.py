@@ -37,3 +37,19 @@ Example:
 """
 
 from typing import Any, Optional, ClassVar
+
+
+class Field:
+    """
+    Base class for ORM field descriptors.
+
+    Fields act as descriptors, providing validation and type conversion
+    when attributes are accessed or set on model instances.
+
+    Args:
+        column_type: SQL column type (e.g., "VARCHAR(255)", "INTEGER")
+        primary_key: Whether this field is the primary key
+        required: Whether the field must have a value
+        default: Default value if none provided
+        unique: Whether values must be unique across rows
+    """
