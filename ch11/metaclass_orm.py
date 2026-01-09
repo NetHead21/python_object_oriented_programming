@@ -153,3 +153,14 @@ class IntegerField(Field):
 
 class BooleanField(Field):
     """Boolean field."""
+
+    def __init__(
+        self,
+        required: bool = False,
+        default: Optional[bool] = None,
+    ):
+        super().__init__(
+            column_type="BOOLEAN",
+            required=required,
+            default=default,
+        )
