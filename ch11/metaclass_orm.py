@@ -164,3 +164,9 @@ class BooleanField(Field):
             required=required,
             default=default,
         )
+
+    def __set__(self, instance: Any, value: Any) -> None:
+        """Validate boolean type before setting."""
+        if value is not None and not isinstance(value, bool):
+            raise TypeError(f"{self.name} must be a boolean")
+        super().__set__(instance, value)
