@@ -196,3 +196,9 @@ class ForeignKeyField(Field):
             required=required,
             default=default,
         )
+
+    def __set__(self, instance: Any, value: Any) -> None:
+        """Validate foreign key is an integer (ID)."""
+        if value is not None and not isinstance(value, int):
+            raise TypeError(f"{self.name} must be an integer (foreign key ID)")
+        super().__set__(instance, value)
