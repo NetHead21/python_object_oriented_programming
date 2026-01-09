@@ -181,3 +181,18 @@ class ForeignKeyField(Field):
         required: Whether the foreign key must have a value
         default: Default value if none provided
     """
+
+    def __init__(
+        self,
+        to_model: str,  # Model class name as string to avoid circular dependencies
+        on_delete: str = "CASCADE",
+        required: bool = False,
+        default: Optional[int] = None,
+    ):
+        self.to_model = to_model
+        self.on_delete = on_delete
+        super().__init__(
+            column_type=f"INTEGER REFERENCES {to_model.lower()}(id) ON DELETE {on_delete}",
+            required=required,
+            default=default,
+        )
