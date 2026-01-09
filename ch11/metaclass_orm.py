@@ -143,3 +143,9 @@ class IntegerField(Field):
             default=default,
             unique=unique,
         )
+
+    def __set__(self, instance: Any, value: Any) -> None:
+        """Validate integer type before setting."""
+        if value is not None and not isinstance(value, int):
+            raise TypeError(f"{self.name} must be an integer")
+        super().__set__(instance, value)
