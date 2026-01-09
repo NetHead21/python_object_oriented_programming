@@ -170,3 +170,14 @@ class BooleanField(Field):
         if value is not None and not isinstance(value, bool):
             raise TypeError(f"{self.name} must be a boolean")
         super().__set__(instance, value)
+
+
+class ForeignKeyField(Field):
+    """Foreign key field for establishing relationships between models.
+
+    Args:
+        to_model: The model class this foreign key references (e.g., User, Product)
+        on_delete: Behavior when referenced record is deleted (CASCADE, SET_NULL, etc.)
+        required: Whether the foreign key must have a value
+        default: Default value if none provided
+    """
