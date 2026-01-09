@@ -35,3 +35,5 @@ Example:
     >>> print(user.save())  # INSERT INTO users ...
     >>> print(User.select_all())  # SELECT * FROM users
 """
+
+from typing import Any, Optional, ClassVar
