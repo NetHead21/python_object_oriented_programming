@@ -84,3 +84,14 @@ class Field:
         if value is None and self.required:
             raise ValueError(f"{self.name} is required")
         instance.__dict__[self.name] = value
+
+    def __repr__(self) -> str:
+        flags = []
+        if self.primary_key:
+            flags.append("PK")
+        if self.required:
+            flags.append("required")
+        if self.unique:
+            flags.append("unique")
+        flag_str = f" [{', '.join(flags)}]" if flags else ""
+        return f"{self.__class__.__name__}({self.column_type}{flag_str})"
