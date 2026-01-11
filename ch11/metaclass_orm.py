@@ -320,3 +320,7 @@ class Model(metaclass=ORMMetaclass):
         """Human-readable representation."""
         field_strs = [f"{k}={getattr(self, k, None)!r}" for k in self.__mappings__]
         return f"{self.__class__.__name__}({', '.join(field_strs)})"
+
+    def __str__(self) -> str:
+        """String representation."""
+        return self.__repr__()
