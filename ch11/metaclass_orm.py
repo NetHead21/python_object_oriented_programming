@@ -315,3 +315,8 @@ class Model(metaclass=ORMMetaclass):
         for field_name, field in self.__mappings__.items():
             if field.required and getattr(self, field_name, None) is None:
                 raise ValueError(f"Required field '{field_name}' is missing")
+
+    def __repr__(self) -> str:
+        """Human-readable representation."""
+        field_strs = [f"{k}={getattr(self, k, None)!r}" for k in self.__mappings__]
+        return f"{self.__class__.__name__}({', '.join(field_strs)})"
