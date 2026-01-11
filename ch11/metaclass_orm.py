@@ -450,3 +450,9 @@ class Order(Model):
     product_id = ForeignKeyField("Product", required=True)
     quantity = IntegerField(required=True, default=1)
     order_date = StringField(max_length=50)  # In real app, use DateTimeField
+
+
+if __name__ == "__main__":
+    # Quick demonstration (run test_metaclass_orm.py for comprehensive tests)
+    print("ORM Metaclass - Quick Demo")
+    print("=" * 50)
