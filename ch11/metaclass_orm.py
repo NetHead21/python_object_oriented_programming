@@ -210,3 +210,19 @@ class ForeignKeyField(Field):
             flags.append("required")
         flag_str = f" [{', '.join(flags)}]" if flags else ""
         return f"ForeignKeyField({self.to_model}, {self.on_delete}{flag_str})"
+
+
+class ORMMetaclass(type):
+    """
+    Metaclass that transforms model classes into database-mapped objects.
+
+    This metaclass:
+    1. Automatically infers table names from class names
+    2. Collects all Field instances into __mappings__
+    3. Validates field definitions
+    4. Removes field class attributes (they become descriptors)
+    5. Identifies the primary key field
+
+    The metaclass runs when a Model subclass is defined, not when
+    instances are created. This one-time setup improves runtime performance.
+    """
