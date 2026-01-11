@@ -60,3 +60,12 @@ class TestOrder(Model):
     user_id = ForeignKeyField("TestUser", required=True)
     product_id = ForeignKeyField("TestProduct", required=True)
     quantity = IntegerField(default=1)
+
+
+# =============================================================================
+# Metaclass Behavior Tests
+# =============================================================================
+
+
+class TestMetaclassBehavior:
+    """Test metaclass table name inference and field collection."""
