@@ -401,3 +401,12 @@ class Model(metaclass=ORMMetaclass):
         if cls.__primary_key__:
             lines.append(f"Primary Key: {cls.__primary_key__}")
         return "\n".join(lines)
+
+
+# =============================================================================
+# Example Usage
+# =============================================================================
+
+
+class User(Model):
+    """User model with comprehensive field definitions."""
