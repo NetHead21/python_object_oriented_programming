@@ -73,3 +73,9 @@ class TestMetaclassBehavior:
     def test_explicit_table_name(self):
         """Test that explicit __table__ is preserved."""
         assert TestOrder.__table__ == "test_orders"
+
+    def test_auto_generated_table_name(self):
+        """Test automatic table name generation from class name."""
+        # TestUser -> test_user (CamelCase to snake_case)
+        assert TestUser.__table__ == "test_user"
+        assert TestProduct.__table__ == "test_product"
