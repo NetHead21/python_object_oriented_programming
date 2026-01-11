@@ -69,3 +69,7 @@ class TestOrder(Model):
 
 class TestMetaclassBehavior:
     """Test metaclass table name inference and field collection."""
+
+    def test_explicit_table_name(self):
+        """Test that explicit __table__ is preserved."""
+        assert TestOrder.__table__ == "test_orders"
