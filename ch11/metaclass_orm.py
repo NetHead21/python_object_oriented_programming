@@ -410,3 +410,11 @@ class Model(metaclass=ORMMetaclass):
 
 class User(Model):
     """User model with comprehensive field definitions."""
+
+    __table__ = "users"  # Optional: override auto-generated name
+
+    id = IntegerField(primary_key=True, required=True)
+    name = StringField(max_length=100, required=True)
+    email = StringField(max_length=100, unique=True, required=True)
+    is_active = BooleanField(default=True)
+    age = IntegerField()
