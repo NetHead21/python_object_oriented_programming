@@ -442,3 +442,11 @@ class Order(Model):
         - One Product can be in many Orders
         - This creates a many-to-many relationship between User and Product
     """
+
+    __table__ = "orders"  # Plural form is more conventional for this table
+
+    id = IntegerField(primary_key=True, required=True)
+    user_id = ForeignKeyField("User", required=True)
+    product_id = ForeignKeyField("Product", required=True)
+    quantity = IntegerField(required=True, default=1)
+    order_date = StringField(max_length=50)  # In real app, use DateTimeField
