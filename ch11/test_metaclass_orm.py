@@ -108,3 +108,7 @@ class TestMetaclassBehavior:
 
 class TestMultiplePrimaryKeys:
     """Test validation of multiple primary keys."""
+
+    def test_multiple_primary_keys_raises_error(self):
+        """Test that multiple primary keys raise ValueError."""
+        with pytest.raises(ValueError, match="multiple primary keys"):
