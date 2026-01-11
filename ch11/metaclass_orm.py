@@ -456,3 +456,10 @@ if __name__ == "__main__":
     # Quick demonstration (run test_metaclass_orm.py for comprehensive tests)
     print("ORM Metaclass - Quick Demo")
     print("=" * 50)
+
+    user = User(id=1, name="Alice", email="alice@example.com", age=30)
+    print(f"Created: {user}")
+    print(f"SQL: {user.save()}")
+
+    print(f"\nSchema:\n{User.describe_schema()}")
+    print("\nRun: pytest ch11/test_metaclass_orm.py -v")
