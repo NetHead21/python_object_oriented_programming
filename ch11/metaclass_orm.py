@@ -242,3 +242,15 @@ class ORMMetaclass(type):
             namespace["__table__"] = table_name
         else:
             table_name = namespace["__table__"]
+
+        # Collect all Field instances
+        mappings: dict[str, Field] = {}
+        primary_keys: list[str] = []
+
+        for key, value in list(namespace.items()):
+            if isinstance(value, Field):
+                # Set field name explicitly (before __set_name__ is called)
+                value.name = key
+                mappings[key] = value
+                if value.primary_key:
+                    primary_keys.append(key)
