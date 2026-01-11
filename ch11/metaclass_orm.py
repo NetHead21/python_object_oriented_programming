@@ -363,3 +363,18 @@ class Model(metaclass=ORMMetaclass):
             SQL SELECT statement as a string
         """
         return f"SELECT * FROM {cls.__table__}"
+
+    @classmethod
+    def select_by_id(cls, id_value: Any) -> str:
+        """
+        Generate a SELECT SQL statement by primary key.
+
+        Args:
+            id_value: Value of the primary key to search for
+
+        Returns:
+            SQL SELECT statement as a string
+
+        Raises:
+            ValueError: If model has no primary key
+        """
