@@ -295,3 +295,18 @@ class Model(metaclass=ORMMetaclass):
         for key in kwargs:
             if key not in self.__mappings__:
                 raise AttributeError(f"Unknown field: {key}")
+
+        # Initialize all fields (with defaults or None)
+        for field_name, field in self.__mappings__.items():
+            if field_name in kwargs:
+                # Use provided value
+                value = kwargs[field_name]
+            elif field.default is not None:
+                # Use default value
+                value = field.default
+            else:
+                # Set to None (will be validated below)
+                value = None
+
+            # Set the value (triggers Field.__set__ validation)
+            setattr(self, field_name, value)
