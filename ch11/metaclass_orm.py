@@ -290,3 +290,8 @@ class Model(metaclass=ORMMetaclass):
             ValueError: If required fields are missing
             TypeError: If field types are invalid
         """
+
+        # Check for unknown fields
+        for key in kwargs:
+            if key not in self.__mappings__:
+                raise AttributeError(f"Unknown field: {key}")
