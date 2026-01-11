@@ -274,3 +274,7 @@ class Model(metaclass=ORMMetaclass):
         __mappings__: Dict mapping field names to Field instances
         __primary_key__: Name of the primary key field (if any)
     """
+
+    __table__: ClassVar[str]
+    __mappings__: ClassVar[dict[str, Field]]
+    __primary_key__: ClassVar[Optional[str]]
