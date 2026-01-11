@@ -97,3 +97,10 @@ class TestMetaclassBehavior:
         # Fields should be in __mappings__ AND remain as class attributes (descriptors)
         assert isinstance(TestUser.__dict__["name"], Field)
         assert "name" in TestUser.__mappings__
+
+    def test_model_base_class_not_processed(self):
+        """Test that Model base class itself is not processed."""
+        # Model should not have __mappings__ or __primary_key__
+        # (only subclasses get these)
+        assert hasattr(TestUser, "__mappings__")
+        assert hasattr(TestUser, "__primary_key__")
