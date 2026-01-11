@@ -278,3 +278,15 @@ class Model(metaclass=ORMMetaclass):
     __table__: ClassVar[str]
     __mappings__: ClassVar[dict[str, Field]]
     __primary_key__: ClassVar[Optional[str]]
+
+    def __init__(self, **kwargs: Any):
+        """
+        Initialize model instance with field values.
+
+        Args:
+            **kwargs: Field values to set on the instance
+
+        Raises:
+            ValueError: If required fields are missing
+            TypeError: If field types are invalid
+        """
