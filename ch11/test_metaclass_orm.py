@@ -49,3 +49,14 @@ class TestProduct(Model):
     id = IntegerField(primary_key=True, required=True)
     name = StringField(max_length=200, required=True)
     price = IntegerField(required=True)
+
+
+class TestOrder(Model):
+    """Test order model with foreign keys."""
+
+    __table__ = "test_orders"
+
+    id = IntegerField(primary_key=True, required=True)
+    user_id = ForeignKeyField("TestUser", required=True)
+    product_id = ForeignKeyField("TestProduct", required=True)
+    quantity = IntegerField(default=1)
