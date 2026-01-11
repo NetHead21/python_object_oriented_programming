@@ -428,3 +428,17 @@ class Product(Model):
     name = StringField(max_length=200, required=True)
     price = IntegerField(required=True)
     in_stock = BooleanField(default=True)
+
+
+class Order(Model):
+    """Order model establishing many-to-many relationship between User and Product.
+
+    This is a junction/associative table that connects users with products.
+    Each order represents a user purchasing a product, with additional metadata
+    like quantity and order date.
+
+    Many-to-Many Relationship:
+        - One User can have many Orders
+        - One Product can be in many Orders
+        - This creates a many-to-many relationship between User and Product
+    """
