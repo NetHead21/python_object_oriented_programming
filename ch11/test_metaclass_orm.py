@@ -41,3 +41,11 @@ class TestUser(Model):
     email = StringField(max_length=100, required=True, unique=True)
     age = IntegerField()
     is_active = BooleanField(default=True)
+
+
+class TestProduct(Model):
+    """Test product model with auto-generated table name."""
+
+    id = IntegerField(primary_key=True, required=True)
+    name = StringField(max_length=200, required=True)
+    price = IntegerField(required=True)
