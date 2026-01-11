@@ -226,3 +226,10 @@ class ORMMetaclass(type):
     The metaclass runs when a Model subclass is defined, not when
     instances are created. This one-time setup improves runtime performance.
     """
+
+    def __new__(
+        mcs, name: str, bases: tuple[type, ...], namespace: dict[str, Any]
+    ) -> type:
+        # Skip processing for the base Model class itself
+        if name == "Model":
+            return super().__new__(mcs, name, bases, namespace)
