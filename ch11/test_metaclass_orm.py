@@ -79,3 +79,10 @@ class TestMetaclassBehavior:
         # TestUser -> test_user (CamelCase to snake_case)
         assert TestUser.__table__ == "test_user"
         assert TestProduct.__table__ == "test_product"
+
+    def test_field_collection(self):
+        """Test that fields are collected into __mappings__."""
+        assert "id" in TestUser.__mappings__
+        assert "name" in TestUser.__mappings__
+        assert "email" in TestUser.__mappings__
+        assert len(TestUser.__mappings__) == 5  # id, name, email, age, is_active
