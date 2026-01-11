@@ -112,3 +112,7 @@ class TestMultiplePrimaryKeys:
     def test_multiple_primary_keys_raises_error(self):
         """Test that multiple primary keys raise ValueError."""
         with pytest.raises(ValueError, match="multiple primary keys"):
+
+            class InvalidModel(Model):
+                id = IntegerField(primary_key=True)
+                user_id = IntegerField(primary_key=True)
