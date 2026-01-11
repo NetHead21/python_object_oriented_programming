@@ -346,3 +346,10 @@ class Model(metaclass=ORMMetaclass):
                     values.append("TRUE" if value else "FALSE")
                 else:
                     values.append(str(value))
+
+        sql = (
+            f"INSERT INTO {self.__table__} "
+            f"({', '.join(fields)}) "
+            f"VALUES ({', '.join(values)})"
+        )
+        return sql
