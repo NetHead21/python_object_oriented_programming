@@ -353,3 +353,13 @@ class Model(metaclass=ORMMetaclass):
             f"VALUES ({', '.join(values)})"
         )
         return sql
+
+    @classmethod
+    def select_all(cls) -> str:
+        """
+        Generate a SELECT * SQL statement for this model.
+
+        Returns:
+            SQL SELECT statement as a string
+        """
+        return f"SELECT * FROM {cls.__table__}"
