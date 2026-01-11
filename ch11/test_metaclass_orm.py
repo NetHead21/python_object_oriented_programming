@@ -104,3 +104,7 @@ class TestMetaclassBehavior:
         # (only subclasses get these)
         assert hasattr(TestUser, "__mappings__")
         assert hasattr(TestUser, "__primary_key__")
+
+
+class TestMultiplePrimaryKeys:
+    """Test validation of multiple primary keys."""
