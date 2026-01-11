@@ -233,3 +233,12 @@ class ORMMetaclass(type):
         # Skip processing for the base Model class itself
         if name == "Model":
             return super().__new__(mcs, name, bases, namespace)
+
+        # Infer table name: convert CamelCase to snake_case
+        if "__table__" not in namespace:
+            table_name = "".join(
+                ["_" + c.lower() if c.isupper() else c for c in name]
+            ).lstrip("_")
+            namespace["__table__"] = table_name
+        else:
+            table_name = namespace["__table__"]
