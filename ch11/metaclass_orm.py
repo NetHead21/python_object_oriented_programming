@@ -324,3 +324,11 @@ class Model(metaclass=ORMMetaclass):
     def __str__(self) -> str:
         """String representation."""
         return self.__repr__()
+
+    def save(self) -> str:
+        """
+        Generate an INSERT SQL statement for this instance.
+
+        Returns:
+            SQL INSERT statement as a string
+        """
