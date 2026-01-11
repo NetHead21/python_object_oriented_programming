@@ -386,3 +386,18 @@ class Model(metaclass=ORMMetaclass):
             id_value = f"'{id_value}'"
 
         return f"SELECT * FROM {cls.__table__} WHERE {cls.__primary_key__} = {id_value}"
+
+    @classmethod
+    def describe_schema(cls) -> str:
+        """
+        Generate a human-readable schema description.
+
+        Returns:
+            Multi-line string describing the table schema
+        """
+        lines = [f"Table: {cls.__table__}", "Fields:"]
+        for field_name, field in cls.__mappings__.items():
+            lines.append(f"  - {field_name}: {field}")
+        if cls.__primary_key__:
+            lines.append(f"Primary Key: {cls.__primary_key__}")
+        return "\n".join(lines)
