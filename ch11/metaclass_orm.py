@@ -254,3 +254,7 @@ class ORMMetaclass(type):
                 mappings[key] = value
                 if value.primary_key:
                     primary_keys.append(key)
+
+        # Validate: ensure at most one primary key
+        if len(primary_keys) > 1:
+            raise ValueError(f"Model {name} has multiple primary keys: {primary_keys}")
