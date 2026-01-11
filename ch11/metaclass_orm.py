@@ -418,3 +418,7 @@ class User(Model):
     email = StringField(max_length=100, unique=True, required=True)
     is_active = BooleanField(default=True)
     age = IntegerField()
+
+
+class Product(Model):
+    """Product model demonstrating automatic table name generation."""
