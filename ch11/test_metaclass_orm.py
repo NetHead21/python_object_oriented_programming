@@ -91,3 +91,9 @@ class TestMetaclassBehavior:
         """Test that primary key is correctly identified."""
         assert TestUser.__primary_key__ == "id"
         assert TestProduct.__primary_key__ == "id"
+
+    def test_fields_as_descriptors(self):
+        """Test that Field instances work as descriptors."""
+        # Fields should be in __mappings__ AND remain as class attributes (descriptors)
+        assert isinstance(TestUser.__dict__["name"], Field)
+        assert "name" in TestUser.__mappings__
