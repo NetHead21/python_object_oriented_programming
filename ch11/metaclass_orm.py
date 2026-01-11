@@ -258,3 +258,19 @@ class ORMMetaclass(type):
         # Validate: ensure at most one primary key
         if len(primary_keys) > 1:
             raise ValueError(f"Model {name} has multiple primary keys: {primary_keys}")
+
+
+class Model(metaclass=ORMMetaclass):
+    """
+    Base class for all ORM models.
+
+    Models defined by subclassing this class will automatically:
+    - Have their fields collected by the metaclass
+    - Get a table name (customizable via __table__)
+    - Gain SQL generation methods
+
+    Class Attributes:
+        __table__: Database table name (auto-generated if not specified)
+        __mappings__: Dict mapping field names to Field instances
+        __primary_key__: Name of the primary key field (if any)
+    """
