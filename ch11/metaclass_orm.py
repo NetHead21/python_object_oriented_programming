@@ -378,3 +378,11 @@ class Model(metaclass=ORMMetaclass):
         Raises:
             ValueError: If model has no primary key
         """
+
+        if cls.__primary_key__ is None:
+            raise ValueError(f"{cls.__name__} has no primary key defined")
+
+        if isinstance(id_value, str):
+            id_value = f"'{id_value}'"
+
+        return f"SELECT * FROM {cls.__table__} WHERE {cls.__primary_key__} = {id_value}"
