@@ -26,3 +26,12 @@ from metaclass_orm import (
     ForeignKeyField,
     ORMMetaclass,
 )
+
+
+# =============================================================================
+# Test Models
+# =============================================================================
+
+
+class TestUser(Model):
+    """Test user model."""
