@@ -35,3 +35,9 @@ from metaclass_orm import (
 
 class TestUser(Model):
     """Test user model."""
+
+    id = IntegerField(primary_key=True, required=True)
+    name = StringField(max_length=100, required=True)
+    email = StringField(max_length=100, required=True, unique=True)
+    age = IntegerField()
+    is_active = BooleanField(default=True)
