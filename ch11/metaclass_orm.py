@@ -422,3 +422,9 @@ class User(Model):
 
 class Product(Model):
     """Product model demonstrating automatic table name generation."""
+
+    # Table name will be auto-generated as "product"
+    id = IntegerField(primary_key=True, required=True)
+    name = StringField(max_length=200, required=True)
+    price = IntegerField(required=True)
+    in_stock = BooleanField(default=True)
