@@ -332,3 +332,17 @@ class Model(metaclass=ORMMetaclass):
         Returns:
             SQL INSERT statement as a string
         """
+
+        fields = []
+        values = []
+        for field_name in self.__mappings__:
+            value = getattr(self, field_name, None)
+            if value is not None:
+                fields.append(field_name)
+                # Format value for SQL (naive implementation)
+                if isinstance(value, str):
+                    values.append(f"'{value}'")
+                elif isinstance(value, bool):
+                    values.append("TRUE" if value else "FALSE")
+                else:
+                    values.append(str(value))
