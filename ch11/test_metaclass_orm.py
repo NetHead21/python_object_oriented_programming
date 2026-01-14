@@ -182,3 +182,8 @@ class TestBookingInputServiceCollectBookDate(unittest.TestCase):
 
         self.assertEqual(result, date(2026, 12, 25))
         self.assertEqual(mock_input.call_count, 2)
+
+    @patch("business_logic.services.booking_input_service.get_user_input")
+    @patch("business_logic.services.booking_input_service.datetime")
+    def test_collect_book_date_today_rejected(self, mock_datetime, mock_input):
+        """Test rejection of today's date."""
