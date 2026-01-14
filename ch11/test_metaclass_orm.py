@@ -144,3 +144,6 @@ class TestMultiplePrimaryKeys:
         mock_input.side_effect = ["", "1"]
 
         result = BookingInputService._collect_room_type()
+
+        self.assertEqual(result, "Tennis Court")
+        self.assertEqual(mock_input.call_count, 2)
