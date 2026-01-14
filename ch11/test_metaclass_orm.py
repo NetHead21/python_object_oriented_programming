@@ -125,3 +125,7 @@ class TestMultiplePrimaryKeys:
         result = BookingInputService._collect_room_type()
 
         self.assertEqual(result, "Multi-Purpose Field")
+
+    @patch("business_logic.services.booking_input_service.get_user_input")
+    def test_collect_room_type_invalid_then_valid(self, mock_input):
+        """Test rejection of invalid choice then acceptance of valid choice."""
