@@ -195,3 +195,6 @@ class TestBookingInputServiceCollectBookDate(unittest.TestCase):
         mock_input.side_effect = ["2026-01-05", "2026-12-25"]
 
         result = BookingInputService._collect_book_date()
+
+        self.assertEqual(result, date(2026, 12, 25))
+        self.assertEqual(mock_input.call_count, 2)
