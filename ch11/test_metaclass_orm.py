@@ -117,7 +117,11 @@ class TestMultiplePrimaryKeys:
                 id = IntegerField(primary_key=True)
                 user_id = IntegerField(primary_key=True)
 
-
-    @patch('business_logic.services.booking_input_service.get_user_input')
+    @patch("business_logic.services.booking_input_service.get_user_input")
     def test_collect_room_type_multi_purpose_field(self, mock_input):
         """Test selection of Multi-Purpose Field."""
+        mock_input.return_value = "4"
+
+        result = BookingInputService._collect_room_type()
+
+        self.assertEqual(result, "Multi-Purpose Field")
