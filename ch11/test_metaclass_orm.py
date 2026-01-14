@@ -171,3 +171,11 @@ class TestBookingInputServiceCollectBookDate(unittest.TestCase):
     @patch("business_logic.services.booking_input_service.datetime")
     def test_collect_book_date_past_date_rejected(self, mock_datetime, mock_input):
         """Test rejection of past dates."""
+
+        # Mock current date
+        mock_datetime.now.return_value = datetime(2026, 1, 5, 12, 0, 0)
+        mock_datetime.strptime = datetime.strptime
+
+        mock_input.side_effect = ["2025-12-25", "2026-12-25"]
+
+        result = BookingInputService._collect_book_date()
