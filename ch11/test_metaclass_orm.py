@@ -166,3 +166,8 @@ class TestBookingInputServiceCollectBookDate(unittest.TestCase):
         result = BookingInputService._collect_book_date()
 
         self.assertEqual(result, date(2026, 12, 25))
+
+    @patch("business_logic.services.booking_input_service.get_user_input")
+    @patch("business_logic.services.booking_input_service.datetime")
+    def test_collect_book_date_past_date_rejected(self, mock_datetime, mock_input):
+        """Test rejection of past dates."""
