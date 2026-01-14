@@ -136,3 +136,7 @@ class TestMultiplePrimaryKeys:
 
         self.assertEqual(result, "Tennis Court")
         self.assertEqual(mock_input.call_count, 4)
+
+    @patch("business_logic.services.booking_input_service.get_user_input")
+    def test_collect_room_type_empty_input(self, mock_input):
+        """Test handling of empty input."""
