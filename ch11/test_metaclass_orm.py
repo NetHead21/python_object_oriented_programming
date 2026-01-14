@@ -216,3 +216,5 @@ class TestBookingInputServiceCollectBookDate(unittest.TestCase):
 
         self.assertEqual(result, date(2026, 12, 25))
         self.assertEqual(mock_input.call_count, 3)
+
+        mock_datetime_patcher.stop()
