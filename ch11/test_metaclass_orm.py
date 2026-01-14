@@ -151,3 +151,8 @@ class TestMultiplePrimaryKeys:
 
 class TestBookingInputServiceCollectBookDate(unittest.TestCase):
     """Test cases for _collect_book_date private method."""
+
+    @patch("business_logic.services.booking_input_service.get_user_input")
+    @patch("business_logic.services.booking_input_service.datetime")
+    def test_collect_book_date_valid_future_date(self, mock_datetime, mock_input):
+        """Test collection of valid future date."""
