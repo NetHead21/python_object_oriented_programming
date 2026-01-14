@@ -129,3 +129,7 @@ class TestMultiplePrimaryKeys:
     @patch("business_logic.services.booking_input_service.get_user_input")
     def test_collect_room_type_invalid_then_valid(self, mock_input):
         """Test rejection of invalid choice then acceptance of valid choice."""
+
+        mock_input.side_effect = ["5", "invalid", "0", "1"]
+
+        result = BookingInputService._collect_room_type()
