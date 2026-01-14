@@ -140,3 +140,7 @@ class TestMultiplePrimaryKeys:
     @patch("business_logic.services.booking_input_service.get_user_input")
     def test_collect_room_type_empty_input(self, mock_input):
         """Test handling of empty input."""
+
+        mock_input.side_effect = ["", "1"]
+
+        result = BookingInputService._collect_room_type()
