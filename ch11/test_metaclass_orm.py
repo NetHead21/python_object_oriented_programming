@@ -147,3 +147,7 @@ class TestMultiplePrimaryKeys:
 
         self.assertEqual(result, "Tennis Court")
         self.assertEqual(mock_input.call_count, 2)
+
+
+class TestBookingInputServiceCollectBookDate(unittest.TestCase):
+    """Test cases for _collect_book_date private method."""
