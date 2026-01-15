@@ -252,3 +252,7 @@ class TestBookingInputServiceCollectBookDate(unittest.TestCase):
         result = BookingInputService._collect_book_date("search date")
 
         self.assertEqual(result, date(2026, 12, 25))
+
+    @patch("business_logic.services.booking_input_service.get_user_input")
+    def test_collect_book_date_invalid_calendar_date(self, mock_input):
+        """Test rejection of invalid calendar dates."""
