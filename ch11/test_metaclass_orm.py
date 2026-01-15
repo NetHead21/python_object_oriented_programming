@@ -248,3 +248,7 @@ class TestBookingInputServiceCollectBookDate(unittest.TestCase):
         mock_datetime.strptime = datetime.strptime
 
         mock_input.return_value = "2026-12-25"
+
+        result = BookingInputService._collect_book_date("search date")
+
+        self.assertEqual(result, date(2026, 12, 25))
