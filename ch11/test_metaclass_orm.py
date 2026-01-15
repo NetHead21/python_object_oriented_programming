@@ -222,3 +222,12 @@ class TestBookingInputServiceCollectBookDate(unittest.TestCase):
     @patch("business_logic.services.booking_input_service.get_user_input")
     def test_collect_book_date_empty_input(self, mock_input):
         """Test rejection of empty input."""
+
+        mock_datetime_patcher = patch(
+            "business_logic.services.booking_input_service.datetime"
+        )
+        mock_datetime = mock_datetime_patcher.start()
+        mock_datetime.now.return_value = datetime(2026, 1, 5, 12, 0, 0)
+        mock_datetime.strptime = datetime.strptime
+
+        mock_input.side_effect = ["", "2026-12-25"]
