@@ -288,3 +288,9 @@ class TestBookingInputServiceCollectBookTime(unittest.TestCase):
     @patch("business_logic.services.booking_input_service.get_user_input")
     def test_collect_book_time_business_hours_start(self, mock_input):
         """Test acceptance of start of business hours (06:00)."""
+
+        mock_input.return_value = "06:00"
+
+        result = BookingInputService._collect_book_time()
+
+        self.assertEqual(result, time(6, 0))
