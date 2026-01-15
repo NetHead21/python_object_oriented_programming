@@ -280,3 +280,7 @@ class TestBookingInputServiceCollectBookTime(unittest.TestCase):
     def test_collect_book_time_valid_time(self, mock_input):
         """Test collection of valid time within business hours."""
         mock_input.return_value = "14:30"
+
+        result = BookingInputService._collect_book_time()
+
+        self.assertEqual(result, time(14, 30))
