@@ -218,3 +218,7 @@ class TestBookingInputServiceCollectBookDate(unittest.TestCase):
         self.assertEqual(mock_input.call_count, 3)
 
         mock_datetime_patcher.stop()
+
+    @patch("business_logic.services.booking_input_service.get_user_input")
+    def test_collect_book_date_empty_input(self, mock_input):
+        """Test rejection of empty input."""
