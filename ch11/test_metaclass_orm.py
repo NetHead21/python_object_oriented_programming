@@ -238,3 +238,8 @@ class TestBookingInputServiceCollectBookDate(unittest.TestCase):
         self.assertEqual(mock_input.call_count, 2)
 
         mock_datetime_patcher.stop()
+
+    @patch("business_logic.services.booking_input_service.get_user_input")
+    @patch("business_logic.services.booking_input_service.datetime")
+    def test_collect_book_date_custom_field_name(self, mock_datetime, mock_input):
+        """Test custom field name parameter."""
