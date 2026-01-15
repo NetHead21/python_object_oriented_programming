@@ -326,3 +326,7 @@ class TestBookingInputServiceCollectBookTime(unittest.TestCase):
 
         self.assertEqual(result, time(14, 30))
         self.assertEqual(mock_input.call_count, 3)
+
+    @patch("business_logic.services.booking_input_service.get_user_input")
+    def test_collect_book_time_invalid_format(self, mock_input):
+        """Test rejection of invalid time format."""
