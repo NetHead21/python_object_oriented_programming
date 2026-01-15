@@ -275,3 +275,8 @@ class TestBookingInputServiceCollectBookDate(unittest.TestCase):
 
 class TestBookingInputServiceCollectBookTime(unittest.TestCase):
     """Test cases for _collect_book_time private method."""
+
+    @patch("business_logic.services.booking_input_service.get_user_input")
+    def test_collect_book_time_valid_time(self, mock_input):
+        """Test collection of valid time within business hours."""
+        mock_input.return_value = "14:30"
