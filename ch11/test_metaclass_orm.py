@@ -243,3 +243,8 @@ class TestBookingInputServiceCollectBookDate(unittest.TestCase):
     @patch("business_logic.services.booking_input_service.datetime")
     def test_collect_book_date_custom_field_name(self, mock_datetime, mock_input):
         """Test custom field name parameter."""
+
+        mock_datetime.now.return_value = datetime(2026, 1, 5, 12, 0, 0)
+        mock_datetime.strptime = datetime.strptime
+
+        mock_input.return_value = "2026-12-25"
