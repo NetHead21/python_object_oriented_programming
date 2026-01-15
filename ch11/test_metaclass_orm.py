@@ -265,3 +265,9 @@ class TestBookingInputServiceCollectBookDate(unittest.TestCase):
         mock_datetime.strptime = datetime.strptime
 
         mock_input.side_effect = ["2026-13-01", "2026-02-30", "2026-12-25"]
+
+        result = BookingInputService._collect_book_date()
+
+        self.assertEqual(result, date(2026, 12, 25))
+
+        mock_datetime_patcher.stop()
