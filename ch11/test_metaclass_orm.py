@@ -271,3 +271,7 @@ class TestBookingInputServiceCollectBookDate(unittest.TestCase):
         self.assertEqual(result, date(2026, 12, 25))
 
         mock_datetime_patcher.stop()
+
+
+class TestBookingInputServiceCollectBookTime(unittest.TestCase):
+    """Test cases for _collect_book_time private method."""
