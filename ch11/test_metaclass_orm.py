@@ -408,3 +408,7 @@ class TestBookingInputServiceCollectUserId(unittest.TestCase):
     @patch("business_logic.services.booking_input_service.get_user_input")
     def test_collect_user_id_minimum_valid_length(self, mock_input):
         """Test acceptance of user ID with exactly 3 characters."""
+
+        mock_input.return_value = "usr"
+
+        result = BookingInputService._collect_user_id()
