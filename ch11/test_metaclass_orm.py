@@ -356,3 +356,5 @@ class TestBookingInputServiceCollectBookTime(unittest.TestCase):
         mock_input.return_value = "14:30"
 
         result = BookingInputService._collect_book_time("search time")
+
+        self.assertEqual(result, time(14, 30))
