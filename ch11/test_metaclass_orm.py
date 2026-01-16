@@ -386,3 +386,7 @@ class TestBookingInputServiceCollectUserId(unittest.TestCase):
     @patch("business_logic.services.booking_input_service.get_user_input")
     def test_collect_user_id_empty_input_rejected(self, mock_input):
         """Test rejection of empty user ID."""
+
+        mock_input.side_effect = ["", "user123"]
+
+        result = BookingInputService._collect_user_id()
