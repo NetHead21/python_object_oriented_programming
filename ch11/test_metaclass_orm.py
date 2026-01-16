@@ -368,3 +368,7 @@ class TestBookingInputServiceCollectBookTime(unittest.TestCase):
         result = BookingInputService._collect_book_time()
 
         self.assertEqual(result, time(14, 30))
+
+
+class TestBookingInputServiceCollectUserId(unittest.TestCase):
+    """Test cases for _collect_user_id private method."""
