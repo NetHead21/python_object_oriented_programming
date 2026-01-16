@@ -352,3 +352,7 @@ class TestBookingInputServiceCollectBookTime(unittest.TestCase):
     @patch("business_logic.services.booking_input_service.get_user_input")
     def test_collect_book_time_custom_field_name(self, mock_input):
         """Test custom field name parameter."""
+
+        mock_input.return_value = "14:30"
+
+        result = BookingInputService._collect_book_time("search time")
