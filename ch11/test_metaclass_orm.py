@@ -397,3 +397,7 @@ class TestBookingInputServiceCollectUserId(unittest.TestCase):
     @patch("business_logic.services.booking_input_service.get_user_input")
     def test_collect_user_id_too_short(self, mock_input):
         """Test rejection of user ID shorter than 3 characters."""
+
+        mock_input.side_effect = ["ab", "user123"]
+
+        result = BookingInputService._collect_user_id()
