@@ -382,3 +382,7 @@ class TestBookingInputServiceCollectUserId(unittest.TestCase):
         result = BookingInputService._collect_user_id()
 
         self.assertEqual(result, "user123")
+
+    @patch("business_logic.services.booking_input_service.get_user_input")
+    def test_collect_user_id_empty_input_rejected(self, mock_input):
+        """Test rejection of empty user ID."""
