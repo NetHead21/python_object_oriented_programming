@@ -341,3 +341,7 @@ class TestBookingInputServiceCollectBookTime(unittest.TestCase):
     @patch("business_logic.services.booking_input_service.get_user_input")
     def test_collect_book_time_empty_input(self, mock_input):
         """Test rejection of empty input."""
+
+        mock_input.side_effect = ["", "14:30"]
+
+        result = BookingInputService._collect_book_time()
