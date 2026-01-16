@@ -358,3 +358,7 @@ class TestBookingInputServiceCollectBookTime(unittest.TestCase):
         result = BookingInputService._collect_book_time("search time")
 
         self.assertEqual(result, time(14, 30))
+
+    @patch("business_logic.services.booking_input_service.get_user_input")
+    def test_collect_book_time_invalid_hour_minute(self, mock_input):
+        """Test rejection of invalid hour/minute values."""
