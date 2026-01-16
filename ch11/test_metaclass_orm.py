@@ -401,3 +401,6 @@ class TestBookingInputServiceCollectUserId(unittest.TestCase):
         mock_input.side_effect = ["ab", "user123"]
 
         result = BookingInputService._collect_user_id()
+
+        self.assertEqual(result, "user123")
+        self.assertEqual(mock_input.call_count, 2)
