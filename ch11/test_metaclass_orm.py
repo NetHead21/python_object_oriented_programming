@@ -345,3 +345,6 @@ class TestBookingInputServiceCollectBookTime(unittest.TestCase):
         mock_input.side_effect = ["", "14:30"]
 
         result = BookingInputService._collect_book_time()
+
+        self.assertEqual(result, time(14, 30))
+        self.assertEqual(mock_input.call_count, 2)
