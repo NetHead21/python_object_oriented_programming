@@ -415,7 +415,10 @@ class TestBookingInputServiceCollectUserId(unittest.TestCase):
 
         self.assertEqual(result, "usr")
 
-
-    @patch('business_logic.services.booking_input_service.get_user_input')
+    @patch("business_logic.services.booking_input_service.get_user_input")
     def test_collect_user_id_too_long(self, mock_input):
         """Test rejection of user ID longer than 50 characters."""
+        long_id = "a" * 51
+        mock_input.side_effect = [long_id, "user123"]
+
+        result = BookingInputService._collect_user_id()
