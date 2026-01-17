@@ -453,3 +453,9 @@ class TestBookingInputServiceCollectUserId(unittest.TestCase):
         mock_input.return_value = "user123"
 
         result = BookingInputService._collect_user_id("Owner ID")
+
+        self.assertEqual(result, "user123")
+
+
+if __name__ == "__main__":
+    unittest.main()
