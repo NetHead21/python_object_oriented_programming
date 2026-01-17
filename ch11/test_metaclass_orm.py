@@ -435,3 +435,7 @@ class TestBookingInputServiceCollectUserId(unittest.TestCase):
 
         result = BookingInputService._collect_user_id()
         self.assertEqual(result, valid_id)
+
+    @patch("business_logic.services.booking_input_service.get_user_input")
+    def test_collect_user_id_whitespace_trimmed(self, mock_input):
+        """Test that leading/trailing whitespace is trimmed."""
